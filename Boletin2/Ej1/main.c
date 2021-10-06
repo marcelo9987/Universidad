@@ -3,7 +3,8 @@
 /*  Programado el día 6/10/2021
  *  Programador: Marcelo Fort Muñoz
  *  El ejercicio consistirá en pedir un input entero y calcular su valor en "y" en base a la función dada.
- * */
+ *  Terminado a 06/10/2021 14:02
+ */
 
 int main() {
     float numero,y;
