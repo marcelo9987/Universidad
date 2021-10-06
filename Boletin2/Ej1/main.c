@@ -7,12 +7,22 @@
 
 int main() {
     float numero,y;
+    int a=0;
+
     do{
         system("cls");
+        if(a==1)
+        {
+            printf("Valor no definido \n");
+        }
         printf("introduzca x: ");
         scanf("%f", &numero);
+        a=1;
     }while( !( ((numero>=-1)&&(numero<1)) || ((numero>=1)&&(numero<2)) || ((numero>=2)&&(numero<=4)) ) );
-   if((numero>=-1) &&(numero<1))
+    system("cls");
+    printf("x= %f",numero);
+    printf("\n");
+    if((numero>=-1) &&(numero<1))
    {
        y = numero*numero;
        printf("y = %f",y);
