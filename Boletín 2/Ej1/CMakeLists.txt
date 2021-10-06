@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
-project(Ej1)
+project(Ej1 C)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_C_STANDARD 99)
 
-add_executable(Ej1 main.cpp)
+add_executable(Ej1 main.c)
