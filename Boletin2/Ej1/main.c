@@ -8,7 +8,7 @@
 int main() {
     float numero,y;
     do{
-       // system("cls");
+        system("cls");
         printf("introduzca x: ");
         scanf("%f", &numero);
     }while( !( ((numero>=-1)&&(numero<1)) || ((numero>=1)&&(numero<2)) || ((numero>=2)&&(numero<=4)) ) );
