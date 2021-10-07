@@ -27,13 +27,13 @@ int main()
         numerodevueltas+=1;
         w=(pow(x,n)/ factorial(n));
         v += w * pow((-1),(numerodevueltas+1));
-        printf("\n w= %f",w);
-        printf("\n n = %f",numerodevueltas);
-        printf("\n v = %f",v);
-        printf("\n ");
+       // printf("\n w= %f",w);
+       // printf("\n n = %f",numerodevueltas);
+       // printf("\n v = %f",v);
+       // printf("\n ");
         n+=2;
     }
-    //printf("Numero: %f",w);
+    printf("\n El seno de x es: %f",v);
     system("PAUSE");
     return 0;
 }
