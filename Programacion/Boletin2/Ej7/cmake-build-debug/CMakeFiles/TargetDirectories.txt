@@ -1,0 +1,3 @@
+D:/github/Universidad/Programacion/Boletin2/Ej7/cmake-build-debug/CMakeFiles/Ej7.dir
+D:/github/Universidad/Programacion/Boletin2/Ej7/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/github/Universidad/Programacion/Boletin2/Ej7/cmake-build-debug/CMakeFiles/rebuild_cache.dir
