@@ -1,0 +1,3 @@
+D:/github/Universidad/Programacion/Boletin2/Ej8sinfunciones/cmake-build-debug/CMakeFiles/ej8sinfunciones.dir
+D:/github/Universidad/Programacion/Boletin2/Ej8sinfunciones/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/github/Universidad/Programacion/Boletin2/Ej8sinfunciones/cmake-build-debug/CMakeFiles/rebuild_cache.dir
