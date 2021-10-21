@@ -40,14 +40,14 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="ej8sinfunciones" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ej8sinfunciones" TARGET_NAME="ej8sinfunciones" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ej8sinfunciones" RUN_TARGET_NAME="ej8sinfunciones">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="ej8sinfunciones" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ej8sinfunciones" TARGET_NAME="ej8sinfunciones" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ej8sinfunciones" RUN_TARGET_NAME="ej8sinfunciones">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -62,6 +62,7 @@
       <workItem from="1634654284925" duration="6583000" />
       <workItem from="1634673639512" duration="131000" />
       <workItem from="1634679166372" duration="104000" />
+      <workItem from="1634813736345" duration="174000" />
     </task>
     <servers />
   </component>
