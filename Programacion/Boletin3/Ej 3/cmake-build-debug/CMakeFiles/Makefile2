@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = "D:\github\Universidad\Programacion\Boletin3\Ej 3\cmake-build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Ej_3.dir/all
+all: CMakeFiles/Ej_4.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -70,34 +70,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Ej_3.dir/clean
+clean: CMakeFiles/Ej_4.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Ej_3.dir
+# Target rules for target CMakeFiles/Ej_4.dir
 
 # All Build rule for target.
-CMakeFiles/Ej_3.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\github\Universidad\Programacion\Boletin3\Ej 3\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target Ej_3"
-.PHONY : CMakeFiles/Ej_3.dir/all
+CMakeFiles/Ej_4.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\github\Universidad\Programacion\Boletin3\Ej 3\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target Ej_4"
+.PHONY : CMakeFiles/Ej_4.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Ej_3.dir/rule: cmake_check_build_system
+CMakeFiles/Ej_4.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "D:\github\Universidad\Programacion\Boletin3\Ej 3\cmake-build-debug\CMakeFiles" 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Ej_3.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Ej_4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "D:\github\Universidad\Programacion\Boletin3\Ej 3\cmake-build-debug\CMakeFiles" 0
-.PHONY : CMakeFiles/Ej_3.dir/rule
+.PHONY : CMakeFiles/Ej_4.dir/rule
 
 # Convenience name for target.
-Ej_3: CMakeFiles/Ej_3.dir/rule
-.PHONY : Ej_3
+Ej_4: CMakeFiles/Ej_4.dir/rule
+.PHONY : Ej_4
 
 # clean rule for target.
-CMakeFiles/Ej_3.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/clean
-.PHONY : CMakeFiles/Ej_3.dir/clean
+CMakeFiles/Ej_4.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/clean
+.PHONY : CMakeFiles/Ej_4.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

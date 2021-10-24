@@ -64,16 +64,6 @@ CMAKE_BINARY_DIR = "D:\github\Universidad\Programacion\Boletin3\Ej 3\cmake-build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -83,6 +73,16 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Ej_3
+# Target rules for targets named Ej_4
 
 # Build rule for target.
-Ej_3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Ej_3
-.PHONY : Ej_3
+Ej_4: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Ej_4
+.PHONY : Ej_4
 
 # fast build rule for target.
-Ej_3/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/build
-.PHONY : Ej_3/fast
+Ej_4/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/build
+.PHONY : Ej_4/fast
 
 main.obj: main.c.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/main.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/main.c.obj
 .PHONY : main.c.obj
 
 main.i: main.c.i
@@ -141,7 +141,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -149,7 +149,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_4.dir\build.make CMakeFiles/Ej_4.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -160,7 +160,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Ej_3
+	@echo ... Ej_4
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Ej_3" targetName="Ej_3" />
+      <config projectName="Ej_4" targetName="Ej_4" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d1ee1f-92b2-41b5-8ac1-c4b497ea39a7" name="Changes" comment="" />
+    <list default="true" id="62f10c7d-92f1-45b1-b3c9-f99942ff592e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectId" id="1zoqifahP62pNVtwBnk9F1MzW70" />
+  <component name="ProjectId" id="1zxPLr2EauaZiRNayZsVlNQoU02" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,10 +38,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="ObjectiveC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.c" />
   </component>
   <component name="RunManager">
-    <configuration name="Ej_3" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_3" TARGET_NAME="Ej_3" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_3" RUN_TARGET_NAME="Ej_3">
+    <configuration name="Ej_4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_4" TARGET_NAME="Ej_4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_4" RUN_TARGET_NAME="Ej_4">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -60,13 +60,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="13d1ee1f-92b2-41b5-8ac1-c4b497ea39a7" name="Changes" comment="" />
-      <created>1634824916936</created>
+      <changelist id="62f10c7d-92f1-45b1-b3c9-f99942ff592e" name="Changes" comment="" />
+      <created>1635086713476</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1634824916936</updated>
-      <workItem from="1634824920100" duration="366000" />
-      <workItem from="1634890159578" duration="78000" />
+      <updated>1635086713476</updated>
+      <workItem from="1635086716899" duration="2303000" />
+      <workItem from="1635089449403" duration="76000" />
     </task>
     <servers />
   </component>
