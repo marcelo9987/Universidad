@@ -1,0 +1,3 @@
+"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\RETO_7.dir/objects.a
+D:\Programas_UNi\MingW\bin\ar.exe cr CMakeFiles\RETO_7.dir/objects.a @CMakeFiles\RETO_7.dir\objects1.rsp
+D:\Programas_UNi\MingW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\RETO_7.dir/objects.a -Wl,--no-whole-archive -o RETO_7.exe -Wl,--out-implib,libRETO_7.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\RETO_7.dir\linklibs.rsp
