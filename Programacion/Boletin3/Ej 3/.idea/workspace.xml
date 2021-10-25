@@ -38,15 +38,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.c" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej 4" />
   </component>
   <component name="RunManager">
     <configuration name="Ej_4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_4" TARGET_NAME="Ej_4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_4" RUN_TARGET_NAME="Ej_4">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -67,6 +62,7 @@
       <updated>1635086713476</updated>
       <workItem from="1635086716899" duration="2303000" />
       <workItem from="1635089449403" duration="76000" />
+      <workItem from="1635163199923" duration="34000" />
     </task>
     <servers />
   </component>
