@@ -16,10 +16,19 @@ int main()
 {
     char memoria[60];
     FILE* prueba;
-    prueba = fopen ("test.txt","r");
-    //fscanf(prueba, "%s", memoria);
-    //fgets(memoria, 27,prueba);
+    prueba = fopen ("test.txt","r+");
+          //fscanf(prueba, "%s", memoria);
+    fgets(memoria, 27,prueba);
+         //fscanf(prueba, "%s", memoria);
     printf("1 : %s", memoria );
+          //fscanf(prueba, "%s", memoria);
+          
+    fgets(memoria, 27,prueba);
+    printf("\n 2 : %s", memoria );
+
+    fgets(memoria, 27,prueba);
+          //fscanf(prueba, "%s", memoria);
+    printf("\n 3 : %s", memoria );
     fclose(prueba);
 
    /* int cosas[]={1,3,5,7,9,2,4,6,8,0};
