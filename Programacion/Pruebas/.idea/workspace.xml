@@ -38,16 +38,12 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Boletin3/Ej 4" />
   </component>
   <component name="RunManager">
     <configuration name="Pruebas" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pruebas" TARGET_NAME="Pruebas" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pruebas" RUN_TARGET_NAME="Pruebas">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -61,7 +57,8 @@
       <updated>1634890238729</updated>
       <workItem from="1634890241973" duration="1657000" />
       <workItem from="1634941282211" duration="44000" />
-      <workItem from="1635235807915" duration="1923000" />
+      <workItem from="1635235807915" duration="2559000" />
+      <workItem from="1635257138077" duration="66000" />
     </task>
     <servers />
   </component>

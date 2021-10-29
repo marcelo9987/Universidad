@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Ej_4" targetName="Ej_4" />
+    </generated>
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
@@ -21,6 +26,10 @@
   </component>
   <component name="ProjectId" id="1zzuaHG1oOOuuGUDisOXnMPL4RA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -29,14 +38,16 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\github\Universidad\Programacion\Boletin3\Ej 4\cmake-build-debug" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="Ej_4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_4" TARGET_NAME="Ej_4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_4" RUN_TARGET_NAME="Ej_4">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Ej_4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_4" TARGET_NAME="Ej_4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_4" RUN_TARGET_NAME="Ej_4">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -56,6 +67,9 @@
       <option name="presentableId" value="Default" />
       <updated>1635163298348</updated>
       <workItem from="1635235709057" duration="33000" />
+      <workItem from="1635257206994" duration="3339000" />
+      <workItem from="1635515553831" duration="6978000" />
+      <workItem from="1635523589147" duration="2629000" />
     </task>
     <servers />
   </component>
