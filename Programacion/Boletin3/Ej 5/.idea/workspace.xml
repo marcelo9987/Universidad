@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf9d7422-1357-4afe-9bb6-6e189818c0cc" name="Changes" comment="" />
+    <list default="true" id="85cce9ef-ad9e-444c-98ff-117bb2e7a7a5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectId" id="202HV9SsPeTpnc0612EUxrGYXkt" />
+  <component name="ProjectId" id="20CLKE9aOGBEYEYovvvHnVWPmMA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,12 +40,12 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Ej_5" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_5" TARGET_NAME="Ej_5" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_5" RUN_TARGET_NAME="Ej_5">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Ej_5" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_5" TARGET_NAME="Ej_5" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_5" RUN_TARGET_NAME="Ej_5">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -59,12 +59,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bf9d7422-1357-4afe-9bb6-6e189818c0cc" name="Changes" comment="" />
-      <created>1635235783206</created>
+      <changelist id="85cce9ef-ad9e-444c-98ff-117bb2e7a7a5" name="Changes" comment="" />
+      <created>1635543556553</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635235783206</updated>
-      <workItem from="1635235785780" duration="267000" />
+      <updated>1635543556553</updated>
+      <workItem from="1635543558487" duration="3103000" />
+      <workItem from="1635546848354" duration="739000" />
     </task>
     <servers />
   </component>

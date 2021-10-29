@@ -1,9 +1,8 @@
+#define ESTILO '1' //dia mes año
 /*
  * Programador: Marcelo Fort Muñoz
- * Descripción: Pide dos fechas,
  */
 #include <stdio.h>
-#include <stdbool.h>
 #include<stdlib.h>
 #include <locale.h>
 //#include <bis.h>
@@ -31,7 +30,7 @@ float CalcularDistancia (Date* d1, Date* d2);
 
 int main() {
 
-    pipeta[0].dias = 31;
+    pipeta[0].dias = 31;  //aqui se describen cuantos dias tiene cada mes
     pipeta[1].dias = 28;
     pipeta[2].dias = 31;
     pipeta[3].dias = 30;
@@ -54,11 +53,11 @@ int main() {
     printf("\n---------------- FECHA 2 ----------------\n");
     ler(vec2);
     printf("\nLa fecha 1 es : ");
-    Mostrar(fecha1,'1');
+    Mostrar(fecha1,ESTILO);
     printf("\nLa fecha 2 es : ");
-    Mostrar(fecha2,'1');
+    Mostrar(fecha2,ESTILO);
     printf("\n %f ",CalcularDistancia(&fecha1, vec2));
-
+    printf("\n");
     system("pause");
     return 0;
 }
@@ -81,9 +80,7 @@ void Mostrar (Date fechaf, char f)
     switch(f)
     {
         case '1':
-            wprintf(L"\n Dia: %i",fechaf.dia);
-            wprintf(L" Mes: %i",fechaf.mes);
-            wprintf(L" Año %i",fechaf.ano);
+            wprintf(L"\n Dia/Mes/Año: %i %i %i",fechaf.dia,fechaf.mes,fechaf.ano);
             break;
         case '2':
             wprintf(L"\n Mes/Dia/Año: %i %i %i",fechaf.mes,fechaf.dia,fechaf.ano);
@@ -106,10 +103,10 @@ float CalcularDistancia (Date* d1, Date* d2)
     nd2.ano -= 1;
     int diasan,diames,/*dias,*/tot;
     int mes1=0,mes2=0;//,mes2;
-   diasan = (((nd1.ano-nd1.ano/4)*365+(nd1.ano/4)*366)-((nd2.ano-nd2.ano/4)*365+(nd2.ano/4)*366));
+   diasan = (((nd1.ano-nd1.ano/4)*365+(nd1.ano/4)*366)-((nd2.ano-nd2.ano/4)*365+(nd2.ano/4)*366)); //usa una fórmula para calcular los días en años normales más años bisiestos
     nd1.ano += 1;
     nd2.ano += 1;
-    for(int i = 0;i<nd1.mes-1;i++)
+    for(int i = 0;i<nd1.mes-1;i++) //suma los dias de los meses
     {
 
         if(i==1 && ( (nd1.ano%4==0 && nd1.ano%100!=0) || (nd1.ano%4==0 && nd1.ano%100==0 && nd1.ano%400==0) ) )
@@ -140,27 +137,10 @@ float CalcularDistancia (Date* d1, Date* d2)
     }
     diames=mes1-mes2;
    int dias=nd1.dia-nd2.dia;
-    tot=diasan+diames+dias;
+    tot=diasan+diames+dias;//puesta en común
 
    // printf("DIas mes %i",d1.mes);
 
-
+    tot=abs(tot); //eliminación del signo
  return (float)tot;
 }
-/*
-bool esBisiesto(int a1)
-{
-    bool bisiesto = 0;
-    if((a1%4==0)&&(a1%100 != 0))
-    {
-        bisiesto = 1;
-    }
-    else if(a1%100 == 0)
-    {
-        if(a1%400 ==0)
-        {
-            bisiesto = 1;
-        }
-    }
-    return bisiesto;
-}*/
