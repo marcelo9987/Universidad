@@ -7,10 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-int max(int a[],int n);
-int min(int b[],int n);
-float med(int c[],int n);
-void ordenarVector(int* vector,int n);
+int max(int a[],int n);//encuentra el número más grande del vector params: a[](vector) n(tamaño del vector)
+int min(int b[],int n);//busca el número más pequeño del vector params: b[](vector) n(tamaño del vector)
+float med(int c[],int n); //busca la media del vector params: c[](vector) n(tamaño del vector)
+void ordenarVector(int* vector,int n);//ordena el vector los parámetros son: vector(es un puntero a un vector) y n(su tamaño)
 int main()
 {
     int numex[50]={0},i=0,v,maxi,mini;
