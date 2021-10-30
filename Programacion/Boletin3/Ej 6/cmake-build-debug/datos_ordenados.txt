@@ -1,0 +1,8 @@
+Números ordenados: 
+22 -- 22 -- 22 -- 21 -- 8 -- 8 -- 7 -- 7 -- 5 -- 5 -- 4 -- 4
+ Número más grande: 
+22
+ Número más pequeño: 
+4
+ Media: 
+11,250000
