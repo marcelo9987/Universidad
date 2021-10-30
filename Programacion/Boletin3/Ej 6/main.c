@@ -1,3 +1,9 @@
+/*
+ * Programador: Marcelo Fort Muñoz
+ * Descripción: El ejercicio lee una serie de números y lleva a cabo una serie de operaciones en ellos además de ordenarlos.
+ *  Una vez estos son ordenados, el ordenador procede a grabarlos en un fichero.
+ *
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
