@@ -59,7 +59,7 @@ int main()
     fwprintf(or,L"\n Número más pequeño: \n");
     fprintf(or,"%i",mini);
     fwprintf(or,L"\n Media: \n");
-    fprintf(or,"%f",medi);
+    fprintf(or,"%.2f",medi);
     fclose(or);
     system("pause");
     return 0;

@@ -5,4 +5,4 @@ Números ordenados:
  Número más pequeño: 
 4
  Media: 
-11,250000
+11,25
