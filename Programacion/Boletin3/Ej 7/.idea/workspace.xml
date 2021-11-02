@@ -46,14 +46,11 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej1" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="proofread" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Ej_7" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_7" TARGET_NAME="Ej_7" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_7" RUN_TARGET_NAME="Ej_7">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -74,6 +71,12 @@
       <option name="presentableId" value="Default" />
       <updated>1635678245163</updated>
       <workItem from="1635678248690" duration="1083000" />
+      <workItem from="1635680189422" duration="3426000" />
+      <workItem from="1635685377032" duration="737000" />
+      <workItem from="1635763220237" duration="2449000" />
+      <workItem from="1635866000576" duration="37000" />
+      <workItem from="1635869646475" duration="510000" />
+      <workItem from="1635870509352" duration="2884000" />
     </task>
     <servers />
   </component>

@@ -38,16 +38,12 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej 3" />
   </component>
   <component name="RunManager">
     <configuration name="Ej_6" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_6" TARGET_NAME="Ej_6" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_6" RUN_TARGET_NAME="Ej_6">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -63,6 +59,8 @@
       <workItem from="1635593371642" duration="63000" />
       <workItem from="1635594500227" duration="8000" />
       <workItem from="1635678172143" duration="72000" />
+      <workItem from="1635679758474" duration="426000" />
+      <workItem from="1635870165160" duration="186000" />
     </task>
     <servers />
   </component>
