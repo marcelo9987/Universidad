@@ -46,7 +46,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="proofread" />
   </component>
@@ -77,6 +77,8 @@
       <workItem from="1635866000576" duration="37000" />
       <workItem from="1635869646475" duration="510000" />
       <workItem from="1635870509352" duration="3317000" />
+      <workItem from="1636022291456" duration="390000" />
+      <workItem from="1636318020709" duration="903000" />
     </task>
     <servers />
   </component>
