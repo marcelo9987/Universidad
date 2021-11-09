@@ -72,10 +72,19 @@
       <workItem from="1636211390063" duration="467000" />
       <workItem from="1636316665982" duration="1338000" />
       <workItem from="1636318082525" duration="5218000" />
+      <workItem from="1636448806409" duration="5339000" />
+      <workItem from="1636456288831" duration="1705000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="s.fecha" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
