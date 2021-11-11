@@ -3,6 +3,7 @@
 #include <windows.h>
 #define VERDADERO 1
 #define FALSO 0
+//#define R 2 //posición de lectura para pruebas internas(Ignorar en fase de evaluación)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool primeraVuelta = VERDADERO;
 /*-------------------------------*/
@@ -16,82 +17,141 @@ typedef struct
 typedef struct
 {
     Date fecha;
-    int longitude;
-    int latitude;
+    float longitude;
+    float latitude;
     int elevation;
-    int max_temperature;
-    int min_temperatura;
-    int precipitation;
-    int wind;
-    int relativeHumidity;
-    int solar;
+    double max_temperature;
+    double min_temperature;
+    double precipitation;
+    double wind;
+    double relativeHumidity;
+    double solar;
 }WeatherData;
-///////////////////////////////-----------VARIABLES-----------///////////////////////////////
-WeatherData s;
-char entrada[200];
+///////////////////////////////-----------VARIABLES(globales)-----------///////////////////////////////
+WeatherData s[4018]; //estructura de datos
+
 ///////////////////////////////-----------FUNCIONES----------////////////////////////////////
-/*void reestructurar(char ent[200],WeatherData *estructura);
-int elevar(int num,int potencia);*/
+/*void reestructurar(char ent[200],WeatherData *estructura); // NO IMPLEMENTADO/OBSOLETO
+int elevar(int num,int potencia);*/ //NO IMPLEMENTADO/OBSOLETO
+
+void leer(WeatherData estructura[],FILE* rea);//función que asigna valores a las estructuras(vasl de entrada:: ARCHIVO(*) y ESTRUCTURA WEATHERDATA)
+
 //////////////////////////////--------------MAIN------------////////////////////////////////
 
 int main()
 {
-
-    char r;
     FILE* csv;
     FILE* texto;
-    csv= fopen("weatherdata-420-72.csv","r");
-    texto= fopen("weatherdata-420-72.dat","wb");
+    csv= fopen("../../dtb/weatherdata-420-72.csv","r"); //inicialización archivo
+    texto= fopen("../../dtb/weatherdata-420-72.dat","wb"); //inicialización archivo
     if(csv==NULL)
     {
         printf("ERROR DE LECTURA");
     }else
     {
-        int i = 0;
-        do
-        {
-            i+=1;
-
-            if(primeraVuelta==VERDADERO)
-            {
-                fgets(entrada,200,csv);
-                primeraVuelta = FALSO;
-                getc(csv);
-                //getc(csv);
-            }
-            //
-
-            fscanf(csv,"%i[^/]",&s.fecha.dia);
-            getc(csv);
-            fscanf(csv,"%i[^/]",&s.fecha.mes);
-            getc(csv);
-            fscanf(csv,"%i",&s.fecha.ano);
-            getc(csv);
-            getc(csv);
-            getc(csv);
-            fscanf(csv,"%i[^.]",&s.longitude);
-            getc(csv);
-
-        }while(primeraVuelta==TRUE);
         printf("LECTURA CORRECTA \n");
-
+        leer(s,csv);
+        
     }
 
-    //char w[6]={"abcde"};
-    //printf("%s",entrada);
-    system("pause");
-    //reestructurar(entrada,&s);
-                                    system("cls");
-                                    printf("\nFECHA: %i",s.fecha.dia);
-                                    printf(" // %i",s.fecha.mes);
-                                    printf(" // %i",s.fecha.ano);
-                                    printf("\n Longitud %i"),s.longitude;
-    printf("\n");
+    fwrite(&s,sizeof(WeatherData),4018,texto);//escribe en el binario
+
+    fclose(csv);
+    fclose(texto);
     system("pause");
     return 0;
 }
+
+////////////////////////////////-----------------ESPECIFICACIÓN DE FUNCIONES(GLOBALES)-----------------////////////////////////////////-
+void leer(WeatherData estructura[],FILE* rea)
+{
+    char entrada[200];//desecha la primera entrada
+    primeraVuelta=VERDADERO;
+    rea= fopen("../../dtb/weatherdata-420-72.csv","r");
+    for(int i = 0;i<4018;i++) {
+
+            if (primeraVuelta == VERDADERO)//descarta la primera línea
+            {
+                fgets(entrada, 130, rea);
+                primeraVuelta = FALSO;
+            }
+            getc(rea);
+            fscanf(rea, "%i[^/]", &estructura[i].fecha.dia);
+            getc(rea);
+            fscanf(rea, "%i[^/]", &estructura[i].fecha.mes);
+            getc(rea);
+            fscanf(rea, "%i", &estructura[i].fecha.ano);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%f", &estructura[i].longitude);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%f", &estructura[i].latitude);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%i", &estructura[i].elevation);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%lf", &estructura[i].max_temperature);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%lf", &estructura[i].min_temperature);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%lf", &estructura[i].precipitation);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%lf", &estructura[i].wind);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%lf", &estructura[i].relativeHumidity);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+            fscanf(rea, "%lf", &estructura[i].solar);
+            getc(rea);
+            getc(rea);
+            getc(rea);
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
-int elevar(int num,int potencia)
+int elevar(int num,int potencia)//NO IMPLEMENTADO/OBSOLETO
 {
     int salida=1;
     if(potencia==0)
@@ -108,7 +168,7 @@ int elevar(int num,int potencia)
     return salida;
 }
 
-void reestructurar(char ent[200],WeatherData *estructura)
+void reestructurar(char ent[200],WeatherData *estructura)//NO IMPLEMENTADO/OBSOLETO
 {
 
     int longit = strlen(ent);
