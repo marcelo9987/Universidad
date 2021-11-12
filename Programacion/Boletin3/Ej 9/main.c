@@ -141,18 +141,20 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2)
     //La función ha de acceder a las fechas posicionadas entre %fecha1% y %fecha2%, sumar todos los .precipitations y después hacer una división de estos entre el número de entradas
     float entrada1,entrada2;
     float media =0;
-    float   sel;
+    float  sel=0;
     WeatherData muestra[4018];
     file=fopen("../../dtb/weatherdata-420-72.dat","rb");
     fread(&muestra,sizeof(WeatherData),4018,file);
     entrada1= CalcularDistancia(&fijo,&d1);
     entrada2= CalcularDistancia(&fijo,&d2);
     wprintf(L" PRUEBA %.f //// %.f",entrada1,entrada2);
-    sel=entrada2-entrada1;
-    for (int i = (int)entrada1;i<(int)entrada2;i++)
+
+    for (int i = (int)entrada1;i!=(int)entrada2+1;i++)
     {
+        wprintf(L"\n ENTRADA: %f",(float) muestra[i].precipitation);
         media+=(float)muestra[i].precipitation;
+        sel+=1;
     }
     media=media/sel;
     return media;
-}
+}//Y he aquí el final del maravilloso boletín 3. :)
