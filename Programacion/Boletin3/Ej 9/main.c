@@ -116,6 +116,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
                 fijo.ano = 2000;
                 wprintf(L"La precipitación media de las fechas introducidas es: %f",
                         Consulta_precip_media(archivo, fecha1, fecha2));
+                system("pause");
                 //continuar = 0;
             }
         }
