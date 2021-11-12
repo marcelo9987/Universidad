@@ -1,4 +1,9 @@
-//EJ 9 FINALIZACIÓN DEL BOLETÍN 3:
+
+/*
+ * EJ 9 FINALIZACIÓN DEL BOLETÍN 3:
+ *  Programador: Marcelo Fort Muñoz
+ *  Licencia: MIT
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -27,6 +32,7 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2);//ídem L25
 //---------------MAIN---------------//
 int main()
 {
+
     setlocale(LC_ALL,"Spanish");
     FILE* dtb;//un archivo normal y corriente... nada que mirar aquí :)
     dtb=fopen("../../dtb/weatherdata-420-72.dat","rb");
@@ -114,11 +120,9 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
             }
         }
     }
-    if(entrada_usuario==0 && continuar==0)
-    {
+
 
         wprintf(L"\n Operación finalizada con éxito, puede cerrar el programa");
-    }
 
     //system("cls");
 

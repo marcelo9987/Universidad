@@ -1,6 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define ESTILO '1' //dia mes año
 /*
  * Programador: Marcelo Fort Muñoz
+ *  Licencia: MIT
  */
 #include <stdio.h>
 #include<stdlib.h>
@@ -14,7 +16,7 @@
     int dias;
     };
 
-struct mes2 pipeta[12];
+struct mes2 pipeta[12];//Contiene los días que tiene cada més
 
 typedef struct
 {
@@ -23,20 +25,15 @@ typedef struct
     int ano;
 }Date;
 
-void ler(/*Date fechaf*/Date *fechaf);
-void Mostrar (Date fechaf, char f);
-float CalcularDistancia (Date* d1, Date* d2);
-//bool esBisiesto(int a1);
-
-
-
-
-
+void ler(/*Date fechaf*/Date *fechaf);//pide 2 fechas
+void Mostrar (Date fechaf, char f);//muestra 2 fechas
+float CalcularDistancia (Date* d1, Date* d2); //calcula la distancia (en días) entre dos fechas
 
     Date fecha1;
     Date *vec1=&fecha1;
     Date fecha2;
     Date *vec2=&fecha2;
+
 void ler(Date *fechaf)
 {
     Date entrada;
@@ -136,3 +133,5 @@ float CalcularDistancia (Date* d1, Date* d2)
     tot=abs(tot); //eliminación del signo
  return (float)tot;
 }
+//fin del archivo
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
