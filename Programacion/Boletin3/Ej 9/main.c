@@ -113,7 +113,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
             fijo.dia = 1;
             fijo.mes = 1;
             fijo.ano = 2000;
-            Consulta_precip_media(archivo, fecha1, fecha2);
+            wprintf(L"La precipitación media de las fechas introducidas es: %f",Consulta_precip_media(archivo, fecha1, fecha2));
             continuar=0;
         }
     }
@@ -138,13 +138,21 @@ WeatherData Consulta_por_data(FILE* file, Date d)//Ver Bol. de ejs.
 
 float Consulta_precip_media(FILE* file, Date d1, Date d2)
 {
+    //La función ha de acceder a las fechas posicionadas entre %fecha1% y %fecha2%, sumar todos los .precipitations y después hacer una división de estos entre el número de entradas
     float entrada1,entrada2;
     float media =0;
-    WeatherData resultados[4018];
+    float   sel;
+    WeatherData muestra[4018];
     file=fopen("../../dtb/weatherdata-420-72.dat","rb");
-    fread(&resultados,sizeof(WeatherData),4018,file);
+    fread(&muestra,sizeof(WeatherData),4018,file);
     entrada1= CalcularDistancia(&fijo,&d1);
     entrada2= CalcularDistancia(&fijo,&d2);
     wprintf(L" PRUEBA %.f //// %.f",entrada1,entrada2);
+    sel=entrada2-entrada1;
+    for (int i = (int)entrada1;i<(int)entrada2;i++)
+    {
+        media+=(float)muestra[i].precipitation;
+    }
+    media=media/sel;
     return media;
 }
