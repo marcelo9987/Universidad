@@ -38,6 +38,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RunManager">
@@ -66,6 +67,8 @@
       <workItem from="1636704335401" duration="1077000" />
       <workItem from="1636706540742" duration="1104000" />
       <workItem from="1636709659725" duration="3469000" />
+      <workItem from="1636715324581" duration="372000" />
+      <workItem from="1636715947651" duration="642000" />
     </task>
     <servers />
   </component>
