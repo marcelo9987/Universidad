@@ -29,12 +29,10 @@ int main()
 {
     setlocale(LC_ALL,"Spanish");
     FILE* dtb;//un archivo normal y corriente... nada que mirar aquí :)
-    dtb=fopen("../../dtb/weatherdata-420-72.dat","rb");//de verdad, solo un archivo.
+    dtb=fopen("../../dtb/weatherdata-420-72.dat","rb");
     if(dtb!=NULL)
     {
         MenuPrincipal(dtb);
-
-
     }else
     {
      wprintf(L"ERROR DE LECTURA\n¿Existe el directorio al que pretendes acceder?\n \n");
@@ -55,7 +53,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
     int sel=-3;
     do {
         system("cls");
-        wprintf(L"                                  CENTRO METEOROLóGICO LAS NUBES S.A. \n");
+        wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
         wprintf(L"                  Bienvenido al programa de gestión de archivos del centro meteorológico LasNubes S.A. \n");
         wprintf(L"                  Actualmente solo se pueden realizar búsquedas.\n¿Desea realizar una consulta? (s/n):");
         scanf("%c", &conv);
@@ -71,11 +69,11 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
     if(entrada_usuario==1)
     {
         system("cls");
-        wprintf(L"                                  CENTRO METEOROLóGICO LAS NUBES S.A. \n");
+        wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
         wprintf(L"              Bienvenido al panel de búsqueda. Desde aquí podrá seleccionar que tipo de búsqueda desea hacer.");
         wprintf(L"\n Actualmente hay dos tipos de búsqueda disponibles (Datos por fecha(1) y precipitación media (2))\nSelección: ");
         //conv='5';
-        wscanf(L"%i",&sel);
+        wscanf(L"%i",&sel);//es como "scanf", pero reporta errores de conversión
         if(sel==1)
         {
             entrada_usuario=0;
@@ -92,7 +90,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
 
             result=Consulta_por_data(archivo,fecha2);
             system("cls");
-            wprintf(L"                                  CENTRO METEOROLóGICO LAS NUBES S.A. \n");//esta sección representa los datos recabados gracias a la función de
+            wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");//esta sección representa los datos recabados gracias a la función de
             wprintf(L"Fecha: %i / %i / %i",result.fecha.dia,result.fecha.mes,result.fecha.ano);
             wprintf(L"\n Longitud: %.12f",result.longitude);
             wprintf(L"\n Latitud: %.12f",result.latitude);
@@ -109,7 +107,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
         }
         if(entrada_usuario==1)
         {
-            wprintf(L"                                  CENTRO METEOROLóGICO LAS NUBES S.A. \n");
+            wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
             ler(&fecha1);
             ler(&fecha2);
             fijo.dia = 1;
