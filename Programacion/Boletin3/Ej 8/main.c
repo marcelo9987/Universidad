@@ -34,7 +34,7 @@ WeatherData s[4018]; //estructura de datos
 /*void reestructurar(char ent[200],WeatherData *estructura); // NO IMPLEMENTADO/OBSOLETO
 int elevar(int num,int potencia);*/ //NO IMPLEMENTADO/OBSOLETO
 
-void leer(WeatherData estructura[],FILE* rea);//función que asigna valores a las estructuras(vasl de entrada:: ARCHIVO(*) y ESTRUCTURA WEATHERDATA)
+void leer(WeatherData estructura[],FILE* rea);//función que asigna valores a las estructuras(valores de entrada: ARCHIVO(*) y ESTRUCTURA WEATHERDATA)
 
 //////////////////////////////--------------MAIN------------////////////////////////////////
 
@@ -46,7 +46,7 @@ int main()
     texto= fopen("../../dtb/weatherdata-420-72.dat","wb"); //inicialización archivo
     if(csv==NULL)
     {
-        printf("ERROR DE LECTURA");
+        wprintf(L"ERROR DE LECTURA\n ¿Existe el directorio/archivo al que desea acceder?\n");
     }else
     {
         printf("LECTURA CORRECTA \n");
@@ -54,7 +54,7 @@ int main()
         
     }
 
-    fwrite(&s,sizeof(WeatherData),4018,texto);//escribe en el binario
+    fwrite(&s,sizeof(WeatherData),4018,texto);//escribe en el binario todos los elementos del vector de structs
 
     fclose(csv);
     fclose(texto);

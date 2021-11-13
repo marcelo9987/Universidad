@@ -4,9 +4,9 @@
  * Programador: Marcelo Fort Muñoz
  *  Licencia: MIT
  */
-#include <stdio.h>
+#include <stdio.h>//wscanf,fscanf,scanf,printf...
 #include<stdlib.h>
-#include <locale.h>
+#include <locale.h>//poner letras no standard
 //#include <bis.h>
 
 

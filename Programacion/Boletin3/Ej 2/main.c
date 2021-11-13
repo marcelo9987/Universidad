@@ -15,7 +15,7 @@ struct mes
     int diasFeb;
 };
 /////////////////////////////
-bool esBisiesto(int a1);
+bool esBisiesto(int a1);//determina si el año es bisiesto
 int determinacion(bool sino,int dia,int mes,struct mes abc[12]);
 /////////////////////////////
 int main()
@@ -37,14 +37,24 @@ int main()
     ////
     setlocale(LC_ALL,"SPANISH");
     //////// INICIO INTERACCIÓN CON USUARIO (ENTRADA)
-    wprintf(L"Introduzca el día(dd):");
-    scanf("%d",&dia);
-    wprintf(L"\nIntroduzca el mes(mm):");
-    scanf("%d",&mes);
-    wprintf(L"\nIntroduzca el año(aa):");
-    scanf("%d",&anro);
+    system("cls");
+    do
+    {
+        wprintf(L"Introduzca el día(dd):");
+        scanf("%d", &dia);
+    }while(dia>30||dia<1);
+    do
+    {
+        wprintf(L"\nIntroduzca el mes(mm):");
+        scanf("%d", &mes);
+    }while(mes>12||mes<1);
+    do
+    {
+        wprintf(L"\nIntroduzca el año(aa):");
+        scanf("%d", &anro);
+    }while(anro<1);
     //////// FIN INTERACCIÓN CON USUARIO (ENTRADA)
-    wprintf(L"\nEs el día: %d",determinacion(esBisiesto(anro),dia,mes,ano));
+    wprintf(L"\nEs el día: %d \n",determinacion(esBisiesto(anro),dia,mes,ano));
     system("pause");
     return EJ_SATISFACTORIA;
 }

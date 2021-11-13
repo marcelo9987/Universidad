@@ -28,13 +28,13 @@ Date fijo; //ídem L11 ↓
 //---------------funciones---------------//
 void MenuPrincipal(FILE* archivo);
 WeatherData Consulta_por_data(FILE* file, Date d);//Ver boletín de ejs
-float Consulta_precip_media(FILE* file, Date d1, Date d2);//ídem L25
+float Consulta_precip_media(FILE* file, Date d1, Date d2);//ídem L30
 //---------------MAIN---------------//
 int main()
 {
 
     setlocale(LC_ALL,"Spanish");
-    FILE* dtb;//un archivo normal y corriente... nada que mirar aquí :)
+    FILE* dtb;
     dtb=fopen("../../dtb/weatherdata-420-72.dat","rb");
     if(dtb!=NULL)
     {
@@ -159,4 +159,4 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2)
     }
     media=media/sel;
     return media;
-}//Y he aquí el final del maravilloso boletín 3. :)
+}
