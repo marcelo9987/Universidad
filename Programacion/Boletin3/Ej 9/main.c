@@ -149,11 +149,11 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2)
     fread(&muestra,sizeof(WeatherData),4018,file);
     entrada1= CalcularDistancia(&fijo,&d1);
     entrada2= CalcularDistancia(&fijo,&d2);
-    wprintf(L" PRUEBA %.f //// %.f",entrada1,entrada2);
+    //wprintf(L" PRUEBA %.f //// %.f",entrada1,entrada2);
 
     for (int i = (int)entrada1;i!=(int)entrada2+1;i++)
     {
-        wprintf(L"\n ENTRADA: %.10f",(float) muestra[i].precipitation);
+       // wprintf(L"\n ENTRADA: %.10f",(float) muestra[i].precipitation);
         media+=(float)muestra[i].precipitation;
         sel+=1;
     }
