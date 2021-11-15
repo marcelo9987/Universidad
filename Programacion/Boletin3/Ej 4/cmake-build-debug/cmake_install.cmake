@@ -1,4 +1,4 @@
-# Install script for directory: D:/github/Universidad/Programacion/Boletin3/Ej 4
+# Install script for directory: C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/github/Universidad/Programacion/Boletin3/Ej 4/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 4/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

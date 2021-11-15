@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-D:/github/Universidad/Programacion/Boletin3/Ej 3/main.c
+C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 3/main.c
 stdio.h
+-
+stdlib.h
 -
 

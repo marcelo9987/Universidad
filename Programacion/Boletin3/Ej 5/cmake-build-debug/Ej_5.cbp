@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Ej_5">
-				<Option output="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Ej_5.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug"/>
+				<Option output="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Ej_5.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -30,15 +30,15 @@
 					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 Ej_5"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 Ej_5"/>
+					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Ej_5/fast">
-				<Option output="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Ej_5.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug"/>
+				<Option output="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Ej_5.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -49,37 +49,37 @@
 					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 Ej_5/fast"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 Ej_5/fast"/>
+					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/github/Universidad/Programacion/Boletin3/Ej 5/main.c">
+		<Unit filename="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/main.c">
 			<Option target="Ej_5"/>
 		</Unit>
-		<Unit filename="D:/github/Universidad/Programacion/Boletin3/Ej 5/CMakeLists.txt">
+		<Unit filename="C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 5/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

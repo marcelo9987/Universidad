@@ -14,6 +14,8 @@ struct mes
     int dias;
     int diasFeb;
 };
+
+struct mes ano[12];
 /////////////////////////////
 bool esBisiesto(int a1);//determina si el año es bisiesto
 int determinacion(bool sino,int dia,int mes,struct mes abc[12]);
@@ -21,7 +23,6 @@ int determinacion(bool sino,int dia,int mes,struct mes abc[12]);
 int main()
 {
     int dia,mes,anro;
-    struct mes ano[12];
     ano[0].dias = 31;
     ano[1].dias = 28;
     ano[2].dias = 31;
@@ -34,6 +35,7 @@ int main()
     ano[9].dias = 31;
     ano[10].dias= 30;
     ano[11].dias = 31;
+    ano->diasFeb=29;
     ////
     setlocale(LC_ALL,"SPANISH");
     //////// INICIO INTERACCIÓN CON USUARIO (ENTRADA)
@@ -54,7 +56,7 @@ int main()
         scanf("%d", &anro);
     }while(anro<1);
     //////// FIN INTERACCIÓN CON USUARIO (ENTRADA)
-    wprintf(L"\nEs el día: %d \n",determinacion(esBisiesto(anro),dia,mes,ano));
+    wprintf(L"\nEs el día: %i \n",determinacion(esBisiesto(anro),dia,mes,ano));
     system("pause");
     return EJ_SATISFACTORIA;
 }
@@ -76,10 +78,15 @@ bool esBisiesto(int a1)
 }
 int determinacion(bool sino, int dia, int mes,struct mes abc[12]){
     int b = 0;
+
+    //
+   // printf("%i :mes %i:dias %i",dia,mes,abc->dias);
+   // system("pause");
+///
+
     if (sino == VERDADERO)
     {
         abc[1].febBis = VERDADERO;
-        return b;
     }else if(sino == FALSO)
     {
         abc[1].febBis=FALSO;
@@ -91,16 +98,19 @@ int determinacion(bool sino, int dia, int mes,struct mes abc[12]){
         {
             if(abc[1].febBis)
             {
-                b += abc[1].diasFeb;
-            }else if(!abc[1].febBis)
+                b += 29;
+            }else if(abc[1].febBis==0)
             {
-                b+=abc[1].dias;
+                b+=28;
             }
         }else
         {
             b += abc[i].dias;
         }
     }
+
+
+
     b+= dia;
     return b;
 }

@@ -1,5 +1,7 @@
 #define longitud 20
 #include <stdio.h>
+#include <stdlib.h>
+
 void burbuja(int arr[],int longit);
 int main()
 {
@@ -9,6 +11,8 @@ int main()
     {
         printf(" %i",vec[i]);
     }
+    printf("\n");
+    system("pause");
     return 0;
 }
 void burbuja(int arr[],int longit)
@@ -17,7 +21,7 @@ void burbuja(int arr[],int longit)
     {
         for (int h= 0; h<longit-1;h++)
         {
-            int camb=0;
+            int camb;
             if(arr[h]>arr[h+1])
             {
                 camb = arr[h];
