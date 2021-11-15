@@ -26,7 +26,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/fechas.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/main.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.c" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="20m93z93ckpKvSoe7SHCaqskNKr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -42,18 +42,13 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Expositivas/Modular" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej 4" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RunManager">
     <configuration name="Ej_9" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_9" TARGET_NAME="Ej_9" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_9" RUN_TARGET_NAME="Ej_9">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -76,6 +71,8 @@
       <workItem from="1636718051768" duration="268000" />
       <workItem from="1636724215668" duration="907000" />
       <workItem from="1636976462591" duration="463000" />
+      <workItem from="1636977094295" duration="773000" />
+      <workItem from="1636981236613" duration="20000" />
     </task>
     <servers />
   </component>

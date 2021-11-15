@@ -6,6 +6,7 @@
 #include<stdlib.h>
 #include <locale.h>
 //#include <bis.h>
+//#include<stdbool.h>
 
 
 
@@ -23,46 +24,9 @@ typedef struct
     int ano;
 }Date;
 
-void ler(/*Date fechaf*/Date *fechaf);
-void Mostrar (Date fechaf, char f);
-float CalcularDistancia (Date* d1, Date* d2);
-//bool esBisiesto(int a1);
-
-int main() {
-
-    pipeta[0].dias = 31;  //aqui se describen cuantos dias tiene cada mes
-    pipeta[1].dias = 28;
-    pipeta[2].dias = 31;
-    pipeta[3].dias = 30;
-    pipeta[4].dias = 31;
-    pipeta[5].dias = 30;
-    pipeta[6].dias = 31;
-    pipeta[7].dias = 31;
-    pipeta[8].dias = 30;
-    pipeta[9].dias = 31;
-    pipeta[10].dias= 30;
-    pipeta[11].dias = 31;
-
-    setlocale(LC_ALL,"Spanish");
-    Date fecha1;
-    Date *vec1=&fecha1;
-    Date fecha2;
-    Date *vec2=&fecha2;
-    printf("---------------- FECHA 1 ----------------\n");
-    ler(vec1);
-    printf("\n---------------- FECHA 2 ----------------\n");
-    ler(vec2);
-    printf("\nLa fecha 1 es : ");
-    Mostrar(fecha1,ESTILO);
-    printf("\nLa fecha 2 es : ");
-    Mostrar(fecha2,ESTILO);
-    printf("\n %f ",CalcularDistancia(&fecha1, vec2));
-    printf("\n");
-    system("pause");
-    return 0;
-}
-void ler(Date *fechaf)
+Date Ler()
 {
+
     Date entrada;
     do
     {
@@ -81,14 +45,53 @@ void ler(Date *fechaf)
         wprintf(L"\nIntroduzca el año: ");
         scanf("%i", &entrada.ano);
     }while(entrada.ano<0);
-    *fechaf = entrada;
+    return entrada;
+}
+void Mostrar (Date fechaf, char f[]);
+float CalcularDistancia (Date d1, Date d2);
+//bool esBisiesto(int a1);
 
+Date fecha1;
+// Date *vec1=&fecha1;
+Date fecha2;
+// Date *vec2=&fecha2;
+
+int main() {
+    char est[1];
+    est[0]=ESTILO;
+
+    pipeta[0].dias = 31;  //aquí se describen cuantos dias tiene cada mes
+    pipeta[1].dias = 28;
+    pipeta[2].dias = 31;
+    pipeta[3].dias = 30;
+    pipeta[4].dias = 31;
+    pipeta[5].dias = 30;
+    pipeta[6].dias = 31;
+    pipeta[7].dias = 31;
+    pipeta[8].dias = 30;
+    pipeta[9].dias = 31;
+    pipeta[10].dias= 30;
+    pipeta[11].dias = 31;
+
+    setlocale(LC_ALL,"Spanish");
+
+    printf("---------------- FECHA 1 ----------------\n");
+    fecha1=Ler();
+    printf("\n---------------- FECHA 2 ----------------\n");
+    fecha2=Ler();
+    printf("\nLa fecha 1 es: ");
+    Mostrar(fecha1,est);
+    printf("\nLa fecha 2 es: ");
+    Mostrar(fecha2,est);
+    printf("\n %f ",CalcularDistancia(fecha1, fecha2));
+    printf("\n");
+    system("pause");
+    return 0;
 }
 
-
-void Mostrar (Date fechaf, char f)
+void Mostrar (Date fechaf, char f[])
 {
-    switch(f)
+    switch(f[0])
     {
         case '1':
             wprintf(L"\n Dia/Mes/Año: %i %i %i",fechaf.dia,fechaf.mes,fechaf.ano);
@@ -99,17 +102,14 @@ void Mostrar (Date fechaf, char f)
         default:
             break;
     }
-
-
 }
 
-
-float CalcularDistancia (Date* d1, Date* d2)
+float CalcularDistancia (Date d1, Date d2)
 {
     Date nd1;
-    nd1= (*d1);
+    nd1= d1;
     Date nd2;
-    nd2 = (*d2);
+    nd2 = d2;
     nd1.ano -= 1;
     nd2.ano -= 1;
     int diasan,diames,/*dias,*/tot;
@@ -149,8 +149,6 @@ float CalcularDistancia (Date* d1, Date* d2)
     diames=mes1-mes2;
    int dias=nd1.dia-nd2.dia;
     tot=diasan+diames+dias;//puesta en común
-
-   // printf("DIas mes %i",d1.mes);
 
     tot=abs(tot); //eliminación del signo
  return (float)tot;
