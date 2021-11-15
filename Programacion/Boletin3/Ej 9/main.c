@@ -104,6 +104,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
                 wprintf(L"\n Viento: %.12lf", result.wind);
                 wprintf(L"\n Humedad relativa: %.12lf", result.relativeHumidity);
                 wprintf(L"\n Radiación Solar: %.12lf", result.solar);
+                printf("\n");
                 system("pause");
                 //continuar = 0;
             }
@@ -116,6 +117,7 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
                 fijo.ano = 2000;
                 wprintf(L"La precipitación media de las fechas introducidas es: %f",
                         Consulta_precip_media(archivo, fecha1, fecha2));
+                printf("\n");
                 system("pause");
                 //continuar = 0;
             }
