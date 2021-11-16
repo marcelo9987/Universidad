@@ -11,7 +11,36 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85cce9ef-ad9e-444c-98ff-117bb2e7a7a5" name="Changes" comment="" />
+    <list default="true" id="85cce9ef-ad9e-444c-98ff-117bb2e7a7a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Ej_4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 9/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 9/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 9/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/5.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/5.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/6.c" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +49,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
@@ -45,6 +75,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,6 +99,7 @@
       <workItem from="1636631195090" duration="25000" />
       <workItem from="1636806787695" duration="204000" />
       <workItem from="1636973110751" duration="4000" />
+      <workItem from="1637096876360" duration="170000" />
     </task>
     <servers />
   </component>

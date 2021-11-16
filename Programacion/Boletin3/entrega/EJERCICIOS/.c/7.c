@@ -1,6 +1,6 @@
 /*
  * Programador: Marcelo Fort Muñoz
- * Descripción:
+ * Descripción: En base a un archivo de datos meteorlogicos, elimina la primera linea, y sustitulle ",/ por espacios. Luego imprime a archivo
  *
  *
  *

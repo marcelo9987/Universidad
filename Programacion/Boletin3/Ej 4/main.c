@@ -1,6 +1,7 @@
 #define ESTILO '1' //dia mes año
 /*
  * Programador: Marcelo Fort Muñoz
+ * Descripción: Calcula la distancia (en días) entre dos fechas y su formato se puede poner a modo anglosajón o europeo
  */
 #include <stdio.h>
 #include<stdlib.h>
@@ -15,7 +16,7 @@
     int dias;
     };
 
-struct mes2 pipeta[12];
+struct mes2 pipeta[12];//necesita ser global porque se accede a ella desde varias funciones
 
 typedef struct
 {
@@ -49,14 +50,14 @@ Date Ler()
 }
 void Mostrar (Date fechaf, char f[]);
 float CalcularDistancia (Date d1, Date d2);
-//bool esBisiesto(int a1);
 
-Date fecha1;
-// Date *vec1=&fecha1;
-Date fecha2;
-// Date *vec2=&fecha2;
+
+
+
 
 int main() {
+    Date fecha1;
+    Date fecha2;
     char est[1];
     est[0]=ESTILO;
 

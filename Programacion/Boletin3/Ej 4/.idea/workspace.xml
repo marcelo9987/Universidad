@@ -11,7 +11,31 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63b2244e-d290-41d9-bf2e-4ebcd201a12c" name="Changes" comment="" />
+    <list default="true" id="63b2244e-d290-41d9-bf2e-4ebcd201a12c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Ej_4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 9/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 9/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 9/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +62,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej 5" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
@@ -50,11 +74,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Ej_4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej_4" TARGET_NAME="Ej_4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej_4" RUN_TARGET_NAME="Ej_4">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -85,6 +104,7 @@
       <workItem from="1636806207262" duration="573000" />
       <workItem from="1636973093848" duration="4000" />
       <workItem from="1636981259057" duration="2042000" />
+      <workItem from="1637096647705" duration="225000" />
     </task>
     <servers />
   </component>

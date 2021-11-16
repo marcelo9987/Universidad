@@ -10,7 +10,7 @@
 #include <windows.h>
 #include "fechas.h"
 //---------------Variables & Estructuras---------------//
-int numdbus;//esta es la fecha seleccionada por el usuario(podría ser local, pero para que complicarnos)
+
 typedef struct
 {
     Date fecha;
@@ -24,8 +24,8 @@ typedef struct
     double relativeHumidity;
     double solar;
 }WeatherData;
-WeatherData result;
-Date fijo; //ídem L11 ↓
+WeatherData result;//se declara global por su uso en varias funciones
+Date fijo; //se declara global por su uso en varias funciones
 //---------------funciones---------------//
 void MenuPrincipal(FILE* archivo);
 WeatherData Consulta_por_data(FILE* file, Date d);//Ver boletín de ejs
@@ -131,13 +131,12 @@ void MenuPrincipal(FILE* archivo)//Esta función hace de "telonero" en el progra
         wprintf(L"\n Operación finalizada con éxito, puede cerrar el programa");
 
     //system("cls");
-
 }
 WeatherData Consulta_por_data(FILE* file, Date d)//Ver Bol. de ejs.
 {
-
+    int numdbus;
     WeatherData resultados[4018];
-    file=fopen("../../dtb/weatherdata-420-72.dat","rb");
+    //file=fopen("../../dtb/weatherdata-420-72.dat","rb");
     numdbus = (int) CalcularDistancia(&fijo, &d);//ídem l10
     fread(&resultados,sizeof(WeatherData),4018,file);
     fclose(file);
@@ -151,7 +150,7 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2)
     float media =0;
     float  sel=0;
     WeatherData muestra[4018];
-    file=fopen("../../dtb/weatherdata-420-72.dat","rb");
+    //file=fopen("../../dtb/weatherdata-420-72.dat","rb");
     fread(&muestra,sizeof(WeatherData),4018,file);
     entrada1= CalcularDistancia(&fijo,&d1);
     entrada2= CalcularDistancia(&fijo,&d2);

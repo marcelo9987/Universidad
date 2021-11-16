@@ -1,3 +1,8 @@
+/*
+ * Programador: Marcelo Fort Muñoz
+ * Descripción: El programa ordena en burbuja unos valores de un vector
+ */
+
 #define longitud 20
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,3 +1,7 @@
+/*Programador: marcelo
+ * Descripción: Hace una serie de operaciones sobre un archivo llamado numbers.txt
+ *
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -34,7 +38,7 @@ int main()
     system("pause");
     return 0;
 }
-int max(int a[],int n)
+int max(int a[],int n)//calcula el valor máximo
 {
     int maximo=0;
     for(int i=0;i<n;i++)
@@ -47,7 +51,7 @@ int max(int a[],int n)
     return maximo;
 }
 
-int min(int b[],int n)
+int min(int b[],int n)//calcula el valor mínimo
 {
     int minimo=222;
     for(int i=0;i<n;i++)
@@ -60,7 +64,7 @@ int min(int b[],int n)
     return minimo;
 }
 
-float med(int c[],int n)
+float med(int c[],int n)//calcula la media
 {
     float suma=0,media;
     for(int i=0;i<n;i++)

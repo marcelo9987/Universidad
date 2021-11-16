@@ -1,10 +1,16 @@
+/*Programador: Marcelo
+ * Descripción: Calcula que día del año es
+ *
+ *
+ */
+
 #define VERDADERO           1
 #define FALSO               0
 #define EJ_SATISFACTORIA    0
 /////////////////////////////
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+//#include <math.h>
 #include <stdbool.h>
 #include <locale.h>
 /////////////////////////////
@@ -15,13 +21,14 @@ struct mes
     int diasFeb;
 };
 
-struct mes ano[12];
+
 /////////////////////////////
 bool esBisiesto(int a1);//determina si el año es bisiesto
 int determinacion(bool sino,int dia,int mes,struct mes abc[12]);
 /////////////////////////////
 int main()
 {
+    struct mes ano[12];
     int dia,mes,anro;
     ano[0].dias = 31;
     ano[1].dias = 28;

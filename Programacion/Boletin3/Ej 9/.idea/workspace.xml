@@ -12,7 +12,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2b3060e-285d-433f-8c39-1ea07e422157" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Ej_4.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Ej_5.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Ej_5.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 6/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 6/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/CMakeFiles/Ej_7.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/CMakeFiles/Ej_7.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Ej_7.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Ej_7.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 8/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 8/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Ej_9.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Ej_9.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/5.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/5.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/7.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/7.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/9.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/9.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +127,8 @@
       <workItem from="1637059583382" duration="122000" />
       <workItem from="1637076708791" duration="23000" />
       <workItem from="1637080649616" duration="771000" />
+      <workItem from="1637083470438" duration="30000" />
+      <workItem from="1637097315591" duration="606000" />
     </task>
     <servers />
   </component>
