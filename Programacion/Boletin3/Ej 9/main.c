@@ -46,6 +46,7 @@ int main()
      wprintf(L"ERROR DE LECTURA\n¿Existe el directorio al que pretendes acceder?\n \n");
     }
     wprintf(L"\n");
+    fclose(dtb);
     system("pause");
     return 0;
 }
@@ -139,6 +140,7 @@ WeatherData Consulta_por_data(FILE* file, Date d)//Ver Bol. de ejs.
     file=fopen("../../dtb/weatherdata-420-72.dat","rb");
     numdbus = (int) CalcularDistancia(&fijo, &d);//ídem l10
     fread(&resultados,sizeof(WeatherData),4018,file);
+    fclose(file);
     return resultados[numdbus];
 }
 
@@ -162,5 +164,6 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2)
         sel+=1;
     }
     media=media/sel;
+    fclose(file);
     return media;
 }
