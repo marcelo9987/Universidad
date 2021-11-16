@@ -42,7 +42,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej 4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RunManager">
@@ -79,6 +79,8 @@
       <workItem from="1636977094295" duration="773000" />
       <workItem from="1636981236613" duration="20000" />
       <workItem from="1636986671760" duration="690000" />
+      <workItem from="1637057091778" duration="2187000" />
+      <workItem from="1637059583382" duration="122000" />
     </task>
     <servers />
   </component>

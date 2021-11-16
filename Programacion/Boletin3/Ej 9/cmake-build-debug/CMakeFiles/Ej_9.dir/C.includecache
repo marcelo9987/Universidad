@@ -21,6 +21,8 @@ stdlib.h
 -
 stdbool.h
 -
+windows.h
+-
 fechas.h
 D:/github/Universidad/Programacion/Boletin3/Ej 9/fechas.h
 

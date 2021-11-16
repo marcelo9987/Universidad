@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <windows.h>
 #include "fechas.h"
 //---------------Variables & Estructuras---------------//
 int numdbus;//esta es la fecha seleccionada por el usuario(podría ser local, pero para que complicarnos)
@@ -32,6 +33,7 @@ float Consulta_precip_media(FILE* file, Date d1, Date d2);//ídem L30
 //---------------MAIN---------------//
 int main()
 {
+    SetConsoleTitle("GESTION DE DATOS LAS NUBES S.A.");
 
     setlocale(LC_ALL,"Spanish");
     FILE* dtb;

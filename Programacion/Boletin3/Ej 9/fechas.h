@@ -38,12 +38,21 @@ void ler(Date *fechaf)
 {
     Date entrada;
     setlocale(LC_ALL,"Spanish");
-    printf("Introduzca el dia: ");
-    scanf(" %i", &entrada.dia);
-    printf("\nIntroduzca el mes: ");
-    scanf(" %i", &entrada.mes);
-    wprintf(L"\nIntroduzca el año: ");
-    scanf( "%i", &entrada.ano);
+    do
+    {
+        printf("Introduzca el dia: ");
+        scanf(" %i", &entrada.dia);
+        }while(entrada.dia>31 || entrada.dia<0);
+    do
+    {
+        printf("\nIntroduzca el mes: ");
+        scanf(" %i", &entrada.mes);
+    }while(entrada.mes>12 || entrada.mes<0);
+    do{
+        wprintf(L"\nIntroduzca el año: ");
+        scanf( "%i", &entrada.ano);
+    }while(entrada.ano>2010 || entrada.ano<2000);
+
     *fechaf = entrada;
 
 }
