@@ -1,0 +1,3 @@
+D:/github/Universidad/Programacion/Pruebas/tut-17-11-2021/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/github/Universidad/Programacion/Pruebas/tut-17-11-2021/cmake-build-debug/CMakeFiles/tut_17_11_2021.dir
+D:/github/Universidad/Programacion/Pruebas/tut-17-11-2021/cmake-build-debug/CMakeFiles/rebuild_cache.dir
