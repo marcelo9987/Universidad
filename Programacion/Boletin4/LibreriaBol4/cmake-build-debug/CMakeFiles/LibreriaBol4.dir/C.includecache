@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/github/Universidad/Programacion/Boletin4/LibreriaBol4/library.c
+library.h
+D:/github/Universidad/Programacion/Boletin4/LibreriaBol4/library.h
+stdio.h
+-
+
+D:/github/Universidad/Programacion/Boletin4/LibreriaBol4/library.h
+

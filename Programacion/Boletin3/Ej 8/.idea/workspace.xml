@@ -12,46 +12,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82506e10-4d51-4892-af78-50178985f895" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Ej_2.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 2/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Ej_4.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 3/main.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Boletin4/LibreriaBol4/.idea/LibreriaBol4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ej 4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Ej_4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Ej_4.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 4/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ej 5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Ej_5.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Ej_5.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/C.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/main.c.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Ej_5.dir/objects.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/CMakeFiles/numbers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Ej_5.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Ej_5.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 5/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 6/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 6/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/CMakeFiles/Ej_7.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/CMakeFiles/Ej_7.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Ej_7.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Ej_7.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 7/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 5/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 9/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej 9/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej 9/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/2.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/3.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/4.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/5.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/5.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/7.c" beforeDir="false" afterPath="$PROJECT_DIR$/../entrega/EJERCICIOS/.c/7.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Boletin4/Ej1/.idea/Ej1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Boletin4/Ej1/.idea/Ej1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/CMakeFiles/Ej1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/CMakeFiles/Ej1.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Boletin4/Ej1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Boletin4/Ej1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Boletin4/Ej1/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +86,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -125,6 +120,7 @@
       <workItem from="1637079364547" duration="283000" />
       <workItem from="1637079796177" duration="224000" />
       <workItem from="1637097246181" duration="67000" />
+      <workItem from="1637242532590" duration="39000" />
     </task>
     <servers />
   </component>

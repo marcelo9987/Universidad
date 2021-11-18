@@ -1,0 +1,2 @@
+D:\Programas_UNi\MingW\bin\ar.exe qc libLibreriaBol4.a CMakeFiles/LibreriaBol4.dir/library.c.obj
+D:\Programas_UNi\MingW\bin\ranlib.exe libLibreriaBol4.a
