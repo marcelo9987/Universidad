@@ -6,8 +6,8 @@
  *  Fecha de inicio: 19/11/2021
  *      Hora de inicio: 9:20
  *  Fecha de finalización:
- *  Version: 0.0.0
- *      Subversión: 0.0.1
+ *  Version: DEV.0.0.0
+ *      Subversión: 0.0.2
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,7 +38,6 @@ float Consulta_precip_media(FILE* file, Date* d1, Date* d2); /*A esta función p
 int main()
 {
     FILE* ensaladillaRusa;
-   //FILE* tortillaPatatas;
 
     SetConsoleTitle("GESTION DE DATOS 2.0 LAS NUBES S.A.");
     setlocale(LC_ALL,"Spanish");
@@ -61,8 +60,8 @@ int main()
                     ///////////////*****Definición de funciones*****//////////////
 void menuprincipal(FILE* tallin)
 {
-    char sel;
-    bool bsel1;
+    char atun;
+    bool ensalada;
     bool terminar=0;
     do
     {
@@ -71,15 +70,15 @@ void menuprincipal(FILE* tallin)
         wprintf(L"                  Actualmente solo se pueden realizar búsquedas.\n¿Desea realizar una consulta? (s/n):");
         do
         {
-            wscanf(L"%c",sel);
-        }while(sel!='s' && sel!='n');
-        if(sel =='s')bsel1=0;
-        if(sel =='n')bsel1=1;
-        if(bsel1==0)
+            wscanf(L"%c",atun);
+        }while(atun!='s' && atun!='n');
+        if(atun =='s')ensalada=0;
+        if(atun =='n')ensalada=1;
+        if(ensalada==0)
         {
 
         }
-        if(bsel1==1)
+        if(ensalada==1)
         {
             terminar =1;
         }
