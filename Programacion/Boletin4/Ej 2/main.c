@@ -29,6 +29,8 @@ typedef struct
     double relativeHumidity;
     double solar;
 }WeatherData;
+Date* fijo;//de momento no sé si lo usaré
+WeatherData result;
                             ///////////////*****Declaración de funciones*****///////////////
 void menuprincipal(FILE* tallin);
 WeatherData Consulta_por_data(FILE* file, Date* d);/*A esta función pásaselle unha data e devolve unha estrutura cos datos recollidos dese día*/
@@ -60,29 +62,80 @@ int main()
                     ///////////////*****Definición de funciones*****//////////////
 void menuprincipal(FILE* tallin)
 {
-    char atun;
-    bool ensalada;
+    int isel1;
+    char sel1,sel2;
+    bool bsel1,bsel2;
     bool terminar=0;
+
+    fijo = malloc(sizeof(Date));
     do
     {
+        system("cls");
         wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
         wprintf(L"                  Bienvenido al nuevo programa de gestión de archivos del centro meteorológico LasNubes S.A. \n");
         wprintf(L"                  Actualmente solo se pueden realizar búsquedas.\n¿Desea realizar una consulta? (s/n):");
         do
         {
-            wscanf(L"%c",atun);
-        }while(atun!='s' && atun!='n');
-        if(atun =='s')ensalada=0;
-        if(atun =='n')ensalada=1;
-        if(ensalada==0)
+            scanf("%c",&sel1);
+
+        }while(sel1!='s' && sel1!='n');
+        if(sel1 =='s')bsel1=0;
+        if(sel1 =='n')bsel1=1;
+        if(bsel1==0)
         {
+            system("cls");
+            wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
+            wprintf(L"              Bienvenido al panel de búsqueda. Desde aquí podrá seleccionar que tipo de búsqueda desea hacer.");
+            wprintf(L"\n Actualmente hay dos tipos de búsqueda disponibles (Datos por fecha(1) y precipitación media (2))\nSelección: ");
+            scanf("%i",&isel1);
+            if (isel1 == 1) {
+                bsel2 = 0;
+            }
+            if (isel1 == 2) {
+                bsel2 = 1;
+            }
+            if (bsel2 == 0) {     //Búsqueda simple
+                ler(&fecha2);//ver doc de la librería
+                fijo->dia = 1;
+                fijo->mes = 1;
+                fijo->ano = 2000;
+
+                result = Consulta_por_data(tallin, &fecha2);
+                system("cls");
+                wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");//esta sección representa los datos recabados gracias a la función de
+                wprintf(L"Fecha: %i / %i / %i", result.fecha.dia, result.fecha.mes, result.fecha.ano);
+                wprintf(L"\n Longitud: %.12f", result.longitude);
+                wprintf(L"\n Latitud: %.12f", result.latitude);
+                wprintf(L"\n Elevación: %i", result.elevation);
+                wprintf(L"\n Temperatura máxima: %.12lf", result.max_temperature);
+                wprintf(L"\n Temperatura mínima: %.12lf", result.min_temperature);
+                wprintf(L"\n Precipitación: %.12lf", result.precipitation);
+                wprintf(L"\n Viento: %.12lf", result.wind);
+                wprintf(L"\n Humedad relativa: %.12lf", result.relativeHumidity);
+                wprintf(L"\n Radiación Solar: %.12lf", result.solar);
+                printf("\n");
+                system("pause");
+                //continuar = 0;
+            }
 
         }
-        if(ensalada==1)
+        if(bsel1==1)
         {
             terminar =1;
         }
     }while(terminar==0);
 
 
+}
+
+
+
+WeatherData Consulta_por_data(FILE* file, Date* d)
+{
+    //
+    int empanadilla;
+    WeatherData resultados[4018];
+    fread(&resultados,sizeof(WeatherData),4018,file);
+    empanadilla= (int)CalcularDistancia(fijo,d);
+    return(resultados[empanadilla]);
 }
