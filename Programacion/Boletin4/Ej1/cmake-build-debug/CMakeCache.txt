@@ -224,6 +224,12 @@ Ej1_BINARY_DIR:STATIC=D:/github/Universidad/Programacion/Boletin4/Ej1/cmake-buil
 //Value Computed by CMake
 Ej1_SOURCE_DIR:STATIC=D:/github/Universidad/Programacion/Boletin4/Ej1
 
+//Path to a library.
+LIB_TO_INCLUDE:FILEPATH=LIB_TO_INCLUDE-NOTFOUND
+
+//Path to a library.
+libfun:FILEPATH=libfun-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

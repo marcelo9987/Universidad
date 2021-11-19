@@ -1,5 +1,0 @@
-#ifndef LIBRERIABOL4_LIBRARY_H
-#define LIBRERIABOL4_LIBRARY_H
-
-void hello();
-#endif //LIBRERIABOL4_LIBRARY_H
