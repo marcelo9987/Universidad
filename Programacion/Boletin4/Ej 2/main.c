@@ -6,8 +6,8 @@
  *  Fecha de inicio: 19/11/2021
  *      Hora de inicio: 9:20
  *  Fecha de finalización:
- *  Version: DEV.0.0.0
- *      Subversión: 0.0.2
+ *  Version: DEV.0.0.1
+ *      Subversión: 0.0.5
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,6 +63,7 @@ int main()
 
 void menuprincipal(FILE* tallin)
 {
+
     int isel1;
     char sel1,sel2;
     bool bsel1,bsel2;
@@ -84,11 +85,14 @@ void menuprincipal(FILE* tallin)
         if(sel1 =='n')bsel1=1;
         if(bsel1==0)
         {
-            system("cls");
-            wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
-            wprintf(L"              Bienvenido al panel de búsqueda. Desde aquí podrá seleccionar que tipo de búsqueda desea hacer.");
-            wprintf(L"\n Actualmente hay dos tipos de búsqueda disponibles (Datos por fecha(1) y precipitación media (2))\nSelección: ");
-            scanf("%i",&isel1);
+            do
+            {
+                system("cls");
+                wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
+                wprintf(L"              Bienvenido al panel de búsqueda. Desde aquí podrá seleccionar que tipo de búsqueda desea hacer.");
+                wprintf(L"\n Actualmente hay dos tipos de búsqueda disponibles (Datos por fecha(1) y precipitación media (2))\nSelección: ");
+                scanf("%i", &isel1);
+            }while(isel1<0 || isel1>2);
             if (isel1 == 1) {
                 bsel2 = 0;
             }
@@ -100,6 +104,7 @@ void menuprincipal(FILE* tallin)
                 fijo->dia = 1;
                 fijo->mes = 1;
                 fijo->ano = 2000;
+              //  free(Consulta_por_data(tallin, &fecha2));
 
                 result = Consulta_por_data(tallin, &fecha2);
                 system("cls");
@@ -115,13 +120,32 @@ void menuprincipal(FILE* tallin)
                 wprintf(L"\n Humedad relativa: %.12lf", result->relativeHumidity);
                 wprintf(L"\n Radiación Solar: %.12lf", result->solar);
                 printf("\n");
+                free(result);
                 system("pause");
                 //continuar = 0;
+            }
+            if(bsel2==1)
+            //búsqueda por precipitaciones
+            {
+                ler(&fecha1);//preguntar por la fecha(I)
+                printf("\n\n");
+                ler(&fecha2);//preguntar por la fecha(II)
+                fijo->dia = 1;
+                fijo->mes = 1;
+                fijo->ano = 2000;
+                system("cls");
+                wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
+                wprintf(L"La precipitación media entre las fechas introducidas es: %f",Consulta_precip_media(tallin, &fecha1, &fecha2));
+
+
+            printf("\n");
+            system("pause");
             }
 
         }
         if(bsel1==1)
         {
+
             terminar =1;
         }
     }while(terminar==0);
@@ -133,15 +157,58 @@ void menuprincipal(FILE* tallin)
 
 WeatherData* Consulta_por_data(FILE* file, Date* d)
 {
+
     int empanadilla;//"índice"
-    WeatherData* resultados;
-    resultados =(WeatherData*)malloc(4018*sizeof(WeatherData));
+            //WeatherData* resultados;
+    WeatherData resultados[4018];
+    WeatherData* resultado=(WeatherData*)malloc(sizeof(WeatherData));
+
     fread(resultados,sizeof(WeatherData),4018,file);//Error anterior depurado en 22/11/2021 :: No se detectaba como *;
     empanadilla= (int)CalcularDistancia(fijo,d);
-    return(resultados+empanadilla);//devuelve los datos meteorológicos;
+            // return(resultados+empanadilla);
+            // devuelve los datos meteorológicos;
+    *resultado = resultados[empanadilla];
+   return(resultado);//devuelve los datos meteorológicos;
 }
-WeatherData Consulta_precip_media(File* file, Date *d1, Date *d2)
+float Consulta_precip_media(FILE* file, Date *d1, Date *d2)//WIP
 {
-
-
+    //
+    float centolla,percebes;
+    float media=0;
+    float sel=0;
+    bool SCANERR=FALSO;
+    WeatherData muestra[4018];
+    fread(&muestra,sizeof(WeatherData),4018,file);
+    centolla= CalcularDistancia(fijo,d1);
+    percebes= CalcularDistancia(fijo,d2);
+    if(centolla!=percebes)
+    {
+        if(centolla<percebes){
+            for(int i = (int)centolla;i<(int)percebes;i++)
+            {
+             media+=(float)muestra[i].precipitation;
+             sel+=1;
+            }
+        }else if(centolla>percebes)
+        {
+            for(int i = (int)percebes;i<(int)centolla;i++)
+            {
+                media+=(float)muestra[i].precipitation;
+                sel+=1;
+            }
+        }
+        SCANERR=FALSO;
+    }else if(centolla==percebes){
+        wprintf(L"\nError, ha introducido la misma fecha 2 veces.\n");
+        wprintf(L"\nPara hacer una búsqueda simple puede usar la herramienta de búsqueda por fecha.");
+        SCANERR=VERDADERO;
+    }
+    if(!SCANERR)
+    {
+        media = media / sel;
+        return media;
+    }else
+    {
+        return 1;
+    }
 }
