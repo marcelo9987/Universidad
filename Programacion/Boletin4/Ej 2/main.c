@@ -29,7 +29,7 @@ typedef struct
     double relativeHumidity;
     double solar;
 }WeatherData;
-Date* fijo;//de momento no sé si lo usaré
+Date* fijo;//Es usado en ambas funciones, por lo que lo declaro de forma global y lo defino de forma local.(La definición está justo encima de cada uso. En un caso está declarada en la función y en el otro no)
 WeatherData* result;
                             ///////////////*****Declaración de funciones*****///////////////
 void menuprincipal(FILE* tallin);
@@ -72,12 +72,13 @@ void menuprincipal(FILE* tallin)
     fijo = malloc(sizeof(Date));
     do
     {
-        system("cls");
-        wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
-        wprintf(L"                  Bienvenido al nuevo programa de gestión de archivos del centro meteorológico LasNubes S.A. \n");
-        wprintf(L"                  Actualmente solo se pueden realizar búsquedas.\n¿Desea realizar una consulta? (s/n):");
         do
         {
+            system("cls");
+            wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");
+            wprintf(L"                  Bienvenido al nuevo programa de gestión de archivos del centro meteorológico LasNubes S.A. \n");
+            wprintf(L"                  Actualmente solo se pueden realizar búsquedas.\n¿Desea realizar una consulta? (s/n):");
+
             scanf("%c",&sel1);
 
         }while(sel1!='s' && sel1!='n');
@@ -200,8 +201,9 @@ float Consulta_precip_media(FILE* file, Date *d1, Date *d2)//WIP
         SCANERR=FALSO;
     }else if(centolla==percebes){
         wprintf(L"\nError, ha introducido la misma fecha 2 veces.\n");
-        wprintf(L"\nPara hacer una búsqueda simple puede usar la herramienta de búsqueda por fecha.");
+        wprintf(L"\nPara hacer una búsqueda simple puede usar la herramienta de búsqueda por fecha.\n");
         SCANERR=VERDADERO;
+        system("pause");
     }
     if(!SCANERR)
     {
@@ -209,6 +211,15 @@ float Consulta_precip_media(FILE* file, Date *d1, Date *d2)//WIP
         return media;
     }else
     {
-        return 1;
+        return 0;
     }
 }
+//PROGRAMA FINALIZADO Y DEPURADO.
+/*
+ * POSIBLES PUNTOS PROBLEMÁTICOS:
+ *          1. Búsqueda por fecha
+ *          2. Depuración(poco probable)
+ *          3.
+ *          4.
+ *
+ */
