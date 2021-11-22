@@ -61,7 +61,7 @@ int main()
 
                     ///////////////*****Definición de funciones*****//////////////
 
-void menuprincipal(FILE* tallin)
+void menuprincipal(FILE* tallin)//Función que gestiona las pantallas del programa
 {
 
     int isel1;
