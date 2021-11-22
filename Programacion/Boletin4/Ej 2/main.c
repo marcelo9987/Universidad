@@ -30,10 +30,10 @@ typedef struct
     double solar;
 }WeatherData;
 Date* fijo;//de momento no sé si lo usaré
-WeatherData result;
+WeatherData* result;
                             ///////////////*****Declaración de funciones*****///////////////
 void menuprincipal(FILE* tallin);
-WeatherData Consulta_por_data(FILE* file, Date* d);/*A esta función pásaselle unha data e devolve unha estrutura cos datos recollidos dese día*/
+WeatherData* Consulta_por_data(FILE* file, Date* d);/*A esta función pásaselle unha data e devolve unha estrutura cos datos recollidos dese día*/
 float Consulta_precip_media(FILE* file, Date* d1, Date* d2); /*A esta función pásaselle dúas datas e devolve a precipitación media*/
 
                                     ///////////////*****MAIN*****///////////////
@@ -60,6 +60,7 @@ int main()
 
 
                     ///////////////*****Definición de funciones*****//////////////
+
 void menuprincipal(FILE* tallin)
 {
     int isel1;
@@ -103,16 +104,16 @@ void menuprincipal(FILE* tallin)
                 result = Consulta_por_data(tallin, &fecha2);
                 system("cls");
                 wprintf(L"                                  Gallega de meteorología LAS NUBES S.A. \n");//esta sección representa los datos recabados gracias a la función de
-                wprintf(L"Fecha: %i / %i / %i", result.fecha.dia, result.fecha.mes, result.fecha.ano);
-                wprintf(L"\n Longitud: %.12f", result.longitude);
-                wprintf(L"\n Latitud: %.12f", result.latitude);
-                wprintf(L"\n Elevación: %i", result.elevation);
-                wprintf(L"\n Temperatura máxima: %.12lf", result.max_temperature);
-                wprintf(L"\n Temperatura mínima: %.12lf", result.min_temperature);
-                wprintf(L"\n Precipitación: %.12lf", result.precipitation);
-                wprintf(L"\n Viento: %.12lf", result.wind);
-                wprintf(L"\n Humedad relativa: %.12lf", result.relativeHumidity);
-                wprintf(L"\n Radiación Solar: %.12lf", result.solar);
+                wprintf(L"Fecha: %i / %i / %i", result->fecha.dia, result->fecha.mes, result->fecha.ano);
+                wprintf(L"\n Longitud: %.12f", result->longitude);
+                wprintf(L"\n Latitud: %.12f", result->latitude);
+                wprintf(L"\n Elevación: %i", result->elevation);
+                wprintf(L"\n Temperatura máxima: %.12lf", result->max_temperature);
+                wprintf(L"\n Temperatura mínima: %.12lf", result->min_temperature);
+                wprintf(L"\n Precipitación: %.12lf", result->precipitation);
+                wprintf(L"\n Viento: %.12lf", result->wind);
+                wprintf(L"\n Humedad relativa: %.12lf", result->relativeHumidity);
+                wprintf(L"\n Radiación Solar: %.12lf", result->solar);
                 printf("\n");
                 system("pause");
                 //continuar = 0;
@@ -130,12 +131,17 @@ void menuprincipal(FILE* tallin)
 
 
 
-WeatherData Consulta_por_data(FILE* file, Date* d)
+WeatherData* Consulta_por_data(FILE* file, Date* d)
 {
-    //
-    int empanadilla;
-    WeatherData resultados[4018];
-    fread(&resultados,sizeof(WeatherData),4018,file);
+    int empanadilla;//"índice"
+    WeatherData* resultados;
+    resultados =(WeatherData*)malloc(4018*sizeof(WeatherData));
+    fread(resultados,sizeof(WeatherData),4018,file);//Error anterior depurado en 22/11/2021 :: No se detectaba como *;
     empanadilla= (int)CalcularDistancia(fijo,d);
-    return(resultados[empanadilla]);
+    return(resultados+empanadilla);//devuelve los datos meteorológicos;
+}
+WeatherData Consulta_precip_media(File* file, Date *d1, Date *d2)
+{
+
+
 }
