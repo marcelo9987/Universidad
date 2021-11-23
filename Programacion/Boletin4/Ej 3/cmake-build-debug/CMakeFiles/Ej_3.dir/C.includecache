@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/github/Universidad/Programacion/Boletin3/Ej 9/fechas.h
+stdio.h
+-
+stdlib.h
+-
+locale.h
+-
+
+D:/github/Universidad/Programacion/Boletin4/Ej 3/main.c
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+locale.h
+-
+windows.h
+-
+time.h
+-
+../../Boletin3/Ej 9/fechas.h
+D:/github/Universidad/Programacion/Boletin3/Ej 9/fechas.h
+

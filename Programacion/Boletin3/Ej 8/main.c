@@ -76,9 +76,9 @@ void leer(WeatherData estructura[],FILE* rea)
                 primeraVuelta = FALSO;
             }
             getc(rea);
-            fscanf(rea, "%i[^/]", &estructura[i].fecha.dia);
-            getc(rea);
             fscanf(rea, "%i[^/]", &estructura[i].fecha.mes);
+            getc(rea);
+            fscanf(rea, "%i[^/]", &estructura[i].fecha.dia);
             getc(rea);
             fscanf(rea, "%i", &estructura[i].fecha.ano);
             getc(rea);
