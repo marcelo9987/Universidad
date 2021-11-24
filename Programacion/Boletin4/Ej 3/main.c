@@ -1,9 +1,14 @@
+/*
+ * Programador: Marcelo Fort Muñoz
+ * Fecha de finalización: 23.11.2021
+ * Descripción: lee un archivo. Luego te permite hacer búsquedas(1: por fecha y 2: por 2 fechas y dá la precipitación)
+ */
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+//#include <stdbool.h>//sin uso
 #include <locale.h>
-#include <windows.h>
-#include <time.h>
+//#include <windows.h>//sin uso
+//#include <time.h>//no se usa
 #include "../../Boletin3/Ej 9/fechas.h"
 // Se intentará crear este programa de forma que sea lo más fácil posible de reconvertir en una librería posteriormente
 
@@ -84,8 +89,8 @@ WeatherData* entreFechas( FILE* elarchivo,Date fechar1,Date fechar2 )
             leng = 2;
         }
     }
-    elVector=malloc( leng  * sizeof( WeatherData ) );
-    fread( &VectorDesechable,sizeof(WeatherData),4018,elarchivo );
+    elVector = malloc( leng  * sizeof( WeatherData ) );
+    fread( &VectorDesechable,sizeof( WeatherData ),4018,elarchivo );
     for( int i = a1;i<a2+1;i++ )
     {
         *( elVector+rr )= VectorDesechable[i];
