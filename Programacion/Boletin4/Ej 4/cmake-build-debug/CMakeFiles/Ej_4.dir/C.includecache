@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/github/Universidad/Programacion/Boletin4/Ej 4/main.c
+stdio.h
+-
+stdbool.h
+-
+stdlib.h
+-
+

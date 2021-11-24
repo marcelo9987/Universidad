@@ -5,9 +5,9 @@
  *  Descripción: El ejercicio repite el ej9 pero con punteros.
  *  Fecha de inicio: 19/11/2021
  *      Hora de inicio: 9:20
- *  Fecha de finalización:
- *  Version: DEV.0.0.1
- *      Subversión: 0.0.5
+ *  Fecha de finalización:24/11/2021
+ *  Version: DEV.0.0.2
+ *      Subversión: 0.1.1
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,9 +28,10 @@ typedef struct
     double wind;
     double relativeHumidity;
     double solar;
-}WeatherData;
-Date* fijo;//Es usado en ambas funciones, por lo que lo declaro de forma global y lo defino de forma local.(La definición está justo encima de cada uso. En un caso está declarada en la función y en el otro no)
+}WeatherData;/*! Estructura con los campos del archivo, tiene dependencia del .h asociado */
 WeatherData* result;
+Date* fijo; /*!Es usado en ambas funciones, por lo que lo declaro de forma global y lo defino de forma local.(La definición está justo encima de cada uso. En un caso está declarada en la función y en el otro no)*/
+
                             ///////////////*****Declaración de funciones*****///////////////
 void menuprincipal(FILE* tallin);
 WeatherData* Consulta_por_data(FILE* file, Date* d);/*A esta función pásaselle unha data e devolve unha estrutura cos datos recollidos dese día*/
@@ -60,14 +61,17 @@ int main()
 
 
                     ///////////////*****Definición de funciones*****//////////////
-
+/*!
+ *
+ * @param tallin  es el archivo que se maneja durante todo el programa
+ */
 void menuprincipal(FILE* tallin)//Función que gestiona las pantallas del programa
 {
 
-    int isel1;
-    char sel1,sel2;
-    bool bsel1,bsel2;
-    bool terminar=0;
+    int isel1; /*! Es responsable de la selección en términos del tipo de búsqueda */
+    char sel1;/*! Determina si seguir adelante con la consulta */
+    bool bsel1,bsel2; /*! Convierten los valores obtenidos a booleanos (Es más fácil comparar con variables tipo bool) */
+    bool terminar=0; /*! Flag de inicio/fin del programa*/
 
     fijo = malloc(sizeof(Date));
     do
@@ -155,50 +159,63 @@ void menuprincipal(FILE* tallin)//Función que gestiona las pantallas del progra
 }
 
 
-
+/*!
+ * @brief Busca los datos meteorológicos partiendo de una fecha específica
+ * @param file Este es el archivo que da el usuario o la función administradora de esta función
+ * @param d Es la fecha a buscar
+ * @return devuelve la estructura WeatherData de la función
+ */
 WeatherData* Consulta_por_data(FILE* file, Date* d)
 {
 
     int empanadilla;//"índice"
             //WeatherData* resultados;
-    WeatherData resultados[4018];
+    //WeatherData resultados[4018];
     WeatherData* resultado=(WeatherData*)malloc(sizeof(WeatherData));
-
-    fread(resultados,sizeof(WeatherData),4018,file);//Error anterior depurado en 22/11/2021 :: No se detectaba como *;
     empanadilla= (int)CalcularDistancia(fijo,d);
+    fseek(file,(int)sizeof(WeatherData)*empanadilla,SEEK_SET);//Mejora introducida a 24/11/2021:: fseek
+    fread(resultado,sizeof(WeatherData),1,file);//Error anterior depurado en 22/11/2021 :: No se detectaba como *;
+
             // return(resultados+empanadilla);
             // devuelve los datos meteorológicos;
-    *resultado = resultados[empanadilla];
    return(resultado);//devuelve los datos meteorológicos;
 }
+
+/*!
+ * @brief Calcula el promedio de precipitación entre dos fechas
+ * @param file "same as" Consulta_por_data
+ * @param d1 En esta función cambia un poco. En este caso es la primera / última fecha a "sumar"
+ * @param d2 ídem d1
+ * @return devuelve la media
+ * @retval 0 Esto ocurre cuando el programa detecta que se ha introducido la misma fecha dos veces, lo que no tiene sentido
+ */
 float Consulta_precip_media(FILE* file, Date *d1, Date *d2)//WIP
 {
     //
     float centolla,percebes;
+    int ostra;
     float media=0;
     float sel=0;
     bool SCANERR=FALSO;
-    WeatherData muestra[4018];
-    fread(&muestra,sizeof(WeatherData),4018,file);
+    WeatherData* muestra;
     centolla= CalcularDistancia(fijo,d1);
     percebes= CalcularDistancia(fijo,d2);
+    ostra=abs((int)(percebes-centolla))+1;
+    muestra= (WeatherData *)malloc(ostra*sizeof(WeatherData));
+    fseek(file,sizeof(WeatherData )*centolla,SEEK_SET);
+    fread(muestra,sizeof(WeatherData),ostra,file);
+
     if(centolla!=percebes)
     {
-        if(centolla<percebes){
-            for(int i = (int)centolla;i<(int)percebes;i++)
+        if(centolla!=percebes){
+            for(int i = 0;i<(int)ostra;i++)
             {
-             media+=(float)muestra[i].precipitation;
+             media+=(float) (muestra+i)->precipitation;
              sel+=1;
-            }
-        }else if(centolla>percebes)
-        {
-            for(int i = (int)percebes;i<(int)centolla;i++)
-            {
-                media+=(float)muestra[i].precipitation;
-                sel+=1;
             }
         }
         SCANERR=FALSO;
+        free(muestra);
     }else if(centolla==percebes){
         wprintf(L"\nError, ha introducido la misma fecha 2 veces.\n");
         wprintf(L"\nPara hacer una búsqueda simple puede usar la herramienta de búsqueda por fecha.\n");
