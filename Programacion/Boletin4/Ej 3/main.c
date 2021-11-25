@@ -59,8 +59,6 @@ int main()
 }
 WeatherData* entreFechas( FILE* elarchivo,Date fechar1,Date fechar2 )
 {
-    int rr=0;
-    WeatherData VectorDesechable[4018];
     WeatherData *elVector;
     int a1,a2;
     int leng;
@@ -68,6 +66,7 @@ WeatherData* entreFechas( FILE* elarchivo,Date fechar1,Date fechar2 )
     a2= ( int )CalcularDistancia( &fijo,&fechar2 );
     if( a2>a1 )
     {
+        fseek(elarchivo,(int)sizeof(WeatherData )*a1,SEEK_SET);
         if( a2!=a1+1 )
         {
             leng = a2-a1 +1;
@@ -80,6 +79,7 @@ WeatherData* entreFechas( FILE* elarchivo,Date fechar1,Date fechar2 )
     }
     if( a2<a1 )
     {
+        fseek(elarchivo,(int)sizeof(WeatherData )*a2,SEEK_SET);
         if (a2!=a1+1 )
         {
             leng = a1-a2 +1;
@@ -89,14 +89,11 @@ WeatherData* entreFechas( FILE* elarchivo,Date fechar1,Date fechar2 )
             leng = 2;
         }
     }
+
     elVector = malloc( leng  * sizeof( WeatherData ) );
-    fread( &VectorDesechable,sizeof( WeatherData ),4018,elarchivo );
-    for( int i = a1;i<a2+1;i++ )
-    {
-        *( elVector+rr )= VectorDesechable[i];
-        //wprintf(L"PRUEBA PRE-DEPURACIÓN: d:%i m:%i a:%i\n",(elVector+rr)->fecha.dia,(elVector+rr)->fecha.mes,(elVector+rr)->fecha.ano);
-        rr+=1;
-    }
+
+    fread( elVector,sizeof( WeatherData ),leng,elarchivo );
+
     //system( "pause" );
    // wprintf(L"La dirección de memoria de elVector es :%p",elVector);
     system( "pause" );
