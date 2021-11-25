@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['latitude_0',['latitude',['../struct_weather_data.html#ad9e643bc6bd5a62b9b5011cf1c93629e',1,'WeatherData']]],
-  ['longitude_1',['longitude',['../struct_weather_data.html#a006303577d6adb772761727538b74f80',1,'WeatherData']]]
+  ['solar_0',['solar',['../struct_weather_data.html#afb154bc1d088c11e86459c732b458f1e',1,'WeatherData']]]
 ];

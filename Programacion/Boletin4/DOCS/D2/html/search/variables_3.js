@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['latitude_0',['latitude',['../struct_weather_data.html#ad9e643bc6bd5a62b9b5011cf1c93629e',1,'WeatherData']]],
-  ['longitude_1',['longitude',['../struct_weather_data.html#a006303577d6adb772761727538b74f80',1,'WeatherData']]]
+  ['max_5ftemperature_0',['max_temperature',['../struct_weather_data.html#a05802df169cc6c0d6e4a6b54008abcd2',1,'WeatherData']]],
+  ['min_5ftemperature_1',['min_temperature',['../struct_weather_data.html#a6e7c1eae04114eaad162933f46760544',1,'WeatherData']]]
 ];

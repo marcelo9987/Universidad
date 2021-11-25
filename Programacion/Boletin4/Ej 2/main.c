@@ -1,3 +1,8 @@
+/*!
+ *  @file Ejercicio2
+ *  @brief Repite el ejercicio o del boletín 3, pero implementa punteros
+ */
+
 #define VERDADERO 1
 #define FALSO     0
 /*
@@ -34,7 +39,12 @@ Date* fijo; /*!Es usado en ambas funciones, por lo que lo declaro de forma globa
 
                             ///////////////*****Declaración de funciones*****///////////////
 void menuprincipal(FILE* tallin);
-WeatherData* Consulta_por_data(FILE* file, Date* d);/*A esta función pásaselle unha data e devolve unha estrutura cos datos recollidos dese día*/
+WeatherData* Consulta_por_data(FILE* file, Date* d);/*!
+ * @brief Busca los datos meteorológicos partiendo de una fecha específica
+ * @param file Este es el archivo que da el usuario o la función administradora de esta función
+ * @param d Es la fecha a buscar
+ * @return devuelve la estructura WeatherData de la función
+ */
 float Consulta_precip_media(FILE* file, Date* d1, Date* d2); /*A esta función pásaselle dúas datas e devolve a precipitación media*/
 
                                     ///////////////*****MAIN*****///////////////
@@ -159,14 +169,10 @@ void menuprincipal(FILE* tallin)//Función que gestiona las pantallas del progra
 }
 
 
-/*!
- * @brief Busca los datos meteorológicos partiendo de una fecha específica
- * @param file Este es el archivo que da el usuario o la función administradora de esta función
- * @param d Es la fecha a buscar
- * @return devuelve la estructura WeatherData de la función
- */
+
 WeatherData* Consulta_por_data(FILE* file, Date* d)
 {
+
 
     int empanadilla;//"índice"
             //WeatherData* resultados;
