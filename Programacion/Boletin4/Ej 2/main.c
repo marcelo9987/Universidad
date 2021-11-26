@@ -240,8 +240,8 @@ float Consulta_precip_media(FILE* file, Date *d1, Date *d2)//WIP
 //PROGRAMA FINALIZADO Y DEPURADO.
 /*
  * POSIBLES PUNTOS PROBLEMÁTICOS:
- *          1. Búsqueda por fecha
- *          2. Depuración(poco probable)
+ *          1.
+ *          2. 
  *          3.
  *          4.
  *
