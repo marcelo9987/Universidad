@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej1/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej1/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej1/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej1/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej2/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej2/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej3/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej3/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej4/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej4/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej5/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej5/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej6/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej6/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej7/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej7/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej8/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej8/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej8sinfunciones/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/Ej8sinfunciones/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/untitled/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/untitled/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/untitled1/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin2/untitled1/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej1/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej1/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 2/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 2/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 3/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 3/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 4/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 4/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 5/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 5/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 6/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 6/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 7/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 7/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 8/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 8/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 8/cmake-build-debug/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 9/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/Ej 9/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/RETO 7/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin3/RETO 7/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej 2/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej 2/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej 3/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej 3/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej 4/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/Ej 4/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/TOOLS/FORMAT_READER/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/TOOLS/FORMAT_READER/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/TOOLS/FORMAT_SEEKER/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Boletin4/TOOLS/FORMAT_SEEKER/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Expositivas/Modular/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Expositivas/Modular/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Pruebas/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Pruebas/cmake-build-debug/CMakeFiles/CMakeTmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Pruebas/tut-17-11-2021/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Programacion/Pruebas/tut-17-11-2021/cmake-build-debug/CMakeFiles/CMakeTmp" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
