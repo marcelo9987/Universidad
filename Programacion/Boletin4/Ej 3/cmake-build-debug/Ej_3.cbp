@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/github/Universidad/Programacion/Boletin4/Ej 3/fechas.c">
+			<Option target="Ej_3"/>
+		</Unit>
+		<Unit filename="D:/github/Universidad/Programacion/Boletin4/Ej 3/fechas.h">
+			<Option target="Ej_3"/>
+		</Unit>
 		<Unit filename="D:/github/Universidad/Programacion/Boletin4/Ej 3/main.c">
 			<Option target="Ej_3"/>
 		</Unit>

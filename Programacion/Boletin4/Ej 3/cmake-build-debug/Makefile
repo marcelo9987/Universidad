@@ -128,6 +128,30 @@ Ej_3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/build
 .PHONY : Ej_3/fast
 
+fechas.obj: fechas.c.obj
+.PHONY : fechas.obj
+
+# target to build an object file
+fechas.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/fechas.c.obj
+.PHONY : fechas.c.obj
+
+fechas.i: fechas.c.i
+.PHONY : fechas.i
+
+# target to preprocess a source file
+fechas.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/fechas.c.i
+.PHONY : fechas.c.i
+
+fechas.s: fechas.c.s
+.PHONY : fechas.s
+
+# target to generate assembly for a file
+fechas.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Ej_3.dir\build.make CMakeFiles/Ej_3.dir/fechas.c.s
+.PHONY : fechas.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Ej_3
+	@echo ... fechas.obj
+	@echo ... fechas.i
+	@echo ... fechas.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

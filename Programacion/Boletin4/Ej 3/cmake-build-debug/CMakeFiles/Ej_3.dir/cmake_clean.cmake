@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Ej_3.dir/fechas.c.obj"
   "CMakeFiles/Ej_3.dir/main.c.obj"
   "Ej_3.exe"
   "Ej_3.exe.manifest"

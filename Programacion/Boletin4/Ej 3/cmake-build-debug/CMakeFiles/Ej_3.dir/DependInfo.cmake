@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "D:/github/Universidad/Programacion/Boletin4/Ej 3/fechas.c" "D:/github/Universidad/Programacion/Boletin4/Ej 3/cmake-build-debug/CMakeFiles/Ej_3.dir/fechas.c.obj"
   "D:/github/Universidad/Programacion/Boletin4/Ej 3/main.c" "D:/github/Universidad/Programacion/Boletin4/Ej 3/cmake-build-debug/CMakeFiles/Ej_3.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

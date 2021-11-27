@@ -1,3 +1,0 @@
-D:/github/Universidad/Programacion/Boletin4/Ej 4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-D:/github/Universidad/Programacion/Boletin4/Ej 4/cmake-build-debug/CMakeFiles/Ej_4.dir
-D:/github/Universidad/Programacion/Boletin4/Ej 4/cmake-build-debug/CMakeFiles/edit_cache.dir
