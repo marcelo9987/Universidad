@@ -1,0 +1,5 @@
+Creade un programa que lea un nome de arquivo e o almacene nunha estrutura con (só) dous
+campos: un para o nome base, e outro para a extensión. O nome do arquivo debe pasarse por liña
+de comandos, e a estrutura debe pasárselle como argumento a unha función que abra ese arquivo
+e imprima o seu contido por pantalla. A función ten que manexar os casos de nomes con extensión e
+sen ela.
