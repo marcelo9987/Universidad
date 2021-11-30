@@ -8,7 +8,7 @@
 #pragma once
 #define ESTILO '1' //dia mes año
 
-struct mes2 {
+struct mes2{
     int dias;
 };
 
