@@ -21,7 +21,7 @@
 #include <locale.h>
 #include "fechas.h"
 ///////////////*****Declaración de estructuras y variables*****///////////////
-
+//EL FORMATO DE FECHA ES: DÍA/MES/AÑO
 typedef struct {
     Date fecha;
     float longitude;
@@ -191,29 +191,29 @@ WeatherData *Consulta_por_data(FILE *file, Date *d) {
 float Consulta_precip_media(FILE *file, Date *d1, Date *d2)//WIP
 {
     //
-    float centolla, percebes;
-    int ostra;
+    float dia1, dia2;
+    int mezcla_dias;
     float media = 0;
     float sel = 0;
     bool SCANERR = false;
     WeatherData *muestra;
-    centolla = CalcularDistancia(fijo, d1);
-    percebes = CalcularDistancia(fijo, d2);
-    ostra = abs((int) (percebes - centolla)) + 1;
-    muestra = (WeatherData *) malloc(ostra * sizeof(WeatherData));
-    fseek(file, sizeof(WeatherData) * centolla, SEEK_SET);
-    fread(muestra, sizeof(WeatherData), ostra, file);
+    dia1 = CalcularDistancia(fijo, d1);
+    dia2 = CalcularDistancia(fijo, d2);
+    mezcla_dias = abs((int) (dia2 - dia1)) + 1;
+    muestra = (WeatherData *) malloc(mezcla_dias * sizeof(WeatherData));
+    fseek(file, sizeof(WeatherData) * dia1, SEEK_SET);
+    fread(muestra, sizeof(WeatherData), mezcla_dias, file);
 
-    if (centolla != percebes) {
-        if (centolla != percebes) {
-            for (int i = 0; i < (int) ostra; i++) {
+    if (dia1 != dia2) {
+        if (dia1 != dia2) {
+            for (int i = 0; i < (int) mezcla_dias; i++) {
                 media += (float) (muestra + i)->precipitation;
                 sel += 1;
             }
         }
         SCANERR = false;
         free(muestra);
-    } else if (centolla == percebes) {
+    } else if (dia1 == dia2) {
         wprintf(L"\nError, ha introducido la misma fecha 2 veces.\n");
         wprintf(L"\nPara hacer una búsqueda simple puede usar la herramienta de búsqueda por fecha.\n");
         SCANERR = true;
