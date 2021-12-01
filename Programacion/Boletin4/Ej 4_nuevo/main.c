@@ -1,7 +1,7 @@
 /*!
  * @file main.c
  * @brief Este programa pide por consola un nombre de archivo, procede a su lectura y volcado en pantalla del usuario
- * @bug Sin probar en CMD, de momento las pruebas se realizan en PowerShell
+ * @author Marcelo Fort Muñoz
  */
 
 #define EJECUCIONEXITOSA 0
