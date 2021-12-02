@@ -1,6 +1,6 @@
 #ifndef LASNUBES_LIB_METEO_H
 #define LASNUBES_LIB_METEO_H
-
+#include <stdio.h>
 #include <stdbool.h>
 #include "fechas.h"
 
@@ -19,14 +19,11 @@ typedef struct
     double relativeHumidity;
     double solar;
 } WeatherData;
-////////////
+
+
+
 bool esBisiesto(int ano);
-
-
-////////////
-
-
-///////////
+WeatherData* leerArchivo(FILE* archivo);
 
 
 #endif //LASNUBES_LIB_METEO_H

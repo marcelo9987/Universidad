@@ -21,6 +21,7 @@ typedef struct
 } WeatherData;
 
 
+
 bool esBisiesto(int ano);
 WeatherData* leerArchivo(FILE* archivo);
 
