@@ -2,3 +2,5 @@ Copy "D:\github\Universidad\programacion\Boletion 5\lasNubes_lib\meteo.h"  "D:\g
 Copy "D:\github\Universidad\programacion\Boletion 5\lasNubes_lib\meteo.c"  "D:\github\Universidad\programacion\Boletion 5\codigo"
 Copy "D:\github\Universidad\programacion\Boletion 5\lasNubes_lib\fechas.h"  "D:\github\Universidad\programacion\Boletion 5\codigo"
 Copy "D:\github\Universidad\programacion\Boletion 5\lasNubes_lib\fechas.c"  "D:\github\Universidad\programacion\Boletion 5\codigo"
+pause
+exit
