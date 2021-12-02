@@ -1,7 +1,7 @@
 #include "meteo.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+/* VERSIÓN 0:1.1.3*/
 bool esBisiesto(int ano)
 {//idc
     if (ano % 4 == 0 && ano % 100 != 0)
@@ -44,7 +44,7 @@ WeatherData *leerArchivo(FILE *archivo)
         
     } while (lineaNueva != EOF);
     vectorSalida=(WeatherData*) malloc(linea*sizeof(WeatherData));
-    //printf("Numero de lineas: /%i/",linea);
+    printf("Numero de lineas: /%i/",linea);
     fseek(archivo, 130 * sizeof(char), SEEK_SET);
     fgets(dump, 129, archivo);
     printf("Texto recogido por dump: [%s]", dump);
