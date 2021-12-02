@@ -16,15 +16,15 @@ bool esBisiesto(int ano)
     }// fdc
 }
 
-WeatherData *leerArchivo(FILE *archivo)
+WeatherData* leerArchivo(FILE *archivo)
 {
-    WeatherData *vectorSalida;
-    char *dump;
-    dump = (char *) malloc(129 * sizeof(char));//las cabeceras de los archivos de datos siempre miden 128 caracteres(para evitar fallos, declaro un bit más de los que necesito)
+    WeatherData* vectorSalida;
+    char* dump;
     bool linea1 = true;
     char lineaNueva = 'e';
-    int linea = 0;
+    int lineas = 0;
     linea1 = true;
+    dump = (char *) malloc(129 * sizeof(char));//las cabeceras de los archivos de datos siempre miden 128 caracteres(para evitar fallos, declaro un bit más de los que necesito)
     //se busca cuantas lineas tiene el archivo de texto
     do
     {
@@ -37,19 +37,19 @@ WeatherData *leerArchivo(FILE *archivo)
             lineaNueva = getc(archivo);
             if (lineaNueva == '\n')
             {
-                linea += 1;
+                lineas += 1;
             }
         }
         
         
     } while (lineaNueva != EOF);
-    vectorSalida=(WeatherData*) malloc(linea*sizeof(WeatherData));
-    printf("Numero de lineas: /%i/",linea);
+    vectorSalida = (WeatherData *) malloc(lineas * sizeof(WeatherData));
+    printf("Numero de lineas: /%i/", lineas);
     fseek(archivo, 130 * sizeof(char), SEEK_SET);
-    fgets(dump, 129, archivo);
-    printf("Texto recogido por dump: [%s]", dump);
+   // fgets(dump, 129, archivo);
+    //printf("Texto recogido por dump: [%s]", dump);
     
-    for (int i = 0; i < linea; linea++)
+    for (int i = 0; i < lineas; i++)
     {
         getc(archivo);
         fscanf(archivo, "%i[^/]", &vectorSalida[i].fecha.mes);
@@ -96,14 +96,14 @@ WeatherData *leerArchivo(FILE *archivo)
         getc(archivo);
         getc(archivo);
         getc(archivo);
+        printf("Linea: %i",i);
     }
     
     
     while (feof(archivo));
     free(dump);
-    vectorSalida = malloc(1 * sizeof(WeatherData));
-    return
-            vectorSalida;
+    vectorSalida = malloc(lineas * sizeof(WeatherData));
+    return vectorSalida;
 }
 
 
