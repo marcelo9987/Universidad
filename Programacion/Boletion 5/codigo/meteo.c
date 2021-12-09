@@ -24,8 +24,7 @@ WeatherData *leerArchivo(FILE *archivo)
     char lineaNueva = 'e';
     int lineas = 0;
     linea1 = true;
-    dump = (char *) malloc(129 *
-                           sizeof(char));//las cabeceras de los archivos de datos siempre miden 128 caracteres(para evitar fallos, declaro un bit más de los que necesito)
+    dump = (char *) malloc( 129 * sizeof(char) );//las cabeceras de los archivos de datos siempre miden 128 caracteres(para evitar fallos, declaro un bit más de los que necesito)
     //se busca cuantas lineas tiene el archivo de texto
     do
     {
@@ -100,8 +99,6 @@ WeatherData *leerArchivo(FILE *archivo)
         printf("Linea: %i",i);
     }
     
-    
-    while (feof(archivo));
     free(dump);
     vectorSalida = malloc(lineas * sizeof(WeatherData));
     return vectorSalida;
