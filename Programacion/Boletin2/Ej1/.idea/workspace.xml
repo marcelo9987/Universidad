@@ -22,7 +22,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1z872unCfUI016Ns3qfFoaZkb7P" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,16 +38,16 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.c" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ej2" />
     <property name="settings.editor.selected.configurable" value="diff.external" />
   </component>
   <component name="RunManager">
-    <configuration name="Ej1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej1" TARGET_NAME="Ej1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej1" RUN_TARGET_NAME="Ej1">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Ej1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Ej1" TARGET_NAME="Ej1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Ej1" RUN_TARGET_NAME="Ej1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -68,6 +68,7 @@
       <updated>1633517657767</updated>
       <workItem from="1633517659242" duration="648000" />
       <workItem from="1633518443501" duration="3340000" />
+      <workItem from="1639137295109" duration="89000" />
     </task>
     <servers />
   </component>
