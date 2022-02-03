@@ -1,0 +1,16 @@
+#opciones de compilación (-Wall significa Warnings all)
+CC=gcc -Wall
+#carpeta de las cabeceras (si están en la actual, ponemos .)
+HEADER_FILES_DIR=.
+#opciones de compilación, indica dónde están los archivos .h
+INCLUDES=-I $(HEADER_FILES_DIR)
+#nombre del ejecutable o archivo de salida (programa.exe)
+OUTPUT= programa
+#fuentes
+SOURCES=main.c operaciones.c
+#ficheros .h
+LIB_HEADERS=$(HEADER_FILES_DIR)/operaciones.h
+#regla de ejecutable: prerrequisitos $(SOURCES) y $(LIB_HEADERS)
+#IMPORTANTE: la regla debe ir tabulada a la derecha
+$(OUTPUT): $(SOURCES) $(LIB_HEADERS)
+	$(CC) -o $(OUTPUT) $(SOURCES) $(INCLUDES)
