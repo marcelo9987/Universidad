@@ -1,0 +1,3 @@
+D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/CMakeFiles/E4.dir
+D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
