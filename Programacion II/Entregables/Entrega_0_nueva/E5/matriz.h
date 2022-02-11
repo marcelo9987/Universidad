@@ -4,19 +4,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
+typedef struct
+    {
     float *datos;
     int filas, columnas;
-} matriz;
+    } matriz;
 
 void asignarElemento(int fila, int columna, float valor, matriz *M);
-matriz* crearMatriz(int filas, int columnas);
+
+matriz *crearMatriz(int filas, int columnas);
+
 void destruirMatriz(matriz *M);
+
 void imprimirMatriz(matriz *M);
+
 float obtenerElemento(int fila, int columna, matriz *M);
-matriz* producto(matriz *M1, matriz *M2);
-matriz* suma(matriz *M1, matriz *M2);
+
+matriz *producto(matriz *M1, matriz *M2);
+
+matriz *suma(matriz *M1, matriz *M2);
 
 
-#endif	// MATRIZ_H
+#endif    // MATRIZ_H
 
