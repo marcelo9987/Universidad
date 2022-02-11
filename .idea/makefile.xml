@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MakefileBuildTargetsManager">
+    <user-build-targets>
+      <build-target name="build_with_make">
+        <build-configurations>
+          <build-configuration toolchainName="Default">
+            <make-targets>
+              <make-target>build_with_make</make-target>
+            </make-targets>
+          </build-configuration>
+        </build-configurations>
+      </build-target>
+      <build-target name="clean_with_make">
+        <build-configurations>
+          <build-configuration toolchainName="Default">
+            <make-targets>
+              <make-target>clean_with_make</make-target>
+            </make-targets>
+          </build-configuration>
+        </build-configurations>
+      </build-target>
+    </user-build-targets>
+  </component>
+</project>
