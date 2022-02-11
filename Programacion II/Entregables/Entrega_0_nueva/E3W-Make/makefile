@@ -1,5 +1,5 @@
 #opciones de compilación, muestra todos los warnings (-Wall)
-CC=gcc -Wall
+CC=gcc -DDEBUG -Wall
 #si incluye una librería estándar, en este caso la matemática (fichero libm.a)
 #todas tienen el formato de fichero libNOMBRE.a
 #y al incluirla en el compilador se pone -lNOMBRE
@@ -17,6 +17,10 @@ LIB_HEADERS = $(HEADER_FILES_DIR)/operaciones.h
 SRCS = main.c potencia.c factorial.c
 #ficheros .o: todos los .o con un análogo .c en SRCS
 OBJS = $(SRCS:.c=.o)
+
+all: $(OUTPUT)
+
+
 #REGLA 1: genera el ejecutable, dependencia de los .o
 #si no hay librerías adicionales, no existe la variable $(LIBS),
 #por lo que se elimina $(LIBS) de la regla siguiente

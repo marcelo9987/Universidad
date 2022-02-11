@@ -1,10 +1,10 @@
-"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" "D:\github\Universidad\Programacion II\Entregables\Entrega_I_nueva\E4"
--- The C compiler identification is GNU 6.3.0
+/opt/clion-2021.3.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4"
+-- The C compiler identification is GNU 9.3.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: D:/Programas_UNi/MingW/bin/gcc.exe - skipped
+-- Check for working C compiler: /usr/bin/cc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug
+-- Build files have been written to: /home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug

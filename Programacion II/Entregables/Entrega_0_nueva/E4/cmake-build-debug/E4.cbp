@@ -8,78 +8,78 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug"/>
+				<Option working_dir="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="E4">
-				<Option output="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/E4.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 E4"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="E4/fast">
-				<Option output="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/E4.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
-					<Add directory="d:\programas_uni\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 E4/fast"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug"/>
+				<Option working_dir="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Programas_UNi/MingW/bin/mingw32-make.exe -f &quot;D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="E4">
+				<Option output="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/E4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 E4"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="E4/fast">
+				<Option output="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/E4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 E4/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/progrii/CLionProjects/Universidad/Programacion\ II/Entregables/Entrega_0_nueva/E4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/main.c">
+		<Unit filename="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/main.c">
 			<Option target="E4"/>
 		</Unit>
-		<Unit filename="D:/github/Universidad/Programacion II/Entregables/Entrega_I_nueva/E4/CMakeLists.txt">
+		<Unit filename="/home/progrii/CLionProjects/Universidad/Programacion II/Entregables/Entrega_0_nueva/E4/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

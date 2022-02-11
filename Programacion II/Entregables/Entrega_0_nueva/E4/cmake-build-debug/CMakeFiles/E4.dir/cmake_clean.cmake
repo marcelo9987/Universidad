@@ -1,9 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/E4.dir/main.c.obj"
-  "E4.exe"
-  "E4.exe.manifest"
+  "CMakeFiles/E4.dir/main.c.o"
+  "CMakeFiles/E4.dir/main.c.o.d"
+  "E4"
   "E4.pdb"
-  "libE4.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

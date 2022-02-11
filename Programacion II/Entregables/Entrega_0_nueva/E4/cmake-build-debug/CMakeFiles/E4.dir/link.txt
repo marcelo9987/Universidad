@@ -1,3 +1,1 @@
-"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\E4.dir/objects.a
-D:\Programas_UNi\MingW\bin\ar.exe cr CMakeFiles\E4.dir/objects.a @CMakeFiles\E4.dir\objects1.rsp
-D:\Programas_UNi\MingW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\E4.dir/objects.a -Wl,--no-whole-archive -o E4.exe -Wl,--out-implib,libE4.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\E4.dir\linklibs.rsp
+/usr/bin/cc -g CMakeFiles/E4.dir/main.c.o -o E4 

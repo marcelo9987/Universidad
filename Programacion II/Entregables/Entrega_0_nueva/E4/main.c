@@ -25,8 +25,8 @@ float potencia(int base, int exp);
 
 int main()
 {
-    int a[4], b;
-    float c[4];
+    int a[TAMANHO], b;
+    float c[TAMANHO];
     printf("Introuzca los valores de a: ");
     for (int i = 0; i < TAMANHO; i++)
     {
@@ -34,7 +34,7 @@ int main()
     }
     printf("\nIntrouzca el valor de b: ");
     scanf("%i", &b);
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < TAMANHO; i++)
     {
         c[ i ] = potencia(a[ i ], b);
     }
