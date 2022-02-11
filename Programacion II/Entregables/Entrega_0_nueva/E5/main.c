@@ -73,7 +73,8 @@ int main(int argc, char **argv)
                     for (c = 0; c < b->columnas; c++) {
                         printf("Introduzca el valor de la posicion %dx%d: ", f + 1, c + 1);
                         scanf("%f", &valor);
-                        asignarElemento(f, c, valor, a);
+                        //asignarElemento(f, c, valor, a);
+                        asignarElemento(f, c, valor, b);
                     }
                 }
 
