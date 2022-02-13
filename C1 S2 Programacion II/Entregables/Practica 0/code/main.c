@@ -16,14 +16,17 @@
 
 #include "matriz.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
     int i, k, f, c;
+    //int f, c;
     float valor;
     matriz *a = 0, *b = 0, *aux = 0;
     char opcion, resp;
 
 
-    do {
+    do
+    {
         printf("---------------------Libreria matrices---------------------\n\n");
         printf("1-Crear matrices\n");
         printf("2-Asignar elementos\n");
@@ -35,20 +38,24 @@ int main(int argc, char** argv) {
         printf("0-Salir\n");
         printf("Opcion: ");
         scanf(" %c", opcion);
+        //scanf(" %c", &opcion);
 
-        switch (opcion) {
+        switch (opcion)
+        {
             case '0':
                 printf("Saliendo del programa\n");
                 break;
             case '1':
                 printf("Introduzca el numero de filas de la matriz 'a': ");
                 scanf("%f", &f);
+                //scanf("%d", &f);
                 printf("Introduzca el numero de columnas de la matriz 'a': ");
                 scanf("%d", &c);
                 a = crearMatriz(f, c);
 
                 printf("Introduzca el numero de filas de la matriz 'b': ");
                 scanf("%f", &f);
+                //scanf("%d", &f);
                 printf("Introduzca el numero de columnas de la matriz 'b': ");
                 scanf("%d", &c);
                 b = crearMatriz(f, c);
@@ -57,31 +64,41 @@ int main(int argc, char** argv) {
             case '2':
                 printf("Matriz A\n");
                 for (f = 0; f < a->filas; f++)
-                    for (c = 0; c < a->columnas; c++) {
+                {
+                    for (c = 0; c < a->columnas; c++)
+                    {
                         printf("Introduzca el valor de la posicion %dx%d: ", f + 1, c + 1);
                         scanf("%f", &valor);
                         asignarElemento(f, c, valor, a);
                     }
+                }
                 printf("Matriz B\n");
                 for (f = 0; f < b->filas; f++)
-                    for (c = 0; c < b->columnas; c++) {
+                {
+                    for (c = 0; c < b->columnas; c++)
+                    {
                         printf("Introduzca el valor de la posicion %dx%d: ", f + 1, c + 1);
                         scanf("%f", &valor);
                         asignarElemento(f, c, valor, a);
+                        //asignarElemento(f, c, valor, b);
                     }
+                }
 
                 break;
             case '3':
-                do {
+                do
+                {
                     printf("De que matriz quieres ver un elemento? (a/b): ");
                     scanf(" %c", &resp);
                 } while (resp != 'a' && resp != 'b');
                 printf("Introduce fila y columna (fila columna): ");
                 scanf("%d %d", &f, &c);
-                if (resp == 'a') {
+                if (resp == 'a')
+                {
                     valor = obtenerElemento(f, c, b);
                     printf("El valor de la fila y columna seleccionada es: %f\n", valor);
-                } else if (resp == 'b') {
+                } else if (resp == 'b')
+                {
                     valor = obtenerElemento(f, c, a);
                     printf("El valor de la fila y columna seleccionada es: %f\n", valor);
                 }
