@@ -1,3 +1,0 @@
-"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Ej_9.dir/objects.a
-D:\Programas_UNi\MingW\bin\ar.exe cr CMakeFiles\Ej_9.dir/objects.a @CMakeFiles\Ej_9.dir\objects1.rsp
-D:\Programas_UNi\MingW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\Ej_9.dir/objects.a -Wl,--no-whole-archive -o Ej_9.exe -Wl,--out-implib,libEj_9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Ej_9.dir\linklibs.rsp

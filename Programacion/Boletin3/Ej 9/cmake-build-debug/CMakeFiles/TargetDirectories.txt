@@ -1,3 +1,0 @@
-D:/github/Universidad/Programacion/Boletin3/Ej 9/cmake-build-debug/CMakeFiles/Ej_9.dir
-D:/github/Universidad/Programacion/Boletin3/Ej 9/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/github/Universidad/Programacion/Boletin3/Ej 9/cmake-build-debug/CMakeFiles/rebuild_cache.dir

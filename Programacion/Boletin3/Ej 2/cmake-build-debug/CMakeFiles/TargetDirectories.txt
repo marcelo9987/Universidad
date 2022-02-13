@@ -1,3 +1,0 @@
-C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 2/cmake-build-debug/CMakeFiles/Ej_2.dir
-C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Marcelo/Documents/LISTOS PARA ENTREGA/Boletin3/Ej 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

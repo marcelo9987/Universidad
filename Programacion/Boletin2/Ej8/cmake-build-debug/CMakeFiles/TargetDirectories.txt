@@ -1,3 +1,0 @@
-D:/github/Universidad/Programacion/Boletin2/Ej8/cmake-build-debug/CMakeFiles/Ej8.dir
-D:/github/Universidad/Programacion/Boletin2/Ej8/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/github/Universidad/Programacion/Boletin2/Ej8/cmake-build-debug/CMakeFiles/rebuild_cache.dir

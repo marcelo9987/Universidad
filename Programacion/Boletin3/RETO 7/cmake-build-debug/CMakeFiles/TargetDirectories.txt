@@ -1,3 +1,0 @@
-D:/github/Universidad/Programacion/Boletin3/RETO 7/cmake-build-debug/CMakeFiles/RETO_7.dir
-D:/github/Universidad/Programacion/Boletin3/RETO 7/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/github/Universidad/Programacion/Boletin3/RETO 7/cmake-build-debug/CMakeFiles/rebuild_cache.dir

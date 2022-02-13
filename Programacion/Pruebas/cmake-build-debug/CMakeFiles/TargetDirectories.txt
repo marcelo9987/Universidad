@@ -1,3 +1,0 @@
-D:/github/Universidad/Programacion/Pruebas/cmake-build-debug/CMakeFiles/Pruebas.dir
-D:/github/Universidad/Programacion/Pruebas/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/github/Universidad/Programacion/Pruebas/cmake-build-debug/CMakeFiles/rebuild_cache.dir

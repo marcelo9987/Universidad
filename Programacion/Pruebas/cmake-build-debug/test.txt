@@ -1,3 +1,0 @@
-test 1234
-tset 4321
-abc def

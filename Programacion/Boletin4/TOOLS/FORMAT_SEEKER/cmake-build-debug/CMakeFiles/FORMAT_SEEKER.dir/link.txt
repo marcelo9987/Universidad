@@ -1,3 +1,0 @@
-"D:\Programas_UNi\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\FORMAT_SEEKER.dir/objects.a
-D:\Programas_UNi\MingW\bin\ar.exe cr CMakeFiles\FORMAT_SEEKER.dir/objects.a @CMakeFiles\FORMAT_SEEKER.dir\objects1.rsp
-D:\Programas_UNi\MingW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\FORMAT_SEEKER.dir/objects.a -Wl,--no-whole-archive -o FORMAT_SEEKER.exe -Wl,--out-implib,libFORMAT_SEEKER.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\FORMAT_SEEKER.dir\linklibs.rsp
