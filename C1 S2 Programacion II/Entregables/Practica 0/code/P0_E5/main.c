@@ -19,7 +19,6 @@
 int main(int argc, char **argv)
 {
     int i, k, f, c;
-    //int f, c;
     float valor;
     matriz *a = 0, *b = 0, *aux = 0;
     char opcion, resp;
@@ -38,7 +37,6 @@ int main(int argc, char **argv)
         printf("0-Salir\n");
         printf("Opcion: ");
         scanf(" %c", opcion);
-        //scanf(" %c", &opcion);
 
         switch (opcion)
         {
@@ -48,14 +46,12 @@ int main(int argc, char **argv)
             case '1':
                 printf("Introduzca el numero de filas de la matriz 'a': ");
                 scanf("%f", &f);
-                //scanf("%d", &f);
                 printf("Introduzca el numero de columnas de la matriz 'a': ");
                 scanf("%d", &c);
                 a = crearMatriz(f, c);
 
                 printf("Introduzca el numero de filas de la matriz 'b': ");
                 scanf("%f", &f);
-                //scanf("%d", &f);
                 printf("Introduzca el numero de columnas de la matriz 'b': ");
                 scanf("%d", &c);
                 b = crearMatriz(f, c);
@@ -80,7 +76,6 @@ int main(int argc, char **argv)
                         printf("Introduzca el valor de la posicion %dx%d: ", f + 1, c + 1);
                         scanf("%f", &valor);
                         asignarElemento(f, c, valor, a);
-                        //asignarElemento(f, c, valor, b);
                     }
                 }
 

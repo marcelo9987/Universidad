@@ -17,10 +17,8 @@ matriz *crearMatriz(int filas, int columnas)
         mat->filas = filas;
         mat->columnas = columnas;
         mat->datos = (float *) malloc(filas * filas * sizeof(float));
-        //mat->datos = (float *) malloc(filas * columnas * sizeof(float));
 
         for (i = 0; i < filas * filas; i++)
-            //for (i = 0; i < filas * columnas; i++)
         {
             *((mat->datos) + i) = 0;
         }
