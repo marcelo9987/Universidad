@@ -10,7 +10,8 @@ void imprimirMatriz(matriz *M)
         {
             for (k = 0; k < M->columnas; k++)
             {
-                printf("%f ", *((M->datos) + i * M->filas + k));
+            //  printf("%f ", *((M->datos) + i * M->filas + k));
+                printf("%f ", *((M->datos) + i * M->columnas + k));
             }
             printf("\n");
         }

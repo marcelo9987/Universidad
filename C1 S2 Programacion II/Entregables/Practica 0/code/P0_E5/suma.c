@@ -18,13 +18,15 @@ matriz *suma(matriz *M1, matriz *M2)
         {
             for (k = 0; k < aux->filas; k++)
             {
-                *(aux->datos + i * aux->columnas + (k - 1)) = *(M2->datos + i * M1->columnas + (k - 1)) + *(M2->datos + i * M2->columnas + (k - 1));
+            //  *(aux->datos + i * aux->columnas + (k - 1)) = *(M2->datos + i * M1->columnas + (k - 1)) + *(M2->datos + i * M2->columnas + (k - 1));
+                *(aux->datos + i * aux->columnas + (k)) = *(M1->datos + i * M1->columnas + (k)) + *(M2->datos + i * M2->columnas + (k));
             }
         }
         return aux;
     } else
     {
         printf("Alguna de las matrices no existe\n");
+        //  Aquí no había un return
+        return 0;
     }
 }
-

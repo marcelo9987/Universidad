@@ -14,11 +14,29 @@
  *      - número de columnas igual y de filas distinto
  */
 
+/*
+ * Repuestas al apt b:
+
+¿Se está liberando correctamente la memoria en todos los casos?
+R:
+    No, he tenido que realizar los siguientes cambios:
+        Al salir del programa no se liberaba la memoria.
+        En la opcion del producto se libera dos veces la matriz "aux"
+        En la creación de matrices, no se llevaba a cabo una "preliberación" de las matrices.
+
+
+Una vez modificada la liberación de memoria, prueba a crear las matrices, destruirlas y salir del programa (opción '0').
+¿Está finalizando la ejecución de forma correcta?
+R:
+    Sí, no parece que existan errores.
+ */
+
 #include "matriz.h"
 
 int main(int argc, char **argv)
 {
-    int i, k, f, c;
+//  int i, k, f, c;
+    int f, c;
     float valor;
     matriz *a = 0, *b = 0, *aux = 0;
     char opcion, resp;
@@ -36,7 +54,8 @@ int main(int argc, char **argv)
         printf("7-Eliminar matrices\n");
         printf("0-Salir\n");
         printf("Opcion: ");
-        scanf(" %c", opcion);
+        //  scanf(" %c", opcion);
+        scanf(" %c", &opcion);
 
         switch (opcion)
         {
@@ -44,14 +63,21 @@ int main(int argc, char **argv)
                 printf("Saliendo del programa\n");
                 break;
             case '1':
+
+                // Pongo el código de la opción eliminar por si ya existen una o ambas matrices.
+                destruirMatriz(a);
+                destruirMatriz(b);
+
                 printf("Introduzca el numero de filas de la matriz 'a': ");
-                scanf("%f", &f);
+                //  scanf("%f", &f);
+                scanf("%d", &f);
                 printf("Introduzca el numero de columnas de la matriz 'a': ");
                 scanf("%d", &c);
                 a = crearMatriz(f, c);
 
                 printf("Introduzca el numero de filas de la matriz 'b': ");
-                scanf("%f", &f);
+                //  scanf("%f", &f);
+                scanf("%d", &f);
                 printf("Introduzca el numero de columnas de la matriz 'b': ");
                 scanf("%d", &c);
                 b = crearMatriz(f, c);
@@ -75,7 +101,8 @@ int main(int argc, char **argv)
                     {
                         printf("Introduzca el valor de la posicion %dx%d: ", f + 1, c + 1);
                         scanf("%f", &valor);
-                        asignarElemento(f, c, valor, a);
+                        //  asignarElemento(f, c, valor, a);
+                        asignarElemento(f, c, valor, b);
                     }
                 }
 
@@ -90,11 +117,13 @@ int main(int argc, char **argv)
                 scanf("%d %d", &f, &c);
                 if (resp == 'a')
                 {
-                    valor = obtenerElemento(f, c, b);
+                    //  valor = obtenerElemento(f, c, b);
+                    valor = obtenerElemento(f, c, a);
                     printf("El valor de la fila y columna seleccionada es: %f\n", valor);
                 } else if (resp == 'b')
                 {
-                    valor = obtenerElemento(f, c, a);
+                    //  valor = obtenerElemento(f, c, a);
+                    valor = obtenerElemento(f, c, b);
                     printf("El valor de la fila y columna seleccionada es: %f\n", valor);
                 }
                 break;
@@ -113,11 +142,15 @@ int main(int argc, char **argv)
                 aux = producto(a, b);
                 imprimirMatriz(aux);
                 destruirMatriz(aux);
-                destruirMatriz(aux);
+            //  destruirMatriz(aux); // No debemos destruír 2 veces la misma matriz
                 break;
             case '7':
                 destruirMatriz(a);
                 destruirMatriz(b);
+
+                a = NULL;
+                b = NULL; // Se ponen a NULL los punteros para saber que esas matrices ya no existen
+
                 printf("Matrices eliminadas...\n");
                 break;
             default:
@@ -125,6 +158,10 @@ int main(int argc, char **argv)
                 break;
         }
     } while (opcion != '0');
+
+    // Pongo el código de la opción eliminar por si el usuario no limpia la memoria de las matrices.
+    destruirMatriz(a);
+    destruirMatriz(b);
 
     return (EXIT_SUCCESS);
 }
