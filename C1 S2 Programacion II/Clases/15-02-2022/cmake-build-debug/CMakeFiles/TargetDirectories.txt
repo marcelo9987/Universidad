@@ -1,0 +1,3 @@
+D:/github/Universidad/C1 S2 Programacion II/Clases/15-02-2022/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/github/Universidad/C1 S2 Programacion II/Clases/15-02-2022/cmake-build-debug/CMakeFiles/15_02_2022.dir
+D:/github/Universidad/C1 S2 Programacion II/Clases/15-02-2022/cmake-build-debug/CMakeFiles/edit_cache.dir
