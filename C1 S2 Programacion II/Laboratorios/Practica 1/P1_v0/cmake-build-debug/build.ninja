@@ -74,7 +74,7 @@ build cmake_object_order_depends_target_P1_v0: phony || CMakeFiles/P1_v0.dir
 
 build CMakeFiles/P1_v0.dir/main.c.o: C_COMPILER__P1_v0_Debug /home/progrii/Universidad/C1$ S2$ Programacion$ II/Laboratorios/Practica$ 1/P1_v0/main.c || cmake_object_order_depends_target_P1_v0
   DEP_FILE = CMakeFiles/P1_v0.dir/main.c.o.d
-  FLAGS = -g -std=gnu99
+  FLAGS = -g -std=gnu11
   OBJECT_DIR = CMakeFiles/P1_v0.dir
   OBJECT_FILE_DIR = CMakeFiles/P1_v0.dir
   TARGET_COMPILE_PDB = CMakeFiles/P1_v0.dir/
