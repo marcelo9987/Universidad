@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="main.c" targetName="ejecutable" />
+      <config projectName="main.c" targetName="build_with_make" />
+      <config projectName="main.c" targetName="all" />
+      <config projectName="main.c" targetName="cleanall" />
+      <config projectName="main.c" targetName="clean_with_make" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="49289c6a-5cdf-4da0-bd26-3b8cbc0956ff" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Universidad.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/ejecutable.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/factorial.o" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/factorial.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/potencia.o" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/potencia.o" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="MakefileLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="main.c" />
+              <option name="path" value="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="Universidad" />
+                <option name="path" value="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.3" />
+  </component>
+  <component name="ProjectId" id="24eM9f6L5Iqi2I7MOueHmQIcSmc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
+  </component>
+  <component name="RunManager" selected="Custom Build Application.E3W">
+    <configuration name="E3W" type="CLionExternalRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="E3W" CONFIG_NAME="E3W" RUN_PATH="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/ejecutable">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/ejecutable">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="build_with_make" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="build_with_make" CONFIG_NAME="build_with_make" version="1" RUN_PATH="make">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean_with_make" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="clean" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="clean_with_make" CONFIG_NAME="clean_with_make" version="1" RUN_PATH="make">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cleanall" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="cleanall" CONFIG_NAME="cleanall" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ejecutable" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="ejecutable" CONFIG_NAME="ejecutable" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Custom Build Application.E3W" />
+      <item itemvalue="Makefile Application.build_with_make" />
+      <item itemvalue="Makefile Application.clean_with_make" />
+      <item itemvalue="Makefile Application.all" />
+      <item itemvalue="Makefile Application.cleanall" />
+      <item itemvalue="Makefile Application.ejecutable" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="49289c6a-5cdf-4da0-bd26-3b8cbc0956ff" name="Changes" comment="" />
+      <created>1643986450006</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1643986450006</updated>
+      <workItem from="1643986457041" duration="5000" />
+      <workItem from="1644435755001" duration="2641000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/SistemasDigitales" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.c</url>
+          <line>49</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.c</url>
+          <line>57</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.c</url>
+          <line>63</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
