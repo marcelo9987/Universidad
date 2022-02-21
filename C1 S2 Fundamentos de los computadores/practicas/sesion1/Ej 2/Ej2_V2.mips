@@ -1,0 +1,33 @@
+.data
+a: .word 305419896
+b: .word -19088744
+c: .word 0
+d:.asciiz "Hola"
+
+.text
+.globl main
+
+main:
+	la $t0,a
+	lw $a0,0($t0)
+	addi $v0,$zero,1
+	syscall
+	add $a1,$a0,$0
+
+	la $t0,b
+	lw $a0,0($t0)
+	addi $v0,$zero,1
+	syscall
+	add $a2,$a0,$0
+
+	la $t0,c
+	lw $a0,0($t0)
+	add $a0,$a1,$a2 #c =a+b
+	addi $v0,$zero,1
+
+	la $a0,d
+	addi $v0,$zero,4
+	syscall
+
+	syscall
+	addi $v0,$zero,10
