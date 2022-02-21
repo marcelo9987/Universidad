@@ -1,0 +1,13 @@
+.data
+miPalabra: .asciiz "Hola Mundo!"
+
+.text
+.globl main
+main:
+	la $a0,miPalabra
+	lw $a0, 0($a0)
+	addi $v0,$zero,4
+	syscall
+
+	addi $v0,$zero,10
+	syscall
