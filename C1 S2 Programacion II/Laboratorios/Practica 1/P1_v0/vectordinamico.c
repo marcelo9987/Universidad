@@ -34,3 +34,20 @@ void asignar(vectorD *v, short posicion,TELEMENTO valor)
 
 }
 
+int longitudVector(vectorD vector)
+{
+    return vector->tam;
+};
+
+void liberarVector(vectorD vector)
+{
+    free(vector->datos);
+    free(vector);
+}
+
+TELEMENTO recuperar(vectorD vector, short pos)
+{
+    TELEMENTO valor;
+    valor=vector->datos[pos];
+    return valor;
+}

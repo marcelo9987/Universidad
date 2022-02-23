@@ -16,4 +16,13 @@ void crear(vectorD *v,short longitud);
  * Recibe una copia de la dirección de memoria reservada para el vector v
  */
 void asignar(vectorD *v,short posicion,TELEMENTO valor);
+
+
+int longitudVector(vectorD vector);
+
+
+void liberarVector(vectorD vector);
+
+TELEMENTO recuperar(vectorD vector,short pos);
+
 #endif //P1_V0_VECTORDINAMICO_H
