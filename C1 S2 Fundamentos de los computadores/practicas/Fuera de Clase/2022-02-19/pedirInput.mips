@@ -1,0 +1,15 @@
+.data
+hola: .asciiz "Hola"
+
+.text
+.globl main
+main:
+
+la $a0,hola
+addi $v0,$zero,5
+syscall
+
+
+addi $v0,$zero,5
+
+syscall
