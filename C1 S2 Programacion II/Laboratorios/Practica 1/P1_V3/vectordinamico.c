@@ -1,5 +1,5 @@
 #include<stdlib.h>
-
+#include<stdio.h>
 
 /*Se vuelve a definir el tipo de datos que contiene el vector*/
 typedef float TELEMENTO;
@@ -20,11 +20,14 @@ void crear(vectorD *v,short longitud)
     *v = (vectorD) malloc(sizeof(STVECTOR));
     if(!*v)
     {
+        printf("ERR SIGABRT");
         abort();
     }
     (*v)->datos = (TELEMENTO*) malloc(longitud* sizeof(TELEMENTO));
     if(!(*v)->datos)
     {
+        printf("ERR SIGABRT");
+        abort();
         abort();
     }
     (*v)->tam=longitud;

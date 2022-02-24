@@ -8,32 +8,37 @@
 
 void imprimir(vectorD vector);
 
-void sumaEscalar(vectorD vector, TELEMENTO escalar,vectorD* vectorSalida);
+
+vectorD sumaEscalar(vectorD vector, TELEMENTO escalar);
 
 
-int main(int argc, char **argv) {
-    vectorD vector=NULL;/*declaramos el vector*/
-    vectorD vectSuma;
+int main(int argc, char** argv)
+{
+    vectorD vector = NULL;/*declaramos el vector*/
+    vectorD vectSuma = NULL;
     short longitud, i;/*variables tamaño y recorrido*/
     TELEMENTO valor;/*valor a introducir en el vector*/
     char opcion;/*Variable del menu*/
     bool liberado = 1;
-
-
-    if (argc > 1) {
-        longitud = argc - 1;
+    
+    
+    if (argc > 1)
+    {
+        longitud = (short) (argc - 1);
         crear(&vector, longitud);
-
-        for (int n = 0; n != longitud; n++) {
-            asignar(&vector, n, atol(argv[n + 1]));
-
+        
+        for (int n = 0; n != longitud; n++)
+        {
+            asignar(&vector, n, atol(argv[ n + 1 ]));
+            
         }
     }
-
-
+    
+    
     TELEMENTO escalar;
-
-    do {
+    
+    do
+    {
         printf("\n----------------\n");
         printf("\na)Crear vector v");
         printf("\nb)Liberar vector");
@@ -43,17 +48,20 @@ int main(int argc, char **argv) {
         printf("\n----------------\n");
         printf("\nOpcion: ");
         scanf(" %c", &opcion);//OJO: espacio antes de %c para vaciar el buffer de teclado
-        switch (opcion) {
+        switch (opcion)
+        {
             case 'a': //Crear Vector
-                if (liberado == FALSE) {
+                if (liberado == FALSE)
+                {
                     liberarVector(&vector);
-
+                    
                 }
                 printf("Longitud del vector v: ");
                 scanf("%hd", &longitud);
                 crear(&vector, longitud);
                 /*Asignar valores a v*/
-                for (i = 0; i < longitud; i++) {
+                for (i = 0; i < longitud; i++)
+                {
                     printf("vector(%i): ", i + 1);
                     scanf("%f", &valor);
                     asignar(&vector, i, valor);
@@ -70,14 +78,14 @@ int main(int argc, char **argv) {
             case 'd':
                 printf("\n Introduzca el escalar: ");
                 scanf("%f", &escalar);
-                sumaEscalar(vector, escalar,&vectSuma);
+                vectSuma=sumaEscalar(vector, escalar);
                 imprimir(vectSuma);
                 liberarVector(&vectSuma);
                 break;
             case 's':
                 printf("Saliendo del programa");
                 break;
-
+            
             default:
                 printf("ERR, opcion incorrecta");
         }
@@ -85,21 +93,27 @@ int main(int argc, char **argv) {
     return (0);
 }
 
-void imprimir(vectorD vector) {
+void imprimir(vectorD vector)
+{
     short longitud = (short) longitudVector(vector);
     printf("Los elementos del vector son: [");
-    for (short i = 0; i < longitud; i++) {
+    for (short i = 0; i < longitud; i++)
+    {
         printf("%f ", recuperar(vector, i));
     }
     printf("]\n");
 }
 
-void sumaEscalar(vectorD vector, TELEMENTO escalar,vectorD* vectorSalida) {
+vectorD sumaEscalar(vectorD vector, TELEMENTO escalar)
+{
+    vectorD vctSalida=NULL;
     short longitud = (short) longitudVector(vector);
     float aux;
-    crear(vectorSalida, longitud);
-    for (short i = 0; i < longitud; i++) {
+    crear(&vctSalida, longitud);
+    for (short i = 0; i < longitud; i++)
+    {
         aux = recuperar(vector, i) + escalar;
-        asignar(vectorSalida, i, aux);
+        asignar(&vctSalida, i, aux);
     }
+    return vctSalida;
 }
