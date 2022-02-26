@@ -20,14 +20,13 @@ void crear(vectorD *v,short longitud)
     *v = (vectorD) malloc(sizeof(STVECTOR));
     if(!*v)
     {
-        printf("ERR SIGABRT");
+        printf("ERR SIGABRT 001");
         abort();
     }
     (*v)->datos = (TELEMENTO*) malloc(longitud* sizeof(TELEMENTO));
     if(!(*v)->datos)
     {
-        printf("ERR SIGABRT");
-        abort();
+        printf("ERR SIGABRT 002");
         abort();
     }
     (*v)->tam=longitud;
@@ -59,6 +58,9 @@ void liberarVector(vectorD *vector)
         free((*vector)->datos);
         }
         free(vector);
+    }else if(*vector==NULL)
+    {
+        printf("CRITICAL ERROR:: NO arr TO FREE 003\n");
     }
 }
 

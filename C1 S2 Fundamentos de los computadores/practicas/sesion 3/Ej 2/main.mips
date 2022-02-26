@@ -1,0 +1,29 @@
+.data
+     s1: .space 5
+     s2: .asciiz "Hola"
+
+.text
+.globl main
+main:
+	la  $a0,s1
+	la $t3,s2 # cargamos las direcciones
+
+	lb $t2,3($t3) # cargo la h  
+	sb $t2,0($a0) # guardo la h
+
+	lb $t2,2($t3)
+	sb $t2,1($a0)
+
+	lb $t2,1($t3)
+	sb $t2,2($a0)
+
+	lb $t2,0($t3)
+	sb $t2,3($a0)
+
+	sb $0,4($a0)
+
+
+
+
+	addi $v0,$0,4
+	syscall

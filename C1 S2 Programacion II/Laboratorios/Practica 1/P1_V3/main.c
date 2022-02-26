@@ -29,7 +29,7 @@ int main(int argc, char** argv)
         
         for (int n = 0; n != longitud; n++)
         {
-            asignar(&vector, n, atol(argv[ n + 1 ]));
+            asignar(&vector, (short)n, (TELEMENTO)atol(argv[ n + 1 ]));
             
         }
     }
@@ -117,3 +117,10 @@ vectorD sumaEscalar(vectorD vector, TELEMENTO escalar)
     }
     return vctSalida;
 }
+
+/*
+ * Registro de errores
+ * Error 1: Fallo en asignación de vector
+ * Error 2: Fallo en asignación de elementos
+ * Error 3: Fallo de liberación
+ */
