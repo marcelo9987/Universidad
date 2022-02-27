@@ -60,6 +60,7 @@ int main(int argc, char **argv)
                 break;
             case 'b':
                 liberar(&vector);
+				printf("DEBUG (62) :: Liberado");
                 break;
             case 'c':
 
@@ -134,4 +135,8 @@ vectorD sumaEscalar(vectorD vector, TELEMENTO escalar)
  * Registro de errores
  * Error 1: Fallo en asignación de vector
  * Error 2: Fallo en asignación de elementos
+ * Error 3: Fallo en la liberación de vector
+ * Error 4: Fallo en la lectura de lector
+ * Error 5: Posición incorrecta
+ * Error 6: Fallo en lectura de vector: No existe
  */
