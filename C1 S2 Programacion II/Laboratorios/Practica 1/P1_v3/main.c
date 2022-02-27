@@ -68,6 +68,7 @@ int main(int argc, char **argv)
                 printf("\n");
                 break;
             case 'd':
+
                 printf("\n Introduzca el escalar: ");
                 scanf("%f", &escalar);
                 vectSuma = sumaEscalar(vector, escalar);
@@ -99,12 +100,15 @@ int main(int argc, char **argv)
 void imprimir(vectorD vector)
 {
     short longitud = longitudVector(vector);
-    printf("[");
-    for (short i = 0; i < longitud; i++)
+    if (longitud != 0)
     {
-        printf("%f ", recuperar(vector, i));
+        printf("[");
+        for (short i = 0; i < longitud; i++)
+        {
+            printf("%.1f ", recuperar(vector, i));
+        }
+        printf("]");
     }
-    printf("]");
 }
 
 vectorD sumaEscalar(vectorD vector, TELEMENTO escalar)

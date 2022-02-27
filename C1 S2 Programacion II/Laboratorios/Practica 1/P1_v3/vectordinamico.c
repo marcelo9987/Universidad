@@ -89,7 +89,7 @@ short longitudVector(vectorD vector)
 {
     if (vector == NULL)
     {
-        printf("WARNING :: longitudVector(): NO SUCH vector 006\n");
+        printf("\nWARNING :: longitudVector(): NO SUCH vector 006\n");
         return 0;
     } else
     {
