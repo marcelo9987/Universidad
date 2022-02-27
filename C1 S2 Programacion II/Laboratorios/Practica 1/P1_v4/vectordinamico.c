@@ -9,7 +9,7 @@ typedef struct
 {
     TELEMENTO *datos;/*valores del vector*/
     short tam;/*tamaño del vector*/
-}STVECTOR;/*definición dek  tipo de datos estructura*/
+}STVECTOR;/*definición del tipo de datos estructura*/
 typedef STVECTOR *vectorD;/*puntero a estructura*/
 
 /*Funciones con manipulación de datos*/
@@ -44,12 +44,9 @@ void asignar(vectorD *v, short posicion,TELEMENTO valor)
 
 }
 
-int longitudVector(vectorD vector)
-{
-    return vector->tam;
-}
 
-void liberarVector(vectorD *vector)
+
+void liberar(vectorD *vector)
 {
     if(*vector!=NULL)
     {
@@ -69,4 +66,8 @@ TELEMENTO recuperar(vectorD vector, short pos)
     TELEMENTO valor;
     valor=vector->datos[pos];
     return valor;
+}
+short longitudVector(vectorD vector)
+{
+    return vector->tam;
 }
