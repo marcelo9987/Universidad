@@ -37,4 +37,7 @@ $(OUTPUT): $(OBJS)
 
 # REGLA 3: borra el ejecutable (prerrequisito: clean)
 cleanall: clean
-	rm   -f $(OUTPUT)
+	rm -f $(OUTPUT)
+
+clean:
+	rm -f *.o
