@@ -1,15 +1,9 @@
 #ifndef COLA_H
 #define COLA_H
-#include "lista.h"
 
-#define MAX_NAME_LENGTH 20
+/** Definicion del tipo de elemento almacenado en la cola **/
+typedef int TIPOELEMENTOCOLA;
 
-/** Definición del tipo de elemento almacenado en la cola **/
-typedef struct
-{
-    char nombrePaciente[MAX_NAME_LENGTH];
-    TLISTA listaVacunas;
-}TIPOELEMENTOCOLA;
 
 /** Estructura para la cola **/
 typedef void *TCOLA;
