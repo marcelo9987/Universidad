@@ -103,4 +103,3 @@ void suprimirElementoLista(TLISTA *l, TPOSICION p);
 void modificarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e);
 
 #endif    // LISTA_H
-

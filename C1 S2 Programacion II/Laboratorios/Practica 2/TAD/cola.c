@@ -1,23 +1,29 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "../TAD/lista.h"
+
 
 /** Definicion del tipo de elemento almacenado en la cola **/
-typedef int TIPOELEMENTOCOLA;
-
+typedef struct
+{
+    char nombrePaciente[MAX_NAME_LENGTH];
+    TLISTA listaVacunas;
+} TIPOELEMENTOCOLA;
 /** Estructura  para cada nodo de la cola **/
+typedef void* TCOLA;
 typedef struct nodoCola
 {
     TIPOELEMENTOCOLA dato;
-    struct nodoCola *sig;
+    struct nodoCola* sig;
 } STNODOCOLA;
 
 /** Estructura para la cola **/
 typedef struct
 {
-    STNODOCOLA *principio;
-    STNODOCOLA *final;
+    STNODOCOLA* principio;
+    STNODOCOLA* final;
 } STCOLA;
-typedef STCOLA *TCOLA;
+typedef STCOLA* TCOLA;
 
 
 /**
@@ -25,7 +31,7 @@ typedef STCOLA *TCOLA;
  *
  * @param q puntero a la cola a crear.
  */
-void crearCola(TCOLA *q)
+void crearCola(TCOLA* q)
 {
     *q = (TCOLA) malloc(sizeof(STCOLA));
     (*q)->final = NULL;
@@ -49,7 +55,7 @@ int esColaVacia(TCOLA q)
  * @param q cola de la cual extraer el primer elemento.
  * @param e variable donde almacenar el primer elemento de la cola.
  */
-void consultarPrimerElementoCola(TCOLA q, TIPOELEMENTOCOLA *e)
+void consultarPrimerElementoCola(TCOLA q, TIPOELEMENTOCOLA* e)
 {
     if (esColaVacia(q))
     {
@@ -65,9 +71,9 @@ void consultarPrimerElementoCola(TCOLA q, TIPOELEMENTOCOLA *e)
  *
  * @param q cola de la cual destruir el primer elemento.
  */
-void suprimirElementoCola(TCOLA *q)
+void suprimirElementoCola(TCOLA* q)
 {
-    STNODOCOLA *aux;
+    STNODOCOLA* aux;
 
     if (esColaVacia(*q))
     {
@@ -90,11 +96,11 @@ void suprimirElementoCola(TCOLA *q)
  * @param q cola a la cual anhadirle el elemento.
  * @param e elemento a anhadir.
  */
-void anadirElementoCola(TCOLA *q, TIPOELEMENTOCOLA e)
+void anadirElementoCola(TCOLA* q, TIPOELEMENTOCOLA e)
 {
-    STNODOCOLA *aux;
+    STNODOCOLA* aux;
 
-    aux = (STNODOCOLA *) malloc(sizeof(STNODOCOLA));
+    aux = (STNODOCOLA*) malloc(sizeof(STNODOCOLA));
     aux->dato = e;
     aux->sig = NULL;
 
@@ -113,7 +119,7 @@ void anadirElementoCola(TCOLA *q, TIPOELEMENTOCOLA e)
  *
  * @param q cola a destruir.
  */
-void destruirCola(TCOLA *q)
+void destruirCola(TCOLA* q)
 {
     while (!esColaVacia(*q))
     { //mientras que no esta vacia

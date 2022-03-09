@@ -8,16 +8,14 @@ typedef int TIPOELEMENTOLISTA;
 ///////////////////////////////////////////////////
 
 /** Estructura para un nodo de la lista **/
-typedef struct nodoLista
-{
+typedef struct nodoLista {
     TIPOELEMENTOLISTA elemento;
     struct nodoLista *sig;
 } STNODOLISTA;
 typedef STNODOLISTA *TPOSICION;
 
 /** Estructura para la lista **/
-typedef struct
-{
+typedef struct {
     TPOSICION inicio;
     int longitud;
     TPOSICION fin;
@@ -29,8 +27,7 @@ typedef STLISTA *TLISTA;
  *
  * @param q puntero a la lista a crear.
  */
-void crearLista(TLISTA *l)
-{
+void crearLista(TLISTA *l) {
     *l = (TLISTA) malloc(sizeof(STLISTA));
     (*l)->inicio = (TPOSICION) malloc(sizeof(STNODOLISTA));
     (*l)->inicio->sig = NULL;
@@ -43,11 +40,9 @@ void crearLista(TLISTA *l)
  *
  * @param l puntero a la lista a destruir.
  */
-void destruirLista(TLISTA *l)
-{
+void destruirLista(TLISTA *l) {
     (*l)->fin = (*l)->inicio;
-    while ((*l)->fin != NULL)
-    {
+    while ((*l)->fin != NULL) {
         (*l)->fin = (*l)->fin->sig;
         free((*l)->inicio);
         (*l)->inicio = (*l)->fin;
@@ -61,8 +56,7 @@ void destruirLista(TLISTA *l)
  * @param l lista a comprobar si esta vacia.
  * @return 1 si la lista esta vacia, 0 en otro caso.
  */
-int esListaVacia(TLISTA l)
-{
+int esListaVacia(TLISTA l) {
     return (l->longitud == 0);
 }
 
@@ -72,8 +66,7 @@ int esListaVacia(TLISTA l)
  * @param l lista de la cual recuperar la primera posicion.
  * @return la primera posicion tipo [TPOSICION] de la lista [l].
  */
-TPOSICION primeroLista(TLISTA l)
-{
+TPOSICION primeroLista(TLISTA l) {
     return l->inicio;
 }
 
@@ -83,8 +76,7 @@ TPOSICION primeroLista(TLISTA l)
  * @param l lista de la cual recuperar su final.
  * @return la posicion del fin tipo [TPOSICION] de la lista [l].
  */
-TPOSICION finLista(TLISTA l)
-{
+TPOSICION finLista(TLISTA l) {
     return l->fin;
 }
 
@@ -95,8 +87,7 @@ TPOSICION finLista(TLISTA l)
  * @param p posicion referencia para devolver la siguiente.
  * @return la posicion siguiente a [p].
  */
-TPOSICION siguienteLista(TLISTA l, TPOSICION p)
-{
+TPOSICION siguienteLista(TLISTA l, TPOSICION p) {
     return p->sig;
 }
 
@@ -107,8 +98,7 @@ TPOSICION siguienteLista(TLISTA l, TPOSICION p)
  * @param p posicion de la cual recuperar el elemento.
  * @param e puntero a la variable en la cual almacenar el elemento recuperado.
  */
-void recuperarElementoLista(TLISTA l, TPOSICION p, TIPOELEMENTOLISTA *e)
-{
+void recuperarElementoLista(TLISTA l, TPOSICION p, TIPOELEMENTOLISTA *e){
     *e = p->sig->elemento;
 }
 
@@ -118,8 +108,7 @@ void recuperarElementoLista(TLISTA l, TPOSICION p, TIPOELEMENTOLISTA *e)
  * @param l lista de la cual consultar la longitud.
  * @return entero con el valor de la longitud de la lista.
  */
-int longitudLista(TLISTA l)
-{
+int longitudLista(TLISTA l) {
     return l->longitud;
 }
 
@@ -130,14 +119,12 @@ int longitudLista(TLISTA l)
  * @param p posicion despues de la cual se insertara el elemento.
  * @param e elemento a insertar.
  */
-void insertarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e)
-{
+void insertarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e){
     TPOSICION q = p->sig;
     p->sig = (STNODOLISTA *) malloc(sizeof(STNODOLISTA));
     p->sig->elemento = e;
     p->sig->sig = q;
-    if (q == NULL)
-    {
+    if (q == NULL) {
         (*l)->fin = p->sig;
     }
     (*l)->longitud++;
@@ -149,14 +136,12 @@ void insertarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e)
  * @param l puntero a la lista de la que se suprimira el elemento.
  * @param p posicion del elemento a suprimir.
  */
-void suprimirElementoLista(TLISTA *l, TPOSICION p)
-{
+void suprimirElementoLista(TLISTA *l, TPOSICION p){
     TPOSICION q;
 
     q = p->sig;
     p->sig = q->sig;
-    if (p->sig == NULL)
-    {
+    if (p->sig == NULL) {
         (*l)->fin = p;
     }
     free(q);
@@ -170,7 +155,6 @@ void suprimirElementoLista(TLISTA *l, TPOSICION p)
  * @param p posicion del valor que se va a modificar.
  * @param e nuevo valor a guardar en la posicion [p].
  */
-void modificarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e)
-{
+void modificarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e){
     p->sig->elemento = e;
 }
