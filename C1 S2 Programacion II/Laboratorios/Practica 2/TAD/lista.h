@@ -1,9 +1,15 @@
 #ifndef LISTA_H
 #define LISTA_H
+#define MAX_NAME_LENGTH 30
 
 /** Definicion del tipo de elemento almacenado en la lista **/
 // Definir el struct
-typedef int TIPOELEMENTOLISTA;
+typedef struct
+{
+    char nombreVacuna[MAX_NAME_LENGTH];
+    short kMaxDosage;
+    short Administered_Doses;
+}TIPOELEMENTOLISTA;
 
 ///////////////////////////////////////////////////
 

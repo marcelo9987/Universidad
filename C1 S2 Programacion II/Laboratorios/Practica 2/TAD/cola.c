@@ -7,7 +7,7 @@
 typedef struct
 {
     char nombrePaciente[MAX_NAME_LENGTH];
-    TLISTA listaVacunas;
+    TLISTA vaccineList;
 } TIPOELEMENTOCOLA;
 /** Estructura  para cada nodo de la cola **/
 typedef void* TCOLA;
