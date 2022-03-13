@@ -8,6 +8,8 @@ typedef struct
     char nombreVacunodromo[MAX_NOMBREVACUNODROMO_LEN];
     int numPacientesCola;
     TCOLA pacientes;
-}VACUNODROMO;
+} VACUNODROMO;
 
-void createVacunodromo(VACUNODROMO* vac1,char location[MAX_NAME_LENGTH]);
+typedef VACUNODROMO* PVACUNODROMO;
+
+void crear_vacunodromo(VACUNODROMO* vacunodromo, char nombreVacunodromo[]);

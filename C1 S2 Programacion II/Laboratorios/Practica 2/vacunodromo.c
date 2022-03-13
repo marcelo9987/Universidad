@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 //#include "./vacunodromo.h"
@@ -15,21 +17,35 @@ typedef struct
     TCOLA pacientes;
 } VACUNODROMO;
 
-/*
-void createVacunodromo(vacunodromo* vac1, char location[NAME_MAX_LENGTH])
+typedef VACUNODROMO* PVACUNODROMO;
+
+
+void crear_vacunodromo(PVACUNODROMO* vacunodromo, char nombreVacunodromo[])
 {
-    if (!vac1)
+    * vacunodromo = (PVACUNODROMO) malloc(sizeof(VACUNODROMO));
+
+    strcpy((* vacunodromo)->nombreVacunodromo, nombreVacunodromo);
+    (* vacunodromo)->numPacientesCola = 0;
+    crearCola((* vacunodromo)->pacientes);
+}
+
+
+void destruir_paciente(PVACUNODROMO* vacunodromo)
+{
+    suprimirElementoCola((* vacunodromo)->pacientes);
+    --(* vacunodromo)->numPacientesCola;
+}
+
+void destruir_vacunodromo(PVACUNODROMO* vacunodromo)
+{
+
+    while ((* vacunodromo)->numPacientesCola != 0)
     {
-        destruirCola(vac1->pacientes);
-        free (vac1);
+        destruir_paciente((* vacunodromo)->pacientes);
     }
-    vac1 = (vacunodromo*) malloc(sizeof(vacunodromo));
-}
+    destruirCola((* vacunodromo)->pacientes);
 
-void removeVacunodromo(vacunodromo* vac1)
-{
-    destruirCola(vac1->pacientes);
-    free (vac1);
+    free (*vacunodromo);
+    *vacunodromo = NULL;
 
 }
-*/
