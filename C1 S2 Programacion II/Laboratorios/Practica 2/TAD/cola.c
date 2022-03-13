@@ -1,16 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../TAD/lista.h"
+//TODO ¿Se puede incluír cola.h?
+//#error .
 
+#define MAX_NOMBREPACIENTE_LEN 50
 
-/** Definicion del tipo de elemento almacenado en la cola **/
+/** Definición del tipo de elemento almacenado en la cola **/
 typedef struct
 {
-    char nombrePaciente[MAX_NAME_LENGTH];
-    TLISTA vaccineList;
-} TIPOELEMENTOCOLA;
+    char nombrePaciente[MAX_NOMBREPACIENTE_LEN];
+    TLISTA listaVacunas;
+}TIPOELEMENTOCOLA;
+
 /** Estructura  para cada nodo de la cola **/
-typedef void* TCOLA;
+
 typedef struct nodoCola
 {
     TIPOELEMENTOCOLA dato;

@@ -1,9 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX_NOMBREVACUNA_LEN 30
+
 /** Definicion del tipo de elemento almacenado en la lista **/
 // Definir el struct
-typedef int TIPOELEMENTOLISTA;
+typedef struct
+{
+    char nombreVacuna[MAX_NOMBREVACUNA_LEN];
+    short numMaxDosis;
+    short numDosisAdministradas;
+}TIPOELEMENTOLISTA;
 
 ///////////////////////////////////////////////////
 
