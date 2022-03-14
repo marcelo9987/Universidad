@@ -1,19 +1,51 @@
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-#include "./vacunodromo.h"
 
-void createVacunodromo(vacunodromo* vac1, char location[NAME_MAX_LENGTH])
+//#include "./vacunodromo.h"
+//TODO ¿Puedo usar vacunodromo.h?
+//#error .
+
+#include "./TAD/cola.h"
+
+#define MAX_NOMBREVACUNODROMO_LEN 40
+
+typedef struct
 {
-    if (!vac1)
-    {
-        destruirCola(vac1->pacientes);
-        free (vac1);
-    }
-    vac1 = (vacunodromo*) malloc(sizeof(vacunodromo));
+    char nombreVacunodromo[MAX_NOMBREVACUNODROMO_LEN];
+    int numPacientesCola;
+    TCOLA pacientes;
+} VACUNODROMO;
+
+typedef VACUNODROMO* PVACUNODROMO;
+
+
+void crear_vacunodromo(PVACUNODROMO* vacunodromo, char nombreVacunodromo[])
+{
+    * vacunodromo = (PVACUNODROMO) malloc(sizeof(VACUNODROMO));
+
+    strcpy((* vacunodromo)->nombreVacunodromo, nombreVacunodromo);
+    (* vacunodromo)->numPacientesCola = 0;
+    crearCola((* vacunodromo)->pacientes);
 }
 
-void removeVacunodromo(vacunodromo* vac1)
+
+void destruir_paciente(PVACUNODROMO* vacunodromo)
 {
-    destruirCola(vac1->pacientes);
-    free (vac1);
+    suprimirElementoCola((* vacunodromo)->pacientes);
+    --(* vacunodromo)->numPacientesCola;
+}
+
+void destruir_vacunodromo(PVACUNODROMO* vacunodromo)
+{
+
+    while ((* vacunodromo)->numPacientesCola != 0)
+    {
+        destruir_paciente((* vacunodromo)->pacientes);
+    }
+    destruirCola((* vacunodromo)->pacientes);
+
+    free (*vacunodromo);
+    *vacunodromo = NULL;
 
 }

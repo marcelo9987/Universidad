@@ -1,11 +1,15 @@
-#define NAME_MAX_LENGTH 32
-#include "./TAD/lista.h"
+//#include "./TAD/lista.h"
 #include "./TAD/cola.h"
+
+#define MAX_NOMBREVACUNODROMO_LEN 40
 
 typedef struct
 {
-    char nombreVacunodromo[NAME_MAX_LENGTH];
-    int numeroPacientes;
+    char nombreVacunodromo[MAX_NOMBREVACUNODROMO_LEN];
+    int numPacientesCola;
     TCOLA pacientes;
-}vacunodromo;
-void createVacunodromo(vacunodromo* vac1,char location[MAX_NAME_LENGTH]);
+} VACUNODROMO;
+
+typedef VACUNODROMO* PVACUNODROMO;
+
+void crear_vacunodromo(VACUNODROMO* vacunodromo, char nombreVacunodromo[]);
