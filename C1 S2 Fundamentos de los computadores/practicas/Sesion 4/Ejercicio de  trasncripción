@@ -1,0 +1,32 @@
+.data:
+
+vector: .word 8,4,3,5,9
+tamanho: .word 5
+suma: .word 0
+
+.text
+.globl main
+main:
+
+la $s0,vector
+la $s1,tamanho
+la $s2,suma
+lw $s2,0($s2)
+
+addi $s4 ,$0,0 #este va a ser el contador
+addi $s5,$0,16 #número a ser comparado
+
+
+IN_BUCL:
+lw $t0,0($s0)
+add $s2,$s2,$t0
+addi $s0,$s0,4
+addi $s4,$s4,1
+bne $s0,$s1,IN_BUCL
+
+add $a0,$zero,$s2
+addi $v0,$0,1
+syscall
+
+addi $v0,10
+syscall 
