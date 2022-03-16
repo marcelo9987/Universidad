@@ -12,4 +12,12 @@ typedef struct
 
 typedef VACUNODROMO* PVACUNODROMO;
 
-void crear_vacunodromo(VACUNODROMO* vacunodromo, char nombreVacunodromo[]);
+void crear_vacunodromo(PVACUNODROMO* vacunodromo, char nombreVacunodromo[]);
+
+void destruir_paciente(PVACUNODROMO* vacunodromo);
+
+void destruir_vacunodromo(PVACUNODROMO* vacunodromo);
+
+void anadir_paciente(PVACUNODROMO* vacunodromo);
+
+

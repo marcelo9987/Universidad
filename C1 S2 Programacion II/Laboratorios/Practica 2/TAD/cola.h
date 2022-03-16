@@ -1,7 +1,5 @@
 #ifndef COLA_H
 #define COLA_H
-//TODO ¿Incluyo lista.h? ¿Puedo inlcuir cola.h?
-//#error .
 
 #include "lista.h"
 

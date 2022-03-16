@@ -87,7 +87,7 @@ int longitudLista(TLISTA l);
  * Inserta el elemento [e] en la posicion siguiente a la posicion [p] de la lista [l].
  *
  * @param l puntero a la lista en la cual se va a insertar el elemento.
- * @param p posicion despues de la cual se insertara el elemento.
+ * @param p posición después de la cual se insertara el elemento.
  * @param e elemento a insertar.
  */
 void insertarElementoLista(TLISTA *l, TPOSICION p, TIPOELEMENTOLISTA e);

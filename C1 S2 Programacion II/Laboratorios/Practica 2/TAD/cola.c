@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../TAD/lista.h"
-//TODO ¿Se puede incluír cola.h?
-//#error .
 
 #define MAX_NOMBREPACIENTE_LEN 50
 
