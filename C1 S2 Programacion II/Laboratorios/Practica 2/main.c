@@ -23,7 +23,7 @@ void menu()
     char sel ='\0';
     do
     {
-        printf("                MENU VACUNÓDROMO\n");
+        printf("\n                MENU VACUNÓDROMO\n");
         printf("Opciones:\n");
         printf("1. Añadir paciente\n");
         printf("2. Vacunar siguiente paciente\n");
