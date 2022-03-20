@@ -23,24 +23,29 @@ void crear_vacunodromo(PVACUNODROMO* vacunodromo, char nombreVacunodromo[])
 
     strcpy((* vacunodromo)->nombreVacunodromo, nombreVacunodromo);
     (* vacunodromo)->numPacientesCola = 0;
-    crearCola(&(* vacunodromo)->pacientes);
+    crearCola(& (* vacunodromo)->pacientes);
 }
 
 
 void destruir_paciente(PVACUNODROMO* vacunodromo)
 {
-    suprimirElementoCola((* vacunodromo)->pacientes);
+    TIPOELEMENTOCOLA primeroCola;
+    consultarPrimerElementoCola((*vacunodromo)->pacientes, &primeroCola);
+    destruirLista(&primeroCola.listaVacunas);
+
+    suprimirElementoCola(& (* vacunodromo)->pacientes);
     --(* vacunodromo)->numPacientesCola;
 }
 
 void destruir_vacunodromo(PVACUNODROMO* vacunodromo)
 {
 
-    while ((* vacunodromo)->numPacientesCola != 0)
+    while (esColaVacia((* vacunodromo)->pacientes) == false)
     {
-        destruir_paciente((* vacunodromo)->pacientes);
+        destruir_paciente(vacunodromo);
     }
-    destruirCola((* vacunodromo)->pacientes);
+
+    destruirCola(& (* vacunodromo)->pacientes);
 
     free(* vacunodromo);
     * vacunodromo = NULL;
@@ -57,6 +62,7 @@ void anadir_paciente(PVACUNODROMO* vacunodromo)
     scanf("%s", paciente.nombrePaciente);
 
     crearLista(& paciente.listaVacunas);
+
     do
     {
         bool nombreErroneo;
@@ -78,12 +84,54 @@ void anadir_paciente(PVACUNODROMO* vacunodromo)
         if (strcmp(vacuna.nombreVacuna, "fin") != 0)
         {
             printf("Introduzca el numero maximo de dosis: ");
-            scanf("%hd",&vacuna.numMaxDosis);
+            scanf("%hd", & vacuna.numMaxDosis);
             vacuna.numDosisAdministradas = 0;
-            insertarElementoLista(paciente.listaVacunas, finLista(paciente.listaVacunas), vacuna);
+            insertarElementoLista(& paciente.listaVacunas, finLista(paciente.listaVacunas), vacuna); // + &
         }
     } while (strcmp(vacuna.nombreVacuna, "fin") != 0);  //mientras que strcmp sea distinto de 0(Distinta cadena)
-
-    anadirElementoCola(&(*vacunodromo)->pacientes,paciente);
+    anadirElementoCola(& (* vacunodromo)->pacientes, paciente);
     ++(* vacunodromo)->numPacientesCola;
+    //printf("DEBUG : %i", longitudLista(paciente.listaVacunas));
+}
+
+void imprimir_paciente(PVACUNODROMO vacunodromo)
+{
+    if (vacunodromo != NULL)
+    {
+        TIPOELEMENTOCOLA paciente1;
+
+        consultarPrimerElementoCola((* vacunodromo).pacientes, & paciente1);
+        printf("Paciente: %s \n", paciente1.nombrePaciente);
+        printf("Vacunas: \n");
+
+        int i = 0;
+        int max;
+
+        max = longitudLista(paciente1.listaVacunas);
+        TPOSICION pos = primeroLista(paciente1.listaVacunas);
+
+        TIPOELEMENTOLISTA vacunas;
+        do
+        {
+
+            recuperarElementoLista(paciente1.listaVacunas, pos, & vacunas);
+            printf("    Vacuna: %s\n", vacunas.nombreVacuna);
+            printf("    Maximas dosis: %hi\n", vacunas.numMaxDosis);
+            printf("    Dosis administradas: %hi\n \n", vacunas.numDosisAdministradas);
+            ++i;
+
+            pos = siguienteLista(paciente1.listaVacunas, pos);
+
+        } while (i < max);
+    } else
+    {
+        printf("El vacunódromo seleccionado no existe");
+    }
+}
+
+void imprimir(PVACUNODROMO vacunodromo)
+{
+    printf(" Pacientes restantes: %i\n", vacunodromo->numPacientesCola);
+    printf("Primer paciente en cola: \n");
+    imprimir_paciente(vacunodromo);
 }

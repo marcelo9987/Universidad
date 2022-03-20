@@ -21,3 +21,6 @@ void destruir_vacunodromo(PVACUNODROMO* vacunodromo);
 void anadir_paciente(PVACUNODROMO* vacunodromo);
 
 
+void imprimir(PVACUNODROMO vacunodromo);
+
+void imprimir_paciente(PVACUNODROMO vacunodromo);

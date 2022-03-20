@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "./TAD/cola.h"
 #include "./TAD/lista.h"
 #include "vacunodromo.h"
@@ -17,38 +18,42 @@ void menu()
 {
     /****/
     PVACUNODROMO vacunodromo;
-    crear_vacunodromo(&vacunodromo, "casaMarcelo");
+    crear_vacunodromo(& vacunodromo, "casaMarcelo");
     /****/
-    printf("                MENU VACUNÓDROMO");
-    printf("Opciones:\n");
-    printf("1. Añadir paciente\n");
-    printf("2. Vacunar siguiente paciente\n");
-    printf("3. Imprimir vacunódromo\n");
-    printf("4. Salir\n\n");
-
-    printf("Selección: ");
-
-    char sel;
-    scanf("%c", & sel);
-
-    switch (sel)
+    char sel ='\0';
+    do
     {
-        case '1':
-            anadir_paciente(&vacunodromo);
-            break;
+        printf("                MENU VACUNÓDROMO\n");
+        printf("Opciones:\n");
+        printf("1. Añadir paciente\n");
+        printf("2. Vacunar siguiente paciente\n");
+        printf("3. Imprimir vacunódromo\n");
+        printf("4. Salir\n\n");
 
-        case '2':
+        printf("Selección: ");
+
+
+        scanf(" %c", & sel);
+
+        switch (sel)
+        {
+            case '1':
+                anadir_paciente(& vacunodromo);
+                break;
+
+            case '2':
 //            vacunar_paciente();
-            break;
+                break;
 
-        case '3':
-//           imprimir();
-            break;
+            case '3':
+                imprimir(vacunodromo);
+                break;
 
-        case '4':
-//            salir(&prueba);
-            break;
-        default:
-            break;
-    }
+            case '4':
+                destruir_vacunodromo (&vacunodromo);
+                break;
+            default:
+                break;
+        }
+    } while (sel != '4');
 }
