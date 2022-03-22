@@ -3,19 +3,22 @@
 #include "./TAD/cola.h"
 #include "./TAD/lista.h"
 #include "vacunodromo.h"
-
+#include <locale.h>
+#include <wchar.h>
 VACUNODROMO prueba;
 
 void menu();
 
 int main()
 {
+    setlocale(LC_ALL,"");
     menu();
     return 0;
 }
 
 void menu()
 {
+
     /****/
     PVACUNODROMO vacunodromo;
     crear_vacunodromo(& vacunodromo, "casaMarcelo");
@@ -23,14 +26,14 @@ void menu()
     char sel ='\0';
     do
     {
-        printf("\n                MENU VACUNÓDROMO\n");
-        printf("Opciones:\n");
-        printf("1. Añadir paciente\n");
-        printf("2. Vacunar siguiente paciente\n");
-        printf("3. Imprimir vacunódromo\n");
-        printf("4. Salir\n\n");
+        wprintf(L"\n                MENU VACUNÓDROMO\n");
+        wprintf(L"Opciones:\n");
+        wprintf(L"1. Añadir paciente\n");
+        wprintf(L"2. Vacunar siguiente paciente\n");
+        wprintf(L"3. Imprimir vacunódromo\n");
+        wprintf(L"4. Salir\n\n");
 
-        printf("Selección: ");
+        wprintf(L"Selección: ");
 
 
         scanf(" %c", & sel);
