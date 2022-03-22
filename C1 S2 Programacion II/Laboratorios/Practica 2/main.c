@@ -5,58 +5,63 @@
 #include "vacunodromo.h"
 #include <locale.h>
 #include <wchar.h>
-VACUNODROMO prueba;
 
 void menu();
 
 int main()
 {
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL, "");
     menu();
     return 0;
 }
 
 void menu()
 {
-
     /****/
+    char nombreVacunodromo[MAX_NOMBREVACUNODROMO_LEN];
     PVACUNODROMO vacunodromo;
-    crear_vacunodromo(& vacunodromo, "casaMarcelo");
+    wprintf(L"Introduce el nombre del vacunódromo(Se aceptan caracteres especiales): ");
+    wscanf(L"%[^\n]s", nombreVacunodromo);
+//    wprintf(L"%s",nombreVacunodromo);
     /****/
-    char sel ='\0';
+
+    crear_vacunodromo(& vacunodromo, nombreVacunodromo);
+
+
+    char sel = '\0';
     do
     {
-        wprintf(L"\n                MENU VACUNÓDROMO\n");
+        wprintf(L"\n                Vacunódromo %s\n", nombreVacunodromo);
         wprintf(L"Opciones:\n");
-        wprintf(L"1. Añadir paciente\n");
+        wprintf(L"1. Imprimir vacunódromo\n");
         wprintf(L"2. Vacunar siguiente paciente\n");
-        wprintf(L"3. Imprimir vacunódromo\n");
-        wprintf(L"4. Salir\n\n");
+        wprintf(L"3. Añadir paciente\n");
+        wprintf(L"0. Salir\n");
 
         wprintf(L"Selección: ");
+        wscanf(L" %c", & sel);
 
-
-        scanf(" %c", & sel);
-
+        wprintf(L"\n");
         switch (sel)
         {
             case '1':
-                anadir_paciente(& vacunodromo);
+                imprimir(vacunodromo);
+
                 break;
 
             case '2':
-            vacunar_paciente(&vacunodromo);
+                vacunar_paciente(& vacunodromo);
                 break;
 
             case '3':
-                imprimir(vacunodromo);
+                anadir_paciente(& vacunodromo);
                 break;
 
-            case '4':
-                destruir_vacunodromo (&vacunodromo);
+            case '0':
+                destruir_vacunodromo(& vacunodromo);
                 break;
             default:
                 break;
         }
-    } while (sel != '4');
+    } while (sel != '0');
 }

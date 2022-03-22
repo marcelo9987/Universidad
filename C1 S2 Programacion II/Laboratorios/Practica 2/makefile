@@ -48,3 +48,4 @@ cleanall: clean
 
 clean:
 	rm -f *.o
+	rm -f ./TAD/*.o
