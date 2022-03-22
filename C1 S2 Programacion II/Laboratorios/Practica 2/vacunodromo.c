@@ -62,7 +62,7 @@ void anadir_paciente(PVACUNODROMO* vacunodromo)
     TIPOELEMENTOLISTA nuevaVacuna;
 
     wprintf(L"Introduzca el nombre del paciente: ");
-    wscanf(L"%s", paciente.nombrePaciente);
+    scanf("%s", paciente.nombrePaciente);
 
     crearLista(& paciente.listaVacunas);
 
@@ -73,7 +73,7 @@ void anadir_paciente(PVACUNODROMO* vacunodromo)
         do
         {
             nombreErroneo = false;
-            wscanf(L"%s", nuevaVacuna.nombreVacuna);
+            wscanf(L"%S", nuevaVacuna.nombreVacuna);
 
             if (strcmp(nuevaVacuna.nombreVacuna, "") == 0)
             {
