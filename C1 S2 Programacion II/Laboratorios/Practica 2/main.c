@@ -45,7 +45,7 @@ void menu()
                 break;
 
             case '2':
-//            vacunar_paciente();
+            vacunar_paciente(&vacunodromo);
                 break;
 
             case '3':

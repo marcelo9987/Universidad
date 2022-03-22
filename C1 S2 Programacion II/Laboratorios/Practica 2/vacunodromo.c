@@ -171,5 +171,42 @@ void imprimir(PVACUNODROMO vacunodromo)
 
 void vacunar_paciente(PVACUNODROMO* vacunodromo)
 {
+       if(vacunodromo!=NULL)
+       {
+           TIPOELEMENTOCOLA paciente;
+           consultarPrimerElementoCola((*vacunodromo)->pacientes,&paciente);
+           TPOSICION posVacunas = primeroLista(paciente.listaVacunas);
 
+           int numeroVacunas = longitudLista(paciente.listaVacunas);
+           TIPOELEMENTOLISTA vacunaActual;
+
+           for(int i = 0;i<numeroVacunas;i++)
+           {
+               recuperarElementoLista(paciente.listaVacunas,posVacunas,&vacunaActual);
+
+
+
+
+               if(++vacunaActual.numDosisAdministradas == vacunaActual.numMaxDosis)
+               {
+                   wprintf(L"¡ESTOY AQUÍ! (I)");
+                   suprimirElementoLista(&paciente.listaVacunas,posVacunas);
+               }else
+               {
+                   suprimirElementoLista(&paciente.listaVacunas,posVacunas);
+                   insertarElementoLista(&paciente.listaVacunas,posVacunas,vacunaActual);
+                   posVacunas = siguienteLista(paciente.listaVacunas,posVacunas);
+                   wprintf(L"¡ESTOY AQUÍ! (II)");
+               }
+
+               }
+           suprimirElementoCola(&(*vacunodromo)->pacientes);
+           if(longitudLista(paciente.listaVacunas)!=0)
+           {
+               anadirElementoCola(&(*vacunodromo)->pacientes, paciente);
+           }
+       }else
+       {
+           wprintf(L"El vacunódromo seleccionado no existe");
+       }
 }
