@@ -3,14 +3,12 @@
 #include "./TAD/cola.h"
 #include "./TAD/lista.h"
 #include "vacunodromo.h"
-#include <locale.h>
-#include <wchar.h>
+
 
 void menu();
 
 int main()
 {
-    setlocale(LC_ALL, "");
     menu();
     return 0;
 }
@@ -20,8 +18,8 @@ void menu()
     /****/
     char nombreVacunodromo[MAX_NOMBREVACUNODROMO_LEN];
     PVACUNODROMO vacunodromo;
-    wprintf(L"Introduce el nombre del vacunódromo(Se aceptan caracteres especiales): ");
-    wscanf(L"%[^\n]s", nombreVacunodromo);
+    printf("Introduce el nombre del vacunódromo: ");
+    scanf("%[^\n]s", nombreVacunodromo);
 //    wprintf(L"%s",nombreVacunodromo);
     /****/
 
@@ -31,17 +29,17 @@ void menu()
     char sel = '\0';
     do
     {
-        wprintf(L"\n                Vacunódromo %s\n", nombreVacunodromo);
-        wprintf(L"Opciones:\n");
-        wprintf(L"1. Imprimir vacunódromo\n");
-        wprintf(L"2. Vacunar siguiente paciente\n");
-        wprintf(L"3. Añadir paciente\n");
-        wprintf(L"0. Salir\n");
+        printf("\n                Vacunódromo %s\n", nombreVacunodromo);
+        printf("Opciones:\n");
+        printf("1. Imprimir vacunódromo\n");
+        printf("2. Vacunar siguiente paciente\n");
+        printf("3. Añadir paciente\n");
+        printf("0. Salir\n");
 
-        wprintf(L"Selección: ");
-        wscanf(L" %c", & sel);
+        printf("Selección: ");
+        scanf(" %c", & sel);
 
-        wprintf(L"\n");
+        printf("\n");
         switch (sel)
         {
             case '1':
