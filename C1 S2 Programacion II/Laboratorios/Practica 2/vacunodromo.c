@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <wchar.h>
+
 #include "./TAD/cola.h"
 
 #define DEBUG 0
@@ -56,9 +56,8 @@ void destruir_vacunodromo(PVACUNODROMO* vacunodromo)
 
 void anadir_paciente(PVACUNODROMO* vacunodromo)
 {
-    fflush(stdin);
-    TIPOELEMENTOCOLA paciente;
 
+    TIPOELEMENTOCOLA paciente;
     TIPOELEMENTOLISTA nuevaVacuna;
 
     printf("Introduzca el nombre del paciente: ");
@@ -221,7 +220,7 @@ void vacunar_paciente(PVACUNODROMO* vacunodromo)
             anadirElementoCola(& (* vacunodromo)->pacientes, paciente);
         } else
         {
-            destruirLista(&paciente.listaVacunas);
+            destruirLista(& paciente.listaVacunas);
             (* vacunodromo)->numPacientesCola--;
         }
     } else if (vacunodromo == NULL)

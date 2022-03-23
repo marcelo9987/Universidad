@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#include "./TAD/cola.h"
-#include "./TAD/lista.h"
 #include "vacunodromo.h"
 
+#define DEBUG 1
 
 void menu();
 
-int main()
+int main(int argc, char* argv[])
 {
     menu();
     return 0;

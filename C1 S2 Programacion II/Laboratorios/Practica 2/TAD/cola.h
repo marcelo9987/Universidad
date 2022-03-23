@@ -10,24 +10,24 @@ typedef struct
 {
     char nombrePaciente[MAX_NOMBREPACIENTE_LEN];
     TLISTA listaVacunas;
-}TIPOELEMENTOCOLA;
+} TIPOELEMENTOCOLA;
 
 /** Estructura para la cola **/
-typedef void *TCOLA;
+typedef void* TCOLA;
 
 /**
  * Reserva memoria para una cola de datos con el tipo [TIPOELEMENTOCOLA].
  *
  * @param q puntero a la cola a crear.
  */
-void crearCola(TCOLA *q);
+void crearCola(TCOLA* q);
 
 /**
  * Destruye (libera la memoria reservada) la cola [q] y todos los elementos que almacena.
  *
  * @param q cola a destruir.
  */
-void destruirCola(TCOLA *q);
+void destruirCola(TCOLA* q);
 
 /**
  * Comprueba si la cola [q] esta vacia.
@@ -43,14 +43,14 @@ int esColaVacia(TCOLA q);
  * @param q cola de la cual extraer el primer elemento.
  * @param e variable donde almacenar el primer elemento de la cola.
  */
-void consultarPrimerElementoCola(TCOLA q, TIPOELEMENTOCOLA *e);
+void consultarPrimerElementoCola(TCOLA q, TIPOELEMENTOCOLA* e);
 
 /**
  * Destruye (libera la memoria reservada) del primer elemento de la cola.
  *
  * @param q cola de la cual destruir el primer elemento.
  */
-void suprimirElementoCola(TCOLA *q);
+void suprimirElementoCola(TCOLA* q);
 
 /**
  * Anhade el elemento [e] a la cola [q].
@@ -58,6 +58,6 @@ void suprimirElementoCola(TCOLA *q);
  * @param q cola a la cual anhadirle el elemento.
  * @param e elemento a anhadir.
  */
-void anadirElementoCola(TCOLA *q, TIPOELEMENTOCOLA e);
+void anadirElementoCola(TCOLA* q, TIPOELEMENTOCOLA e);
 
 #endif    // COLA_H

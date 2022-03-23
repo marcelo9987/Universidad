@@ -1,7 +1,7 @@
 #opciones de compilacion, muestra todos los warnings (-Wall)
 
 #para valgrind (pruebas):
-CC=gcc -Wall -g -O0
+CC=gcc -Wall -pedantic -g -O0
 
 #version para entregar:
 #CC=gcc -Wall
