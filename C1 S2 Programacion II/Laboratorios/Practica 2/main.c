@@ -2,7 +2,6 @@
 #include <string.h>
 #include "vacunodromo.h"
 
-#define DEBUG 1
 
 void menu();
 
@@ -19,7 +18,6 @@ void menu()
     PVACUNODROMO vacunodromo;
     printf("Introduce el nombre del vacunódromo: ");
     scanf("%[^\n]s", nombreVacunodromo);
-//    wprintf(L"%s",nombreVacunodromo);
     /****/
 
     crear_vacunodromo(& vacunodromo, nombreVacunodromo);
