@@ -193,10 +193,18 @@ void vacunar_paciente_v1(PVACUNODROMO* vacunodromo)
     {
         TIPOELEMENTOCOLA paciente;
         consultarPrimerElementoCola((* vacunodromo)->pacientes, & paciente);
+
+        if (esListaVacia(paciente.listaVacunas) == 1)
+        {
+            printf("No hay vacunas pendientes para este paciente.\n");
+            destruir_paciente(vacunodromo);
+            return;
+        }
+
+        TIPOELEMENTOLISTA vacunaActual;
         TPOSICION posVacunas = primeroLista(paciente.listaVacunas);
 
         int numeroVacunas = longitudLista(paciente.listaVacunas);
-        TIPOELEMENTOLISTA vacunaActual;
 
         for (int indice = 0; indice < numeroVacunas; ++indice)
         {
@@ -204,26 +212,25 @@ void vacunar_paciente_v1(PVACUNODROMO* vacunodromo)
 
 
             printf("Vacunando a %s con %s:\n  Vacuna %i de %i\n", paciente.nombrePaciente, vacunaActual.nombreVacuna, vacunaActual.numDosisAdministradas + 1, vacunaActual.numMaxDosis);
-            if (++vacunaActual.numDosisAdministradas == vacunaActual.numMaxDosis)
+            if (++vacunaActual.numDosisAdministradas >= vacunaActual.numMaxDosis)
             {
                 suprimirElementoLista(& paciente.listaVacunas, posVacunas);
             } else
             {
-                suprimirElementoLista(& paciente.listaVacunas, posVacunas);
-                insertarElementoLista(& paciente.listaVacunas, posVacunas, vacunaActual);
+                modificarElementoLista(& paciente.listaVacunas, posVacunas, vacunaActual);
                 posVacunas = siguienteLista(paciente.listaVacunas, posVacunas);
             }
 
         }
 
-        suprimirElementoCola(& (* vacunodromo)->pacientes);
+
         if (longitudLista(paciente.listaVacunas) != 0)
         {
+            suprimirElementoCola(& (* vacunodromo)->pacientes);
             anadirElementoCola(& (* vacunodromo)->pacientes, paciente);
         } else
         {
-            destruirLista(& paciente.listaVacunas);
-            (* vacunodromo)->numPacientesCola--;
+            destruir_paciente(vacunodromo);
         }
     } else if (vacunodromo == NULL)
     {
