@@ -52,7 +52,6 @@ void destruir_vacunodromo(PVACUNODROMO* vacunodromo)
     * vacunodromo = NULL;
 
 }
-
 void anadir_paciente(PVACUNODROMO* vacunodromo)
 {
 
@@ -326,5 +325,5 @@ void vacunar_paciente_v2(PVACUNODROMO* vacunodromo)
 
 void vacunar_paciente(PVACUNODROMO* vacunodromo)
 {
-    vacunar_paciente_v2(vacunodromo);
+    vacunar_paciente_v1(vacunodromo);
 }
