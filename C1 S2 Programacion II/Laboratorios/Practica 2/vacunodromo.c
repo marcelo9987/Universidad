@@ -41,7 +41,7 @@ void destruir_paciente(PVACUNODROMO* vacunodromo)
 void destruir_vacunodromo(PVACUNODROMO* vacunodromo)
 {
 
-    while (esColaVacia((* vacunodromo)->pacientes) == false)
+    while (esColaVacia((* vacunodromo)->pacientes) == false) //mientras la cola pacientes no sea vacía
     {
         destruir_paciente(vacunodromo);
     }

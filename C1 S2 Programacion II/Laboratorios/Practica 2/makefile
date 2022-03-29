@@ -1,10 +1,10 @@
 #opciones de compilacion, muestra todos los warnings (-Wall)
 
 #para valgrind (pruebas):
-CC=gcc -Wall -pedantic -g -O0
+#CC=gcc -Wall -pedantic -g -O0
 
 #version para entregar:
-#CC=gcc -Wall
+CC=gcc -Wall
 
 #si incluye una librería estándar, en este caso la matemática (fichero libm.a)
 #todas tienen el formato de fichero libNOMBRE.a
