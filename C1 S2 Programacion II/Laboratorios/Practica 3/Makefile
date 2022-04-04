@@ -17,10 +17,10 @@ INCLUDES = -I $(HEADER_FILES_DIR)
 OUTPUT = P3_Fibo
 
 #ficheros .h.  Si hay varios, se precede cada uno con $(HEADER_FILES_DIR)/
-HEADERS = $(HEADER_FILES_DIR)/vectordinamico.h
+HEADERS = $(HEADER_FILES_DIR)/matrices.h
 
 #FUENTES: todos los archivos .c necesarios
-SRCS = main.c
+SRCS = main.c matrices.c
 
 #ficheros .o: todos los .o con un analogo .c en SRCS
 OBJS = $(SRCS:.c=.o)
