@@ -2,91 +2,142 @@
 // Created by progrii on 29/3/22.
 //
 #include <time.h>
-
+#include <math.h>
 #include <stdio.h>
 #include "matrices.h"
 
-void crearMatriz(matriz** matrizVacia, short f, short c)
+void crearMatriz(matriz** matrizVacia, long int f, long int c)
 {
-    * matrizVacia = (matriz*) malloc(1 * sizeof(matriz));
-    (* matrizVacia)->elems = (long*) malloc(f * c * sizeof(long));
-    (* matrizVacia)->col = c;
-    (* matrizVacia)->fil = f;
+    *matrizVacia = (matriz*) malloc(1 * sizeof(matriz));
+    if (*matrizVacia == NULL)
+    {
+        printf("Error en la reserva de memoria para matriz.\n");
+        
+        return;
+    }
+    (*matrizVacia)->elems = (long*) malloc(f * c * sizeof(long));
+    for(long i =0;i<f*c;i++)
+    {
+        *((*matrizVacia)->elems+i) = 0;
+    }
+    (*matrizVacia)->col = c;
+    (*matrizVacia)->fil = f;
 }
 
 void asignarMatriz(matriz** Matriz)
 {
-
-
-    for (int i = 0; i < (* Matriz)->fil * (* Matriz)->col; i++)
+    
+    
+    for (long int i = 0; i < (*Matriz)->fil * (*Matriz)->col; i++)
     {
-        * ((* Matriz)->elems + i) = rand()%5;
+        *((*Matriz)->elems + i) = rand() % 50;
         //printf("Elem: %i: %li \n", i, * ((* Matriz)->elems + i));
     }
 }
 
-long GetElem(matriz* matriz1,short f,short c)
+long GetElem(matriz* matriz1, long int f, long int c)
 {
-    return *(matriz1->elems+f*matriz1->fil+c);
+    return *(matriz1->elems + f * matriz1->fil + c);
 }
 
 matriz* sumaMatrices(matriz* A, matriz* B)
 {
     if (A->col != B->col || A->fil != B->fil)
     {
-        printf("A y B han de tener las mismas dimensiones");
+        printf("A y B han de tener las mismas dimensiones.\n");
         return NULL;
     } else
     {
         matriz* salida;
-        crearMatriz(& salida, A->col, A->fil);
-        for (int i = 0; i < A->fil * A->col;i++)
+        crearMatriz(&salida, A->col, A->fil);
+        for (long int i = 0; i < A->fil * A->col; i++)
         {
-            * ((salida)->elems + i) = * (A->elems + i) + * (B->elems + i);
+            *((salida)->elems + i) = *(A->elems + i) + *(B->elems + i);
         }
         return salida;
     }
 }
 
 
-matriz* multiplicaMatrices(matriz* A, matriz* B)
+matriz* multiplicaMatrices(matriz* M1, matriz* M2)
 {
-    if(A->fil!=B->col)
+    matriz* aux = 0;
+    long int i, k, l;
+    if (M1 != 0 && M2 != 0)
     {
-        return 0;
-    }else
-    {
-
-        matriz* salida;
-        crearMatriz(&salida,A->fil,B->col);
-        for(int i =0;i < A->fil;i++)
+        if (M1->fil != M2->col)
         {
-            long pdto=0;
-            for (int j = 0; j < B->col; ++j)
-            {
-               pdto += *(A->elems+i*A->fil+j) * *(B->elems+i*B->col);
-            }
+            printf("El número de columnas de la primera matriz y de filas de la segunda deben ser iguales\n");
+            return aux;
         }
+        
+        crearMatriz(&aux, M1->fil, M2->col);
+        for (i = 0; i < M1->fil; i++)
+            for (k = 0; k < M2->col; k++)
+            {
+                *(aux->elems + i * M2->col + k) = 0;
+                for (l = 0; l < M1->col; l++)
+                {
+                    *(aux->elems + i * M2->col + k) += *(M1->elems + i * M1->col + l) * *(M2->elems + l * M2->col + k);
+                }
+            }
+        
+        return aux;
+    } else
+    {
+        printf("Alguna de las matrices no existe\n");
+        return 0;
     }
 }
+
 void destruirMatriz(matriz** Matriz)
 {
-    free((* Matriz)->elems);
-    free(* Matriz);
+    if (*Matriz != 0)
+    {
+        free((*Matriz)->elems);
+        free(*Matriz);
+    } else
+    {
+        printf("La matriz esta vacía. Nada que eliminar.\n");
+    }
+}
+
+
+float obtenerElemento(long int fila,long int columna, matriz *M) {
+    float x;
+    
+    if (M != 0) {
+        if ((fila < 0 || fila > M->fil) || (columna < 0 || columna > M->col)) {
+            printf("Ese elemento no existe\n");
+            return 0;
+        }
+        x = *((M->elems) + fila * M->col + columna);
+        return x;
+    } else
+        printf("La matriz no existe\n");
+    return NAN;
 }
 
 /*** DEBUG***/
 void ipmt(matriz* m)
 {
-    for(int fils =0;fils< m->fil;fils++)
+    if (m != NULL)
     {
-        for(int cols=0;cols < m->col;cols++)
+        for ( long int fils = 0; fils < (m)->fil; fils++)
         {
-            fprintf(stdout, " %li", *(m->elems +fils*2+cols ));
+            for ( long int cols = 0; cols < (m)->col; cols++)
+            {
+                fprintf(stdout," ||%li", *(m->elems + fils * 2 + cols));
+            }
+            
+            
         }
         printf("\n");
-
+    }else
+    {
+        printf("M es nula\n");
+        return;
     }
+    fprintf(stdout,"\n");
 }
-
 

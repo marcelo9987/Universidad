@@ -4,3 +4,4 @@ project(Practica_3 C)
 set(CMAKE_C_STANDARD 23)
 
 add_executable(Practica_3 main.c matrices.c matrices.h)
+#www

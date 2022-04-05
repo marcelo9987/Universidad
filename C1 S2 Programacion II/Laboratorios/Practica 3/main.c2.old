@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "matrices.h"
+int main()
+{
+    srand(time(0));
+
+    matriz* matriz1;
+    crearMatriz(&matriz1,2,2);
+    asignarMatriz(&matriz1);
+    ipmt(matriz1);
+    printf("\n\n");
+
+    matriz* matriz2;
+    crearMatriz(&matriz2,2,3);
+    asignarMatriz(&matriz2);
+    ipmt(matriz2);
+    printf("\n\n SUMA:");
+    
+    matriz* matriz3 = sumaMatrices(matriz1,matriz2);
+    ipmt(matriz3);
+    printf("\n\n MULTIPLICACIÓN:");
+
+    matriz* matriz4 = multiplicaMatrices(matriz1,matriz2);
+    ipmt(matriz3);
+
+    destruirMatriz(&matriz1);
+    destruirMatriz(&matriz2);
+    destruirMatriz(&matriz3);
+    destruirMatriz(&matriz4);
+}
