@@ -5,28 +5,28 @@
 
 int main()
 {
+    clock_t inicio[2],fin[2];
     srand(time(0));
-    long int fils = (rand() % 10)+5;
-    long int cols = (rand() % 10)+5;
-    long long int aux = rand() % 100000;
-    long long int n = aux;
-    matriz* matrVctor[n];
-    for (long long int indice = 0; indice < n; indice++)
+    for(long tamanho = 10000;tamanho<100000;tamanho+=10000)
     {
-        crearMatriz(&matrVctor[indice] , fils, cols);
-    }
-    for (long long int indice = 0; indice < n; indice++)
-    {
-        asignarMatriz(&matrVctor[indice]);
-    }
-    for (long long int indice = 0; indice < n; indice++)
-    {
-        ipmt(matrVctor[indice]);
-        printf("He pasado:: vuelta: %li \n",indice);
-    }
-    for (long long int indice = 0; indice < n; indice++)
-    {
-        destruirMatriz(&matrVctor[n]);
+       
+       
+       matriz* m1;
+       matriz* m2;
+        crearMatriz(&m1,tamanho,tamanho);
+        crearMatriz(&m2,tamanho,tamanho);
+        inicio[0]=clock();
+        matriz* m3 =sumaMatrices(m1,m2);
+        fin[0] = clock();
+        inicio[1]=clock();
+        matriz* m4 = multiplicaMatrices(m1,m2);
+        fin[1] = clock();
+        destruirMatriz(&m1);
+        destruirMatriz(&m2);
+        destruirMatriz(&m3);
+        destruirMatriz(&m4);
+        fprintf(stdout,"Tiempo de suma: %l: Tiempo de Multiplicación: %l",(fin[0]-inicio[0]),(fin[1]-inicio[1]));
+        
     }
     printf("fin");
     return 0;
