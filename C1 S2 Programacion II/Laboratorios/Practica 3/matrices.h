@@ -9,19 +9,19 @@
 typedef struct
 {
     long* elems;
-    short fil, col;
+    long int fil, col;
 } matriz;
 
-void crearMatriz(matriz** matrizVacia, short f, short c);
+void crearMatriz(matriz** matrizVacia, long int f, long int c);
 
 void asignarMatriz(matriz** Matriz);
 
-long GetElem(matriz*, short, short);
+long GetElem(matriz*, long int, long int);
 
 matriz* sumaMatrices(matriz* A, matriz* B);
 
 matriz* multiplicaMatrices(matriz* A, matriz* B);
-
+float obtenerElemento(long int fila, long int columna, matriz *M);
 void destruirMatriz(matriz** Matriz);
 
 /*** DEBUG ***/

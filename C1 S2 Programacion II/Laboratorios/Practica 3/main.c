@@ -2,31 +2,32 @@
 #include <stdlib.h>
 #include <time.h>
 #include "matrices.h"
+
 int main()
 {
     srand(time(0));
-
-    matriz* matriz1;
-    crearMatriz(&matriz1,2,2);
-    asignarMatriz(&matriz1);
-    ipmt(matriz1);
-    printf("\n\n");
-
-    matriz* matriz2;
-    crearMatriz(&matriz2,2,3);
-    asignarMatriz(&matriz2);
-    ipmt(matriz2);
-    printf("\n\n SUMA:");
-
-    matriz* matriz3 = sumaMatrices(matriz1,matriz2);
-    ipmt(matriz3);
-    printf("\n\n MULTIPLICACIÓN:");
-
-    matriz* matriz4 = multiplicaMatrices(matriz1,matriz2);
-    ipmt(matriz3);
-
-    destruirMatriz(&matriz1);
-    destruirMatriz(&matriz2);
-    destruirMatriz(&matriz3);
-    destruirMatriz(&matriz4);
+    long int fils = (rand() % 10)+5;
+    long int cols = (rand() % 10)+5;
+    long long int aux = rand() % 100000;
+    long long int n = aux;
+    matriz* matrVctor[n];
+    for (long long int indice = 0; indice < n; indice++)
+    {
+        crearMatriz(&matrVctor[indice] , fils, cols);
+    }
+    for (long long int indice = 0; indice < n; indice++)
+    {
+        asignarMatriz(&matrVctor[indice]);
+    }
+    for (long long int indice = 0; indice < n; indice++)
+    {
+        ipmt(matrVctor[indice]);
+        printf("He pasado:: vuelta: %li \n",indice);
+    }
+    for (long long int indice = 0; indice < n; indice++)
+    {
+        destruirMatriz(&matrVctor[n]);
+    }
+    printf("fin");
+    return 0;
 }
