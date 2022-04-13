@@ -14,7 +14,7 @@ HEADER_FILES_DIR = .
 INCLUDES = -I $(HEADER_FILES_DIR)
 
 #nombre del ejecutable o archivo de salida
-OUTPUT = P3_Fibo
+OUTPUT = P3_Matrices
 
 #ficheros .h.  Si hay varios, se precede cada uno con $(HEADER_FILES_DIR)/
 HEADERS = $(HEADER_FILES_DIR)/matrices.h
