@@ -1,6 +1,6 @@
 #opciones de compilacion, muestra todos los warnings (-Wall)
-CC=gcc -Wall
-#si incluye una librer�a est�ndar, en este caso la matematica (fichero libm.a)
+CC=gcc -Wall -Werror -pedantic
+#si incluye una librería est�ndar, en este caso la matematica (fichero libm.a)
 #todas tienen el formato de fichero libNOMBRE.a
 #y  al incluirla en el compilador se pone -lNOMBRE
 #si no hay librerias adicionales, se elimina esta linea
@@ -14,7 +14,7 @@ HEADER_FILES_DIR = .
 INCLUDES = -I $(HEADER_FILES_DIR)
 
 #nombre del ejecutable o archivo de salida
-OUTPUT = P3_Fibo
+OUTPUT = P3_Matrices
 
 #ficheros .h.  Si hay varios, se precede cada uno con $(HEADER_FILES_DIR)/
 HEADERS = $(HEADER_FILES_DIR)/matrices.h
