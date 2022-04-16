@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "matrices.h"
+#include "matriz.h"
 int main()
 {
     srand(time(0));

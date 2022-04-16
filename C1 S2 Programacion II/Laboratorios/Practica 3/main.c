@@ -2,83 +2,122 @@
 #include <stdlib.h>
 #include <time.h>
 #include <assert.h>
-#include "matrices.h"
+#include "matriz.h"
+
+#define SUMA 0
+#define MULTP 1
 
 int main(int argc, char* argv[])
 {
-    if(argv[0]==NULL)
-    {                    //Hago esta condición para evitar un data leak en las variables de entorno y evitar problemas de seguridad
-        fprintf(stderr,"FALLO CRITICO: Argumento 1 a NULL, deteniendo programa para evitar acceso a VARIABLES DE ENTORNO");
-        abort(); // Finaliza el programa sin miramientos(aborta el proceso)
-    }
-    if(argc==1)
-    {           //si solo existe argv[0], que es el nombre del programa
-        fprintf(stderr,"FATAL: No se han pasado argumentos");
-        exit(455); // Sale del programa de forma segura. También indica un poco las intenciones del desarrollador.
-    }else if(argc==2)
-    { // si solo hay dos argumentos
-        fprintf(stderr,"FATAL: No se han comunicado los argumentos requeridos para la ejecución del programa");
-        exit(456);
+    if (argc == 1) //si solo existe argv[0], que es el nombre del programa
+    {
+        fprintf(stderr, "FATAL: No se han pasado argumentos.\n");
+        exit(250); // Sale del programa de forma segura. También indica un poco las intenciones del desarrollador.
+    } else if (argc != 4) // si solo hay dos argumentos
+    {
+        fprintf(stderr, "FATAL: No se han comunicado los argumentos requeridos para la ejecución del programa.\n");
+        exit(251);
     }
     
-    long minimo =  atol(argv[1]); //arg 1, valor mínimo de las matrices
-    long maximo = atol(argv[2]); //arg 2, valor máximo de las matrices
-    long paso  = atol(argv[3]); //arg 3, paso a aplicar entre cálculo y cálculo
+    long minimo;//arg 1, valor mínimo de las matrices
+    if (sscanf(argv[ 1 ], "%li", &minimo) != 1)
+    {
+        fprintf(stderr, "FATAL: Argumento 1 no numérico.\n");
+        exit(252);
+    }
+    long maximo; //arg 2, valor máximo de las matrices
+    if (sscanf(argv[ 2 ], "%li", &maximo) != 1)
+    {
+        fprintf(stderr, "FATAL: Argumento 2 no numérico.\n");
+        exit(253);
+    }
+    long paso;//arg 3, paso a aplicar entre cálculo y cálculo
+    if (sscanf(argv[ 3 ], "%li", &paso) != 1)
+    {
+        fprintf(stderr, "FATAL: Argumento 3 no numérico.\n");
+        exit(254);
+    }
     
-    if (maximo == minimo || maximo < minimo || maximo == 0)
+    if (maximo < minimo || maximo == 0 || paso <= 0)
     { // Si el mínimo es mayor al máximo o el máximo está declarado a 0
-        fprintf(stderr,"Los parámetros establecidos son incorrectos");
+        fprintf(stderr, "Los parámetros establecidos son incorrectos.\n");
         exit(-1);
     }
     
-    FILE* resultadosMultMat = NULL; //Archivo en el que se guardan los tiempos de las multiplicaciones
     FILE* resultadosSum = NULL;    //Archivo en el que se guardan los tiempos de las sumas
-    assert(resultadosSum ==NULL && resultadosMultMat == NULL); //Los ficheros NO existen
+    FILE* resultadosMultMat = NULL; //Archivo en el que se guardan los tiempos de las multiplicaciones
     
-    resultadosMultMat = fopen("tiemposMultMatrices.txt", "wt+");
-    resultadosSum = fopen("tiemposSumaMatrices.txt","wt+");
-    assert(resultadosSum !=NULL && resultadosMultMat!=NULL); //Los ficheros EXISTEN
-    if(!(resultadosSum !=NULL && resultadosMultMat!=NULL))
+    //assert(resultadosSum == NULL && resultadosMultMat == NULL); //Los ficheros NO existen
+    
+    resultadosSum = fopen("tiemposSumaMatrices.txt", "wt+");
+    
+    //assert(resultadosSum != NULL && resultadosMultMat != NULL); //Los ficheros EXISTEN
+    if (resultadosSum == NULL)
     {
-        fprintf(stderr,"ERROR, apertura de archivos incorrecta... Finalizando programa.");
-        abort();//finalizo bruscamente para evitar escrituras indeseadas. Código de error: [Cerr] = 3
+        perror("ERROR, apertura de archivos incorrecta... Finalizando programa.\n");
+        exit(-2);
+    }
+    resultadosMultMat = fopen("tiemposMultMatrices.txt", "wt+");
+    if (resultadosMultMat == NULL)
+    {
+        perror("ERROR, apertura de archivos incorrecta... Finalizando programa.\n");
+        exit(-3);
     }
     
-    clock_t inicio[] = {0,0};
-    clock_t fin[] = {0,0};
+    clock_t inicio[] = {0, 0};
+    clock_t fin[] = {0, 0};
     
     srand(time(NULL));  //creo la semilla de la función rand() en 0 del tiempo UNIX
-
-    for(long tamanho = minimo;tamanho<maximo;tamanho+=paso)
+    
+    for (long tamanho = minimo; tamanho <= maximo; tamanho += paso)
     {
-       
-       matriz m1;
-       matriz m2;
-       
-       crearMatriz(&m1,tamanho,tamanho);
-       crearMatriz(&m2,tamanho,tamanho);
-       
-       inicio[0]=clock();
-       matriz m3 =sumaMatrices(m1,m2);
-       fprintf(stdout,"He sumado\n");
-       fin[0] = clock();
-       
-       inicio[1]=clock();
-       matriz m4 = multiplicaMatrices(m1,m2);
-       fprintf(stdout,"He multiplicado\n");
-       fin[1] = clock();
+        if(tamanho==0)
+        {
+            continue;
+        }
         
-        destruirMatriz(&m1);
-        destruirMatriz(&m2);
-        destruirMatriz(&m3);
-        destruirMatriz(&m4);
+        fprintf(stdout, "Iniciando prueba para n = %li\n", tamanho);
+        Matriz A;
+        Matriz B;
+        Matriz C;
         
-        fprintf(resultadosSum,"%li,%li\n",tamanho,((fin[1]-inicio[1])/CLOCKS_PER_SEC));
-        fprintf(resultadosMultMat, "%li %li\n", tamanho, ((fin[1] - inicio[1]) / CLOCKS_PER_SEC));
+        iniciarMatriz(&A, tamanho, tamanho);
+        iniciarMatriz(&B, tamanho, tamanho);
+        iniciarMatriz(&C, tamanho, tamanho);
+        
+        asignarValoresAleatoriosMatriz(&A);
+        asignarValoresAleatoriosMatriz(&B);
+        fprintf(stdout, "Iniciando suma para n = %li\n", tamanho);
+    
+        inicio[ SUMA ] = clock();
+        sumaMatrices(&C, &A, &B);
+        fin[ SUMA ] = clock();
+        //       fprintf(stdout, "He sumado\n");
+        //ipmt(A);
+        //ipmt(B);
+        //ipmt(C);
+        fprintf(stdout, "Iniciando multiplicación para n = %li\n", tamanho);
+    
+        inicio[ MULTP ] = clock();
+        multiplicaMatrices(&C, &A, &B);
+        fin[ MULTP ] = clock();
+        //ipmt(C);
+//        fprintf(stdout, "He multiplicado\n");
+        
+        destruirMatriz(&A);
+        destruirMatriz(&B);
+        destruirMatriz(&C);
+        
+        fprintf(resultadosSum, "%li %lf\n", tamanho, (fin[ SUMA ] - inicio[ SUMA ]) / (double)CLOCKS_PER_SEC);
+        fprintf(resultadosMultMat, "%li %lf\n", tamanho, (fin[ MULTP ] - inicio[ MULTP ]) / (double)CLOCKS_PER_SEC);
+        //fprintf(resultadosSum, "%li %li %li %li %lf\n", tamanho, fin[ SUMA ], inicio[ SUMA ], CLOCKS_PER_SEC, (fin[ SUMA ] - inicio[ SUMA ]) / (double) CLOCKS_PER_SEC);
+        //fprintf(resultadosMultMat, "%li %li %li %li %lf\n", tamanho, fin[ MULTP ], inicio[ MULTP ], CLOCKS_PER_SEC, (fin[ MULTP ] - inicio[ MULTP ]) / (double) CLOCKS_PER_SEC);
     }
-    fprintf(stdout,"Prueba finalizada con éxito");
+    
+    fprintf(stdout, "Prueba finalizada con éxito.\n");
+    
     fclose(resultadosSum);
     fclose(resultadosMultMat);
+    
     return 0;
 }
-//Conclusiones a 08/04/2022: La suma es más rápida; la división es carísima a nivel computacional: ¿mejorar algoritmo?:: .,,.

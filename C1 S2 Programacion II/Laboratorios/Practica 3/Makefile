@@ -17,10 +17,10 @@ INCLUDES = -I $(HEADER_FILES_DIR)
 OUTPUT = P3_Matrices
 
 #ficheros .h.  Si hay varios, se precede cada uno con $(HEADER_FILES_DIR)/
-HEADERS = $(HEADER_FILES_DIR)/matrices.h
+HEADERS = $(HEADER_FILES_DIR)/matriz.h
 
 #FUENTES: todos los archivos .c necesarios
-SRCS = main.c matrices.c
+SRCS = main.c matriz.c
 
 #ficheros .o: todos los .o con un analogo .c en SRCS
 OBJS = $(SRCS:.c=.o)
