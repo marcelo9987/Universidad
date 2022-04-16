@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
     assert(resultadosSum ==NULL && resultadosMultMat == NULL); //Los ficheros NO existen
     
     resultadosMultMat = fopen("tiemposMultMatrices.txt", "wt+");
-    resultadosSum = fopen("tiemposSumaMatrices.txt","w33t+");
+    resultadosSum = fopen("tiemposSumaMatrices.txt","wt+");
     assert(resultadosSum !=NULL && resultadosMultMat!=NULL); //Los ficheros EXISTEN
     if(!(resultadosSum !=NULL && resultadosMultMat!=NULL))
     {
@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
        
        inicio[0]=clock();
        matriz m3 =sumaMatrices(m1,m2);
-       
+       fprintf(stdout,"He sumado\n");
        fin[0] = clock();
        
        inicio[1]=clock();
