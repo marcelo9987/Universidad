@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <assert.h>
+
 #include "matriz.h"
 
 #define SUMA 0
@@ -12,36 +12,36 @@ int main(int argc, char* argv[])
     if (argc == 1) //si solo existe argv[0], que es el nombre del programa
     {
         fprintf(stderr, "FATAL: No se han pasado argumentos.\n");
-        exit(250); // Sale del programa de forma segura. También indica un poco las intenciones del desarrollador.
+        exit(-0); // Sale del programa de forma segura. También indica un poco las intenciones del desarrollador.
     } else if (argc != 4) // si solo hay dos argumentos
     {
         fprintf(stderr, "FATAL: No se han comunicado los argumentos requeridos para la ejecución del programa.\n");
-        exit(251);
+        exit(-1);
     }
     
     long minimo;//arg 1, valor mínimo de las matrices
     if (sscanf(argv[ 1 ], "%li", &minimo) != 1)
     {
         fprintf(stderr, "FATAL: Argumento 1 no numérico.\n");
-        exit(252);
+        exit(-2);
     }
     long maximo; //arg 2, valor máximo de las matrices
     if (sscanf(argv[ 2 ], "%li", &maximo) != 1)
     {
         fprintf(stderr, "FATAL: Argumento 2 no numérico.\n");
-        exit(253);
+        exit(-3);
     }
     long paso;//arg 3, paso a aplicar entre cálculo y cálculo
     if (sscanf(argv[ 3 ], "%li", &paso) != 1)
     {
         fprintf(stderr, "FATAL: Argumento 3 no numérico.\n");
-        exit(254);
+        exit(-4);
     }
     
     if (maximo < minimo || maximo == 0 || paso <= 0)
     { // Si el mínimo es mayor al máximo o el máximo está declarado a 0
         fprintf(stderr, "Los parámetros establecidos son incorrectos.\n");
-        exit(-1);
+        exit(-5);
     }
     
     FILE* resultadosSum = NULL;    //Archivo en el que se guardan los tiempos de las sumas
@@ -55,13 +55,13 @@ int main(int argc, char* argv[])
     if (resultadosSum == NULL)
     {
         perror("ERROR, apertura de archivos incorrecta... Finalizando programa.\n");
-        exit(-2);
+        exit(-6);
     }
     resultadosMultMat = fopen("tiemposMultMatrices.txt", "wt+");
     if (resultadosMultMat == NULL)
     {
         perror("ERROR, apertura de archivos incorrecta... Finalizando programa.\n");
-        exit(-3);
+        exit(-7);
     }
     
     clock_t inicio[] = {0, 0};
