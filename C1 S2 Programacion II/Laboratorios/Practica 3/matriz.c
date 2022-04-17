@@ -1,19 +1,21 @@
 //
 // Created by progrii on 29/3/22.
 //
-#define compilameDebug 1
+#define compilameDebug 0
 
 #include <stdlib.h>
 #include <limits.h>
-
-#include <time.h>
-#include <math.h>
 #include <stdio.h>
+
 #include "matriz.h"
 
 void iniciarMatriz(Matriz* matrizVacia, long int f, long int c)
 {//Todo: F y C han de ser mayores o iguales a 0;
-    
+    if (f <= 0 || c <= 0)
+    {
+        fprintf(stderr,"Filas y/o columnas han de ser mayores que 0");
+        return;
+    }
     if (matrizVacia == NULL)
     {
         fprintf(stderr, "Se ha recibido un puntero a NULL \n");
@@ -21,7 +23,7 @@ void iniciarMatriz(Matriz* matrizVacia, long int f, long int c)
     }
     
     matrizVacia->elems = (long*) malloc(f * c * sizeof(long));
-    if(matrizVacia->elems==NULL)
+    if (matrizVacia->elems == NULL)
     {
         perror("Error al reservar memoria");
     }
@@ -94,7 +96,6 @@ void sumaMatrices(Matriz* dest, Matriz* A, Matriz* B)
     }
 }
 
-
 void multiplicaMatrices(Matriz* dest, Matriz* M1, Matriz* M2)
 {
     
@@ -119,9 +120,9 @@ void multiplicaMatrices(Matriz* dest, Matriz* M1, Matriz* M2)
     //iniciarMatriz(&aux, M1->fil, M2->col);
     for (long f = 0; f < dest->fil; f++)
     {
-        if(f%10 == 0)
+        if (f % 10 == 0)
         {
-            fprintf(stdout,".");
+            fprintf(stdout, ".");
             fflush(stdout);
         }
         for (long c = 0; c < dest->col; c++)
@@ -136,7 +137,7 @@ void multiplicaMatrices(Matriz* dest, Matriz* M1, Matriz* M2)
             }
         }
     }
-    fprintf(stdout,"\n");
+    fprintf(stdout, "\n");
 }
 
 void destruirMatriz(Matriz* matriz)

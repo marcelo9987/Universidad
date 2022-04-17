@@ -3,7 +3,7 @@ CC=gcc -Wall -Werror -pedantic
 #si incluye una librería est�ndar, en este caso la matematica (fichero libm.a)
 #todas tienen el formato de fichero libNOMBRE.a
 #y  al incluirla en el compilador se pone -lNOMBRE
-#si no hay librerias adicionales, se elimina esta linea
+#si no hay librerias adicionales, se elimina esta linea.
 LIBS_FILES_DIR=.
 LIBRARIES= -L $(LIBS_FILES_DIR)
 LIBS = 
