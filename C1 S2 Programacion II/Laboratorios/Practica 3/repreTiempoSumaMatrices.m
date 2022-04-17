@@ -3,7 +3,9 @@ clf
 close all
 
 %CARGA DE DATOS
-t=load('tiemposSumaMatrices.txt'); %Carga en memoria el fichero
+prompt='Archivo a leer: ';
+arch = input(prompt,"s");
+t=load(arch); %Carga en memoria el fichero
 
 
 x=t(:,1); %Eje x: n, primera columna

@@ -3,8 +3,9 @@ clf
 close all
 
 %CARGA DE DATOS
-t=load('tiemposMultMatrices.txt'); %Carga en memoria el fichero
-
+prompt='Archivo a leer: ';
+arch = input(prompt,"s");
+t=load(arch); %Carga en memoria el fichero
 
 x=t(:,1); %Eje x: n, primera columna
 y_bs=t(:,2); %Eje y: tiempos t(n), segunda columna
@@ -23,4 +24,5 @@ legend('empírica','ajuste');
 title('Multiplicación matrices ');
 xlabel ('Tamaño de la matriz n*n');
 ylabel ('Tiempo (segs)');
+
 
