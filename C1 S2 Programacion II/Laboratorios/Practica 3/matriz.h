@@ -18,6 +18,8 @@ void asignarValoresAleatoriosMatriz(Matriz* matriz);
 
 long getElem(Matriz* matriz, long int f, long int c);
 
+void setElem(Matriz* matriz,long int f,long int c,long elem);
+
 void sumaMatrices(Matriz* dest,Matriz* A, Matriz* B);
 
 void multiplicaMatrices(Matriz* dest,Matriz* M1, Matriz* M2);

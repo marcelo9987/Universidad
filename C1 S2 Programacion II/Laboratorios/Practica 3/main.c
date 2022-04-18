@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     
     //assert(resultadosSum == NULL && resultadosMultMat == NULL); //Los ficheros NO existen
     
-    resultadosSum = fopen("tiemposSumaMatrices.txt", "wt+");
+    resultadosSum = fopen("..tiemposSumaMatrices.txt", "wt+");
     
     //assert(resultadosSum != NULL && resultadosMultMat != NULL); //Los ficheros EXISTEN
     if (resultadosSum == NULL)

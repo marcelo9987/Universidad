@@ -27,14 +27,17 @@ void iniciarMatriz(Matriz* matrizVacia, long int f, long int c)
     {
         perror("Error al reservar memoria");
     }
-    for (long i = 0; i < f * c; i++)
-    {
-        //*((matrizVacia)->elems + i) = 0;
-        matrizVacia->elems[ i ] = 0;
-    }
     
     matrizVacia->col = c;
     matrizVacia->fil = f;
+    
+    for (long fil = 0; fil < f; fil++)
+    {
+        for (long col = 0; col < c; col++)
+        {
+            setElem(matrizVacia,fil,col,0);
+        }
+    }
 }
 
 void asignarValoresAleatoriosMatriz(Matriz* matriz)
@@ -45,12 +48,12 @@ void asignarValoresAleatoriosMatriz(Matriz* matriz)
         return;
     }
     
-    for (long int i = 0; i < matriz->fil * matriz->col; i++)
+    for (long int f = 0; f < matriz->fil; f++)
     {
-        //*(matriz->elems + i) = rand() % 200 - 100;
-        //matriz->elems[ i ] = rand() % 200 - 100;
-        matriz->elems[ i ] = rand() % 10 - 5;
-        //printf("Elem: %i: %li \n", i, * ((* matriz)->elems + i));
+        for (long int c = 0; c < matriz->col; c++)
+        {
+            setElem(matriz, f, c, rand());
+        }
     }
 }
 
@@ -67,9 +70,13 @@ long getElem(Matriz* matriz, long int f, long int c)
         fprintf(stderr, "Ese elemento no existe\n");
         return LONG_MIN;
     }
-    
     //return *(matriz.elems + f * matriz.fil + c);
     return matriz->elems[ f * matriz->col + c ];
+}
+
+void setElem(Matriz* matriz, long int f, long int c, long elem)
+{
+    matriz->elems[ f * matriz->fil + c ] = elem;
 }
 
 void sumaMatrices(Matriz* dest, Matriz* A, Matriz* B)
@@ -96,9 +103,9 @@ void sumaMatrices(Matriz* dest, Matriz* A, Matriz* B)
     } */
     for (long int f = 0; f < A->fil; f++)
     {
-        for(long int c=0;c<B->col;c++)
+        for (long int c = 0; c < B->col; c++)
         {
-            dest->elems[ f*dest->fil + c ] = getElem(A,f,c) + getElem(B,f,c);
+            setElem(dest, f, c, getElem(A, f, c) + getElem(B, f, c));
         }
         //*((salida).elems + i) = *(A->elems + i) + *(B->elems + i);
         
@@ -137,13 +144,16 @@ void multiplicaMatrices(Matriz* dest, Matriz* M1, Matriz* M2)
         for (long c = 0; c < dest->col; c++)
         {
             //*(dest->elems + f * M2->col + c) = 0;
+            long elem = 0;
             dest->elems[ f * dest->col + c ] = 0;
             
             for (long l = 0; l < M1->col; l++)
             {
                 //*(dest->elems + f * M2->col + c) += *(M1->elems + f * M1->col + l) * *(M2->elems + l * M2->col + c);
-                dest->elems[ f * dest->col + c ] += getElem(M1, f, l)/*M1->elems[ f * M1->col + l ]*/ * getElem(M2, l, c);/*M2->elems[ l * M2->col + c ];*/
+                /*dest->elems[ f * dest->col + c ]*/
+                elem += getElem(M1, f, l)/*M1->elems[ f * M1->col + l ]*/ * getElem(M2, l, c);/*M2->elems[ l * M2->col + c ];*/
             }
+            setElem(dest, f, c, elem);
         }
     }
     fprintf(stdout, "\n");
@@ -164,23 +174,27 @@ void destruirMatriz(Matriz* matriz)
 
 /*** DEBUG***/
 #if(compilameDebug)
+
 void ipmt(Matriz m)
 {
-//#error ESTE CODIGO HA SIDO COMPILADO
-    #warning descomenta la lina de abajo para usar la función
-    fprintf(stdout, "ESTA FUNCIÓN ES SOLAMENTE DE DEPURACIÓN");
+
+#warning comenta las 2 lineas de abajo para usar la función
+#error ESTE CODIGO HA SIDO COMPILADO
+    
+    printf(stdout, "ESTA FUNCIÓN ES SOLAMENTE DE DEPURACIÓN");
     for (long int f = 0; f < m.fil; f++)
     {
         for (long int c = 0; c < m.col; c++)
         {
-            fprintf(stdout, "| %5li", m.elems[ f * m.col + c ]);
+            fprintf(stdout, " %5li", m.elems[ f * m.col + c ]);
         }
         
-        printf(" |\n");
+        printf(" \n");
     }
     
     fprintf(stdout, "\n\n");
     
 }
+
 #endif
 
