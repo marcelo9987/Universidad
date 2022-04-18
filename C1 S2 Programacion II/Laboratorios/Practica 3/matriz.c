@@ -10,10 +10,10 @@
 #include "matriz.h"
 
 void iniciarMatriz(Matriz* matrizVacia, long int f, long int c)
-{//Todo: F y C han de ser mayores o iguales a 0;
+{
     if (f <= 0 || c <= 0)
     {
-        fprintf(stderr,"Filas y/o columnas han de ser mayores que 0");
+        fprintf(stderr, "Filas y/o columnas han de ser mayores que 0");
         return;
     }
     if (matrizVacia == NULL)
@@ -89,10 +89,19 @@ void sumaMatrices(Matriz* dest, Matriz* A, Matriz* B)
     //Matriz SUMA;
     //iniciarMatriz(&SUMA, A->fil, A->col);
     
-    for (long int i = 0; i < A->fil * A->col; i++)
+    /*for (long int i = 0; i < A->fil * A->col; i++)
     {
+        *((salida).elems + i) = *(A->elems + i) + *(B->elems + i);
+        dest->elems[ i ] =A->elems[ i ] + B->elems[ i ];
+    } */
+    for (long int f = 0; f < A->fil; f++)
+    {
+        for(long int c=0;c<B->col;c++)
+        {
+            dest->elems[ f*dest->fil + c ] = getElem(A,f,c) + getElem(B,f,c);
+        }
         //*((salida).elems + i) = *(A->elems + i) + *(B->elems + i);
-        dest->elems[ i ] = A->elems[ i ] + B->elems[ i ];
+        
     }
 }
 
@@ -133,7 +142,7 @@ void multiplicaMatrices(Matriz* dest, Matriz* M1, Matriz* M2)
             for (long l = 0; l < M1->col; l++)
             {
                 //*(dest->elems + f * M2->col + c) += *(M1->elems + f * M1->col + l) * *(M2->elems + l * M2->col + c);
-                dest->elems[ f * dest->col + c ] += M1->elems[ f * M1->col + l ] * M2->elems[ l * M2->col + c ];
+                dest->elems[ f * dest->col + c ] += getElem(M1, f, l)/*M1->elems[ f * M1->col + l ]*/ * getElem(M2, l, c);/*M2->elems[ l * M2->col + c ];*/
             }
         }
     }
@@ -155,12 +164,11 @@ void destruirMatriz(Matriz* matriz)
 
 /*** DEBUG***/
 #if(compilameDebug)
-
 void ipmt(Matriz m)
 {
 //#error ESTE CODIGO HA SIDO COMPILADO
-    //#warning descomenta la lina de abajo para usar la función
-    //fprintf(stdout, "ESTA FUNCIÓN ES SOLAMENTE DE DEPURACIÓN");
+    #warning descomenta la lina de abajo para usar la función
+    fprintf(stdout, "ESTA FUNCIÓN ES SOLAMENTE DE DEPURACIÓN");
     for (long int f = 0; f < m.fil; f++)
     {
         for (long int c = 0; c < m.col; c++)
@@ -171,9 +179,8 @@ void ipmt(Matriz m)
         printf(" |\n");
     }
     
-    fprintf(stdout, "\n");
+    fprintf(stdout, "\n\n");
     
 }
-
 #endif
 
