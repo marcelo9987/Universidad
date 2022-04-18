@@ -23,6 +23,7 @@ void iniciarMatriz(Matriz* matrizVacia, long int f, long int c)
     }
     
     matrizVacia->elems = (long*) malloc(f * c * sizeof(long));
+    
     if (matrizVacia->elems == NULL)
     {
         perror("Error al reservar memoria");

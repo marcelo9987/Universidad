@@ -44,12 +44,12 @@ int main(int argc, char* argv[])
         exit(251);
     }
     
-    FILE* resultadosSum = NULL;    //Archivo en el que se guardan los tiempos de las sumas
+    FILE* resultadosSum = NULL;     //Archivo en el que se guardan los tiempos de las sumas
     FILE* resultadosMultMat = NULL; //Archivo en el que se guardan los tiempos de las multiplicaciones
     
     //assert(resultadosSum == NULL && resultadosMultMat == NULL); //Los ficheros NO existen
     
-    resultadosSum = fopen("..tiemposSumaMatrices.txt", "wt+");
+    resultadosSum = fopen("tiemposSumaMatrices.txt", "wt+");
     
     //assert(resultadosSum != NULL && resultadosMultMat != NULL); //Los ficheros EXISTEN
     if (resultadosSum == NULL)
@@ -57,6 +57,7 @@ int main(int argc, char* argv[])
         perror("ERROR, apertura de archivos incorrecta... Finalizando programa.\n");
         exit(250);
     }
+    
     resultadosMultMat = fopen("tiemposMultMatrices.txt", "wt+");
     if (resultadosMultMat == NULL)
     {
@@ -102,7 +103,7 @@ int main(int argc, char* argv[])
         multiplicaMatrices(&C, &A, &B);
         fin[ MULTP ] = clock();
         //ipmt(C);
-//        fprintf(stdout, "He multiplicado\n");
+//      fprintf(stdout, "He multiplicado\n");
         
         destruirMatriz(&A);
         destruirMatriz(&B);

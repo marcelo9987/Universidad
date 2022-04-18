@@ -1,5 +1,5 @@
 #opciones de compilacion, muestra todos los warnings (-Wall)
-CC=gcc -Wall -Werror -pedantic
+CC=gcc -Wall
 #si incluye una librería est�ndar, en este caso la matematica (fichero libm.a)
 #todas tienen el formato de fichero libNOMBRE.a
 #y  al incluirla en el compilador se pone -lNOMBRE
@@ -45,3 +45,11 @@ cleanall: clean
 # REGLA 4: borra los ficheros .o y los de backup (terminan en ~)
 clean:
 	rm -f *.o *~
+
+#REGLA 5: para limpiar en win
+cleanAllWin: cleanWin
+	del $(OUTPUT).exe
+
+#Regla 6: borra todo en windows
+cleanWin:
+	del *.o -Recurse
