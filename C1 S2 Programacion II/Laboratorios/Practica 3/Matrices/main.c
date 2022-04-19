@@ -4,8 +4,8 @@
 
 #include "matriz.h"
 
-#define SUMA 0
-#define MULTP 1
+#define SUMA 0 // este es el elemento del array de tiempos correspondiente a la suma
+#define MULTP 1 //ídem, pero para la multipicación
 
 int main(int argc, char* argv[])
 {
