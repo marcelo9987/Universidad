@@ -19,14 +19,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49289c6a-5cdf-4da0-bd26-3b8cbc0956ff" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Universidad.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/ejecutable.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/factorial.o" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/factorial.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/potencia.o" beforeDir="false" afterPath="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/potencia.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/repreTiempoMultMatrices.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/repreTiempoSumaMatrices.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/tiemposMultMatrices.txt" beforeDir="false" afterPath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/ejecucion.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/tiemposMultMatrices_0_5000_200.txt" beforeDir="false" afterPath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/pruebas/actuales/tiemposMultMatrices_0_5000_200.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/tiemposSumaMatrices.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C1 S2 Programacion II/Laboratorios/Practica 3/Matrices/tiemposSumaMatrices_0_5000_200.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,15 +88,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/C1 S2 Fundamentos de los computadores/Simula3MSv4_12" />
     <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
   </component>
-  <component name="RunManager" selected="Custom Build Application.E3W">
-    <configuration name="E3W" type="CLionExternalRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="E3W" CONFIG_NAME="E3W" RUN_PATH="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/ejecutable">
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="E3W" type="CLionExternalRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="main.c" TARGET_NAME="E3W" CONFIG_NAME="E3W" RUN_PATH="$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/ejecutable">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
@@ -126,14 +127,6 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Custom Build Application.E3W" />
-      <item itemvalue="Makefile Application.build_with_make" />
-      <item itemvalue="Makefile Application.clean_with_make" />
-      <item itemvalue="Makefile Application.all" />
-      <item itemvalue="Makefile Application.cleanall" />
-      <item itemvalue="Makefile Application.ejecutable" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -145,6 +138,7 @@
       <updated>1643986450006</updated>
       <workItem from="1643986457041" duration="5000" />
       <workItem from="1644435755001" duration="2641000" />
+      <workItem from="1650532869477" duration="74000" />
     </task>
     <servers />
   </component>
@@ -166,26 +160,5 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/SistemasDigitales" />
     </ignored-roots>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.c</url>
-          <line>49</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.c</url>
-          <line>57</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Programacion II/Entregables/Entrega_0_nueva/E3W-Make/main.c</url>
-          <line>63</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
