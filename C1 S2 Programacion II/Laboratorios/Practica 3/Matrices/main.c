@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
         //ipmt(A);
         //ipmt(B);
         //ipmt(C);
-        
+        /*
         fprintf(stdout, "Iniciando multiplicación para n = %li\n", tamanho);
         
         inicio[ MULTP ] = clock();
@@ -105,13 +105,13 @@ int main(int argc, char* argv[])
         fin[ MULTP ] = clock();
         
         //ipmt(C);
-        
+        */
         destruirMatriz(&A);
         destruirMatriz(&B);
         destruirMatriz(&C);
         
         fprintf(resultadosSum, "%li %lf\n", tamanho, (fin[ SUMA ] - inicio[ SUMA ]) / (double) CLOCKS_PER_SEC);
-        fprintf(resultadosMultMat, "%li %lf\n", tamanho, (fin[ MULTP ] - inicio[ MULTP ]) / (double) CLOCKS_PER_SEC);
+       // fprintf(resultadosMultMat, "%li %lf\n", tamanho, (fin[ MULTP ] - inicio[ MULTP ]) / (double) CLOCKS_PER_SEC);
     }
     
     fprintf(stdout, "Prueba finalizada con éxito.\n");
