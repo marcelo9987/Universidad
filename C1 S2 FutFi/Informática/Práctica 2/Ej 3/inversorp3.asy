@@ -1,0 +1,22 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 0 -80 0 0
+LINE Normal 160 0 0 -80
+LINE Normal 0 80 160 0
+LINE Normal 0 0 0 80
+LINE Normal -79 0 0 0
+LINE Normal 272 0 194 0
+CIRCLE Normal 194 17 160 -17
+SYMATTR SpiceLine s1=2, s2=1
+PIN 64 -48 TOP 8
+PINATTR PinName DD
+PINATTR SpiceOrder 1
+PIN 64 48 BOTTOM 8
+PINATTR PinName SS
+PINATTR SpiceOrder 2
+PIN -80 0 LEFT 8
+PINATTR PinName IN
+PINATTR SpiceOrder 3
+PIN 272 0 RIGHT 8
+PINATTR PinName OUT
+PINATTR SpiceOrder 4

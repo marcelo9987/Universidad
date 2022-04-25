@@ -1,0 +1,25 @@
+Circuit: * D:\github\Universidad\C1 S2 FutFi\Informática\Práctica 2\Ej 1\1c.asc
+
+Direct Newton iteration for .op point succeeded.
+.step s=1
+.step s=2
+.step s=3
+.step s=4
+
+Date: Mon Apr 25 16:19:12 2022
+Total elapsed time: 0.409 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2886
+traniter = 2875
+tranpoints = 1405
+accept = 1320
+rejected = 85
+matrix size = 13
+fillins = 0
+solver = Normal
+Matrix Compiler1: 960 bytes object code size  0.2/0.2/[0.1]
+Matrix Compiler2: 1.32 KB object code size  0.2/0.4/[0.1]
+
