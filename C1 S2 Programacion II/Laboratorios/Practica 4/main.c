@@ -6,17 +6,37 @@ bool cambio(int importeDevolver, int numTiposMonedas, int valor[], int solucion[
 
 int main(int argc, char* argv[])
 {
+    int numTiposMonedas;
+    int* valor;
     int importeDevolver = 123456789;
-    int numTiposMonedas = 15;
-    int valor[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
-    int solucion[numTiposMonedas];
+    int numTiposMonedas_eur = 15;
+    int numTiposMonedas_usd = 17;
+    int valor_eur[] = {500 * 100, 200 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 20, 10, 5, 2, 1};
+    int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
+    int solucion[100];
+    
+    char seleccion;
+    do
+    {
+        fprintf(stdout, "En que divisa desea operar(E:€ D:$): ");
+        fscanf(stdin, "%c", &seleccion);
+    } while (seleccion != 'E' && seleccion != 'D');
+    
+
+    if (seleccion == 'E')
+    {
+        numTiposMonedas = numTiposMonedas_eur;
+        valor = valor_eur;
+    } else if (seleccion == 'D')
+    {
+        numTiposMonedas = numTiposMonedas_usd;
+        valor = valor_usd;
+    }
     
     bool ok = cambio(importeDevolver, numTiposMonedas, valor, solucion);
     if (ok)
     {
-        
-        
-        for (int pos = 0; pos < numTiposMonedas; pos++)
+        for (int pos = 0; pos < numTiposMonedas_eur; pos++)
         {
             fprintf(stdout, "valor %5i es: %5i\n", valor[ pos ], solucion[ pos ]);//formatear
         }
