@@ -1,81 +1,65 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "vectordinamico.h"
+#include <stdbool.h>
 
-void leerDivisas(FILE* archivo);
+bool cambio(int importeDevolver, int numTiposMonedas, int valor[], int solucion[]);
 
-int main()
+int main(int argc, char* argv[])
 {
-    FILE* archivoDivisas;
-    archivoDivisas =  fopen("../monedas.curr","rt");
-    char seleccion[9];
-    char sel = 'r';
-    leerDivisas(archivoDivisas);
-    while (sel != '1' && sel != '2')
-    {
-        //fflush(NULL);
-        system("cls||clear");
-        fprintf(stdout, "Modo de operación (Ilimitado 1 o Limitado 2): ");
-        fscanf(stdin, "%c", &sel);
-    }
-    if(sel =='1')
-    {
-        fprintf(stdout,"ILIMITADO");
+    int importeDevolver = 123456789;
+    int numTiposMonedas = 15;
+    int valor[] = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+    int solucion[numTiposMonedas];
     
-    }
-    if(sel=='2')
+    bool ok = cambio(importeDevolver, numTiposMonedas, valor, solucion);
+    if (ok)
     {
-        fprintf(stdout,"LIMITADO");
+        
+        
+        for (int pos = 0; pos < numTiposMonedas; pos++)
+        {
+            fprintf(stdout, "valor %5i es: %5i\n", valor[ pos ], solucion[ pos ]);//formatear
+        }
+    } else
+    {
+        fprintf(stdout, "No se ha podido calcular el cambio\n");
     }
-    fclose(archivoDivisas);
     return 0;
 }
 
-void leerDivisas(FILE* archivo/*,vectorD divisas[]*/)
-{
-    char* divisa =(char*) malloc(36*sizeof(char));
-    fscanf(archivo,"%[^\n]",divisa);
-    int nw = -7;
-    int o = 0;
-    while(nw!=1)
-    {
-        if(divisa[o] == '\0')
-        {
-            nw=1;
-        }
-        
-        ++o;
-    }
-    
-    realloc(divisa,o*sizeof(char));
-}
-
-
-int cambio(int x, int n, const int valor[n], int solucion[n])
+bool cambio(int importeDevolver, int numTiposMonedas, int valor[], int solucion[])
 {
     
-    
-    for (int i = 0; i < n; i++)
+    for (int pos = 0; pos < numTiposMonedas; pos++)
     {
-        solucion[ i ] = 0;
+        solucion[ pos ] = 0;
     }
-    int i = 0, suma = 0;
     
-    while (suma < x && i < n)
+    int suma = 0;
+    for (int pos = 0; suma < importeDevolver && pos < numTiposMonedas;)
     {
-        if (suma + valor[ i ] <= x)
+        if (suma + valor[ pos ] <= importeDevolver)
         {
-            solucion[ i ]++;
-            suma += valor[ i ];
+            solucion[ pos ]++;
+            suma += valor[ pos ];
         } else
-            i++;
+        {
+            pos++;
+        }
     }
-    if (suma == x)
+    
+    if (suma == importeDevolver)
     {
-        return 1;
+        return true;
     } else
     {
-        for (int i = 0; i < n; i++) solucion[ i ] = 0;
-        return 0;
+        for (int pos = 0; pos < numTiposMonedas; pos++)
+        {
+            solucion[ pos ] = 0;
+        }
+        
+        return false;
     }
 }
+
+
