@@ -1,0 +1,46 @@
+* D:\github\Universidad\C1 S2 FutFi\Informática\última\3.2.asc
+VDD1 VDD 0 1V
+V§A A 0 PULSE(1 0 0 1p 1p 2n 4n 4)
+V§B B 0 PULSE(1 0 0 1p 1p 4n 8n 2)
+V§C C 0 PULSE(1 0 0 1p 1p 8n 16n1)
+M1 N007 A N014 N011 NMOS l=50n w=1500n
+M2 ACARREONEGADO C N007 N005 NMOS l=50n w=1500n
+M3 ACARREONEGADO A N008 N006 NMOS l=50n w=1500n
+M4 N008 B N014 N013 NMOS l=50n w=1500n
+M5 N007 B N014 N012 NMOS l=50n w=1500n
+M20 SUMANEGADA ACARREONEGADO N010 N003 NMOS l=50n w=1500n
+M23 SUMANEGADA A P001 N004 NMOS l=50n w=2000n
+M24 P001 B P002 N009 NMOS l=50n w=2000n
+M25 P002 C N019 N018 NMOS l=50n w=2000n
+M26 N010 C N019 N017 NMOS l=50n w=1500n
+M27 N010 B N019 N016 NMOS l=50n w=1500n
+M28 N010 A N019 N015 NMOS l=50n w=1500n
+M6 ACARREONEGADO CLK VDD N001 PMOS l=50n w=1000n
+M7 SUMANEGADA CLK VDD N002 PMOS l=50n w=1000n
+M8 N014 CLK 0 N020 NMOS l=50n w=1500n
+M9 N019 CLK 0 N021 NMOS l=50n w=2000n
+V§CLK CLK 0 PULSE(1 0 0 1p 1p 1n 2n 8)
+XX1 0 ACARREONEGADO VDD udcarga
+XX2 0 SUMANEGADA VDD udcarga
+
+* block symbol definitions
+.subckt udcarga OUT IN DD
+XX1 DD 0 IN OUT inversorp params: s=2
+XX2 DD 0 IN OUT inversorp params: s=2
+XX3 DD 0 IN OUT inversorp params: s=2
+XX4 DD 0 IN OUT inversorp params: s=2
+.ends udcarga
+
+.subckt inversorp DD SS IN OUT
+M1 OUT IN SS SS NMOS l=50n w=500n
+M2 OUT IN DD DD PMOS l=50n w={500n*s}
+.include modelos.txt
+.ends inversorp
+
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\Marcelo\Documents\LTspiceXVII\lib\cmp\standard.mos
+.include modelos.txt
+.tran 0 16n 0
+.backanno
+.end
