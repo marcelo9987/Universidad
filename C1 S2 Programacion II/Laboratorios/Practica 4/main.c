@@ -8,7 +8,7 @@ enum enumModosOperacion
     Limitado, Ilimitado
 };
 
-bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSolucion, vectorD vectorUnidadesDisponibles, enum enumModosOperacion modoOperacion)
+bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSolucion, vectorD vectorStock, enum enumModosOperacion modoOperacion)
 {
     
     for (short pos = 0; pos < longitudVector(vectorSolucion); pos++)
@@ -22,7 +22,7 @@ bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSol
         bool hayMonedasDisponibles = true;
         if (modoOperacion == Limitado)
         {
-            if (recuperar(vectorUnidadesDisponibles, pos) <= 0)
+            if (recuperar(vectorStock, pos) <= 0)
             {
                 hayMonedasDisponibles = false;
             }
@@ -35,7 +35,7 @@ bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSol
             suma += recuperar(vectorValoresDivisas, pos);
             if (modoOperacion == Limitado)
             {
-                asignar(&vectorUnidadesDisponibles, pos, recuperar(vectorUnidadesDisponibles, pos) - 1);
+                asignar(&vectorStock, pos, recuperar(vectorStock, pos) - 1);
             }
         } else
         {
@@ -51,7 +51,7 @@ bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSol
     {
         for (short pos = 0; pos < longitudVector(vectorSolucion); pos++)
         {
-            asignar(&vectorUnidadesDisponibles, pos, recuperar(vectorUnidadesDisponibles, pos) + recuperar(vectorSolucion, pos));
+            asignar(&vectorStock, pos, recuperar(vectorStock, pos) + recuperar(vectorSolucion, pos));
             asignar(&vectorSolucion, pos, 0);
         }
         
@@ -61,7 +61,7 @@ bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSol
 
 int main(int argc, char* argv[])
 {
-    vectorD vectorValoresDivisas, vectorSolucion, vectorUnidadesDisponibles;
+    vectorD vectorValoresDivisas, vectorSolucion, vectorStock;
     short numTiposMonedas;
     int* valor = NULL;
     //int importeDevolver = 123456789;
@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
     short numTiposMonedas_usd = 17;
     int valor_eur[] = {500 * 100, 200 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 20, 10, 5, 2, 1};
     int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
-    int arrayUnidadesDisponibles[] = {1, 2, 0, 4, 6, 9, 8, 7, 1, 2, 0, 0, 1, 5, 6, 0, 1};
+    int arrayStock[] = {1, 2, 0, 4, 6, 9, 8, 7, 1, 2, 0, 0, 1, 5, 6, 0, 1};
     //--//
     
     char seleccion;
@@ -125,14 +125,14 @@ int main(int argc, char* argv[])
     
     if (modoOperacion == Limitado)
     {
-        crear(&vectorUnidadesDisponibles, numTiposMonedas);
+        crear(&vectorStock, numTiposMonedas);
         for (short indice = 0; indice < numTiposMonedas; indice++)
         {
-            asignar(&vectorUnidadesDisponibles, indice, arrayUnidadesDisponibles[indice]);
+            asignar(&vectorStock, indice, arrayStock[indice]);
         }
     } else
     {
-        vectorUnidadesDisponibles = NULL;
+        vectorStock = NULL;
     }
     
     //--//
@@ -161,14 +161,14 @@ int main(int argc, char* argv[])
                 fprintf(stdout, "    Valor | Disponibles\n");
                 for (short pos = 0; pos < numTiposMonedas; pos++)
                 {
-                    fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorUnidadesDisponibles, pos));//formatear
+                    fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
                 }
                 fprintf(stdout, "\n");
             }
             
             fprintf(stdout, "---- Importe a devolver: %i ----\n", importeDevolver);
             
-            bool ok = cambio(importeDevolver, vectorValoresDivisas, vectorSolucion, vectorUnidadesDisponibles, modoOperacion);
+            bool ok = cambio(importeDevolver, vectorValoresDivisas, vectorSolucion, vectorStock, modoOperacion);
             if (ok)
             {
                 fprintf(stdout, "    Valor | Devuelto\n");
@@ -191,7 +191,7 @@ int main(int argc, char* argv[])
         fprintf(stdout, "    Valor | Disponibles\n");
         for (short pos = 0; pos < numTiposMonedas; pos++)
         {
-            fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorUnidadesDisponibles, pos));//formatear
+            fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
         }
         fprintf(stdout, "\n");
     }
@@ -202,7 +202,7 @@ int main(int argc, char* argv[])
     liberar(&vectorSolucion);
     if (modoOperacion == Limitado)
     {
-        liberar(&vectorUnidadesDisponibles);
+        liberar(&vectorStock);
     }
     
     //--//
