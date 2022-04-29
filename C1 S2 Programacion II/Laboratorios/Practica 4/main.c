@@ -3,20 +3,21 @@
 #include <stdbool.h>
 #include "vectordinamico.h"
 
-bool cambio(int importeDevolver, int numTiposMonedas, vectorD vectorValoresDivisas, int solucion[])
+bool cambio(int importeDevolver, vectorD vectorValoresDivisas, vectorD vectorSolucion)
 {
     
-    for (int pos = 0; pos < numTiposMonedas; pos++)
+    for (short pos = 0; pos < longitudVector(vectorSolucion); pos++)
     {
-        solucion[pos] = 0;
+        asignar(&vectorSolucion, pos, 0);
     }
     
     int suma = 0;
-    for (short pos = 0; suma < importeDevolver && pos < numTiposMonedas;)
+    for (short pos = 0; suma < importeDevolver && pos < longitudVector(vectorSolucion);)
     {
         if (suma + recuperar(vectorValoresDivisas, pos) <= importeDevolver)
         {
-            solucion[pos]++;
+            asignar(&vectorSolucion, pos, recuperar(vectorSolucion, pos) + 1);
+            //solucion[pos]++;
             suma += recuperar(vectorValoresDivisas, pos);
         } else
         {
@@ -29,9 +30,10 @@ bool cambio(int importeDevolver, int numTiposMonedas, vectorD vectorValoresDivis
         return true;
     } else
     {
-        for (int pos = 0; pos < numTiposMonedas; pos++)
+        for (short pos = 0; pos < longitudVector(vectorSolucion); pos++)
         {
-            solucion[pos] = 0;
+            asignar(&vectorSolucion, pos, 0);
+            //solucion[pos] = 0;
         }
         
         return false;
@@ -40,7 +42,7 @@ bool cambio(int importeDevolver, int numTiposMonedas, vectorD vectorValoresDivis
 
 int main(int argc, char* argv[])
 {
-    vectorD vectorValoresDivisas;
+    vectorD vectorValoresDivisas, vectorSolucion;
     short numTiposMonedas;
     int* valor = NULL;
     //int importeDevolver = 123456789;
@@ -48,7 +50,6 @@ int main(int argc, char* argv[])
     short numTiposMonedas_usd = 17;
     int valor_eur[] = {500 * 100, 200 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 20, 10, 5, 2, 1};
     int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
-    int solucion[100];
     
     char seleccion;
     do
@@ -70,6 +71,7 @@ int main(int argc, char* argv[])
     }
     
     crear(&vectorValoresDivisas, numTiposMonedas);
+    crear(&vectorSolucion, numTiposMonedas);
     
     for (short indice = 0; indice < numTiposMonedas; indice++)
     {
@@ -91,13 +93,13 @@ int main(int argc, char* argv[])
         
         if (importeDevolver > 0)
         {
-            fprintf(stdout,"valor a devolver: %i\n",importeDevolver);
-            bool ok = cambio(importeDevolver, numTiposMonedas, vectorValoresDivisas, solucion);
+            fprintf(stdout, "valor a devolver: %i\n", importeDevolver);
+            bool ok = cambio(importeDevolver, vectorValoresDivisas, vectorSolucion);
             if (ok)
             {
                 for (short pos = 0; pos < numTiposMonedas; pos++)
                 {
-                    fprintf(stdout, "valor %5i es: %5i\n", recuperar(vectorValoresDivisas, pos), solucion[pos]);//formatear
+                    fprintf(stdout, "valor %9i es: %5i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorSolucion, pos));//formatear
                 }
                 
             } else
