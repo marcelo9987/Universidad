@@ -157,8 +157,8 @@ int main(int argc, char* argv[])
             
             if (modoOperacion == Limitado)
             {
-                fprintf(stdout, "---- MODO LIMITADO: Valores iniciales disponibles ----\n");
-                fprintf(stdout, "    Valor | Disponibles\n");
+                fprintf(stdout, "---- Stock inicial disponible ----\n");
+                fprintf(stdout, "    Valor | Disponible\n");
                 for (short pos = 0; pos < numTiposMonedas; pos++)
                 {
                     fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
@@ -171,30 +171,34 @@ int main(int argc, char* argv[])
             bool ok = cambio(importeDevolver, vectorValoresDivisas, vectorSolucion, vectorStock, modoOperacion);
             if (ok)
             {
-                fprintf(stdout, "    Valor | Devuelto\n");
+                fprintf(stdout, "    Valor |   Devuelto\n");
                 
                 for (short pos = 0; pos < numTiposMonedas; pos++)
                 {
                     fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorSolucion, pos));//formatear
                 }
-                //  }
+                fprintf(stdout, "\n");
+                
             } else
             {
                 fprintf(stdout, "No se ha podido calcular el cambio\n");
             }
         }
+        
+        if (modoOperacion == Limitado)
+        {
+            fprintf(stdout, "---- Stock disponible:----\n");
+            fprintf(stdout, "    Valor | Disponible\n");
+            for (short pos = 0; pos < numTiposMonedas; pos++)
+            {
+                fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
+            }
+            fprintf(stdout, "\n");
+        }
+        
     } while (importeDevolver != 0);
     
-    if (modoOperacion == Limitado)
-    {
-        fprintf(stdout, "---- MODO LIMITADO: Valores finales disponibles ----\n");
-        fprintf(stdout, "    Valor | Disponibles\n");
-        for (short pos = 0; pos < numTiposMonedas; pos++)
-        {
-            fprintf(stdout, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
-        }
-        fprintf(stdout, "\n");
-    }
+
     
     //--//
     
