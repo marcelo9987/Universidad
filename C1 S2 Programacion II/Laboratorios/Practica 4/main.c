@@ -64,6 +64,7 @@ int main(int argc, char* argv[])
     vectorD vectorValoresDivisas, vectorSolucion, vectorStock;
     short numTiposMonedas;
     int* valor = NULL;
+    
     //int importeDevolver = 123456789;
     short numTiposMonedas_eur = 15;
     short numTiposMonedas_usd = 17;
@@ -125,10 +126,21 @@ int main(int argc, char* argv[])
     
     if (modoOperacion == Limitado)
     {
-        crear(&vectorStock, numTiposMonedas);
-        for (short indice = 0; indice < numTiposMonedas; indice++)
+        FILE* archivoStock = fopen("../stock.stock", "r");
+        if (archivoStock == NULL)
         {
-            asignar(&vectorStock, indice, arrayStock[indice]);
+            perror("Error en la lectura del archivo del stock para esta moneda");
+            fprintf(stdout, "Se procederá con stock 0.\n");
+        } else
+        {
+            crear(&vectorStock, numTiposMonedas);
+            for (short pos = 0; pos < numTiposMonedas; pos++)
+            {
+                int tempValStock;
+                fscanf(archivoStock, "%i", &tempValStock);
+                asignar(&vectorStock, pos, tempValStock);
+            }
+            fclose(archivoStock);
         }
     } else
     {
@@ -181,7 +193,7 @@ int main(int argc, char* argv[])
                 
             } else
             {
-                fprintf(stdout, "No se ha podido calcular el cambio\n");
+                fprintf(stdout, "No se ha podido calcular el cambio\n\n");
             }
         }
         
@@ -198,8 +210,24 @@ int main(int argc, char* argv[])
         
     } while (importeDevolver != 0);
     
-
-    
+    //--//
+    if (modoOperacion == Limitado)
+    {
+        FILE* archivoStock = fopen("../stock.stock", "w");
+        if (archivoStock == NULL)
+        {
+            perror("Error en la apertura del archivo para guardado del stock final de esta moneda");
+            fprintf(stdout, "NO se ha podido realizar el guardado del stock final.\n");
+        } else
+        {
+            for (short pos = 0; pos < numTiposMonedas; pos++)
+            {
+                fprintf(archivoStock, "%i ", recuperar(vectorStock, pos));
+                
+            }
+        }
+        fclose(archivoStock);
+    }
     //--//
     
     liberar(&vectorValoresDivisas);
