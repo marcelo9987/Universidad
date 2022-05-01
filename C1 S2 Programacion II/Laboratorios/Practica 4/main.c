@@ -5,7 +5,6 @@
 #include <string.h>
 #include "config.h"
 #include "vectordinamico.h"
-#include  "leerStock.c"
 
 
 enum enumModosOperacion
@@ -184,17 +183,17 @@ int main(int argc, char* argv[])
         
         do
         {
-            if(fscanf(archivoValores, "%s", nombreDivisaLeido)!=1)
+            if (fscanf(archivoValores, "%s", nombreDivisaLeido) != 1)
             {
-                fseek(archivoValores,0,SEEK_SET);//reiniciamos el puntero al inicio del archivo
-                fprintf(STDOUT,"No se ha encontrado la divisa, introduzca otra divisa. \n");
+                fseek(archivoValores, 0, SEEK_SET);//reiniciamos el puntero al inicio del archivo
+                fprintf(STDOUT, "No se ha encontrado la divisa, introduzca otra divisa. \n");
                 do
                 { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
                     fprintf(STDOUT, "Escriba el nombre de la divisa: ");
                     fscanf(stdin, "%s", nombreDivisa);
-        
+                    
                     while (getchar() != '\n');
-        
+                    
                     if (strcmp(nombreDivisa, "") == 0)
                     {
                         fprintf(STDERR, "Nombre no válido.\n");
@@ -256,22 +255,29 @@ int main(int argc, char* argv[])
     crear(&vectorSolucion, numTiposMonedas);
     
     int importeDevolver;
+    
     do
     {
-        char opcion="w";
-        if(modoOperacion==Limitado)
+        char opcion = '\0';
+        if (modoOperacion == Limitado)
         {
             do
             {
-                fprinft(STDOUT,"Desea obtener cambio(a) o aumentar el stock(b): ");
-                fscanf(stdin,&opcion);
-            }while(opcion !=  'a' && opcion!='b)
-            if(opcion=='b')
+                fprintf(STDOUT, "Desea obtener cambio(a), aumentar el stock(b) o salir(c): ");
+                fscanf(stdin, "%c", &opcion);
+                
+                while (getchar()!='\n');
+            } while (opcion != 'a' && opcion != 'c');
+            if (opcion == 'b')
             {
-               for (short pos = 0; pos < numTiposMonedas; pos++)
-               {
-                   asignar(&vectorStockMonedas,pos,recuperar(&vectorStockMonedas)+10);
-               }    
+                for (short pos = 0; pos < numTiposMonedas; pos++)
+                {
+                    asignar(&vectorStock, pos, recuperar(vectorStock, pos) + 10);
+                }
+            }
+            if (opcion == 'c')
+            {
+                break;
             }
         }
         do
