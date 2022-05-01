@@ -117,18 +117,126 @@ void guardarStock(vectorD vectorStock, char* nombreArchivo)
     fclose(archivoStock);
 }
 
+void mostrarSolucionCambio(vectorD vectorValoresDivisas, vectorD vectorSolucion)
+{
+    fprintf(STDOUT, "    Valor |   Devuelto\n");
+    for (short pos = 0; pos < longitudVector(vectorValoresDivisas); pos++)
+    {
+        fprintf(STDOUT, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorSolucion, pos));
+    }
+    fprintf(STDOUT, "\n");
+}
+
+void mostrarStockActual(vectorD vectorValoresDivisas, vectorD vectorStock)
+{
+    fprintf(STDOUT, "    Valor | Disponible\n");
+    for (short pos = 0; pos < longitudVector(vectorValoresDivisas); pos++)
+    {
+        fprintf(STDOUT, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));
+    }
+    fprintf(STDOUT, "\n");
+}
+
+void recuperarValoresDivisas(vectorD* vectorValoresDivisas, char* nombreDivisa)
+{
+    FILE* archivoValores = fopen("divisas.data", "r");
+    
+    if (archivoValores == NULL)
+    {
+        fprintf(STDERR, "Error en la lectura del archivo de divisas. Razón: %s\n", strerror(errno));
+        exit(-1);
+    }
+    /*
+    do
+    { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
+        fprintf(STDOUT, "Escriba el nombre de la divisa: ");
+        fscanf(stdin, "%s", nombreDivisa);
+        
+        while (getchar() != '\n');
+        
+        if (strcmp(nombreDivisa, "") == 0)
+        {
+            fprintf(STDERR, "Nombre no válido.\n");
+        }
+    } while (strcmp(nombreDivisa, "") == 0);
+    */
+    char nombreDivisaLeido[K_MAX_NOMBRE_DIVISA];
+    short numTiposMonedas;
+    do
+    {
+        do
+        { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
+            fprintf(STDOUT, "Escriba el nombre de la divisa: ");
+            fscanf(stdin, "%s", nombreDivisa);
+            
+            while (getchar() != '\n');
+            
+            if (strcmp(nombreDivisa, "") == 0)
+            {
+                fprintf(STDERR, "Nombre no válido.\n");
+            }
+        } while (strcmp(nombreDivisa, "") == 0);
+        
+        bool encontrado = false;
+        while (fscanf(archivoValores, "%s", nombreDivisaLeido) == 1)
+        {
+            if (strcmp(nombreDivisaLeido, nombreDivisa) == 0)//se ha encontrado la divisa solicitada
+            {
+                
+                if (fscanf(archivoValores, "%hi", &numTiposMonedas) != 1)
+                {
+                    fprintf(STDERR, "Error, formato incorrecto.\n");
+                    exit(-1);
+                }
+                if (numTiposMonedas <= 0)
+                {
+                    fprintf(STDERR, "El número de tipos faciales ha de ser mayor o igual a 1.\n");
+                    exit(-1);
+                }
+                encontrado = true;
+                break;
+            }
+        }
+        
+        if (encontrado == true)
+        {
+            break;
+        }
+        
+        
+        {
+            fclose(archivoValores);//reiniciamos el puntero al inicio del archivo
+            archivoValores = fopen("divisas.data", "r");
+            if (archivoValores == NULL)
+            {
+                fprintf(STDERR, "Error en la lectura del archivo de divisas. Razón: %s\n", strerror(errno));
+                exit(-1);
+            }
+            fprintf(STDOUT, "No se ha encontrado la divisa, introduzca otra divisa. \n");
+            
+        }
+        
+    } while (true);
+    
+    crear(vectorValoresDivisas, numTiposMonedas);
+    
+    for (short pos = 0; pos < numTiposMonedas; pos++)
+    {
+        int tempValDivisa;
+        if (fscanf(archivoValores, "%i,", &tempValDivisa) != 1)
+        {
+            fprintf(STDERR, "Error en lectura del archivo de valores faciales. Formato incorrecto\n");
+            exit(-1);
+        }
+        asignar(vectorValoresDivisas, pos, tempValDivisa);
+    }
+    
+    fclose(archivoValores);
+}
+
 int main(int argc, char* argv[])
 {
-    vectorD vectorValoresDivisas, vectorSolucion;
-    short numTiposMonedas;
-    int* valor = NULL;
     
-    //int importeDevolver = 123456789;
-    short numTiposMonedas_eur = 15;
-    short numTiposMonedas_usd = 17;
-//    int valor_eur[] = {500 * 100, 200 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 20, 10, 5, 2, 1};
-//    int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
-    //int arrayStock[] = {1, 2, 0, 4, 6, 9, 8, 7, 1, 2, 0, 0, 1, 5, 6, 0, 1};
     //--//
     enum enumModosOperacion modoOperacion;
     
@@ -150,96 +258,14 @@ int main(int argc, char* argv[])
         }
     }
     //--//
+    vectorD vectorValoresDivisas;
     
     //! \brief Variable con el nombre de la divisa utilizada. Usada para los ficheros (Valores faciales y stock).
     char nombreDivisa[K_MAX_NOMBRE_DIVISA];
     
-    {
-        FILE* archivoValores = fopen("divisas.data", "r");
-        
-        if (archivoValores == NULL)
-        {
-            fprintf(STDERR, "Error en la lectura del archivo de divisas. Razón: %s\n", strerror(errno));
-            exit(-1);
-        }
-        
-        do
-        { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
-            fprintf(STDOUT, "Escriba el nombre de la divisa: ");
-            fscanf(stdin, "%s", nombreDivisa);
-            
-            while (getchar() != '\n');
-            
-            if (strcmp(nombreDivisa, "") == 0)
-            {
-                fprintf(STDERR, "Nombre no válido.\n");
-            }
-        } while (strcmp(nombreDivisa, "") == 0);
-        
-        //vectorD vectorValoresDivisas = NULL;
-        //crear(&vectorValoresDivisas, numTiposMonedas);
-        
-        char nombreDivisaLeido[K_MAX_NOMBRE_DIVISA];
-        
-        do
-        {
-            if (fscanf(archivoValores, "%s", nombreDivisaLeido) != 1)
-            {
-                fseek(archivoValores, 0, SEEK_SET);//reiniciamos el puntero al inicio del archivo
-                fprintf(STDOUT, "No se ha encontrado la divisa, introduzca otra divisa. \n");
-                do
-                { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
-                    fprintf(STDOUT, "Escriba el nombre de la divisa: ");
-                    fscanf(stdin, "%s", nombreDivisa);
-                    
-                    while (getchar() != '\n');
-                    
-                    if (strcmp(nombreDivisa, "") == 0)
-                    {
-                        fprintf(STDERR, "Nombre no válido.\n");
-                    }
-                } while (strcmp(nombreDivisa, "") == 0);
-            }
-            if (strcmp(nombreDivisaLeido, nombreDivisa) == 0)//se ha encontrado la divisa solicitada
-            {
-                
-                if (fscanf(archivoValores, "%i", &numTiposMonedas) != 1)
-                {
-                    fprintf(STDERR, "Error, formato incorrecto.\n");
-                    exit(-1);
-                }
-                if (numTiposMonedas <= 0)
-                {
-                    fprintf(STDERR, "El número de tipos faciales ha de ser mayor o igual a 1.\n");
-                    exit(-1);
-                }
-                break;
-            }
-            
-        } while (true);
-        
-        crear(&vectorValoresDivisas, numTiposMonedas);
-        
-        for (short pos = 0; pos < numTiposMonedas; pos++)
-        {
-            int tempValDivisa;
-            if (fscanf(archivoValores, "%i,", &tempValDivisa) != 1)
-            {
-                fprintf(STDERR, "Error en lectura del archivo de valores faciales. Formato incorrecto\n");
-                exit(-1);
-            }
-            asignar(&vectorValoresDivisas, pos, tempValDivisa);
-        }
-        
-        fclose(archivoValores);
-        
-    }
-    //--//
+    recuperarValoresDivisas(&vectorValoresDivisas, nombreDivisa);
     
-    
-    
-    
-    
+    short numTiposMonedas = longitudVector(vectorValoresDivisas);
     //--//
     char nombreArchivoStock[K_MAX_NOMBRE_ARCHIVO] = "";
     vectorD vectorStock = NULL;
@@ -251,71 +277,71 @@ int main(int argc, char* argv[])
     }
     
     //--//
-    
+    vectorD vectorSolucion;
     crear(&vectorSolucion, numTiposMonedas);
     
     int importeDevolver;
     
     do
     {
-        char opcion = '\0';
         if (modoOperacion == Limitado)
         {
+            fprintf(STDOUT, "---- Stock disponible:----\n");
+            mostrarStockActual(vectorValoresDivisas, vectorStock);
+            
+            char opcion = '\0';
             do
             {
                 fprintf(STDOUT, "Desea obtener cambio(a), aumentar el stock(b) o salir(c): ");
                 fscanf(stdin, "%c", &opcion);
                 
-                while (getchar()!='\n');
-            } while (opcion != 'a' && opcion != 'c');
-            if (opcion == 'b')
-            {
-                for (short pos = 0; pos < numTiposMonedas; pos++)
+                while (getchar() != '\n');
+                
+                if (opcion == 'b')
                 {
-                    asignar(&vectorStock, pos, recuperar(vectorStock, pos) + 10);
+                    
+                    for (short pos = 0; pos < numTiposMonedas; pos++)
+                    {
+                        asignar(&vectorStock, pos, recuperar(vectorStock, pos) + 10);
+                    }
+                    
+                    fprintf(STDOUT, "---- Stock disponible:----\n");
+                    mostrarStockActual(vectorValoresDivisas, vectorStock);
                 }
-            }
+                
+            } while (opcion != 'a' && opcion != 'c');
+            
             if (opcion == 'c')
             {
                 break;
             }
         }
+        
         do
         {
             fprintf(STDOUT, "Introduzca el valor a cambiar (0 para salir): ");
             if (fscanf(stdin, "%i", &importeDevolver) < 1)
             {
                 importeDevolver = -1;
-                while (getchar() != '\n');
             }
+            while (getchar() != '\n');
         } while (importeDevolver < 0);
         
         if (importeDevolver > 0)
         {
             
-            if (modoOperacion == Limitado)
+            /*if (modoOperacion == Limitado)
             {
                 fprintf(STDOUT, "---- Stock inicial disponible ----\n");
-                fprintf(STDOUT, "    Valor | Disponible\n");
-                for (short pos = 0; pos < numTiposMonedas; pos++)
-                {
-                    fprintf(STDOUT, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
-                }
-                fprintf(STDOUT, "\n");
-            }
+                mostrarStockActual(vectorValoresDivisas, vectorStock);
+            }*/
             
             fprintf(STDOUT, "---- Importe a devolver: %i ----\n", importeDevolver);
             
             bool ok = cambio(importeDevolver, vectorValoresDivisas, vectorSolucion, vectorStock, modoOperacion);
             if (ok)
             {
-                fprintf(STDOUT, "    Valor |   Devuelto\n");
-                
-                for (short pos = 0; pos < numTiposMonedas; pos++)
-                {
-                    fprintf(STDOUT, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorSolucion, pos));//formatear
-                }
-                fprintf(STDOUT, "\n");
+                mostrarSolucionCambio(vectorValoresDivisas, vectorSolucion);
                 
             } else
             {
@@ -323,16 +349,11 @@ int main(int argc, char* argv[])
             }
         }
         
-        if (modoOperacion == Limitado)
-        {
-            fprintf(STDOUT, "---- Stock disponible:----\n");
-            fprintf(STDOUT, "    Valor | Disponible\n");
-            for (short pos = 0; pos < numTiposMonedas; pos++)
-            {
-                fprintf(STDOUT, "%9i : %9i\n", recuperar(vectorValoresDivisas, pos), recuperar(vectorStock, pos));//formatear
-            }
-            fprintf(STDOUT, "\n");
-        }
+        /* if (modoOperacion == Limitado)
+         {
+             fprintf(STDOUT, "---- Stock disponible:----\n");
+             mostrarStockActual(vectorValoresDivisas, vectorStock);
+         }*/
         
     } while (importeDevolver != 0);
     
@@ -340,18 +361,13 @@ int main(int argc, char* argv[])
     if (modoOperacion == Limitado)
     {
         guardarStock(vectorStock, nombreArchivoStock);
+        liberar(&vectorStock);
     }
     //--//
     
     liberar(&vectorValoresDivisas);
     liberar(&vectorSolucion);
-    if (modoOperacion == Limitado)
-    {
-        liberar(&vectorStock);
-    }
-    
     //--//
     
     return 0;
 }
-
