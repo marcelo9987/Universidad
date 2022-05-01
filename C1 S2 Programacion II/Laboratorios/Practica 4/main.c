@@ -127,8 +127,8 @@ int main(int argc, char* argv[])
     //int importeDevolver = 123456789;
     short numTiposMonedas_eur = 15;
     short numTiposMonedas_usd = 17;
-    int valor_eur[] = {500 * 100, 200 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 20, 10, 5, 2, 1};
-    int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
+//    int valor_eur[] = {500 * 100, 200 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 20, 10, 5, 2, 1};
+//    int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
     //int arrayStock[] = {1, 2, 0, 4, 6, 9, 8, 7, 1, 2, 0, 0, 1, 5, 6, 0, 1};
     //--//
     enum enumModosOperacion modoOperacion;
@@ -258,6 +258,22 @@ int main(int argc, char* argv[])
     int importeDevolver;
     do
     {
+        char opcion="w";
+        if(modoOperacion==Limitado)
+        {
+            do
+            {
+                fprinft(STDOUT,"Desea obtener cambio(a) o aumentar el stock(b): ");
+                fscanf(stdin,&opcion);
+            }while(opcion !=  'a' && opcion!='b)
+            if(opcion=='b')
+            {
+               for (short pos = 0; pos < numTiposMonedas; pos++)
+               {
+                   asignar(&vectorStockMonedas,pos,recuperar(&vectorStockMonedas)+10);
+               }    
+            }
+        }
         do
         {
             fprintf(STDOUT, "Introduzca el valor a cambiar (0 para salir): ");
