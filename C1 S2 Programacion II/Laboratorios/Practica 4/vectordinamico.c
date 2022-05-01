@@ -1,5 +1,6 @@
 #include<stdlib.h>
 #include<stdio.h>
+#include "config.h"
 
 /*Se vuelve a definir el tipo de datos que contiene el vector*/
 typedef int TELEMENTO;
@@ -7,51 +8,60 @@ typedef int TELEMENTO;
 /*Implementación del TAD vectorD*/
 typedef struct
 {
-    TELEMENTO *datos;   /*valores del vector*/
+    TELEMENTO* datos;   /*valores del vector*/
     short tam;          /*tamaño del vector*/
 } STVECTOR; /*definición del tipo de datos estructura*/
-typedef STVECTOR *vectorD;/*puntero a estructura*/
+typedef STVECTOR* vectorD;/*puntero a estructura*/
 
 /*Funciones con manipulación de datos*/
 
 /*Función crear: asigna memoria y devuelve la asignación al vector*/
-void crear(vectorD *v, short longitud)
+void crear(vectorD* vector, short longitud)
 {
     short i;
-
-    *v = NULL;
-    *v = (vectorD) malloc(sizeof(STVECTOR));
-    if (*v == NULL)
+    
+    *vector = (vectorD) malloc(sizeof(STVECTOR));
+    if (*vector == NULL)
     {
-        printf("ERR, malloc: 001");
+        fprintf(STDERR, "ERR, malloc: 001");
         exit(1);
     }
-
-    (*v)->datos = NULL;
-    (*v)->datos = (TELEMENTO *) malloc(longitud * sizeof(TELEMENTO));
-    if ((*v)->datos == NULL)
+    
+    (*vector)->datos = (TELEMENTO*) malloc(longitud * sizeof(TELEMENTO));
+    if ((*vector)->datos == NULL)
     {
-        printf("ERR, malloc: 002");
+        fprintf(STDERR, "ERR, malloc: 002");
         exit(2);
     }
-
-    (*v)->tam = longitud;
+    
+    (*vector)->tam = longitud;
     for (i = 0; i < longitud; i++)
     {
         /*Inicialización a 0 de las componentes del vector*/
-        *((*v)->datos + i) = 0;
+        *((*vector)->datos + i) = 0;
     }
 }
 
 /*Función asignar: Asigna un valor a la posición del vector*/
-void asignar(vectorD *v, short posicion, TELEMENTO valor)
+void asignar(vectorD* vector, short pos, TELEMENTO valor)
 {
-    *((*v)->datos + posicion) = valor;
-
+    if (vector == NULL || (*vector)==NULL)
+    {
+        fprintf(STDERR, "WARNING :: asignar(): NO vector TO WRITE 014\n");
+        
+    } else if (pos < 0 || pos >= (*vector)->tam)
+    {
+        fprintf(STDERR, "WARNING 015 :: asignar(): pos OUT OF BOUNDS in pos %i. Valid positions: from 0 to %i\n", pos, (*vector)->tam);
+        
+    } else
+    {
+        (*vector)->datos[pos] = valor;
+        //*((*v)->datos + posicion) = valor;
+        
+    }
 }
 
-
-void liberar(vectorD *vector)
+void liberar(vectorD* vector)
 {
     if (*vector != NULL)
     {
@@ -63,7 +73,7 @@ void liberar(vectorD *vector)
         *vector = NULL;
     } else
     {
-        printf("INFO :: liberar(): NO vector TO FREE 003\n");
+        fprintf(STDERR, "INFO :: liberar(): NO vector TO FREE 003\n");
     }
 }
 
@@ -71,11 +81,12 @@ TELEMENTO recuperar(vectorD vector, short pos)
 {
     if (vector == NULL)
     {
-        printf("WARNING :: recuperar(): NO vector TO READ 004\n");
+        fprintf(STDERR, "WARNING :: recuperar(): NO vector TO READ 004\n");
         return 0;
     } else if (pos < 0 || pos >= vector->tam)
     {
-        printf("WARNING :: recuperar(): pos OUT OF BOUNDS 005\n");
+        fprintf(STDERR, "WARNING 005 :: recuperar(): pos OUT OF BOUNDS in pos %i. Valid positions: from 0 to %i\n", pos, vector->tam);
+        
         return 0;
     } else
     {
@@ -89,11 +100,11 @@ short longitudVector(vectorD vector)
 {
     if (vector == NULL)
     {
-        printf("\nWARNING :: longitudVector(): NO SUCH vector 006\n");
+        fprintf(STDERR, "\nWARNING :: longitudVector(): NO SUCH vector 006\n");
         return 0;
     } else
     {
         return vector->tam;
     }
-
+    
 }
