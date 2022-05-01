@@ -7,7 +7,6 @@
 #include "vectordinamico.h"
 #include  "leerStock.c"
 
-#define K_MAX_NOMBRE_ARCHIVO 128
 
 enum enumModosOperacion
 {
@@ -84,9 +83,9 @@ vectorD leerStock(short numTiposMonedas, char* nombreArchivo)
         for (short pos = 0; pos < numTiposMonedas; pos++)
         {
             int tempValStock;
-            if(fscanf(archivoStock, "%i,", &tempValStock)!=1)
+            if (fscanf(archivoStock, "%i,", &tempValStock) != 1)
             {
-                fprintf(STDERR,"Error en lectura del archivo de stock. Formato incorrecto\n");
+                fprintf(STDERR, "Error en lectura del archivo de stock. Formato incorrecto\n");
                 break;
             }
             asignar(&vectorStock, pos, tempValStock);
@@ -105,7 +104,7 @@ void guardarStock(vectorD vectorStock, char* nombreArchivo)
         fprintf(STDOUT, "NO se ha podido realizar el guardado del stock final.\n");
     } else
     {
-        short longVectMenos1 = longitudVector(vectorStock) -1;
+        short longVectMenos1 = longitudVector(vectorStock) - 1;
         for (short pos = 0; pos <= longVectMenos1; pos++)
         {
             fprintf(archivoStock, "%i", recuperar(vectorStock, pos));
@@ -114,7 +113,7 @@ void guardarStock(vectorD vectorStock, char* nombreArchivo)
                 fprintf(archivoStock, ", ");
             }
         }
-        fputc('\n',archivoStock);
+        fputc('\n', archivoStock);
     }
     fclose(archivoStock);
 }
@@ -132,55 +131,115 @@ int main(int argc, char* argv[])
     int valor_usd[] = {100000 * 100, 10000 * 100, 5000 * 100, 1000 * 100, 500 * 100, 100 * 100, 50 * 100, 20 * 100, 10 * 100, 5 * 100, 2 * 100, 1 * 100, 50, 25, 10, 5, 1};
     //int arrayStock[] = {1, 2, 0, 4, 6, 9, 8, 7, 1, 2, 0, 0, 1, 5, 6, 0, 1};
     //--//
-    
-    char seleccion;
     enum enumModosOperacion modoOperacion;
-    do
-    {
-        fprintf(STDOUT, "¿En que modo desea operar? (L: Unidades limitadas | I: Unidades infinitas): ");
-        fscanf(stdin, "%c", &seleccion);
-        while (getchar() != '\n');
-    } while (seleccion != 'I' && seleccion != 'L');
     
-    if (seleccion == 'I')
     {
-        modoOperacion = Ilimitado;
-    } else
-    {
-        modoOperacion = Limitado;
+        char seleccion;
+        do
+        {
+            fprintf(STDOUT, "¿En que modo desea operar? (L: Unidades limitadas | I: Unidades infinitas): ");
+            fscanf(stdin, "%c", &seleccion);
+            while (getchar() != '\n');
+        } while (seleccion != 'I' && seleccion != 'L');
+        
+        if (seleccion == 'I')
+        {
+            modoOperacion = Ilimitado;
+        } else
+        {
+            modoOperacion = Limitado;
+        }
     }
-    
     //--//
     
-    //char seleccion;
+    //! \brief Variable con el nombre de la divisa utilizada. Usada para los ficheros (Valores faciales y stock).
+    char nombreDivisa[K_MAX_NOMBRE_DIVISA];
     
-    do
     {
-        fprintf(STDOUT, "En que divisa desea operar(E:€ D:$): ");
-        fscanf(stdin, "%c", &seleccion);
-        while (getchar() != '\n');
-    } while (seleccion != 'E' && seleccion != 'D');
-    
-    if (seleccion == 'E')
-    {
-        numTiposMonedas = numTiposMonedas_eur;
-        valor = valor_eur;
+        FILE* archivoValores = fopen("divisas.data", "r");
         
-    } else if (seleccion == 'D')
-    {
-        numTiposMonedas = numTiposMonedas_usd;
-        valor = valor_usd;
+        if (archivoValores == NULL)
+        {
+            fprintf(STDERR, "Error en la lectura del archivo de divisas. Razón: %s\n", strerror(errno));
+            exit(-1);
+        }
+        
+        do
+        { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
+            fprintf(STDOUT, "Escriba el nombre de la divisa: ");
+            fscanf(stdin, "%s", nombreDivisa);
+            
+            while (getchar() != '\n');
+            
+            if (strcmp(nombreDivisa, "") == 0)
+            {
+                fprintf(STDERR, "Nombre no válido.\n");
+            }
+        } while (strcmp(nombreDivisa, "") == 0);
+        
+        //vectorD vectorValoresDivisas = NULL;
+        //crear(&vectorValoresDivisas, numTiposMonedas);
+        
+        char nombreDivisaLeido[K_MAX_NOMBRE_DIVISA];
+        
+        do
+        {
+            if(fscanf(archivoValores, "%s", nombreDivisaLeido)!=1)
+            {
+                fseek(archivoValores,0,SEEK_SET);//reiniciamos el puntero al inicio del archivo
+                fprintf(STDOUT,"No se ha encontrado la divisa, introduzca otra divisa. \n");
+                do
+                { // Se pide y almacena el nombre de la divisa con la que se va a tratar.
+                    fprintf(STDOUT, "Escriba el nombre de la divisa: ");
+                    fscanf(stdin, "%s", nombreDivisa);
+        
+                    while (getchar() != '\n');
+        
+                    if (strcmp(nombreDivisa, "") == 0)
+                    {
+                        fprintf(STDERR, "Nombre no válido.\n");
+                    }
+                } while (strcmp(nombreDivisa, "") == 0);
+            }
+            if (strcmp(nombreDivisaLeido, nombreDivisa) == 0)//se ha encontrado la divisa solicitada
+            {
+                
+                if (fscanf(archivoValores, "%i", &numTiposMonedas) != 1)
+                {
+                    fprintf(STDERR, "Error, formato incorrecto.\n");
+                    exit(-1);
+                }
+                if (numTiposMonedas <= 0)
+                {
+                    fprintf(STDERR, "El número de tipos faciales ha de ser mayor o igual a 1.\n");
+                    exit(-1);
+                }
+                break;
+            }
+            
+        } while (true);
+        
+        crear(&vectorValoresDivisas, numTiposMonedas);
+        
+        for (short pos = 0; pos < numTiposMonedas; pos++)
+        {
+            int tempValDivisa;
+            if (fscanf(archivoValores, "%i,", &tempValDivisa) != 1)
+            {
+                fprintf(STDERR, "Error en lectura del archivo de valores faciales. Formato incorrecto\n");
+                exit(-1);
+            }
+            asignar(&vectorValoresDivisas, pos, tempValDivisa);
+        }
+        
+        fclose(archivoValores);
         
     }
-    
     //--//
     
-    crear(&vectorValoresDivisas, numTiposMonedas);
     
-    for (short indice = 0; indice < numTiposMonedas; indice++)
-    {
-        asignar(&vectorValoresDivisas, indice, valor[indice]);
-    }
+    
+    
     
     //--//
     char nombreArchivoStock[K_MAX_NOMBRE_ARCHIVO] = "";
@@ -188,7 +247,7 @@ int main(int argc, char* argv[])
     
     if (modoOperacion == Limitado)
     {
-        sprintf(nombreArchivoStock, "%s.stock", "euro");
+        sprintf(nombreArchivoStock, "%s.stock", nombreDivisa);
         vectorStock = leerStock(numTiposMonedas, nombreArchivoStock);
     }
     
