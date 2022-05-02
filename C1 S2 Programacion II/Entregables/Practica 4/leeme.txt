@@ -1,0 +1,30 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    *************  *********  ****  ****  ****   **  *********
+    ****	         **     **  **  **  **  **  *      **     **
+    ****           *********  **      **  ****   **  ** *** **
+    ****           *********  **      **  ****   **  ** *** **
+    ****           **     **  **      **  **  *  **  **     **
+    *************  **     **  **      **  ****   **  *********
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Programa de cambio.
+Por Marcelo Fort Muñoz(USC) para la asignatura Programación II.
+
+Este programa da el cambio de forma ilimitada o en base a un stock específico.
+
+Para el uso de este programa se han de tener en cuenta los formatos requeridos.
+
+Para el .data que contendrá las divisas y sus valores faciales, el formato es el siguiente:
+
+NOMBREDELADIVISA NUMERODEVALORESFACIALES 
+
+VALOR1, VALOR2, VALOR3, ..., úLTIMOVALOR
+
+Para los .stock, que contendrán lso stocks para las distintas monedas:
+
+Stock1, Stock2, Stock3, Stock4, Stock5,..,Stockn
+
+Siendo n el último valor de stock para el último valor facial.
+Los valores siempre han de estar ordenados.
