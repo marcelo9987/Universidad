@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.marcelo.b1e2;
-//TODO: cambiar los requerimientos segun las buenas prácticas(comprocar nulls)
 
 /**
  * @author Marcelo Fort Muñoz
@@ -17,94 +16,34 @@ public class Producto
         private Float peso;
         private Float precio;
 
-        public Producto(String _numSerie)
+        public Producto(String numSerie)
             {
-                numSerie = _numSerie;
+                setNumSerie(numSerie);
             }
 
-        public Producto(String _numSerie, String _nombre, Float _peso, Float _precio)
-            {
-                numSerie = _numSerie;
-                nombre = _nombre;
-                peso = _peso;
-                precio = _precio;
-            }
+        public Producto(String numSerie, String nombre, Float peso, Float precio) //throws Exception //cambio de float a Float para admitir valores a null
+        {
+            this.setNumSerie(numSerie);
+            this.setNombre(nombre);
+            this.setPeso(peso);
+            this.setPrecio(precio);
+        }
 
-        public void setNumSerie(String _numSerie)
-            {
-                if(_numSerie == null)return;
-                this.numSerie = _numSerie;
-            }
-
-        public void setNombre(String _nombre)
-            {
-                if (_nombre != null && _nombre.length() <= 30)
-                    {
-                        this.nombre = _nombre;
-                    } else
-                    {
-                        System.out.println("El nombre no puede exceder los 30 caracteres. y ha de ser válido \n");
-                    }
-            }
-
-        public void setDescripcion(String _descr)
-            {
-                if (_descr != null && _descr.length() <= 200)
-                    {
-                        this.descripcion = _descr;
-                    } else
-                    {
-                        System.out.println("La descripción no ha de superar los 200 caracteres en extensión y no nula. \n");
-                    }
-            }
-
-        public void setMarca(String _marca)
-            {
-                if (
-                        _marca != null &&
-                                (
-                                        _marca.contentEquals("HP") ||
-                                                _marca.contentEquals("Amazon") ||
-                                                _marca.contentEquals("Microsoft") ||
-                                                _marca.contentEquals("iPhone") ||
-                                                _marca.contentEquals("Samsung") ||
-                                                _marca.contentEquals("Asus")
-                                )
-
-                )
-                    {
-                        this.marca = _marca;
-                    } else
-                    {
-                        System.err.println("La marca seleccionada no se encuentra entre las admitidas \n");
-                    }
-            }
-
-        public void setPeso(Float _peso)
-            {
-                if (_peso != null && _peso > 0)
-                    {
-                        this.peso = _peso;
-                    } else
-                    {
-                        System.out.println("El peso ha de ser mayor a 0 y un valor válido");
-                    }
-            }
-
-        public void setPrecio(Float _precio)
-            {
-                if (_precio != null && _precio > 0)
-                    {
-                        this.precio = _precio;
-                    } else
-                    {
-                        System.out.println("El precio ha de ser mayor a 0 y un valor válido");
-                    }
-            }
 
         public String getNumSerie()
             {
                 return numSerie;
+            }
+
+        public void setNumSerie(String numSerie)
+            {
+                /*
+                if (numSerie == null)
+                    {
+                        return;
+                    }
+                 */
+                this.numSerie = numSerie;       //todo: es aceptable que el numero de serie sea nulo?
             }
 
         public String getNombre()
@@ -112,9 +51,32 @@ public class Producto
                 return nombre;
             }
 
+        public void setNombre(String nombre)
+            {
+                if (nombre == null || nombre.length() <= 30)
+                    {
+                        this.nombre = nombre;
+                    } else
+                    {
+                        this.nombre = nombre.substring(0, 30);
+                    }
+            }
+
         public String getDescripcion()
             {
                 return descripcion;
+            }
+
+        public void setDescripcion(String descripcion)
+            {
+                if (descripcion == null || descripcion.length() <= 200)
+                    {
+                        this.descripcion = descripcion;
+                    } else
+                    {
+                        this.descripcion = descripcion.substring(0, 200);
+
+                    }
             }
 
         public String getMarca()
@@ -122,46 +84,98 @@ public class Producto
                 return marca;
             }
 
+
+        public void setMarca(String marca) //throws Exception
+        {
+            if (
+                    marca != null && (
+                            marca.equals("HP") ||
+                                    marca.equals("Amazon") ||
+                                    marca.equals("Microsoft") ||
+                                    marca.equals("iPhone") ||
+                                    marca.equals("Samsung") ||
+                                    marca.equals("Asus")
+                    )
+
+            )
+                {
+                    this.marca = marca;
+                } else
+                {
+                    this.marca = null;
+                    System.err.println("La marca seleccionada no se encuentra entre las admitidas \n");
+                    //throw new Exception("La marca seleccionada no se encuentra entre las admitidas");
+                }
+        }
+
+
         public Float getPeso()
             {
                 return peso;
             }
+
+        public void setPeso(Float peso) //throws Exception
+        {
+            if (peso != null && peso > 0)
+                {
+                    this.peso = peso;
+                } else
+                {
+                    this.peso = null;
+                    System.err.println("El peso ha de ser mayor a 0 y un valor válido");
+                    //throw new Exception("El peso ha de ser mayor a 0 y un valor válido");
+                }
+        }
 
         public Float getPrecio()
             {
                 return precio;
             }
 
+        public void setPrecio(Float precio) //throws Exception
+        {
+            if (precio != null && precio > 0)
+                {
+                    this.precio = precio;
+                } else
+                {
+                    this.precio=null;
+                    System.out.println("El precio ha de ser mayor a 0 y un valor válido");
+                    //throw new Exception("El precio ha de ser mayor a 0 y un valor válido");
+                }
+        }
+
+
         @Override
         public String toString()
-            {
-                String aux;
-                aux = "{";
+            { //¿Que hago con las comas?
+                String aux = "{\n";
                 if (numSerie != null)
                     {
-                        aux += "\nNumSerie: " + numSerie;
+                        aux += "  \"numSerie\": \"" + numSerie + "\",\n";
                     }
                 if (nombre != null)
                     {
-                        aux += "\nNombre: " + nombre;
+                        aux += "  \"nombre\": \"" + nombre + "\",\n";
                     }
                 if (descripcion != null)
                     {
-                        aux += "\nDescripción: " + descripcion;
+                        aux += "  \"descripcion\": \"" + descripcion + "\",\n";
                     }
                 if (marca != null)
                     {
-                        aux += "\nMarca: " + marca;
+                        aux += "  \"marca\": \"" + marca + "\",\n";
                     }
                 if (peso != null)
                     {
-                        aux += "\nPeso: " + peso;
+                        aux += "  \"peso\": \"" + peso + "\",\n";
                     }
-                if (descripcion != null)
+                if (precio != null)
                     {
-                        aux += "\nPrecio: " + precio;
+                        aux += "  \"precio\": \"" + precio + "\"\n";
                     }
-                aux += "\n}";
+                aux += "}";
+
                 return aux;
             }
     }
