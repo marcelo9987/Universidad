@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.marcelo.b1e1;
 
 /**
@@ -18,29 +15,30 @@ public class Producto
 
     public Producto(String numSerie)
     {
+
         if (numSerie == null)
         {
-            System.out.println("ERROR: El número de serie no puede ser nulo");
-        } else
-        {
-            this.numSerie = numSerie;
+            System.out.println("Argumento NULL. No se ha podido crear el objeto");
+            return;
         }
+
+        this.numSerie = numSerie;
     }
 
     public Producto(String numSerie, String nombre, float peso, float precio)
     {
-
-        if (numSerie == null)
+        if (numSerie == null || nombre == null)
         {
-            System.out.println("ERROR: El número de serie no puede ser nulo");
-        } else
-        {
-            this.numSerie = numSerie;
+            System.out.println("Argumento NULL. No se ha podido crear el objeto");
+            return;
         }
+
+        this.numSerie = numSerie;
         this.setNombre(nombre);
         this.setPeso(peso);
         this.setPrecio(precio);
     }
+
 
 
     public String getNumSerie()
@@ -54,6 +52,7 @@ public class Producto
         return nombre;
     }
 
+
     public void setNombre(String nombre)
     {
         if (nombre == null)
@@ -61,6 +60,7 @@ public class Producto
             System.out.println("ERROR: Nombre no puede ser nulo");
             return;
         }
+
         if (nombre.length() <= 30)
         {
             this.nombre = nombre;
@@ -70,17 +70,21 @@ public class Producto
         }
     }
 
+
     public String getDescripcion()
     {
         return descripcion;
     }
 
+
     public void setDescripcion(String descripcion)
     {
         if (descripcion == null)
         {
+            System.out.println("ERROR: Descripción no puede ser nulo");
             return;
         }
+
         if (descripcion.length() <= 200)
         {
             this.descripcion = descripcion;
@@ -90,6 +94,7 @@ public class Producto
 
         }
     }
+
 
     public String getMarca()
     {
@@ -114,9 +119,7 @@ public class Producto
             this.marca = marca;
         } else
         {
-            this.marca = null;
             System.out.println("ERROR: La marca seleccionada no se encuentra entre las admitidas \n");
-            //throw new Exception("La marca seleccionada no se encuentra entre las admitidas");
         }
     }
 
@@ -126,17 +129,14 @@ public class Producto
         return peso;
     }
 
-    public void setPeso(float peso) //throws Exception
+    public void setPeso(float peso)
     {
         if (peso > 0)
         {
             this.peso = peso;
         } else
         {
-            this.peso = null;
-
-            System.out.println("ERROR: El peso ha de ser mayor a 0 y un valor válido");
-            //throw new Exception("El peso ha de ser mayor a 0 y un valor válido");
+            System.out.println("ERROR: El peso ha de ser mayor a 0");
         }
     }
 
@@ -145,16 +145,14 @@ public class Producto
         return precio;
     }
 
-    public void setPrecio(float precio) //throws Exception
+    public void setPrecio(float precio)
     {
         if (precio > 0)
         {
             this.precio = precio;
         } else
         {
-            this.precio = null;
-            System.out.println("ERROR: El precio ha de ser mayor a 0 y un valor válido");
-            //throw new Exception("El precio ha de ser mayor a 0 y un valor válido");
+            System.out.println("ERROR: El precio ha de ser mayor a 0");
         }
     }
 
@@ -174,43 +172,43 @@ public class Producto
         {
             if (yaSeHaImpresoAntes == true)
             {
-                aux += "\",\n";
+                aux += ",\n";
             }
-            aux += "  \"nombre\": \"" + nombre;
+            aux += "  \"nombre\": \"" + nombre + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (descripcion != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                aux += "\",\n";
+                aux += ",\n";
             }
-            aux += "  \"descripcion\": \"" + descripcion;
+            aux += "  \"descripcion\": \"" + descripcion + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (marca != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                aux += "\",\n";
+                aux += ",\n";
             }
-            aux += "  \"marca\": \"" + marca;
+            aux += "  \"marca\": \"" + marca + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (peso != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                aux += "\",\n";
+                aux += ",\n";
             }
-            aux += "  \"peso\": \"" + peso;
+            aux += "  \"peso\": \"" + peso + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (precio != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                aux += "\",\n";
+                aux += ",\n";
             }
             aux += "  \"precio\": \"" + precio + "\"";
             yaSeHaImpresoAntes = true;
