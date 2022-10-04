@@ -14,11 +14,19 @@ public class Mensajeria
 
     //---- CONSTRUCTORES ----//
 
+    /**
+     * Constructor de mensajería(vacío)
+     */
     Mensajeria()
     {
 
     }
 
+    /**
+     * Constructor 2 de mensajería
+     * @param cif
+     * @param nombre
+     */
     Mensajeria(String cif, String nombre)
     {
         if (cif == null || nombre == null)

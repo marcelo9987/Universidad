@@ -41,7 +41,7 @@ public class PrincipalB1E3
 
 //        System.out.println("e:");
         System.out.println("id: " + paq1.getId());
-        System.out.println("DescripciÃ³n: " + paq1.getDescripcion());
+        System.out.println("Descripción: " + paq1.getDescripcion());
         System.out.println("Destino: " + paq1.getDestino());
 
         System.out.print("Trayecto actual: ");
@@ -109,9 +109,9 @@ public class PrincipalB1E3
 //        System.out.println("o: ");
         System.out.println(paq1);
         /*
-         * ExplicaciÃ³n:
+         * Explicación:
          *   Al crear un array y asociarle objetos, este guarda en las posiciones de dichos objetos.
-         *   Al modificar el puntero de la segunda posiciÃ³n, en vez de apuntar al objeto original apuntarÃ¡ a otro.
+         *   Al modificar el puntero de la segunda posición, en vez de apuntar al objeto original apuntará a otro.
          */
 
 
