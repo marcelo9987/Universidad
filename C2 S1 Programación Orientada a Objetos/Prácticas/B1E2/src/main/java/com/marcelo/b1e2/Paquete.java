@@ -159,7 +159,7 @@ public class Paquete
 
         float precioMin = this.calcularPrecioMinimo();
 
-        if(precioMin==Paquete.PRECIO_NO_VALIDO)
+        if (precioMin == Paquete.PRECIO_NO_VALIDO)
         {
             System.out.println("ERROR: No se ha podido calcular el precio mínimo.");
             return;
@@ -167,7 +167,7 @@ public class Paquete
 
         if (precio <= precioMin)
         {
-            System.out.println("ERROR: El precio introducido debe ser mayor a: "+precioMin);
+            System.out.println("ERROR: El precio introducido debe ser mayor a: " + precioMin);
             return;
         }
 
@@ -194,7 +194,7 @@ public class Paquete
         }
         if (this.destino == null)
         {
-            System.out.println("ERROR: No se ha podido establecer el destino. ¿Se ha realizado correctamente un setDestino()?" );
+            System.out.println("ERROR: No se ha podido establecer el destino. ¿Se ha realizado correctamente un setDestino()?");
             return false;
         }
 
@@ -263,7 +263,7 @@ public class Paquete
         float peso = this.sumarPesos();
 
 
-        if(peso==Paquete.PESO_NO_VALIDO)
+        if (peso == Paquete.PESO_NO_VALIDO)
         {
             System.out.println("ERROR: No se ha podido calcular el precio mínimo");
             return Paquete.PRECIO_NO_VALIDO;
@@ -289,39 +289,39 @@ public class Paquete
         String salida = "{\n";
         if (this.id != null)
         {
-            salida += "\"id\": " + "\"" + this.getId();
+            salida += "  \"id\": " + "\"" + this.getId() + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (this.descripcion != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                salida += "\",\n";
+                salida += ",\n";
             }
-            salida += "\"descripcion\": " + "\"" + this.getDescripcion();
+            salida += "  \"descripcion\": " + "\"" + this.getDescripcion() + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (this.destino != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                salida += "\",\n";
+                salida += "\n";
             }
-            salida += "\"destino\": " + "\"" + this.getDestino();
+            salida += "  \"destino\": " + "\"" + this.getDestino() + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (this.trayectoActual != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                salida += "\",\n";
+                salida += ",\n";
             }
-            salida += "\"trayectoriaActual\": [";
+            salida += "  \"trayectoriaActual\": [";
             for (int i = 0; i < this.trayectoActual.length; i++)
             {
                 if (i > 0)
                 {
-                    salida += ",";
+                    salida += ", ";
                 }
                 salida += "\"" + this.trayectoActual[i] + "\"";
             }
@@ -332,9 +332,9 @@ public class Paquete
         {
             if (yaSeHaImpresoAntes == true)
             {
-                salida += "\",\n";
+                salida += ",\n";
             }
-            salida += "\"productos\": [\n";
+            salida += "  \"productos\": [\n";
             for (int i = 0; i < this.productos.length; i++)
             {
                 if (i > 0)
@@ -350,18 +350,18 @@ public class Paquete
         {
             if (yaSeHaImpresoAntes == true)
             {
-                salida += "\",\n";
+                salida += ",\n";
             }
-            salida += "\"peso\": " + "\"" + this.getPeso();
+            salida += "  \"peso\": " + "\"" + this.getPeso() + "\"";
             yaSeHaImpresoAntes = true;
         }
         if (this.precio != null)
         {
             if (yaSeHaImpresoAntes == true)
             {
-                salida += "\",\n";
+                salida += ",\n";
             }
-            salida += "\"precio\": " + "\"" + this.getPrecio();
+            salida += "  \"precio\": " + "\"" + this.getPrecio() + "\"";
             yaSeHaImpresoAntes = true;
         }
         salida += "\n}";

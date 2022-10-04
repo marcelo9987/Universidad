@@ -9,9 +9,9 @@ public class PrincipalB1E2
     {
 
         System.out.println("a:");
-        Producto prod1 = new Producto("000A","Patatas",3f,3f);
-        Producto prod2 = new Producto("001A","Lechugas",0.5f,1.88f);
-        Producto prod3 = new Producto("002A","Cebollas",1f,3.0f);
+        Producto prod1 = new Producto("000A", "Patatas", 3f, 3f);
+        Producto prod2 = new Producto("001A", "Lechugas", 0.5f, 1.88f);
+        Producto prod3 = new Producto("002A", "Cebollas", 1f, 3.0f);
         Producto[] arrProds = {prod1, prod2, prod3};
 
 
@@ -48,6 +48,7 @@ public class PrincipalB1E2
         {
             System.out.println("No existe trayecto.");
         }
+
         System.out.print("Productos:");
         if (paq1.getTrayectoActual() != null)
         {
@@ -59,6 +60,7 @@ public class PrincipalB1E2
         {
             System.out.println("No existen productos.");
         }
+
         System.out.println("Peso: " + paq1.getPeso());
         System.out.println("Precio: " + paq1.getPrecio());
 
@@ -91,8 +93,7 @@ public class PrincipalB1E2
 
 
         System.out.println("m: ");
-        Producto prod4 = new Producto("003A");
-        prod4.setPrecio(49.99f);
+        Producto prod4 = new Producto("003A","Tomates",55,49.99f);
         prod4.setPaquete(paq1);
 
 
@@ -102,21 +103,21 @@ public class PrincipalB1E2
         System.out.println("o: ");
         System.out.println(paq1);
         /*
-        * Explicación:
-        *   Al crear un array y asociarle objetos, este guarda en las posiciones de dichos objetos.
-        *   Al modificar el puntero de la segunda posición, en vez de apuntar al objeto original apuntará a otro.
+         * Explicación:
+         *   Cuando asignamos un objeto a una variable, estamos guardando una referencia a aquel objeto.
+         *   Por lo que cualquier modificación de aquel objeto se puede ver desde la variable aunque la modificación haya sido hecha desde cualquier otro camino.
          */
 
 
         System.out.println("p: ");
-        Producto prod5=new Producto("004A");
-        Producto prod6=new Producto("005A");
-        Producto prod7=new Producto("006A");
-        Producto[] arrProds2={prod5,prod6,prod7};
+        Producto prod5 = new Producto("004A","Seat Ibiza",1500,15000);
+        Producto prod6 = new Producto("005A","Opel Corsa", 1200,13000);
+        Producto prod7 = new Producto("006A","Mercedes C",2200,38000);
+        Producto[] arrProds2 = {prod5, prod6, prod7};
 
 
         System.out.println("q:");
-        Paquete paq2 = new Paquete("20220915AB","Vigo",arrProds2);
+        Paquete paq2 = new Paquete("20220915AB", "Vigo", arrProds2);
 
 
         System.out.println("r: ");
