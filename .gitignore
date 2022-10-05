@@ -2,7 +2,5 @@
 **/cmake-build-debug/
 **/cmake-build-debug-coverage/
 **/.idea/
-P3_Matrices
 *.exe
-/C2 S1 Programación Orientada a Objetos/Prácticas/New Folder/B1E1/target/
-/C2 S1 Programación Orientada a Objetos/B1E2/B1E2/target/
+**/.ccache
