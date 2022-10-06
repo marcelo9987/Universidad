@@ -13,33 +13,37 @@ public class PrincipalB1E3
 
     public static void main(String[] args)
     {
-        System.out.println("a: ");
+        System.out.println("A: ");
 
-//        System.out.println("a:");
-        Producto prod1 = new Producto("000A", "Patatas", 3f, 3f);
+        System.out.println("A.a:");
+        Producto prod1 = new Producto("000A", "Patatas", 3f, 3f);//todo: ¿Pongo marcas?/.-
+        prod1.setMarca("Asus");
         Producto prod2 = new Producto("001A", "Lechugas", 0.5f, 1.88f);
+        prod2.setMarca("Microsoft");
         Producto prod3 = new Producto("002A", "Cebollas", 1f, 3.0f);
+        prod3.setMarca("HP");
         Producto[] arrProds = {prod1, prod2, prod3};
 
 
-//        System.out.println("b:");
+        System.out.println("A.b:");
         Paquete paq1 = new Paquete("20220915AA");
 
 
-//        System.out.println("c:");
+        System.out.println("A.c:");
         paq1.setDescripcion("El paquete tiene tres productos que hay que enviar conjuntamente para completar lo que es realmente un producto completo");
         paq1.setDestino("Noia");
         paq1.setProductos(arrProds);
 
+        paq1.setPrecio(12);//todo: ¿puedo asignar precio a paquetes no estando en el enunciado?/.-
 
-//        System.out.println("d:");
+        System.out.println("A.d:");
         for (Producto producto : arrProds)
         {
             producto.setPaquete(paq1);
         }
 
 
-//        System.out.println("e:");
+        System.out.println("A.e:");
         System.out.println("id: " + paq1.getId());
         System.out.println("Descripción: " + paq1.getDescripcion());
         System.out.println("Destino: " + paq1.getDestino());
@@ -70,43 +74,43 @@ public class PrincipalB1E3
         System.out.println("Precio: " + paq1.getPrecio());
 
 
-//        System.out.println("f:");
+        System.out.println("A.f:");
         System.out.println(paq1);
 
 
-//        System.out.println("g:");
+        System.out.println("A.g:");
         paq1.actualizarTrayectoria("Lugo");
 
 
-//        System.out.println("h:");
+        System.out.println("A.h:");
         paq1.actualizarTrayectoria("Santiago de Compostela");
 
 
-//        System.out.println("i:");
+        System.out.println("A.i:");
         paq1.actualizarTrayectoria("Lugo");
 
-//        System.out.println("j:");
+        System.out.println("A.j:");
         paq1.actualizarTrayectoria("Noia");
 
 
-//        System.out.println("k:");
+        System.out.println("A.k:");
         paq1.actualizarTrayectoria("Vigo");
 
 
-//        System.out.println("l:");
+        System.out.println("A.l:");
         System.out.println(paq1);
 
 
-//        System.out.println("m: ");
+        System.out.println("A.m: ");
         Producto prod4 = new Producto("003A");
         prod4.setPrecio(49.99f);
         prod4.setPaquete(paq1);
 
 
-//        System.out.println("n: ");
+        System.out.println("A.n: ");
         arrProds[1] = prod4;
 
-//        System.out.println("o: ");
+        System.out.println("A.o: ");
         System.out.println(paq1);
         /*
          * Explicación:
@@ -115,26 +119,31 @@ public class PrincipalB1E3
          */
 
 
-//        System.out.println("p: ");
-        Producto prod5 = new Producto("004A");
-        Producto prod6 = new Producto("005A");
-        Producto prod7 = new Producto("006A");
+        System.out.println("A.p: ");
+        Producto prod5 = new Producto("004A","Saco de piedras",50,19.99f);
+        prod5.setMarca("Asus");
+        Producto prod6 = new Producto("005A","hormigón",40,30);
+        prod6.setMarca("Microsoft");
+        Producto prod7 = new Producto("006A","arcilla",0.5f,2);
+        prod7.setMarca("HP");
         Producto[] arrProds2 = {prod5, prod6, prod7};
 
 
-//        System.out.println("q:");
+        System.out.println("A.q:");
         Paquete paq2 = new Paquete("20220915AB", "Vigo", arrProds2);
 
+        paq2.setPrecio(96.36f);
 
-//        System.out.println("r: ");
+
+        System.out.println("A.r: ");
         System.out.println(paq2);
 
 
-        // System.out.println("s: ");
+         System.out.println("A.s: ");
         paq2.actualizarTrayectoria("Vigo");
 
 
-        // System.out.println("t: ");
+         System.out.println("A.t: ");
         System.out.print("Trayecto actual: ");
         if (paq2.getTrayectoActual() != null)
         {
@@ -188,8 +197,15 @@ public class PrincipalB1E3
             System.out.println("Producto: " + producto);
         }
 
-        System.out.println("k: ");
-        System.out.println(paq1);
+        System.out.println("k: ");//todo: ¿Tengo que imprimir los valores de la empresa?/.-
+        System.out.println("Cif: "+empresa1.getCif());
+        System.out.println("Nombre: "+empresa1.getNombre());
+        System.out.println("Paquetes: ");
+        for (Paquete paquete: empresa1.getPaquetes())
+        {
+            System.out.println(paquete);
+        }
+        System.out.println("Beneficio: "+empresa1.getBeneficio());
 
     }
 }

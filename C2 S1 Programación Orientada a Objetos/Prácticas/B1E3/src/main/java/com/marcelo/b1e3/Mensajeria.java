@@ -24,6 +24,7 @@ public class Mensajeria
 
     /**
      * Constructor 2 de mensajería
+     *
      * @param cif
      * @param nombre
      */
@@ -141,25 +142,25 @@ public class Mensajeria
                 System.out.println("ERROR: El paquete es nulo, no se tendrá en cuenta");
             } else if (paquete.getProductos() == null)
             {
-                System.out.println("ERROR: los productos son nulos, no se tedrán en cuenta");
+                System.out.println("ERROR: los productos son nulos, no se tendrán en cuenta");
             } else
             {
                 for (Producto prod : paquete.getProductos())
                 {
                     if (prod == null)
                     {
-                        System.out.println("ERROR: El producto es nulo, no se tendrá en cuenta");
+                        System.out.println("AVISO: El producto es nulo, no se tendrá en cuenta");
+                    } else if (prod.getMarca() == null)
+                    {
+                        System.out.println("AVISO: La marca del producto es nula, no se puede incluir");
                     } else
                     {
                         for (int i = 0; i < numeroMarcas; i++)
                         {
-                            if (prod.getMarca() == null)
-                            {
-                                System.out.println("ERROR: La marca del producto es nula, no se puede incluir");
-                                break;
-                            } else if (prod.getMarca().equals(MARCAS[i]))
+                            if (prod.getMarca().equals(MARCAS[i]))
                             {
                                 marcasFrecuencia[i]++;
+                                break;
                             }
                         }
                     }
@@ -222,14 +223,14 @@ public class Mensajeria
         {
             if (paq.getProductos() == null)
             {
-                System.out.println("ERROR:  Los productos son nulos");
+                System.out.println("ERROR: Los productos son nulos");
             } else
             {
                 for (Producto prod : paq.getProductos())
                 {
                     if (prod.getPrecio() == null)
                     {
-                        System.out.println("ERROR: el precio es nulo");
+                        System.out.println("AVISO: el precio es nulo");
                     } else if (prod.getPrecio() > precioMin)
                     {
                         conteoCaros++;
@@ -248,17 +249,11 @@ public class Mensajeria
         int i = 0;
         for (Paquete paq : this.paquetes)
         {
-            if (paq.getProductos() == null)
-            {
-                System.out.println("ERROR:  Los productos son nulos");
-            } else
+            if (paq.getProductos() != null)
             {
                 for (Producto prod : paq.getProductos())
                 {
-                    if (prod.getPrecio() == null)
-                    {
-                        System.out.println("ERROR: el precio es nulo");
-                    } else if (prod.getPrecio() > precioMin)
+                    if (prod.getPrecio() != null && prod.getPrecio() > precioMin)
                     {
                         productosCaros[i] = prod;
                         i++;
@@ -266,6 +261,7 @@ public class Mensajeria
                 }
             }
         }
+
         return productosCaros;
     }
 
@@ -288,12 +284,13 @@ public class Mensajeria
             {
                 System.out.println("ERROR: El paquete es nulo");
                 return Paquete.PRECIO_NO_VALIDO;
-            } else if (paquete.getPrecio() == null)
+            } else if (paquete.getPrecio() == null)//todo: ¿Que hago en calcularBenficios cuando un paquete no tiene precio?¿devuelvo -1?
             {
-                System.out.println("ERROR: El precio del paquete es nulo");
-                return Paquete.PRECIO_NO_VALIDO;
+                System.out.println("ERROR: El precio del paquete con id:"+paquete.getId()+" es nulo. No se tendrá en cuenta para el cómputo del beneficio.");
+ //               return Paquete.PRECIO_NO_VALIDO;
             } else
             {
+
                 beneficioCalculado += paquete.getPrecio();
             }
         }

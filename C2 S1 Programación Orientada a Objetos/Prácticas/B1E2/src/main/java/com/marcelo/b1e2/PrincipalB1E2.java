@@ -9,7 +9,7 @@ public class PrincipalB1E2
     {
 
         System.out.println("a:");
-        Producto prod1 = new Producto("000A", "Patatas", 3f, 3f);
+        Producto prod1 = new Producto("000A", "Patatas", 3f, 3f);//¿todo: Puedo poner marcas?
         Producto prod2 = new Producto("001A", "Lechugas", 0.5f, 1.88f);
         Producto prod3 = new Producto("002A", "Cebollas", 1f, 3.0f);
         Producto[] arrProds = {prod1, prod2, prod3};

@@ -113,7 +113,7 @@ public class Paquete
     {
         if (productos == null)
         {
-            System.out.println("Error: El array de productos no puede apuntar a NULL.");//todo: ¿Puede ser productos un array con 0 elementos dentro?
+            System.out.println("Error: El array de productos no puede apuntar a NULL.");
             return;
         }
         for (Producto producto : productos)
@@ -234,7 +234,7 @@ public class Paquete
     private float sumarPesos()
     {
 
-        if (this.productos == null)//todo: ¿si productos es null devuelvo peso 0 en sumaPesos()?
+        if (this.productos == null)//todo: ¿si productos es null devuelvo peso 0 en sumaPesos()?/.-
         {
             System.out.println("ERROR: Los productos no pueden ser nulos.");
             return Paquete.PESO_NO_VALIDO;//Error crítico de la funcion, devuelvo valor -1 para denotar el fallo
@@ -243,7 +243,7 @@ public class Paquete
         float pesoSumado = 0;
         for (Producto producto : this.productos)
         {
-            if (producto.getPeso() == null)//todo:¿Que pasa en la función sumaPesos cuando uno de los pesos es nulo?, ¿sale error o suma 0?
+            if (producto.getPeso() == null)//todo:¿Que pasa en la función sumaPesos cuando uno de los pesos es nulo?, ¿sale error o suma 0?/.-
             {
                 System.out.println("ERROR: El peso del producto del paquete: " + this.getId() + " Numero Serie: " + producto.getNumSerie() + " es nulo");
                 return Paquete.PESO_NO_VALIDO;//Error crítico de la funcion, devuelvo valor -1 para denotar el fallo
