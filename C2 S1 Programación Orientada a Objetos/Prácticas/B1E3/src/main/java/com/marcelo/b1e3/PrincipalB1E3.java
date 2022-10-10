@@ -17,11 +17,8 @@ public class PrincipalB1E3
 
         System.out.println("A.a:");
         Producto prod1 = new Producto("000A", "Patatas", 3f, 3f);//todo: ¿Pongo marcas?/.-
-        prod1.setMarca("Asus");
         Producto prod2 = new Producto("001A", "Lechugas", 0.5f, 1.88f);
-        prod2.setMarca("Microsoft");
         Producto prod3 = new Producto("002A", "Cebollas", 1f, 3.0f);
-        prod3.setMarca("HP");
         Producto[] arrProds = {prod1, prod2, prod3};
 
 

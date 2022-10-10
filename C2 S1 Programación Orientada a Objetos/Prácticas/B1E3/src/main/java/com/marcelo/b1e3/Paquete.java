@@ -224,6 +224,17 @@ public class Paquete
         } else
         {
 
+
+                for (String destinoA : this.getTrayectoActual())
+                {
+                    if(destino.contentEquals(poblacion))
+                    {
+                        System.out.println("ERROR: la población ya existe en la ruta.");
+                        return false;
+                    }
+                }
+
+
             longitud = this.trayectoActual.length;
 
             if (Objects.equals(this.trayectoActual[longitud - 1], this.destino))
@@ -253,7 +264,7 @@ public class Paquete
         if (this.productos == null)
         {
             System.out.println("ERROR: Los productos no pueden ser nulos.");
-            return Paquete.PESO_NO_VALIDO;//Error crítico de la funcion, devuelvo valor -1 para denotar el fallo
+            return 0;//Error crítico de la funcion
         }
 
         float pesoSumado = 0;
@@ -262,7 +273,7 @@ public class Paquete
             if (producto.getPeso() == null)
             {
                 System.out.println("ERROR: El peso del producto del paquete: " + this.getId() + " Numero Serie: " + producto.getNumSerie() + " es nulo");
-                return Paquete.PESO_NO_VALIDO;//Error crítico de la funcion, devuelvo valor -1 para denotar el fallo
+                return 0;//Error crítico de la funcion
             } else
             {
                 pesoSumado += producto.getPeso();
