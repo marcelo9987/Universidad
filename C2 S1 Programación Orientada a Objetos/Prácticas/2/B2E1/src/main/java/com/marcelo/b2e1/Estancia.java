@@ -2,7 +2,7 @@ package com.marcelo.b2e1;
 
 import java.util.*;
 
-import static java.lang.Float.MAX_VALUE;
+import static java.lang.Float.*;
 
 /**
  * @author Marcelo Fort Muñoz
@@ -118,6 +118,10 @@ public class Estancia
             return false;
         }
         Sensor nuevoSensor = new Sensor(id, tipo, rango, precio);
+        if (this.sensores.contains(nuevoSensor))
+        {
+            return false;
+        }
         this.coste += precio;
         this.sensores.add(nuevoSensor);
         return true;
@@ -125,8 +129,7 @@ public class Estancia
 
     public boolean nuevoDato(String id, float dato)
     {
-        //PENDIENTE
-        //TODO: terminar esto con iteradores
+        //COMPRUÉBAME
         if (this.sensores == null)
         {
             System.out.println("FUERA DE RANGO");
@@ -137,14 +140,17 @@ public class Estancia
             return false;
         }
         {
-            Sensor[] sensorObtenido = new Sensor[this.sensores.size()];
-            sensorObtenido = this.sensores.toArray(sensorObtenido);
-            for (int i = 0; i < sensorObtenido.length; i++)
+            for (Iterator<Sensor> actual = this.sensores.iterator(); actual.hasNext(); )
             {
-                System.out.println("hola!");
+                Sensor posicionActual = actual.next(); //Aquí se produce aliasing
+                if (posicionActual.getId().contentEquals(id))
+                {
+                    posicionActual.nuevoDato(dato);
+                    return true;
+                }
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -191,6 +197,11 @@ public class Estancia
     {
         //COMPRUÉBAME
 
+
+        if(this.sensores==null ||this.sensores.isEmpty())
+        {
+            System.out.println("ERROR: El Set de sensores no se ha creado correctamente.");
+        }
         if (tipo == null)
         {
             System.out.println("ERROR: El tipo no  puede ser nulo");
@@ -208,28 +219,29 @@ public class Estancia
             {
                 for (byte i = 0; i < numerosIguales; i++)
                 {
-                    maximos[i] = "";
+                    maximos[i] = " ";
                 }
                 numerosIguales = 1;
-                maximos[numerosIguales] = next.getId();
+                maximos[0] = next.getId();
+                maximo = next.maximo();
             } else if (next.maximo() == maximo)
             {
                 numerosIguales++;
-                maximos[numerosIguales] = next.getId();
+                maximos[numerosIguales-1] = next.getId();
             }
         }
         Sensor[] salida = new Sensor[numerosIguales];
         {
-            byte contadorReceloso = 0, contadorSinCondiciones = 0;
+            byte contadorReceloso=0;
             for (Iterator<Sensor> iterator = sensores.iterator(); iterator.hasNext(); )
             {
                 Sensor next = iterator.next();
-                if (next.getId().contentEquals(maximos[contadorSinCondiciones]))
+                if (maximos[contadorReceloso]!= null && maximos[contadorReceloso].contentEquals(next.getId()))
                 {
                     salida[contadorReceloso] = next;
                     contadorReceloso++;
                 }
-                ++contadorSinCondiciones;
+
             }
         }
         return salida;
@@ -385,5 +397,68 @@ public class Estancia
             return false;
         }
         return true;
+    }
+
+    @Override
+    public java.lang.String toString()
+    {
+
+        String salida = new String();
+        boolean primeraCadena = true;
+
+        salida += "{\n";
+        if (this.nombre != null)
+        {
+            salida += "\"nombre\": \"" + this.nombre + "\"";
+            primeraCadena = false;
+        }
+        if (primeraCadena == false)
+        {
+            salida += ",\n";
+        }
+        salida += "\"planta\": \"" + this.planta + "\"";
+        primeraCadena = false;
+
+        if (this.sensores != null)
+        {
+            if (primeraCadena == false)
+            {
+                salida += ",\n";
+            }
+            salida += "\"estancia\": \"" + this.sensores.toString() + "\"";
+            primeraCadena = false;
+        }
+
+        if (primeraCadena == false)
+        {
+            salida += ",\n";
+        }
+        salida += "\"coste\": " + "\"" + this.coste + "\"";
+        primeraCadena = false;
+
+        if (this.sensores != null)
+        {
+            if (this.sensores.isEmpty())
+            {
+
+            } else
+            {
+                if (primeraCadena == false)
+                {
+                    salida += ",\n";
+                }
+                salida += "\"" + "sensores_media" + "\"" + ": " + "[";
+                for (Iterator<Sensor> iterator = this.sensores.iterator(); iterator.hasNext(); )
+                {
+                    Sensor actual = iterator.next();
+                    salida+="   {" + "\"" + actual.getId() + "\"" + ", " + "\"" + actual.media() + "\"" + "}\n";
+                }
+                salida += "]";
+                primeraCadena = false;
+            }
+        }
+        salida += "\n}\n";
+        return salida;
+
     }
 }

@@ -67,14 +67,12 @@ public class Sensor
             System.out.println("ERROR: El valor de rango mínimo ha de ser menor al máximo");
             return;
         }
-        if(precio<0)
+        if (precio < 0)
         {
             System.out.println("El precio no puede ser negativo y no nulo");
             return;
         }
 
-        this.id = id;
-        this.precio=precio;
         boolean tipoValido = false;
 
         for (String tipoA : TIPOS_VALIDOS)
@@ -90,6 +88,9 @@ public class Sensor
             System.out.println("ERROR: El tipo no se encuentra entre los admitidos, no se ha creado el objeto con éxito");
             return;
         }
+
+        this.id = id;
+        this.precio = precio;
 
         Float[] nuevoRango = new Float[2];
         nuevoRango[0] = rango[0];
@@ -215,7 +216,7 @@ public class Sensor
             return NaN;
         }
 
-        for (Float dato : datos)
+        for (Float dato : this.datos)
         {
             if (dato == null)
             {
@@ -242,7 +243,7 @@ public class Sensor
             return NaN;
         }
 
-        float maximo = 0;
+        float maximo = NEGATIVE_INFINITY;
 
         for (Float dato : this.datos)
         {
@@ -251,7 +252,7 @@ public class Sensor
                 System.out.println("Hay uno o más datos corruptos. No se ha podido encontrar el máximo");
                 return NaN;
             }
-            if (maximo > dato)
+            if (maximo < dato)
             {
                 maximo = dato;
             }
@@ -274,7 +275,8 @@ public class Sensor
             return NaN;
         }
 
-        float minimo = 0;
+        float minimo = POSITIVE_INFINITY;
+
 
         for (Float dato : this.datos)
         {
@@ -283,7 +285,7 @@ public class Sensor
                 System.out.println("Hay uno o más datos corruptos. No se ha podido encontrar el mínimo");
                 return NaN;
             }
-            if (minimo < dato)
+            if (minimo > dato)
             {
                 minimo = dato;
             }
@@ -308,18 +310,12 @@ public class Sensor
             return false;
         }
         final Sensor other = (Sensor) obj;
+
         if (!this.id.equals(other.id))
         {
             return false;
         }
-//        if (!this.tipo.equals(other.tipo))
-//        {
-//            return false;
-//        }
-//        if (!this.rango.equals((other.rango)))
-//        {
-//            return false;
-//        }
+
         return true;
     }
 
@@ -328,7 +324,7 @@ public class Sensor
     {
         String salida = new String();
         boolean primeraCadena = true;
-        salida+="{\n";
+        salida += "{\n";
         if (this.id != null)
         {
             salida += "\"id\": \"" + this.id + "\"";
@@ -363,7 +359,7 @@ public class Sensor
         }
         if (this.datos != null)
         {
-            if(this.datos.isEmpty())
+            if (this.datos.isEmpty())
             {
             } else
             {
@@ -371,10 +367,14 @@ public class Sensor
                 {
                     salida += ",\n";
                 }
-                salida += "\""+"valores"+"\""+": "+"[";
+                salida += "\"" + "valores" + "\"" + ": " + "[";
                 for (int i = 0; i < datos.size(); i++)
                 {
-                    salida+="\""+this.datos.get(i)+"\"";
+                    salida += "\"" + this.datos.get(i);
+                    if (i != datos.size() - 1)
+                    {
+                        salida+="\",";
+                    }
                 }
                 salida += "]";
                 primeraCadena = false;
@@ -417,6 +417,12 @@ public class Sensor
         }
         salida += "\n}\n";
         return salida;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return 0;
     }
 
 }
