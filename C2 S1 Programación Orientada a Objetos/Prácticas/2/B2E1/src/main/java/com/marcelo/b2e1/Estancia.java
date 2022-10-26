@@ -163,6 +163,7 @@ public class Estancia
         if (tipo == null || this.sensores.size() == 0)
         {
             System.out.println("ERROR en sensoresTipo()");
+            return new HashSet<Sensor>();
         }
 
 
@@ -201,11 +202,12 @@ public class Estancia
         if(this.sensores==null ||this.sensores.isEmpty())
         {
             System.out.println("ERROR: El Set de sensores no se ha creado correctamente.");
+            return new Sensor[0];
         }
         if (tipo == null)
         {
             System.out.println("ERROR: El tipo no  puede ser nulo");
-            return new Sensor[0];
+
         }
 
         float maximo = 0;

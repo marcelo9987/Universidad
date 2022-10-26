@@ -330,16 +330,16 @@ public class PrincipalB2E1
             System.out.println("Error en alguno de los parámetros");
             return;
         }
-        for (int i = 0; i < valores.length; i++)
+        for (float valor : valores)
         {
-            boolean sinProblemas = estancia.nuevoDato(id, valores[i]);
+            boolean sinProblemas = estancia.nuevoDato(id, valor);
             if (sinProblemas)
             {
                 System.out.println("El valor ha sido introducido con éxito");
             }
             if (!sinProblemas)
             {
-                System.out.println("El valor ha sido introducido con éxito");
+                System.err.println("El valor no ha sido introducido con éxito");
             }
         }
 
