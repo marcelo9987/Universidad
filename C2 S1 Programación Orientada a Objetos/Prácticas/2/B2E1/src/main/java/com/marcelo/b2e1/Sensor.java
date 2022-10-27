@@ -30,11 +30,11 @@ public class Sensor
      * Conjunto de datos que ha sido capturado por el sensor. El dato más
      * reciente deberá estar en la última posición y el más antiguo en la primera
      */
-    private ArrayList<Float> datos = new ArrayList<>();
+    private ArrayList<Float> datos;// = new ArrayList<>();
     /**
      * Rango de valores que puede tomar el sensor.
      *
-     * @implNote El valor 0 es el inferior y el valor 1 el superior.
+     * @implNote La posición 0 es la inferior y la posición 1 la superior.
      */
     private Float[] rango;
     /**
@@ -52,12 +52,12 @@ public class Sensor
      */
     Sensor(String id, String tipo, float[] rango, float precio)
     {
-        if (id == null || tipo == null)
+        if (id == null || tipo == null || rango == null)
         {
             System.out.println("Argumento null, no se puede crear el objeto");
             return;
         }
-        if (rango.length < 2)
+        if (rango.length != 2)
         {
             System.out.println("ERROR: El campo rango ha de tener 2 valores, no se ha podido realizar con éxito la creación del objeto.");
             return;
@@ -83,6 +83,7 @@ public class Sensor
                 tipoValido = true;
             }
         }
+
         if (!tipoValido)
         {
             System.out.println("ERROR: El tipo no se encuentra entre los admitidos, no se ha creado el objeto con éxito");
@@ -91,11 +92,11 @@ public class Sensor
 
         this.id = id;
         this.precio = precio;
+        this.datos = new ArrayList<>();
 
-        Float[] nuevoRango = new Float[2];
-        nuevoRango[0] = rango[0];
-        nuevoRango[1] = rango[1];
-        this.rango = nuevoRango;
+        this.rango = new Float[2];
+        this.rango[0] = rango[0];
+        this.rango[1] = rango[1];
 
     }
 
@@ -121,7 +122,7 @@ public class Sensor
     {
         if (this.estancia == null)
         {
-            System.out.println("ERROR: La estancia provista es nula");
+            System.out.println("ERROR: La estancia provista es nula.");
             return;
         }
         this.estancia = estancia;
@@ -151,12 +152,12 @@ public class Sensor
         if (this.rango == null)
         {
             System.out.println("ERROR: El rango es nulo");
-            return NEGATIVE_INFINITY;
+            return Float.NEGATIVE_INFINITY;
         }
         if (this.rango[0] == null)
         {
             System.out.println("ERROR: El valor almacenado es incorrecto");
-            return NEGATIVE_INFINITY;
+            return Float.NEGATIVE_INFINITY;
         }
         return this.rango[0];
 
@@ -173,12 +174,12 @@ public class Sensor
         if (this.rango == null)
         {
             System.out.println("ERROR: El rango es nulo");
-            return POSITIVE_INFINITY;
+            return Float.POSITIVE_INFINITY;
         }
         if (this.rango[1] == null)
         {
             System.out.println("ERROR: El valor almacenado es incorrecto");
-            return POSITIVE_INFINITY;
+            return Float.POSITIVE_INFINITY;
         }
         return this.rango[1];
     }
@@ -205,24 +206,25 @@ public class Sensor
     /**
      * Devuelve la media de los valores del sensor.
      *
-     * @return La media de todos los valores alamacenados en el array de datos. En caso de error devuelve NaN
+     * @return La media de todos los valores almacenados en el array de datos. En caso de error devuelve NaN
      * @see com.marcelo.b2e1.Sensor
      */
     public float media()
     {
         float media = 0;
-        if (this.datos == null)
+        if (this.datos == null || this.datos.isEmpty())
         {
-            return NaN;
+            System.out.println("ERROR: No hay datos");
+            return Float.NaN;
         }
 
         for (Float dato : this.datos)
         {
-            if (dato == null)
-            {
-                System.out.println("Hay uno o más datos corruptos. No se ha podido hacer la media");
-                return NaN;
-            }
+//            if (dato == null)
+//            {
+//                System.out.println("Hay uno o más datos corruptos. No se ha podido hacer la media");
+//                return NaN;
+//            }
             media += dato;
         }
         media /= datos.size();
@@ -237,9 +239,9 @@ public class Sensor
      */
     public float maximo()
     {
-        if (this.datos == null)
+        if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No existe un array de datos");
+            System.out.println("ERROR: No No hay datos");
             return NaN;
         }
 
@@ -247,11 +249,11 @@ public class Sensor
 
         for (Float dato : this.datos)
         {
-            if (dato == null)
-            {
-                System.out.println("Hay uno o más datos corruptos. No se ha podido encontrar el máximo");
-                return NaN;
-            }
+//            if (dato == null)
+//            {
+//                System.out.println("Hay uno o más datos corruptos. No se ha podido encontrar el máximo");
+//                return NaN;
+//            }
             if (maximo < dato)
             {
                 maximo = dato;
@@ -269,9 +271,9 @@ public class Sensor
      */
     public float minimo()
     {
-        if (this.datos == null)
+        if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No existe un array de datos");
+            System.out.println("ERROR: No hay datos");
             return NaN;
         }
 
@@ -306,6 +308,10 @@ public class Sensor
             return false;
         }
         if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        if (this.id == null)
         {
             return false;
         }
@@ -373,7 +379,7 @@ public class Sensor
                     salida += "\"" + this.datos.get(i);
                     if (i != datos.size() - 1)
                     {
-                        salida+="\",";
+                        salida += "\",";
                     }
                 }
                 salida += "]";
@@ -422,7 +428,11 @@ public class Sensor
     @Override
     public int hashCode()
     {
-        return 0;
+        if (this.id == null)
+        {
+            return 0;
+        }
+        return this.id.hashCode();
     }
 
 }

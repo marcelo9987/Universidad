@@ -259,7 +259,7 @@ public class PrincipalB2E1
 
         System.out.println("s:");//BORRAME
         System.out.println(estancia1);
-        System.out.println("\n");
+        System.out.println("\n");//BORRAME
 
 
 
