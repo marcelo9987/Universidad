@@ -5,30 +5,343 @@
 
 package com.marcelo.b2e1;
 
+
+import sun.nio.cs.StreamEncoder;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+
 /**
- *
  * @author imarc
  */
-public class PrincipalB2E1 {
+public class PrincipalB2E1
+{
+    public static final char MODO_RANGO = 'r';
+    public static final char MODO_ABSOLUTO = 'a';
 
     public static void main(String[] args)
     {
-        Estancia miEstancia=new Estancia("'Ello",3);
-        float[] a ={1,2};
-        Sensor sensortest = new Sensor("000","sonido",a,55);
-        sensortest.nuevoDato(1);
-        Sensor sensortest1 = new Sensor("001","luz",a,55);
-        Sensor sensortest2 = new Sensor("002","sonido",a,55);
-        Sensor sensortest3 = new Sensor("003","humedad",a,55);
+        System.out.println("a: ");//BORRAME
+        float[] in_rango = new float[2];
+        in_rango[0] = -5;
+        in_rango[1] = 35;
+        Sensor sensor1 = new Sensor("100", "temperatura", in_rango, 54.4f);
+
+        in_rango[0] = -5;
+        in_rango[1] = 40;
+        Sensor sensor2 = new Sensor("101", "temperatura", in_rango, 48.5f);
+
+        in_rango[0] = 0;
+        in_rango[1] = 120;
+        Sensor sensor3 = new Sensor("200", "sonido", in_rango, 30.5f);
+
+        in_rango[0] = 0;
+        in_rango[1] = 110;
+        Sensor sensor4 = new Sensor("201", "sonido", in_rango, 28.3f);
+
+        System.out.println("\n");//BORRAME
 
 
-        //miEstancia.
-        miEstancia.darAlta(sensortest);
-        miEstancia.darAlta(sensortest1);
-        miEstancia.darAlta(sensortest2);
-        miEstancia.darAlta(sensortest3);
+        System.out.println("b:");//BORRAME
+        imprimirSensores(sensor1, sensor2, sensor3, sensor4, MODO_RANGO);
 
-        miEstancia.sensoresTipo("sonido");
-        System.out.println(miEstancia.getSensores());
+
+        System.out.println("c:");//BORRAME
+        Estancia estancia1 = new Estancia("Aula1", 2);
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("d:");//BORRAME
+        {
+            boolean ok = estancia1.darAlta(sensor1);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 53 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+
+            ok = estancia1.darAlta(sensor2);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 62 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+
+            ok = estancia1.darAlta(sensor3);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 70 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+
+            ok = estancia1.darAlta(sensor4);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea:80 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+        }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("e: ");//BORRAME
+        {
+            float datos_a_entrar[] = {23.34f, 23.4f, 23.5f, 24.1f, 23.2f, -23.5f, 24.6f, -23.8f, 23.9f, 24.1f, 24.3f, 25.4f};
+            float datos_a_entrar4[] = {10.1f, 10.1f, -5.2f, 30.6f, 37.8f, 45.8f, 50.2f, 52.1f, 46.3f, -10.3f, 89.2f, 34.3f};
+            float datos_a_entrar2[] = {22.1f, -22.1f, 22.5f, 22.4f, 22.9f, 21.2f, 21.5f, 21.1f, 20.9f, -23.1f, 22.8f, 23.2f};
+            float datos_a_entrar3[] = {21.4f, -21.3f, 21.2f, -21.2f, 21.2f, 21.5f, 22.3f, 21.8f, 22.1f, 21.7f, -21.9f, 22.5f};
+
+            introducirValoresEnMasa(datos_a_entrar, "100", estancia1);
+            introducirValoresEnMasa(datos_a_entrar2, "101", estancia1);
+            introducirValoresEnMasa(datos_a_entrar3, "200", estancia1);
+            introducirValoresEnMasa(datos_a_entrar4, "201", estancia1);
+        }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("f:");//BORRAME
+        System.out.println(sensor1);
+        System.out.println(sensor2);
+        System.out.println(sensor3);
+        System.out.println(sensor4);
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("g:");//BORRAME
+        System.out.println(estancia1);
+        System.out.println("\n");//BORRAME
+
+        {
+            boolean ok = false;
+            System.out.println("h: ");//BORRAME
+            in_rango[0] = 0f;
+            in_rango[1] = 118f;
+            ok = estancia1.darAlta("202", "sonido", in_rango, 28.4f);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 124 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+
+            in_rango[0] = 0f;
+            in_rango[1] = 100f;
+            ok = estancia1.darAlta("301", "humedad", in_rango, 34.3f);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 135 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+
+            in_rango[0] = 0f;
+            in_rango[1] = 100f;
+            ok = estancia1.darAlta("302", "humedad", in_rango, 42.5f);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 47 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+            System.out.println("\n");//BORRAME
+        }
+
+
+        System.out.println("i: ");//BORRAME
+        {
+            int contadorPosicion = 0;
+            Sensor[] sensoresImprimir = new Sensor[3]; // en h se han creado 3 sensores
+            for (Iterator<Sensor> iterator = estancia1.getSensores().iterator(); iterator.hasNext(); )
+            {
+                Sensor sensorActual = iterator.next();
+                if (sensorActual.getId().contentEquals("202") || sensorActual.getId().contentEquals("301") || sensorActual.getId().contentEquals("302"))
+                {
+                    sensoresImprimir[contadorPosicion] = sensorActual;
+                    contadorPosicion++;
+                }
+            }
+            imprimirSensores(sensoresImprimir[0], sensoresImprimir[1], sensoresImprimir[2], null, MODO_RANGO);
+            System.out.println("\n");//BORRAME
+            System.out.println("j: ");//BORRAME
+            imprimirSensores(sensoresImprimir[0], sensoresImprimir[1], sensoresImprimir[2], null, MODO_ABSOLUTO);
+            System.out.println("\n");//BORRAME
+        }
+
+
+        System.out.println("k: ");//BORRAME
+        System.out.println(estancia1);
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("l: ");//BORRAME
+        {
+            float[] datos_entrada_s5 = {5.1f, 5.2f, 3.5f, 25.5f, 25.5f, -29.3f, 35.1f, 35.4f, -35.1f, 40.1f, 49.8f, 34.5f};
+            introducirValoresEnMasa(datos_entrada_s5, "202", estancia1);
+
+            float[] datos_entrada_s6 = {31.0f, 31.2f, 31.4f, 32.1f, 32.4f, 32.0f, 32.4f, 33.4f, 33.0f, 32.8f, 32.9f, 32.5f};
+            introducirValoresEnMasa(datos_entrada_s6, "301", estancia1);
+
+            float[] datos_entrada_s7 = {-45.1f, -45.2f, -45.2f, -45.2f, 34.9f, 34.5f, 34.6f, 38.9f, 37.2f, -45.1f, 36.4f, 35.4f};
+            introducirValoresEnMasa(datos_entrada_s7, "302", estancia1);
+        }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("m: ");//BORRAME
+        System.out.println(estancia1);
+        System.out.println("\n");
+
+
+        System.out.println("n:");//BORRAME
+        for (Iterator<Sensor> iterador = estancia1.sensoresTipo("temperatura").iterator(); iterador.hasNext(); )
+        {
+            Sensor Actual = iterador.next();
+            imprimirSensores(Actual, null, null, null, MODO_ABSOLUTO);
+        }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("o:");//BORRAME
+        for (Iterator<Sensor> iterador = estancia1.sensoresTipo("sonido").iterator(); iterador.hasNext(); )
+        {
+            Sensor Actual = iterador.next();
+            imprimirSensores(Actual, null, null, null, MODO_ABSOLUTO);
+        }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("p:");//BORRAME
+        Sensor[] maxHumedad = estancia1.sensorMaxValor("humedad");
+
+            for(int i =0;i<maxHumedad.length;i++)
+            {
+                System.out.println(maxHumedad[i]);
+            }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("q: ");//BORRAME
+        ArrayList<Float> valoresMaximos301 = estancia1.valoresSuperiores("301",33f);
+        for (Float aFloat : valoresMaximos301)
+        {
+            System.out.println(aFloat);
+        }
+        System.out.println("\n");//BORRAME
+
+
+        System.out.println("r:");//BORRAME
+        in_rango[0]=0;
+        in_rango[1]=118;
+        {
+            boolean ok = estancia1.darAlta("202", "sonido", in_rango, 67.6f);
+            if (!ok)
+            {
+                System.err.println("Alta de sensor en línea: 252 incorrecta");
+            } else
+            {
+                System.out.println("Alta de sensor realizada correctamente");
+            }
+        }
+        System.out.println("\n");//BORRAME
+
+        System.out.println("s:");//BORRAME
+        System.out.println(estancia1);
+        System.out.println("\n");//BORRAME
+
+
+
+    }
+
+    /**
+     * @param sensor1 Primer Sensor a imprimir (Poner a null para que no sea impreso)
+     * @param sensor2 Segundo Sensor a imprimir (ídem 1)
+     * @param sensor3 Tercer Sensor a imprimir (ídem 1)
+     * @param sensor4 Cuarto Sensor a imprimir (ídem 1)
+     * @param op      Tipo de operación
+     *                Modos disponibles de funcionamiento:
+     *                'r': imprime el rango de los sensores
+     *                'a': imprime todos los datos de los sensores
+     */
+    private static void imprimirSensores(Sensor sensor1, Sensor sensor2, Sensor sensor3, Sensor sensor4, char op)
+    {
+        // int primerNoNulo = 0;
+        if (op == MODO_RANGO)
+        {
+            if (sensor1 != null)
+            {
+                System.out.println("Sensor " + sensor1.getId() + " Rango: [" + sensor1.limiteInferior() + "," + sensor1.limiteSuperior() + "]");
+            }
+            if (sensor2 != null)
+            {
+                System.out.println("Sensor " + sensor2.getId() + " Rango: [" + sensor2.limiteInferior() + "," + sensor2.limiteSuperior() + "]");
+            }
+            if (sensor3 != null)
+            {
+                System.out.println("Sensor " + sensor3.getId() + " Rango: [" + sensor3.limiteInferior() + "," + sensor3.limiteSuperior() + "]");
+            }
+            if (sensor4 != null)
+            {
+                System.out.println("Sensor " + sensor4.getId() + " Rango: [" + sensor4.limiteInferior() + "," + sensor4.limiteSuperior() + "]");
+            }
+        }
+        if (op == MODO_ABSOLUTO)
+        {
+            if (sensor1 != null)
+            {
+                System.out.println(sensor1);
+            }
+            if (sensor2 != null)
+            {
+                System.out.println(sensor2);
+            }
+            if (sensor3 != null)
+            {
+                System.out.println(sensor3);
+            }
+            if (sensor4 != null)
+            {
+                System.out.println(sensor4);
+            }
+        }
+    }
+
+    private static void introducirValoresEnMasa(float[] valores, String id, Estancia estancia)
+    {
+        if (valores == null || estancia == null || id == null)
+        {
+            System.err.println("Uno de los argumentos de la función (IntroducirValoresEnMAsa es nulo, no se ha podido proceder)");
+            return;
+        }
+        if (valores.length == 0)
+        {
+            System.out.println("Error en alguno de los parámetros");
+            return;
+        }
+        for (float valor : valores)
+        {
+            boolean sinProblemas = estancia.nuevoDato(id, valor);
+            if (sinProblemas)
+            {
+                System.out.println("El valor ha sido introducido con éxito");
+            }
+            if (!sinProblemas)
+            {
+                System.err.println("El valor no ha sido introducido con éxito");
+            }
+        }
+
     }
 }

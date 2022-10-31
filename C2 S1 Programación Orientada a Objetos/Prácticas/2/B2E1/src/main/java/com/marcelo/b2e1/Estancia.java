@@ -2,7 +2,7 @@ package com.marcelo.b2e1;
 
 import java.util.*;
 
-import static java.lang.Float.MAX_VALUE;
+import static java.lang.Float.*;
 
 /**
  * @author Marcelo Fort Muñoz
@@ -25,7 +25,7 @@ public class Estancia
     /**
      * Conjunto de sensores que están instalados en la estancia.
      */
-    private Set<Sensor> sensores = new HashSet<>();
+    private Set<Sensor> sensores;
     /**
      * Coste de la estancia, entendida como la suma del precio de todos los sensores de la
      * estancia.
@@ -40,8 +40,11 @@ public class Estancia
             System.out.println("ERROR: El campo nombre del constructor es nulo. No se ha podido crear el objeto.");
             return;
         }
+
         this.nombre = nombre;
         this.planta = planta;
+        this.sensores = new HashSet<>();
+        this.coste = 0;
 
     }
 
@@ -70,12 +73,11 @@ public class Estancia
     /// FUNCIONES ///
 
     /**
-     * @param sensor
+     * @param sensor Sensor a dar de alta.
      * @return 1 si se ha ejecutado correctamente y 0 en caso de fallo.
      */
     public boolean darAlta(Sensor sensor)
     {
-        // if(this.sensores==)
         if (this.sensores == null)
         {
             return false;
@@ -84,12 +86,18 @@ public class Estancia
         {
             return false;
         }
+        if (sensor.getId() == null)
+        {
+            return false;
+        }
         if (this.sensores.contains(sensor))
         {
             return false;
         }
+
         this.sensores.add(sensor);
         this.coste += sensor.getPrecio();
+
         return true;
     }
 
@@ -98,53 +106,60 @@ public class Estancia
      * @param tipo
      * @param rango
      * @param precio
-     * @return false si el dato ha sido introducido incorrectamente y false en caso contrario.
+     * @return false si el dato ha sido introducido incorrectamente y true en caso contrario.
      */
     public boolean darAlta(String id, String tipo, float[] rango, float precio)
     {
-        if (rango == null)
-        {
-            System.out.println("ERROR: El rango es nulo");
-            return false;
-        }
-        if (rango.length == 0)
-        {
-            System.out.println("ERROR: El rango es erróneo");
-            return false;
-        }
-        if (id == null || tipo == null)
-        {
-            System.out.println("ERROR: Uno de los parámetros es nulo.");
-            return false;
-        }
+//        if (rango == null)
+//        {
+//            System.out.println("ERROR: El rango es nulo");
+//            return false;
+//        }
+//        if (rango.length == 0)
+//        {
+//            System.out.println("ERROR: El rango es erróneo");
+//            return false;
+//        }
+//        if (id == null || tipo == null)
+//        {
+//            System.out.println("ERROR: Uno de los parámetros es nulo.");
+//            return false;
+//        }
+        //
         Sensor nuevoSensor = new Sensor(id, tipo, rango, precio);
-        this.coste += precio;
-        this.sensores.add(nuevoSensor);
-        return true;
+//        if (this.sensores.contains(nuevoSensor))
+//        {
+//            return false;
+//        }
+//
+//        this.sensores.add(nuevoSensor);
+//        this.coste += precio;
+
+        return this.darAlta(nuevoSensor);
     }
 
     public boolean nuevoDato(String id, float dato)
     {
-        //PENDIENTE
-        //TODO: terminar esto con iteradores
+
         if (this.sensores == null)
         {
-            System.out.println("FUERA DE RANGO");
             return false;
         }
         if (id == null)
         {
             return false;
         }
+
+        for (Sensor sensor_actual : this.sensores)
         {
-            Sensor[] sensorObtenido = new Sensor[this.sensores.size()];
-            sensorObtenido = this.sensores.toArray(sensorObtenido);
-            for (int i = 0; i < sensorObtenido.length; i++)
+            if (sensor_actual.getId() != null && sensor_actual.getId().equals(id))
             {
-                System.out.println("hola!");
+                sensor_actual.nuevoDato(dato);
+                return true;
             }
+
         }
-        return true;
+        return false;
     }
 
     /**
@@ -154,30 +169,31 @@ public class Estancia
      */
     public Set<Sensor> sensoresTipo(String tipo)
     {
-        if (tipo == null || this.sensores.size() == 0)
+        Set<Sensor> salidaSensores = new HashSet<>();
+
+        if (tipo == null || this.sensores == null)
         {
             System.out.println("ERROR en sensoresTipo()");
+            return salidaSensores;
         }
 
-
-        Set<Sensor> salidaSensores = new HashSet<>();
-        for (Iterator<Sensor> actual = this.sensores.iterator(); actual.hasNext(); )
-        {
-            Sensor r = actual.next();
-            if (r.getTipo().equals(tipo))
-            {
-                System.out.println(r.getId());
-                salidaSensores.add(r);
-            }
-        }
-
-//        for (Sensor elem:arrSens)
+//        for (Iterator<Sensor> actual = this.sensores.iterator(); actual.hasNext(); )
 //        {
-//            if(elem.getTipo().contentEquals(tipo))
+//            Sensor r = actual.next();
+//            if (r.getTipo().equals(tipo))
 //            {
-//                salidaSensores.add(elem);
+//                System.out.println(r.getId());
+//                salidaSensores.add(r);
 //            }
 //        }
+
+        for (Sensor sensor : this.sensores)
+        {
+            if (sensor.getTipo() != null && sensor.getTipo().equals(tipo))
+            {
+                salidaSensores.add(sensor);
+            }
+        }
         return salidaSensores;
     }
 
@@ -189,52 +205,79 @@ public class Estancia
 
     public Sensor[] sensorMaxValor(String tipo)
     {
-        //COMPRUÉBAME
 
+
+        if (this.sensores == null || this.sensores.isEmpty())
+        {
+            System.out.println("ERROR: El Set de sensores no se ha creado correctamente.");
+            return new Sensor[0];
+        }
         if (tipo == null)
         {
             System.out.println("ERROR: El tipo no  puede ser nulo");
             return new Sensor[0];
         }
 
-        float maximo = 0;
-        byte numerosIguales = 0; //Con un byte es más que necesario, no necesito más espacio
-        String[] maximos = new String[this.sensores.size()];//Esta variable aunque tiene mayor tamaño del necesario se desechará al final de la función. Aquesta almacena ids.
-        Set<Sensor> sensores = this.sensores;//Haciendo aliasing a pos de ello mismo, no es accidental
-        for (Iterator<Sensor> iterator = sensores.iterator(); iterator.hasNext(); )
+        float valorMaximo = Float.MIN_VALUE;
+        int n_sensoresConValorMaximo = 0;
+
+        for (Sensor sensor : this.sensores)
         {
-            Sensor next = iterator.next();
-            if (next.maximo() > maximo)
+            if (sensor.maximo() > valorMaximo)
             {
-                for (byte i = 0; i < numerosIguales; i++)
-                {
-                    maximos[i] = "";
-                }
-                numerosIguales = 1;
-                maximos[numerosIguales] = next.getId();
-            } else if (next.maximo() == maximo)
+                valorMaximo = sensor.maximo();
+                n_sensoresConValorMaximo = 1;
+            }
+            if (sensor.maximo() == valorMaximo)
             {
-                numerosIguales++;
-                maximos[numerosIguales] = next.getId();
+                n_sensoresConValorMaximo++;
             }
         }
-        Sensor[] salida = new Sensor[numerosIguales];
+
+        Sensor[] salida = new Sensor[n_sensoresConValorMaximo];
+
+        int i = 0;
+        for (Sensor sensor : this.sensores)
         {
-            byte contadorReceloso = 0, contadorSinCondiciones = 0;
-            for (Iterator<Sensor> iterator = sensores.iterator(); iterator.hasNext(); )
+            if (sensor.maximo() == valorMaximo)
             {
-                Sensor next = iterator.next();
-                if (next.getId().contentEquals(maximos[contadorSinCondiciones]))
-                {
-                    salida[contadorReceloso] = next;
-                    contadorReceloso++;
-                }
-                ++contadorSinCondiciones;
+                salida[i] = sensor;
+                i++;
             }
         }
         return salida;
+//        for (Sensor sensor : this.sensores)
+//        {
+//            if (sensor.maximo() > valorMaximo)
+//            {
+//                for (int i = 0; i < numerosIguales; i++)
+//                {
+//                    ids_de_los_sensores_cuyos_valores_son_maximos[i] = " ";
+//                }
+//                numerosIguales = 1;
+//                ids_de_los_sensores_cuyos_valores_son_maximos[0] = sensor.getId();
+//                valorMaximo = sensor.maximo();
+//            } else if (sensor.maximo() == valorMaximo)
+//            {
+//                numerosIguales++;
+//                ids_de_los_sensores_cuyos_valores_son_maximos[numerosIguales - 1] = sensor.getId();
+//            }
+//        }
+//        Sensor[] salida = new Sensor[numerosIguales];
+//        {
+//            int contador = 0;
+//            for (Sensor next : sensores)
+//            {
+//                if (ids_de_los_sensores_cuyos_valores_son_maximos[contador] != null && ids_de_los_sensores_cuyos_valores_son_maximos[contador].equals(next.getId()))
+//                {
+//                    salida[contador] = next;
+//                    contador++;
+//                }
+//
+//            }
+//        }
+//        return salida;
     }
-
 
     /**
      * devuelve el sensor (o sensores) de un determinado tipo que ha capturado el valor mínimo.
@@ -244,54 +287,49 @@ public class Estancia
      */
     public Sensor[] sensorMinValor(String tipo)
     {
-        //COMPRUÉBAME
+
+
+        if (this.sensores == null || this.sensores.isEmpty())
+        {
+            System.out.println("ERROR: El Set de sensores no se ha creado correctamente.");
+            return new Sensor[0];
+        }
         if (tipo == null)
         {
             System.out.println("ERROR: El tipo no  puede ser nulo");
             return new Sensor[0];
         }
-        if (this.sensores.size() == 0)
+
+        float valorMinimo = Float.MAX_VALUE;
+        int n_sensoresConValorMinimo = 0;
+
+        for (Sensor sensor : this.sensores)
         {
-            System.out.println("INFO: No existen sensores en esta  estancia, por lo que no se devolverá ninguno.");
-            return new Sensor[0];
-        }
-        float minimo = MAX_VALUE;
-        byte numerosIguales = 0; //ídem î
-        String[] minimos = new String[this.sensores.size()];
-        Set<Sensor> sensores = this.sensores;//Haciendo aliasing a pos de ello mismo, no es accidental
-        for (Iterator<Sensor> iterator = sensores.iterator(); iterator.hasNext(); )
-        {
-            Sensor next = iterator.next();
-            if (next.minimo() < minimo)
+            if (sensor.minimo() < valorMinimo)
             {
-                for (byte i = 0; i < numerosIguales; i++)
-                {
-                    minimos[i] = "";
-                }
-                numerosIguales = 1;
-                minimos[numerosIguales] = next.getId();
-            } else if (next.maximo() == minimo)
+                valorMinimo = sensor.minimo();
+                n_sensoresConValorMinimo = 1;
+            }
+            if (sensor.minimo() == valorMinimo)
             {
-                numerosIguales++;
-                minimos[numerosIguales] = next.getId();
+                n_sensoresConValorMinimo++;
             }
         }
-        Sensor[] salida = new Sensor[numerosIguales];
+
+        Sensor[] salida = new Sensor[n_sensoresConValorMinimo];
+
+        int i = 0;
+        for (Sensor sensor : this.sensores)
         {
-            byte contadorReceloso = 0, contadorSinCondiciones = 0;
-            for (Iterator<Sensor> iterator = sensores.iterator(); iterator.hasNext(); )
+            if (sensor.minimo() == valorMinimo)
             {
-                Sensor next = iterator.next();
-                if (next.getId().contentEquals(minimos[contadorSinCondiciones]))
-                {
-                    salida[contadorReceloso] = next;
-                    contadorReceloso++;
-                }
-                ++contadorSinCondiciones;
+                salida[i] = sensor;
+                i++;
             }
         }
         return salida;
     }
+
 
 //    public Sensor[] sensorMaxValor(String tipo)
 //    {
@@ -332,20 +370,19 @@ public class Estancia
      */
     public ArrayList<Float> valoresSuperiores(String id, float valor)
     {
-        //COMPRUÉBAME
+        ArrayList<Float> salida = new ArrayList<>();
+
         if (id == null)
         {
-            return new ArrayList<Float>();
+            return salida;
         }
-        ArrayList<Float> salida = new ArrayList<Float>();
 
-        for (Iterator<Sensor> iterator = this.sensores.iterator(); iterator.hasNext(); )
+
+        for (Sensor sensor : this.sensores)
         {
-            Sensor next = iterator.next();
-            if (next.getId().contentEquals(id))
+            if (sensor.getId().equals(id))
             {
-                ArrayList<Float> lista_A_MedioCamino = next.getDatos();//otro aliasing intencional
-                for (Float valorActual : lista_A_MedioCamino)
+                for (Float valorActual : sensor.getDatos())
                 {
                     if (valorActual > valor)
                     {
@@ -375,15 +412,93 @@ public class Estancia
         {
             return false;
         }
+        if (this.nombre == null)
+        {
+            return false;
+        }
+
         final Estancia other = (Estancia) obj;
-        if (!this.nombre.equals(other.getNombre()))
+
+        if (!this.nombre.equals(other.nombre))
         {
             return false;
         }
-        if (this.getPlanta() != other.getPlanta())
+        if (this.planta != other.planta)
         {
             return false;
         }
+
         return true;
+    }
+
+    @Override
+    public java.lang.String toString()
+    {
+
+        String salida = new String();
+        boolean primeraCadena = true;
+
+        salida += "{\n";
+        if (this.nombre != null)
+        {
+            salida += "\"nombre\": \"" + this.nombre + "\"";
+            primeraCadena = false;
+        }
+        if (primeraCadena == false)
+        {
+            salida += ",\n";
+        }
+        salida += "\"planta\": \"" + this.planta + "\"";
+        primeraCadena = false;
+
+        if (this.sensores != null)
+        {
+            if (primeraCadena == false)
+            {
+                salida += ",\n";
+            }
+            salida += "\"estancia\": \"" + this.sensores.toString() + "\"";
+            primeraCadena = false;
+        }
+
+        if (primeraCadena == false)
+        {
+            salida += ",\n";
+        }
+        salida += "\"coste\": " + "\"" + this.coste + "\"";
+        primeraCadena = false;
+
+        if (this.sensores != null)
+        {
+            if (this.sensores.isEmpty())
+            {
+
+            } else
+            {
+                if (primeraCadena == false)
+                {
+                    salida += ",\n";
+                }
+                salida += "\"" + "sensores_media" + "\"" + ": " + "[";
+                for (Iterator<Sensor> iterator = this.sensores.iterator(); iterator.hasNext(); )
+                {
+                    Sensor actual = iterator.next();
+                    salida += "   {" + "\"" + actual.getId() + "\"" + ", " + "\"" + actual.media() + "\"" + "}\n";
+                }
+                salida += "]";
+                primeraCadena = false;
+            }
+        }
+        salida += "\n}\n";
+        return salida;
+
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = nombre != null ? nombre.hashCode() : 0;
+        result = 31 * result + planta;
+        return result;
     }
 }
