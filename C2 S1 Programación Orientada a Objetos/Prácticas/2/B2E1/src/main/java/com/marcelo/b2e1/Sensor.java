@@ -195,7 +195,7 @@ public class Sensor
 
         if (dato > this.limiteSuperior() || dato < this.limiteInferior())
         {
-            System.out.println("ERROR: El dato ha de ser inferior al limite superior y mayor que el limite inferior.");
+            System.out.println("ERROR: El dato " + dato + " no está en el rango [" + this.limiteInferior() + ", " + this.limiteSuperior() + "]");
             return;
         }
 
@@ -214,7 +214,7 @@ public class Sensor
         float media = 0;
         if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No hay datos");
+            //   System.out.println("ERROR: No hay datos");
             return Float.NaN;
         }
 
@@ -241,7 +241,7 @@ public class Sensor
     {
         if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No No hay datos");
+            // System.out.println("ERROR: No No hay datos");
             return NaN;
         }
 
@@ -273,7 +273,7 @@ public class Sensor
     {
         if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No hay datos");
+            //     System.out.println("ERROR: No hay datos");
             return NaN;
         }
 
@@ -374,12 +374,12 @@ public class Sensor
                     salida += ",\n";
                 }
                 salida += "\"" + "valores" + "\"" + ": " + "[";
-                for (int i = 0; i < datos.size(); i++)
+                for (int i = (datos.size() >= 10) ? (datos.size() - 10) : 0; i < datos.size(); i++)
                 {
-                    salida += "\"" + this.datos.get(i);
+                    salida += "\"" + this.datos.get(i) + "\"";
                     if (i != datos.size() - 1)
                     {
-                        salida += "\",";
+                        salida += ", ";
                     }
                 }
                 salida += "]";
