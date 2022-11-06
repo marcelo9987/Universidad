@@ -1,6 +1,6 @@
 package com.marcelo.b2e3;
 
-public class Main
+public class PrincipalB2E3
 {
     public static void main(String[] args)
     {

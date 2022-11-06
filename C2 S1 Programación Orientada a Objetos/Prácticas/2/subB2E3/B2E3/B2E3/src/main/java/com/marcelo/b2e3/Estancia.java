@@ -1,8 +1,6 @@
-package com.marcelo;
+package com.marcelo.b2e3;
 
 import java.util.*;
-
-import static java.lang.Float.*;
 
 /**
  * @author Marcelo Fort Muñoz
@@ -11,7 +9,7 @@ public class Estancia
 {
 
 
-    public static final String[] TIPOS_VALIDOS = {"temperatura", "sonido", "luz", "humedad"};
+    public static final String[] TIPOS_VALIDOS_ESTANCIAS = {"temperatura", "sonido", "luz", "humedad"};
 
 
     /**
@@ -130,6 +128,24 @@ public class Estancia
 //        this.coste += precio;
 
         return this.darAlta(nuevoSensor);
+    }
+
+    public boolean darBaja(String id)
+    {
+        if(id==null)
+        {
+            System.out.println("ERROR: el id es nulo.");
+            return false;
+        }
+        if (this.sensores.containsKey(id))
+        {
+            this.sensores.remove(id);
+            return true;
+        }else
+        {
+            System.out.println("El id no existe");
+        }
+        return false;
     }
 
     public boolean nuevoDato(String id, float dato)

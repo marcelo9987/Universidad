@@ -1,7 +1,7 @@
 /**
  * @author Marcelo Fort Muñoz
  */
-package com.marcelo;
+package com.marcelo.b2e3;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,7 @@ public class Sensor
 {
     /// CONSTANTES: ///
     public static final String[] TIPOS_VALIDOS = {"temperatura", "sonido", "luz", "humedad"};
+
 
     /// ATRIBUTOS: ///
 
@@ -120,7 +121,7 @@ public class Sensor
 
     public void setEstancia(Estancia estancia)
     {
-        if (this.estancia == null)
+        if (estancia == null)
         {
             System.out.println("ERROR: La estancia provista es nula.");
             return;
@@ -145,7 +146,7 @@ public class Sensor
      * Devuelve el valor mínimo que puede tomar el sensor.
      *
      * @return Devuelve el valor inferior del rango de valores. En caso de que el valor almacenado sea erróneo devuelve -infinito.
-     * @see com.marcelo.Sensor
+     * @see com.marcelo.b2e3.Sensor
      */
     public float limiteInferior()
     {
@@ -195,7 +196,7 @@ public class Sensor
 
         if (dato > this.limiteSuperior() || dato < this.limiteInferior())
         {
-            System.out.println("ERROR: El dato ha de ser inferior al limite superior y mayor que el limite inferior.");
+            System.out.println("ERROR: El dato " + dato + " no está en el rango [" + this.limiteInferior() + ", " + this.limiteSuperior() + "]");
             return;
         }
 
@@ -207,14 +208,14 @@ public class Sensor
      * Devuelve la media de los valores del sensor.
      *
      * @return La media de todos los valores almacenados en el array de datos. En caso de error devuelve NaN
-     * @see com.marcelo.b2e1.Sensor
+     * @see com.marcelo.b2e3.Sensor
      */
     public float media()
     {
         float media = 0;
         if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No hay datos");
+            //   System.out.println("ERROR: No hay datos");
             return Float.NaN;
         }
 
@@ -241,7 +242,7 @@ public class Sensor
     {
         if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No No hay datos");
+            // System.out.println("ERROR: No No hay datos");
             return NaN;
         }
 
@@ -273,7 +274,7 @@ public class Sensor
     {
         if (this.datos == null || this.datos.isEmpty())
         {
-            System.out.println("ERROR: No hay datos");
+            //     System.out.println("ERROR: No hay datos");
             return NaN;
         }
 
@@ -367,6 +368,7 @@ public class Sensor
         {
             if (this.datos.isEmpty())
             {
+                //DO_NOTHING
             } else
             {
                 if (primeraCadena == false)
@@ -374,12 +376,12 @@ public class Sensor
                     salida += ",\n";
                 }
                 salida += "\"" + "valores" + "\"" + ": " + "[";
-                for (int i = 0; i < datos.size(); i++)
+                for (int i = (datos.size() >= 10) ? (datos.size() - 10) : 0; i < datos.size(); i++)
                 {
-                    salida += "\"" + this.datos.get(i);
+                    salida += "\"" + this.datos.get(i) + "\"";
                     if (i != datos.size() - 1)
                     {
-                        salida+="\",";
+                        salida += ", ";
                     }
                 }
                 salida += "]";
