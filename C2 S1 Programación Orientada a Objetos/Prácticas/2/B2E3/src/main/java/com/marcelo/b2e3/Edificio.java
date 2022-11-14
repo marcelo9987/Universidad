@@ -153,7 +153,7 @@ public class Edificio
     }
 
     /**
-     * Devuelve los número de las plantas que aún no han sido
+     * Devuelve los números de las plantas que aún no han sido
      * dadas de alta en el edificio.
      *
      * @return número de las plantas que aún no han sido
