@@ -1,8 +1,8 @@
 package com.marcelo.b2e1;
 
-import java.util.*;
-
-import static java.lang.Float.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Marcelo Fort Muñoz
@@ -95,6 +95,11 @@ public class Estancia
             return false;
         }
 
+        if (sensor.getPrecio() == null || sensor.getPrecio() <= 0)
+        {
+            return false;
+        }
+
         this.sensores.add(sensor);
         this.coste += sensor.getPrecio();
 
@@ -150,12 +155,20 @@ public class Estancia
             return false;
         }
 
+
         for (Sensor sensor_actual : this.sensores)
         {
+
             if (sensor_actual.getId() != null && sensor_actual.getId().equals(id))
             {
+                //  if (sensor_actual.getDatos().contains(dato))
+                //  {
+                //      return false;
+                //  }
+                int tamInicial = sensor_actual.getDatos().size();
                 sensor_actual.nuevoDato(dato);
-                return true;
+                int tamFinal = sensor_actual.getDatos().size();
+                return tamInicial != tamFinal;
             }
 
         }
@@ -164,7 +177,7 @@ public class Estancia
 
     /**
      * @param tipo tipo de los sensores a devolver
-     * @return : Devuelve el conjunto de sensores
+     * @return Devuelve el conjunto de sensores
      * de un determinado tipo que hay en la estancia
      */
     public Set<Sensor> sensoresTipo(String tipo)
@@ -198,6 +211,8 @@ public class Estancia
     }
 
     /**
+     * Devuelve el sensor (o sensores) de un determinado tipo que ha capturado el valor máximo.
+     *
      * @param tipo Tipo de sensores a comparar.
      * @return Sensor (o sensores) de
      * un determinado tipo que ha capturado el valor máximo.
@@ -205,8 +220,6 @@ public class Estancia
 
     public Sensor[] sensorMaxValor(String tipo)
     {
-
-
         if (this.sensores == null || this.sensores.isEmpty())
         {
             System.out.println("ERROR: El Set de sensores no se ha creado correctamente.");
@@ -218,26 +231,27 @@ public class Estancia
             return new Sensor[0];
         }
 
+        Set<Sensor> sensoresEspecificos = this.sensoresTipo(tipo);
+
         float valorMaximo = Float.MIN_VALUE;
         int n_sensoresConValorMaximo = 0;
 
-        for (Sensor sensor : this.sensores)
+        for (Sensor sensor : sensoresEspecificos)
         {
-            if (sensor.maximo() > valorMaximo)
-            {
-                valorMaximo = sensor.maximo();
-                n_sensoresConValorMaximo = 1;
-            }
             if (sensor.maximo() == valorMaximo)
             {
                 n_sensoresConValorMaximo++;
+            } else if (sensor.maximo() > valorMaximo)
+            {
+                valorMaximo = sensor.maximo();
+                n_sensoresConValorMaximo = 1;
             }
         }
 
         Sensor[] salida = new Sensor[n_sensoresConValorMaximo];
 
         int i = 0;
-        for (Sensor sensor : this.sensores)
+        for (Sensor sensor : sensoresEspecificos)
         {
             if (sensor.maximo() == valorMaximo)
             {
@@ -246,49 +260,16 @@ public class Estancia
             }
         }
         return salida;
-//        for (Sensor sensor : this.sensores)
-//        {
-//            if (sensor.maximo() > valorMaximo)
-//            {
-//                for (int i = 0; i < numerosIguales; i++)
-//                {
-//                    ids_de_los_sensores_cuyos_valores_son_maximos[i] = " ";
-//                }
-//                numerosIguales = 1;
-//                ids_de_los_sensores_cuyos_valores_son_maximos[0] = sensor.getId();
-//                valorMaximo = sensor.maximo();
-//            } else if (sensor.maximo() == valorMaximo)
-//            {
-//                numerosIguales++;
-//                ids_de_los_sensores_cuyos_valores_son_maximos[numerosIguales - 1] = sensor.getId();
-//            }
-//        }
-//        Sensor[] salida = new Sensor[numerosIguales];
-//        {
-//            int contador = 0;
-//            for (Sensor next : sensores)
-//            {
-//                if (ids_de_los_sensores_cuyos_valores_son_maximos[contador] != null && ids_de_los_sensores_cuyos_valores_son_maximos[contador].equals(next.getId()))
-//                {
-//                    salida[contador] = next;
-//                    contador++;
-//                }
-//
-//            }
-//        }
-//        return salida;
     }
 
     /**
-     * devuelve el sensor (o sensores) de un determinado tipo que ha capturado el valor mínimo.
-     *
-     * @param tipo
-     * @return
-     */
+     * @param tipo Tipo de sensores a comparar.
+     * @return Sensor (o sensores) de
+     * un determinado tipo que ha capturado el valor máximo.
+     **/
+
     public Sensor[] sensorMinValor(String tipo)
     {
-
-
         if (this.sensores == null || this.sensores.isEmpty())
         {
             System.out.println("ERROR: El Set de sensores no se ha creado correctamente.");
@@ -300,26 +281,28 @@ public class Estancia
             return new Sensor[0];
         }
 
+        Set<Sensor> sensoresEspecificos = this.sensoresTipo(tipo);
+
         float valorMinimo = Float.MAX_VALUE;
         int n_sensoresConValorMinimo = 0;
 
-        for (Sensor sensor : this.sensores)
+        for (Sensor sensor : sensoresEspecificos)
         {
-            if (sensor.minimo() < valorMinimo)
+            if (sensor.minimo() == valorMinimo)
+            {
+                n_sensoresConValorMinimo++;
+            } else if (sensor.minimo() < valorMinimo)
             {
                 valorMinimo = sensor.minimo();
                 n_sensoresConValorMinimo = 1;
             }
-            if (sensor.minimo() == valorMinimo)
-            {
-                n_sensoresConValorMinimo++;
-            }
+
         }
 
         Sensor[] salida = new Sensor[n_sensoresConValorMinimo];
 
         int i = 0;
-        for (Sensor sensor : this.sensores)
+        for (Sensor sensor : sensoresEspecificos)
         {
             if (sensor.minimo() == valorMinimo)
             {
@@ -329,37 +312,6 @@ public class Estancia
         }
         return salida;
     }
-
-
-//    public Sensor[] sensorMaxValor(String tipo)
-//    {
-//        int tamanhoLista = this.sensores.size();
-//        float max = 0;
-//        byte numeroPos;
-//        byte numSensoresMax =0;
-//        Sensor[] arrSens=(Sensor[]) this.sensores.toArray(new Sensor[tamanhoLista]);
-//        for(Sensor sensor:arrSens)
-//        {
-//            if(sensor.getTipo().contentEquals(tipo))
-//            {
-//                if(sensor.maximo()>max)
-//                {
-//                    max = sensor.maximo();
-//                }
-//                if(sensor.maximo()==max)
-//                {
-//                    numSensoresMax++;
-//                }
-//            }
-//        }
-//
-//
-////        byte[] validosArray=new byte[validos];
-//
-//
-//
-//        return void;
-//    }
 
     /**
      * Devuelve el conjunto de valores de un sensor con identificador id que superan un determinado valor.
@@ -412,18 +364,18 @@ public class Estancia
         {
             return false;
         }
-        if (this.nombre == null)
+        if (this.getNombre() == null)
         {
             return false;
         }
 
         final Estancia other = (Estancia) obj;
 
-        if (!this.nombre.equals(other.nombre))
+        if (!this.getNombre().equals(other.getNombre()))
         {
             return false;
         }
-        if (this.planta != other.planta)
+        if (this.getPlanta() != other.getPlanta())
         {
             return false;
         }
@@ -432,7 +384,7 @@ public class Estancia
     }
 
     @Override
-    public java.lang.String toString()
+    public String toString()
     {
 
         String salida = new String();
@@ -444,51 +396,68 @@ public class Estancia
             salida += "\"nombre\": \"" + this.nombre + "\"";
             primeraCadena = false;
         }
+
         if (primeraCadena == false)
         {
             salida += ",\n";
         }
+
         salida += "\"planta\": \"" + this.planta + "\"";
         primeraCadena = false;
 
-        if (this.sensores != null)
+        if (this.sensores != null && !this.sensores.isEmpty())
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-            salida += "\"estancia\": \"" + this.sensores.toString() + "\"";
+            salida += "\"" + "sensores" + "\"" + ": " + "[";
+            boolean primeraSubCadena = true;
+            for (Sensor actual : this.sensores)
+            {
+                if (primeraSubCadena == false)
+                {
+                    salida += ", ";
+                }
+                salida += "\"" + actual.getId() + "\"";
+                primeraSubCadena = false;
+            }
+            salida += "]";
             primeraCadena = false;
         }
 
-        if (primeraCadena == false)
+        if (coste > 0)
         {
-            salida += ",\n";
+            if (primeraCadena == false)
+            {
+                salida += ",\n";
+            }
+
+            salida += "\"coste\": " + "\"" + this.coste + "\"";
+            primeraCadena = false;
         }
-        salida += "\"coste\": " + "\"" + this.coste + "\"";
-        primeraCadena = false;
 
-        if (this.sensores != null)
+        if (this.sensores != null && !this.sensores.isEmpty())
         {
-            if (this.sensores.isEmpty())
+            if (primeraCadena == false)
             {
-
-            } else
+                salida += ",\n";
+            }
+            salida += "\"" + "sensores_media" + "\"" + ": " + "[";
+            boolean primeraSubCadena = true;
+            for (Sensor sensor : this.sensores)
             {
-                if (primeraCadena == false)
+                if (primeraSubCadena == false)
                 {
                     salida += ",\n";
                 }
-                salida += "\"" + "sensores_media" + "\"" + ": " + "[";
-                for (Iterator<Sensor> iterator = this.sensores.iterator(); iterator.hasNext(); )
-                {
-                    Sensor actual = iterator.next();
-                    salida += "   {" + "\"" + actual.getId() + "\"" + ", " + "\"" + actual.media() + "\"" + "}\n";
-                }
-                salida += "]";
-                primeraCadena = false;
+                salida += "   {" + "\"" + sensor.getId() + "\"" + ", " + "\"" + sensor.media() + "\"" + "}";
+                primeraSubCadena = false;
             }
+            salida += "]";
+            primeraCadena = false;
         }
+
         salida += "\n}\n";
         return salida;
 
