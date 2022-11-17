@@ -1,6 +1,6 @@
-package com.marcelo.B3E1;
+package com.marcelo.b3e2;
 
-public class PrincipalB3E1
+public class PrincipalB3E2
 {
     public static void main(String[] args)
     {
