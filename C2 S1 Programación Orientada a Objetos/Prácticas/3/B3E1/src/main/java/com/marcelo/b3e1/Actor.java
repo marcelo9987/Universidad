@@ -21,42 +21,111 @@ public class Actor
      * @param deseos Directores con los que el autor quiere trabajar.
      * @param cache  Dinero que maneja el actor.
      */
+//    Actor(String nombre, ArrayList<String> deseos, float cache)
+//    {
+//        if (nombre == null)
+//        {
+//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (cache <= 0)
+//        {
+//            System.out.println("ERROR: El cache debe ser mayor a 0");
+//            return;
+//        }
+//
+//        this.nombre = nombre;
+//
+//        this.deseos = new ArrayList<>(deseos.size());
+//        for(String deseo : deseos)
+//        {
+//            if(!this.deseos.contains(deseo))
+//            {
+//                this.deseos.add(deseo);
+//            }
+//        }
+//
+//        this.peliculas = new HashMap<>();
+//        this.cache = cache;
+//    }
     Actor(String nombre, ArrayList<String> deseos, float cache)
     {
         if (nombre == null)
         {
-            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-            return;
+            System.out.println("Aviso: Argumento nulo, podrá haber inconsistencias");
+        } else
+        {
+            this.nombre = nombre;
         }
+
+        if (deseos == null)
+        {
+            this.deseos = null;
+        } else
+        {
+            this.deseos = new ArrayList<>(deseos.size());
+            for (String deseo : deseos)
+            {
+                if (!this.deseos.contains(deseo))
+                {
+                    this.deseos.add(deseo);
+                }
+            }
+        }
+
+        this.peliculas = new HashMap<>();
+
         if (cache <= 0)
         {
-            System.out.println("ERROR: El cache debe ser mayor a 0");
-            return;
+            System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
+        } else
+        {
+            this.cache = cache;
         }
 
-        this.nombre = nombre;
-        this.deseos = deseos;
-        this.peliculas = new HashMap<>();
-        this.cache = cache;
+
     }
 
+    //    Actor(String nombre, float cache)
+//    {
+//        if (nombre == null)
+//        {
+//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (cache <= 0)
+//        {
+//            System.out.println("ERROR: El cache debe ser mayor a 0");
+//            return;
+//        }
+//
+//        this.nombre = nombre;
+//        this.deseos = null;
+//        this.peliculas = new HashMap<>();
+//        this.cache = cache;
+//
+//    }
     Actor(String nombre, float cache)
     {
         if (nombre == null)
         {
-            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-            return;
-        }
-        if (cache <= 0)
+            System.out.println("Aviso: Argumento nulo, podrá haber inconsistencias");
+        } else
         {
-            System.out.println("ERROR: El cache debe ser mayor a 0");
-            return;
+            this.nombre = nombre;
         }
 
         this.nombre = nombre;
         this.deseos = null;
         this.peliculas = new HashMap<>();
-        this.cache = cache;
+
+        if (cache <= 0)
+        {
+            System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
+        } else
+        {
+            this.cache = cache;
+        }
 
     }
 
@@ -75,7 +144,20 @@ public class Actor
 
     public void setDeseos(ArrayList<String> deseos)
     {
-        this.deseos = deseos;
+        if (deseos == null)
+        {
+            this.deseos = null;
+        } else
+        {
+            this.deseos = new ArrayList<>(deseos.size());
+            for (String deseo : deseos)
+            {
+                if (!this.deseos.contains(deseo))
+                {
+                    this.deseos.add(deseo);
+                }
+            }
+        }
     }
 
     public HashMap<String, Pelicula> getPeliculas()
@@ -100,7 +182,7 @@ public class Actor
     /// MÉTODOS FUNCIONALES ///
 
     /**
-     * introduce una pelicula
+     * introduce una película
      * en la que ha participado el actor.
      *
      * @param pelicula Pelicula a introducir.
@@ -109,14 +191,23 @@ public class Actor
     {
         if (pelicula == null || pelicula.getNombre() == null)
         {
-            System.out.println("Error (introducirPelicula), parámetros incorrectos.");
+            System.out.println("ERROR (introducirPelicula): parámetros incorrectos.");
             return;
         }
+
         if (this.peliculas.containsKey(pelicula.getNombre()))
         {
-            System.out.println("ERROR (introducirPelicula): La película ya existe.");
+            System.out.println("AVISO (introducirPelicula): La película ya existe.");
+        } else
+        {
+            this.getPeliculas().put(pelicula.getNombre(), pelicula);
+
+            String director = pelicula.getDirector();
+            if (this.deseos != null && this.deseos.contains(director))
+            {
+                this.deseos.remove(director);
+            }
         }
-        this.getPeliculas().put(pelicula.getNombre(), pelicula);
     }
 
 
@@ -248,15 +339,20 @@ public class Actor
     {
         //Set<String> salida = new HashSet<>(this.getDeseos());
         Set<String> salida = new HashSet<>();
-        salida.addAll(this.getDeseos());
+        ArrayList<String> deseos = this.getDeseos();
 
-        for (Pelicula pelicula : this.getPeliculas().values())
+        if (deseos != null)
         {
-            if (salida.contains(pelicula.getDirector()))
-            {
-                salida.remove(pelicula.getDirector());
-            }
+            salida.addAll(deseos);
         }
+
+//        for (Pelicula pelicula : this.getPeliculas().values())
+//        {
+//            if (salida.contains(pelicula.getDirector()))
+//            {
+//                salida.remove(pelicula.getDirector());
+//            }
+//        }
 
         return salida;
     }

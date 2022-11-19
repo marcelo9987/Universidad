@@ -67,38 +67,87 @@ public class Pelicula
      * @param director    Director de la película.
      * @param recaudacion Recaudación de la película(No puede ser negativa).
      */
+//    Pelicula(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
+//    {
+//        if (nombre == null || anho == null || duracion == null || director == null)
+//        {
+//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
+//            return;
+//        }
+//
+//        if (anho < 1895 || anho > 2022)
+//        {
+//            System.out.println("ERROR: Película fuera del rango temporal, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (duracion <= 5)
+//        {
+//            System.out.println("ERROR: Las peliculas han de ser de más de 5min, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (recaudacion < 0)
+//        {
+//            System.out.println("ERROR: La recaudación no puede ser negativa");
+//            return;
+//        }
+//
+//        this.nombre = nombre;
+//        this.anho = anho;
+//        this.duracion = duracion;
+//        this.director = director;
+//        this.recaudacion = recaudacion;
+//        this.actores = new HashMap<>();
+//        this.actores.put("principal", new HashMap<>());
+//        this.actores.put("secundario", new HashMap<>());
+//        this.presupuesto();
+//    }
+
+    /**
+     * @param nombre      Nombre de la película.
+     * @param anho        Año en el que se ha grabado la película, este debe estar comprendido entre 1895 y 2022.
+     * @param duracion    Duración de la película en minutos, esta debe ser de más de 5 minutos.
+     * @param director    Director de la película.
+     * @param recaudacion Recaudación de la película(No puede ser negativa).
+     */
     Pelicula(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
     {
         if (nombre == null || anho == null || duracion == null || director == null)
         {
-            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-            return;
-        }
-
-        if (anho < 1895 || anho > 2022)
-        {
-            System.out.println("ERROR: Película fuera del rango temporal, no se ha podido crear el objeto");
-            return;
-        }
-        if (duracion <= 5)
-        {
-            System.out.println("ERROR: Las peliculas han de ser de más de 5min, no se ha podido crear el objeto");
-            return;
-        }
-        if (recaudacion < 0)
-        {
-            System.out.println("ERROR: La recaudación no puede ser negativa");
-            return;
+            System.out.println("AVISO: Argumento nulo, el objeto podrá tener inconsistencias");
         }
 
         this.nombre = nombre;
-        this.anho = anho;
-        this.duracion = duracion;
+
+        if (anho == null || anho < 1895 || anho > 2022)
+        {
+            System.out.println("AVISO: Año de la película fuera del rango temporal, no se guardará el año de creación");
+        } else
+        {
+            this.anho = anho;
+        }
+
+        if (duracion == null || duracion <= 5)
+        {
+            System.out.println("AVISO: Las películas han de ser de más de 5min, no se guardará este dato");
+        } else
+        {
+            this.duracion = duracion;
+        }
+
         this.director = director;
-        this.recaudacion = recaudacion;
+
+        if (recaudacion < 0)
+        {
+            System.out.println("AVISO: La recaudación recibida no es válida al ser negativa, no se guardará este dato");
+        } else
+        {
+            this.recaudacion = recaudacion;
+        }
+
         this.actores = new HashMap<>();
         this.actores.put("principal", new HashMap<>());
         this.actores.put("secundario", new HashMap<>());
+
         this.presupuesto();
     }
     /// GETTERS & SETTERS ///
@@ -211,7 +260,8 @@ public class Pelicula
         for (Actor actor : actores)
         {
             this.actores.get(rol).put(actor.getNombre(), actor);
-            actor.getPeliculas().put(this.getNombre(), this);
+//            actor.getPeliculas().put(this.getNombre(), this);
+            actor.introducirPelicula(this);
         }
         this.presupuesto();
 
@@ -433,45 +483,71 @@ public class Pelicula
 
         if (this.actores != null && !this.actores.isEmpty())
         {
-            if (primeraCadena == false)
+            String cadenaListadoActores = getCadenaListadoActores();
+
+            if (cadenaListadoActores.isEmpty() == false)
             {
-                salida += ",\n";
+                if (primeraCadena == false)
+                {
+                    salida += ",\n";
+                } else
+                {
+                    primeraCadena = false;
+                }
+
+                salida += "\"" + "actores" + "\"" + ": " + "[";
+                salida += cadenaListadoActores;
+                salida += "\n]";
             }
-            salida += "\"" + "actores" + "\"" + ": " + "[";
-            boolean primeraSubCadena = true;
-            boolean primeraSubSubCadena = true;
+        }
 
-            for (Map.Entry<String, HashMap<String, Actor>> parActores : this.actores.entrySet())
+        salida += "\n}";
+        return salida;
+    }
+
+    private String getCadenaListadoActores()
+    {
+        String salida = "";
+        boolean primerTipoDeActores = true;
+
+        for (Map.Entry<String, HashMap<String, Actor>> parActores : this.actores.entrySet())
+        {
+            String clave = parActores.getKey();
+            HashMap<String, Actor> valores = parActores.getValue();
+
+            if (clave == null || valores == null || valores.isEmpty())
             {
-                primeraSubCadena = true;
-                String llave = parActores.getKey();
-                HashMap<String, Actor> valores = parActores.getValue();
+                continue;
+            }
 
-                if (llave == null || valores == null || valores.isEmpty())
-                {
-                    continue;
-                }
-                salida += "\n{ \"" + llave + "\": [";
+            if (primerTipoDeActores == false)
+            {
+                salida += ", ";
 
-                for (String actor : valores.keySet())
-                {
-                    if (primeraSubCadena == false)
-                    {
-                        salida += ", ";
-                    }
-                    salida += "\"" + actor + "\"";
-                    primeraSubCadena = false;
-                }
-                salida += "]";
-                salida += "}";
-                if (primeraSubSubCadena == true)
+            } else
+            {
+                primerTipoDeActores = false;
+            }
+
+            salida += "\n{ \"" + clave + "\": [";
+
+            boolean primerActorDeEsteTipo = true;
+
+            for (String actor : valores.keySet())
+            {
+                if (primerActorDeEsteTipo == false)
                 {
                     salida += ", ";
-                    primeraSubSubCadena = false;
+                } else
+                {
+                    primerActorDeEsteTipo = false;
                 }
+
+                salida += "\"" + actor + "\"";
             }
-            salida += "\n]";
-            primeraCadena = false;
+
+            salida += "] }";
+
 
         }
 
@@ -508,6 +584,8 @@ public class Pelicula
     }
 
 }
+
+///METODOS PRIVADOS///
 
 
 

@@ -331,6 +331,7 @@ public class PrincipalB3E1
             for (Pelicula pelicula : pelis1_45678)
             {
                 System.out.println(pelicula);
+                System.out.println();
             }
         }
         System.out.println("\n");
@@ -342,6 +343,7 @@ public class PrincipalB3E1
             for (Actor actor : actores15789_10)
             {
                 System.out.println(actor);
+                System.out.println();
             }
         }
         System.out.println("\n");
@@ -351,6 +353,7 @@ public class PrincipalB3E1
             for (Pelicula pelicula : actor5.getPeliculas().values())
             {
                 System.out.println(pelicula);
+                System.out.println();
             }
         }
         System.out.println("\n");
@@ -359,12 +362,21 @@ public class PrincipalB3E1
         for (Actor actor : pelicula1.actoresDirigidos("Martin Scorsese").values())
         {
             System.out.println(actor);
+            System.out.println();
         }
         System.out.println("\n");
 
 
         System.out.println("j:");
-        for (Actor actor : pelicula6.actoresDirigidos("Cristofer Nolan").values())
+        System.out.println("Para Christofer Nolan(Mal escrito):");
+        for (Actor actor : pelicula6.actoresDirigidos("Christofer Nolan").values())
+        {
+            System.out.println(actor);
+        }
+        System.out.println("\n");
+
+        System.out.println("Para Christopher Nolan:");
+        for (Actor actor : pelicula6.actoresDirigidos("Christopher Nolan").values())
         {
             System.out.println(actor);
         }
