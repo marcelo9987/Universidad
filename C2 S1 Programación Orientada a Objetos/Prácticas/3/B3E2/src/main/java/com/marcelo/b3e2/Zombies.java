@@ -1,6 +1,8 @@
 package com.marcelo.b3e2;
 
-public class Zombies extends Terror
+import java.util.HashMap;
+
+public final class Zombies extends Terror
 {
     /**
      * @param nombre      Nombre de la película.
@@ -9,8 +11,9 @@ public class Zombies extends Terror
      * @param director    Director de la película.
      * @param recaudacion Recaudación de la película(No puede ser negativa).
      */
-    Zombies(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
+    Zombies(String nombre, Integer anho, Integer duracion, Director director, HashMap<String,Float> recaudacion)
     {
         super(nombre, anho, duracion, director, recaudacion);
     }
+
 }

@@ -1,5 +1,7 @@
 package com.marcelo.b3e2;
 
+import java.util.HashMap;
+
 public abstract class Accion extends Pelicula
 {
     /**
@@ -9,7 +11,7 @@ public abstract class Accion extends Pelicula
      * @param director    Director de la película.
      * @param recaudacion Recaudación de la película(No puede ser negativa).
      */
-    Accion(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
+    Accion(String nombre, Integer anho, Integer duracion, Director director, HashMap<String, Float> recaudacion)
     {
         super(nombre, anho, duracion, director, recaudacion);
     }
@@ -20,4 +22,12 @@ public abstract class Accion extends Pelicula
         super.presupuesto();
         this.presupuesto += this.presupuesto * 1.1f;
     }
+
+    @Override
+    public boolean exito()
+    {
+        return (1.5*this.recaudacionTotal()>1.5*getPresupuesto()) && (this.getRecaudacion().get("Estados Unidos")>1.3*this.getPresupuesto());
+    }
+
+
 }

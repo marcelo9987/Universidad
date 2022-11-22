@@ -312,7 +312,7 @@ public class Pelicula
                     {
                         String nombrePelicula = keyIteratorNombrePelicula.next();
 
-                        if (nombrePelicula != this.nombre)//todo: consultar si es valido comprobar asi si es la misma pelicula
+                        if (!nombrePelicula.equals(this.nombre))//todo: consultar si es valido comprobar asi si es la misma pelicula
                         {
                             if (director.equals(actor.getPeliculas().get(nombrePelicula).getDirector()))
                             {
@@ -584,8 +584,6 @@ public class Pelicula
     }
 
 }
-
-///METODOS PRIVADOS///
 
 
 

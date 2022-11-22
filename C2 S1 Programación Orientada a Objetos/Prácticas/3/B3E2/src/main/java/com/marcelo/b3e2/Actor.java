@@ -21,42 +21,111 @@ public class Actor
      * @param deseos Directores con los que el autor quiere trabajar.
      * @param cache  Dinero que maneja el actor.
      */
+//    Actor(String nombre, ArrayList<String> deseos, float cache)
+//    {
+//        if (nombre == null)
+//        {
+//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (cache <= 0)
+//        {
+//            System.out.println("ERROR: El cache debe ser mayor a 0");
+//            return;
+//        }
+//
+//        this.nombre = nombre;
+//
+//        this.deseos = new ArrayList<>(deseos.size());
+//        for(String deseo : deseos)
+//        {
+//            if(!this.deseos.contains(deseo))
+//            {
+//                this.deseos.add(deseo);
+//            }
+//        }
+//
+//        this.peliculas = new HashMap<>();
+//        this.cache = cache;
+//    }
     Actor(String nombre, ArrayList<String> deseos, float cache)
     {
         if (nombre == null)
         {
-            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-            return;
-        }
-        if (cache <= 0)
+            System.out.println("AVISO: Argumento nulo, podrá haber inconsistencias");
+        } else
         {
-            System.out.println("ERROR: El cache debe ser mayor a 0");
-            return;
+        this.nombre = nombre;
         }
 
-        this.nombre = nombre;
-        this.deseos = deseos;
+        if (deseos == null)
+        {
+            this.deseos = null;
+        } else
+        {
+            this.deseos = new ArrayList<>();
+            for (String deseo : deseos)
+            {
+                if (!this.deseos.contains(deseo))
+                {
+                    this.deseos.add(deseo);
+                }
+            }
+        }
+
         this.peliculas = new HashMap<>();
+
+        if (cache <= 0)
+        {
+            System.out.println("AVISO: El cache debe ser mayor a 0, no se guardará este dato");
+        } else
+        {
         this.cache = cache;
     }
 
+
+    }
+
+    //    Actor(String nombre, float cache)
+//    {
+//        if (nombre == null)
+//        {
+//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (cache <= 0)
+//        {
+//            System.out.println("ERROR: El cache debe ser mayor a 0");
+//            return;
+//        }
+//
+//        this.nombre = nombre;
+//        this.deseos = null;
+//        this.peliculas = new HashMap<>();
+//        this.cache = cache;
+//
+//    }
     Actor(String nombre, float cache)
     {
         if (nombre == null)
         {
-            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-            return;
-        }
-        if (cache <= 0)
+            System.out.println("AVISO: Argumento nulo, podrá haber inconsistencias");
+        } else
         {
-            System.out.println("ERROR: El cache debe ser mayor a 0");
-            return;
+            this.nombre = nombre;
         }
 
         this.nombre = nombre;
         this.deseos = null;
         this.peliculas = new HashMap<>();
+
+        if (cache <= 0)
+        {
+            System.out.println("AVISO: El cache debe ser mayor a 0, no se guardará este dato");
+        } else
+        {
         this.cache = cache;
+        }
 
     }
 
@@ -75,7 +144,20 @@ public class Actor
 
     public void setDeseos(ArrayList<String> deseos)
     {
-        this.deseos = deseos;
+        if (deseos == null)
+        {
+            this.deseos = null;
+        } else
+        {
+            this.deseos = new ArrayList<>();
+            for (String deseo : deseos)
+            {
+                if (!this.deseos.contains(deseo))
+                {
+                    this.deseos.add(deseo);
+                }
+            }
+        }
     }
 
     public HashMap<String, Pelicula> getPeliculas()
@@ -100,7 +182,7 @@ public class Actor
     /// MÉTODOS FUNCIONALES ///
 
     /**
-     * introduce una pelicula
+     * introduce una película
      * en la que ha participado el actor.
      *
      * @param pelicula Pelicula a introducir.
@@ -109,14 +191,23 @@ public class Actor
     {
         if (pelicula == null || pelicula.getNombre() == null)
         {
-            System.out.println("Error (introducirPelicula), parámetros incorrectos.");
+            System.out.println("ERROR (introducirPelicula): parámetros incorrectos.");
             return;
         }
+
         if (this.peliculas.containsKey(pelicula.getNombre()))
         {
-            System.out.println("ERROR (introducirPelicula): La película ya existe.");
-        }
+            System.out.println("AVISO (introducirPelicula): La película ya existe.");
+        } else
+        {
         this.getPeliculas().put(pelicula.getNombre(), pelicula);
+
+            String director = pelicula.getDirector().getNombre();
+            if (this.deseos != null && this.deseos.contains(director))
+            {
+                this.deseos.remove(director);
+            }
+        }
     }
 
 
@@ -130,7 +221,6 @@ public class Actor
 
     public Set<Pelicula> peliculasDeGenero(String genero)
     {
-        //COMPRUÉBAME
         Set<Pelicula> salida = new HashSet<>();
 
         if (genero == null)
@@ -139,16 +229,18 @@ public class Actor
             return salida;
         }
 
+        //todo: ¿Compruebo los tipos de genero?
         Collection<Pelicula> todasLasPeliculas = this.peliculas.values();
-
 
         for (Pelicula pelicula : todasLasPeliculas)
         {
+            //todo: ver si en lugar de getSimpleName uso otro metodo
             if (pelicula.getClass().getSimpleName().equalsIgnoreCase(genero))
             {
                 salida.add(pelicula);
             }
         }
+
         return salida;
     }
 
@@ -245,14 +337,23 @@ public class Actor
     //todo: Revisar tras el main
     public Set<String> deseosNoCumplidos()
     {
-        Set<String> salida = new HashSet<>(this.getDeseos());
-        for (Pelicula pelicula : this.getPeliculas().values())
-        {
-            if(salida.contains(pelicula.getDirector()))
+        //Set<String> salida = new HashSet<>(this.getDeseos());
+        Set<String> salida = new HashSet<>();
+        ArrayList<String> deseos = this.getDeseos();
+
+        if (deseos != null)
             {
-                salida.remove(pelicula.getDirector());
+            salida.addAll(deseos);
             }
-        }
+
+//        for (Pelicula pelicula : this.getPeliculas().values())
+//        {
+//            if (salida.contains(pelicula.getDirector()))
+//            {
+//                salida.remove(pelicula.getDirector());
+//            }
+//        }
+
         return salida;
     }
 

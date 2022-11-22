@@ -52,7 +52,7 @@ public class Actor
     {
         if (nombre == null)
         {
-            System.out.println("Aviso: Argumento nulo, podrá haber inconsistencias");
+            System.out.println("AVISO: Argumento nulo, podrá haber inconsistencias");
         } else
         {
             this.nombre = nombre;
@@ -63,7 +63,7 @@ public class Actor
             this.deseos = null;
         } else
         {
-            this.deseos = new ArrayList<>(deseos.size());
+            this.deseos = new ArrayList<>();
             for (String deseo : deseos)
             {
                 if (!this.deseos.contains(deseo))
@@ -77,7 +77,7 @@ public class Actor
 
         if (cache <= 0)
         {
-            System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
+            System.out.println("AVISO: El cache debe ser mayor a 0, no se guardará este dato");
         } else
         {
             this.cache = cache;
@@ -109,7 +109,7 @@ public class Actor
     {
         if (nombre == null)
         {
-            System.out.println("Aviso: Argumento nulo, podrá haber inconsistencias");
+            System.out.println("AVISO: Argumento nulo, podrá haber inconsistencias");
         } else
         {
             this.nombre = nombre;
@@ -121,7 +121,7 @@ public class Actor
 
         if (cache <= 0)
         {
-            System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
+            System.out.println("AVISO: El cache debe ser mayor a 0, no se guardará este dato");
         } else
         {
             this.cache = cache;
@@ -149,7 +149,7 @@ public class Actor
             this.deseos = null;
         } else
         {
-            this.deseos = new ArrayList<>(deseos.size());
+            this.deseos = new ArrayList<>();
             for (String deseo : deseos)
             {
                 if (!this.deseos.contains(deseo))

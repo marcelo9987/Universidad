@@ -4,6 +4,19 @@ import java.util.*;
 
 public abstract class Pelicula
 {
+    public static final String[] TIPOS_DE_PELICULAS_FINALES = {
+            "ComediaRomantica",
+            "Parodia",
+            "ComediaNegra",
+            "Robos",
+            "Guerra",
+            "Ficcion",
+            "Thriller",
+            "TerrorGotico",
+            "Zombies",
+            "Psicologico"
+    };
+
     /// ATRIBUTOS ///
     /**
      * Nombre de la película.
@@ -40,9 +53,9 @@ public abstract class Pelicula
     /**
      * Director de la película.
      *
-     * @see com.marcelo.b3e2.Pelicula
+     * @see com.marcelo.b3e2.Director
      */
-    private String director;
+    private Director director;
 
     /**
      * Presupuesto de la película.
@@ -56,49 +69,112 @@ public abstract class Pelicula
      *
      * @see com.marcelo.b3e2.Pelicula
      */
-    private float recaudacion;
+    private HashMap<String, Float> recaudacion;
 
     /// CONSTRUCTORES ///
+
+//    /**
+//     * @param nombre      Nombre de la película.
+//     * @param anho        Año en el que se ha grabado la película, este debe estar comprendido entre 1895 y 2022.
+//     * @param duracion    Duración de la película en minutos, esta debe ser de más de 5 minutos.
+//     * @param director    Director de la película.
+//     * @param recaudacion Recaudación de la película(No puede ser negativa).
+//     */
+//    Pelicula(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
+//    {
+//        if (nombre == null || anho == null || duracion == null || director == null)
+//        {
+//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
+//            return;
+//        }
+//
+//        if (anho < 1895 || anho > 2022)
+//        {
+//            System.out.println("ERROR: Película fuera del rango temporal, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (duracion <= 5)
+//        {
+//            System.out.println("ERROR: Las peliculas han de ser de más de 5min, no se ha podido crear el objeto");
+//            return;
+//        }
+//        if (recaudacion < 0)
+//        {
+//            System.out.println("ERROR: La recaudación no puede ser negativa");
+//            return;
+//        }
+//
+//        this.nombre = nombre;
+//        this.anho = anho;
+//        this.duracion = duracion;
+//        this.director = director;
+//        this.recaudacion = recaudacion;
+//        this.actores = new HashMap<>();
+//        this.actores.put("principal", new HashMap<>());
+//        this.actores.put("secundario", new HashMap<>());
+//        this.presupuesto();
+//    }
 
     /**
      * @param nombre      Nombre de la película.
      * @param anho        Año en el que se ha grabado la película, este debe estar comprendido entre 1895 y 2022.
      * @param duracion    Duración de la película en minutos, esta debe ser de más de 5 minutos.
      * @param director    Director de la película.
-     * @param recaudacion Recaudación de la película(No puede ser negativa).
+     * @param recaudacion Recaudación de la película.
      */
-    Pelicula(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
+    Pelicula(String nombre, Integer anho, Integer duracion, Director director, HashMap<String, Float> recaudacion)
     {
         if (nombre == null || anho == null || duracion == null || director == null)
         {
-            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-            return;
-        }
-
-        if (anho < 1895 || anho > 2022)
-        {
-            System.out.println("ERROR: Película fuera del rango temporal, no se ha podido crear el objeto");
-            return;
-        }
-        if (duracion <= 5)
-        {
-            System.out.println("ERROR: Las peliculas han de ser de más de 5min, no se ha podido crear el objeto");
-            return;
-        }
-        if (recaudacion < 0)
-        {
-            System.out.println("ERROR: La recaudación no puede ser negativa");
-            return;
+            System.out.println("AVISO: Argumento nulo, el objeto podrá tener inconsistencias");
         }
 
         this.nombre = nombre;
-        this.anho = anho;
-        this.duracion = duracion;
+
+        if (anho == null || anho < 1895 || anho > 2022)
+        {
+            System.out.println("AVISO: Año de la película fuera del rango temporal, no se guardará el año de creación");
+        } else
+        {
+            this.anho = anho;
+        }
+
+        if (duracion == null || duracion <= 5)
+        {
+            System.out.println("AVISO: Las películas han de ser de más de 5min, no se guardará este dato");
+        } else
+        {
+            this.duracion = duracion;
+        }
+
         this.director = director;
-        this.recaudacion = recaudacion;
+        this.recaudacion = new HashMap<>();
+
+        if (recaudacion == null)
+        {
+            System.out.println("AVISO: La recaudación recibida no es válida, no se guardará este dato.");
+
+        } else
+        {
+            for (Map.Entry<String, Float> recaudacionIndividual : recaudacion.entrySet())
+            {
+                if (recaudacionIndividual == null)
+                {
+                    System.out.println("AVISO: La recaudación es nula o igual a 0");
+                    continue;
+                }
+                if (recaudacionIndividual.getValue() <= 0)
+                {
+                    System.out.println("AVISO: La recaudación es menor o igual a 0");
+                }
+                this.recaudacion.put(recaudacionIndividual.getKey(), recaudacionIndividual.getValue());
+            }
+        }
+
         this.actores = new HashMap<>();
         this.actores.put("principal", new HashMap<>());
         this.actores.put("secundario", new HashMap<>());
+
         this.presupuesto();
     }
     /// GETTERS & SETTERS ///
@@ -143,7 +219,7 @@ public abstract class Pelicula
         return actores;
     }
 
-    public String getDirector()
+    public Director getDirector()
     {
         return director;
     }
@@ -153,19 +229,33 @@ public abstract class Pelicula
         return presupuesto;
     }
 
-    public float getRecaudacion()
+    public HashMap<String, Float> getRecaudacion()
     {
         return recaudacion;
     }
 
-    public void setRecaudacion(float recaudacion)
+    public void setRecaudacion(HashMap<String, Float> recaudacion)
     {
-        if (recaudacion < 0)
+        if (recaudacion == null)
         {
             System.out.println("ERROR: La recaudación no puede ser negativa");
-            return;
+        } else
+        {
+            for (Map.Entry<String, Float> recaudacionIndividual : recaudacion.entrySet())
+            {
+                if (recaudacionIndividual == null)
+                {
+                    System.out.println("AVISO: La recaudación es nula o igual a 0, esta no será introducida");
+                    continue;
+                }
+                if (recaudacionIndividual.getValue() <= 0)
+                {
+                    System.out.println("AVISO: La recaudación es menor o igual a 0");
+                }
+                this.recaudacion.put(recaudacionIndividual.getKey(), recaudacionIndividual.getValue());
+            }
         }
-        this.recaudacion = recaudacion;
+
     }
 
     /// MÉTODOS FUNCIONALES ///
@@ -211,7 +301,8 @@ public abstract class Pelicula
         for (Actor actor : actores)
         {
             this.actores.get(rol).put(actor.getNombre(), actor);
-            actor.getPeliculas().put(this.getNombre(), this);
+//            actor.getPeliculas().put(this.getNombre(), this);
+            actor.introducirPelicula(this);
         }
         this.presupuesto();
 
@@ -227,43 +318,71 @@ public abstract class Pelicula
      */
     public HashMap<String, Actor> actoresDirigidos(String director)
     {
-        //todo: Falta comprobar que los valores no sean nulos.
-        //Entiendo que se piden los actores de la película que han sido dirigidos por el director en películas ANTERIORES.
-        HashMap<String, Actor> salida = new HashMap<>(0);
-        HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
+        //Entiendo que se piden los actores (que intervienen en esta película) que han sido dirigidos por el director en películas QUE NO SEAN ESTA.
+        HashMap<String, Actor> salida = new HashMap<>();
 
-        if (director == null || actoresPelicula == null)
+        if (director == null)
         {
+            System.out.println("ERROR (actoresDirigidos): El campo de director no puede ser nulo");
             return salida;
         }
+        //todo: ¿Uso else?
+
+        HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
+
+        if (actoresPelicula == null)
+        {
+            System.out.println("ERROR (actoresDirigidos): Instancia no inicializada correctamente");
+            return salida;
+        }
+        //todo: ¿Uso else?
 
         for (Iterator<String> keyIteratorTipoActor = actoresPelicula.keySet().iterator(); keyIteratorTipoActor.hasNext(); )
         {
             String tipoActor = keyIteratorTipoActor.next();
+
             for (Iterator<String> keyIteratorNombreActor = actoresPelicula.get(tipoActor).keySet().iterator(); keyIteratorNombreActor.hasNext(); )
             {
                 String nombreActor = keyIteratorNombreActor.next();
+
                 Actor actor = actoresPelicula.get(tipoActor).get(nombreActor);
-                if (actor.getPeliculas() == null)
+
+                if (actor.getPeliculas() != null && !salida.containsKey(actor.getNombre()))
                 {
-                    continue;
-                }
-                for (Iterator<String> keyIteratorNombrePelicula = actor.getPeliculas().keySet().iterator(); keyIteratorNombrePelicula.hasNext(); )
-                {
-                    String nombrePelicula = keyIteratorNombrePelicula.next();
-                    if (director.equals(actor.getPeliculas().get(nombrePelicula).getDirector()))
+                    for (Iterator<String> keyIteratorNombrePelicula = actor.getPeliculas().keySet().iterator(); keyIteratorNombrePelicula.hasNext(); )
                     {
-                        if (!actor.getPeliculas().get(nombrePelicula).equals(this))
+                        String nombrePelicula = keyIteratorNombrePelicula.next();
+
+                        if (!nombrePelicula.equals(this.nombre))//todo: consultar si es valido comprobar asi si es la misma pelicula
                         {
-                            salida.put(actor.getNombre(), actor);
+                            if (director.equals(actor.getPeliculas().get(nombrePelicula).getDirector()))
+                            {
+                                salida.put(actor.getNombre(), actor);
+                            }
                         }
                     }
                 }
-
             }
         }
 
         return salida;
+    }
+
+    /**
+     * Recaudación total de la película. Este
+     * método no puede ser sobreescrito en ninguna otra clase de la jerarquía de clases. El HashMap se
+     * debe recorrer a partir de las claves.
+     *
+     * @return Suma de toda la recaudación.
+     */
+    public float recaudacionTotal()
+    {
+        float sumaTotal = 0;
+        for (float recaudacionPais : this.recaudacion.values())
+        {
+            sumaTotal += recaudacionPais;
+        }
+        return sumaTotal;
     }
 
     /**
@@ -277,38 +396,45 @@ public abstract class Pelicula
     //todo: Revisar
     public Set<Actor> actoresFracaso()
     {
+        //Entiendo que se piden los actores (que intervienen en esta película) que han tenido algun fracaso en alguna pelicula QUE NO SEA ESTA.
         Set<Actor> salida = new HashSet<>();
+
         HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
 
-        if (director == null || actoresPelicula == null)
+        if (actoresPelicula == null)
         {
+            System.out.println("ERROR (actoresDirigidos): Instancia no inicializada correctamente");
             return salida;
         }
+        //todo: ¿Uso else?
 
-        for (Iterator<HashMap<String, Actor>> iterator = actoresPelicula.values().iterator(); iterator.hasNext();)
+        for (Iterator<HashMap<String, Actor>> iteratorTipoActor = actoresPelicula.values().iterator(); iteratorTipoActor.hasNext(); )
         {
-            HashMap<String, Actor> actoresActuales = iterator.next();
-            for (Iterator<Actor> actorIterator = actoresActuales.values().iterator(); actorIterator.hasNext();)
+            HashMap<String, Actor> actoresDeCiertoTipo = iteratorTipoActor.next();
+
+            for (Iterator<Actor> iteratorActor = actoresDeCiertoTipo.values().iterator(); iteratorActor.hasNext(); )
             {
-                Actor actor = actorIterator.next();
+                Actor actor = iteratorActor.next();
 
-                for (Iterator<Pelicula> valueIterator = actor.getPeliculas().values().iterator(); valueIterator.hasNext();)
+                if (actor.getPeliculas() != null && !salida.contains(actor))
                 {
-                    Pelicula pelicula = valueIterator.next();
-                    if(pelicula.equals(this))
+                    for (Iterator<Pelicula> iteratorPelicula = actor.getPeliculas().values().iterator(); iteratorPelicula.hasNext(); )
                     {
-                        continue;
-                    }
+                        Pelicula pelicula = iteratorPelicula.next();
 
-                    if(!pelicula.exito())
-                    {
-                        salida.add(actor);
+                        if (!pelicula.equals(this))
+                        {
+                            if (!pelicula.exito())
+                            {
+                                salida.add(actor);
+                            }
+                        }
                     }
                 }
             }
         }
-        return salida;
 
+        return salida;
     }
 
     /**
@@ -340,6 +466,7 @@ public abstract class Pelicula
                 for (Actor actor : hashMapActores.values())
                 {
                     sumaCachesActores += actor.getCache();
+                    //todo: hacer cosas
                 }
             }
         }
@@ -356,11 +483,11 @@ public abstract class Pelicula
         salida += "{\n";
         if (this.nombre != null)
         {
-            salida += "\"nombre\": \"" + this.nombre+"\"";
+            salida += "\"nombre\": \"" + this.nombre + "\"";
             primeraCadena = false;
         }
 
-        if (this.anho !=null)
+        if (this.anho != null)
         {
             if (primeraCadena == false)
             {
@@ -371,7 +498,7 @@ public abstract class Pelicula
             primeraCadena = false;
         }
 
-        if(this.duracion != null)
+        if (this.duracion != null)
         {
             if (primeraCadena == false)
             {
@@ -382,7 +509,7 @@ public abstract class Pelicula
             primeraCadena = false;
         }
 
-        if(this.director != null)
+        if (this.director != null)
         {
             if (primeraCadena == false)
             {
@@ -417,45 +544,71 @@ public abstract class Pelicula
 
         if (this.actores != null && !this.actores.isEmpty())
         {
-            if (primeraCadena == false)
+            String cadenaListadoActores = getCadenaListadoActores();
+
+            if (cadenaListadoActores.isEmpty() == false)
             {
-                salida += ",\n";
+                if (primeraCadena == false)
+                {
+                    salida += ",\n";
+                } else
+                {
+                    primeraCadena = false;
+                }
+
+                salida += "\"" + "actores" + "\"" + ": " + "[";
+                salida += cadenaListadoActores;
+                salida += "\n]";
             }
-            salida += "\"" + "actores" + "\"" + ": " + "[";
-            boolean primeraSubCadena = true;
-            boolean primeraSubSubCadena = true;
+        }
 
-            for(Map.Entry<String, HashMap<String, Actor>> parActores: this.actores.entrySet())
+        salida += "\n}";
+        return salida;
+    }
+
+    private String getCadenaListadoActores()
+    {
+        String salida = "";
+        boolean primerTipoDeActores = true;
+
+        for (Map.Entry<String, HashMap<String, Actor>> parActores : this.actores.entrySet())
+        {
+            String clave = parActores.getKey();
+            HashMap<String, Actor> valores = parActores.getValue();
+
+            if (clave == null || valores == null || valores.isEmpty())
             {
-                primeraSubCadena=true;
-                String llave = parActores.getKey();
-                HashMap<String,Actor> valores = parActores.getValue();
+                continue;
+            }
 
-                if(llave == null || valores==null || valores.isEmpty())
-                {
-                    continue;
-                }
-                salida+="\n{ \""+llave + "\": [";
+            if (primerTipoDeActores == false)
+            {
+                salida += ", ";
 
-                for(String actor: valores.keySet())
-                {
-                    if (primeraSubCadena == false)
-                    {
-                        salida += ", ";
-                    }
-                    salida+= "\""+actor+"\"";
-                    primeraSubCadena = false;
-                }
-                salida+="]";
-                salida+="}";
-                if (primeraSubSubCadena==true)
+            } else
+            {
+                primerTipoDeActores = false;
+            }
+
+            salida += "\n{ \"" + clave + "\": [";
+
+            boolean primerActorDeEsteTipo = true;
+
+            for (String actor : valores.keySet())
+            {
+                if (primerActorDeEsteTipo == false)
                 {
                     salida += ", ";
-                    primeraSubSubCadena = false;
+                } else
+                {
+                    primerActorDeEsteTipo = false;
                 }
+
+                salida += "\"" + actor + "\"";
             }
-            salida += "\n]";
-            primeraCadena = false;
+
+            salida += "] }";
+
 
         }
 
@@ -494,4 +647,4 @@ public abstract class Pelicula
 }
 
 
-
+//In varietate concordia

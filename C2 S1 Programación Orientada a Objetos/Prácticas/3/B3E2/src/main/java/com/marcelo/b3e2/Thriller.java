@@ -1,6 +1,8 @@
 package com.marcelo.b3e2;
 
-public class Thriller extends Accion
+import java.util.HashMap;
+
+public final class Thriller extends Accion
 {
     /**
      * @param nombre      Nombre de la película.
@@ -9,7 +11,7 @@ public class Thriller extends Accion
      * @param director    Director de la película.
      * @param recaudacion Recaudación de la película(No puede ser negativa).
      */
-    Thriller(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
+    Thriller(String nombre, Integer anho, Integer duracion, Director director, HashMap<String, Float> recaudacion)
     {
         super(nombre, anho, duracion, director, recaudacion);
     }
