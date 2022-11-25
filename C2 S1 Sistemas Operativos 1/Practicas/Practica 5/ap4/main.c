@@ -53,7 +53,7 @@ int main()
         double *memoriaReservada = (double*) malloc(403010 * sizeof(double ));
         procmap(11);
 //        system("ls");
-        execl("hijoAcopiar","hijoAcopiar",NULL);
+        execl("../hijoAcopiar","../hijoAcopiar",NULL);
         free(memoriaReservada);
         exit(0);
     }else
