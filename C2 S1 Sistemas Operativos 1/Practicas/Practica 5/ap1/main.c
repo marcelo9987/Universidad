@@ -1,7 +1,35 @@
 #include <stdio.h>
 #include <unistd.h>
 
+void procmap(int numUso)
+{
+    char nombreArchivoDestino[5];
+    sprintf(nombreArchivoDestino, "%s%i", "mem", numUso);
+    FILE *archivo = fopen(nombreArchivoDestino, "w+");
 
+    char nombreArchivo[0xfff];
+    sprintf(nombreArchivo, "%s%d%s", "/proc/", getpid(), "/maps");
+    FILE* contenidosMapaMemoria;
+    contenidosMapaMemoria = fopen(nombreArchivo, "r");
+    int counter =0;
+
+    char buffer[300];
+    while(1)
+    {
+
+        fgets(buffer, sizeof(buffer), contenidosMapaMemoria);
+        if(feof(contenidosMapaMemoria))
+        {
+            break;
+        }
+        fprintf(archivo,"%s",buffer);
+
+        ++counter;
+    }
+    printf("He leído %i líneas",counter);
+    fclose(archivo);
+    fclose(contenidosMapaMemoria);
+}
 
 int i_arrayGlobal[6];
 int i_varGlobal;
@@ -20,6 +48,7 @@ int main()
     i_arrayLocal[2]=99;
     i_arrayGlobal[1]=8273678;
     i_varLocal=99;
+    procmap(0);
     scanf("%s",&i);
     
     
