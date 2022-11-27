@@ -21,7 +21,7 @@ public class Director
      * @see com.marcelo.b3e2.Director
      * @see com.marcelo.b3e2.Pelicula
      */
-    HashMap<String, Float> cache;
+    private HashMap<String, Float> cache;
 
     /**
      * Conjunto de películas en las que ha participado el
@@ -30,14 +30,14 @@ public class Director
      * @see com.marcelo.b3e2.Director
      * @see com.marcelo.b3e2.Pelicula
      */
-    ArrayList<Pelicula> peliculas;
+    private ArrayList<Pelicula> peliculas;
 
     /**
      * géneros de las películas en las cuales el director es un especialista.
      *
      * @see com.marcelo.b3e2.Director
      */
-    Set<String> especialista;
+    private Set<String> especialista;
 
     public Director(String nombre, Set<String> especialista, HashMap<String, Float> cache)
     {
@@ -49,54 +49,55 @@ public class Director
             this.nombre = nombre;
         }
 
-        if (cache == null)
+        this.especialista = new HashSet<>();
+        if (especialista != null)
         {
-            this.cache = null;
-        } else
+            for (String tipoPelicula : especialista)
+            {
+                //Solo aceptaré tipos de películas que sean válidos.
+                if (Pelicula.TIPOS_DE_PELICULAS_FINALES.contains(tipoPelicula))
+                {
+                    this.especialista.add(tipoPelicula);
+                } else
+                {
+                    System.out.println("Aviso: No existe el tipo de película (" + tipoPelicula + "), no se guardará en las especialidades del director");
+                }
+            }
+
+        }
+
+        this.cache = new HashMap<>();
+        if (cache != null)
         {
-            this.cache = new HashMap<>();
             for (Map.Entry<String, Float> kvCache : cache.entrySet())
             {
-                //todo: ver si este tipo de pelicula es válido.
-                //todo: Decidir si puedo tener cache de un tipo de película del que no soy especialista.
+                // Solo aceptaré el caché de tipos de películas de los cuales sea especialista
+                // En este caso me ahorro mirar si el tipo de película es válido o no, porque ya se miró al introducirlas en la var. especialista.
 
                 String keyCache = kvCache.getKey();
 
-                if (!this.cache.containsKey(keyCache))
+                if (this.especialista.contains(keyCache))
                 {
-                    Float valCache = kvCache.getValue();
+                    if (!this.cache.containsKey(keyCache))
+                    {
+                        Float valCache = kvCache.getValue();
 
-                    if (valCache == null || valCache <= 0)
-                    {
-                        System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
-                    } else
-                    {
-                        this.cache.put(keyCache, valCache);
+                        if (valCache == null || valCache <= 0)
+                        {
+                            System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
+                        } else
+                        {
+                            this.cache.put(keyCache, valCache);
+                        }
                     }
+                } else
+                {
+                    System.out.println("Aviso: El director no es especialista en este género de películas (" + keyCache + "), no se guardará este caché");
                 }
             }
         }
 
         this.peliculas = new ArrayList<>();
-
-
-        if (especialista == null)
-        {
-            this.especialista = null;
-        } else
-        {
-            this.especialista = new HashSet<>();
-            for (String tipoPelicula : especialista)
-            {
-                //todo: ver si este tipo de película es válido
-                if (!this.especialista.contains(tipoPelicula))
-                {
-                    this.especialista.add(tipoPelicula);
-                }
-            }
-        }
-
-
     }
 
     public String getNombre()
@@ -126,28 +127,36 @@ public class Director
     {
         if (cache == null)
         {
-            this.cache = null;
+            System.out.println("ERROR: el cache pasado como parámetro es nulo, no se modificará la variable.");
         } else
         {
+            System.out.println("AVISO: Este método eliminará cualquier información previa que hubiera almacenada sobre el caché de este director.");
+
             this.cache = new HashMap<>();
             for (Map.Entry<String, Float> kvCache : cache.entrySet())
             {
-                //todo: ver si este tipo de pelicula es válido.
-                //todo: Decidir si puedo tener cache de un tipo de película del que no soy especialista.
+                // Solo aceptaré el caché de tipos de películas de los cuales sea especialista
+                // En este caso me ahorro mirar si el tipo de película es válido o no, porque ya se miró al introducirlas en la var. especialista.
 
                 String keyCache = kvCache.getKey();
 
-                if (!this.cache.containsKey(keyCache))
+                if (this.especialista.contains(keyCache))
                 {
-                    Float valCache = kvCache.getValue();
+                    if (!this.cache.containsKey(keyCache))
+                    {
+                        Float valCache = kvCache.getValue();
 
-                    if (valCache == null || valCache <= 0)
-                    {
-                        System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
-                    } else
-                    {
-                        this.cache.put(keyCache, valCache);
+                        if (valCache == null || valCache <= 0)
+                        {
+                            System.out.println("Aviso: El cache debe ser mayor a 0, no se guardará este dato");
+                        } else
+                        {
+                            this.cache.put(keyCache, valCache);
+                        }
                     }
+                } else
+                {
+                    System.out.println("Aviso: El director no es especialista en este género de películas (" + keyCache + "), no se guardará este caché");
                 }
             }
         }
@@ -167,16 +176,20 @@ public class Director
     {
         if (especialista == null)
         {
-            this.especialista = null;
+            System.out.println("ERROR: La información sobre las especialidades pasado como parámetro es nula, no se modificará la variable.");
         } else
         {
+            System.out.println("AVISO: Este método eliminará cualquier información previa que hubiera almacenada sobre las especialidades de este director.");
             this.especialista = new HashSet<>();
             for (String tipoPelicula : especialista)
             {
-                //todo: ver si este tipo de película es válido
-                if (!this.especialista.contains(tipoPelicula))
+                //Solo aceptaré tipos de películas que sean válidos.
+                if (Pelicula.TIPOS_DE_PELICULAS_FINALES.contains(tipoPelicula))
                 {
                     this.especialista.add(tipoPelicula);
+                } else
+                {
+                    System.out.println("Aviso: No existe el tipo de película (" + tipoPelicula + "), no se guardará en las especialidades del director");
                 }
             }
         }
@@ -195,29 +208,28 @@ public class Director
     {
         if (pelicula == null)
         {
-            System.out.println("ERROR: La pelicula no puede ser nula");
-            return;
-        }
-
-        if (pelicula.getDirector() != this)
+            System.out.println("ERROR: La película no puede ser nula");
+        } else if (!this.equals(pelicula.getDirector()))
         {
             System.out.println("ERROR: El director no coincide");
-            return;
-        }
-
-        if (this.getEspecialista() != null)
+        } else
         {
             String tipoPelicula = pelicula.getClass().getSimpleName();
+
             if (this.getEspecialista().contains(tipoPelicula))
             {
                 if (!this.getPeliculas().contains(pelicula))
                 {
                     this.getPeliculas().add(pelicula);
-                    return;
+                } else
+                {
+                    System.out.println("ERROR: La película ya está en la lista.");
                 }
+            } else
+            {
+                System.out.println("ERROR: El director no es especialista en este tipo de películas, NO se ha introducido la película.");
             }
         }
-        System.out.println("ERROR: El director no es especialista en este tipo de películas, NO se ha introducido la película.");
     }
 
     /**
@@ -229,31 +241,27 @@ public class Director
      */
     public int dirigirActor(String actor)
     {
-        int salida = 42 - 21 * 2; //salida = 0
+//      int salida = 42 - 21 * 2;
+        int salida = 0;
+
         if (actor == null)
         {
-            System.out.println("ERROR: El nombre del actor es nulo. ¿Puede que el campo de la función se encuentre vacio?.");
+            System.out.println("ERROR: El nombre del actor es nulo.");
             return salida;
         }
 
-        ArrayList<String> actores_ya_contados = new ArrayList<>();
-        List<Pelicula> misPeliculas = this.getPeliculas();
-        for (Pelicula pelicula : misPeliculas)
+        for (Pelicula pelicula : this.getPeliculas())
         {
-            for (Map.Entry<String, HashMap<String, Actor>> kvPeliculaActores : pelicula.getActores().entrySet())
+            for (HashMap<String, Actor> actoresCiertoTipo : pelicula.getActores().values())
             {
-                String actorsKey = kvPeliculaActores.getKey();
-                HashMap<String, Actor> actorsValue = kvPeliculaActores.getValue();
-                for (String actorActual : actorsValue.keySet())
+                if (actoresCiertoTipo.containsKey(actor))
                 {
-                    if (!actores_ya_contados.contains(actor))
-                    {
-                        actores_ya_contados.add(actor);
-                        ++salida;
-                    }
+                    ++salida;
+                    break;
                 }
             }
         }
+
         return salida;
     }
 
@@ -266,33 +274,33 @@ public class Director
     public Set<String> generoMasCaro()
     {
 
-        int valores_mas_altos = 0;
-        int maxVal = 0;
-        for (Float entradaGenero : this.cache.values())
+
+        float cacheMasAlto = 0;
+
+        for (Float cacheCiertoGenero : this.cache.values())
         {
-            if (entradaGenero == maxVal)
+            if (cacheCiertoGenero > cacheMasAlto)
             {
-                ++valores_mas_altos;
-            }
-            if (entradaGenero > maxVal)
-            {
-                valores_mas_altos = 1;
+                cacheMasAlto = cacheCiertoGenero;
             }
         }
-        Set<String> salida = new HashSet<>(valores_mas_altos);
+
+        Set<String> salida = new HashSet<>();
+
         for (Map.Entry<String, Float> kvGenero : this.cache.entrySet())
         {
             Float vGenero = kvGenero.getValue();
-            if (vGenero == maxVal)
+            if (vGenero == cacheMasAlto)
             {
                 salida.add(kvGenero.getKey());
             }
         }
+
         return salida;
     }
 
     /**
-     * devuelve las películas que ha dirigido el director que han tenido una recaudación mayor que una
+     * Devuelve las películas que ha dirigido el director que han tenido una recaudación mayor que una
      * cantidad mínima, donde la clave del HashMap es el nombre de la película y el dato la instancia.
      *
      * @param minimo Mínimo que tiene que pasar para que entre en la salida
@@ -300,24 +308,19 @@ public class Director
      */
     public HashMap<String, Pelicula> peliculasMasBeneficio(float minimo)
     {
-        HashMap<String, Pelicula> salida = new HashMap<String, Pelicula>();
-
-        if (minimo < 0)
-        {
-            return salida;
-        }
+        HashMap<String, Pelicula> salida = new HashMap<>();
 
         for (Pelicula pelicula : this.getPeliculas())
         {
-            if (pelicula.getNombre() == null)
+            if (pelicula.getNombre() != null)
             {
-                continue;
-            }
-            if (pelicula.recaudacionTotal() > minimo)
-            {
-                salida.put(pelicula.getNombre(), pelicula);
+                if (pelicula.recaudacionTotal() > minimo)
+                {
+                    salida.put(pelicula.getNombre(), pelicula);
+                }
             }
         }
+
         return salida;
     }
 
@@ -367,12 +370,13 @@ public class Director
                 {
                     salida += ",\n";
                 }
-                salida += "]";
-                primeraCadena = false;
             }
+
+            salida += "\n   ]";
+            primeraCadena = false;
         }
 
-        if (peliculas != null || !peliculas.isEmpty())
+        if (this.peliculas != null && !this.peliculas.isEmpty())
         {
             if (!primeraCadena)
             {
@@ -387,16 +391,16 @@ public class Director
                 {
                     continue;
                 }
-                salida += "\"" + pelicula.getNombre() +"\"";
+                salida += "\"" + pelicula.getNombre() + "\"";
+
                 if (PeliculaIterator.hasNext())
                 {
                     salida += ", ";
                 }
-                salida += "]";
-                primeraCadena = false;
             }
+            salida += "]";
+            primeraCadena = false;
         }
-
 
 
         if (especialista != null || !peliculas.isEmpty())
@@ -405,23 +409,23 @@ public class Director
             {
                 salida += ",\n";
             }
-            salida += "\"peliculas\":[";
+            salida += "\"especialista\":[";
             for (Iterator<String> PeliculaIterator = this.especialista.iterator(); PeliculaIterator.hasNext(); )
             {
                 String especialista = PeliculaIterator.next();
 
-                if (especialista ==  null)
+                if (especialista == null)
                 {
                     continue;
                 }
-                salida += "\"" + especialista +"\"";
+                salida += "\"" + especialista + "\"";
                 if (PeliculaIterator.hasNext())
                 {
                     salida += ", ";
                 }
-                salida += "]";
-                primeraCadena = false;
             }
+            salida += "]";
+            primeraCadena = false;
         }
 
 

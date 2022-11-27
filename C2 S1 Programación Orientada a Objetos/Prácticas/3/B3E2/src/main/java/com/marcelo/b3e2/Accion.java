@@ -26,7 +26,19 @@ public abstract class Accion extends Pelicula
     @Override
     public boolean exito()
     {
-        return (1.5*this.recaudacionTotal()>1.5*getPresupuesto()) && (this.getRecaudacion().get("Estados Unidos")>1.3*this.getPresupuesto());
+        // Entiendo que un 150% mayor quiere decir que es 2.5 veces más
+
+        if (this.recaudacionTotal() <= (1 + 1.5) * this.getPresupuesto())
+        {
+            return false;
+        }
+        else if (this.getRecaudacion().containsKey("EE.UU") && this.getRecaudacion().get("EE.UU") > (1 + 0.3) * this.getPresupuesto())
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
 

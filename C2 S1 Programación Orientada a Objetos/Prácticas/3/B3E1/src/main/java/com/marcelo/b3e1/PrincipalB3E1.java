@@ -302,7 +302,13 @@ public class PrincipalB3E1
         }
 
         //todo: No puedo insertar a Haley Joel Osment porque no existe su variable
-        if (!pelicula8.darAlta("principal", new ArrayList<>(Arrays.asList(actor12 /*, algo*/))))
+        Actor haleyJoelOsment;
+        {
+            ArrayList<String> deseos = new ArrayList<>();
+
+            haleyJoelOsment = new Actor("Haley Joel Osment", null, 120);
+        }
+        if (!pelicula8.darAlta("principal", new ArrayList<>(Arrays.asList(actor12 , haleyJoelOsment))))
         {
             System.out.println("Los actores principales de la película 7 no han sido dados de alta correctamente.");
         }

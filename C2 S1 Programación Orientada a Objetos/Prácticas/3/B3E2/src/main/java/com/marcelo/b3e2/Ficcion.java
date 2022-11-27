@@ -1,7 +1,6 @@
 package com.marcelo.b3e2;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public final class Ficcion extends Accion
 {
@@ -17,39 +16,31 @@ public final class Ficcion extends Accion
         super(nombre, anho, duracion, director, recaudacion);
     }
 
+    @Override
     public boolean exito()
     {
-        //todo: ¿Que tengo que hacer aqui?
-        boolean cond1 = recaudacionTotal() > 3 * this.getPresupuesto();
-
-        float recaudacion_FR = 0, recaudacion_GR = 0, recaudacion_IT = 0, recaudacion_UK = 0;
-        for (Map.Entry<String, Float> kvRecaudacionActor : this.getRecaudacion().entrySet())
+        // Entiendo que un 300% mayor quiere decir que es 4 veces más
+        if (recaudacionTotal() <= (1.00 + 3.00) * this.getPresupuesto())
         {
-            switch (kvRecaudacionActor.getKey())
+            return false;
+        } else
+        {
+            float recaudacion_FR = this.getRecaudacion().containsKey("Francia") ? this.getRecaudacion().get("Francia") : 0;
+            float recaudacion_IT = this.getRecaudacion().containsKey("Italia") ? this.getRecaudacion().get("Italia") : 0;
+            float recaudacion_DE = this.getRecaudacion().containsKey("Alemania") ? this.getRecaudacion().get("Alemania") : 0;
+            float recaudacion_UK = this.getRecaudacion().containsKey("Reino Unido") ? this.getRecaudacion().get("Reino Unido") : 0;
+
+            float sumaCachesActores = this.getSumaCachesActores();
+
+            if (recaudacion_FR >= 0.2 * sumaCachesActores && recaudacion_IT >= 0.2 * sumaCachesActores && recaudacion_DE >= 0.2 * sumaCachesActores && recaudacion_UK >= 0.2 * sumaCachesActores)
             {
-                case "Francia":
-                    recaudacion_FR += kvRecaudacionActor.getValue()*0.2;
-                    break;
-                case "Alemania":
-                    recaudacion_GR += kvRecaudacionActor.getValue()*0.2;
-                    break;
-                case "Italia":
-                    recaudacion_IT += kvRecaudacionActor.getValue()*0.2;
-                    break;
-                case "Reino Unido":
-                    recaudacion_UK += kvRecaudacionActor.getValue()*0.2;
-                    break;
+                return true;
+            } else
+            {
+                return false;
             }
         }
-        float sumaPaises = recaudacion_GR+recaudacion_FR+recaudacion_UK+recaudacion_IT;
 
-
-        float recaudacionTotal = this.recaudacionTotal()-this.getRecaudacion().get("Francia")-this.getRecaudacion().get("Italia")-this.getRecaudacion().get("Alemania")+sumaPaises;
-
-        float sumaCacheActores = 0;
-        this.getActores().get(null);
-
-        return this.recaudacionTotal() > sumaCacheActores;
     }
 
 

@@ -19,6 +19,12 @@ public abstract class Comedia extends Pelicula
     @Override
     public boolean exito()
     {
-        return this.recaudacionTotal() > this.getPresupuesto();
+        if(this.recaudacionTotal() > this.getPresupuesto())
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 }

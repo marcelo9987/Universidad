@@ -67,48 +67,6 @@ public class Pelicula
      * @param director    Director de la película.
      * @param recaudacion Recaudación de la película(No puede ser negativa).
      */
-//    Pelicula(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
-//    {
-//        if (nombre == null || anho == null || duracion == null || director == null)
-//        {
-//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-//            return;
-//        }
-//
-//        if (anho < 1895 || anho > 2022)
-//        {
-//            System.out.println("ERROR: Película fuera del rango temporal, no se ha podido crear el objeto");
-//            return;
-//        }
-//        if (duracion <= 5)
-//        {
-//            System.out.println("ERROR: Las peliculas han de ser de más de 5min, no se ha podido crear el objeto");
-//            return;
-//        }
-//        if (recaudacion < 0)
-//        {
-//            System.out.println("ERROR: La recaudación no puede ser negativa");
-//            return;
-//        }
-//
-//        this.nombre = nombre;
-//        this.anho = anho;
-//        this.duracion = duracion;
-//        this.director = director;
-//        this.recaudacion = recaudacion;
-//        this.actores = new HashMap<>();
-//        this.actores.put("principal", new HashMap<>());
-//        this.actores.put("secundario", new HashMap<>());
-//        this.presupuesto();
-//    }
-
-    /**
-     * @param nombre      Nombre de la película.
-     * @param anho        Año en el que se ha grabado la película, este debe estar comprendido entre 1895 y 2022.
-     * @param duracion    Duración de la película en minutos, esta debe ser de más de 5 minutos.
-     * @param director    Director de la película.
-     * @param recaudacion Recaudación de la película(No puede ser negativa).
-     */
     Pelicula(String nombre, Integer anho, Integer duracion, String director, float recaudacion)
     {
         if (nombre == null || anho == null || duracion == null || director == null)
@@ -150,6 +108,7 @@ public class Pelicula
 
         this.presupuesto();
     }
+
     /// GETTERS & SETTERS ///
 
     public String getNombre()
@@ -199,7 +158,35 @@ public class Pelicula
 
     public float getPresupuesto()
     {
+        // Nota: El presupuesto puede cambiar en cualquier momento, ya que tanto los actores como el director pueden modificar sus cachés.
+        //  Entiendo que, como la función del cálculo del presupuesto es pública, siempre puede sre llamada antes del getter en caso necesario,
+        //  por lo que no lo recalculo antes de mostrarlo.
+        //  Sí lo recalculo, en cambio, en el constructor y cuando añado un actor.
+        //  Quedaría la duda de si se debe recalcular también el presupuesto como primer paso de la función exito().
+
         return presupuesto;
+    }
+
+    /**
+     * Calcula el presupuesto de la película como la suma del caché
+     * de todos los actores más un porcentaje que dependerá del género de la película
+     */
+    public void presupuesto()
+    {
+        float sumaCachesActores = 0;
+
+        if (this.actores != null)
+        {
+            for (HashMap<String, Actor> hashMapActores : this.actores.values())
+            {
+                for (Actor actor : hashMapActores.values())
+                {
+                    sumaCachesActores += actor.getCache();
+                }
+            }
+        }
+
+        this.presupuesto = sumaCachesActores;
     }
 
     public float getRecaudacion()
@@ -260,9 +247,9 @@ public class Pelicula
         for (Actor actor : actores)
         {
             this.actores.get(rol).put(actor.getNombre(), actor);
-//            actor.getPeliculas().put(this.getNombre(), this);
             actor.introducirPelicula(this);
         }
+
         this.presupuesto();
 
         return true;
@@ -272,7 +259,8 @@ public class Pelicula
     /**
      * @param director Director del cual se buscarán los actores
      * @return Conjunto de actores que han sido dirigidos anteriormente (es decir, en otras películas)
-     * por el director de la película.
+     * por el director
+     * Nota: Originalmente, se especificaba que era "el de la película", pero entiendo que hay que buscar el pasado como parámetro.
      * @implNote Todos los HashMap deben recorrerse usando un iterator de claves.
      */
     public HashMap<String, Actor> actoresDirigidos(String director)
@@ -285,7 +273,6 @@ public class Pelicula
             System.out.println("ERROR (actoresDirigidos): El campo de director no puede ser nulo");
             return salida;
         }
-        //todo: ¿Uso else?
 
         HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
 
@@ -294,7 +281,6 @@ public class Pelicula
             System.out.println("ERROR (actoresDirigidos): Instancia no inicializada correctamente");
             return salida;
         }
-        //todo: ¿Uso else?
 
         for (Iterator<String> keyIteratorTipoActor = actoresPelicula.keySet().iterator(); keyIteratorTipoActor.hasNext(); )
         {
@@ -312,7 +298,7 @@ public class Pelicula
                     {
                         String nombrePelicula = keyIteratorNombrePelicula.next();
 
-                        if (!nombrePelicula.equals(this.nombre))//todo: consultar si es valido comprobar asi si es la misma pelicula
+                        if (!nombrePelicula.equals(this.nombre))
                         {
                             if (director.equals(actor.getPeliculas().get(nombrePelicula).getDirector()))
                             {
@@ -331,13 +317,13 @@ public class Pelicula
      * Actores que han participado
      * en otras películas que no han sido un éxito.
      *
-     * @return lista de actores que han participado
+     * @return Set de actores que han participado
      * @implNote Los HashMap se deben recorrer con un iterator de valores.
      */
     //todo: Revisar
     public Set<Actor> actoresFracaso()
     {
-        //Entiendo que se piden los actores (que intervienen en esta película) que han tenido algun fracaso en alguna pelicula QUE NO SEA ESTA.
+        //Entiendo que se piden los actores (que intervienen en esta película) que han tenido algún fracaso en alguna pelicula QUE NO SEA ESTA.
         Set<Actor> salida = new HashSet<>();
 
         HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
@@ -347,7 +333,6 @@ public class Pelicula
             System.out.println("ERROR (actoresDirigidos): Instancia no inicializada correctamente");
             return salida;
         }
-        //todo: ¿Uso else?
 
         for (Iterator<HashMap<String, Actor>> iteratorTipoActor = actoresPelicula.values().iterator(); iteratorTipoActor.hasNext(); )
         {
@@ -387,31 +372,11 @@ public class Pelicula
     public boolean exito()
     {
         this.presupuesto();
+
         return this.recaudacion > 3 * this.presupuesto ? true : false;
     }
 
-    /**
-     * calcula el presupuesto de la película como la suma del caché
-     * de todos los actores más un porcentaje que dependerá del género de la película
-     */
-    public void presupuesto()
-    {
-        //t/odo: Comprobar nulidad.
 
-        float sumaCachesActores = 0;
-        if (this.actores != null)
-        {
-            for (HashMap<String, Actor> hashMapActores : this.actores.values())
-            {
-                for (Actor actor : hashMapActores.values())
-                {
-                    sumaCachesActores += actor.getCache();
-                }
-            }
-        }
-
-        this.presupuesto = sumaCachesActores;
-    }
 
     @Override
     public String toString()
@@ -584,6 +549,3 @@ public class Pelicula
     }
 
 }
-
-
-

@@ -15,6 +15,4 @@ public final class Psicologico extends Terror
     {
         super(nombre, anho, duracion, director, recaudacion);
     }
-
-
 }

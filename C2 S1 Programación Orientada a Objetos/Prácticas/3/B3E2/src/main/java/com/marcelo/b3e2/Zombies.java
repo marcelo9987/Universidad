@@ -15,5 +15,4 @@ public final class Zombies extends Terror
     {
         super(nombre, anho, duracion, director, recaudacion);
     }
-
 }

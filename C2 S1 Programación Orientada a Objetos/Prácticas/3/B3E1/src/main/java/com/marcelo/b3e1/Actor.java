@@ -21,33 +21,7 @@ public class Actor
      * @param deseos Directores con los que el autor quiere trabajar.
      * @param cache  Dinero que maneja el actor.
      */
-//    Actor(String nombre, ArrayList<String> deseos, float cache)
-//    {
-//        if (nombre == null)
-//        {
-//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-//            return;
-//        }
-//        if (cache <= 0)
-//        {
-//            System.out.println("ERROR: El cache debe ser mayor a 0");
-//            return;
-//        }
-//
-//        this.nombre = nombre;
-//
-//        this.deseos = new ArrayList<>(deseos.size());
-//        for(String deseo : deseos)
-//        {
-//            if(!this.deseos.contains(deseo))
-//            {
-//                this.deseos.add(deseo);
-//            }
-//        }
-//
-//        this.peliculas = new HashMap<>();
-//        this.cache = cache;
-//    }
+
     Actor(String nombre, ArrayList<String> deseos, float cache)
     {
         if (nombre == null)
@@ -86,25 +60,7 @@ public class Actor
 
     }
 
-    //    Actor(String nombre, float cache)
-//    {
-//        if (nombre == null)
-//        {
-//            System.out.println("ERROR: Argumento nulo, no se ha podido crear el objeto");
-//            return;
-//        }
-//        if (cache <= 0)
-//        {
-//            System.out.println("ERROR: El cache debe ser mayor a 0");
-//            return;
-//        }
-//
-//        this.nombre = nombre;
-//        this.deseos = null;
-//        this.peliculas = new HashMap<>();
-//        this.cache = cache;
-//
-//    }
+
     Actor(String nombre, float cache)
     {
         if (nombre == null)
@@ -229,12 +185,11 @@ public class Actor
             return salida;
         }
 
-        //todo: ¿Compruebo los tipos de genero?
+
         Collection<Pelicula> todasLasPeliculas = this.peliculas.values();
 
         for (Pelicula pelicula : todasLasPeliculas)
         {
-            //todo: ver si en lugar de getSimpleName uso otro metodo
             if (pelicula.getClass().getSimpleName().equalsIgnoreCase(genero))
             {
                 salida.add(pelicula);
@@ -337,7 +292,6 @@ public class Actor
     //todo: Revisar tras el main
     public Set<String> deseosNoCumplidos()
     {
-        //Set<String> salida = new HashSet<>(this.getDeseos());
         Set<String> salida = new HashSet<>();
         ArrayList<String> deseos = this.getDeseos();
 
@@ -345,14 +299,6 @@ public class Actor
         {
             salida.addAll(deseos);
         }
-
-//        for (Pelicula pelicula : this.getPeliculas().values())
-//        {
-//            if (salida.contains(pelicula.getDirector()))
-//            {
-//                salida.remove(pelicula.getDirector());
-//            }
-//        }
 
         return salida;
     }

@@ -17,7 +17,6 @@ public abstract class Terror extends Pelicula
     }
 
     @Override
-    //70% de la suma del caché de todos los actores.
     public void presupuesto()
     {
         super.presupuesto();
@@ -33,20 +32,16 @@ public abstract class Terror extends Pelicula
     @Override
     public boolean exito()
     {
-        float sumaCachesActores = 0;
-        if (this.getActores() !=  null)
+        if(this.recaudacionTotal() > this.getSumaCachesActores())
         {
-            for (HashMap<String, Actor> hashMapActores : this.getActores().values())
-            {
-                for (Actor actor : hashMapActores.values())
-                {
-                    sumaCachesActores += actor.getCache();
-                }
-            }
+            return true;
+        }else
+        {
+            return false;
         }
-
-        return this.recaudacionTotal() > sumaCachesActores;
     }
+
+
 
 
 }
