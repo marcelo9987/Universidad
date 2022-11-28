@@ -3,9 +3,13 @@
 #include <stdlib.h>
 #include <wait.h>
 
-void procmap(int numUso)
+//#define procmap(numUso)
+#define procmap(numUso) _procmap(numUso)
+
+
+void _procmap(int numUso)
 {
-    char nombreArchivoDestino[5];
+    char nombreArchivoDestino[20];
     sprintf(nombreArchivoDestino, "%s%i", "mem", numUso);
     FILE *archivo = fopen(nombreArchivoDestino, "w+");
     
@@ -28,7 +32,7 @@ void procmap(int numUso)
         
         ++counter;
     }
-    printf("He leído %i líneas",counter);
+    printf("He leído %i líneas.\n",counter);
     fclose(archivo);
     fclose(contenidosMapaMemoria);
 }
