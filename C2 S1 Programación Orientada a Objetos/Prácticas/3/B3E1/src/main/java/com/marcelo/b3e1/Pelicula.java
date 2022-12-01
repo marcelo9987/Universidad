@@ -320,7 +320,7 @@ public class Pelicula
      * @return Set de actores que han participado
      * @implNote Los HashMap se deben recorrer con un iterator de valores.
      */
-    //todo: Revisar
+
     public Set<Actor> actoresFracaso()
     {
         //Entiendo que se piden los actores (que intervienen en esta película) que han tenido algún fracaso en alguna pelicula QUE NO SEA ESTA.

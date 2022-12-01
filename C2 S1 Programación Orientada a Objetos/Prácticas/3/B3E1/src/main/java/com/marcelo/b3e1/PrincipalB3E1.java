@@ -301,7 +301,7 @@ public class PrincipalB3E1
             System.out.println("Los actores secundarios de la película 7 no han sido dados de alta correctamente.");
         }
 
-        //todo: No puedo insertar a Haley Joel Osment porque no existe su variable
+        
         Actor haleyJoelOsment;
         {
             ArrayList<String> deseos = new ArrayList<>();

@@ -289,7 +289,6 @@ public class Actor
      * @return conjunto de directores con los
      * que el actor quiere trabajar, pero que aún no lo han dirigido en ninguna película.
      */
-    //todo: Revisar tras el main
     public Set<String> deseosNoCumplidos()
     {
         Set<String> salida = new HashSet<>();
