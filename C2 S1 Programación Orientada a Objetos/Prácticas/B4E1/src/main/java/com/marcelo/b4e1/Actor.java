@@ -3,25 +3,25 @@ package com.marcelo.b4e1;
 import java.util.*;
 
 
-public class Actor
+public class Actor implements IActor
 {
-
+    
     public static final String[] TIPOS_DE_ACTORES = {"principal", "secundario"};
-
+    
     /// ATRIBUTOS ///
     private String nombre;
     private ArrayList<String> deseos;
-    private HashMap<String, Pelicula> peliculas;
+    private HashMap<String, IPelicula> peliculas;
     private float cache;
-
+    
     /// CONSTRUCTORES ///
-
+    
     /**
      * @param nombre Nombre del actor
      * @param deseos Directores con los que el autor quiere trabajar.
      * @param cache  Dinero que maneja el actor.
      */
-
+    
     Actor(String nombre, ArrayList<String> deseos, float cache)
     {
         if (nombre == null)
@@ -31,7 +31,7 @@ public class Actor
         {
             this.nombre = nombre;
         }
-
+        
         if (deseos == null)
         {
             this.deseos = null;
@@ -46,9 +46,9 @@ public class Actor
                 }
             }
         }
-
+        
         this.peliculas = new HashMap<>();
-
+        
         if (cache <= 0)
         {
             System.out.println("AVISO: El cache debe ser mayor a 0, no se guardará este dato");
@@ -56,11 +56,11 @@ public class Actor
         {
             this.cache = cache;
         }
-
-
+        
+        
     }
-
-
+    
+    
     Actor(String nombre, float cache)
     {
         if (nombre == null)
@@ -70,11 +70,11 @@ public class Actor
         {
             this.nombre = nombre;
         }
-
+        
         this.nombre = nombre;
         this.deseos = null;
         this.peliculas = new HashMap<>();
-
+        
         if (cache <= 0)
         {
             System.out.println("AVISO: El cache debe ser mayor a 0, no se guardará este dato");
@@ -82,22 +82,22 @@ public class Actor
         {
             this.cache = cache;
         }
-
+        
     }
-
+    
     /* GETTERS & SETTERS */
-
+    
     public String getNombre()
     {
         return nombre;
     }
-
-
+    
+    
     public ArrayList<String> getDeseos()
     {
         return deseos;
     }
-
+    
     public void setDeseos(ArrayList<String> deseos)
     {
         if (deseos == null)
@@ -115,17 +115,17 @@ public class Actor
             }
         }
     }
-
-    public HashMap<String, Pelicula> getPeliculas()
+    
+    public HashMap<String, IPelicula> getPeliculas()
     {
-        return peliculas;
+        return this.peliculas;
     }
-
+    
     public float getCache()
     {
         return cache;
     }
-
+    
     public void setCache(float cache)
     {
         if (cache <= 0)
@@ -136,28 +136,28 @@ public class Actor
         this.cache = cache;
     }
     /// MÉTODOS FUNCIONALES ///
-
+    
     /**
      * introduce una película
      * en la que ha participado el actor.
      *
      * @param pelicula Pelicula a introducir.
      */
-    public void introducirPelicula(Pelicula pelicula)
+    public void introducirPelicula(IPelicula pelicula)
     {
         if (pelicula == null || pelicula.getNombre() == null)
         {
             System.out.println("ERROR (introducirPelicula): parámetros incorrectos.");
             return;
         }
-
+        
         if (this.peliculas.containsKey(pelicula.getNombre()))
         {
             System.out.println("AVISO (Actor: introducirPelicula): La película \"" + pelicula.getNombre() + "\" ya existe.");
         } else
         {
             this.getPeliculas().put(pelicula.getNombre(), pelicula);
-
+            
             String director = pelicula.getDirector().getNombre();
             if (this.deseos != null && this.deseos.contains(director))
             {
@@ -165,8 +165,8 @@ public class Actor
             }
         }
     }
-
-
+    
+    
     /**
      * Devuelve las
      * películas de un determinado género en las que ha participado el actor.
@@ -174,48 +174,48 @@ public class Actor
      * @param genero genero a buscar
      * @return Películas del género especificado
      */
-
-    public Set<Pelicula> peliculasDeGenero(String genero)
+    
+    public Set<IPelicula> peliculasDeGenero(String genero)
     {
-        Set<Pelicula> salida = new HashSet<>();
-
+        Set<IPelicula> salida = new HashSet<>();
+        
         if (genero == null)
         {
             System.out.println("Error (peliculasDeGenero), parámetros incorrectos.");
             return salida;
         }
-
-
-        Collection<Pelicula> todasLasPeliculas = this.peliculas.values();
-
-        for (Pelicula pelicula : todasLasPeliculas)
+        
+        
+        Collection<IPelicula> todasLasPeliculas = this.peliculas.values();
+        
+        for (IPelicula pelicula : todasLasPeliculas)
         {
             if (pelicula.getClass().getSimpleName().equalsIgnoreCase(genero))
             {
                 salida.add(pelicula);
             }
         }
-
+        
         return salida;
     }
-
-
+    
+    
     /**
      * @param genero género de las películas a buscar
      * @return Películas de un determinado género en las que ha participado el actor y que han sido un fracaso.
      */
-    public ArrayList<Pelicula> peliculasFracaso(String genero)
+    public ArrayList<IPelicula> peliculasFracaso(String genero)
     {
-        ArrayList<Pelicula> salida = new ArrayList<>();
-
+        ArrayList<IPelicula> salida = new ArrayList<>();
+        
         if (genero == null)
         {
             System.out.println("Error (peliculasFracaso), parámetros incorrectos.");
             return salida;
         }
-
-        Set<Pelicula> peliculasGenero = this.peliculasDeGenero(genero);
-        for (Pelicula pelicula : peliculasGenero)
+        
+        Set<IPelicula> peliculasGenero = this.peliculasDeGenero(genero);
+        for (IPelicula pelicula : peliculasGenero)
         {
             if (pelicula.exito() == false)
             {
@@ -224,7 +224,7 @@ public class Actor
         }
         return salida;
     }
-
+    
     /**
      * devuelve el número de
      * veces que el actor participado como actor "principal" o actor "secundario" en las películas en las que
@@ -250,8 +250,8 @@ public class Actor
             System.out.println("Error (importancia): Tipo de actor incorrecto.");
             return salida;
         }
-
-        for (Pelicula pelicula : this.getPeliculas().values())
+        
+        for (IPelicula pelicula : this.getPeliculas().values())
         {
             if (pelicula.getActores().get(tipoParticipacion).containsValue(this))
             {
@@ -260,7 +260,7 @@ public class Actor
         }
         return salida;
     }
-
+    
     /**
      * Devuelve la cantidad total que ha ganado el actor por
      * las películas en las que ha participado.
@@ -273,15 +273,15 @@ public class Actor
     public float totalGanancias()
     {
         float ganancias = 0;
-
-        for (Iterator<Map.Entry<String, Pelicula>> iterator = this.getPeliculas().entrySet().iterator(); iterator.hasNext(); )
+        
+        for (Iterator<Map.Entry<String, IPelicula>> iterator = this.getPeliculas().entrySet().iterator(); iterator.hasNext(); )
         {
-            Map.Entry<String, Pelicula> kvEntry = iterator.next();
-            ganancias += kvEntry.getValue().presupuesto;
+            Map.Entry<String, IPelicula> kvEntry = iterator.next();
+            ganancias += kvEntry.getValue().getPresupuesto();
         }
         return ganancias;
     }
-
+    
     /**
      * Devuelve el conjunto de directores con los
      * que el actor quiere trabajar, pero que aún no lo han dirigido en ninguna película.
@@ -289,44 +289,43 @@ public class Actor
      * @return conjunto de directores con los
      * que el actor quiere trabajar, pero que aún no lo han dirigido en ninguna película.
      */
-    //todo: Revisar tras el main
     public Set<String> deseosNoCumplidos()
     {
         Set<String> salida = new HashSet<>();
         ArrayList<String> deseos = this.getDeseos();
-
+        
         if (deseos != null)
         {
             salida.addAll(deseos);
         }
-
+        
         return salida;
     }
-
-
+    
+    
     @Override
     public String toString()
     {
         String salida = new String();
         boolean primeraCadena = true;
-
+        
         salida += "{\n";
         if (this.nombre != null)
         {
             salida += "\"nombre\": \"" + this.nombre + "\"";
             primeraCadena = false;
         }
-
+        
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-
+            
             salida += "\"cache\": " + "\"" + this.cache + "\"";
             primeraCadena = false;
         }
-
+        
         if (this.deseos != null && !this.deseos.isEmpty())
         {
             if (primeraCadena == false)
@@ -348,8 +347,8 @@ public class Actor
             salida += "]";
             primeraCadena = false;
         }
-
-
+        
+        
         if (this.peliculas != null)
         {
             if (!primeraCadena)
@@ -357,9 +356,9 @@ public class Actor
                 salida += ",\n";
             }
             salida += "\"peliculas\":\" [";
-            for (Iterator<Pelicula> iterator = this.peliculas.values().iterator(); iterator.hasNext(); )
+            for (Iterator<IPelicula> iterator = this.peliculas.values().iterator(); iterator.hasNext(); )
             {
-                Pelicula peliculaActual = iterator.next();
+                IPelicula peliculaActual = (IPelicula) iterator.next();
                 salida += "\"" + peliculaActual.getNombre() + "\"";
                 if (iterator.hasNext())
                 {
@@ -373,10 +372,10 @@ public class Actor
             primeraCadena = false;
         }
         salida += "\n}";
-
+        
         return salida;
     }
-
+    
     @Override
     public boolean equals(Object obj)
     {
@@ -396,13 +395,13 @@ public class Actor
         {
             return false;
         }
-        final Actor other = (Actor) obj;
-
-        if (!this.nombre.equals(other.nombre))
+        final IActor other = (IActor) obj;
+        
+        if (!this.nombre.equals(other.getNombre()))
         {
             return false;
         }
-
+        
         return true;
     }
 }

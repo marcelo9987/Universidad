@@ -18,10 +18,10 @@ public interface ICPelicula
     void setDuracion(Integer duracion);
 
 
-    HashMap<String, HashMap<String, Actor>> getActores();
+    HashMap<String, HashMap<String, IActor>> getActores();
 
 
-    Director getDirector();
+    IDirector getDirector();
 
 
     float getPresupuesto();

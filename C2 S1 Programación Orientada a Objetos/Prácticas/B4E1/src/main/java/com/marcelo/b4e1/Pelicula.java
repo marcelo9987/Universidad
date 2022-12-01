@@ -2,7 +2,7 @@ package com.marcelo.b4e1;
 
 import java.util.*;
 
-public abstract class Pelicula
+public abstract class Pelicula implements IPelicula
 {
     public static final Set<String> TIPOS_DE_PELICULAS_FINALES = new HashSet<>(Arrays.asList(
             "ComediaRomantica",
@@ -47,14 +47,14 @@ public abstract class Pelicula
      *
      * @see com.marcelo.b4e1.Pelicula
      */
-    private HashMap<String, HashMap<String, Actor>> actores;
+    private HashMap<String, HashMap<String, IActor>> actores;
 
     /**
      * Director de la película.
      *
      * @see com.marcelo.b4e1.Director
      */
-    private Director director;
+    private IDirector director;
 
     /**
      * Presupuesto de la película.
@@ -79,7 +79,7 @@ public abstract class Pelicula
      * @param director    Director de la película.
      * @param recaudacion Recaudación de la película.
      */
-    Pelicula(String nombre, Integer anho, Integer duracion, Director director, HashMap<String, Float> recaudacion)
+    Pelicula(String nombre, Integer anho, Integer duracion, IDirector director, HashMap<String, Float> recaudacion)
     {
         if (nombre == null)
         {
@@ -181,12 +181,12 @@ public abstract class Pelicula
         this.duracion = duracion;
     }
 
-    public HashMap<String, HashMap<String, Actor>> getActores()
+    public HashMap<String, HashMap<String, IActor>> getActores()
     {
-        return actores;
+        return this.actores;
     }
 
-    public Director getDirector()
+    public IDirector getDirector()
     {
         return director;
     }
@@ -232,9 +232,9 @@ public abstract class Pelicula
         float sumaCachesActores = 0;
         if (this.getActores() != null)
         {
-            for (HashMap<String, Actor> hashMapTiposActores : this.getActores().values())
+            for (HashMap<String, IActor> hashMapTiposActores : this.getActores().values())
             {
-                for (Actor actor : hashMapTiposActores.values())
+                for (IActor actor : hashMapTiposActores.values())
                 {
                     sumaCachesActores += actor.getCache();
                 }
@@ -308,7 +308,7 @@ public abstract class Pelicula
      * @param actores Actores que han participado en la película.
      * @return "true" en caso de éxito y "false" en caso de fallo. Se considerará un fallo si al menos un actor no es introducido.
      */
-    public boolean darAlta(String rol, ArrayList<Actor> actores)
+    public boolean darAlta(String rol, ArrayList<IActor> actores)
     {
         if (rol == null || actores == null || this.actores == null)
         {
@@ -329,7 +329,7 @@ public abstract class Pelicula
             return false;
         }
 
-        for (Actor actor : actores)
+        for (IActor actor : actores)
         {
             if (this.actores.get(rol).containsKey(actor.getNombre()))
             {
@@ -337,7 +337,7 @@ public abstract class Pelicula
             }
         }
 
-        for (Actor actor : actores)
+        for (IActor actor : actores)
         {
             this.actores.get(rol).put(actor.getNombre(), actor);
             actor.introducirPelicula(this);
@@ -356,10 +356,10 @@ public abstract class Pelicula
      * Nota: Originalmente, se especificaba que era "el de la película", pero entiendo que hay que buscar el pasado como parámetro.
      * @implNote Todos los HashMap deben recorrerse usando un iterator de claves.
      */
-    public HashMap<String, Actor> actoresDirigidos(String director)
+    public HashMap<String, IActor> actoresDirigidos(String director)
     {
         //Entiendo que se piden los actores (que intervienen en esta película) que han sido dirigidos por el director en películas QUE NO SEAN ESTA.
-        HashMap<String, Actor> salida = new HashMap<>();
+        HashMap<String, IActor> salida = new HashMap<>();
 
         if (director == null)
         {
@@ -367,7 +367,7 @@ public abstract class Pelicula
             return salida;
         }
 
-        HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
+        HashMap<String, HashMap<String, IActor>> actoresPelicula = this.getActores();
 
         if (actoresPelicula == null)
         {
@@ -383,7 +383,7 @@ public abstract class Pelicula
             {
                 String nombreActor = keyIteratorNombreActor.next();
 
-                Actor actor = actoresPelicula.get(tipoActor).get(nombreActor);
+                IActor actor = actoresPelicula.get(tipoActor).get(nombreActor);
 
                 if (actor.getPeliculas() != null && !salida.containsKey(actor.getNombre()))
                 {
@@ -414,12 +414,12 @@ public abstract class Pelicula
      * @return Set de actores que han participado
      * @implNote Los HashMap se deben recorrer con un iterator de valores.
      */
-    public Set<Actor> actoresFracaso()
+    public Set<IActor> actoresFracaso()
     {
         //Entiendo que se piden los actores (que intervienen en esta película) que han tenido algún fracaso en alguna pelicula QUE NO SEA ESTA.
-        Set<Actor> salida = new HashSet<>();
+        Set<IActor> salida = new HashSet<>();
 
-        HashMap<String, HashMap<String, Actor>> actoresPelicula = this.getActores();
+        HashMap<String, HashMap<String, IActor>> actoresPelicula = this.getActores();
 
         if (actoresPelicula == null)
         {
@@ -427,19 +427,19 @@ public abstract class Pelicula
             return salida;
         }
 
-        for (Iterator<HashMap<String, Actor>> iteratorTipoActor = actoresPelicula.values().iterator(); iteratorTipoActor.hasNext(); )
+        for (Iterator<HashMap<String, IActor>> iteratorTipoActor = actoresPelicula.values().iterator(); iteratorTipoActor.hasNext(); )
         {
-            HashMap<String, Actor> actoresDeCiertoTipo = iteratorTipoActor.next();
+            HashMap<String, IActor> actoresDeCiertoTipo = iteratorTipoActor.next();
 
-            for (Iterator<Actor> iteratorActor = actoresDeCiertoTipo.values().iterator(); iteratorActor.hasNext(); )
+            for (Iterator<IActor> iteratorActor = actoresDeCiertoTipo.values().iterator(); iteratorActor.hasNext(); )
             {
-                Actor actor = iteratorActor.next();
+                IActor actor = iteratorActor.next();
 
                 if (actor.getPeliculas() != null && !salida.contains(actor))
                 {
-                    for (Iterator<Pelicula> iteratorPelicula = actor.getPeliculas().values().iterator(); iteratorPelicula.hasNext(); )
+                    for (Iterator<IPelicula> iteratorPelicula = actor.getPeliculas().values().iterator(); iteratorPelicula.hasNext(); )
                     {
-                        Pelicula pelicula = iteratorPelicula.next();
+                        Pelicula pelicula = (Pelicula) iteratorPelicula.next();
 
                         if (!pelicula.equals(this))
                         {
@@ -561,10 +561,10 @@ public abstract class Pelicula
         String salida = "";
         boolean primerTipoDeActores = true;
 
-        for (Map.Entry<String, HashMap<String, Actor>> parActores : this.actores.entrySet())
+        for (Map.Entry<String, HashMap<String, IActor>> parActores : this.actores.entrySet())
         {
             String clave = parActores.getKey();
-            HashMap<String, Actor> valores = parActores.getValue();
+            HashMap<String, IActor> valores = parActores.getValue();
 
             if (clave == null || valores == null || valores.isEmpty())
             {
@@ -624,9 +624,9 @@ public abstract class Pelicula
         {
             return false;
         }
-        final Pelicula other = (Pelicula) obj;
+        final IPelicula other = (IPelicula) obj;
 
-        if (!this.nombre.equals(other.nombre))
+        if (!this.nombre.equals(other.getNombre()))
         {
             return false;
         }

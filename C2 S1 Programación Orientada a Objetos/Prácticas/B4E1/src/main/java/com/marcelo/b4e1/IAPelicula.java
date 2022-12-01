@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface IAPelicula
 {
-    boolean darAlta(String rol, ArrayList<Actor> actores);
-    HashMap<String, Actor> actoresDirigidos(String director);
-    Set<Actor> actoresFracaso();
+    boolean darAlta(String rol, ArrayList<IActor> actores);
+    HashMap<String, IActor> actoresDirigidos(String director);
+    Set<IActor> actoresFracaso();
 }

@@ -2,7 +2,7 @@ package com.marcelo.b4e1;
 
 import java.util.*;
 
-public class Director
+public class Director implements IDirector
 {
     /**
      * Director de la película (Ver b3e1 para diferencias)
@@ -30,7 +30,7 @@ public class Director
      * @see com.marcelo.b4e1.Director
      * @see com.marcelo.b4e1.Pelicula
      */
-    private ArrayList<Pelicula> peliculas;
+    private ArrayList<IPelicula> peliculas;
 
     /**
      * géneros de las películas en las cuales el director es un especialista.
@@ -162,9 +162,16 @@ public class Director
         }
     }
 
-    public ArrayList<Pelicula> getPeliculas()
+    public ArrayList<IPelicula> getPeliculas()
     {
-        return peliculas;
+        ArrayList<IPelicula> salida = new ArrayList<>();
+        
+        for (IPelicula pelicula:this.peliculas)
+        {
+            salida.add(pelicula);
+        }
+        
+        return salida;
     }
 
     public Set<String> getEspecialista()
@@ -204,7 +211,7 @@ public class Director
      *
      * @param pelicula Pelicula a introducir
      */
-    public void introducirPelicula(Pelicula pelicula)
+    public void introducirPelicula(IPelicula pelicula)
     {
         if (pelicula == null)
         {
@@ -231,6 +238,7 @@ public class Director
             }
         }
     }
+    
 
     /**
      * devuelve el número de veces que un
@@ -250,9 +258,9 @@ public class Director
             return salida;
         }
 
-        for (Pelicula pelicula : this.getPeliculas())
+        for (IPelicula pelicula : this.getPeliculas())
         {
-            for (HashMap<String, Actor> actoresCiertoTipo : pelicula.getActores().values())
+            for (HashMap<String, IActor> actoresCiertoTipo : pelicula.getActores().values())
             {
                 if (actoresCiertoTipo.containsKey(actor))
                 {
@@ -306,11 +314,11 @@ public class Director
      * @param minimo Mínimo que tiene que pasar para que entre en la salida
      * @return Películas que superan el mínimo estipulado por el usuario
      */
-    public HashMap<String, Pelicula> peliculasMasBeneficio(float minimo)
+    public HashMap<String, IPelicula> peliculasMasBeneficio(float minimo)
     {
-        HashMap<String, Pelicula> salida = new HashMap<>();
+        HashMap<String, IPelicula> salida = new HashMap<>();
 
-        for (Pelicula pelicula : this.getPeliculas())
+        for (IPelicula pelicula : this.getPeliculas())
         {
             if (pelicula.getNombre() != null)
             {
@@ -330,9 +338,9 @@ public class Director
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Director director = (Director) o;
+        IDirector director = (IDirector) o;
 
-        return nombre.equals(director.nombre);
+        return nombre.equals(director.getNombre());
     }
 
     @Override
@@ -383,9 +391,9 @@ public class Director
                 salida += ",\n";
             }
             salida += "\"peliculas\":[";
-            for (Iterator<Pelicula> PeliculaIterator = this.peliculas.iterator(); PeliculaIterator.hasNext(); )
+            for (Iterator<IPelicula> PeliculaIterator = this.getPeliculas().iterator(); PeliculaIterator.hasNext(); )
             {
-                Pelicula pelicula = PeliculaIterator.next();
+                IPelicula pelicula = PeliculaIterator.next();
 
                 if (pelicula == null || pelicula.getNombre() == null)
                 {
