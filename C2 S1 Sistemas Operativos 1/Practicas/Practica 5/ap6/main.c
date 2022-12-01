@@ -61,7 +61,7 @@ void *fhilo1(void *param) {
     i_variable_hilo1 = *numero * i_numero_global;
 
     procmap(11);
-
+    pthread_exit(0);
 }
 
 void *fhilo2(void *param) {
@@ -79,6 +79,7 @@ void *fhilo2(void *param) {
     i_variable_hilo2 = *numero * i_numero_global;
 
     procmap(21);
+    pthread_exit(0);
 
 }
 
@@ -97,16 +98,23 @@ int main() {
         perror("[ ERROR ] pthread_create() error");
         exit(-1);
     }
-
+    
+    procmap(2);
+    
     if (pthread_create(&hilo2, NULL, fhilo2, (void *) &i_numero_local) != 0) {
         perror("[ ERROR ] pthread_create() error");
         exit(-1);
     }
+    sleep(5);
 
+    procmap(3);
+    
     if (pthread_join(hilo1, NULL) != 0) {
         perror("[ ERROR ] pthread_create() error");
         exit(3);
     }
+    
+    procmap(4);
 
     if (pthread_join(hilo2, NULL) != 0) {
         perror("[ ERROR ] pthread_create() error");
@@ -114,7 +122,7 @@ int main() {
     }
 
 
-    procmap(2);
+    procmap(5);
 
 
     return 0;

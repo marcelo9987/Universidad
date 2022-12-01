@@ -38,7 +38,7 @@ void _procmap(int numUso)
         
         ++counter;
     }
-    printf("[ INFO ] He leído %i líneas.\n", counter);
+    printf("[ DEBUG ] He leído %i líneas.\n", counter);
     fclose(archivo);
     fclose(contenidosMapaMemoria);
 }
@@ -54,6 +54,7 @@ int main()
     
     for (int veces = 1; veces < 20; veces++) // Cada vuelta incrementa el espacio reservado
     {
+        printf("\n\n[ INFO ] *** Inicio de la iteración: %i ***\n\n",veces);
         procmap(10 * veces + 1);
         esperar();
         
@@ -63,6 +64,9 @@ int main()
         {
             printf("[ ERROR ] Fallo en el malloc\n");
             break;
+        }else
+        {
+            printf("[ INFO ] Malloc realizado con éxito.\n");
         }
         
         printf("[ DEBUG ] mi_str1 está en %p\n", mi_str1);
@@ -76,6 +80,9 @@ int main()
         {
             printf("[ ERROR ] Fallo en el malloc\n");
             break;
+        }else
+        {
+            printf("[ INFO ] Malloc realizado con éxito.\n");
         }
         printf("[ DEBUG ] mi_str2 está en %p\n", mi_str2);
         
@@ -91,7 +98,7 @@ int main()
         esperar();
         
         tam *= 10;
-        
+        printf("\n\n[ INFO ] *** Final de la iteración: %i ***\n\n",veces);
     }
     
     
