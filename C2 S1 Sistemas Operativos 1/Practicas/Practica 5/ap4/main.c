@@ -78,7 +78,6 @@ int main()
         printf("[Hijo] memoriaReservadaHijo %p\n", memoriaReservadaHijo);
         
         procmap(11);
-        
         if (execl("./hijoAcopiar", "./hijoAcopiar", NULL) == -1)
         {
             perror("Fallo en ejecución de execl");

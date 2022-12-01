@@ -38,7 +38,7 @@ void _procmap(int numUso)
         
         ++counter;
     }
-    printf("He leído %i líneas.\n", counter);
+    printf("[ INFO ] He leído %i líneas.\n", counter);
     fclose(archivo);
     fclose(contenidosMapaMemoria);
 }
@@ -46,38 +46,38 @@ void _procmap(int numUso)
 
 int main()
 {
-    printf("mi pid es: %i\n", getpid());
+    printf("[ DEBUG ] mi pid es: %i\n", getpid());
     char v[25];
     char* mi_str1 = NULL;
     char* mi_str2 = NULL;
-    size_t tam = 400;
+    size_t tam = 400; //uso size_t en vez de u_int a razón de que la necesidad de espacio.
     
-    for (int veces = 1; veces < 20; veces++)
+    for (int veces = 1; veces < 20; veces++) // Cada vuelta incrementa el espacio reservado
     {
         procmap(10 * veces + 1);
         esperar();
         
-        printf("\nReservando %zu bytes de datos\n", tam);
+        printf("\n[ INFO ] Reservando %zu bytes de datos\n", tam);
         mi_str1 = (char*) malloc(tam * sizeof(char));
         if (mi_str1 == NULL)
         {
-            printf("Fallo en el malloc\n");
+            printf("[ ERROR ] Fallo en el malloc\n");
             break;
         }
         
-        printf("mi_str1 está en %p\n", mi_str1);
+        printf("[ DEBUG ] mi_str1 está en %p\n", mi_str1);
         
         procmap(10 * veces + 2);
         esperar();
         
-        printf("\nReservando %zu bytes de datos\n", tam);
+        printf("\n[ INFO ] Reservando %zu bytes de datos\n", tam);
         mi_str2 = (char*) malloc(tam * sizeof(char));
         if (mi_str2 == NULL)
         {
-            printf("Fallo en el malloc\n");
+            printf("[ ERROR ] Fallo en el malloc\n");
             break;
         }
-        printf("mi_str2 está en %p\n", mi_str2);
+        printf("[ DEBUG ] mi_str2 está en %p\n", mi_str2);
         
         procmap(10 * veces + 3);
         esperar();
