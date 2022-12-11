@@ -100,11 +100,13 @@ public class Director implements IDirector
         this.peliculas = new ArrayList<>();
     }
 
+    @Override
     public String getNombre()
     {
         return nombre;
     }
-
+    
+    @Override
     public void setNombre(String nombre)
     {
 
@@ -117,12 +119,15 @@ public class Director implements IDirector
         }
 
     }
-
+    
+    @Override
+    
     public HashMap<String, Float> getCache()
     {
         return cache;
     }
-
+    
+    @Override
     public void setCache(HashMap<String, Float> cache)
     {
         if (cache == null)
@@ -161,7 +166,8 @@ public class Director implements IDirector
             }
         }
     }
-
+    
+    @Override
     public ArrayList<IPelicula> getPeliculas()
     {
         ArrayList<IPelicula> salida = new ArrayList<>();
@@ -173,12 +179,14 @@ public class Director implements IDirector
         
         return salida;
     }
-
+    
+    @Override
     public Set<String> getEspecialista()
     {
         return especialista;
     }
-
+    
+    @Override
     public void setEspecialista(Set<String> especialista)
     {
         if (especialista == null)
@@ -211,6 +219,7 @@ public class Director implements IDirector
      *
      * @param pelicula Pelicula a introducir
      */
+    @Override
     public void introducirPelicula(IPelicula pelicula)
     {
         if (pelicula == null)
@@ -247,6 +256,7 @@ public class Director implements IDirector
      * @param actor actor sobre el que se va a realizar la búsqueda
      * @return número de veces que un director ha dirigido a un actor
      */
+    @Override
     public int dirigirActor(String actor)
     {
 //      int salida = 42 - 21 * 2;
@@ -279,6 +289,7 @@ public class Director implements IDirector
      *
      * @return Conjunto de géneros en los que el director tiene un caché más alto.
      */
+    @Override
     public Set<String> generoMasCaro()
     {
 
@@ -306,6 +317,7 @@ public class Director implements IDirector
 
         return salida;
     }
+    
 
     /**
      * Devuelve las películas que ha dirigido el director que han tenido una recaudación mayor que una
@@ -314,6 +326,7 @@ public class Director implements IDirector
      * @param minimo Mínimo que tiene que pasar para que entre en la salida
      * @return Películas que superan el mínimo estipulado por el usuario
      */
+    @Override
     public HashMap<String, IPelicula> peliculasMasBeneficio(float minimo)
     {
         HashMap<String, IPelicula> salida = new HashMap<>();
@@ -363,7 +376,7 @@ public class Director implements IDirector
                 salida += ",\n";
             }
 
-            salida += "\"cache\":[\n";
+            salida += "\"cache\": [\n";
 
             for (Iterator<Map.Entry<String, Float>> entryIterator = cache.entrySet().iterator(); entryIterator.hasNext(); )
             {

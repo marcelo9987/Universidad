@@ -86,18 +86,19 @@ public class Actor implements IActor
     }
     
     /* GETTERS & SETTERS */
-    
+    @Override
     public String getNombre()
     {
         return nombre;
     }
     
-    
+    @Override
     public ArrayList<String> getDeseos()
     {
         return deseos;
     }
     
+    @Override
     public void setDeseos(ArrayList<String> deseos)
     {
         if (deseos == null)
@@ -115,17 +116,17 @@ public class Actor implements IActor
             }
         }
     }
-    
+    @Override
     public HashMap<String, IPelicula> getPeliculas()
     {
         return this.peliculas;
     }
-    
+    @Override
     public float getCache()
     {
         return cache;
     }
-    
+    @Override
     public void setCache(float cache)
     {
         if (cache <= 0)
@@ -143,6 +144,7 @@ public class Actor implements IActor
      *
      * @param pelicula Pelicula a introducir.
      */
+    @Override
     public void introducirPelicula(IPelicula pelicula)
     {
         if (pelicula == null || pelicula.getNombre() == null)
@@ -174,7 +176,7 @@ public class Actor implements IActor
      * @param genero genero a buscar
      * @return Películas del género especificado
      */
-    
+    @Override
     public Set<IPelicula> peliculasDeGenero(String genero)
     {
         Set<IPelicula> salida = new HashSet<>();
@@ -204,6 +206,7 @@ public class Actor implements IActor
      * @param genero género de las películas a buscar
      * @return Películas de un determinado género en las que ha participado el actor y que han sido un fracaso.
      */
+    @Override
     public ArrayList<IPelicula> peliculasFracaso(String genero)
     {
         ArrayList<IPelicula> salida = new ArrayList<>();
@@ -233,6 +236,7 @@ public class Actor implements IActor
      * @param tipoParticipacion principal o secundario
      * @return número de veces que ha participado en ese tipo de participación.
      */
+    @Override
     public int importancia(String tipoParticipacion)
     {
         int salida = 0;
@@ -270,6 +274,7 @@ public class Actor implements IActor
      * las películas en las que ha participado.
      * @implNote Los HashMap se deben recorrer con un iterator de Map.Entry
      */
+    @Override
     public float totalGanancias()
     {
         float ganancias = 0;
@@ -289,6 +294,7 @@ public class Actor implements IActor
      * @return conjunto de directores con los
      * que el actor quiere trabajar, pero que aún no lo han dirigido en ninguna película.
      */
+    @Override
     public Set<String> deseosNoCumplidos()
     {
         Set<String> salida = new HashSet<>();
@@ -347,9 +353,9 @@ public class Actor implements IActor
             salida += "]";
             primeraCadena = false;
         }
-        
-        
-        if (this.peliculas != null)
+    
+    
+        if (this.peliculas != null && !this.peliculas.isEmpty())
         {
             if (!primeraCadena)
             {

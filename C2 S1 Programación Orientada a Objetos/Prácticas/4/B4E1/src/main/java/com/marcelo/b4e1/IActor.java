@@ -35,9 +35,9 @@ public interface IActor extends IParticipante
      * @param pelicula
      * @return
      */
-    default boolean participa(String nombre, IPelicula pelicula)
+    static boolean participa(String nombre, IPelicula pelicula)
     {
-        if(nombre==null)
+        if(nombre==null || pelicula == null || pelicula.getActores() == null)
         {
             return false;
         }

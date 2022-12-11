@@ -1,8 +1,8 @@
-package com.marcelo.b4e1;
+package com.marcelo.b4e2;
 
 import java.util.HashMap;
 
-public interface IPelicula extends ITPelicula, ICPelicula, IAPelicula {
+public interface IPelicula extends IAPelicula, ICPelicula,ITPelicula  {
     /**
      * Devuelve el número de actores que han
      * participado en la película.
@@ -11,7 +11,6 @@ public interface IPelicula extends ITPelicula, ICPelicula, IAPelicula {
      */
     public default int numeroActores()
     {
-        // Tengo en cuenta también a aquellos actores que han sido introducidos de forma incorrecta.
         int salida = 0;
         
         for (HashMap<String, IActor> mapaActores : this.getActores().values())
