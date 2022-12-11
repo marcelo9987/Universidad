@@ -1,7 +1,7 @@
 #include <fcntl.h>
-#include <sched.h>
+//#include <sched.h>
 #include <signal.h>
-#include <stdbool.h>
+//#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,13 +21,16 @@ int main(int argc, char *argv[])
     
     if (argc != 2)
     {
-        fprintf(stderr, "[ ERROR ] El número de argumentos introducido es distinto al requerido");
+        fprintf(stderr, "[ ERROR ] El número de argumentos introducido es distinto al requerido.");
         exit(-1);
     }
     
     
     struct sigaction sa_signal;
     sa_signal.sa_handler = signal_handler;
+    sigset_t sgs_vacio;
+    sigemptyset(&sgs_vacio);
+    sa_signal.sa_mask = sgs_vacio;
     sa_signal.sa_flags = SA_RESTART;
     
     int signal_success;
@@ -84,54 +87,71 @@ int main(int argc, char *argv[])
     
     pid_t pid_procesoPadre = getpid();
     pid_t pid_procesoHijo;
+    
     pid_procesoHijo = fork();
-    if (pid_procesoHijo == -1)
+    if (pid_procesoHijo == -1)  // Fallo en la creación del hijo
     {
         perror("[ERROR] El fork ha fallado en su ejecución:");
         exit(-1);
-    } else if (pid_procesoHijo == 0)
+    } else if (pid_procesoHijo == 0) //Proceso Hijo
     {
-        pause();
-//        while (!b_senhalRecibida[0])
-//        {
-//            sched_yield();
-//        }
+        sigset_t senhalHijo;
+        sigaddset(&senhalHijo,SIGUSR1);
+        int sig[] = {SIGUSR1};
+    
+        fprintf(stdout,"[ INFO ] | HIJO | Esperando SIGUSR1 del padre... \n");
+        int resultado_espera = sigwait(&senhalHijo,sig);
+        if(resultado_espera == -1)
+            perror("Fallo en la pausa\n");
+        else {
+            if(*sig == SIGUSR1)
+                printf("SIGUSR1 was received\n");
+            else
+                printf("sigwait returned with sig: %d\n", *sig);
+        }
+/*        while (!b_senhalRecibida[0])
+        {
+            sched_yield();
+        }*/
         
         
         char *pc_buffer_temporal_hijo = (char *) malloc(szt_tamanho_archivo_expandido * sizeof(char));
         memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
 
-//        if (b_senhalRecibida[0] == true && b_senhalRecibida[1] == false)
-//        {
+/*        if (b_senhalRecibida[0] == true && b_senhalRecibida[1] == false)
+        {*/
         size_t szt_posActualEscritura = 0;
         size_t szt_indice_archivo_antiguo = 0;
-        int vecespasado =0;
+        
         for (; szt_indice_archivo_antiguo < szt_tamanho_mitad_archivo_original; szt_posActualEscritura++)
         {
             /* if (pc_contenido_archivo_mmap[szt_indice_archivo_antiguo] == szt_tamanho_archivo_original/2)
              {
                  memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_indice_archivo_antiguo) * sizeof(char));
                  msync(pc_contenido_archivo_mmap, (szt_indice_archivo_antiguo) * sizeof(char), MS_SYNC);
-                // free(pc_buffer_temporal_hijo);
+                // fre.e(pc_buffer_temporal_hijo);
                 kill(pid_procesoPadre,SIGUSR2);
              }*/
 //            if (pc_contenido_archivo_mmap[szt_indice_archivo_antiguo] == ' ' && (pc_contenido_archivo_mmap[szt_indice_archivo_antiguo + 1] == ' ' || pc_contenido_archivo_mmap[szt_indice_archivo_antiguo - 1] == ' '))
             if (pc_copia_contenido_archivo[szt_indice_archivo_antiguo] - 'A' + 'a' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] - 'a' + 'A' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] != pc_contenido_archivo_mmap[szt_posActualEscritura])
             {
-                
+    
                 if (pc_copia_contenido_archivo[szt_indice_archivo_antiguo] >= '0' && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] <= '9')
                 {
                     szt_indice_archivo_antiguo++;
                     printf("[ INFO ] | HIJO | Cambiando número\n");
                     pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
+                    printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
+        
                 } else
                 {
+        
                     printf("[ INFO ] V1: ORIGINAL: %c CAMBIADO %c\n", pc_copia_contenido_archivo[szt_indice_archivo_antiguo], pc_contenido_archivo_mmap[szt_posActualEscritura]);
                     pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
                     printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
                 }
                 
-                // pc_buffer_temporal_hijo[szt_indice_archivo_antiguo] = pc_contenido_archivo_mmap[szt_indice_archivo_antiguo];
+                // pc_buffer_temporal_hijo[szt_indice_archivo_antiguo] = pc_contenido_archivo_mm.ap[szt_indice_archivo_antiguo];
             } else
             {
                 printf("[ INFO ] | HIJO | Letra puesta: %c\n", pc_contenido_archivo_mmap[szt_posActualEscritura]);
@@ -143,7 +163,7 @@ int main(int argc, char *argv[])
         }
         memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_posActualEscritura) * sizeof(char));
         msync(pc_contenido_archivo_mmap, (szt_posActualEscritura) * sizeof(char), MS_SYNC);
-        // free(pc_buffer_temporal_hijo);
+        // fr.ee(pc_buffer_temporal_hijo);
         kill(pid_procesoPadre, SIGUSR2);
 //        }
 
@@ -151,9 +171,19 @@ int main(int argc, char *argv[])
 //        {
 //            sched_yield();
 //        }
-        printf("[ INFO ] | HIJO | Entro en pausa\n");
-        pause();
+        
+        fprintf(stdout,"[ INFO ] | HIJO | Esperando SIGUSR1 del padre... \n");
+        resultado_espera = sigwait(&senhalHijo,sig);
+        if(resultado_espera == -1)
+            perror("Fallo en la pausa\n");
+        else {
+            if(*sig == SIGUSR1)
+                printf("SIGUSR1 was received\n");
+            else
+                printf("sigwait returned with sig: %d\n", *sig);
+        }
         printf("[ INFO ] | HIJO | He salido de la pausa\n");
+        
         memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
         
         
@@ -266,6 +296,9 @@ int main(int argc, char *argv[])
         
         memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_padre, (szt_posActualEscritura * sizeof(char)));
         msync(pc_contenido_archivo_mmap, (szt_posActualEscritura * sizeof(char)), MS_SYNC);
+        
+        free(pc_buffer_temporal_padre);
+        
 //        pause();
         
         if (kill(pid_procesoHijo, SIGUSR1) == -1)
@@ -278,12 +311,12 @@ int main(int argc, char *argv[])
         waitpid(pid_procesoHijo, NULL, 0);
         printf("muerte del hijo confirmada\n");
         
-        for (size_t szt_posActual = 0; szt_posActual < szt_tamanho_archivo_original + 24; szt_posActual++)
-        {
-            //printf("Estoy Aquí");
-            printf("%c", pc_buffer_temporal_padre[szt_posActual]);
-            
-        }
+//        for (size_t szt_posActual = 0; szt_posActual < szt_tamanho_archivo_original + 24; szt_posActual++)
+//        {
+//            //printf("Estoy Aquí");
+//            printf("%c", pc_buffer_temporal_padre[szt_posActual]);
+//
+//        }
         
         
         munmap(pc_contenido_archivo_mmap, (szt_posActualEscritura * sizeof(char)));
