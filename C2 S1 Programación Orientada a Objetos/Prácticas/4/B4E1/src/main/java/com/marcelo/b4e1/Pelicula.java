@@ -15,7 +15,7 @@ public abstract class Pelicula implements IPelicula
             "TerrorGotico",
             "Zombies",
             "Psicologico"));
-
+    
     /// ATRIBUTOS ///
     /**
      * Nombre de la película.
@@ -23,21 +23,21 @@ public abstract class Pelicula implements IPelicula
      * @see com.marcelo.b4e1.Pelicula
      */
     private String nombre;
-
+    
     /**
      * Año en el que se ha grabado la película.
      *
      * @see com.marcelo.b4e1.Pelicula
      */
     private Integer anho;
-
+    
     /**
      * Duración de la película en minutos.
      *
      * @see com.marcelo.b4e1
      */
     private Integer duracion;
-
+    
     /**
      * Conjunto de actores que
      * han participado en la película, donde la clave "principal" se usa para obtener el HashMap cpn el
@@ -48,30 +48,30 @@ public abstract class Pelicula implements IPelicula
      * @see com.marcelo.b4e1.Pelicula
      */
     private HashMap<String, HashMap<String, IActor>> actores;
-
+    
     /**
      * Director de la película.
      *
      * @see com.marcelo.b4e1.Director
      */
     private IDirector director;
-
+    
     /**
      * Presupuesto de la película.
      *
      * @see com.marcelo.b4e1.Pelicula
      */
     protected float presupuesto;
-
+    
     /**
      * Recaudación de la película
      *
      * @see com.marcelo.b4e1.Pelicula
      */
     private HashMap<String, Float> recaudacion;
-
+    
     /// CONSTRUCTORES ///
-
+    
     /**
      * @param nombre      Nombre de la película.
      * @param anho        Año en el que se ha grabado la película, este debe estar comprendido entre 1895 y 2022.
@@ -84,10 +84,13 @@ public abstract class Pelicula implements IPelicula
         if (nombre == null)
         {
             System.out.println("AVISO: Nombre nulo, el objeto podrá tener inconsistencias");
+            return;
+        } else
+        {
+            this.nombre = nombre;
         }
-
-        this.nombre = nombre;
-
+        
+        
         if (anho == null || anho < 1895 || anho > 2022)
         {
             System.out.println("AVISO: Año de la película fuera del rango temporal, no se guardará el año de creación");
@@ -95,7 +98,7 @@ public abstract class Pelicula implements IPelicula
         {
             this.anho = anho;
         }
-
+        
         if (duracion == null || duracion <= 5)
         {
             System.out.println("AVISO: Las películas han de ser de más de 5min, no se guardará este dato");
@@ -103,7 +106,7 @@ public abstract class Pelicula implements IPelicula
         {
             this.duracion = duracion;
         }
-
+        
         if (director == null)
         {
             System.out.println("AVISO: Director nulo, el objeto podrá tener inconsistencias");
@@ -111,41 +114,49 @@ public abstract class Pelicula implements IPelicula
         {
             this.director = director;
         }
-
-
+        
+        
         this.recaudacion = new HashMap<>();
-
+        
         if (recaudacion == null)
         {
             System.out.println("AVISO: La recaudación recibida no es válida, no se guardará este dato.");
-
+            
         } else
         {
             for (Map.Entry<String, Float> recaudacionIndividual : recaudacion.entrySet())
             {
-                if (recaudacionIndividual.getValue() == null)
+                if (recaudacionIndividual.getValue() != null)
+                {
+                    
+                    
+                    if (recaudacionIndividual.getValue() > 0)
+                    {
+                        this.recaudacion.put(recaudacionIndividual.getKey(), recaudacionIndividual.getValue());
+                    } else
+                    {
+                        System.out.println("AVISO: La recaudación es menor o igual a 0");
+//                        continue;
+                    }
+                    
+                } else
                 {
                     System.out.println("AVISO: La recaudación es nula");
-                    continue;
+//                    continue;
                 }
-                if (recaudacionIndividual.getValue() <= 0)
-                {
-                    System.out.println("AVISO: La recaudación es menor o igual a 0");
-                    continue;
-                }
-                this.recaudacion.put(recaudacionIndividual.getKey(), recaudacionIndividual.getValue());
+                
             }
         }
-
+        
         this.actores = new HashMap<>();
         this.actores.put("principal", new HashMap<>());
         this.actores.put("secundario", new HashMap<>());
-
+        
         this.presupuesto();
     }
-
+    
     /// GETTERS & SETTERS ///
-
+    
     @Override
     public String getNombre()
     {
@@ -161,12 +172,15 @@ public abstract class Pelicula implements IPelicula
     @Override
     public void setAnho(Integer anho)
     {
-        if (anho == null || anho < 1895 || anho > 2022)
+        if (anho != null && anho >= 1895 && anho <= 2022)
         {
-            System.out.println("ERROR: Película fuera del rango temporal.");
-            return;
+            this.anho = anho;
+            
+        } else
+        {
+            System.out.println("ERROR: Película fuera del rango temporal. o nula");
         }
-        this.anho = anho;
+        
     }
     
     @Override
@@ -206,10 +220,10 @@ public abstract class Pelicula implements IPelicula
         //  por lo que no lo recalculo antes de mostrarlo.
         //  Sí lo recalculo, en cambio, en el constructor y cuando añado un actor.
         //  Quedaría la duda de si se debe recalcular también el presupuesto como primer paso de la función exito().
-
+        
         return presupuesto;
     }
-
+    
     /**
      * Calcula el presupuesto de la película como la suma del caché
      * de todos los actores más un porcentaje que dependerá del género de la película
@@ -218,9 +232,9 @@ public abstract class Pelicula implements IPelicula
     public void presupuesto()
     {
         float sumaCaches = 0;
-
+        
         sumaCaches += this.getSumaCachesActores();
-
+        
         if (this.director != null)
         {
             String tipoPelicula = this.getClass().getSimpleName();
@@ -257,7 +271,7 @@ public abstract class Pelicula implements IPelicula
     {
         return recaudacion;
     }
-
+    
     /**
      * Recaudación total de la película. Este
      * método no puede ser sobreescrito en ninguna otra clase de la jerarquía de clases. El HashMap se
@@ -265,7 +279,7 @@ public abstract class Pelicula implements IPelicula
      *
      * @return Suma de toda la recaudación.
      */
-
+    
     @Override
     public final float recaudacionTotal()
     {
@@ -276,22 +290,22 @@ public abstract class Pelicula implements IPelicula
         }
         return sumaTotal;
     }
-
+    
     public void setRecaudacion(HashMap<String, Float> recaudacion)
     {
         if (recaudacion == null)
         {
             System.out.println("AVISO: La recaudación recibida no es válida, no se guardará este dato.");
-
+            
         } else
         {
             if (!this.recaudacion.isEmpty())
             {
                 System.out.println("AVISO: Ya existía información sobre recaudación. Esta será sobreescrita.");
             }
-
+            
             this.recaudacion = new HashMap<>();
-
+            
             for (Map.Entry<String, Float> recaudacionIndividual : recaudacion.entrySet())
             {
                 if (recaudacionIndividual.getValue() == null)
@@ -308,9 +322,9 @@ public abstract class Pelicula implements IPelicula
             }
         }
     }
-
+    
     /// MÉTODOS FUNCIONALES ///
-
+    
     /**
      * Da de alta a un conjunto de actores. Los argumentos del método son el rol que han jugado los actores en la
      * película (solamente puede tomar el valor de "secundario" o "principal") y un ArrayList de
@@ -327,7 +341,7 @@ public abstract class Pelicula implements IPelicula
         {
             return false;
         }
-
+        
         boolean tipoCorrectoActor = false;
         for (String tipo : Actor.TIPOS_DE_ACTORES)
         {
@@ -341,7 +355,7 @@ public abstract class Pelicula implements IPelicula
         {
             return false;
         }
-
+        
         for (IActor actor : actores)
         {
             if (this.actores.get(rol).containsKey(actor.getNombre()))
@@ -349,19 +363,19 @@ public abstract class Pelicula implements IPelicula
                 return false;
             }
         }
-
+        
         for (IActor actor : actores)
         {
             this.actores.get(rol).put(actor.getNombre(), actor);
             actor.introducirPelicula(this);
         }
-
+        
         this.presupuesto();
-
+        
         return true;
-
+        
     }
-
+    
     /**
      * @param director Director del cual se buscarán los actores
      * @return Conjunto de actores que han sido dirigidos anteriormente (es decir, en otras películas)
@@ -374,37 +388,37 @@ public abstract class Pelicula implements IPelicula
     {
         //Entiendo que se piden los actores (que intervienen en esta película) que han sido dirigidos por el director en películas QUE NO SEAN ESTA.
         HashMap<String, IActor> salida = new HashMap<>();
-
+        
         if (director == null)
         {
             System.out.println("ERROR (actoresDirigidos): El campo de director no puede ser nulo");
             return salida;
         }
-
+        
         HashMap<String, HashMap<String, IActor>> actoresPelicula = this.getActores();
-
+        
         if (actoresPelicula == null)
         {
             System.out.println("ERROR (actoresDirigidos): Instancia no inicializada correctamente");
             return salida;
         }
-
+        
         for (Iterator<String> keyIteratorTipoActor = actoresPelicula.keySet().iterator(); keyIteratorTipoActor.hasNext(); )
         {
             String tipoActor = keyIteratorTipoActor.next();
-
+            
             for (Iterator<String> keyIteratorNombreActor = actoresPelicula.get(tipoActor).keySet().iterator(); keyIteratorNombreActor.hasNext(); )
             {
                 String nombreActor = keyIteratorNombreActor.next();
-
+                
                 IActor actor = actoresPelicula.get(tipoActor).get(nombreActor);
-
+                
                 if (actor.getPeliculas() != null && !salida.containsKey(actor.getNombre()))
                 {
                     for (Iterator<String> keyIteratorNombrePelicula = actor.getPeliculas().keySet().iterator(); keyIteratorNombrePelicula.hasNext(); )
                     {
                         String nombrePelicula = keyIteratorNombrePelicula.next();
-
+                        
                         //  if (!nombrePelicula.equals(this.nombre))
                         if (!this.equals(actor.getPeliculas().get(nombrePelicula)))
                         {
@@ -417,10 +431,10 @@ public abstract class Pelicula implements IPelicula
                 }
             }
         }
-
+        
         return salida;
     }
-
+    
     /**
      * Actores que han participado
      * en otras películas que no han sido un éxito.
@@ -433,29 +447,29 @@ public abstract class Pelicula implements IPelicula
     {
         //Entiendo que se piden los actores (que intervienen en esta película) que han tenido algún fracaso en alguna pelicula QUE NO SEA ESTA.
         Set<IActor> salida = new HashSet<>();
-
+        
         HashMap<String, HashMap<String, IActor>> actoresPelicula = this.getActores();
-
+        
         if (actoresPelicula == null)
         {
             System.out.println("ERROR (actoresDirigidos): Instancia no inicializada correctamente");
             return salida;
         }
-
+        
         for (Iterator<HashMap<String, IActor>> iteratorTipoActor = actoresPelicula.values().iterator(); iteratorTipoActor.hasNext(); )
         {
             HashMap<String, IActor> actoresDeCiertoTipo = iteratorTipoActor.next();
-
+            
             for (Iterator<IActor> iteratorActor = actoresDeCiertoTipo.values().iterator(); iteratorActor.hasNext(); )
             {
                 IActor actor = iteratorActor.next();
-
+                
                 if (actor.getPeliculas() != null && !salida.contains(actor))
                 {
                     for (Iterator<IPelicula> iteratorPelicula = actor.getPeliculas().values().iterator(); iteratorPelicula.hasNext(); )
                     {
                         Pelicula pelicula = (Pelicula) iteratorPelicula.next();
-
+                        
                         if (!pelicula.equals(this))
                         {
                             if (!pelicula.exito())
@@ -467,10 +481,10 @@ public abstract class Pelicula implements IPelicula
                 }
             }
         }
-
+        
         return salida;
     }
-
+    
     /**
      * Indica si la película ha sido o no un éxito. Se considera que una
      * película es un éxito si la recaudación es mayor que el triple del presupuesto.
@@ -479,79 +493,79 @@ public abstract class Pelicula implements IPelicula
      */
     @Override
     public abstract boolean exito();
-
+    
     @Override
     public String toString()
     {
         String salida = new String();
         boolean primeraCadena = true;
-
+        
         salida += "{\n";
         if (this.nombre != null)
         {
             salida += "\"nombre\": \"" + this.nombre + "\"";
             primeraCadena = false;
         }
-
+        
         if (this.anho != null)
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-
+            
             salida += "\"anho\": " + "\"" + this.anho + "\"";
             primeraCadena = false;
         }
-
+        
         if (this.duracion != null)
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-
+            
             salida += "\"duracion\": \"" + this.duracion + "\"";
             primeraCadena = false;
         }
-
+        
         if (this.director != null)
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-
-            salida += "\"director\": " + this.director ;
+            
+            salida += "\"director\": " + this.director;
             primeraCadena = false;
         }
-
-
+        
+        
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-
+            
             salida += "\"recaudacion\": " + this.recaudacion;
             primeraCadena = false;
         }
-
-
+        
+        
         {
             if (primeraCadena == false)
             {
                 salida += ",\n";
             }
-
+            
             salida += "\"presupuesto\": \"" + this.presupuesto + "\"";
             primeraCadena = false;
         }
-
+        
         if (this.actores != null && !this.actores.isEmpty())
         {
             String cadenaListadoActores = getCadenaListadoActores();
-
+            
             if (cadenaListadoActores.isEmpty() == false)
             {
                 if (primeraCadena == false)
@@ -561,45 +575,45 @@ public abstract class Pelicula implements IPelicula
                 {
                     primeraCadena = false;
                 }
-
+                
                 salida += "\"" + "actores" + "\"" + ": " + "[";
                 salida += cadenaListadoActores;
                 salida += "\n]";
             }
         }
-
+        
         salida += "\n}";
         return salida;
     }
-
+    
     private String getCadenaListadoActores()
     {
         String salida = "";
         boolean primerTipoDeActores = true;
-
+        
         for (Map.Entry<String, HashMap<String, IActor>> parActores : this.actores.entrySet())
         {
             String clave = parActores.getKey();
             HashMap<String, IActor> valores = parActores.getValue();
-
+            
             if (clave == null || valores == null || valores.isEmpty())
             {
                 continue;
             }
-
+            
             if (primerTipoDeActores == false)
             {
                 salida += ", ";
-
+                
             } else
             {
                 primerTipoDeActores = false;
             }
-
+            
             salida += "\n{ \"" + clave + "\": [";
-
+            
             boolean primerActorDeEsteTipo = true;
-
+            
             for (String actor : valores.keySet())
             {
                 if (primerActorDeEsteTipo == false)
@@ -609,18 +623,18 @@ public abstract class Pelicula implements IPelicula
                 {
                     primerActorDeEsteTipo = false;
                 }
-
+                
                 salida += "\"" + actor + "\"";
             }
-
+            
             salida += "] }";
-
-
+            
+            
         }
-
+        
         return salida;
     }
-
+    
     @Override
     public boolean equals(Object obj)
     {
@@ -641,13 +655,13 @@ public abstract class Pelicula implements IPelicula
             return false;
         }
         final IPelicula other = (IPelicula) obj;
-
+        
         if (!this.nombre.equals(other.getNombre()))
         {
             return false;
         }
-
+        
         return true;
     }
-
+    
 }
