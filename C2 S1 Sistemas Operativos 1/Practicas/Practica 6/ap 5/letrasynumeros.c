@@ -27,15 +27,9 @@ void signal_handler(int signal)
     }
 }
 
-
-
-//bool b_senhalRecibida[] = {false, false, false};
-
-
-
-
 void proceso_padre(pid_t pid_procesoHijo, int fd_archivo, size_t szt_tamanho_archivo_original, size_t szt_tamanho_mitad_archivo_original, char *pc_contenido_archivo_mmap, char *pc_contenidoOriginalArchivo)
-{//        unsigned long int li_mitadArchivo = (szt_tamanho_archivo_original - 1) / 2;
+{
+    //        unsigned long int li_mitadArchivo = (szt_tamanho_archivo_original - 1) / 2;
 //    sleep(1);
     printf("[ DEBUG ] |PADRE| pid: %d\n", getpid());
     
@@ -101,7 +95,7 @@ void proceso_padre(pid_t pid_procesoHijo, int fd_archivo, size_t szt_tamanho_arc
         if (c_caracterOriginal >= '0' /*0x30*/ && c_caracterOriginal <= '9'/*0x39*/ )
         {
             //Aquí se ha detectado un número del 0 al 9
-            if (1)
+            if (0)
             {
                 pc_buffer_temporal_padre[szt_posActualEscritura] = '_';
                 pc_buffer_temporal_padre[szt_posActualEscritura + 1] = '_';
@@ -186,8 +180,7 @@ void proceso_hijo(/*pid_t pid_procesoPadre, */int fd_archivo, size_t szt_tamanho
     char *pc_buffer_temporal_hijo = (char *) malloc(szt_tamanho_mitad_archivo_original * 3 * sizeof(char));
     //memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
 
-/*        if (b_senhalRecibida[0] == true && b_senhalRecibida[1] == false)
-        {*/
+    
     size_t szt_posActualEscritura;
     size_t szt_posActualLectura = 0;
     
@@ -363,7 +356,7 @@ int main(int argc, char *argv[])
     char *pc_contenidoOriginalArchivo = (char *) malloc(szt_tamanho_archivo_original * sizeof(char));
     memcpy(pc_contenidoOriginalArchivo, pc_contenido_archivo_mmap, szt_tamanho_archivo_original);
     
-    pid_t pid_procesoPadre = getpid();
+//    pid_t pid_procesoPadre = getpid();
     pid_t pid_procesoHijo;
     
     pid_procesoHijo = fork();
@@ -402,7 +395,7 @@ int main(int argc, char *argv[])
 //        *cp_letra = (char) (si_diferenciaLetra + 0x61);
 //        return 0;
 //    }
-//    //todo: ver como incluir letras acentuadas, ñ , etc...
+//    //t.odo: ver como incluir letras acentuadas, ñ , etc...
 //    /*
 //    if (*cp_letra == 'ñ'\*(char) 0xc391 esto es UTF-8, no funciona*\)
 //    {
