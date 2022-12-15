@@ -10,11 +10,282 @@
 #include <unistd.h>
 #include <wait.h>
 
+int i_senhalesCapturadas1 = 0;
+int i_senhalesCapturadas2 = 0;
 
-void signal_handler(int signal);
+void signal_handler(int signal)
+{
+    printf("[ INFO ] | Proceso: %i | He capturado la señal número: %i\n", getpid(), signal);
+    switch (signal)
+    {
+        case SIGUSR1:
+            i_senhalesCapturadas1++;
+            break;
+        case SIGUSR2:
+            i_senhalesCapturadas2++;
+            break;
+    }
+}
+
+
 
 //bool b_senhalRecibida[] = {false, false, false};
 
+
+
+
+void proceso_padre(pid_t pid_procesoHijo, int fd_archivo, size_t szt_tamanho_archivo_original, size_t szt_tamanho_mitad_archivo_original, char *pc_contenido_archivo_mmap, char *pc_contenidoOriginalArchivo)
+{//        unsigned long int li_mitadArchivo = (szt_tamanho_archivo_original - 1) / 2;
+//    sleep(1);
+    printf("[ DEBUG ] |PADRE| pid: %d\n", getpid());
+    
+    char *pc_buffer_temporal_padre = (char *) malloc(szt_tamanho_mitad_archivo_original * 3 * sizeof(char));
+//        memcpy(pc_buffer_temporal_padre, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
+    
+    size_t szt_posActualEscritura;
+    size_t szt_posActualLectura = 0;
+    
+    for (szt_posActualEscritura = 0; szt_posActualLectura < szt_tamanho_mitad_archivo_original; szt_posActualLectura++, szt_posActualEscritura++)
+    {
+        const char c_caracterOriginal = pc_contenidoOriginalArchivo[szt_posActualLectura];
+        
+        if (c_caracterOriginal >= '0' /*0x30*/ && c_caracterOriginal <= '9'/*0x39*/ )
+        {
+            //Aquí se ha detectado un número del 0 al 9
+            if (0)
+            {
+                pc_buffer_temporal_padre[szt_posActualEscritura] = '_';
+                pc_buffer_temporal_padre[szt_posActualEscritura + 1] = '_';
+                pc_buffer_temporal_padre[szt_posActualEscritura + 2] = '_';
+            }
+            szt_posActualEscritura += 2;
+            
+        } else if (c_caracterOriginal >= 'A'/*0x41*/ && c_caracterOriginal <= 'Z' /*0x5a*/)
+        {
+            pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal - 'A' + 'a';
+        } else if (c_caracterOriginal >= 'a' /*0x61*/ && c_caracterOriginal <= 'z' /*0x7a*/)
+        {
+            pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal - 'a' + 'A';
+        } else
+        {
+            pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal;
+        }
+    }
+    
+    const size_t szt_bytesEscritos_mitad1 = szt_posActualEscritura;
+    
+    if (2)
+    {
+        memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_padre, szt_bytesEscritos_mitad1);
+//        memcpy(pc_contenido_archivo_mmap + szt_bytesEscritos_mitad1, pc_contenidoOriginalArchivo + szt_posActualLectura, szt_tamanho_archivo_original - szt_posActualLectura);
+//        msync(pc_contenido_archivo_mmap, szt_bytesEscritos_mitad1 + szt_tamanho_archivo_original - szt_posActualLectura, MS_SYNC);
+//        msync(pc_contenido_archivo_mmap, szt_bytesEscritos_mitad1, MS_SYNC);
+        
+        printf("[ INFO ] |PADRE| ENVIANDO SEÑAL 1 AL HIJO.\n");
+        if (kill(pid_procesoHijo, SIGUSR1) == -1)
+        {
+            perror("[ ERROR ] FALLO AL ENVIAR LA SEÑAL");
+            exit(-8);
+        }
+
+//        printf("[ INFO ] |PADRE| Esperando senhal del hijo\n");
+//        pause();
+//        printf("[ INFO ] |PADRE| Señal del hijo recibida\n");
+    
+    }
+    
+    for (szt_posActualEscritura = 0; szt_posActualLectura < szt_tamanho_archivo_original; szt_posActualLectura++, szt_posActualEscritura++)
+    {
+        const char c_caracterOriginal = pc_contenidoOriginalArchivo[szt_posActualLectura];
+        
+        if (c_caracterOriginal >= '0' /*0x30*/ && c_caracterOriginal <= '9'/*0x39*/ )
+        {
+            //Aquí se ha detectado un número del 0 al 9
+            if (1)
+            {
+                pc_buffer_temporal_padre[szt_posActualEscritura] = '_';
+                pc_buffer_temporal_padre[szt_posActualEscritura + 1] = '_';
+                pc_buffer_temporal_padre[szt_posActualEscritura + 2] = '_';
+            }
+            szt_posActualEscritura += 2;
+            
+        } else if (c_caracterOriginal >= 'A'/*0x41*/ && c_caracterOriginal <= 'Z' /*0x5a*/)
+        {
+            pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal - 'A' + 'a';
+        } else if (c_caracterOriginal >= 'a' /*0x61*/ && c_caracterOriginal <= 'z' /*0x7a*/)
+        {
+            pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal - 'a' + 'A';
+        } else
+        {
+            pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal;
+        }
+        
+    }
+    
+    if (2)
+    {
+        memcpy(pc_contenido_archivo_mmap + szt_bytesEscritos_mitad1, pc_buffer_temporal_padre, szt_posActualEscritura);
+
+//        msync(pc_contenido_archivo_mmap+szt_bytesEscritos_mitad1, (szt_posActualEscritura * sizeof(char)), MS_SYNC);
+
+//        pause();
+        printf("[ INFO ] |PADRE| ENVIANDO SEÑAL 2 AL HIJO.\n");
+        if (kill(pid_procesoHijo, SIGUSR2) == -1)
+        {
+            perror("[ ERROR ] FALLO AL ENVIAR LA SEÑAL");
+            exit(-8);
+        }
+        
+        free(pc_buffer_temporal_padre);
+        free(pc_contenidoOriginalArchivo);
+        
+        printf("[ INFO ] |PADRE| esperando muerte del hijo.\n");
+        waitpid(pid_procesoHijo, NULL, 0);
+        printf("[ INFO ] |PADRE| muerte del hijo confirmada\n");
+    }
+    
+    ftruncate(fd_archivo, (szt_bytesEscritos_mitad1 + szt_posActualEscritura) * sizeof(char));
+    
+    munmap(pc_contenido_archivo_mmap, szt_tamanho_archivo_original * 3);
+    close(fd_archivo);
+    
+    exit(0);
+}
+
+void proceso_hijo(/*pid_t pid_procesoPadre, */int fd_archivo, size_t szt_tamanho_archivo_original, size_t szt_tamanho_mitad_archivo_original, char *pc_contenido_archivo_mmap, char *pc_contenidoOriginalArchivo)
+{
+//    sigset_t senhalHijo;
+//    sigaddset(&senhalHijo, SIGUSR1);
+//    int sig_recibida;
+    
+    //  fprintf(stdout, "[ INFO ] | HIJO | Esperando SIGUSR1 del padre... \n");
+    printf("[ DEBUG ] |HIJO| pid: %d\n", getpid());
+    
+    /*int resultado_espera = sigwait(&senhalHijo, &sig_recibida);
+    if (resultado_espera == -1)
+    {
+        perror("Fallo en la pausa\n");
+        exit(-20);
+    }
+    if (sig_recibida == SIGUSR1)
+    {
+        printf("SIGUSR1 was received\n");
+    } else
+    {
+        printf("sigwait returned with sig: %d\n", sig_recibida);
+        exit(-21);
+    }*/
+    printf("[ INFO ] |HIJO| Esperando senhal del padre\n");
+    while (i_senhalesCapturadas1 == 0)
+    {
+        pause();
+    }
+    printf("[ INFO ] |HIJO| Señal del padre recibida\n");
+    
+    
+    char *pc_buffer_temporal_hijo = (char *) malloc(szt_tamanho_mitad_archivo_original * 3 * sizeof(char));
+    //memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
+
+/*        if (b_senhalRecibida[0] == true && b_senhalRecibida[1] == false)
+        {*/
+    size_t szt_posActualEscritura;
+    size_t szt_posActualLectura = 0;
+    
+    for (szt_posActualEscritura = 0; szt_posActualLectura < szt_tamanho_mitad_archivo_original; szt_posActualEscritura++, szt_posActualLectura++)
+    {
+        /*if (pc_contenido_archivo_mmap[szt_posActualLectura] == szt_tamanho_archivo_original/2)
+        {
+            memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_posActualLectura) * sizeof(char));
+            msync(pc_contenido_archivo_mmap, (szt_posActualLectura) * sizeof(char), MS_SYNC);
+           // fre.e(pc_buffer_temporal_hijo);
+           kill(pid_procesoPadre,SIGUSR2);
+        }
+           if (pc_contenido_archivo_mmap[szt_posActualLectura] == ' ' && (pc_contenido_archivo_mmap[szt_posActualLectura + 1] == ' ' || pc_contenido_archivo_mmap[szt_posActualLectura - 1] == ' '))
+       if (pc_contenidoOriginalArchivo[szt_posActualLectura] - 'A' + 'a' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_contenidoOriginalArchivo[szt_posActualLectura] - 'a' + 'A' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_contenidoOriginalArchivo[szt_posActualLectura] != pc_contenido_archivo_mmap[szt_posActualEscritura])
+       */
+        
+        if (pc_contenidoOriginalArchivo[szt_posActualLectura] >= '0' && pc_contenidoOriginalArchivo[szt_posActualLectura] <= '9')
+        {
+
+//            printf("[ DEBUG ] | HIJO | Cambiando número\n");
+            pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
+            pc_buffer_temporal_hijo[szt_posActualEscritura + 1] = '*';
+            pc_buffer_temporal_hijo[szt_posActualEscritura + 2] = '*';
+//            printf("--> HE insertado : %c,%c,%c\n", pc_buffer_temporal_hijo[szt_posActualEscritura], pc_buffer_temporal_hijo[szt_posActualEscritura + 1], pc_buffer_temporal_hijo[szt_posActualEscritura + 2]);
+            
+            szt_posActualEscritura += 2;
+            
+        } else //como el padre ya ha hecho trabajo en las letras, he de leer el caracter a insertar desde el fichero compartido y no desde la copia del archivo original.
+        {
+//            printf("[ DEBUG ] | HIJO | Letra puesta: %c\n", pc_contenido_archivo_mmap[szt_posActualEscritura]);
+            pc_buffer_temporal_hijo[szt_posActualEscritura] = pc_contenido_archivo_mmap[szt_posActualEscritura];
+            /*
+            printf("[ INFO ] V1: ORIGINAL: %c CAMBIADO %c\n", pc_contenidoOriginalArchivo[szt_posActualLectura], pc_contenido_archivo_mmap[szt_posActualEscritura]);
+            pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
+            printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
+             */
+        }
+        
+    }
+    
+//    fprintf(stdout, "[ INFO ] |HIJO| Contenido mmap:\n%s\n", pc_contenido_archivo_mmap);
+    memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, szt_posActualEscritura);
+//    fprintf(stdout, "[ INFO ] |HIJO| Contenido mmap:\n%s\n", pc_contenido_archivo_mmap);
+
+//    msync(pc_contenido_archivo_mmap, szt_posActualEscritura, MS_SYNC);
+    
+    printf("[ INFO ] |HIJO| Esperando senhal del padre\n");
+    while (i_senhalesCapturadas2 == 0)
+    {
+        pause();
+    }
+    printf("[ INFO ] |HIJO| Señal del padre recibida\n");
+    
+    const size_t szt_bytesEscritos_mitad1 = szt_posActualEscritura;
+//    memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
+    
+    
+    for (szt_posActualEscritura = 0; szt_posActualLectura < szt_tamanho_archivo_original; szt_posActualEscritura++, szt_posActualLectura++)
+    {
+        
+        if (pc_contenidoOriginalArchivo[szt_posActualLectura] >= '0' && pc_contenidoOriginalArchivo[szt_posActualLectura] <= '9')
+        {
+
+//            printf("[ DEBUG ] | HIJO | Cambiando número\n");
+            pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
+            pc_buffer_temporal_hijo[szt_posActualEscritura + 1] = '*';
+            pc_buffer_temporal_hijo[szt_posActualEscritura + 2] = '*';
+//            printf("--> HE insertado : %c,%c,%c\n", pc_buffer_temporal_hijo[szt_posActualEscritura], pc_buffer_temporal_hijo[szt_posActualEscritura + 1], pc_buffer_temporal_hijo[szt_posActualEscritura + 2]);
+            
+            szt_posActualEscritura += 2;
+            
+        } else //como el padre ya ha hecho trabajo en las letras, he de leer el caracter a insertar desde el fichero compartido y no desde la copia del archivo original.
+        {
+//            printf("[ DEBUG ] | HIJO | Letra puesta: %c\n", pc_contenido_archivo_mmap[szt_posActualEscritura]);
+            pc_buffer_temporal_hijo[szt_posActualEscritura] = pc_contenido_archivo_mmap[szt_bytesEscritos_mitad1+szt_posActualEscritura];
+            /*
+            printf("[ INFO ] V1: ORIGINAL: %c CAMBIADO %c\n", pc_contenidoOriginalArchivo[szt_posActualLectura], pc_contenido_archivo_mmap[szt_posActualEscritura]);
+            pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
+            printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
+             */
+        }
+        
+    }
+    
+//    fprintf(stdout, "[ INFO ] |HIJO| Contenido mmap:\n%s\n", pc_contenido_archivo_mmap);
+    memcpy(pc_contenido_archivo_mmap + szt_bytesEscritos_mitad1, pc_buffer_temporal_hijo, szt_posActualEscritura);
+//    fprintf(stdout, "[ INFO ] |HIJO| Contenido mmap:\n%s\n", pc_contenido_archivo_mmap);
+//    memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_posActualEscritura) * sizeof(char));
+//        msync(pc_contenido_archivo_mmap+szt_bytesEscritos_mitad1, (szt_posActualEscritura * sizeof(char)), MS_SYNC);
+    
+    free(pc_buffer_temporal_hijo);
+    free(pc_contenidoOriginalArchivo);
+    
+    munmap(pc_contenido_archivo_mmap, szt_tamanho_archivo_original * 3);
+    close(fd_archivo);
+    
+    exit(0);
+}
 
 int main(int argc, char *argv[])
 {
@@ -28,9 +299,9 @@ int main(int argc, char *argv[])
     
     struct sigaction sa_signal;
     sa_signal.sa_handler = signal_handler;
-    sigset_t sgs_vacio;
+    /*scigset_t sgs_vacio;
     sigemptyset(&sgs_vacio);
-    sa_signal.sa_mask = sgs_vacio;
+    sa_signal.sa_mask = sgs_vacio;*/
     sa_signal.sa_flags = SA_RESTART;
     
     int signal_success;
@@ -63,27 +334,34 @@ int main(int argc, char *argv[])
     }
     
     size_t szt_tamanho_archivo_original = st_archivo.st_size;
-    size_t szt_tamanho_archivo_expandido = st_archivo.st_size * 3;
-    size_t szt_tamanho_mitad_archivo_original = (szt_tamanho_archivo_original) / 2;
-    printf("El tamaño de la división es: %li\n", szt_tamanho_mitad_archivo_original);
-
-//    size_t szt_tamanho_mitad_archivo_original = (szt_tamanho_archivo_original) / 2 ;
+    if(szt_tamanho_archivo_original==0)
+    {
+        printf("EL ARCHIVO ES DE LONGITUD 0. Fin del programa.\n");
+        exit(0);
+    }
     
-    if (ftruncate(fd_archivo, szt_tamanho_archivo_expandido) == -1)
+    size_t szt_tamanho_mitad_archivo_original = (szt_tamanho_archivo_original + 1) / 2;
+    printf("[ DEBUG ]El tamaño del archivo original es: %zd\n", szt_tamanho_archivo_original);
+    printf("[ DEBUG ]El tamaño de la división es: %zd\n", szt_tamanho_mitad_archivo_original);
+    
+//    size_t szt_tamanho_mitad_archivo_original = (szt_tamanho_archivo_original) / 2 ;
+
+/*    if (ftruncate(fd_archivo, szt_tamanho_archivo_original * 3) == -1)
     {
         perror("[ ERROR ] No se ha podido modificar el tamaño el archivo:");
         exit(-5);
-    }
+    }*/
     
     char *pc_contenido_archivo_mmap = NULL;
-    pc_contenido_archivo_mmap = mmap(pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido, PROT_READ | PROT_WRITE, MAP_SHARED, fd_archivo, 0);
+    pc_contenido_archivo_mmap = mmap(pc_contenido_archivo_mmap, szt_tamanho_archivo_original * 3, PROT_READ | PROT_WRITE, MAP_SHARED, fd_archivo, 0);
     if (pc_contenido_archivo_mmap == MAP_FAILED)
     {
         perror("[ERROR] Fallo al intentar proyectar el fichero en memoria:");
         exit(-6);
     }
-    char *pc_copia_contenido_archivo = (char *) malloc(szt_tamanho_archivo_expandido * sizeof(char));
-    memcpy(pc_copia_contenido_archivo, pc_contenido_archivo_mmap, szt_tamanho_archivo_original);
+    
+    char *pc_contenidoOriginalArchivo = (char *) malloc(szt_tamanho_archivo_original * sizeof(char));
+    memcpy(pc_contenidoOriginalArchivo, pc_contenido_archivo_mmap, szt_tamanho_archivo_original);
     
     pid_t pid_procesoPadre = getpid();
     pid_t pid_procesoHijo;
@@ -95,258 +373,15 @@ int main(int argc, char *argv[])
         exit(-1);
     } else if (pid_procesoHijo == 0) //Proceso Hijo
     {
-        sigset_t senhalHijo;
-        sigaddset(&senhalHijo,SIGUSR1);
-        int sig[] = {SIGUSR1};
-    
-        fprintf(stdout,"[ INFO ] | HIJO | Esperando SIGUSR1 del padre... \n");
-        int resultado_espera = sigwait(&senhalHijo,sig);
-        if(resultado_espera == -1)
-            perror("Fallo en la pausa\n");
-        else {
-            if(*sig == SIGUSR1)
-                printf("SIGUSR1 was received\n");
-            else
-                printf("sigwait returned with sig: %d\n", *sig);
-        }
-/*        while (!b_senhalRecibida[0])
-        {
-            sched_yield();
-        }*/
-        
-        
-        char *pc_buffer_temporal_hijo = (char *) malloc(szt_tamanho_archivo_expandido * sizeof(char));
-        memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
-
-/*        if (b_senhalRecibida[0] == true && b_senhalRecibida[1] == false)
-        {*/
-        size_t szt_posActualEscritura = 0;
-        size_t szt_indice_archivo_antiguo = 0;
-        
-        for (; szt_indice_archivo_antiguo < szt_tamanho_mitad_archivo_original; szt_posActualEscritura++)
-        {
-            /* if (pc_contenido_archivo_mmap[szt_indice_archivo_antiguo] == szt_tamanho_archivo_original/2)
-             {
-                 memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_indice_archivo_antiguo) * sizeof(char));
-                 msync(pc_contenido_archivo_mmap, (szt_indice_archivo_antiguo) * sizeof(char), MS_SYNC);
-                // fre.e(pc_buffer_temporal_hijo);
-                kill(pid_procesoPadre,SIGUSR2);
-             }*/
-//            if (pc_contenido_archivo_mmap[szt_indice_archivo_antiguo] == ' ' && (pc_contenido_archivo_mmap[szt_indice_archivo_antiguo + 1] == ' ' || pc_contenido_archivo_mmap[szt_indice_archivo_antiguo - 1] == ' '))
-            if (pc_copia_contenido_archivo[szt_indice_archivo_antiguo] - 'A' + 'a' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] - 'a' + 'A' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] != pc_contenido_archivo_mmap[szt_posActualEscritura])
-            {
-    
-                if (pc_copia_contenido_archivo[szt_indice_archivo_antiguo] >= '0' && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] <= '9')
-                {
-                    szt_indice_archivo_antiguo++;
-                    printf("[ INFO ] | HIJO | Cambiando número\n");
-                    pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
-                    printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
-        
-                } else
-                {
-        
-                    printf("[ INFO ] V1: ORIGINAL: %c CAMBIADO %c\n", pc_copia_contenido_archivo[szt_indice_archivo_antiguo], pc_contenido_archivo_mmap[szt_posActualEscritura]);
-                    pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
-                    printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
-                }
-                
-                // pc_buffer_temporal_hijo[szt_indice_archivo_antiguo] = pc_contenido_archivo_mm.ap[szt_indice_archivo_antiguo];
-            } else
-            {
-                printf("[ INFO ] | HIJO | Letra puesta: %c\n", pc_contenido_archivo_mmap[szt_posActualEscritura]);
-                pc_buffer_temporal_hijo[szt_posActualEscritura] = pc_contenido_archivo_mmap[szt_posActualEscritura];
-                szt_indice_archivo_antiguo++;
-            }
-            
-            
-        }
-        memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_posActualEscritura) * sizeof(char));
-        msync(pc_contenido_archivo_mmap, (szt_posActualEscritura) * sizeof(char), MS_SYNC);
-        // fr.ee(pc_buffer_temporal_hijo);
-        kill(pid_procesoPadre, SIGUSR2);
-//        }
-
-//        while (!b_senhalRecibida[1])
-//        {
-//            sched_yield();
-//        }
-        
-        fprintf(stdout,"[ INFO ] | HIJO | Esperando SIGUSR1 del padre... \n");
-        resultado_espera = sigwait(&senhalHijo,sig);
-        if(resultado_espera == -1)
-            perror("Fallo en la pausa\n");
-        else {
-            if(*sig == SIGUSR1)
-                printf("SIGUSR1 was received\n");
-            else
-                printf("sigwait returned with sig: %d\n", *sig);
-        }
-        printf("[ INFO ] | HIJO | He salido de la pausa\n");
-        
-        memcpy(pc_buffer_temporal_hijo, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
-        
-        
-        for (; szt_indice_archivo_antiguo < szt_tamanho_archivo_original; szt_posActualEscritura++)
-        {
-            if ((pc_copia_contenido_archivo[szt_indice_archivo_antiguo] - 'A' + 'a' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] - 'a' + 'A' != pc_contenido_archivo_mmap[szt_posActualEscritura] && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] != pc_contenido_archivo_mmap[szt_posActualEscritura]) || pc_contenido_archivo_mmap[szt_posActualEscritura] == '\0')
-            {
-                if (pc_copia_contenido_archivo[szt_indice_archivo_antiguo] >= '0' && pc_copia_contenido_archivo[szt_indice_archivo_antiguo] <= '9')
-                {
-                    szt_indice_archivo_antiguo++;
-                    printf("[ INFO ] | HIJO | Cambiando número\n");
-                    pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
-                    printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
-                    
-                } else
-                {
-        
-                    printf("[ INFO ] V2: ORIGINAL: %c CAMBIADO %c\n", pc_copia_contenido_archivo[szt_indice_archivo_antiguo], pc_contenido_archivo_mmap[szt_posActualEscritura]);
-                    pc_buffer_temporal_hijo[szt_posActualEscritura] = '*';
-                    printf("--> HE insertado : %c\n", pc_buffer_temporal_hijo[szt_posActualEscritura]);
-                }
-                // pc_buffer_temporal_hijo[szt_indice_archivo_antiguo] = pc_contenido_archivo_mmap[szt_indice_archivo_antiguo];
-            } else
-            {
-                printf("[ INFO ] | HIJO | Letra puesta: %c\n", pc_contenido_archivo_mmap[szt_posActualEscritura]);
-                // printf("[ INFO ] | HIJO | Letra Origen: %c\n", pc_copia_contenido_archivo[szt_indice_archivo_antiguo]);
-                
-                pc_buffer_temporal_hijo[szt_posActualEscritura] = pc_contenido_archivo_mmap[szt_posActualEscritura];
-                szt_indice_archivo_antiguo++;
-            }
-            
-        }
-        memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_hijo, (szt_posActualEscritura) * sizeof(char));
-        msync(pc_contenido_archivo_mmap, (szt_posActualEscritura) * sizeof(char), MS_SYNC);
-        free(pc_buffer_temporal_hijo);
-        free(pc_copia_contenido_archivo);
-        exit(0);
-        
-        
+        proceso_hijo(/*pid_procesoPadre,*/ fd_archivo, szt_tamanho_archivo_original, szt_tamanho_mitad_archivo_original, pc_contenido_archivo_mmap, pc_contenidoOriginalArchivo);
     } //FIN HIJO
     else
     {
-
-//        unsigned long int li_mitadArchivo = (szt_tamanho_archivo_original - 1) / 2;
-        
-        char *pc_buffer_temporal_padre = (char *) malloc(szt_tamanho_archivo_expandido * sizeof(char));
-//        memcpy(pc_buffer_temporal_padre, pc_contenido_archivo_mmap, szt_tamanho_archivo_expandido);
-        //todo: ¡Libérame!
-        size_t szt_posActualEscritura = 0;
-        for (size_t szt_posActualLectura = 0; szt_posActualLectura < szt_tamanho_archivo_original; szt_posActualLectura++, szt_posActualEscritura++)
-        {
-            if (szt_posActualLectura == szt_tamanho_mitad_archivo_original /*|| szt_posActualLectura == szt_tamanho_archivo_original - 1*/)
-            {
-                
-                memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_padre, (szt_posActualEscritura) * sizeof(char));
-                memcpy(pc_contenido_archivo_mmap + szt_posActualEscritura, pc_copia_contenido_archivo + szt_posActualLectura, szt_tamanho_archivo_original - szt_posActualLectura);
-                msync(pc_contenido_archivo_mmap, szt_posActualEscritura + szt_tamanho_mitad_archivo_original, MS_SYNC);
-//                msync(pc_contenido_archivo_mmap, (szt_posActualEscritura-1) * sizeof(char), MS_SYNC);
-//                printf("[ INFO ] en pausa\n");
-//                pause();
-                
-                
-                kill(pid_procesoHijo, SIGUSR1);
-                if (szt_posActualLectura == (szt_tamanho_mitad_archivo_original))
-                {
-                    printf("[ INFO ] Esperando senhal del hijo\n");
-                    pause();
-                    printf("[ INFO ] Señal del hijo recibida\n");
-
-//                }else if (szt_posActualLectura == (szt_tamanho_archivo_original))
-//                {
-//                    printf("esperando hijo.\n");
-//                    wait(NULL);
-//                    printf("muerte del hijo confirmada\n");
-//                }
-                    memcpy(pc_buffer_temporal_padre, pc_contenido_archivo_mmap, szt_posActualEscritura * sizeof(char));
-//                szt_posActualLectura++;
-//                szt_posActualEscritura++;
-                 //   szt_posActualLectura = szt_posActualEscritura;
-                }
-            }
-            
-            const char c_caracterOriginal = pc_copia_contenido_archivo[szt_posActualLectura];
-            if (c_caracterOriginal >= '0' /*0x30*/ && c_caracterOriginal <= '9'/*0x39*/ )
-            {
-                //todo: hacer algo(Aquí se ha detectado un número del 0 al 9)
-                
-                //     long li_posicion_numero = szt_posActualEscritura;
-//                for (szt_posActualEscritura; szt_posActualEscritura < li_posicion_numero + 3; szt_posActualEscritura++)
-//                {
-//                    pc_buffer_temporal_padre[szt_posActualEscritura] = ' ';
-//                }
-                szt_posActualEscritura += 2;
-                
-            } else if (c_caracterOriginal >= 'A'/*0x41*/ && c_caracterOriginal <= 'Z' /*0x5a*/)
-            {
-//                short int si_diferenciaLetra = 'Z'-'A' - (0x5a - c_codigoLetra);
-                pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal - 'A' + 'a';/*(char) (si_diferenciaLetra + 0x61);*/
-            } else if (c_caracterOriginal >= 'a' /*0x61*/ && c_caracterOriginal <= 'z' /*0x7a*/)
-            {
-//                invertirLetra(&pc_buffer_temporal_padre[szt_posActualLectura]);
-                pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal - 'a' + 'A';
-            } else
-            {
-                pc_buffer_temporal_padre[szt_posActualEscritura] = c_caracterOriginal;
-            }
-            
-            //todo: reajustar el tamaño del fd_archivo al terminar
-        }//FIN FOR
-        
-        memcpy(pc_contenido_archivo_mmap, pc_buffer_temporal_padre, (szt_posActualEscritura * sizeof(char)));
-        msync(pc_contenido_archivo_mmap, (szt_posActualEscritura * sizeof(char)), MS_SYNC);
-        
-        free(pc_buffer_temporal_padre);
-        
-//        pause();
-        
-        if (kill(pid_procesoHijo, SIGUSR1) == -1)
-        {
-            perror("[ ERROR ]");
-            exit(-8);
-        }
-        
-        printf("esperando hijo.\n");
-        waitpid(pid_procesoHijo, NULL, 0);
-        printf("muerte del hijo confirmada\n");
-        
-//        for (size_t szt_posActual = 0; szt_posActual < szt_tamanho_archivo_original + 24; szt_posActual++)
-//        {
-//            //printf("Estoy Aquí");
-//            printf("%c", pc_buffer_temporal_padre[szt_posActual]);
-//
-//        }
+        proceso_padre(pid_procesoHijo, fd_archivo, szt_tamanho_archivo_original, szt_tamanho_mitad_archivo_original, pc_contenido_archivo_mmap, pc_contenidoOriginalArchivo);
         
         
-        munmap(pc_contenido_archivo_mmap, (szt_posActualEscritura * sizeof(char)));
-        ftruncate(fd_archivo, szt_posActualEscritura * sizeof(char));
-        exit(0);
     }// FIN PADRE
-}//FIN MAIN
-
-void signal_handler(int signal)
-{
-    printf("[ INFO ] | Proceso: %i | He capturado la señal número: %i\n", getpid(), signal);
-//    switch (signal)
-//    {
-//        case SIGUSR1:
-//            if (b_senhalRecibida[0] == false)
-//            {
-//                b_senhalRecibida[0] = true;
-//            } else if (b_senhalRecibida[1] == false)
-//            {
-//                b_senhalRecibida[1] = true;
-//            }
-//            //b_senhalRecibida[0] = true;
-//            break;
-//        case SIGUSR2:
-//            b_senhalRecibida[2] = true;
-//            break;
-//    }
 }
-
-
 
 
 //int invertirLetra(char *cp_letra)
