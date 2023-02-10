@@ -1,0 +1,17 @@
+[ INFO ] He leído 23 líneas.
+[Padre] Mi pid es: 4634[Padre] variable global en: 0x55aa71476010
+[Padre] variable local en: 0x7ffe283ba3b4
+[ INFO ] He leído 24 líneas.
+[ INFO ] He leído 26 líneas.
+[Hilo 1] variable global en: 0x55aa71476010
+[Hilo 1] Param en: 0x7ffe283ba3b4
+[Hilo 1] variable local en: 0x7f5c32399e3c
+[ INFO ] He leído 26 líneas.
+[ INFO ] He leído 30 líneas.
+[Hilo 2] variable global en: 0x55aa71476010
+[Hilo 2] Param en: 0x7ffe283ba3b4
+[Hilo 2] variable local en: 0x7f5c31b98e3c
+[ INFO ] He leído 30 líneas.
+[ INFO ] He leído 35 líneas.
+[ INFO ] He leído 35 líneas.
+[ INFO ] He leído 35 líneas.

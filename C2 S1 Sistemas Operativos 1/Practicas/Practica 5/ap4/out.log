@@ -1,0 +1,21 @@
+"/home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap4/cmake-build-debug/ap4"
+[Padre:14932] Soy el padre
+He leído 23 líneas.
+[Común] memoriaReservadaPrevia 0x565082dcaa70
+He leído 23 líneas.
+[Padre] memoriaReservadaPrevia 0x565082dcaa70
+He leído 23 líneas.
+[Hijo: 14936] Soy el hijo
+[Hijo] memoriaReservadaPrevia 0x565082dcaa70
+He leído 23 líneas.
+[Hijo] memoriaReservadaHijo 0x7f82a18f1010
+He leído 24 líneas.
+pid: 14936
+main: 0x562af01033c1
+varG: 0x562af0106010 arrG: 0x562af0106020
+varL: 0x7ffea38dfcec arrL: 0x7ffea38dfcf0
+He leído 23 líneas.
+He leído 23 líneas.
+Child exited with RC=0
+
+Process finished with exit code 0

@@ -1,0 +1,23 @@
+56346d44d000-56346d44e000 r--p 00000000 08:03 1839774                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap2/main
+56346d44e000-56346d44f000 r-xp 00001000 08:03 1839774                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap2/main
+56346d44f000-56346d450000 r--p 00002000 08:03 1839774                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap2/main
+56346d450000-56346d451000 r--p 00002000 08:03 1839774                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap2/main
+56346d451000-56346d452000 rw-p 00003000 08:03 1839774                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap2/main
+56346e363000-56346e384000 rw-p 00000000 00:00 0                          [heap]
+7f277624c000-7f277624f000 rw-p 00000000 00:00 0 
+7f277624f000-7f2776277000 r--p 00000000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f2776277000-7f277640c000 r-xp 00028000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f277640c000-7f2776464000 r--p 001bd000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f2776464000-7f2776468000 r--p 00214000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f2776468000-7f277646a000 rw-p 00218000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f277646a000-7f2776477000 rw-p 00000000 00:00 0 
+7f2776486000-7f2776488000 rw-p 00000000 00:00 0 
+7f2776488000-7f277648a000 r--p 00000000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f277648a000-7f27764b4000 r-xp 00002000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f27764b4000-7f27764bf000 r--p 0002c000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f27764c0000-7f27764c2000 r--p 00037000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f27764c2000-7f27764c4000 rw-p 00039000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffcdafed000-7ffcdb00e000 rw-p 00000000 00:00 0                          [stack]
+7ffcdb1a2000-7ffcdb1a6000 r--p 00000000 00:00 0                          [vvar]
+7ffcdb1a6000-7ffcdb1a8000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]

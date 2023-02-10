@@ -1,0 +1,169 @@
+[ DEBUG ] mi pid es: 3660
+
+
+[ INFO ] *** Inicio de la iteración: 1 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 400 bytes de datos
+[ DEBUG ] mi_str1 está en 0x556f51b2aa80
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 400 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x556f51b2ac20
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 1 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 2 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 4000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x556f51b2adc0
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 4000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x556f51b2bd70
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 2 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 3 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 40000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x556f51b2adc0
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 40000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x556f51b34a10
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 3 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 4 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 400000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x7f4290124010
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 400000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x7f42900c2010
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 4 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 5 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 4000000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x7f428fdb5010
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 4000000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x7f428f9e4010
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 5 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 6 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 40000000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x7f428db60010
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 40000000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x7f428b53a010
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 6 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 7 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 400000000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x7f427840d010
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 400000000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x7f4260694010
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 7 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 8 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 4000000000 bytes de datos
+[ DEBUG ] mi_str1 está en 0x7f41a1ad3010
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 4000000000 bytes de datos
+[ INFO ] Malloc realizado con éxito.
+[ DEBUG ] mi_str2 está en 0x7f40b3420010
+[ DEBUG ] He leído 23 líneas.
+Después del free
+[ DEBUG ] He leído 23 líneas.
+
+
+[ INFO ] *** Final de la iteración: 8 ***
+
+
+
+[ INFO ] *** Inicio de la iteración: 9 ***
+
+[ DEBUG ] He leído 23 líneas.
+
+[ INFO ] Reservando 40000000000 bytes de datos
+[ ERROR ] Fallo en el malloc

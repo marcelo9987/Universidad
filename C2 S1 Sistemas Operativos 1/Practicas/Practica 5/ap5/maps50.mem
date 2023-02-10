@@ -1,0 +1,11 @@
+00400000-00401000 r--p 00000000 08:03 1839970                            /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.static
+00401000-0049d000 r-xp 00001000 08:03 1839970                            /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.static
+0049d000-004c7000 r--p 0009d000 08:03 1839970                            /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.static
+004c8000-004cc000 r--p 000c7000 08:03 1839970                            /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.static
+004cc000-004cf000 rw-p 000cb000 08:03 1839970                            /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.static
+004cf000-004d4000 rw-p 00000000 00:00 0 
+021e3000-02205000 rw-p 00000000 00:00 0                                  [heap]
+7ffdbd51e000-7ffdbd53f000 rw-p 00000000 00:00 0                          [stack]
+7ffdbd555000-7ffdbd559000 r--p 00000000 00:00 0                          [vvar]
+7ffdbd559000-7ffdbd55b000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]

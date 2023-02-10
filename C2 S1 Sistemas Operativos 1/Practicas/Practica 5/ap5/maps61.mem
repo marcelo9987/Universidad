@@ -1,0 +1,28 @@
+560d70a4b000-560d70a4c000 r--p 00000000 08:03 1840008                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.dynamic
+560d70a4c000-560d70a4d000 r-xp 00001000 08:03 1840008                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.dynamic
+560d70a4d000-560d70a4e000 r--p 00002000 08:03 1840008                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.dynamic
+560d70a4e000-560d70a4f000 r--p 00002000 08:03 1840008                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.dynamic
+560d70a4f000-560d70a50000 rw-p 00003000 08:03 1840008                    /home/ssoo/Desktop/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 5/ap5/main.dynamic
+560d72827000-560d72848000 rw-p 00000000 00:00 0                          [heap]
+7f9d83508000-7f9d8350b000 rw-p 00000000 00:00 0 
+7f9d8350b000-7f9d83533000 r--p 00000000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f9d83533000-7f9d836c8000 r-xp 00028000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f9d836c8000-7f9d83720000 r--p 001bd000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f9d83720000-7f9d83724000 r--p 00214000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f9d83724000-7f9d83726000 rw-p 00218000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f9d83726000-7f9d83733000 rw-p 00000000 00:00 0 
+7f9d83733000-7f9d83741000 r--p 00000000 08:03 2235369                    /usr/lib/x86_64-linux-gnu/libm.so.6
+7f9d83741000-7f9d837bd000 r-xp 0000e000 08:03 2235369                    /usr/lib/x86_64-linux-gnu/libm.so.6
+7f9d837bd000-7f9d83818000 r--p 0008a000 08:03 2235369                    /usr/lib/x86_64-linux-gnu/libm.so.6
+7f9d83818000-7f9d83819000 r--p 000e4000 08:03 2235369                    /usr/lib/x86_64-linux-gnu/libm.so.6
+7f9d83819000-7f9d8381a000 rw-p 000e5000 08:03 2235369                    /usr/lib/x86_64-linux-gnu/libm.so.6
+7f9d83829000-7f9d8382b000 rw-p 00000000 00:00 0 
+7f9d8382b000-7f9d8382d000 r--p 00000000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f9d8382d000-7f9d83857000 r-xp 00002000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f9d83857000-7f9d83862000 r--p 0002c000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f9d83863000-7f9d83865000 r--p 00037000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f9d83865000-7f9d83867000 rw-p 00039000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffe80a8b000-7ffe80aac000 rw-p 00000000 00:00 0                          [stack]
+7ffe80aae000-7ffe80ab2000 r--p 00000000 00:00 0                          [vvar]
+7ffe80ab2000-7ffe80ab4000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]

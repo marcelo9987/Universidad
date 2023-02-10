@@ -1,0 +1,24 @@
+55db1e617000-55db1e618000 r--p 00000000 08:03 1967811                    /home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 3/main
+55db1e618000-55db1e619000 r-xp 00001000 08:03 1967811                    /home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 3/main
+55db1e619000-55db1e61a000 r--p 00002000 08:03 1967811                    /home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 3/main
+55db1e61a000-55db1e61b000 r--p 00002000 08:03 1967811                    /home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 3/main
+55db1e61b000-55db1e61c000 rw-p 00003000 08:03 1967811                    /home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 3/main
+55db1fc9e000-55db1fcbf000 rw-p 00000000 00:00 0                          [heap]
+7fbca137e000-7fbca1381000 rw-p 00000000 00:00 0 
+7fbca1381000-7fbca13a9000 r--p 00000000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7fbca13a9000-7fbca153e000 r-xp 00028000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7fbca153e000-7fbca1596000 r--p 001bd000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7fbca1596000-7fbca159a000 r--p 00214000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7fbca159a000-7fbca159c000 rw-p 00218000 08:03 2234718                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7fbca159c000-7fbca15a9000 rw-p 00000000 00:00 0 
+7fbca15b8000-7fbca15ba000 rw-p 00000000 00:00 0 
+7fbca15ba000-7fbca15bc000 r--p 00000000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fbca15bc000-7fbca15e6000 r-xp 00002000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fbca15e6000-7fbca15f1000 r--p 0002c000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fbca15f1000-7fbca15f2000 -w-s 00000000 08:03 1967817                    /home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 3/prueba.txt
+7fbca15f2000-7fbca15f4000 r--p 00037000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fbca15f4000-7fbca15f6000 rw-p 00039000 08:03 2234381                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffd1712b000-7ffd1714c000 rw-p 00000000 00:00 0                          [stack]
+7ffd171c4000-7ffd171c8000 r--p 00000000 00:00 0                          [vvar]
+7ffd171c8000-7ffd171ca000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]

@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/Letras_y_numeros.dir/letrasynumeros.c.o -o Letras_y_numeros 
