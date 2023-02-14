@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.00"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Letras_y_numeros",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "letrasynumeros::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-letrasynumeros-50ffa93e227dd9dfec00.json",
+					"name" : "letrasynumeros",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 5",
+		"source" : "/home/ssoo/CLionProjects/Universidad/C2 S1 Sistemas Operativos 1/Practicas/Practica 6/ap 5"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

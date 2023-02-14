@@ -9,4 +9,4 @@ project(Letras_y_numeros C)
 set(CMAKE_C_STANDARD 99)
 add_compile_options(-Wall -Wextra -pedantic -Werror -Wformat=2)
 
-add_executable(Letras_y_numeros letrasynumeros.c)
+add_executable(letrasynumeros letrasynumeros.c)
