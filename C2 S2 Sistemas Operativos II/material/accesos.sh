@@ -7,7 +7,7 @@ if [[ $# -ne 2 ]]; then
   #TODO: implementar muestraUso
 fi
 
-if [[ ! (($1 == "-c") || ($1 == "GET/POST")) ]]; then
+if [[ !  ( ($1 == "-c") || ( ($1 == "GET") || ($1 == "POST") ) )  ]]; then
   #TODO: Hacer algo
   echo "implementame"
 fi
@@ -18,6 +18,9 @@ fi
 
 if [[ $1 == "GET" || $1 == "POST" ]]; then
     fecha=$(date +"%h %d %H:%M:%S")
-    # TODO: Hacer cosas
-    printf "%s %s. Se han registrado %d accesos de tipo  con respuesta %d" $fecha $HOSTNAME;echo
+    #ACCESOS=$(cut -d " " -f 6,9 log/access.log | sort |uniq -c | grep "$1 200" | cut -d " " -f 3)
+    ACCESOS=$(cut -d " " -f 6,9 log/access.log | sort | uniq -c | grep "$1 200" | sed -e 's/^[[:space:]]*//' | cut -d " " -f 1)
+
+    printf "%s %s. Se han registrado %i accesos de tipo %s con respuesta 200." "$fecha" "$HOSTNAME" "$ACCESOS" "$1";echo
 fi
+#uniq -c |
