@@ -1,40 +1,23 @@
-//
-// Created by Marcelo on 03/03/2023.
-//
-
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdint.h>
+//#define T 15
+//#define M 5000
 
-int turno =  0;
 double suma = 0;
 int M, T;
-
-void adentrarseZonaCritica(int self)
-{
-    while(turno != self);
-}
-
-void escaparZonaCritica(int self)
-{
-    turno ++;
-    if(turno>=T)turno = 0;
-}
 
 void *sum(void *philo)
 {
     uintptr_t hilo = (uintptr_t) philo;
-    int j;
-    for (j = hilo; j <= M; j += T)
+    
+    for (int j = hilo; j <= M; j += T)
     {
-        adentrarseZonaCritica(hilo);
         suma = suma + j;
-        escaparZonaCritica(hilo);
     }
+  return NULL;
 }
-
-
 
 int main(int argc, char *argv[])
 {
@@ -47,14 +30,13 @@ int main(int argc, char *argv[])
     {
         pthread_create(&hilos[indice_creacionHilos], NULL, &sum, (void *) indice_creacionHilos);
     }
-    
+
     for (int indice_destruccionHilos = 0; indice_destruccionHilos < T; indice_destruccionHilos++)
     {
         pthread_join(hilos[indice_destruccionHilos], NULL);
     }
-    
-    
-    fprintf(stdout, "%d,%d,%d,%lf,[%s]\n", M, T, (M * (M + 1)) / 2, suma, (suma - (M * (M + 1)) / 2 == 0) ? "OK" : "Error");
+
+    long suma_esperada = ((long)M * (long)(M + 1)) / 2L;
+    fprintf(stdout, "%d,%d,%ld,%lf,[%s]\n", M, T, suma_esperada, suma, ( (suma - suma_esperada) == 0) ? "OK" : "Error");
     return (0);
 }
-

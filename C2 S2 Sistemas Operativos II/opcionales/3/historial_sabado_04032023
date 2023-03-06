@@ -1,0 +1,1000 @@
+ 1093  ./script.sh 
+ 1094  vi script.sh 
+ 1095  ./script.sh 
+ 1096  vi script.sh 
+ 1097  ./script.sh 
+ 1098  vi script.sh 
+ 1099  ./script.sh 
+ 1100  vi script.sh 
+ 1101  ./script.sh 
+ 1102  vi script.sh 
+ 1103  ./script.sh 
+ 1104  vi script.sh 
+ 1105  ./script.sh 
+ 1106  vi script.sh 
+ 1107  ./script.sh 
+ 1108  vi script.sh 
+ 1109  ./script.sh 
+ 1110  vi script.sh 
+ 1111  ./script.sh 
+ 1112  vi script.sh 
+ 1113  ./script.sh 
+ 1114  vi script.sh 
+ 1115  ./script.sh 
+ 1116  vi script.sh 
+ 1117  ./script.sh 
+ 1118  vi script.sh 
+ 1119  ./script.sh 
+ 1120  vi script.sh 
+ 1121  ./script.sh 
+ 1122  ls
+ 1123  vi script.sh 
+ 1124  ./script.sh 
+ 1125  vi script.sh 
+ 1126  ./script.sh 
+ 1127  vi script.sh 
+ 1128  ./script.sh 
+ 1129  vi script.sh 
+ 1130  ./script.sh 
+ 1131  vi script.sh 
+ 1132  ./script.sh 
+ 1133  vi script.sh 
+ 1134  ./script.sh 
+ 1135  vi script.sh 
+ 1136  ./script.sh 
+ 1137  vi script.sh 
+ 1138  ./script.sh 
+ 1139  vi script.sh 
+ 1140  ./script.sh 
+ 1141  vi script.sh 
+ 1142  ./script.sh 
+ 1143  vi script.sh 
+ 1144  ./script.sh 
+ 1145  vi script.sh 
+ 1146  ./script.sh 
+ 1147  vi script.sh 
+ 1148  ./script.sh 
+ 1149  vi script.sh 
+ 1150  ./script.sh 
+ 1151  vi script.sh 
+ 1152  ./script.sh 
+ 1153  ls
+ 1154  vi script.sh 
+ 1155  ./script.sh 
+ 1156  vi script.sh 
+ 1157  ./script.sh 
+ 1158  vi script.sh 
+ 1159  ./script.sh 
+ 1160  vi script.sh 
+ 1161  ./script.sh 
+ 1162  vi script.sh 
+ 1163  ./script.sh 
+ 1164  vi script.sh 
+ 1165  ./script.sh 
+ 1166  vi script.sh 
+ 1167  ./script.sh 
+ 1168  vi script.sh 
+ 1169  ./script.sh 
+ 1170  vi script.sh 
+ 1171  ./script.sh 
+ 1172  vi script.sh 
+ 1173  ./script.sh 
+ 1174  vi script.sh 
+ 1175  ./script.sh 
+ 1176  vi script.sh 
+ 1177  man grep
+ 1178  vi script.sh 
+ 1179  ./script.sh 
+ 1180  vi script.sh 
+ 1181  ./script.sh 
+ 1182  vi script.sh 
+ 1183  ./script.sh 
+ 1184  vi script.sh 
+ 1185  ./script.sh 
+ 1186  vi script.sh 
+ 1187  ./script.sh 
+ 1188  cls
+ 1189  vi script.sh 
+ 1190  ll
+ 1191  ls
+ 1192  ls -l
+ 1193  ls -al
+ 1194  ls
+ 1195  cls
+ 1196  ls
+ 1197  vi script.sh 
+ 1198  vi script2.sh
+ 1199  chmod +x ./script2.sh
+ 1200  ./script2.sh 
+ 1201  vi script2.sh
+ 1202  vi script3.sh
+ 1203  chmod +x ./script3.sh 
+ 1204  ./script3.sh
+ 1205  ll
+ 1206  chmod go-x *.sh
+ 1207  ll
+ 1208  chmod u+x *.sh
+ 1209  ll
+ 1210  cat script3.sh 
+ 1211  ./script3.sh 
+ 1212  vi script3.sh 
+ 1213  ll
+ 1214  cd conference/
+ 1215  ll
+ 1216  cd ..
+ 1217  vi script
+ 1218  vi script3.sh 
+ 1219  clear
+ 1220  mv script3.sh conferencia.sh
+ 1221  vi conferencia.sh
+ 1222  poweroff
+ 1223  q
+ 1224  ls
+ 1225  cd  CLionProjects/
+ 1226  ls
+ 1227  vi token
+ 1228  git add *
+ 1229  cd Universidad/
+ 1230  git add *
+ 1231  git commit -m "e"
+ 1232  git push
+ 1233  git pull
+ 1234  git push
+ 1235  poweroff
+ 1236  cd EnlaceSSOO
+ 1237  cd opcionales/
+ 1238  ls
+ 1239  cd 1
+ 1240  ls
+ 1241  vi programa.c 
+ 1242  vi script_ejec.sh 
+ 1243  rm *.data
+ 1244  vi script_ejec.sh 
+ 1245  vi programa.c 
+ 1246  ./script_ejec.sh  1000000
+ 1247  ls
+ 1248  rm *.data
+ 1249  ./script_ejec.sh 2 1000000
+ 1250  ./script_ejec.sh 1000000 2
+ 1251  vi programa.c 
+ 1252  vi script_ejec.sh 
+ 1253  rm *.data
+ 1254  gcc programa.c -o compilado
+ 1255  ls
+ 1256  ./script_ejec.sh compilado 1000000 2
+ 1257  ./script_ejec.sh ./compiladoc
+ 1258  ./script_ejec.sh compilado 1000000 2
+ 1259  vi script_ejec.sh 
+ 1260  ls
+ 1261  ./script_ejec.sh compilado 1000000 2
+ 1262  ./script_ejec.sh compilado 1000000 2:q
+ 1263  vi script_ejec.sh 
+ 1264  ./script_ejec.sh compilado 2 1000
+ 1265  vi script_ejec.sh 
+ 1266  ./script_ejec.sh compilado 2 1000 2
+ 1267  ./script_ejec.sh 2 compilado 1000
+ 1268  ls+
+ 1269  ls
+ 1270  rm *.data
+ 1271  clear
+ 1272  vi script_ejec.sh 
+ 1273  clear
+ 1274  ll
+ 1275  ./script_ejec.sh 2 compilado 2 100000
+ 1276  cls
+ 1277  rm *.data
+ 1278  ./script_ejec.sh 2 compilado 100000 2
+ 1279  ./script_ejec.sh 2 compilado 1000000 2
+ 1280  ./script_ejec.sh 2 compilado 10000000 2
+ 1281  ./script_ejec.sh 1000 compilado 10000000 2
+ 1282  ls
+ 1283  cat resultados.M_100000.T_2.data 
+ 1284  cat resultados.M_10.T_2.data 
+ 1285  cat resultados.M_10000000.T_2.data 
+ 1286  cls
+ 1287  rm *.data
+ 1288  ./script_ejec.sh 1000 compilado 1000 2
+ 1289  cat resultados.M_1000.T_2.data 
+ 1290  cls
+ 1291  rm *.data
+ 1292  vi script_ejec.sh 
+ 1293  ./script_ejec.sh 100000 compilado 1000 2
+ 1294  ll
+ 1295  rm *.data
+ 1296  mkdir 300_iter
+ 1297  ./script_ejec.sh 300 compilado 1000 2
+ 1298  ./script_ejec.sh 300 compilado 250 2
+ 1299  ./script_ejec.sh 300 compilado 500 2
+ 1300  ./script_ejec.sh 300 compilado 2000 2
+ 1301  ./script_ejec.sh 300 compilado 2500 2
+ 1302  ./script_ejec.sh 300 compilado 5000 2
+ 1303  ./script_ejec.sh 300 compilado 7000 2
+ 1304  ./script_ejec.sh 300 compilado 10000 2
+ 1305  ./script_ejec.sh 300 compilado 20000 2
+ 1306  ./script_ejec.sh 300 compilado 50000 2
+ 1307  ./script_ejec.sh 300 compilado 70000 2
+ 1308  ./script_ejec.sh 300 compilado 100000 2
+ 1309  ls
+ 1310  mc
+ 1311  ./script_ejec.sh 300 compilado 250 3
+ 1312  ./script_ejec.sh 300 compilado 500 3
+ 1313  ./script_ejec.sh 300 compilado 1000 3
+ 1314  ./script_ejec.sh 300 compilado 2500 3
+ 1315  ./script_ejec.sh 300 compilado 5000 3
+ 1316  ./script_ejec.sh 300 compilado 7000 3
+ 1317  ./script_ejec.sh 300 compilado 10000 3
+ 1318  ./script_ejec.sh 300 compilado 20000 3
+ 1319  ./script_ejec.sh 300 compilado 50000 3
+ 1320  ./script_ejec.sh 300 compilado 70000 3
+ 1321  ./script_ejec.sh 300 compilado 100000 3
+ 1322  mc
+ 1323  ls
+ 1324  mkdir 900_iter
+ 1325  ./script_ejec.sh 900 compilado 250 2
+ 1326  ./script_ejec.sh 900 compilado 500 2
+ 1327  ./script_ejec.sh 900 compilado 1000 2
+ 1328  ./script_ejec.sh 900 compilado 2500 2
+ 1329  ./script_ejec.sh 900 compilado 5000 2
+ 1330  ./script_ejec.sh 900 compilado 7000 2
+ 1331  ./script_ejec.sh 900 compilado 10000 2
+ 1332  ./script_ejec.sh 900 compilado 20000 2
+ 1333  ./script_ejec.sh 900 compilado 50000 2
+ 1334  ./script_ejec.sh 900 compilado 70000 2
+ 1335  ./script_ejec.sh 900 compilado 100000 2
+ 1336  ./script_ejec.sh 900 compilado 250 3
+ 1337  ./script_ejec.sh 900 compilado 500 3
+ 1338  ./script_ejec.sh 900 compilado 1000 3
+ 1339  ./script_ejec.sh 900 compilado 2500 3
+ 1340  ./script_ejec.sh 900 compilado 5000 3
+ 1341  ./script_ejec.sh 900 compilado 7000 3
+ 1342  ./script_ejec.sh 900 compilado 10000 3
+ 1343  ./script_ejec.sh 900 compilado 20000 3
+ 1344  ./script_ejec.sh 900 compilado 50000 3
+ 1345  ./script_ejec.sh 900 compilado 70000 3
+ 1346  ./script_ejec.sh 900 compilado 100000 3
+ 1347  mc
+ 1348  cls
+ 1349  ls
+ 1350  mkdir 2700_iter
+ 1351  ./script_ejec.sh 2700 compilado 250 2
+ 1352  ./script_ejec.sh 2700 compilado 500 3
+ 1353  ./script_ejec.sh 2700 compilado 500 2
+ 1354  ./script_ejec.sh 2700 compilado 1000 2
+ 1355  ./script_ejec.sh 2700 compilado 2500 2
+ 1356  ./script_ejec.sh 2700 compilado 5000 2
+ 1357  ./script_ejec.sh 2700 compilado 7000 2
+ 1358  ./script_ejec.sh 2700 compilado 10000 2
+ 1359  ./script_ejec.sh 2700 compilado 20000 2
+ 1360  ./script_ejec.sh 2700 compilado 50000 2
+ 1361  ./script_ejec.sh 2700 compilado 70000 2
+ 1362  ./script_ejec.sh 2700 compilado 100000 2
+ 1363  cd 900
+ 1364  cd 900_iter/
+ 1365  ls
+ 1366  ll
+ 1367  cls
+ 1368  mc
+ 1369  ls
+ 1370  cd ..
+ 1371  ls
+ 1372  cls
+ 1373  ls
+ 1374  ./script_ejec.sh 2700 compilado 250 3
+ 1375  ./script_ejec.sh 2700 compilado 500 3
+ 1376  ./script_ejec.sh 2700 compilado 1000 3
+ 1377  ./script_ejec.sh 2700 compilado 25003
+ 1378  ls
+ 1379  rm resultados.M_25003.T_.data 
+ 1380  ./script_ejec.sh 2700 compilado 2500 3
+ 1381  ./script_ejec.sh 2700 compilado 5000 3
+ 1382  ./script_ejec.sh 2700 compilado 7000 3
+ 1383  ./script_ejec.sh 2700 compilado 10000 3
+ 1384  ./script_ejec.sh 2700 compilado 20000 3
+ 1385  ./script_ejec.sh 2700 compilado 50000 3
+ 1386  ./script_ejec.sh 2700 compilado 70000 3
+ 1387  ./script_ejec.sh 2700 compilado 100000 3
+ 1388  mc
+ 1389  git add *
+ 1390  git commit -m "e"
+ 1391  git push
+ 1392  git pull
+ 1393  git pull -f
+ 1394  git config pull.rebase true   # rebase
+ 1395  git pull -f
+ 1396  git commit
+ 1397  git add *
+ 1398  git commit
+ 1399  git commit -a
+ 1400  git push
+ 1401  git pull
+ 1402  cd ..
+ 1403  git add *
+ 1404  git commit -m "w"
+ 1405  git pull
+ 1406  git push
+ 1407  git pull
+ 1408  git commit -m "h"
+ 1409  ls
+ 1410  cd pruebas/
+ 1411  ls
+ 1412  ll
+ 1413  cd ..
+ 1414  cd r
+ 1415  ll
+ 1416  cd ,,
+ 1417  cd ..
+ 1418  ls
+ 1419  cd material/
+ 1420  ls
+ 1421  add *
+ 1422  git add *
+ 1423  git commit -m "h"
+ 1424  git commit -m "h3"
+ 1425  git pull
+ 1426  cls
+ 1427  ls
+ 1428  cd ..
+ 1429  ls
+ 1430  cd opcionales/
+ 1431  ls
+ 1432  cd ..
+ 1433  cd opcionales/
+ 1434  cd 1
+ 1435  vi programa.c 
+ 1436  ll
+ 1437  cd EnlaceSSOO
+ 1438  csl
+ 1439  cls
+ 1440  ll
+ 1441  cd opcionales/
+ 1442  ls
+ 1443  cd 1 
+ 1444  clear
+ 1445  ll
+ 1446  gcc main.c -S
+ 1447  gcc programa.c -S
+ 1448  ll
+ 1449  less programa.s
+ 1450  gcc programa.c -S -O2 -g -fverbose-asm
+ 1451  less programa.s
+ 1452  gcc programa.c -S -O0 -g -fverbose-asm
+ 1453  less programa.s
+ 1454  gcc programa.c -S -O0 -g -fverbose-asm -m32
+ 1455  sudo apt install gcc-multilib
+ 1456  gcc programa.c -S -O0 -g -fverbose-asm -m32
+ 1457  less programa.s
+ 1458  gcc programa.c -S -O0 -g -fverbose-asm -mips32
+ 1459  gcc programa.c -S -O0 -g -fverbose-asm -march=mips32
+ 1460  gcc programa.c -S -O0 -g -fverbose-asm -march=586
+ 1461  gcc programa.c -S -O0 -g -fverbose-asm -march=686
+ 1462  gcc programa.c -S -O0 -g -fverbose-asm -march=mips1
+ 1463  sudo apt install gcc-mips-linux-gnu
+ 1464  gcc programa.c -S -O0 -g -fverbose-asm -mips32
+ 1465  mips-linux-gnu-gcc -g -c -O0 programa.c
+ 1466  ll
+ 1467  less programa.o
+ 1468  mips-linux-gnu-gcc -S -g -c -O0 programa.c
+ 1469  less programa.s
+ 1470  mips-linux-gnu-gcc -S -g -c -O0 -fverbosesm programa.c
+ 1471  mips-linux-gnu-gcc -S -g -c -O0 -fverbose-asm programa.c
+ 1472  less programa.s
+ 1473  mips-linux-gnu-gcc -S -g -c -O0 -fverbose-asm -mips32 programa.c
+ 1474  less programa.s
+ 1475  mips-linux-gnu-gcc -S -g -c -O0 -fverbose-asm -mips32 programa.c
+ 1476  less programa.s
+ 1477  mips-linux-gnu-gcc -S -g -c -O0 -fverbose-asm -mips32 programa.c
+ 1478  mips-linux-gnu-gcc -S -g -c -O0 -fverbose-asm -mips32 programa_2.c
+ 1479  less programa_2.s
+ 1480  ll
+ 1481  mv programa_2.s programa_2.mips32.s
+ 1482  gcc programa_2.c -S -O0 -g -fverbose-asm -m32
+ 1483  vi programa_2.s
+ 1484  gcc programa_2.c -S  -g -fverbose-asm -m32
+ 1485  vi programa_2.s
+ 1486  mv programa_2.s programa_2.x86_32.s
+ 1487  gcc programa_2.c -S  -g -fverbose-asm -m16
+ 1488  vi programa_2.s
+ 1489  exit
+ 1490  cd CLionProjects/
+ 1491  ll
+ 1492  cat token
+ 1493  git push
+ 1494  cd Universidad/
+ 1495  git commit
+ 1496  git push
+ 1497  git pull
+ 1498  git push
+ 1499  exit
+ 1500  history
+ 1501  gcc programa.c -S -g -fverbose-asm
+ 1502  cd EnlaceSSOO
+ 1503  cd opcionales/
+ 1504  cd 1
+ 1505  gcc programa.c -S -g -fverbose-asm
+ 1506  vi programa.s
+ 1507  git add *
+ 1508  git commit -m "asm varios"
+ 1509  exit
+ 1510  cd EnlaceSSOO
+ 1511  ll
+ 1512  cd opcionales/
+ 1513  cd 1
+ 1514  ll
+ 1515  cls
+ 1516  ll
+ 1517  vi programa.c
+ 1518  exit
+ 1519  poweroff
+ 1520  exit
+ 1521  exit
+ 1522  exit
+ 1523  exit
+ 1524  history
+ 1525  cls
+ 1526  cd CLionProjects/
+ 1527  git clone
+ 1528  git clone https://github.com/marcelo9987/SSOOII
+ 1529  git commit -m "w"
+ 1530  git push
+ 1531  git clone https://github.com/marcelo9987/SSOOII-practica1-
+ 1532  git clone https://github.com/marcelo9987/SSOOII-practica1- -f
+ 1533  git clone https://github.com/marcelo9987/SSOOII-practica1-
+ 1534  ls
+ 1535  cd SSOOII-practica1-/
+ 1536  ls
+ 1537  git pull
+ 1538  cd ..
+ 1539  rm SSOOII-practica1-/
+ 1540  rm SSOOII-practica1-/ -r
+ 1541  git clone https://github.com/marcelo9987/SSOOII-practica1
+ 1542  git clone https://github.com/marcelo9987/SSOOII_practica1
+ 1543  cd SSOOII_practica1/
+ 1544  touch archivo
+ 1545  git add archivo 
+ 1546  git commit -m "archivo"
+ 1547  git push
+ 1548  git pull
+ 1549  rm archivo 
+ 1550  git commit -m "archivo"
+ 1551  git add *
+ 1552  git push
+ 1553  git commit -m "archivo"
+ 1554  git push
+ 1555  touch archivo
+ 1556  git add archivo 
+ 1557  git commit -m "archivo"
+ 1558  git push
+ 1559  ls
+ 1560  exir
+ 1561  firefox &
+ 1562  exit
+ 1563  mc
+ 1564  exit
+ 1565  cd EnlaceSSOO
+ 1566  cd material/
+ 1567  ll
+ 1568  rm destino -r
+ 1569  mkdir destino
+ 1570  ./conferencia.sh conference destino
+ 1571  rm destino -r
+ 1572  mkdir destino
+ 1573  ./conferencia.sh conference destino
+ 1574  cd destino/
+ 1575  ll
+ 1576  cd s20
+ 1577  lll
+ 1578  ll
+ 1579  cd 2023-02-1
+ 1580  cd 2023-02-14
+ 1581  ll
+ 1582  cd ..
+ 1583  ./conferencia.sh conference destino
+ 1584  rm destino/ -r
+ 1585  mkdir destino
+ 1586  ./conferencia.sh conference destino
+ 1587  cd destino/
+ 1588  cd s50
+ 1589  cd 2023-02-15
+ 1590  ll
+ 1591  l
+ 1592  ls
+ 1593  cd Full\ HD
+ 1594  cd ..
+ 1595  cd destino/s50/2023-02-15/4K/
+ 1596  cd destino/s50/2023-02-15/
+ 1597  ls
+ 1598  cd ..
+ 1599  rm destino/ -r
+ 1600  mkdir destino 
+ 1601  ./conferencia.sh conference destino
+ 1602  nautilus
+ 1603  exit
+ 1604  cls
+ 1605  eit
+ 1606  exit
+ 1607  sleep 100
+ 1608  bg
+ 1609  fg
+ 1610  clear
+ 1611  exit
+ 1612  clion
+ 1613  top
+ 1614  kill *
+ 1615  kill 5376
+ 1616  cd EnlaceSSOO
+ 1617  ls
+ 1618  mkdir 1
+ 1619  echo $BASH
+ 1620  sh
+ 1621  cls
+ 1622  ls
+ 1623  echo a
+ 1624  clear
+ 1625  ls\
+ 1626  man \
+ 1627  cls
+ 1628  echo hola\n
+ 1629  echo hola/n
+ 1630  echo  "hola\ ñ"
+ 1631  echo  "hola\n ñ"
+ 1632  echo  "hola\ ñ"
+ 1633  echo  "hola ñ"
+ 1634  echo  hola\ ñ
+ 1635  echo  hola\n ñ
+ 1636  echo  -e hola\nw
+ 1637  echo  -e hola\n w
+ 1638  echo  -e hola \n w
+ 1639  echo  -e "hola\n w"
+ 1640  echo  -e "hola\nw"
+ 1641  echo  -e "hola\nñ"
+ 1642  echo  -t "hola\nñ"
+ 1643  echo  -e "hola\tñ"
+ 1644  echo  -en "hola\tñ"
+ 1645  echo  -en "holañ";ls
+ 1646  clear
+ 1647  man readline
+ 1648  clear
+ 1649  ekwewm
+ 1650  sleep 100
+ 1651  sleep 11
+ 1652  history
+ 1653  readline
+ 1654  readLine
+ 1655  ! -3
+ 1656  ! 3
+ 1657  ! -n 3
+ 1658  cls
+ 1659  history
+ 1660  echo  -en "holañ";ls
+ 1661  cls
+ 1662  gc
+ 1663  cls
+ 1664  ./script3.sh | less
+ 1665  cls
+ 1666  ./script3.sh | less
+ 1667  ./script3.sh
+ 1668  ./conferencia.sh 
+ 1669  ./conferencia.sh conferences fu
+ 1670  ./conferencia.sh conferences foo
+ 1671  ./conferencia.sh conference foo
+ 1672  ls
+ 1673  ./conferencia.sh ./conference foo
+ 1674  ./conferencia.sh conference foo
+ 1675  clear
+ 1676  ls
+ 1677  pwd
+ 1678  ll
+ 1679  ./conferencia.sh conference/ foo
+ 1680  ./conferencia.sh $home/conference foo
+ 1681  ./conferencia.sh $HOME/conference foo
+ 1682  ./conferencia.sh ./conference foo
+ 1683  $PWD
+ 1684  ./conferencia.sh $PWD/conference foo
+ 1685  ll
+ 1686  ./conferencia.sh $PWD/conference foo
+ 1687  ./conferencia.sh conference foo
+ 1688  clear
+ 1689  ./conferencia.sh ./conference foo
+ 1690  ./conferencia.sh ../material/conference foo
+ 1691  ./conferencia.sh ../material/conference2 foo
+ 1692  ./conferencia.sh conference foo
+ 1693  ./conferencia.sh conference touch foo
+ 1694  touch foo 
+ 1695  ./conferencia.sh conference foo
+ 1696  rm foo
+ 1697  mkdir foo
+ 1698  ./conferencia.sh conference foo
+ 1699  ll foo
+ 1700  ll
+ 1701  mv foo "foo bar"
+ 1702  ls
+ 1703  ./conferencia.sh conference "foo bar"
+ 1704  clear
+ 1705  man mkdir
+ 1706  ./conferencia.sh conference "foo bar"
+ 1707  ls
+ 1708  ./conferencia.sh conference "foo bar"
+ 1709  ls
+ 1710  ll foo\/bar
+ 1711  ll foo\ /bar
+ 1712  ll foo\ bar
+ 1713  rm foo\ bar/s\{20..50\}/
+ 1714  rm foo\ bar/s\{20..50\}/ -r
+ 1715  ./conferencia.sh conference "foo bar"
+ 1716  ll "foo bar"/
+ 1717  cd conference/
+ 1718  ll
+ 1719  for original_file_name in *; do printf "%s\n" "${original_file_name:8:18}"; done | sort -u      
+ 1720  for original_file_name in *; do printf "%s\n" "${original_file_name:8:10}"; done | sort -u      
+ 1721  ./conferencia.sh conference "foo bar"
+ 1722  cd ..
+ 1723  ./conferencia.sh conference "foo bar"
+ 1724  ll "foo bar"/
+ 1725  cd s20
+ 1726  ll "foo bar"/s20
+ 1727  ./conferencia.sh conference "foo bar"
+ 1728  ll "foo bar"/s20
+ 1729  ll "foo bar"/
+ 1730  ll "foo bar"/s35
+ 1731  ll
+ 1732  mkdir --help
+ 1733  ./conferencia.sh conference "foo bar"
+ 1734  ll "foo bar"/s21
+ 1735  ll "foo bar"/s20
+ 1736  ll "foo bar"/
+ 1737  ll
+ 1738  cd foo
+ 1739  ll
+ 1740  cd ..
+ 1741  cd conference/
+ 1742  ll
+ 1743  mc
+ 1744  ./conferencia.sh conference "foo bar"
+ 1745  cd ..
+ 1746  ./conferencia.sh conference "foo bar"
+ 1747  ll 
+ 1748  ll conference
+ 1749  ls conferencia
+ 1750  ls conference
+ 1751  ll
+ 1752  ll "foo bar"/
+ 1753  jobs
+ 1754  ll "foo bar"/s20
+ 1755  ll "foo bar"/s21
+ 1756  ll "foo bar"/s50
+ 1757  ./conferencia.sh conference "foo bar"
+ 1758  cp --help
+ 1759  cp --help | less
+ 1760  ./conferencia.sh conference "foo bar"
+ 1761  ll
+ 1762  ll "foo bar"/
+ 1763  ll foo\ bar/s20
+ 1764  rmdir foo\ bar/s*
+ 1765  ll foo\ bar/s20
+ 1766  ll foo\ bar/
+ 1767  read --help
+ 1768  man read
+ 1769  man -a read
+ 1770  bash --help
+ 1771  ./conferencia.sh conference "foo bar"
+ 1772  cls
+ 1773  ./conferencia.sh conference "foo bar"
+ 1774  [A
+ 1775  ./conferencia.sh conference "foo bar"
+ 1776  ll
+ 1777  ls conference | more
+ 1778  mc
+ 1779  logout
+ 1780  exit
+ 1781  nautilus
+ 1782  cd CLionProjects/
+ 1783  ls
+ 1784  cat token
+ 1785  dribe
+ 1786  onedirve
+ 1787  sudo apt install onedrive
+ 1788  onedrive 
+ 1789  mkdir onedrove
+ 1790  cd onedrove/
+ 1791  onedrive
+ 1792  sudo apt remove onedrive
+ 1793  cd ..
+ 1794  cd EnlaceSSOO
+ 1795  ll
+ 1796  ls
+ 1797  cd material
+ 1798  ll
+ 1799  cd ..
+ 1800  unzip material/
+ 1801  unzip Práctica\ 1.2\ P1-Material.zip.zip 
+ 1802  cd material/
+ 1803  ls
+ 1804  rm -rdir carpeta\ nueva/
+ 1805  cat script
+ 1806  cat script.sh
+ 1807  cat script2.sh
+ 1808  cls
+ 1809  ./conferencia.sh conference destino
+ 1810  mkdir destino
+ 1811  ./conferencia.sh conference destino
+ 1812  cd des
+ 1813  cd destino/
+ 1814  ll
+ 1815  cd  s20
+ 1816  ls
+ 1817  cd 2023-02-1
+ 1818  explorer
+ 1819  nautilus
+ 1820  ./*
+ 1821  *
+ 1822  top
+ 1823  ll
+ 1824  mkdir pruebas
+ 1825  cd pruebas
+ 1826  ll
+ 1827  cat prueba.c
+ 1828  rm prueba.c 
+ 1829  cls
+ 1830  touch feb mar apr
+ 1831  ls
+ 1832  rm *
+ 1833  ll
+ 1834  clear
+ 1835  touch feb mar apr
+ 1836  echo *
+ 1837  echo .*
+ 1838  touch .memo
+ 1839  echo .*
+ 1840  touch feb4 mar2 apr7
+ 1841  echo *[!0-9]
+ 1842  rm feb mar apr
+ 1843  echo *[!0-9]
+ 1844  echo *.*
+ 1845  touch test.test
+ 1846  echo *.*
+ 1847  echo ??????
+ 1848  echo ?????
+ 1849  echo ????
+ 1850  echo *7
+ 1851  rm *
+ 1852  poweroff
+ 1853  ll
+ 1854  nautilus &
+ 1855  cls
+ 1856  ll
+ 1857  cd CLionProjects/
+ 1858  ls
+ 1859  cd arquitecturaDeComputadores/
+ 1860  ls
+ 1861  cd practica1/
+ 1862  ls
+ 1863  cat programa.c 
+ 1864  vi programa.c 
+ 1865  git commit
+ 1866  git add *
+ 1867  git commit 
+ 1868  git commit -m "minicodigo"
+ 1869  git oush
+ 1870  git push
+ 1871  clion
+ 1872  exit
+ 1873  https://gateone.cesga.es/aser3f342f23sers3r33602/?ssh=ssh://cursoa03@ft3.cesga.es
+ 1874  ssh https://gateone.cesga.es/aser3f342f23sers3r33602/?ssh=ssh://cursoa03@ft3.cesga.es
+ 1875  firefox https://gateone.cesga.es/aser3f342f23sers3r33602/?ssh=ssh://cursoa03@ft3.cesga.es
+ 1876  exit
+ 1877  t
+ 1878  poweroff
+ 1879  ssh cursoa03@ft3.cesga.es
+ 1880  ll
+ 1881  rm *.data
+ 1882  make ./programa_suma_altEstricta.c
+ 1883  make programa_suma_altEstricta.c
+ 1884  make+
+ 1885  make
+ 1886  make programa
+ 1887  make programa_suma_altEstricta
+ 1888  ./script_ejec.sh 200 programa_suma_altEtricta 100000 3
+ 1889  rm *.data
+ 1890  ll
+ 1891  ./script_ejec.sh 200 programa_suma_altEstricta 100000 3
+ 1892  ./script_ejec.sh 200 programa_suma_altEstricta 100000 2
+ 1893  ./script_ejec.sh 200 programa_suma_altEstricta 100 2
+ 1894  rm *.data
+ 1895  ./script_ejec.sh 200 programa_suma_altEstricta 1000 3
+ 1896  mkdir test
+ 1897  rmdir test
+ 1898  help mkdir
+ 1899  man mkdir
+ 1900  mkdir -p test
+ 1901  ll
+ 1902  rmdir test
+ 1903  exit
+ 1904  ll
+ 1905  cd CLionProjects/
+ 1906  ll
+ 1907  cd 
+ 1908  cd Universidad
+ 1909  cd CLionProjects/
+ 1910  cd Universidad/
+ 1911  cls
+ 1912  ls
+ 1913  cd cd C2\ S2\ Sistemas\ Operativos\ II/
+ 1914  cd C2\ S2\ Sistemas\ Operativos\ II/
+ 1915  ll
+ 1916  cd opcionales/
+ 1917  cd 3
+ 1918  cls
+ 1919  cd 
+ 1920  mc
+ 1921  link 
+ 1922  link --help
+ 1923  man ñn
+ 1924  cls
+ 1925  man ln
+ 1926  cd Enlaces/
+ 1927  ln -t ~/CLionProjects/Universidad/C2\ S2\ Sistemas\ Operativos\ II/opcionales/ SSOOII_opt
+ 1928  ln -t SSOOII_opt ~/CLionProjects/Universidad/C2\ S2\ Sistemas\ Operativos\ II/opcionales/
+ 1929  mkfir SSOOI_opt
+ 1930  mkdir SSOOI_opt
+ 1931  cd SSOOI_opt/
+ 1932  ln ~/CLionProjects/Universidad/C2\ S2\ Sistemas\ Operativos\ II/opcionales/
+ 1933  man ln
+ 1934  ln ~/CLionProjects/Universidad/C2\ S2\ Sistemas\ Operativos\ II/opcionales/
+ 1935  ln ~/CLionProjects/Universidad/C2\ S2\ Sistemas\ Operativos\ II/opcionales
+ 1936  ln -s ~/CLionProjects/Universidad/C2\ S2\ Sistemas\ Operativos\ II/opcionales
+ 1937  ls
+ 1938  cd opcionales
+ 1939  ls
+ 1940  vf ..
+ 1941  cd ..
+ 1942  mv SSOOI_opt/ SSOOII
+ 1943  cd SSOOII
+ 1944  cd opcionales
+ 1945  ls
+ 1946  cd 3
+ 1947  cls
+ 1948  make programa_suma_altEstricta
+ 1949  ./script_ejec.sh 200 programa_suma_altEstricta 50000 300 alternancia_estricta
+ 1950  ./script_ejec.sh 200 programa_suma_altEstricta 50000 302 alternancia_estricta
+ 1951  ll
+ 1952  cd alternancia_estricta/
+ 1953  ls
+ 1954  rm *.csv
+ 1955  cd ..
+ 1956  ./script_ejec.sh 200 programa_suma_altEstricta 500 2 alternancia_estricta
+ 1957  ./script_ejec.sh 200 programa_suma_altEstricta 1000 2 alternancia_estricta
+ 1958  ./script_ejec.sh 200 programa_suma_altEstricta 2000 2 alternancia_estricta
+ 1959  ./script_ejec.sh 200 programa_suma_altEstricta 4000 2 alternancia_estricta
+ 1960  ./script_ejec.sh 200 programa_suma_altEstricta 8000 2 alternancia_estricta
+ 1961  ./script_ejec.sh 200 programa_suma_altEstricta 16000 2 alternancia_estricta
+ 1962  ./script_ejec.sh 200 programa_suma_altEstricta 32000 2 alternancia_estricta
+ 1963  ./script_ejec.sh 200 programa_suma_altEstricta 64000 2 alternancia_estricta
+ 1964  ./script_ejec.sh 200 programa_suma_altEstricta 128000 2 alternancia_estricta
+ 1965  ./script_ejec.sh 200 programa_suma_altEstricta 256000 2 alternancia_estricta
+ 1966  ./script_ejec.sh 200 programa_suma_altEstricta 512000 2 alternancia_estricta
+ 1967  ./script_ejec.sh 200 programa_suma_altEstricta 1024000 2 alternancia_estricta
+ 1968  cd alternancia_estricta/
+ 1969  ls
+ 1970  cat resultados.200ITERS_M_1024000.T_2.csv | grep Error
+ 1971  cat resultados.200ITERS_M_1024000.T_2.csv
+ 1972  ll
+ 1973  cd ..
+ 1974  ./script_ejec.sh 200 programa_suma_altEstricta 500 3 alternancia_estricta
+ 1975  ./script_ejec.sh 200 programa_suma_altEstricta 1000 3 alternancia_estricta
+ 1976  ./script_ejec.sh 200 programa_suma_altEstricta 2000 3 alternancia_estricta
+ 1977  ./script_ejec.sh 200 programa_suma_altEstricta 4000 3 alternancia_estricta
+ 1978  ./script_ejec.sh 200 programa_suma_altEstricta 8000 3 alternancia_estricta
+ 1979  ./script_ejec.sh 200 programa_suma_altEstricta 16000 3 alternancia_estricta
+ 1980  ./script_ejec.sh 200 programa_suma_altEstricta 32000 3 alternancia_estricta
+ 1981  ./script_ejec.sh 200 programa_suma_altEstricta 64000 3 alternancia_estricta
+ 1982  ./script_ejec.sh 200 programa_suma_altEstricta 128000 3 alternancia_estricta
+ 1983  ./script_ejec.sh 200 programa_suma_altEstricta 256000 3 alternancia_estricta
+ 1984  ./script_ejec.sh 200 programa_suma_altEstricta 512000 3 alternancia_estricta
+ 1985  ./script_ejec.sh 200 programa_suma_altEstricta 1024000 3 alternancia_estricta
+ 1986  ./script_ejec.sh 200 programa_suma_altEstricta 500 6 alternancia_estricta
+ 1987  ./script_ejec.sh 200 programa_suma_altEstricta 1000 6 alternancia_estricta
+ 1988  ./script_ejec.sh 200 programa_suma_altEstricta 2000 6 alternancia_estricta
+ 1989  ./script_ejec.sh 200 programa_suma_altEstricta 4000 6 alternancia_estricta
+ 1990  ./script_ejec.sh 200 programa_suma_altEstricta 8.000 6 alternancia_estricta
+ 1991  ./script_ejec.sh 200 programa_suma_altEstricta 8000 6 alternancia_estricta
+ 1992  ./script_ejec.sh 200 programa_suma_altEstricta 16000 6 alternancia_estricta
+ 1993  ./script_ejec.sh 200 programa_suma_altEstricta 32000 6 alternancia_estricta
+ 1994  ./script_ejec.sh 200 programa_suma_altEstricta 64000 6 alternancia_estricta
+ 1995  ./script_ejec.sh 200 programa_suma_altEstricta 128000 6 alternancia_estricta
+ 1996  ./script_ejec.sh 200 programa_suma_altEstricta 256000 6 alternancia_estricta
+ 1997  poweroff
+ 1998  clion &
+ 1999  ll
+ 2000  cd CLionProjects/
+ 2001  l+
+ 2002  cls
+ 2003  ll
+ 2004  cd ..
+ 2005  cd Enlaces/
+ 2006  cd SSOOII/
+ 2007  cd opcionales
+ 2008  cd 3
+ 2009  ll
+ 2010  rm *.csv
+ 2011  vi script_ejec.sh 
+ 2012  vi superscript.sh
+ 2013  ll
+ 2014  ./superscript 200 programa_suma_altEstricta 64000 6 .
+ 2015  chmod +x superscript.sh 
+ 2016  ./superscript 200 programa_suma_altEstricta 64000 6 .
+ 2017  chmod +x superscript.sh 
+ 2018  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2019  man time
+ 2020  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2021  man time+
+ 2022  man time
+ 2023  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2024  time ./superscript.sh 200 programa_suma_altEstricta 64000 6 . -o ahuirehguiea.s
+ 2025  ll
+ 2026  time ./superscript.sh 200 programa_suma_altEstricta 64000 6 . -o ahuirehguiea.sç
+ 2027  ll
+ 2028  rm uiegwogiugiaduofi 
+ 2029  ll
+ 2030  rm *.log
+ 2031  ll
+ 2032  time ./superscript.sh 200 programa_suma_altEstricta 64000 6 . -o salida
+ 2033  ll
+ 2034  tm *log
+ 2035  rm *.log
+ 2036  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2037  ll
+ 2038  cat salida
+ 2039  help time
+ 2040  mann time
+ 2041  man time
+ 2042  time ./programa_compilado -o mecagoentusmuertos
+ 2043  ll
+ 2044  time ./programa_compilado -o=mecagoentusmuertos
+ 2045  ll
+ 2046  time -o=mecagoentusmuertos ./programa_compilado 
+ 2047  time -o mecagoentusmuertos ./programa_compilado 
+ 2048  time --output=mecagoentusmuertos ./programa_compilado 
+ 2049  help time
+ 2050  man time
+ 2051  time -o mecagoentusmuertos ./programa_compilado 
+ 2052  sudo apt update time
+ 2053  sudo apt upgrade time
+ 2054  time -o mecagoentusmuertos ./programa_compilado 
+ 2055  alias time=/usr/bin/time
+ 2056  time
+ 2057  time -o mecagoentusmuertos ./programa_compilado 
+ 2058  cat mecagoentusmuertos 
+ 2059  vi mecagoentusmuertos 
+ 2060  time -o mecagoentusmuertos ./programa_compilado 100 1
+ 2061  vi mecagoentusmuertos 
+ 2062  man time
+ 2063  time -p -o mecagoentusmuertos ./programa_compilado 100 1
+ 2064  man time
+ 2065  vi mecagoentusmuertos 
+ 2066  ll
+ 2067  rm mecagoentusmuertos 
+ 2068  rm *.log
+ 2069  ll
+ 2070  rm salida 
+ 2071  ls
+ 2072  ll
+ 2073  cla
+ 2074  cls
+ 2075  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2076  vi superscript.sh 
+ 2077  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2078  vi superscript.sh 
+ 2079  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2080  vi superscript.sh 
+ 2081  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2082  vi superscript.sh 
+ 2083  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2084  vi superscript.sh 
+ 2085  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2086  vi superscript.sh 
+ 2087  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2088  vi superscript.sh 
+ 2089  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2090  alias time=/usr/bin/time
+ 2091  ./superscript.sh 200 programa_suma_altEstricta 64000 6 .
+ 2092  history > historial_sabado_04032023
