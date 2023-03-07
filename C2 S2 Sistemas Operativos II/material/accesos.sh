@@ -5,11 +5,13 @@ if [[ $# -ne 2 ]]; then
   echo "ERROR: Hacen falta exactamente 2 argumentos"
   #muestraUso
   #TODO: implementar muestraUso
+  exit 1
 fi
 
 if [[ !  ( ($1 == "-c") || ( ($1 == "GET") || ($1 == "POST") ) )  ]]; then
   #TODO: Hacer algo
   echo "implementame"
+  exit 1
 fi
 
 if [[ $1 == "-c" ]]; then
