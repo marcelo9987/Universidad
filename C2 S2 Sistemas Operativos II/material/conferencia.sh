@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#set -x
+
 muestraUso()
 {
     echo ""
@@ -21,23 +23,23 @@ fi
 dir_origen=$1
 
 #Comprobación de que existe -d y se puede leer -r en el archivo
-if [[ ! ( -d $dir_origen && -r $dir_origen ) ]]
+if [[ ! ( -d "$dir_origen" && -r "$dir_origen" ) ]]
 then
-    echo "ERROR: El directorio origen ($dir_origen) no existe o no tienes permisos de lectura sobre este" 
+    echo "ERROR: El directorio origen ($dir_origen) no existe o no tienes permisos de lectura sobre este"
     muestraUso
 fi
 
 # Almacenamos el segundo parám en dir_destino_base y después comprobamos existencia -d y accesibilidad (escritura -w)
-dir_destino_base=$2
+dir_destino_base="$2"
 
-if [[ ! ( -d $dir_destino_base && -w $dir_destino_base ) ]]
+if [[ ! ( -d "$dir_destino_base" && -w "$dir_destino_base" ) ]]
 then
-    echo "ERROR: El directorio destino ($dir_destino_base) no existe o no tienes permisos de escritura sobre este" 
+    echo "ERROR: El directorio destino ($dir_destino_base) no existe o no tienes permisos de escritura sobre este"
     muestraUso
 fi
 
 #volvemos al directorio de origen
-cd "$dir_origen"
+cd "$dir_origen" || (echo "ERROR";exit)
 
 # Para todos los archivos en el directorio, coge las fechas (chars. de 8 a 18) y unifica el formato
 fechas_distintas=$(for original_file_name in *; do printf "%s\n" "${original_file_name:8:10}"; done | sort -u)
@@ -46,7 +48,7 @@ fechas_distintas=$(for original_file_name in *; do printf "%s\n" "${original_fil
 cd - > /dev/null
 
 #Comprueba si la variable fechas_distintas está vacía. Si lo está imprime error y finaliza. Si no lo esta, continua la ejecucion
-if [[ -z $fechas_distintas ]]
+if [[ -z "$fechas_distintas" ]]
 then
     echo "No se encontraron ficheros a copiar."
     exit 2
@@ -61,10 +63,10 @@ mkdir -p "$dir_destino_base"/s{20..50}
 for fecha in $fechas_distintas
 do
   mkdir -p "$dir_destino_base"/s{20..50}/"$fecha"
-  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha"/"Full HD"
-  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha"/"HD"
-  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha"/"4K"
-  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha"/"8K"
+  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha/Full HD"
+  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha/HD"
+  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha/4K"
+  mkdir -p "$dir_destino_base"/s{20..50}/"$fecha/8K"
 done
 
 # Creamos OIFS para guardar el IFS (internal field separator) antiguo
@@ -78,6 +80,11 @@ do
     # Decirle a bash que separe campos por separados por "_@."
     #Después la función read, separa original_file_name en sala num_sala fecha hora calidad y despues reseteamos el IFS
     IFS="_@." ; read sala num_sala fecha hora calidad <<< "$original_file_name" ; IFS=$OIFS
+
+#   if [ ! -d "$dir_destino_base/$subdir_destino" ]
+#   then
+#     mkdir -p "$dir_destino_base/$subdir_destino"
+#   fi
 
 #   Creamos estas variables para poder copiar los archivos y son respectivamente su posicion y nombre
     subdir_destino="s$num_sala/$fecha/$calidad"
