@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-#filename="access.log"
+
+#set -x
 
 #Fucion que muestra el formato de los comandos
 function muestraUso()
@@ -24,9 +25,9 @@ if [[ ! (("$1" == "-c") || (("$1" == "GET") || ("$1" == "POST")) || ("$1" == "-s
 fi
 
 #Comprobación de que existe -d y se puede leer -r en el archivo
-if [[ ! ( -f "$1" && -r "$1" ) ]]
+if [[ ! ( -f "$2" && -r "$2" ) ]]
 then
-    echo "ERROR: El archivo ($1) no existe o no tienes permisos de lectura sobre este"
+    echo "ERROR: El archivo ($2) no existe o no tienes permisos de lectura sobre este"
     muestraUso
 fi
 
