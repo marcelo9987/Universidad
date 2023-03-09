@@ -2,7 +2,7 @@
 
 #set -x
 
-#Fucion que muestra el formato de los comandos
+#Función que muestra el formato de los comandos
 function muestraUso()
 {
   echo ""
@@ -32,7 +32,7 @@ then
 fi
 
 #Seleccionamos solo las respuestas del servidor (campo 9)
-#Ordenamos alfabeticabente con sort para luego usando uniq para obtener todo el conjunto de respuestas
+#Ordenamos alfabéticamente con sort para luego usando uniq para obtener la totalidad del conjunto de respuestas
 if [[ "$1" == "-c" ]]; then
   cut -d " " -f 9 "$2" | sort | uniq
 fi
@@ -53,18 +53,9 @@ if [[ "$1" == "GET" || "$1" == "POST" ]]; then
 fi
 
 if [[ "$1" == "-s" ]]; then
-  #Con awk hacemos que sume el numero de Bytes enviados en una variable (sum) y luega imprima parte del texto pedido
+  #Con awk hacemos que sume el numero de Bytes enviados en una variable (sum) y luego imprima parte del texto pedido
   awk '{sum += $10} END {printf "%.0f KiB enviados en ", sum/1024}' "$2"
   #Haceos un -wc para que pueda contar la cantidad de peticiones que hay y luego se hace un cut para quedarnos con ese numero
   echo "$(wc -l "$2" | cut -f 1 -d " ")" peticiones.
 fi
 
-#Fucion que muestra el formato de los comandos
-function muestraUso() {
-  echo ""
-  echo "Uso: $0 [-c, GET/POST, -s] ruta"
-  echo "Ejemplo $0 -c access.log"
-  echo ""
-
-  exit 1
-}
