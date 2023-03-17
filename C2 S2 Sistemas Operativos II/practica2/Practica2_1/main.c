@@ -57,8 +57,11 @@ void insert_item(int item) {
 int consume_item() {
 	int count = *ptr;
 	int *buffer = ptr + sizeof(count);
+	// Obtenemos el elemento del buffer
 	int ele = buffer[count];
+	// Eliminamos el elemento del buffer, marcandolo como -1
 	buffer[count] = -1;
+	// Si no es el ultimo elemento del buffer, obtenemos el anterior
 	if (count > 0) {
 		ele += buffer[count - 1];
 	}
@@ -77,20 +80,21 @@ void productor() {
 		// Producimos el item
 		printf("%s - Productor: produciendo item \n", getTimeString());
 		item = produce_item();
+		printf("%s - Productor: termino de producir item | Item: %d \n", getTimeString(), item);
 
 		// Esperamos a que haya hueco en el buffer
 		printf("%s - Productor: esperando hueco \n", getTimeString());
 		while(*ptr == N - 1);
 
 		// Insertamos el item en el buffer
-		printf("%s - Productor: insertando item \n", getTimeString());
+		printf("%s - Productor: insertando item | Posicion: %d \n", getTimeString(), *ptr + 1);
 		// Zona critica
 		insert_item(item);
 
 		// Actualizamos el contador
-		printf("%s - Productor: actualizando contador \n", getTimeString());
+		printf("%s - Productor: actualizando contador | Contador actual: %d \n", getTimeString(), *ptr);
 		*ptr = *ptr + 1;
-		printf("%s - Productor: terminamos actualizar contador \n", getTimeString());
+		printf("%s - Productor: terminamos actualizar contador | Contador actual: %d \n", getTimeString(), *ptr);
 
 		// No hace falta avisar al consumidor, porque tiene espera activa
 
@@ -98,7 +102,7 @@ void productor() {
 
 	}
 
-	exit(0);
+	exit(EXIT_SUCCESS);
 
 }
 
@@ -118,7 +122,7 @@ void consumidor() {
 		printf("%s - Consumidor: item encontrado \n", getTimeString());
 
 		// Consumimos el item
-		printf("%s - Consumidor: consumiendo item \n", getTimeString());
+		printf("%s - Consumidor: obteniendo item \n", getTimeString());
 		// Zona critica forzada
 		item = consume_item();
 
@@ -143,7 +147,7 @@ void consumidor() {
 
 		// Fin de la zona critica
 
-		printf("%s - Consumidor: terminamos actualizar contador \n", getTimeString());
+		printf("%s - Consumidor: terminamos actualizar contador | Valor del contador: %d \n", getTimeString(), *ptr);
 
 		// No hace falta avisar al productor, porque tiene espera activa
 		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);

@@ -14,9 +14,11 @@
 #define N ITE
 #define NUM_THREAD 4
 
+// Variables globales
 int count = -1;
 int buffer[N];
 
+// Variables globales para los semaforos
 sem_t *lleno;
 sem_t *vacio;
 sem_t *control;
@@ -53,8 +55,11 @@ void insert_item(int item) {
 
 // Eliminamos un item del buffer y lo devolvemos
 int consume_item() {
+	// Obtener el elemento del buffer
 	int ele = buffer[count];
+	// Eliminar el elemento del buffer, marcandolo como -1
 	buffer[count] = -1;
+	// Si hay mas de un elemento en el buffer, sumar el elemento anterior
 	if (count > 0) {
 		ele += buffer[count - 1];
 	}
@@ -73,14 +78,30 @@ void productor() {
 		// Producimos el item
 		printf("%s - Productor: produciendo item \n", getTimeString());
 		item = produce_item();
+		printf("%s - Productor: termino de producir item | Item: %d \n", getTimeString(), item);
 
+		printf("%s - Productor: esperando hueco \n", getTimeString());
+		// Esperamos a que haya hueco en el buffer
 		sem_wait(vacio);
+
+		// Esperamos a que no haya nadie en la zona critica
 		sem_wait(control);
 
+		printf("%s - Productor: insertando item | Posicion: %d \n", getTimeString(), count + 1);
+
+		// Insertamos el item en el buffer
 		insert_item(item);
+
+		printf("%s - Productor: actualizando contador | Contador actual: %d \n", getTimeString(), count);
+
 		count = count + 1;
 
+		printf("%s - Productor: terminamos actualizar contador | Contador actual: %d \n", getTimeString(), count);
+
+		// Liberamos la zona critica
 		sem_post(control);
+
+		// Avisamos de que hay un item en el buffer
 		sem_post(lleno);
 
 		sleep(rand() % 4);
@@ -101,14 +122,19 @@ void consumidor() {
 	// Bucle de ejecucion
 	for(int i = 0; i < ITE; i++) {
 
+		printf("%s - Consumidor: esperando a que existan items \n", getTimeString());
 		sem_wait(lleno);
+
+		printf("%s - Consumidor: esperando a que no haya nadie en la zona critica \n", getTimeString());
 		sem_wait(control);
 
 		// Zona critica forzada	
 		item = consume_item();
+		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);
 
 		temp = count;
 
+		// Forzamos una posible carrera critica
 		sleep(1);
 
 		if (temp != count) {
@@ -116,11 +142,18 @@ void consumidor() {
 			pthread_exit(NULL);
 		}
 	
+		printf("%s - Consumidor: actualizando contador | Contador actual: %d \n", getTimeString(), count);
+
 		count = temp - 1;
+
+		printf("%s - Consumidor: terminamos actualizar contador | Contador actual: %d \n", getTimeString(), count);
 
 		// Fin de la zona critica
 
+		// Liberamos la zona critica
 		sem_post(control);
+
+		// Avisamos de que hay un hueco en el buffer
 		sem_post(vacio);
 	
 		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);
@@ -160,6 +193,7 @@ int main() {
 	// Creamos los procesos con fork
 	for (int i = 0; i < NUM_THREAD; i++) {
 
+		// Creamos el hilo, si es par es productor, si es impar es consumidor
 		if (i % 2 == 0) {
 
 			e = pthread_create(&hilos[i], NULL, (void *) productor, NULL);
