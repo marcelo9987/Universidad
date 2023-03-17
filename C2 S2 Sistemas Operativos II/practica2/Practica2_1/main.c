@@ -9,7 +9,7 @@
 #include <time.h>
 #include <signal.h>
 
-// Recomentacion: emplear ./main | grep carrera
+// Recomendacion: emplear ./main | grep carrera
 // De esta manera vemos si se han producido carreras criticas o no
 // De igual modo en el codigo del consumidor si comentamos el sleep, se minimiza la probabilidad de que ocurra una carrera critica
 
@@ -73,28 +73,37 @@ void productor() {
 
 	// Definicion de variables
 	int item;
+	int temp;
 
 	// Bucle de ejecucion
 	for(int i = 0; i < ITE; i++) {
 
 		// Producimos el item
 		printf("%s - Productor: produciendo item \n", getTimeString());
+
 		item = produce_item();
+
 		printf("%s - Productor: termino de producir item | Item: %d \n", getTimeString(), item);
 
 		// Esperamos a que haya hueco en el buffer
+
 		printf("%s - Productor: esperando hueco \n", getTimeString());
+
 		while(*ptr == N - 1);
 
+		temp = *ptr;
+
 		// Insertamos el item en el buffer
-		printf("%s - Productor: insertando item | Posicion: %d \n", getTimeString(), *ptr + 1);
+		printf("%s - Productor: insertando item | Posicion: %d \n", getTimeString(), temp + 1);
 		// Zona critica
 		insert_item(item);
 
 		// Actualizamos el contador
-		printf("%s - Productor: actualizando contador | Contador actual: %d \n", getTimeString(), *ptr);
+		printf("%s - Productor: actualizando contador | Contador actual: %d | Contador cuando inserto: %d \n", getTimeString(), *ptr, temp);
+
 		*ptr = *ptr + 1;
-		printf("%s - Productor: terminamos actualizar contador | Contador actual: %d \n", getTimeString(), *ptr);
+
+		printf("%s - Productor: terminamos actualizar contador | Contador actual: %d | Contador cuando inserto: %d \n", getTimeString(), *ptr, temp);
 
 		// No hace falta avisar al consumidor, porque tiene espera activa
 
@@ -118,19 +127,26 @@ void consumidor() {
 
 		// Esperamos a que haya un item en el buffer
 		printf("%s - Consumidor: esperando item \n", getTimeString());
+
 		while (*ptr == -1);
+
 		printf("%s - Consumidor: item encontrado \n", getTimeString());
 
 		// Consumimos el item
-		printf("%s - Consumidor: obteniendo item \n", getTimeString());
+
+		temp = *ptr;
+
 		// Zona critica forzada
+
+		printf("%s - Consumidor: obteniendo item | Posicion: %d \n", getTimeString(), temp);
+
 		item = consume_item();
+
+		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);
 
 		// Comprobamos si hay una carrera critica y actualizamos el contador
 		printf("%s - Consumidor: actualizando contador \n", getTimeString());
 	
-		temp = *ptr;
-
 		// Comentario: si se quita el sleep, se minimiza la probabilidad de que ocurra una carrera critica
 		// Pero puede ocurrir igualmente
 		sleep(1);
@@ -142,12 +158,15 @@ void consumidor() {
 			printf("%s - Consumidor: Ocurrio una carrera critica \n", getTimeString());
 			exit(EXIT_FAILURE);
 		}
-	
+
+		// Actualizamos el contador
+		printf("%s - Consumidor: actualizando contador | Contador actual: %d | Contador cuando consumio: %d \n", getTimeString(), *ptr, temp);
+
 		*ptr = temp - 1;
 
-		// Fin de la zona critica
+		printf("%s - Consumidor: terminamos actualizar contador | Contador actual: %d | Contador cuando consumio: %d \n", getTimeString(), *ptr, temp);
 
-		printf("%s - Consumidor: terminamos actualizar contador | Valor del contador: %d \n", getTimeString(), *ptr);
+		// Fin de la zona critica
 
 		// No hace falta avisar al productor, porque tiene espera activa
 		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);

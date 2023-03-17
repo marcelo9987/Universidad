@@ -71,13 +71,16 @@ void productor() {
 
 	// Definicion de variables
 	int item;
+	int temp;
 
 	// Bucle de ejecucion
 	for(int i = 0; i < ITE; i++) {
 
 		// Producimos el item
 		printf("%s - Productor: produciendo item \n", getTimeString());
+
 		item = produce_item();
+
 		printf("%s - Productor: termino de producir item | Item: %d \n", getTimeString(), item);
 
 		printf("%s - Productor: esperando hueco \n", getTimeString());
@@ -87,16 +90,17 @@ void productor() {
 		// Esperamos a que no haya nadie en la zona critica
 		sem_wait(control);
 
-		printf("%s - Productor: insertando item | Posicion: %d \n", getTimeString(), count + 1);
+		temp = count;
+		printf("%s - Productor: insertando item | Posicion: %d \n", getTimeString(), temp + 1);
 
 		// Insertamos el item en el buffer
 		insert_item(item);
 
-		printf("%s - Productor: actualizando contador | Contador actual: %d \n", getTimeString(), count);
+		printf("%s - Productor: actualizando contador | Contador actual: %d | Contador cuando inserto: %d \n", getTimeString(), count, temp);
 
 		count = count + 1;
 
-		printf("%s - Productor: terminamos actualizar contador | Contador actual: %d \n", getTimeString(), count);
+		printf("%s - Productor: terminamos actualizar contador | Contador actual: %d | Contador cuando inserto: %d \n", getTimeString(), count, temp);
 
 		// Liberamos la zona critica
 		sem_post(control);
@@ -128,11 +132,15 @@ void consumidor() {
 		printf("%s - Consumidor: esperando a que no haya nadie en la zona critica \n", getTimeString());
 		sem_wait(control);
 
-		// Zona critica forzada	
-		item = consume_item();
-		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);
+		// Zona critica forzada
 
 		temp = count;
+
+		printf("%s - Consumidor: consumiendo item | Posicion: %d \n", getTimeString(), temp);
+
+		item = consume_item();
+
+		printf("%s - Consumidor: item consumido: %d \n", getTimeString(), item);
 
 		// Forzamos una posible carrera critica
 		sleep(1);
@@ -142,11 +150,11 @@ void consumidor() {
 			pthread_exit(NULL);
 		}
 	
-		printf("%s - Consumidor: actualizando contador | Contador actual: %d \n", getTimeString(), count);
+		printf("%s - Consumidor: actualizando contador | Contador actual: %d | Contador cuando consumio: %d \n", getTimeString(), count), temp;
 
 		count = temp - 1;
 
-		printf("%s - Consumidor: terminamos actualizar contador | Contador actual: %d \n", getTimeString(), count);
+		printf("%s - Consumidor: terminamos actualizar contador | Contador actual: %d | Contador cuando consumio: %d \n", getTimeString(), count, temp);
 
 		// Fin de la zona critica
 
