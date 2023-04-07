@@ -16,7 +16,7 @@
 // Definicion de constantes
 #define ITE 10
 #define N ITE
-#define NUM_PROC 4
+#define NUM_PROC 3 
 
 // Puntero al primer elemento del mapa de memoria
 int *ptr;

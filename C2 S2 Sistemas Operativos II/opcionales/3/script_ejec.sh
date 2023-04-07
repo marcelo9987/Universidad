@@ -9,8 +9,8 @@
 function llamar_programa()
 {
   mkdir -p "$5"
-  # shellcheck disable=SC2086
-  "./${2}" $3 $4 >> $5/resultados."$1"ITERS_M_"$3".T_$4.log
+#  "./${2}" $3 $4 >> $5/resultados."$1"ITERS_M_"$3".T_$4.log
+  "./${2}" $3 $4 >> $5/resultados.$1.T_$4.csv
 }
 
 for ((i = 0; i <= $1; i++))

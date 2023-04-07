@@ -150,7 +150,7 @@ void consumidor() {
 			pthread_exit(NULL);
 		}
 	
-		printf("%s - Consumidor: actualizando contador | Contador actual: %d | Contador cuando consumio: %d \n", getTimeString(), count), temp;
+		printf("%s - Consumidor: actualizando contador | Contador actual: %d | Contador cuando consumio: %d \n", getTimeString(), count, temp);
 
 		count = temp - 1;
 
