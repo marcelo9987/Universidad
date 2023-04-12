@@ -95,7 +95,7 @@ void esperarTurnoRegionCritica(uintptr_t self)
         atomic_thread_fence(memory_order_seq_cst);
         while (ultimo_en_llegar[l] == self && existeAlguienConMayorPrioridad(self, l))
         {
-            sched_yield();
+        //    sched_yield();
         }
     }
 }
@@ -132,20 +132,20 @@ void *sum(void *philo)
 
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
+    if (argc < 4)
     {
         fprintf(stderr, "Error: Faltan argumentos\n");
         return (-1);
     }
     
-    // M
-    M = atoi(argv[1]);
-    T = atoi(argv[2]);
+    int N = atoi(argv[1]);
+    M = atoi(argv[2]);
+    T = atoi(argv[3]);
     
     nivel = (int *) malloc(T * sizeof(int));
     ultimo_en_llegar = (int *) malloc((T - 1) * sizeof(int));
     
-    while (true)
+    for (;N>0;--N)
     {
         for (int i = 0; i < T; i++)
         {

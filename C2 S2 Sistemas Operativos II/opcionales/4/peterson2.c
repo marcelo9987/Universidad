@@ -60,7 +60,8 @@ int *interesados = NULL;
 //volatile int * volatile interesados = NULL;
 //volatile int volatile interesados[2];
 uint64_t suma = 0;
-int M, T;
+int M;
+const int T = 2;
 
 void esperarTurnoRegionCritica(uintptr_t self)
 {
@@ -101,6 +102,7 @@ void *sum(void *philo)
         cederTurnoRegionCritica(hilo);
         regionNoCritica();
     }
+    return NULL;
 }
 
 
@@ -112,13 +114,13 @@ int main(int argc, char *argv[])
         return (-1);
     }
     
-    // M
-    M = atoi(argv[1]);
-    T = atoi(argv[2]);
+    int N = atoi(argv[1]);
+    M = atoi(argv[2]);
+  
     
     interesados = (int *) malloc(T * sizeof(int));
     
-    while (true)
+    for (;N>0;--N)
     {
         
         
