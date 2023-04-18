@@ -1,0 +1,94 @@
+13:12:20:334 - Consumidor: esperando item 
+13:12:20:353 - Consumidor: item encontrado 
+13:12:20:356 - Consumidor: obteniendo item | Posicion: 0 
+13:12:20:359 - Consumidor: item consumido: -1 
+13:12:20:361 - Consumidor: actualizando contador 
+13:12:21:485 - Consumidor: Ocurrio una carrera critica 
+13:12:20:094 - Consumidor: esperando item 
+13:12:20:122 - Consumidor: item encontrado 
+13:12:20:125 - Consumidor: obteniendo item | Posicion: 0 
+13:12:20:130 - Consumidor: item consumido: 11 
+13:12:20:132 - Consumidor: actualizando contador 
+13:12:21:157 - Consumidor: Ocurrio una carrera critica 
+13:12:20:088 - Consumidor: esperando item 
+13:12:20:105 - Consumidor: item encontrado 
+13:12:20:107 - Consumidor: obteniendo item | Posicion: 0 
+13:12:20:110 - Consumidor: item consumido: -1 
+13:12:20:112 - Consumidor: actualizando contador 
+13:12:21:216 - Consumidor: actualizando contador | Contador actual: 0 | Contador cuando consumio: 0 
+13:12:21:223 - Consumidor: terminamos actualizar contador | Contador actual: -1 | Contador cuando consumio: 0 
+13:12:21:226 - Consumidor: item consumido: -1 
+13:12:24:329 - Consumidor: esperando item 
+13:12:24:336 - Consumidor: item encontrado 
+13:12:24:338 - Consumidor: obteniendo item | Posicion: 1 
+13:12:24:341 - Consumidor: item consumido: 144 
+13:12:24:343 - Consumidor: actualizando contador 
+13:12:25:443 - Consumidor: actualizando contador | Contador actual: 1 | Contador cuando consumio: 1 
+13:12:25:450 - Consumidor: terminamos actualizar contador | Contador actual: 0 | Contador cuando consumio: 1 
+13:12:25:453 - Consumidor: item consumido: 144 
+13:12:28:551 - Consumidor: esperando item 
+13:12:28:556 - Consumidor: item encontrado 
+13:12:28:559 - Consumidor: obteniendo item | Posicion: 4 
+13:12:28:561 - Consumidor: item consumido: 136 
+13:12:28:563 - Consumidor: actualizando contador 
+13:12:29:663 - Consumidor: Ocurrio una carrera critica 
+13:12:20:327 - Productor: produciendo item 
+13:12:20:345 - Productor: termino de producir item | Item: 11 
+13:12:20:348 - Productor: esperando hueco 
+13:12:20:352 - Productor: insertando item | Posicion: 0 
+13:12:20:355 - Productor: actualizando contador | Contador actual: -1 | Contador cuando inserto: -1 
+13:12:20:357 - Productor: terminamos actualizar contador | Contador actual: 0 | Contador cuando inserto: -1 
+13:12:23:464 - Productor: produciendo item 
+13:12:23:470 - Productor: termino de producir item | Item: 51 
+13:12:23:473 - Productor: esperando hueco 
+13:12:23:476 - Productor: insertando item | Posicion: 0 
+13:12:23:478 - Productor: actualizando contador | Contador actual: -1 | Contador cuando inserto: -1 
+13:12:23:480 - Productor: terminamos actualizar contador | Contador actual: 0 | Contador cuando inserto: -1 
+13:12:23:607 - Productor: produciendo item 
+13:12:23:611 - Productor: termino de producir item | Item: 93 
+13:12:23:614 - Productor: esperando hueco 
+13:12:23:616 - Productor: insertando item | Posicion: 1 
+13:12:23:618 - Productor: actualizando contador | Contador actual: 0 | Contador cuando inserto: 0 
+13:12:23:621 - Productor: terminamos actualizar contador | Contador actual: 1 | Contador cuando inserto: 0 
+13:12:26:722 - Productor: produciendo item 
+13:12:26:729 - Productor: termino de producir item | Item: 66 
+13:12:26:732 - Productor: esperando hueco 
+13:12:26:734 - Productor: insertando item | Posicion: 1 
+13:12:26:736 - Productor: actualizando contador | Contador actual: 0 | Contador cuando inserto: 0 
+13:12:26:739 - Productor: terminamos actualizar contador | Contador actual: 1 | Contador cuando inserto: 0 
+13:12:27:840 - Productor: produciendo item 
+13:12:27:847 - Productor: termino de producir item | Item: 68 
+13:12:27:850 - Productor: esperando hueco 
+13:12:27:853 - Productor: insertando item | Posicion: 2 
+13:12:27:855 - Productor: actualizando contador | Contador actual: 1 | Contador cuando inserto: 1 
+13:12:27:857 - Productor: terminamos actualizar contador | Contador actual: 2 | Contador cuando inserto: 1 
+13:12:27:983 - Productor: produciendo item 
+13:12:27:987 - Productor: termino de producir item | Item: 74 
+13:12:27:990 - Productor: esperando hueco 
+13:12:27:992 - Productor: insertando item | Posicion: 3 
+13:12:27:994 - Productor: actualizando contador | Contador actual: 2 | Contador cuando inserto: 2 
+13:12:27:996 - Productor: terminamos actualizar contador | Contador actual: 3 | Contador cuando inserto: 2 
+13:12:27:078 - Productor: produciendo item 
+13:12:27:082 - Productor: termino de producir item | Item: 62 
+13:12:27:084 - Productor: esperando hueco 
+13:12:27:087 - Productor: insertando item | Posicion: 4 
+13:12:27:089 - Productor: actualizando contador | Contador actual: 3 | Contador cuando inserto: 3 
+13:12:27:091 - Productor: terminamos actualizar contador | Contador actual: 4 | Contador cuando inserto: 3 
+13:12:28:181 - Productor: produciendo item 
+13:12:28:187 - Productor: termino de producir item | Item: 43 
+13:12:28:189 - Productor: esperando hueco 
+13:12:28:191 - Productor: insertando item | Posicion: 5 
+13:12:28:194 - Productor: actualizando contador | Contador actual: 4 | Contador cuando inserto: 4 
+13:12:28:196 - Productor: terminamos actualizar contador | Contador actual: 5 | Contador cuando inserto: 4 
+13:12:31:296 - Productor: produciendo item 
+13:12:31:303 - Productor: termino de producir item | Item: 16 
+13:12:31:305 - Productor: esperando hueco 
+13:12:31:308 - Productor: insertando item | Posicion: 6 
+13:12:31:310 - Productor: actualizando contador | Contador actual: 5 | Contador cuando inserto: 5 
+13:12:31:312 - Productor: terminamos actualizar contador | Contador actual: 6 | Contador cuando inserto: 5 
+13:12:34:428 - Productor: produciendo item 
+13:12:34:436 - Productor: termino de producir item | Item: 92 
+13:12:34:439 - Productor: esperando hueco 
+13:12:34:441 - Productor: insertando item | Posicion: 7 
+13:12:34:443 - Productor: actualizando contador | Contador actual: 6 | Contador cuando inserto: 6 
+13:12:34:446 - Productor: terminamos actualizar contador | Contador actual: 7 | Contador cuando inserto: 6 
