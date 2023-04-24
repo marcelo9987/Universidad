@@ -181,7 +181,7 @@ void funcionproductor(int nhilo)
             
             sleep(tiempossleep[1]);
             
-            printf("%s[Productor  %d] Inserto %d en %d. %s", KBOR, nhilo, producto, contador, KNADA);
+            printf("%s[Productor  %d] Inserto %6d en %d. %s", KBOR, nhilo, producto, contador, KNADA);
             mostrar_hora();
             //mostrar_buffer(buffer);
             contador++; //aumentamos el contador
@@ -272,7 +272,7 @@ void funcionconsumidor(int nhilo)
                 producto = consume_item(buffer);
                 sleep(tiempossleep[3]);
                 
-                printf("%s[Consumidor %d] Quito   %d de %d. %s", KTURQ, nhilo, producto, contador - 1, KNADA);
+                printf("%s[Consumidor %d] Quito   %6d de %d. %s", KTURQ, nhilo, producto, contador - 1, KNADA);
                 mostrar_hora();
                 
                 sleep(tiempossleep[4]);
