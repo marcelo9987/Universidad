@@ -49,9 +49,9 @@ void mostrar_hora();
 
 void mostrar_buffer(int *buffer);
 
-void sumaprod();
+void sumaprod(int nhilo);
 
-void sumacons();
+void sumacons(int nhilo);
 
 void funcionproductor(int nhilo);
 
@@ -205,7 +205,7 @@ void funcionproductor(int nhilo)
         {    //si consigue obtener el buffer, suma
             //REGION CRITICA
             
-            sumaprod();
+            sumaprod(nhilo);
             
             sleep(tiempossleep[2]);
             
@@ -304,7 +304,7 @@ void funcionconsumidor(int nhilo)
         {    //si consigue obtener el buffer, suma
             //REGION CRITICA
             
-            sumacons();
+            sumacons(nhilo);
             
             sleep(tiempossleep[5]);
             
