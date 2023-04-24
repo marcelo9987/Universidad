@@ -315,7 +315,8 @@ void funcionconsumidor(int nhilo)
         
     }
     
-    printf("%s[Consumidor %d] Fin de este hilo. Valor final del sumatorio de b: %ld%s\n", KBOR, nhilo, b, KNADA);
+    printf("%s[Consumidor %d] Fin de este hilo. Valor final del sumatorio de b: %ld. %s", KBOR, nhilo, b, KNADA);
+    mostrar_hora();
     
     pthread_exit(NULL);
 }
