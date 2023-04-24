@@ -217,7 +217,7 @@ void funcionproductor(int nhilo)
     } while (elementos_producidos_por_este_hilo < ITEMS_BY_P || posicionA < ARRAY_ELEMENTS_PER_THREAD * P);
     
     
-    printf("%s[Productor  %d] Fin de este hilo. Valor final del sumatorio de a: %d. %s", KBOR, nhilo, a, KNADA);
+    printf("%s[Productor  %d] Fin de este hilo. Valor final del sumatorio de a: %ld. %s", KBOR, nhilo, a, KNADA);
     mostrar_hora();
     
     pthread_exit(NULL);
@@ -315,7 +315,7 @@ void funcionconsumidor(int nhilo)
         
     }
     
-    printf("%s[Consumidor %d] Fin de este hilo. Valor final del sumatorio de b: %d%s\n", KBOR, nhilo, b, KNADA);
+    printf("%s[Consumidor %d] Fin de este hilo. Valor final del sumatorio de b: %ld%s\n", KBOR, nhilo, b, KNADA);
     
     pthread_exit(NULL);
 }
