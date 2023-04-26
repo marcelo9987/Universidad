@@ -188,7 +188,7 @@ void funcionproductor(int nhilo)
                 
                 if (posicionA < ARRAY_ELEMENTS_PER_THREAD * P)
                 {
-                    //printf("%s[Productor  %d] Sumo. posicionA: %5d.%s\n", KBOR, nhilo, posicionA, KNADA);
+                    printf("%s[Productor  %d] Sumo. posicionA: %5d.%s\n", KBOR, nhilo, posicionA, KNADA);
                     
                     sumaprod(nhilo);
                     
@@ -293,7 +293,7 @@ void funcionconsumidor(int nhilo)
                 if (posicionB < ARRAY_ELEMENTS_PER_THREAD * C)
                 {
                     
-                    //printf("%s[Consumidor %d] Sumo. posicionB: %5d.%s\n", KTURQ, nhilo, posicionB, KNADA);
+                    printf("%s[Consumidor %d] Sumo. posicionB: %5d.%s\n", KTURQ, nhilo, posicionB, KNADA);
                     
                     sumacons(nhilo);
                     
@@ -308,7 +308,7 @@ void funcionconsumidor(int nhilo)
             // OJO: El siguiente if no se debe de cambiar por un else.
             if (posicionB == ARRAY_ELEMENTS_PER_THREAD * C)
             {
-                printf("%s[Consumidor  %d] Fin tarea sumatorio. Valor final del sumatorio de b: %ld.%s\n", KTURQ, nhilo, b, KNADA);
+                printf("%s[Consumidor %d] Fin tarea sumatorio. Valor final del sumatorio de b: %ld.%s\n", KTURQ, nhilo, b, KNADA);
                 pendiente_imprimir_sumatorio = false;
             }
             
