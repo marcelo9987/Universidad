@@ -375,11 +375,7 @@ void sumaprod(int nhilo)
         a += A[posicionA];
         //printf("a: %ld\n", a);
         posicionA++;
-        if (posicionA == ARRAY_ELEMENTS_PER_THREAD)
-        {
-            printf("[Productor  %d] Fin sumas de a: %ld. ", nhilo, a);
-            mostrar_hora();
-        }
+        
     }
 }
 
