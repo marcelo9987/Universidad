@@ -1,0 +1,333 @@
+[1;33;91m[Productor  0] Inserto   8973 en 0.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:     0.[0m
+[1;33;91m[Productor  1] Inserto   6202 en 1.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:     1.[0m
+[1;33;91m[Productor  2] Inserto   4625 en 2.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:     2.[0m
+[1;36m[Consumidor 1] Quito     4625 de 2. [0m
+[1;33;91m[Productor  0] Inserto   2038 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:     0.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:     5.[0m
+[1;36m[Consumidor 2] Quito     2038 de 2. [0m
+[1;33;91m[Productor  1] Inserto   3405 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:     2.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:     8.[0m
+[1;36m[Consumidor 0] Quito     3405 de 2. [0m
+[1;33;91m[Productor  2] Inserto   7004 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:     3.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    13.[0m
+[1;36m[Consumidor 1] Quito     7004 de 2. [0m
+[1;33;91m[Productor  0] Inserto   4992 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:     5.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    14.[0m
+[1;36m[Consumidor 2] Quito     4992 de 2. [0m
+[1;33;91m[Productor  1] Inserto   3294 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:     8.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    16.[0m
+[1;36m[Consumidor 0] Quito     3294 de 2. [0m
+[1;33;91m[Productor  2] Inserto   9404 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    12.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    19.[0m
+[1;36m[Consumidor 1] Quito     9404 de 2. [0m
+[1;33;91m[Productor  0] Inserto   1711 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    15.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    20.[0m
+[1;36m[Consumidor 2] Quito     1711 de 2. [0m
+[1;33;91m[Productor  1] Inserto   3751 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    19.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    23.[0m
+[1;36m[Consumidor 0] Quito     3751 de 2. [0m
+[1;33;91m[Productor  2] Inserto   4993 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    24.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    26.[0m
+[1;36m[Consumidor 1] Quito     4993 de 2. [0m
+[1;33;91m[Productor  0] Inserto   6270 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    28.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    31.[0m
+[1;36m[Consumidor 2] Quito     6270 de 2. [0m
+[1;33;91m[Productor  1] Inserto   2472 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    32.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    33.[0m
+[1;36m[Consumidor 0] Quito     2472 de 2. [0m
+[1;33;91m[Productor  2] Inserto   5589 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    35.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    38.[0m
+[1;36m[Consumidor 1] Quito     5589 de 2. [0m
+[1;33;91m[Productor  0] Inserto   2200 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    37.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    43.[0m
+[1;36m[Consumidor 2] Quito     2200 de 2. [0m
+[1;33;91m[Productor  1] Inserto   2052 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    40.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    47.[0m
+[1;36m[Consumidor 0] Quito     2052 de 2. [0m
+[1;33;91m[Productor  2] Inserto   2949 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    41.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    48.[0m
+[1;36m[Consumidor 1] Quito     2949 de 2. [0m
+[1;33;91m[Productor  0] Inserto   6985 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    43.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    50.[0m
+[1;36m[Consumidor 2] Quito     6985 de 2. [0m
+[1;33;91m[Productor  1] Inserto   3468 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    45.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    54.[0m
+[1;36m[Consumidor 0] Quito     3468 de 2. [0m
+[1;33;91m[Productor  2] Inserto   6568 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    46.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    56.[0m
+[1;36m[Consumidor 1] Quito     6568 de 2. [0m
+[1;33;91m[Productor  0] Inserto   3083 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    47.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    57.[0m
+[1;36m[Consumidor 2] Quito     3083 de 2. [0m
+[1;33;91m[Productor  1] Inserto   3733 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    50.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    59.[0m
+[1;36m[Consumidor 0] Quito     3733 de 2. [0m
+[1;33;91m[Productor  2] Inserto   3356 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    52.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    64.[0m
+[1;36m[Consumidor 1] Quito     3356 de 2. [0m
+[1;33;91m[Productor  0] Inserto    604 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    55.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    69.[0m
+[1;36m[Consumidor 2] Quito      604 de 2. [0m
+[1;33;91m[Productor  1] Inserto   1258 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    58.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    70.[0m
+[1;36m[Consumidor 0] Quito     1258 de 2. [0m
+[1;33;91m[Productor  2] Inserto   5461 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    61.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    75.[0m
+[1;36m[Consumidor 1] Quito     5461 de 2. [0m
+[1;33;91m[Productor  0] Inserto   8945 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    65.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    76.[0m
+[1;36m[Consumidor 2] Quito     8945 de 2. [0m
+[1;33;91m[Productor  1] Inserto   1781 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    69.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    78.[0m
+[1;36m[Consumidor 0] Quito     1781 de 2. [0m
+[1;33;91m[Productor  2] Inserto   3385 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    73.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    83.[0m
+[1;36m[Consumidor 1] Quito     3385 de 2. [0m
+[1;33;91m[Productor  0] Inserto   8203 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    75.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    88.[0m
+[1;36m[Consumidor 2] Quito     8203 de 2. [0m
+[1;33;91m[Productor  1] Inserto   6238 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    78.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    89.[0m
+[1;36m[Consumidor 0] Quito     6238 de 2. [0m
+[1;33;91m[Productor  2] Inserto   4953 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    82.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:    94.[0m
+[1;36m[Consumidor 1] Quito     4953 de 2. [0m
+[1;33;91m[Productor  0] Inserto   8536 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    84.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:    96.[0m
+[1;36m[Consumidor 2] Quito     8536 de 2. [0m
+[1;33;91m[Productor  1] Inserto   1611 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    89.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:    97.[0m
+[1;36m[Consumidor 0] Quito     1611 de 2. [0m
+[1;33;91m[Productor  2] Inserto   1174 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:    94.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   101.[0m
+[1;36m[Consumidor 1] Quito     1174 de 2. [0m
+[1;33;91m[Productor  0] Inserto   4227 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:    96.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   104.[0m
+[1;36m[Consumidor 2] Quito     4227 de 2. [0m
+[1;33;91m[Productor  1] Inserto   5761 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:    99.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   107.[0m
+[1;36m[Consumidor 0] Quito     5761 de 2. [0m
+[1;33;91m[Productor  2] Inserto    150 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   101.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   109.[0m
+[1;36m[Consumidor 1] Quito      150 de 2. [0m
+[1;33;91m[Productor  0] Inserto   7877 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   103.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   111.[0m
+[1;36m[Consumidor 2] Quito     7877 de 2. [0m
+[1;33;91m[Productor  1] Inserto   1729 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   108.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   116.[0m
+[1;36m[Consumidor 0] Quito     1729 de 2. [0m
+[1;33;91m[Productor  2] Inserto   4382 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   109.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   121.[0m
+[1;36m[Consumidor 1] Quito     4382 de 2. [0m
+[1;33;91m[Productor  0] Inserto   1904 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   112.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   124.[0m
+[1;36m[Consumidor 2] Quito     1904 de 2. [0m
+[1;33;91m[Productor  1] Inserto   1646 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   114.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   125.[0m
+[1;36m[Consumidor 0] Quito     1646 de 2. [0m
+[1;33;91m[Productor  2] Inserto   5001 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   117.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   128.[0m
+[1;36m[Consumidor 1] Quito     5001 de 2. [0m
+[1;33;91m[Productor  0] Inserto   9714 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   120.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   132.[0m
+[1;36m[Consumidor 2] Quito     9714 de 2. [0m
+[1;33;91m[Productor  1] Inserto   7984 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   121.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   134.[0m
+[1;36m[Consumidor 0] Quito     7984 de 2. [0m
+[1;33;91m[Productor  2] Inserto   1864 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   126.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   139.[0m
+[1;36m[Consumidor 1] Quito     1864 de 2. [0m
+[1;33;91m[Productor  0] Inserto   4304 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   128.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   142.[0m
+[1;36m[Consumidor 2] Quito     4304 de 2. [0m
+[1;33;91m[Productor  1] Inserto   5525 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   132.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   147.[0m
+[1;36m[Consumidor 0] Quito     5525 de 2. [0m
+[1;33;91m[Productor  2] Inserto   6836 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   136.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   151.[0m
+[1;36m[Consumidor 1] Quito     6836 de 2. [0m
+[1;33;91m[Productor  0] Inserto   6962 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   137.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   156.[0m
+[1;36m[Consumidor 2] Quito     6962 de 2. [0m
+[1;33;91m[Productor  1] Inserto   8988 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   141.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   160.[0m
+[1;36m[Consumidor 0] Quito     8988 de 2. [0m
+[1;33;91m[Productor  2] Inserto   7724 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   143.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   162.[0m
+[1;36m[Consumidor 1] Quito     7724 de 2. [0m
+[1;33;91m[Productor  0] Inserto   5447 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   144.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   167.[0m
+[1;36m[Consumidor 2] Quito     5447 de 2. [0m
+[1;33;91m[Productor  1] Inserto   3842 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   149.[0m
+[1;33;91m[Productor  1] Sumo. posicionA:   171.[0m
+[1;36m[Consumidor 0] Quito     3842 de 2. [0m
+[1;33;91m[Productor  2] Inserto   5245 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   150.[0m
+[1;33;91m[Productor  2] Sumo. posicionA:   175.[0m
+[1;36m[Consumidor 1] Quito     5245 de 2. [0m
+[1;33;91m[Productor  0] Inserto   5116 en 2.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   155.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   180.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   183.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   185.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   189.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   191.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   194.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   195.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   200.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   202.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   205.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   207.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   210.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   214.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   215.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   218.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   223.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   225.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   229.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   230.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   235.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   238.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   239.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   243.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   247.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   251.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   255.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   257.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   261.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   266.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   268.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   273.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   277.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   281.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   285.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   289.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   291.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   292.[0m
+[1;33;91m[Productor  0] Sumo. posicionA:   297.[0m
+[1;33;91m[Productor  0] Fin tarea sumatorio. Valor final del sumatorio de a: 44850.[0m
+[1;33;91m[Productor  0] Fin de este hilo.[0m
+[1;36m[Consumidor 2] Quito     5116 de 2. [0m
+[1;33;91m[Productor  1] Inserto   4559 en 2.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   160.[0m
+[1;33;91m[Productor  1] Fin tarea sumatorio. Valor final del sumatorio de a: 44850.[0m
+[1;33;91m[Productor  1] Fin de este hilo.[0m
+[1;36m[Consumidor 0] Quito     4559 de 2. [0m
+[1;33;91m[Productor  2] Inserto   3196 en 2.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   164.[0m
+[1;33;91m[Productor  2] Fin tarea sumatorio. Valor final del sumatorio de a: 44850.[0m
+[1;33;91m[Productor  2] Fin de este hilo.[0m
+[1;36m[Consumidor 1] Quito     3196 de 2. [0m
+[1;36m[Consumidor 1] Sumo. posicionB:   168.[0m
+[1;36m[Consumidor 2] Quito     6202 de 1. [0m
+[1;36m[Consumidor 2] Sumo. posicionB:   173.[0m
+[1;36m[Consumidor 0] Quito     8973 de 0. [0m
+[1;36m[Consumidor 0] Envío broadcast.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   176.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   179.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   181.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   186.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   190.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   191.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   195.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   196.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   201.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   204.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   205.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   210.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   211.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   212.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   217.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   222.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   224.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   229.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   232.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   235.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   240.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   243.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   246.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   247.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   252.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   256.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   258.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   261.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   265.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   270.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   274.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   276.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   280.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   281.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   284.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   286.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   287.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   288.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   290.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   292.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   293.[0m
+[1;36m[Consumidor 0] Sumo. posicionB:   297.[0m
+[1;36m[Consumidor 1] Sumo. posicionB:   298.[0m
+[1;36m[Consumidor 2] Sumo. posicionB:   299.[0m
+[1;36m[Consumidor 0] Fin tarea sumatorio. Valor final del sumatorio de b: 44850.[0m
+[1;36m[Consumidor 0] Fin de este hilo.[0m
+[1;36m[Consumidor 1] Fin tarea sumatorio. Valor final del sumatorio de b: 44850.[0m
+[1;36m[Consumidor 1] Fin de este hilo.[0m
+[1;36m[Consumidor 2] Fin tarea sumatorio. Valor final del sumatorio de b: 44850.[0m
+[1;36m[Consumidor 2] Fin de este hilo.[0m
+[Hilo principal] Suma array A: 44850
+[Hilo principal] Suma array B: 44850
