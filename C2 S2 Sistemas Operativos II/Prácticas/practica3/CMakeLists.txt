@@ -4,4 +4,4 @@ project(practica3 C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(practica3
-        version4.c)
+        version4.c version6.c version7.c version5.c)
