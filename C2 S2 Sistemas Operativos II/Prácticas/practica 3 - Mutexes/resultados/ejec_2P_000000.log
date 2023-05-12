@@ -1,0 +1,665 @@
+Esperando consumidor 0
+Elementos quitados: 0
+(min:seg - 1:29, microseg - 80195)
+Esperando consumidor 1
+Elementos quitados: 0
+(min:seg - 1:29, microseg - 80332)
+[1;33;91mEl productor 0 inserta 8973 en 0 [0m (min:seg - 1:29, microseg - 80448)
+a: 0
+a: 1
+a: 3
+[1;36mEl consumidor 0 quita 8973 de 0[0m(min:seg - 1:29, microseg - 80513)
+b: 0
+b: 1
+b: 3
+b: 6
+Esperando consumidor 2
+Elementos quitados: 1
+(min:seg - 1:29, microseg - 80606)
+[1;33;91mEl productor 1 inserta 6202 en 0 [0m (min:seg - 1:29, microseg - 80663)
+a: 6
+[1;36mEl consumidor 1 quita 6202 de 0[0m(min:seg - 1:29, microseg - 80757)
+b: 10
+b: 15
+b: 21
+Esperando consumidor 0
+Elementos quitados: 2
+(min:seg - 1:29, microseg - 80842)
+[1;33;91mEl productor 0 inserta 5469 en 0 [0m (min:seg - 1:29, microseg - 80926)
+a: 10
+a: 15
+a: 21
+a: 28
+a: 36
+[1;36mEl consumidor 2 quita 5469 de 0[0m(min:seg - 1:29, microseg - 81011)
+b: 28
+b: 36
+b: 45
+Esperando consumidor 1
+Elementos quitados: 3
+(min:seg - 1:29, microseg - 81093)
+[1;33;91mEl productor 1 inserta 3405 en 0 [0m (min:seg - 1:29, microseg - 81170)
+a: 45
+a: 55
+a: 66
+[1;33;91mEl productor 0 inserta 2469 en 1 [0m (min:seg - 1:29, microseg - 81351)
+a: 78
+a: 91
+a: 105
+a: 120
+a: 136
+[1;36mEl consumidor 1 quita 2469 de 1[0m(min:seg - 1:29, microseg - 81440)
+b: 55
+b: 66
+[1;36mEl consumidor 0 quita 3405 de 0[0m(min:seg - 1:29, microseg - 81581)
+b: 78
+[1;33;91mEl productor 1 inserta 361 en 0 [0m (min:seg - 1:29, microseg - 81722)
+a: 153
+a: 171
+[1;36mEl consumidor 0 quita 361 de 0[0m(min:seg - 1:29, microseg - 81841)
+b: 91
+b: 105
+[1;33;91mEl productor 0 inserta 3294 en 0 [0m (min:seg - 1:29, microseg - 81980)
+a: 190
+a: 210
+[1;36mEl consumidor 1 quita 3294 de 0[0m(min:seg - 1:29, microseg - 82070)
+b: 120
+b: 136
+b: 153
+Esperando consumidor 2
+Elementos quitados: 7
+(min:seg - 1:29, microseg - 82155)
+[1;33;91mEl productor 1 inserta 8767 en 0 [0m (min:seg - 1:29, microseg - 82319)
+a: 231
+a: 253
+a: 276
+a: 300
+a: 325
+[1;36mEl consumidor 2 quita 8767 de 0[0m(min:seg - 1:29, microseg - 82407)
+b: 171
+[1;33;91mEl productor 0 inserta 3214 en 0 [0m (min:seg - 1:29, microseg - 82548)
+a: 351
+a: 378
+a: 406
+[1;36mEl consumidor 1 quita 3214 de 0[0m(min:seg - 1:29, microseg - 82632)
+b: 190
+b: 210
+b: 231
+Esperando consumidor 1
+Elementos quitados: 9
+(min:seg - 1:29, microseg - 82777)
+Esperando consumidor 0
+Elementos quitados: 9
+(min:seg - 1:29, microseg - 82878)
+[1;33;91mEl productor 1 inserta 2139 en 0 [0m (min:seg - 1:29, microseg - 82969)
+a: 435
+[1;36mEl consumidor 1 quita 2139 de 0[0m(min:seg - 1:29, microseg - 83060)
+b: 253
+b: 276
+b: 300
+[1;33;91mEl productor 0 inserta 1759 en 0 [0m (min:seg - 1:29, microseg - 83206)
+a: 465
+a: 496
+a: 528
+[1;36mEl consumidor 0 quita 1759 de 0[0m(min:seg - 1:29, microseg - 83285)
+b: 325
+b: 351
+b: 378
+b: 406
+b: 435
+[1;33;91mEl productor 1 inserta 3789 en 0 [0m (min:seg - 1:29, microseg - 83463)
+a: 561
+a: 595
+a: 630
+[1;36mEl consumidor 1 quita 3789 de 0[0m(min:seg - 1:29, microseg - 83547)
+b: 465
+b: 496
+Esperando consumidor 2
+Elementos quitados: 12
+(min:seg - 1:29, microseg - 83656)
+[1;33;91mEl productor 0 inserta 9493 en 0 [0m (min:seg - 1:29, microseg - 83737)
+a: 666
+a: 703
+[1;36mEl consumidor 2 quita 9493 de 0[0m(min:seg - 1:29, microseg - 83820)
+b: 528
+b: 561
+b: 595
+b: 630
+b: 666
+[1;33;91mEl productor 1 inserta 5408 en 0 [0m (min:seg - 1:29, microseg - 83951)
+a: 741
+a: 780
+a: 820
+a: 861
+[1;36mEl consumidor 1 quita 5408 de 0[0m(min:seg - 1:29, microseg - 84040)
+b: 703
+b: 741
+b: 780
+b: 820
+b: 861
+Esperando consumidor 0
+Elementos quitados: 14
+(min:seg - 1:29, microseg - 84123)
+[1;33;91mEl productor 0 inserta 2411 en 0 [0m (min:seg - 1:29, microseg - 84199)
+a: 903
+a: 946
+a: 990
+a: 1035
+a: 1081
+[1;36mEl consumidor 0 quita 2411 de 0[0m(min:seg - 1:29, microseg - 84272)
+b: 903
+b: 946
+b: 990
+b: 1035
+[1;33;91mEl productor 1 inserta 8482 en 0 [0m (min:seg - 1:29, microseg - 84401)
+a: 1128
+a: 1176
+a: 1225
+a: 1275
+a: 1326
+[1;36mEl consumidor 0 quita 8482 de 0[0m(min:seg - 1:29, microseg - 84475)
+b: 1081
+Esperando consumidor 2
+Elementos quitados: 16
+(min:seg - 1:29, microseg - 84563)
+[1;33;91mEl productor 0 inserta 2855 en 0 [0m (min:seg - 1:29, microseg - 84684)
+a: 1378
+a: 1431
+a: 1485
+a: 1540
+[1;36mEl consumidor 2 quita 2855 de 0[0m(min:seg - 1:29, microseg - 84744)
+b: 1128
+b: 1176
+[1;33;91mEl productor 1 inserta 3337 en 0 [0m (min:seg - 1:29, microseg - 84885)
+a: 1596
+[1;36mEl consumidor 0 quita 3337 de 0[0m(min:seg - 1:29, microseg - 84973)
+b: 1225
+b: 1275
+b: 1326
+b: 1378
+Esperando consumidor 1
+Elementos quitados: 18
+(min:seg - 1:29, microseg - 85060)
+[1;33;91mEl productor 0 inserta 5048 en 0 [0m (min:seg - 1:29, microseg - 85143)
+a: 1653
+a: 1711
+a: 1770
+[1;36mEl consumidor 1 quita 5048 de 0[0m(min:seg - 1:29, microseg - 85222)
+b: 1431
+b: 1485
+[1;33;91mEl productor 1 inserta 8800 en 0 [0m (min:seg - 1:29, microseg - 85359)
+a: 1830
+a: 1891
+[1;36mEl consumidor 0 quita 8800 de 0[0m(min:seg - 1:29, microseg - 85449)
+b: 1540
+Esperando consumidor 2
+Elementos quitados: 20
+(min:seg - 1:29, microseg - 85536)
+[1;33;91mEl productor 0 inserta 4871 en 0 [0m (min:seg - 1:29, microseg - 85617)
+a: 1953
+a: 2016
+a: 2080
+a: 2145
+a: 2211
+[1;36mEl consumidor 2 quita 4871 de 0[0m(min:seg - 1:29, microseg - 85693)
+b: 1596
+b: 1653
+[1;33;91mEl productor 1 inserta 1140 en 0 [0m (min:seg - 1:29, microseg - 85825)
+a: 2278
+[1;36mEl consumidor 0 quita 1140 de 0[0m(min:seg - 1:29, microseg - 85912)
+b: 1711
+b: 1770
+b: 1830
+b: 1891
+b: 1953
+Esperando consumidor 1
+Elementos quitados: 22
+(min:seg - 1:29, microseg - 85996)
+[1;33;91mEl productor 0 inserta 3612 en 0 [0m (min:seg - 1:29, microseg - 86078)
+a: 2346
+a: 2415
+a: 2485
+a: 2556
+[1;36mEl consumidor 1 quita 3612 de 0[0m(min:seg - 1:29, microseg - 86160)
+b: 2016
+b: 2080
+b: 2145
+b: 2211
+b: 2278
+Esperando consumidor 1
+Elementos quitados: 23
+(min:seg - 1:29, microseg - 86292)
+[1;33;91mEl productor 1 inserta 279 en 0 [0m (min:seg - 1:29, microseg - 86388)
+a: 2628
+[1;36mEl consumidor 1 quita 279 de 0[0m(min:seg - 1:29, microseg - 86484)
+b: 2346
+Esperando consumidor 2
+Elementos quitados: 24
+(min:seg - 1:29, microseg - 86561)
+[1;33;91mEl productor 0 inserta 2479 en 0 [0m (min:seg - 1:29, microseg - 86641)
+a: 2701
+a: 2775
+a: 2850
+a: 2926
+a: 3003
+[1;36mEl consumidor 2 quita 2479 de 0[0m(min:seg - 1:29, microseg - 86736)
+b: 2415
+b: 2485
+b: 2556
+b: 2628
+b: 2701
+[1;33;91mEl productor 1 inserta 5610 en 0 [0m (min:seg - 1:29, microseg - 86873)
+a: 3081
+a: 3160
+a: 3240
+a: 3321
+a: 3403
+[1;33;91mEl productor 1 inserta 6623 en 1 [0m (min:seg - 1:29, microseg - 87401)
+a: 3486
+[1;33;91mEl productor 1 inserta 3385 en 2 [0m (min:seg - 1:29, microseg - 87640)
+a: 3570
+a: 3655
+a: 3741
+a: 3828
+[1;36mEl consumidor 1 quita 3385 de 2[0m(min:seg - 1:29, microseg - 87822)
+b: 2775
+b: 2850
+b: 2926
+b: 3003
+[1;36mEl consumidor 0 quita 6623 de 1[0m(min:seg - 1:29, microseg - 87980)
+b: 3081
+b: 3160
+b: 3240
+b: 3321
+[1;33;91mEl productor 0 inserta 8560 en 1 [0m (min:seg - 1:29, microseg - 89965)
+a: 3916
+a: 4005
+a: 4095
+a: 4186
+a: 4278
+[1;36mEl consumidor 2 quita 8560 de 1[0m(min:seg - 1:29, microseg - 90060)
+b: 3403
+b: 3486
+[1;33;91mEl productor 1 inserta 2774 en 1 [0m (min:seg - 1:29, microseg - 90205)
+a: 4371
+a: 4465
+a: 4560
+a: 4656
+a: 4753
+[1;36mEl consumidor 1 quita 2774 de 1[0m(min:seg - 1:29, microseg - 90297)
+b: 3570
+b: 3655
+b: 3741
+[1;36mEl consumidor 0 quita 5610 de 0[0m(min:seg - 1:29, microseg - 90446)
+b: 3828
+[1;33;91mEl productor 0 inserta 6238 en 0 [0m (min:seg - 1:29, microseg - 90589)
+a: 4851
+a: 4950
+[1;36mEl consumidor 2 quita 6238 de 0[0m(min:seg - 1:29, microseg - 90680)
+b: 3916
+b: 4005
+b: 4095
+b: 4186
+b: 4278
+[1;33;91mEl productor 1 inserta 4953 en 0 [0m (min:seg - 1:29, microseg - 90826)
+a: 5050
+a: 5151
+a: 5253
+[1;36mEl consumidor 1 quita 4953 de 0[0m(min:seg - 1:29, microseg - 90908)
+b: 4371
+b: 4465
+Esperando consumidor 0
+Elementos quitados: 32
+(min:seg - 1:29, microseg - 90987)
+[1;33;91mEl productor 0 inserta 8988 en 0 [0m (min:seg - 1:29, microseg - 91064)
+a: 5356
+a: 5460
+a: 5565
+a: 5671
+a: 5778
+[1;36mEl consumidor 0 quita 8988 de 0[0m(min:seg - 1:29, microseg - 91144)
+b: 4560
+[1;33;91mEl productor 1 inserta 671 en 0 [0m (min:seg - 1:29, microseg - 91378)
+a: 5886
+[1;36mEl consumidor 1 quita 671 de 0[0m(min:seg - 1:29, microseg - 91500)
+b: 4656
+b: 4753
+b: 4851
+b: 4950
+Esperando consumidor 2
+Elementos quitados: 34
+(min:seg - 1:29, microseg - 91590)
+[1;33;91mEl productor 0 inserta 1929 en 0 [0m (min:seg - 1:29, microseg - 91697)
+a: 5995
+a: 6105
+a: 6216
+[1;36mEl consumidor 2 quita 1929 de 0[0m(min:seg - 1:29, microseg - 91792)
+b: 5050
+b: 5151
+b: 5253
+[1;33;91mEl productor 1 inserta 7390 en 0 [0m (min:seg - 1:29, microseg - 91930)
+a: 6328
+a: 6441
+a: 6555
+[1;36mEl consumidor 1 quita 7390 de 0[0m(min:seg - 1:29, microseg - 92036)
+b: 5356
+b: 5460
+b: 5565
+Esperando consumidor 0
+Elementos quitados: 36
+(min:seg - 1:29, microseg - 92123)
+[1;33;91mEl productor 0 inserta 7414 en 0 [0m (min:seg - 1:29, microseg - 92204)
+a: 6670
+a: 6786
+a: 6903
+[1;36mEl consumidor 0 quita 7414 de 0[0m(min:seg - 1:29, microseg - 92277)
+b: 5671
+b: 5778
+[1;33;91mEl productor 1 inserta 273 en 0 [0m (min:seg - 1:29, microseg - 92403)
+a: 7021
+a: 7140
+a: 7260
+[1;36mEl consumidor 0 quita 273 de 0[0m(min:seg - 1:29, microseg - 92478)
+a: 7381
+a: 7503
+b: 5886
+Esperando consumidor 2
+Elementos quitados: 38
+(min:seg - 1:29, microseg - 92564)
+a: 7626
+a: 7750
+a: 7875
+a: 8001
+a: 8128
+a: 8256
+a: 8385
+a: 8515
+a: 8646
+a: 8778
+[1;33;91mEl productor 0 inserta 4737 en 0 [0m (min:seg - 1:29, microseg - 92642)
+a: 8911
+[1;36mEl consumidor 2 quita 4737 de 0[0m(min:seg - 1:29, microseg - 92699)
+a: 9045
+a: 9180
+a: 9316
+a: 9453
+a: 9591
+b: 5995
+b: 6105
+Esperando consumidor 0
+Elementos quitados: 39
+(min:seg - 1:29, microseg - 92782)
+Esperando consumidor 1
+Elementos quitados: 39
+a: 9730
+a: 9870
+a: 10011
+(min:seg - 1:29, microseg - 92799)
+a: 10153
+a: 10296
+a: 10440
+[1;33;91mEl productor 0 inserta 1904 en 0 [0m (min:seg - 1:29, microseg - 92884)
+[1;36mEl consumidor 2 quita 1904 de 0[0m(min:seg - 1:29, microseg - 92968)
+a: 10585
+a: 10731
+a: 10878
+Envío broadcast. Soy consumidor 2
+
+a: 11026
+(min:seg - 1:29, microseg - 93048)
+b: 6216
+Consumidor 0 hace unlock cuando elementosquitados==ITEMS_BY_P*P
+posicionB= 112
+Consumidor 1 hace unlock cuando elementosquitados==ITEMS_BY_P*P
+posicionB= 112
+a: 11175
+a: 11325
+a: 11476
+a: 11628
+a: 11781
+a: 11935
+a: 12090
+a: 12246
+b: 6328
+b: 6441
+b: 6555
+a: 12403
+a: 12561
+b: 6670
+b: 6786
+b: 6903
+a: 12720
+a: 12880
+a: 13041
+a: 13203
+b: 7021
+b: 7140
+a: 13366
+a: 13530
+a: 13695
+b: 7260
+b: 7381
+b: 7503
+b: 7626
+a: 13861
+a: 14028
+a: 14196
+a: 14365
+a: 14535
+a: 14706
+a: 14878
+a: 15051
+a: 15225
+a: 15400
+b: 7750
+b: 7875
+b: 8001
+b: 8128
+a: 15576
+a: 15753
+a: 15931
+a: 16110
+a: 16290
+b: 8256
+b: 8385
+b: 8515
+b: 8646
+b: 8778
+a: 16471
+a: 16653
+a: 16836
+a: 17020
+b: 8911
+b: 9045
+b: 9180
+b: 9316
+b: 9453
+a: 17205
+a: 17391
+a: 17578
+a: 17766
+a: 17955
+b: 9591
+b: 9730
+b: 9870
+b: 10011
+a: 18145
+a: 18336
+b: 10153
+b: 10296
+b: 10440
+b: 10585
+b: 10731
+a: 18528
+a: 18721
+a: 18915
+a: 19110
+a: 19306
+a: 19503
+b: 10878
+b: 11026
+b: 11175
+b: 11325
+a: 19701
+a: 19900
+[1;33;91mEl productor 1 finalizó.[0m
+Valor final en la ultima contribución de A: 19503
+[1;33;91mEl productor 0 finalizó.[0m
+Valor final en la ultima contribución de A: 19900
+b: 11476
+b: 11628
+b: 11781
+b: 11935
+b: 12090
+b: 12246
+b: 12403
+b: 12561
+b: 12720
+b: 12880
+b: 13041
+b: 13203
+b: 13366
+b: 13530
+b: 13695
+b: 13861
+b: 14028
+b: 14196
+b: 14365
+b: 14535
+b: 14706
+b: 14878
+b: 15051
+b: 15225
+b: 15400
+b: 15576
+b: 15753
+b: 15931
+b: 16110
+b: 16290
+b: 16471
+b: 16653
+b: 16836
+b: 17020
+b: 17205
+b: 17391
+b: 17578
+b: 17766
+b: 17955
+b: 18145
+b: 18336
+b: 18528
+b: 18721
+b: 18915
+b: 19110
+b: 19306
+b: 19503
+b: 19701
+b: 19900
+b: 20100
+b: 20301
+b: 20503
+b: 20706
+b: 20910
+b: 21115
+b: 21321
+b: 21528
+b: 21736
+b: 21945
+b: 22155
+b: 22366
+b: 22578
+b: 22791
+b: 23005
+b: 23220
+b: 23436
+b: 23653
+b: 23871
+b: 24090
+b: 24310
+b: 24531
+b: 24753
+b: 24976
+b: 25200
+b: 25425
+b: 25651
+b: 25878
+b: 26106
+b: 26335
+b: 26565
+b: 26796
+b: 27028
+b: 27261
+b: 27495
+b: 27730
+b: 27966
+b: 28203
+b: 28441
+b: 28680
+b: 28920
+b: 29161
+b: 29403
+b: 29646
+b: 29890
+b: 30135
+b: 30381
+b: 30628
+b: 30876
+b: 31125
+b: 31375
+b: 31626
+b: 31878
+b: 32131
+b: 32385
+b: 32640
+b: 32896
+b: 33153
+b: 33411
+b: 33670
+b: 33930
+b: 34191
+b: 34453
+b: 34716
+b: 34980
+b: 35245
+b: 35511
+b: 35778
+b: 36046
+b: 36315
+b: 36585
+b: 36856
+b: 37128
+b: 37401
+b: 37675
+b: 37950
+b: 38226
+b: 38503
+b: 38781
+b: 39060
+b: 39340
+b: 39621
+b: 39903
+b: 40186
+b: 40470
+b: 40755
+b: 41041
+b: 41328
+b: 41616
+b: 41905
+b: 42195
+b: 42486
+b: 42778
+b: 43071
+b: 43365
+b: 43660
+b: 43956
+b: 44253
+b: 44551
+b: 44850
+Valor final en la ultima contribución de B: 44551
+[1;36mEl consumidor 0 finalizó.[0m
+Valor final en la ultima contribución de B: 41905
+[1;36mEl consumidor 2 finalizó.[0m
+Valor final en la ultima contribución de B: 44850
+[1;36mEl consumidor 1 finalizó.[0m
+Suma array A: 19900
+Suma array B: 44850
