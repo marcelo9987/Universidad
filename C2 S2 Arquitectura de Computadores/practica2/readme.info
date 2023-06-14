@@ -1,0 +1,3 @@
+Los defines disponibles son los siguientes:
+1. INFO_DEBUG: Muestra información de depuración.
+2. MEDIR_CICLOS: Además de f, muestra los ciclos de reloj que tarda en ejecutarse.
