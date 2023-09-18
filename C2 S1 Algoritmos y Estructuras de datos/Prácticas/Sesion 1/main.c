@@ -69,7 +69,8 @@ int main(int argc, char** argv) {
 
 
     //destruyo el subarbol derecho del nodo F
-    aux = izq(Arbol);
+//    aux = izq(Arbol);
+    buscar(Arbol, 'F', &aux);
     supder(&aux);
     fprintf(stdout, "\nSubarbol derecho de F destruido\n");
 

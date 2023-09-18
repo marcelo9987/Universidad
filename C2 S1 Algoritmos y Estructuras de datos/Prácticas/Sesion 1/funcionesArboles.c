@@ -51,6 +51,26 @@ int SumaElementos(abin A){
     return suma;
 }
 
+void buscar(abin A, tipoelem inf, abin * aux)
+{
+    tipoelem elemento;
+    if (!esVacio(A))
+    {
+        leer(A, &elemento);
+        //Si el elemento es el que solicitado, es guardado en aux
+        if (elemento == inf)
+        {
+            *aux = A;
+            return;
+        }
+
+        //Si no, se sigue buscando por el resto del árbol
+        buscar(izq(A), inf, aux);
+        buscar(der(A), inf, aux);
+    }
+}
+
+
 //////////////////////////////////FUNCIONES PRIVADAS
 //////////////////NO APARECEN EN EL FICHERO funcionesArboles.h
 
