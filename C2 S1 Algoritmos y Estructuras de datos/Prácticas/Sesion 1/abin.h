@@ -31,7 +31,7 @@
 
 //contenido de cada nodo del árbol
 //es un árbol de números enteros
-typedef int tipoelem;
+typedef char tipoelem;
 //definición del tipo opaco
 typedef void *abin; 
 

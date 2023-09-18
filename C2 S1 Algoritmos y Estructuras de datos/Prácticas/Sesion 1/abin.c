@@ -6,7 +6,7 @@
 typedef struct celda *abin;
 //contenido de cada nodo del árbol
 //es un árbol de números enteros
-typedef int tipoelem; 
+typedef char tipoelem;
 
 /////////////////////ESTRUCTURAS DE DATOS
 struct celda{

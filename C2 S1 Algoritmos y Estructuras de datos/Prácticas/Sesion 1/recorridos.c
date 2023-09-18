@@ -14,7 +14,7 @@ void inorden(abin A) {
     if (!esVacio(A)) {
         inorden(izq(A));
         leer(A, &E);
-        printf("%d\t", E);
+        printf("%c\t", E);
         inorden(der(A));
     }
 }
@@ -24,7 +24,7 @@ void preorden(abin A) {
     tipoelem E;
     if (!esVacio(A)) {
         leer(A, &E);
-        printf("%d\t", E);
+        printf("%c\t", E);
         preorden(izq(A));
         preorden(der(A));
     }
@@ -37,7 +37,7 @@ void postorden(abin A) {
         postorden(izq(A));
         postorden(der(A));
         leer(A, &E);
-        printf("%d\t", E);
+        printf("%c\t", E);
     }
 }
 
@@ -59,7 +59,7 @@ void inordenNR(abin A) {
             aux = tope(p);
             pop(&p);
             leer(aux, &E);
-            printf("%d\t", E);
+            printf("%c\t", E);
             aux = der(aux); //se sigue por la derecha del tope de la pila
         }
     } while (!esVaciaPila(p) || !esVacio(aux));
@@ -78,7 +78,7 @@ void anchura(abin A) {
         aux = primero(c); //Se extrae un elemento de la cola
         suprimirCola(&c);
         leer(aux, &E);
-        printf("%d\t", E);
+        printf("%c\t", E);
         if (!esVacio(izq(aux)))
             insertarCola(&c, izq(aux));
         if (!esVacio(der(aux)))

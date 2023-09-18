@@ -12,80 +12,79 @@ int main(int argc, char** argv) {
 
     //Creo el Arbol
     crear(&Arbol);
+    fprintf(stdout, "Arbol creado\n");
 
-    // Insercion de nodos en el arbol:
-    printf("Inserción de la raíz\n");
     // El primero sera la raiz
-    insizq(&Arbol, 10);
-    //Imprimimos el árbol en preorden
-    printf("\nPreOrden: ");preorden(Arbol);
-    //Y mostramos su altura
-    printf("\nAltura de arbol %d\n\n", AlturaArbol(Arbol));
+    insizq(&Arbol, 'J');
 
-    // Insertamos algunos elementos mas
-    printf("Inserción de un segundo elemento");
-    //Insertamos el nodo con valor 5 a la derecha del nodo raíz
-    insder(&Arbol, 5);
-    //Imprimimos el árbol en preorden
-    printf("\nPreOrden: ");preorden(Arbol);
-    //Y mostramos su altura
-    printf("\nAltura de arbol %d\n\n", AlturaArbol(Arbol));
-    
-    printf("Insertamos más elementos\n");
-    //Insertamos el nodo con valor 12 a la derecha de 5. 
-    //Para eso tendremos que movernos a la derecha de la raíz
+    //Insertamos un nodo a la derecha de la raíz
+    insder(&Arbol, 'M');
+
+    //Para insertar un nodo a la derecha de M, nos movemos a la derecha de la raíz
     aux = der(Arbol);
-    insder(&aux, 12);
-    //Insertamos nodo de valor 4 a la izquierda de nodo de valor 10(raíz)
-    insizq(&Arbol, 4);
-    //Insertamos un nodo a la izquierda de 5
-    insizq(&aux, 7);
-    //Insertamos un nodo a la izquierda de 4
+    //Y ahora insertamos el nodo a la derecha de M
+    insder(&aux, 'W');
+
+    //Insertamos un nodo a la izquierda de M
+    insizq(&aux, 'K');
+
+    //Insertamos un nodo a la izquierda de la raíz
+    insizq(&Arbol, 'F');
+
+
+    //Insertamos un nodo a la izquierda de F
     //Para eso tenemos que movernos a la izquierda de la raíz
     aux = izq(Arbol);
-    insizq(&aux, 3);
-    //Insertamos un nodo a la izquierda de 3
+
+    //Y ahora insertamos el nodo a la izquierda de F
+    insizq(&aux, 'D');
+
+    //Insertamos un nodo a la derecha de F
+    insder(&aux, 'G');
+
+
+    //Para insertar un nodo a la derecha de G, nos movemos a la derecha de F, que es la izquierda de J
+    aux = der(izq(Arbol));
+
+    //Y ahora insertamos el nodo a la derecha de G
+    insder(&aux,'H');
+
+
+    //Insertamos un nodo a la izquierda de D
     //Para eso tenemos que ir dos veces a la izquierda de la raíz
     aux = izq(izq(Arbol));
-    insizq(&aux, 6);
-    //insertamos un nodo a la derecha de 3
-    //Para eso podemos movernos a la derecha de aux o movernos desde raíz
-    insder(&aux, 8);
+    insizq(&aux, 'B');
+
+    //Insertamos un nodo a la derecha de D
+    //Para eso podemos movernos a la derecha de aux
+    insder(&aux, 'E');
 
     //Imprimimos la altura del árbol final
     printf("Altura de arbol: %d\n", AlturaArbol(Arbol));
 
-    // Mostramos los elementos del arbol con distintos recorridos:
-    printf("InOrden: ");    inorden(Arbol);
-    printf("\nPreOrden: ");    preorden(Arbol);
-    printf("\nPostOrden: ");    postorden(Arbol);
-    printf("\nInorden no recursivo (usa pilas): "); inordenNR(Arbol);
-    printf("\nRecorrido en anchura (usa colas): "); anchura(Arbol);
 
-    //Por último, imprimimos el número de nodos del árbol
-    printf("\nNumero de nodos: %d\n", NumeroNodos(Arbol));
+    //Imprimo los elementos del arbol mediante el recorrido inorden no recursivo
+    printf("Inorden no recursivo (usa pilas): \n");
+    inordenNR(Arbol);
 
-    // Borramos algunos elementos:
-    printf("\nVamos a eliminar el subárbol izquierdo de 5:\n");
-    //Eliminamos el subarbol izquierdo de 5
-    //Para ello nos situamos a la derecha de la raiz
-    aux = der(Arbol);
-    supizq(&aux);
-    //E imprimimos en inorden, numero de nodos y altura del arbol
-    printf("Inorden: ");     inorden(Arbol);
-    printf("\nN nodos: %d", NumeroNodos(Arbol));
-    printf("\nAltura de arbol: %d", AlturaArbol(Arbol));
 
-    printf("\n\nVamos a eliminar el subárbol izquierdo de la raíz\n");
-    //Eliminamos el subarbol izquierdo del nodo raiz
-    supizq(&Arbol);
+    //destruyo el subarbol derecho del nodo F
+    aux = izq(Arbol);
+    supder(&aux);
+    fprintf(stdout, "\nSubarbol derecho de F destruido\n");
 
-    //E imprimimos en inorden, el numero de nodos y la altura del arbol
-    printf("Inorden: ");   inorden(Arbol);
-    printf("\nN nodos: %d\n", NumeroNodos(Arbol));
+
+    //imprimo el arbol en inorden recursivo
+    printf("Inorden (IRD): \n");
+    inorden(Arbol);
+
+    //procedo a listar la altura del arbol
     printf("\nAltura de arbol: %d\n", AlturaArbol(Arbol));
+    //Nº. de nodos del arbol
+    printf("Nº. de nodos del arbol: %d\n", NumeroNodos(Arbol));
 
-    // Liberamos memoria asociada al arbol:
+
+
     destruir(&Arbol);
 
     return (EXIT_SUCCESS);
