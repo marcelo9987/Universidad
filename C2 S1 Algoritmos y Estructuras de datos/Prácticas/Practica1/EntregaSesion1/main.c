@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 
     //Para insertar un nodo a la derecha de M, nos movemos a la derecha de la raíz
     aux = der(Arbol);
+
     //Y ahora insertamos el nodo a la derecha de M
     insder(&aux, 'W');
 
@@ -68,15 +69,25 @@ int main(int argc, char **argv)
     printf("Inorden no recursivo (usa pilas): \n");
     inordenNR(Arbol);
 
+    // INICIO de la parte basica
 
-    //destruyo el subarbol derecho del nodo F
 //    aux = izq(Arbol);
+//    supder(&aux);
+//    fprintf(stdout, "\nSubarbol derecho de F destruido\n");
+
+    // FIN de la parte basica
+
+    //INICIO de la ampliacion
     char letraBuscar;
     fprintf(stdout, "\nIntroduzca la letra a buscar: ");
     fscanf(stdin, "%c", &letraBuscar);
+
+
+    // Busco el nodo que contiene la letra introducida
     buscar(Arbol, letraBuscar, &aux);
     if (!esVacio(aux))
     {
+        //Destruyo el subarbol derecho del nodo encontrado
         supder(&aux);
         fprintf(stdout, "\nSubarbol derecho de %c destruido\n", letraBuscar);
     } else
@@ -84,7 +95,7 @@ int main(int argc, char **argv)
         fprintf(stdout, "\nNo se ha encontrado el nodo de %c\n", letraBuscar);
     }
 
-
+    // FIN de la ampliacion
 
     //imprimo el arbol en inorden recursivo
     printf("Inorden (IRD): \n");
@@ -95,7 +106,7 @@ int main(int argc, char **argv)
     //Nº. de nodos del arbol
     printf("Nº. de nodos del arbol: %d\n", NumeroNodos(Arbol));
 
-
+    // Liberamos memoria asociada al arbol:
     destruir(&Arbol);
 
     return (EXIT_SUCCESS);
