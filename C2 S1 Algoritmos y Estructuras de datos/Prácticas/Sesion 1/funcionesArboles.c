@@ -53,21 +53,32 @@ int SumaElementos(abin A){
 
 void buscar(abin A, tipoelem inf, abin * aux)
 {
+//    crear(aux);
     tipoelem elemento;
+
     if (!esVacio(A))
     {
         leer(A, &elemento);
-        //Si el elemento es el que solicitado, es guardado en aux
+        //Si el elemento es el que solicitado, apunto la direccion en aux
         if (elemento == inf)
         {
             *aux = A;
             return;
         }
 
+
         //Si no, se sigue buscando por el resto del árbol
         buscar(izq(A), inf, aux);
+        if(!esVacio(*aux))
+        {
+            return;
+        }
         buscar(der(A), inf, aux);
+    }else
+    {
+        crear(aux);
     }
+
 }
 
 

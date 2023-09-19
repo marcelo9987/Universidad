@@ -6,7 +6,8 @@
 #include "recorridos.h"
 #include "funcionesArboles.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
     abin Arbol, aux;
 
@@ -47,7 +48,7 @@ int main(int argc, char** argv) {
     aux = der(izq(Arbol));
 
     //Y ahora insertamos el nodo a la derecha de G
-    insder(&aux,'H');
+    insder(&aux, 'H');
 
 
     //Insertamos un nodo a la izquierda de D
@@ -70,9 +71,19 @@ int main(int argc, char** argv) {
 
     //destruyo el subarbol derecho del nodo F
 //    aux = izq(Arbol);
-    buscar(Arbol, 'F', &aux);
-    supder(&aux);
-    fprintf(stdout, "\nSubarbol derecho de F destruido\n");
+    char letraBuscar;
+    fprintf(stdout, "\nIntroduzca la letra a buscar: ");
+    fscanf(stdin, "%c", &letraBuscar);
+    buscar(Arbol, letraBuscar, &aux);
+    if (!esVacio(aux))
+    {
+        supder(&aux);
+        fprintf(stdout, "\nSubarbol derecho de %c destruido\n", letraBuscar);
+    } else
+    {
+        fprintf(stdout, "\nNo se ha encontrado el nodo de %c\n", letraBuscar);
+    }
+
 
 
     //imprimo el arbol en inorden recursivo
@@ -83,7 +94,6 @@ int main(int argc, char** argv) {
     printf("\nAltura de arbol: %d\n", AlturaArbol(Arbol));
     //Nº. de nodos del arbol
     printf("Nº. de nodos del arbol: %d\n", NumeroNodos(Arbol));
-
 
 
     destruir(&Arbol);

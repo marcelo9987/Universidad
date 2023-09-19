@@ -17,7 +17,7 @@ int SumaElementos(abin A);
  * Función que busca un un nodo en el árbol
  * @param A Arbol binario en el que buscar
  * @param inf Información a buscar en el árbol
- * @param aux Arbol auxiliar para almacenar el nodo encontrado
+ * @param aux Arbol auxiliar para almacenar el nodo encontrado.
  */
 void buscar(abin A, tipoelem inf, abin* aux);
 
