@@ -54,7 +54,7 @@ unsigned esOperador(char c) {
 //Devuelve 1 si c es un operando: mayúsculas y minúsculas
 //completar para caracteres 0 a 9
 unsigned esOperando(char c) {
-    if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) )
+    if ((c>=48 && c<=57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) )
         return 1;
     else
         return 0;
