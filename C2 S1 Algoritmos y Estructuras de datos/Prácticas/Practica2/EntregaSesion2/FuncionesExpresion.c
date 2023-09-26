@@ -118,7 +118,6 @@ abin arbolExpresion(char *expr_infija)
 
         if (esOperando(caracterActual))
         {
-            fprintf(stdout, "DEBUG: Es un operando y es %c\n", caracterActual);
             // De ser un operando, creo un arbol con este mismo
             abin arbolOperandoAuxiliar = NULL;
             crear(&arbolOperandoAuxiliar);
@@ -133,7 +132,6 @@ abin arbolExpresion(char *expr_infija)
             // Mientras que la pila de operadores no este vacía y que la prioridad_fuera del operador sea <= que la prioridad_dentro tope pila:
             while(!esVaciaPilaOperadores(pOperadores) && prioridadFuera(caracterActual)<= prioridadDentro(topeOperadores(pOperadores)))
             {
-                fprintf(stdout,"DEBUG: Una vuelta en operadores\n");
 
                 char caracterTemporal = topeOperadores(pOperadores);
                 popOperadores(&pOperadores);
@@ -153,14 +151,12 @@ abin arbolExpresion(char *expr_infija)
             }
             // Meto el operador en la pila de operandos
             pushOperadores(&pOperadores, caracterActual);
-            fprintf(stdout,"DEBUG: He metido el operador %c en la pila de operadores\n", caracterActual);
 
         }else if(caracterActual==')')
         {
             // Mientras que el tope de la pila de operadores no sea '(':
             while(topeOperadores(pOperadores)!='(')
             {
-                fprintf(stdout,"DEBUG: Una vuelta FIN\n");
 
                 char caracterTemporal = topeOperadores(pOperadores);
                 popOperadores(&pOperadores);
@@ -178,21 +174,18 @@ abin arbolExpresion(char *expr_infija)
                 pushOperandos(&pOperandos, arbolDesapilado);
             }
             // Desapilo el parentesis
-            printf("DEBUG: DESAPLANDO: %c\n", topeOperadores(pOperadores));
             popOperadores(&pOperadores);
         }
         i++;
     }
 
     //Ahora que he terminado de recorrer la cadena, vacio la pila de operadoresç
-
     while(!esVaciaPilaOperadores(pOperadores))
     {
-        fprintf(stdout,"DEBUG: Una vuelta FINDEF\n");
 
         char caracterTemporal = topeOperadores(pOperadores);
         popOperadores(&pOperadores);
-
+        //
         abin arbolDesapilado = NULL;
         crear(&arbolDesapilado);
         insizq(&arbolDesapilado, caracterTemporal);
@@ -206,7 +199,9 @@ abin arbolExpresion(char *expr_infija)
         pushOperandos(&pOperandos, arbolDesapilado);
     }
 
+
     destruirPilaOperadores(&pOperadores);
+
     insArbolizq(&arbolSalida, topeOperandos(pOperandos));
     destruirPilaOperandos(&pOperandos);
 

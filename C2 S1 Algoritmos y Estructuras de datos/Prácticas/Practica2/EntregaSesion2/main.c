@@ -16,6 +16,7 @@ int main()
 
     fprintf(stdout,"\nExpresión en forma postfija: ");
     postorden(A);
+    printf("\n");
 
     destruir(&A);
     return 0;
