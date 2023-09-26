@@ -36,7 +36,7 @@ unsigned esVaciaPilaOperandos(pilaOperandos P);
  * @param P pila
  * 
 */
-tipoelemPilaOperandos tope(pilaOperandos P);
+tipoelemPilaOperandos topeOperandos(pilaOperandos P);
 
 //Funciones de insercion/eliminacion
 /**

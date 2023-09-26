@@ -1,5 +1,6 @@
 #ifndef FUNCIONESEXPRESION_H
 #define FUNCIONESEXPRESION_H
+#include "abin.h"
 //Funciones para construccion del arbol de expresion
 
 //Devuelve la prioridad del operador dentro de la pila.
