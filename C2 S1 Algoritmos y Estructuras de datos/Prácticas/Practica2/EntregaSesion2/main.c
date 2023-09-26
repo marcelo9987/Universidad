@@ -4,14 +4,19 @@
 
 int main()
 {
+    char expr_infija[100];
+
+    fprintf(stdout,"Introduzca la expresión infija:");
+    fscanf(stdin,"%s",expr_infija);
+
     abin A = NULL;
-    A = arbolExpresion("A+B+C/D");
-    inorden(A);
-    printf("\n");
+    A = arbolExpresion(expr_infija);
+    fprintf(stdout,"Expresión en forma prefija: ");
     preorden(A);
-    printf("\n");
+
+    fprintf(stdout,"\nExpresión en forma postfija: ");
     postorden(A);
-    printf("\n");
+
     destruir(&A);
     return 0;
 }
