@@ -80,7 +80,7 @@ unsigned esOperador(char c)
 //completar para caracteres 0 a 9
 unsigned esOperando(char c)
 {
-    if ((c >= '0' && c <= '9') || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+    if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
     {
         return 1;
     } else
@@ -89,7 +89,7 @@ unsigned esOperando(char c)
     }
 }
 
-//Recibe una cadena de caracteres y devuelve el arbol de expresion
+//Recibe una cadena de caracteres y devuelve el árbol de expresión
 //DEBES ESCRIBIR ESTA FUNCIÓN
 abin arbolExpresion(char *expr_infija)
 {
@@ -100,26 +100,31 @@ abin arbolExpresion(char *expr_infija)
     crearPilaOperadores(&pOperadores);
     crearPilaOperandos(&pOperandos);
 
-    // Creo el arbol
+    // Creo el árbol
     abin arbolSalida;
-    crear(&arbolSalida);
 
     if (expr_infija == NULL || expr_infija[0] == '\0')
     {
         fprintf(stdout, "INFO: La expresion infija esta vacia, DEVOLVIENDO ARBOL VACIO\n");
+        crear(&arbolSalida);
         return arbolSalida;
     }
 
-    // Recorro la expresion infija
+    // Recorro la expresión infija
     int i = 0;
     while (expr_infija[i] != '\0')
     {
         char caracterActual = expr_infija[i];
 
+        // SI c es un operando
         if (esOperando(caracterActual))
         {
-            // De ser un operando, creo un arbol con este mismo
-            abin arbolOperandoAuxiliar = NULL;
+            // creo un árbol aux
+            // introduzco c como información (insertando a izquierda o derecha, da igual puesto que será la raíz de ese árbol)
+            // y meto dicho árbol aux en pilaOperandos
+
+            // De ser un operando, creo un árbol con este mismo
+            abin arbolOperandoAuxiliar;
             crear(&arbolOperandoAuxiliar);
 
             insizq(&arbolOperandoAuxiliar, caracterActual);
@@ -127,84 +132,107 @@ abin arbolExpresion(char *expr_infija)
             // Ahora, lo meto en la pila de operandos
             pushOperandos(&pOperandos, arbolOperandoAuxiliar);
 
-        }else if(esOperador(caracterActual))
+        } else if (esOperador(caracterActual)) // SINOSI c es un operador
         {
-            // Mientras que la pila de operadores no este vacía y que la prioridad_fuera del operador sea <= que la prioridad_dentro tope pila:
-            while(!esVaciaPilaOperadores(pOperadores) && prioridadFuera(caracterActual)<= prioridadDentro(topeOperadores(pOperadores)))
+            // Mientras que la pila de operadores no esté vacía y que la prioridad_fuera del operador sea <= que la prioridad_dentro tope pila:
+            while (!esVaciaPilaOperadores(pOperadores) && prioridadFuera(caracterActual) <= prioridadDentro(topeOperadores(pOperadores)))
             {
-
+                // Desapilo tope de pilaOperadores y lo guardo en caux
                 char caracterTemporal = topeOperadores(pOperadores);
                 popOperadores(&pOperadores);
 
-                abin arbolDesapilado = NULL;
-                crear(&arbolDesapilado);
+                //Creo un árbol aux, introduzco caux como información (insertando a izquierda o derecha, puesto que será la raíz del árbol aux)
+                abin subArbol;
+                crear(&subArbol);
 
-                insder(&arbolDesapilado, caracterTemporal);
+                insder(&subArbol, caracterTemporal);
 
-                insArbolder(&arbolDesapilado, topeOperandos(pOperandos));
+                // e inserto a la derecha (con la nueva función insArbolder() el tope de pilaOperandos, desapilándolo.
+                insArbolder(&subArbol, topeOperandos(pOperandos));
                 popOperandos(&pOperandos);
 
-                insArbolizq(&arbolDesapilado, topeOperandos(pOperandos));
+                // Inserto a la izquierda (con la nueva función insArbolizq() el tope de pilaOperandos, desapilándolo.
+                insArbolizq(&subArbol, topeOperandos(pOperandos));
                 popOperandos(&pOperandos);
 
-                pushOperandos(&pOperandos, arbolDesapilado);
+                // Inserto el árbol aux en pilaOperandos
+                pushOperandos(&pOperandos, subArbol);
             }
-            // Meto el operador en la pila de operandos
+
+            // Apilo el operador en la pila de operandores
             pushOperadores(&pOperadores, caracterActual);
 
-        }else if(caracterActual==')')
+        } else if (caracterActual == ')') //SINOSI c es el paréntesis derecho )
         {
             // Mientras que el tope de la pila de operadores no sea '(':
-            while(topeOperadores(pOperadores)!='(')
+            while (topeOperadores(pOperadores) != '(')
             {
 
+                // Desapilo tope de pilaOperadores y lo guardo en caux
                 char caracterTemporal = topeOperadores(pOperadores);
                 popOperadores(&pOperadores);
 
-                abin arbolDesapilado = NULL;
-                crear(&arbolDesapilado);
-                insder(&arbolDesapilado, caracterTemporal);
+                // Creo un árbol aux, introduzco caux como información (insertando a izquierda o derecha, puesto que será la raíz del árbol aux)
+                abin subArbol;
+                crear(&subArbol);
+                insder(&subArbol, caracterTemporal);
 
-                insArbolder(&arbolDesapilado, topeOperandos(pOperandos));
+                // e inserto a la derecha (con la nueva función insArbolder() el tope de pilaOperandos, desapilándolo.
+                insArbolder(&subArbol, topeOperandos(pOperandos));
                 popOperandos(&pOperandos);
 
-                insArbolizq(&arbolDesapilado, topeOperandos(pOperandos));
+                // Inserto a la izquierda (con la nueva función insArbolizq() el tope de pilaOperandos, desapilándolo.
+                insArbolizq(&subArbol, topeOperandos(pOperandos));
                 popOperandos(&pOperandos);
 
-                pushOperandos(&pOperandos, arbolDesapilado);
+                // Inserto el árbol aux en pilaOperandos
+                pushOperandos(&pOperandos, subArbol);
             }
-            // Desapilo el parentesis
+
+            // Desapilo paréntesis izquierdo (
             popOperadores(&pOperadores);
         }
         i++;
     }
 
-    //Ahora que he terminado de recorrer la cadena, vacio la pila de operadoresç
-    while(!esVaciaPilaOperadores(pOperadores))
+    // Ahora que he terminado de recorrer la cadena, vacío la pila de operadores
+    while (!esVaciaPilaOperadores(pOperadores))
     {
-
+        // Desapilo tope de pilaOperadores y lo guardo en caux
         char caracterTemporal = topeOperadores(pOperadores);
         popOperadores(&pOperadores);
-        //
-        abin arbolDesapilado = NULL;
-        crear(&arbolDesapilado);
-        insizq(&arbolDesapilado, caracterTemporal);
 
-        insArbolder(&arbolDesapilado, topeOperandos(pOperandos));
+        // Creo un árbol aux, introduzco caux como información (insertando a izquierda o derecha, puesto que será la raíz del árbol aux)
+        abin subArbol;
+        crear(&subArbol);
+        insizq(&subArbol, caracterTemporal);
+
+        // e inserto a la derecha (con la nueva función insArbolder() el tope de pilaOperandos, desapilándolo.
+        insArbolder(&subArbol, topeOperandos(pOperandos));
         popOperandos(&pOperandos);
 
-        insArbolizq(&arbolDesapilado, topeOperandos(pOperandos));
+        // Inserto a la izquierda (con la nueva función insArbolizq() el tope de pilaOperandos, desapilándolo.
+        insArbolizq(&subArbol, topeOperandos(pOperandos));
         popOperandos(&pOperandos);
 
-        pushOperandos(&pOperandos, arbolDesapilado);
+        // Inserto el árbol aux en pilaOperandos
+        pushOperandos(&pOperandos, subArbol);
     }
 
-
+    // DESTRUYO LA PILA DE OPERADORES
     destruirPilaOperadores(&pOperadores);
 
-    insArbolizq(&arbolSalida, topeOperandos(pOperandos));
+    // ASIGNO A UNA VARIABLE DE TIPO abin (la que creé al principio de la función) EL TOPE DE LA PILA DE OPERANDOS todo:
+//    insArbolizq(&arbolSalida, topeOperandos(pOperandos));
+    arbolSalida = topeOperandos(pOperandos);
+
+    // DESAPILAR EL TOPE DE LA PILA DE OPERANDOS
+    popOperandos(&pOperandos);
+
+    //DESTRUYO LA PILA DE OPERANDOS
     destruirPilaOperandos(&pOperandos);
 
+    // DEVUELVO EL ARBOL DE EXPRESION
     return arbolSalida;
 }
 
