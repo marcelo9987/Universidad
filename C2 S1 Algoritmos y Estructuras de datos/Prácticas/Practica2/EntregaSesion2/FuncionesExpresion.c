@@ -219,6 +219,9 @@ abin arbolExpresion(char *expr_infija)
         pushOperandos(&pOperandos, subArbol);
     }
 
+    // Creo el árbol a devolver
+    crear(&arbolSalida);
+
     // DESTRUYO LA PILA DE OPERADORES
     destruirPilaOperadores(&pOperadores);
 
