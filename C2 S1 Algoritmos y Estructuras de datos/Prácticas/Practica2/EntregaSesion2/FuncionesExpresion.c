@@ -222,9 +222,9 @@ abin arbolExpresion(char *expr_infija)
     // DESTRUYO LA PILA DE OPERADORES
     destruirPilaOperadores(&pOperadores);
 
-    // ASIGNO A UNA VARIABLE DE TIPO abin (la que creé al principio de la función) EL TOPE DE LA PILA DE OPERANDOS todo:
-//    insArbolizq(&arbolSalida, topeOperandos(pOperandos));
-    arbolSalida = topeOperandos(pOperandos);
+    // ASIGNO A UNA VARIABLE DE TIPO abin (la que creé al principio de la función) EL TOPE DE LA PILA DE OPERANDOS
+    insArbolizq(&arbolSalida, topeOperandos(pOperandos));
+//    arbolSalida = topeOperandos(pOperandos);
 
     // DESAPILAR EL TOPE DE LA PILA DE OPERANDOS
     popOperandos(&pOperandos);
