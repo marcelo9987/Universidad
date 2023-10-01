@@ -91,18 +91,25 @@ unsigned esOperando(char c)
 
 //Recibe una cadena de caracteres y devuelve el árbol de expresión
 //DEBES ESCRIBIR ESTA FUNCIÓN
+/**
+ * @brief Función que recibe una expresión infija y devuelve un árbol de expresión
+ * @param expr_infija Cadena de caracteres que contiene la expresión infija
+ * @return Árbol de expresión generado a partir de la expresión infija
+ */
 abin arbolExpresion(char *expr_infija)
 {
     // Creo las pilas de operadores y operandos
     pilaOperadores pOperadores;
     pilaOperandos pOperandos;
 
+    // Las inicializo
     crearPilaOperadores(&pOperadores);
     crearPilaOperandos(&pOperandos);
 
     // Creo el árbol
     abin arbolSalida;
 
+    // Si la expresión infija es NULL o está vacía, devuelvo un árbol vacío
     if (expr_infija == NULL || expr_infija[0] == '\0')
     {
         fprintf(stdout, "INFO: La expresion infija esta vacia, DEVOLVIENDO ARBOL VACIO\n");
