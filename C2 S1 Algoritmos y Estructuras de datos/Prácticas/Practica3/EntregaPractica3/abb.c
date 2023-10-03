@@ -18,7 +18,7 @@ struct celda {
 
 /*Extraer la clave de una celda */ //Si la clave es orden alfabético
 TIPOCLAVE _clave_elem(TIPOELEMENTOABB *E) {
-    return E->ApellidosNombre;
+    return E->apellidosNombre;
 }
 
 /* Esta funcion puente nos permite modificar el tipo de
@@ -122,7 +122,8 @@ void buscarNodoAbb(TABB A, TIPOCLAVE cl, TIPOELEMENTOABB *nodo) {
 /* Funcion recursiva para insertar un nuevo nodo 
    en el arbol. Se presupone que no existe un nodo
    con la misma clave en el arbol. */
-void insertarElementoAbb(TABB *A, TIPOELEMENTOABB E) {
+void insertarElementoAbb(TABB *A, TIPOELEMENTOABB E)
+{
     if (esAbbVacio(*A)) {
         *A = (TABB) malloc(sizeof (struct celda));
         (*A)->info = E;

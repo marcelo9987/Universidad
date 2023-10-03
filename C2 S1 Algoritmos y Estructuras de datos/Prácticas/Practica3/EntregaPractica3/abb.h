@@ -16,7 +16,7 @@ typedef char * TIPOCLAVE;
 
 typedef struct
 {
-    char ApellidosNombre[MAXNOMBRE];
+    char apellidosNombre[MAXNOMBRE];
     TLISTA vacunas;
 
 } TIPOELEMENTOABB;
@@ -27,7 +27,7 @@ typedef struct celda * TABB;//tipo opaco
 
 /////////////////////////////// FUNCIONES
 
-//FUNCIONES DE CREACIÓN Y DESTRUCCIÓN DEL �?RBOL
+//FUNCIONES DE CREACIÓN Y DESTRUCCIÓN DEL ÁRBOL
 /**
  * Crea el arbol vacio.
  * @param A Puntero al arbol. Debe estar inicializado.

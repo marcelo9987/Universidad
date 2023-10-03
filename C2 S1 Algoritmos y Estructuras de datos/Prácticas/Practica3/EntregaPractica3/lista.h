@@ -8,7 +8,7 @@
 
 typedef struct
 {
-    char ApellidosNombre[MAXNOMBREVACUNA];
+    char nombreVacuna[MAXNOMBREVACUNA];
     int i_dosisMaximas;
     int i_dosisAdministradas;
 }TIPOELEMENTOLISTA;
