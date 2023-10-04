@@ -1,0 +1,4 @@
+"D:\soft\jetbrains\clion\CLion 2022.2.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/soft/jetbrains/clion/CLion 2022.2.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\imarc\Documents\GitHub\Universidad\C2 S1 Algoritmos y Estructuras de datos\Prácticas\Practica3\EntregaPractica3" -B "C:\Users\imarc\Documents\GitHub\Universidad\C2 S1 Algoritmos y Estructuras de datos\Prácticas\Practica3\EntregaPractica3\cmake-build-debug-mingw"
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/imarc/Documents/GitHub/Universidad/C2 S1 Algoritmos y Estructuras de datos/Prácticas/Practica3/EntregaPractica3/cmake-build-debug-mingw
