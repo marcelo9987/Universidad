@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include "abb.h"
 #include <stdbool.h>
+#include <string.h>
 #include "vacunodromo.h"
 
-int main()
+int main(int argc, char *argv[])
 {
+
     TABB arbolPacientes;
     crearAbb(&arbolPacientes);
+
+    cargarArchivo(&arbolPacientes, argc, argv);
+
     bool salir = false;
     do
     {
@@ -18,9 +23,11 @@ int main()
         fprintf(stdout, "S. Salir\n");
 
         fprintf(stdout, "Introduzca una opcion: ");
-
-        char opcion = getchar();
-        while (getchar() != '\n');// Limpiar buffer
+        char opcion;
+        scanf(" %c", &opcion);
+        /*char opcion = getchar();
+        while (getchar() != '\n')
+        {}// Limpiar buffer*/
 
         fprintf(stdout, "\n");
 
@@ -33,7 +40,7 @@ int main()
 
             case 'L':
             case 'l':
-                listadoPacientes(arbolPacientes,true);
+                listadoPacientes(arbolPacientes, true);
                 break;
 
             case 'E':
@@ -43,8 +50,6 @@ int main()
 
             case 'S':
             case 's':
-                //elimino el arbol
-                destruirAbb(&arbolPacientes);
                 salir = true;
                 break;
 
@@ -54,5 +59,41 @@ int main()
         }
 
     } while (salir == false);
+
+    if(argc > 2)
+    {
+        guardarArchivo(arbolPacientes, argv[2]);
+        //elimino el arbol
+        destruirAbb(&arbolPacientes);
+        return 0;
+    }
+
+    char respuesta = '\0';
+    do
+    {
+        fprintf(stdout, "El programa no ha podido detectar el archivo de pacientes. Desea crear uno nuevo? (S/N): ");
+
+        fscanf(stdout, " %1c", &respuesta);
+
+    } while (respuesta != 'S' && respuesta != 's' && respuesta != 'N' && respuesta != 'n');
+
+    switch (respuesta)
+    {
+        char nombreArchivo[FILENAME_MAX];
+
+        case 'S':
+        case 's':
+
+            fprintf(stdout, "Introduzca un nombre para el archivo: ");
+            fscanf(stdin, " %[^\n]s", nombreArchivo);
+            guardarArchivo(arbolPacientes, nombreArchivo);
+
+            break;
+        default:
+            break;
+    }
+    //elimino el arbol
+    destruirAbb(&arbolPacientes);
+    return 0;
 
 }

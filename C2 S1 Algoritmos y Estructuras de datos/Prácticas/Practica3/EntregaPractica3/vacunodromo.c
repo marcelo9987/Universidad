@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "bugprone-reserved-identifier"
 /*
  * Archivo: vacunodromo.c
  * Autor: Marcelo Fort Muñoz
@@ -7,11 +9,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "vacunodromo.h"
 
-#define CADENADECONTROL "$$NOEXISTE$$"
+// #define CADENADECONTROL "$$NOEXISTE$$"
+#define MAXLINEA 100
 
-void _leerVacunas(TLISTA listaVacunas)
+/// Funciones privadas
+
+void _imprimirVacunas(TLISTA listaVacunas)
 {
     TPOSICION posActual = primeroLista(listaVacunas);
     while (posActual != finLista(listaVacunas))
@@ -23,6 +29,50 @@ void _leerVacunas(TLISTA listaVacunas)
     }
 }
 
+void _imprimirPaciente(TIPOELEMENTOABB *paciente)
+{
+    fprintf(stdout, "%s\n", (*paciente).apellidosNombre);
+    _imprimirVacunas((*paciente).vacunas);
+}
+
+void _strip_line(char *linea)
+{
+    linea[strcspn(linea, "\r\n")] = 0;
+}
+
+void _recorridoPosordenGuardar(TABB arbolPacientes, FILE *fichero)
+{
+    if (esAbbVacio(arbolPacientes))
+    {
+//        fprintf(stdout, "ERR: _recorridoPosordenGuardar --> El arbol está vacío.\n");
+        return;
+    }
+
+    _recorridoPosordenGuardar(izqAbb(arbolPacientes), fichero);
+    _recorridoPosordenGuardar(derAbb(arbolPacientes), fichero);
+
+    TIPOELEMENTOABB elementoActual;
+    leerElementoAbb(arbolPacientes, &elementoActual);
+
+    fprintf(fichero, "%s|", elementoActual.apellidosNombre);
+    fprintf(stdout, "%s|", elementoActual.apellidosNombre);
+
+    //imprimo las vacunas
+    TPOSICION posActual = primeroLista(elementoActual.vacunas);
+    while (posActual != finLista(elementoActual.vacunas))
+    {
+        TIPOELEMENTOLISTA vacunaActual;
+        recuperarElementoLista(elementoActual.vacunas, posActual, &vacunaActual);
+        fprintf(fichero, "%s;%d;%d;", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisMaximas);
+        fprintf(stdout, "\tVacuna: %s  dosis administradas: %d de %d\n", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisMaximas);
+        posActual = siguienteLista(elementoActual.vacunas, posActual);
+    }
+    fprintf(fichero, "\n");
+
+}
+
+/// Funciones públicas
+
 void anhadirPaciente(TABB *arbolPacientes)
 {
     if (arbolPacientes == NULL)
@@ -33,29 +83,27 @@ void anhadirPaciente(TABB *arbolPacientes)
 
     TIPOELEMENTOABB elementoArbolInsertar;
 
-    fprintf(stdout, "Introduzca: Apellido1 Apellido2, Nombre: ");
-//    char nombre[MAXNOMBRE];
+    fprintf(stdout, "Introduzca: Apellido1 Apellido2, Nombre:");
 
+    fscanf(stdin, " %[^\n\r]", elementoArbolInsertar.apellidosNombre);
 
-    fscanf(stdin, "%[^\n]s", elementoArbolInsertar.apellidosNombre);
-    getchar(); // Elimino el \n que ha quedado
+    if (esMiembroAbb(*arbolPacientes, elementoArbolInsertar) == true)
+    {
+        fprintf(stdout, "ERR: anhadirPaciente --> El paciente ya existe.\n");
+        return;
+    }
 
-//    strcpy(elementoArbolInsertar.apellidosNombre, nombre);
+    crearLista(&elementoArbolInsertar.vacunas);
 
-    TLISTA listaVacunas;
-    crearLista(&listaVacunas);
-//    int primeraVez = 1;
+    TIPOELEMENTOLISTA listaVacunas;
+
     for (;;)
     {
-        char nombreVacunaActual[MAXNOMBREVACUNA];
-        int dosisMaximaVacunaActual;
+        fprintf(stdout, "Introduzca nombre de vacuna:");
 
-        fprintf(stdout, "Introduzca nombre de vacuna: ");
+        fscanf(stdin, " %[^\n\r]s", listaVacunas.nombreVacuna);
 
-        fscanf(stdin, "%[^\n]s", nombreVacunaActual);
-        getchar(); // Elimino el \n que ha quedado// Eliminar el salto de linea del final
-
-        if (strcmp(nombreVacunaActual, "fin") == 0)
+        if (strcmp(listaVacunas.nombreVacuna, "fin") == 0)
         {
             break;
         }
@@ -64,23 +112,14 @@ void anhadirPaciente(TABB *arbolPacientes)
 //        fscanf(stdin, "%d", &dosisVacunaActual);
 
 
+        fprintf(stdout, "Introduzca dosis maxima de vacuna:");
+        fscanf(stdin, " %d", &listaVacunas.i_dosisMaximas);
 
-        fprintf(stdout, "Introduzca dosis maxima de vacuna: ");
-        fscanf(stdin, "%d", &dosisMaximaVacunaActual);
-        while (getchar() != '\n')
-        {}// Limpiar buffer
 
-        TIPOELEMENTOLISTA elementoListaInsertar;
-        strcpy(elementoListaInsertar.nombreVacuna, nombreVacunaActual);
+        listaVacunas.i_dosisAdministradas = 0;
 
-        elementoListaInsertar.i_dosisAdministradas = 0;
-        elementoListaInsertar.i_dosisMaximas = dosisMaximaVacunaActual;
-
-        insertarElementoLista(&listaVacunas, finLista(listaVacunas), elementoListaInsertar);
+        insertarElementoLista(&elementoArbolInsertar.vacunas, finLista(elementoArbolInsertar.vacunas), listaVacunas);
     }
-
-
-    elementoArbolInsertar.vacunas = listaVacunas;
 
 
     insertarElementoAbb(arbolPacientes, elementoArbolInsertar);
@@ -102,8 +141,7 @@ void listadoPacientes(TABB arbolPacientes, bool primeraIteracion)
     TIPOELEMENTOABB elementoActual;
     leerElementoAbb(arbolPacientes, &elementoActual);
 
-    fprintf(stdout, "%s\n", elementoActual.apellidosNombre);
-    _leerVacunas(elementoActual.vacunas);
+    _imprimirPaciente(&elementoActual);
 
     fprintf(stdout, "\n");
 
@@ -122,21 +160,117 @@ void eliminarPaciente(TABB *arbolPacientes)
 
     fprintf(stdout, "Introduzca el nombre del paciente a eliminar: ");
 
-    char nombre[MAXNOMBRE];
-    fscanf(stdin, "%[^\n]s", nombre);
-    getchar(); // Elimino el \n que ha quedado// Eliminar el salto de linea del final
-
     TIPOELEMENTOABB pacienteAeliminar;
-    strcpy(pacienteAeliminar.apellidosNombre, CADENADECONTROL);
 
+    fscanf(stdin, " %[^\n]s", pacienteAeliminar.apellidosNombre);
 
-    buscarNodoAbb(*arbolPacientes, nombre, &pacienteAeliminar);
-    if (strcmp(pacienteAeliminar.apellidosNombre, CADENADECONTROL) == 0)
+    if (esMiembroAbb(*arbolPacientes, pacienteAeliminar) == false)
     {
         fprintf(stdout, "ERR: eliminarPaciente --> El paciente no existe.\n");
         return;
     }
 
+//    buscarNodoAbb(*arbolPacientes,pacienteAeliminar.apellidosNombre, &pacienteAeliminar);//todo ¿?
+
+
     suprimirElementoAbb(arbolPacientes, pacienteAeliminar);
     fprintf(stdout, "INFO: eliminarPaciente --> Paciente eliminado.\n");
 }
+
+void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[])
+{
+    if ((argc != 3) || (strncmp(argv[1], "-f\0", 3) != 0)) //0 // Si el número de argumentos o el formato de los argumentos son incorrectos
+    {
+        fprintf(stdout, "Los argumentos no son correctos.\nUso: vacunodromo [opciones] [fichero]\n\tOpciones:\n\t-f (opcional) fichero\n");
+        return 0;
+    }
+
+    enum camposListaVacunas
+    {
+        nombreVacuna = 0, dosisAdministradas = 1, dosisMaximas = 2
+    };
+
+    FILE *fichero = fopen(*(argv + 2), "r");
+    if (fichero == NULL) //Si el fichero no existe o no se ha podido abrir:
+    {
+        fprintf(stdout, "ERR: cargarArchivo --> El fichero no existe o no se ha podido abrir.\n");
+        return 0;
+    }
+
+    char linea[MAXLINEA]; // variable temporal para almacenar una linea completa del archivo
+
+    while ((fgets(linea, MAXLINEA, fichero) != NULL) /*&& !feof(fichero)*/)
+    {
+        _strip_line(linea);
+
+        TIPOELEMENTOABB elementoArbolInsertar;
+
+        char *nombrePaciente = strtok(linea, "|");
+        strcpy(elementoArbolInsertar.apellidosNombre, nombrePaciente);
+        fprintf(stdout, "Nombre paciente: %s\n", elementoArbolInsertar.apellidosNombre);
+
+        char *listaVacunas = strtok(NULL, "|");
+        //   fprintf(stdout, "Lista vacunas: %s\n", listaVacunas);
+
+        TIPOELEMENTOLISTA vacunaActual;
+        crearLista(&elementoArbolInsertar.vacunas);
+
+        char *campo = strtok(listaVacunas, ";");
+        while (campo != NULL)
+        {
+            for (int campoActual = 0; campoActual < 3; campoActual++)
+            {
+                switch (campoActual)
+                {
+                    case nombreVacuna:
+                        strcpy(vacunaActual.nombreVacuna, campo);
+                        fprintf(stdout, "Nombre vacuna: %s\n", vacunaActual.nombreVacuna);
+                        break;
+                    case dosisMaximas:
+                        vacunaActual.i_dosisMaximas = atoi(campo);
+                        fprintf(stdout, "Dosis maximas: %d\n", vacunaActual.i_dosisMaximas);
+                        break;
+                    case dosisAdministradas:
+                        vacunaActual.i_dosisAdministradas = atoi(campo);
+                        fprintf(stdout, "Dosis administradas: %d\n", vacunaActual.i_dosisAdministradas);
+                        break;
+                    default:
+                        fprintf(stdout, "ERR: cargarArchivo --> Campo no reconocido.\n");
+                        break;
+                }
+                campo = strtok(NULL, ";");
+            }
+            insertarElementoLista(&elementoArbolInsertar.vacunas, finLista(elementoArbolInsertar.vacunas), vacunaActual);
+        }
+        insertarElementoAbb(arbolPacientes, elementoArbolInsertar);
+    }
+
+    if (fclose(fichero) != 0)
+    {
+        fprintf(stdout, "ERR: cargarArchivo --> No se ha podido cerrar el fichero.\n");
+    }
+
+    return 1;
+
+}
+
+void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
+{
+    FILE *fichero = fopen(nombreArchivo, "w");
+
+    if (fichero == NULL)//Si no se ha podido abrir y crear el fichero:
+    {
+        fprintf(stdout, "ERR: guardarArchivo --> No se ha podido crear el fichero.\n");
+        return;
+    }
+
+    _recorridoPosordenGuardar(arbolPacientes, fichero);
+
+    if (fclose(fichero) != 0)
+    {
+        fprintf(stdout, "ERR: guardarArchivo --> No se ha podido cerrar el fichero.\n");
+    }
+
+}
+
+#pragma clang diagnostic pop

@@ -1,0 +1,4 @@
+Martinez ulloa Antonio|test;0;44;ert2;0;4;
+Martinez Couselo, Maria|Comirnaty;1;2;Chiroflu;2;3;Pneumovax;0;1;
+Paz Marin, Pedro|Comirnaty;0;1;
+Alvarez Castro, Noa|Chiroflu;0;2;Pneumovax;0;1;

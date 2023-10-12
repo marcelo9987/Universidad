@@ -5,7 +5,6 @@
 #ifndef ENTREGAPRACTICA3_VACUNODROMO_H
 #define ENTREGAPRACTICA3_VACUNODROMO_H
 
-#include <stdbool.h>
 #include "abb.h"
 
 /**
@@ -28,5 +27,15 @@ void listadoPacientes(TABB arbolPacientes, bool primeraIteracion);
  * @pre El arbol de pacientes debe estar inicializado.
  */
 void eliminarPaciente(TABB *arbolPacientes);
+
+/**
+ * @brief Carga los datos de los pacientes desde un archivo.
+ * @param arbolPacientes El arbol de pacientes donde se cargarán los datos.
+ * @param argc El número de argumentos pasados al programa.
+ * @param argv Los argumentos pasados al programa.
+ */
+void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[]);
+
+void guardarArchivo(TABB arbolPacientes, char *nombreArchivo);
 
 #endif //ENTREGAPRACTICA3_VACUNODROMO_H
