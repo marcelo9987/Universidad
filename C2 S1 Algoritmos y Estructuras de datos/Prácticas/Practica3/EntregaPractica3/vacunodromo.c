@@ -1,5 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "bugprone-reserved-identifier"
 /*
  * Archivo: vacunodromo.c
  * Autor: Marcelo Fort Muñoz
@@ -40,22 +38,23 @@ void _strip_line(char *linea)
     linea[strcspn(linea, "\r\n")] = 0;
 }
 
-void _recorridoPosordenGuardar(TABB arbolPacientes, FILE *fichero)
+//todo: vale la notación postorden?
+void _recorridoPostOrdenGuardar(TABB arbolPacientes, FILE *fichero) //todo ¿recursivo?
 {
     if (esAbbVacio(arbolPacientes))
     {
-//        fprintf(stdout, "ERR: _recorridoPosordenGuardar --> El arbol está vacío.\n");
+//        fprintf(stdout, "ERR: _recorridoPostOrdenGuardar --> El arbol está vacío.\n");
         return;
     }
 
-    _recorridoPosordenGuardar(izqAbb(arbolPacientes), fichero);
-    _recorridoPosordenGuardar(derAbb(arbolPacientes), fichero);
+    _recorridoPostOrdenGuardar(izqAbb(arbolPacientes), fichero);
+    _recorridoPostOrdenGuardar(derAbb(arbolPacientes), fichero);
 
     TIPOELEMENTOABB elementoActual;
     leerElementoAbb(arbolPacientes, &elementoActual);
 
     fprintf(fichero, "%s|", elementoActual.apellidosNombre);
-    fprintf(stdout, "%s|", elementoActual.apellidosNombre);
+//    fprintf(stdout, "%s|", elementoActual.apellidosNombre);
 
     //imprimo las vacunas
     TPOSICION posActual = primeroLista(elementoActual.vacunas);
@@ -64,7 +63,7 @@ void _recorridoPosordenGuardar(TABB arbolPacientes, FILE *fichero)
         TIPOELEMENTOLISTA vacunaActual;
         recuperarElementoLista(elementoActual.vacunas, posActual, &vacunaActual);
         fprintf(fichero, "%s;%d;%d;", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisMaximas);
-        fprintf(stdout, "\tVacuna: %s  dosis administradas: %d de %d\n", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisMaximas);
+//        fprintf(stdout, "\tVacuna: %s  dosis administradas: %d de %d\n", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisMaximas);
         posActual = siguienteLista(elementoActual.vacunas, posActual);
     }
     fprintf(fichero, "\n");
@@ -182,7 +181,7 @@ void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[])
     if ((argc != 3) || (strncmp(argv[1], "-f\0", 3) != 0)) //0 // Si el número de argumentos o el formato de los argumentos son incorrectos
     {
         fprintf(stdout, "Los argumentos no son correctos.\nUso: vacunodromo [opciones] [fichero]\n\tOpciones:\n\t-f (opcional) fichero\n");
-        return 0;
+        return;
     }
 
     enum camposListaVacunas
@@ -194,7 +193,7 @@ void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[])
     if (fichero == NULL) //Si el fichero no existe o no se ha podido abrir:
     {
         fprintf(stdout, "ERR: cargarArchivo --> El fichero no existe o no se ha podido abrir.\n");
-        return 0;
+        return;
     }
 
     char linea[MAXLINEA]; // variable temporal para almacenar una linea completa del archivo
@@ -250,7 +249,6 @@ void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[])
         fprintf(stdout, "ERR: cargarArchivo --> No se ha podido cerrar el fichero.\n");
     }
 
-    return 1;
 
 }
 
@@ -264,7 +262,7 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
         return;
     }
 
-    _recorridoPosordenGuardar(arbolPacientes, fichero);
+    _recorridoPostOrdenGuardar(arbolPacientes, fichero);
 
     if (fclose(fichero) != 0)
     {
@@ -273,4 +271,3 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
 
 }
 
-#pragma clang diagnostic pop

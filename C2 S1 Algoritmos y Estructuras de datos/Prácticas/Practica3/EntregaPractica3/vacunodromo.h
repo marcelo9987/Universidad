@@ -6,6 +6,14 @@
 #define ENTREGAPRACTICA3_VACUNODROMO_H
 
 #include "abb.h"
+#include "cola.h"
+
+typedef struct
+{
+    char nombreVacun[MAXNOMBREVACUNA];
+    int i_numeroPacientes;
+    TCOLA colaPacientes;
+}VACUNODROMO;
 
 /**
  * Añade un paciente al arbol de pacientes
