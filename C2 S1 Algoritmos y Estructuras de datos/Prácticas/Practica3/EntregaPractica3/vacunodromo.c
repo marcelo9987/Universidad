@@ -38,8 +38,8 @@ void _strip_line(char *linea)
     linea[strcspn(linea, "\r\n")] = 0;
 }
 
-//todo: vale la notación postorden?
-void _recorridoPostOrdenGuardar(TABB arbolPacientes, FILE *fichero) //todo ¿recursivo?
+
+void _recorridoPostOrdenGuardar(TABB arbolPacientes, FILE *fichero)
 {
     if (esAbbVacio(arbolPacientes))
     {
@@ -124,7 +124,7 @@ void anhadirPaciente(TABB *arbolPacientes)
     insertarElementoAbb(arbolPacientes, elementoArbolInsertar);
 }
 
-void listadoPacientes(TABB arbolPacientes, bool primeraIteracion)
+void listadoPacientes(TABB arbolPacientes, bool primeraIteracion) //todo: hacer un alias para la función para que no haya que pasarle el booleano
 {
     if (esAbbVacio(arbolPacientes))
     {
@@ -168,9 +168,6 @@ void eliminarPaciente(TABB *arbolPacientes)
         fprintf(stdout, "ERR: eliminarPaciente --> El paciente no existe.\n");
         return;
     }
-
-//    buscarNodoAbb(*arbolPacientes,pacienteAeliminar.apellidosNombre, &pacienteAeliminar);//todo ¿?
-
 
     suprimirElementoAbb(arbolPacientes, pacienteAeliminar);
     fprintf(stdout, "INFO: eliminarPaciente --> Paciente eliminado.\n");
@@ -270,4 +267,59 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
     }
 
 }
+
+bool _existeVacuna(TABB arbolPacientes, char nombreVacuna[MAXNOMBREVACUNA])
+{
+    if (esAbbVacio(arbolPacientes))
+    {
+        return false;
+    }
+
+    TIPOELEMENTOABB elementoActual;
+    leerElementoAbb(arbolPacientes, &elementoActual);
+
+    TPOSICION posActual = primeroLista(elementoActual.vacunas);
+    while (posActual != finLista(elementoActual.vacunas))
+    {
+        TIPOELEMENTOLISTA vacunaActual;
+        recuperarElementoLista(elementoActual.vacunas, posActual, &vacunaActual);
+        if (strcmp(vacunaActual.nombreVacuna, nombreVacuna) == 0)
+        {
+            return true;
+        }
+        posActual = siguienteLista(elementoActual.vacunas, posActual);
+    }
+
+    if (_existeVacuna(izqAbb(arbolPacientes), nombreVacuna))
+    {
+        return true;
+    }
+    if (_existeVacuna(derAbb(arbolPacientes), nombreVacuna))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes)
+{
+    char nombreVacuna[MAXNOMBREVACUNA], nombreVacunodromo[MAXNOMBREVACUNA];
+    fprintf(stdout, "Introduzca el nombre de la vacuna a administrar: ");
+    fscanf(stdin, " %[^\n]s", nombreVacuna);
+    if(_existeVacuna(arbolPacientes, nombreVacuna))
+    {
+        fprintf(stdout, "Existe\n");
+    }
+    else
+    {
+        fprintf(stdout, "No existe\n");
+    }
+
+//    fprintf(stdout, "Introduzca el nombre del vacunodromo: ");
+//    fscanf(stdin, " %[^\n]s", nombreVacunodromo);
+//
+
+}
+
 

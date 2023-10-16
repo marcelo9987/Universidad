@@ -43,7 +43,21 @@ void eliminarPaciente(TABB *arbolPacientes);
  * @param argv Los argumentos pasados al programa.
  */
 void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[]);
-
+/**
+ * @brief Guarda los datos de los pacientes en un archivo en postorden.
+ * @param arbolPacientes El arbol de pacientes del cual se guardarán los datos.
+ * @param nombreArchivo El nombre del archivo donde se guardarán los datos.
+ */
 void guardarArchivo(TABB arbolPacientes, char *nombreArchivo);
+
+/**
+ * @brief Crea una cola de vacunación en base a una vacuna especificada por el usuario. En esta estarán los pacientes que se vacunarán con dicha vacuna.
+ * @param vacunodromo El vacunodromo donde se creará la cola de vacunación.
+ * @param arbolPacientes El arbol de pacientes del cual se extraerán los pacientes para la cola de vacunación.
+ * @pre El vacunodromo debe estar inicializado.
+ * @pre El arbol de pacientes debe estar inicializado.
+ * @pre El arbol de pacientes debe contener al menos un paciente.
+ */
+void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes);
 
 #endif //ENTREGAPRACTICA3_VACUNODROMO_H
