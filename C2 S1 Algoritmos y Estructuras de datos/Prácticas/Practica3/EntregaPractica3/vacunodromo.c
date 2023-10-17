@@ -386,10 +386,14 @@ void vacunarPrimerPaciente(VACUNODROMO *vacunodromo)
 
     TIPOELEMENTOLISTA vacunaActual;
     TPOSICION posActualListaVacunasPaciente = primeroLista(pacienteActual.vacunas);
-    while (strcmp(vacunaActual.nombreVacuna, vacunodromo->nombreVacun) != 0)
+    do
     {
-        siguienteLista(pacienteActual.vacunas, posActualListaVacunasPaciente);
-    }
+        recuperarElementoLista(pacienteActual.vacunas, posActualListaVacunasPaciente, &vacunaActual);
+
+        posActualListaVacunasPaciente = siguienteLista(pacienteActual.vacunas, posActualListaVacunasPaciente);
+
+    } while (strcmp(vacunaActual.nombreVacuna, vacunodromo->nombreVacun) != 0);
+
 
     fprintf(stdout, "Voy a actualizar la vacuna %s con valor previo %d y nuevo valor %d\n", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisAdministradas + 1);
 
