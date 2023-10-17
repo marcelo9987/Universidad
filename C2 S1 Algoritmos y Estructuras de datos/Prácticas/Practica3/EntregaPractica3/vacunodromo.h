@@ -8,19 +8,26 @@
 #include "abb.h"
 #include "cola.h"
 
+
 typedef struct
 {
     char nombreVacun[MAXNOMBREVACUNA];
     int i_numeroPacientes;
     TCOLA colaPacientes;
-}VACUNODROMO;
+} VACUNODROMO;
+
+/**
+ * @brief Inicializa el vacunodromo.
+ * @param vacunodromo El vacunodromo a inicializar.
+ */
+void inicializarVacundromo(VACUNODROMO *vacunodromo);
 
 /**
  * Añade un paciente al arbol de pacientes
  * @param arbolPacientes El arbol de pacientes
  * @pre El arbol de pacientes debe estar inicializado.
  */
-void anhadirPaciente(TABB* arbolPacientes);
+void anhadirPaciente(TABB *arbolPacientes);
 
 /**
  * @brief Muestra por pantalla los datos de los pacientes del arbol de pacientes.
@@ -43,6 +50,7 @@ void eliminarPaciente(TABB *arbolPacientes);
  * @param argv Los argumentos pasados al programa.
  */
 void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[]);
+
 /**
  * @brief Guarda los datos de los pacientes en un archivo en postorden.
  * @param arbolPacientes El arbol de pacientes del cual se guardarán los datos.
@@ -59,5 +67,7 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo);
  * @pre El arbol de pacientes debe contener al menos un paciente.
  */
 void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes);
+
+void vacunarPrimerPaciente(VACUNODROMO *vacunodromo);
 
 #endif //ENTREGAPRACTICA3_VACUNODROMO_H

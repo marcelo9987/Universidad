@@ -81,7 +81,7 @@ void gestorBaseDatos(TABB *arbolPacientes)
                 break;
 
             default:
-                fprintf(stdout, "ERR: Opcion %c no valida. \a \n", opcion);
+                fprintf(stdout, "ERR: Opción %c no válida.\n", opcion);
                 break;
         }
     } while (salir == false);
@@ -100,6 +100,8 @@ void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
             fprintf(stdout, "C. Crear cola de vacunacion\n");
             fprintf(stdout, "V. Vacunar\n");
             fprintf(stdout, "S. Salir\n");
+
+            fprintf(stdout, "Introduzca una opción: ");
             fscanf(stdin, " %1c", &opcion);
         } while (!esOpcionCorrecta(opcion, 2));
         fprintf(stdout, "\n");
@@ -112,14 +114,20 @@ void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
                 break;
             case 'V':
             case 'v':
-//                vacunar(vacunodromoActual, arbolPacientes);
+                if (vacunodromoActual->nombreVacun[0] == '\0')
+                {
+                    fprintf(stdout, "ERR: No hay ninguna cola de vacunación creada.\n");
+                } else
+                {
+                    vacunarPrimerPaciente(vacunodromoActual);
+                }
                 break;
             case 'S':
             case 's':
                 salir = true;
                 break;
             default:
-                fprintf(stdout, "ERR: Opcion %c no valida. \a \n", opcion);
+                fprintf(stdout, "ERR: Opción %c no válida.\n", opcion);
                 break;
         }
     } while (salir == false);
@@ -131,15 +139,15 @@ int main(int argc, char *argv[])
 
     TABB arbolPacientes;
     crearAbb(&arbolPacientes);
+    cargarArchivo(&arbolPacientes, argc, argv);
 
     VACUNODROMO vacunodromo;
-
-    cargarArchivo(&arbolPacientes, argc, argv);
+    inicializarVacundromo(&vacunodromo);
 
     bool salir = false;
     do
     {
-        char baseOvacunodromo = '\0';
+        char opcion = '\0';
         do
         {
             fprintf(stdout, "\n");
@@ -148,12 +156,14 @@ int main(int argc, char *argv[])
             fprintf(stdout, "A. Gestión de la base de datos\n");
             fprintf(stdout, "B. Gestión del vacunódromo\n");
             fprintf(stdout, "S. Salir\n");
-            fscanf(stdin, " %1c", &baseOvacunodromo);
-        } while (!esOpcionCorrecta(baseOvacunodromo, 0));
+
+            fprintf(stdout, "Introduzca una opción: ");
+            fscanf(stdin, " %1c", &opcion);
+        } while (!esOpcionCorrecta(opcion, 0));
 
         fprintf(stdout, "\n");
 
-        switch (baseOvacunodromo)
+        switch (opcion)
         {
             case 'A':
             case 'a':
@@ -161,14 +171,14 @@ int main(int argc, char *argv[])
                 break;
             case 'B':
             case 'b':
-                gestorVacunodromo(&vacunodromo,&arbolPacientes);
+                gestorVacunodromo(&vacunodromo, arbolPacientes);
                 break;
             case 'S':
             case 's':
                 salir = true;
                 break;
             default:
-                fprintf(stdout, "ERR: Opcion %c no valida. \a \n", baseOvacunodromo);
+                fprintf(stdout, "ERR: Opción %c no válida.\n", opcion);
                 break;
         }
     } while (salir == false);

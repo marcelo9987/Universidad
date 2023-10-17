@@ -177,7 +177,7 @@ void cargarArchivo(TABB *arbolPacientes, int argc, char *argv[])
 {
     if ((argc != 3) || (strncmp(argv[1], "-f\0", 3) != 0)) //0 // Si el número de argumentos o el formato de los argumentos son incorrectos
     {
-        fprintf(stdout, "Los argumentos no son correctos.\nUso: vacunodromo [opciones] [fichero]\n\tOpciones:\n\t-f (opcional) fichero\n");
+        fprintf(stdout, "Los argumentos no son correctos.\nUso: %s [opciones] [fichero]\n\tOpciones:\n\t-f (opcional) fichero\n", argv[0]);
         return;
     }
 
@@ -302,24 +302,113 @@ bool _existeVacuna(TABB arbolPacientes, char nombreVacuna[MAXNOMBREVACUNA])
     return false;
 }
 
-void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes)
+void _llenarColaVacunacion(TCOLA *cola, TABB arbolPacientes, char *nombreVacunaSolicitada)
 {
-    char nombreVacuna[MAXNOMBREVACUNA], nombreVacunodromo[MAXNOMBREVACUNA];
-    fprintf(stdout, "Introduzca el nombre de la vacuna a administrar: ");
-    fscanf(stdin, " %[^\n]s", nombreVacuna);
-    if(_existeVacuna(arbolPacientes, nombreVacuna))
+    if (esAbbVacio(arbolPacientes))
     {
-        fprintf(stdout, "Existe\n");
-    }
-    else
-    {
-        fprintf(stdout, "No existe\n");
+        return;
     }
 
-//    fprintf(stdout, "Introduzca el nombre del vacunodromo: ");
-//    fscanf(stdin, " %[^\n]s", nombreVacunodromo);
-//
+    TIPOELEMENTOABB elementoActual;
+    leerElementoAbb(arbolPacientes, &elementoActual);
+
+    TPOSICION posActualListaVacunasPaciente = primeroLista(elementoActual.vacunas);
+    while (posActualListaVacunasPaciente != finLista(elementoActual.vacunas))
+    {
+        TIPOELEMENTOLISTA vacunaActual;
+        recuperarElementoLista(elementoActual.vacunas, posActualListaVacunasPaciente, &vacunaActual);
+        if (vacunaActual.i_dosisAdministradas < vacunaActual.i_dosisMaximas && strcmp(vacunaActual.nombreVacuna, nombreVacunaSolicitada) == 0)
+        {
+            anadirElementoCola(cola, elementoActual);
+            break;
+            //todo: ver si se debe permitir que haya varias vacunas con el mismo nombre para un mismo paciente.
+        }
+        posActualListaVacunasPaciente = siguienteLista(elementoActual.vacunas, posActualListaVacunasPaciente);
+    }
+
+    _llenarColaVacunacion(cola, izqAbb(arbolPacientes), nombreVacunaSolicitada);
+    _llenarColaVacunacion(cola, derAbb(arbolPacientes), nombreVacunaSolicitada);
+}
+
+void inicializarVacundromo(VACUNODROMO *vacunodromo)
+{
+    if (vacunodromo == NULL)
+    {
+        fprintf(stdout, "ERR: inicializarVacundromo --> El vacunódromo no existe.\n");
+        return;
+    }
+
+    vacunodromo->i_numeroPacientes = 0;
+    vacunodromo->nombreVacun[0] = '\0';
+    crearCola(&vacunodromo->colaPacientes);
+}
+
+void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes)
+{
+    char nombreVacuna[MAXNOMBREVACUNA];
+
+    fprintf(stdout, "Introduzca el nombre de la vacuna a administrar: ");
+    fscanf(stdin, " %[^\n]s", nombreVacuna);
+    if (_existeVacuna(arbolPacientes, nombreVacuna) == false)
+    {
+        fprintf(stdout, "ERR: crearColaVacunacion --> La vacuna no existe.\n");
+        return;
+    }
+
+    strncpy(vacunodromo->nombreVacun, nombreVacuna, MAXNOMBREVACUNA);
+
+    fprintf(stdout, "Nombre del vacunódromo: %s\n", vacunodromo->nombreVacun);
+
+    crearCola(&vacunodromo->colaPacientes);
+    _llenarColaVacunacion(&vacunodromo->colaPacientes, arbolPacientes, nombreVacuna);
 
 }
 
+void vacunarPrimerPaciente(VACUNODROMO *vacunodromo)
+{
+    if (vacunodromo == NULL)
+    {
+        fprintf(stdout, "ERR: vacunarPrimerPaciente --> El vacunódromo no existe.\n");
+        return;
+    }
+    if (esColaVacia(vacunodromo->colaPacientes))
+    {
+        fprintf(stdout, "ERR: vacunarPrimerPaciente --> No hay pacientes en la cola.\n");
+        return;
+    }
 
+    TIPOELEMENTOCOLA pacienteActual;
+    consultarPrimerElementoCola(vacunodromo->colaPacientes, &pacienteActual);
+
+    fprintf(stdout, "Paciente: %s\n", pacienteActual.apellidosNombre);
+
+    suprimirElementoCola(&vacunodromo->colaPacientes);
+
+    TIPOELEMENTOLISTA vacunaActual;
+    TPOSICION posActualListaVacunasPaciente = primeroLista(pacienteActual.vacunas);
+    while (strcmp(vacunaActual.nombreVacuna, vacunodromo->nombreVacun) != 0)
+    {
+        siguienteLista(pacienteActual.vacunas, posActualListaVacunasPaciente);
+    }
+
+    fprintf(stdout, "Voy a actualizar la vacuna %s con valor previo %d y nuevo valor %d\n", vacunaActual.nombreVacuna, vacunaActual.i_dosisAdministradas, vacunaActual.i_dosisAdministradas + 1);
+
+    vacunaActual.i_dosisAdministradas++;
+
+    if (vacunaActual.i_dosisAdministradas < vacunaActual.i_dosisMaximas)
+    {
+        fprintf(stdout, "INFO: vacunarPrimerPaciente --> El paciente no ha sido vacunado completamente. Se volverá a añadir al final de la cola.\n");
+        anadirElementoCola(&vacunodromo->colaPacientes, pacienteActual);
+    } else if (esListaVacia(pacienteActual.vacunas))
+    {
+        fprintf(stdout, "INFO: vacunarPrimerPaciente --> La lista de vacunas del paciente está vacía. Se eliminará de la base de datos\n");
+        //todo: eliminar paciente de la base de datos
+        return;
+    } else
+    {
+        fprintf(stdout, "INFO: vacunarPrimerPaciente --> El paciente ha sido vacunado completamente de esta vacuna. Como tiene otras vacunas pendientes, no se eliminará de la base de datos.\n");
+    }
+
+//    fprintf(stdout, "El paciente ha sido vacunado.\n");
+
+}

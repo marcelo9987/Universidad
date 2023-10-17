@@ -1,11 +1,13 @@
 #ifndef COLA_H
 #define COLA_H
 
+#include "abb.h"
+
 
 /** Definicion del tipo de elemento almacenado en la cola **/
 /////////////////////////////////////////////////////////////////////
 // SOLO HAY QUE CAMBIAR EL TIPOELEMENTOCOLA
-typedef int TIPOELEMENTOCOLA;
+#define TIPOELEMENTOCOLA TIPOELEMENTOABB //todo: esto se puede hacer?
 ////////////////////////////////////////////////////////////////////
 /** Estructura para la cola **/
 typedef struct cola *TCOLA;
