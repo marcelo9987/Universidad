@@ -132,6 +132,31 @@ bool _existeVacuna(TABB arbolPacientes, char nombreVacuna[MAXNOMBREVACUNA])
     return false;
 }
 
+void _listadoPacientes(TABB arbolPacientes, bool primeraIteracion) //todo: hacer un alias para la función para que no haya que pasarle el booleano
+{
+    if (esAbbVacio(arbolPacientes))
+    {
+        if (primeraIteracion)
+        {
+            fprintf(stdout, "INFO: listadoPacientes --> El arbol está vacío.\n");
+        }
+        return;
+    }
+
+    _listadoPacientes(izqAbb(arbolPacientes), false);
+
+    TIPOELEMENTOABB elementoActual;
+    leerElementoAbb(arbolPacientes, &elementoActual);
+
+    _imprimirPaciente(&elementoActual);
+
+    fprintf(stdout, "\n");
+
+    _listadoPacientes(derAbb(arbolPacientes), false);
+
+
+}
+
 /// Funciones públicas
 
 void anhadirPaciente(TABB *arbolPacientes)
@@ -186,29 +211,9 @@ void anhadirPaciente(TABB *arbolPacientes)
     insertarElementoAbb(arbolPacientes, elementoArbolInsertar);
 }
 
-void listadoPacientes(TABB arbolPacientes, bool primeraIteracion) //todo: hacer un alias para la función para que no haya que pasarle el booleano
+void listadoPacientes(TABB arbolPacientes)
 {
-    if (esAbbVacio(arbolPacientes))
-    {
-        if (primeraIteracion)
-        {
-            fprintf(stdout, "INFO: listadoPacientes --> El arbol está vacío.\n");
-        }
-        return;
-    }
-
-    listadoPacientes(izqAbb(arbolPacientes), false);
-
-    TIPOELEMENTOABB elementoActual;
-    leerElementoAbb(arbolPacientes, &elementoActual);
-
-    _imprimirPaciente(&elementoActual);
-
-    fprintf(stdout, "\n");
-
-    listadoPacientes(derAbb(arbolPacientes), false);
-
-
+    _listadoPacientes(arbolPacientes, true);
 }
 
 void eliminarPaciente(TABB *arbolPacientes)

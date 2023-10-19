@@ -67,7 +67,7 @@ void gestorBaseDatos(TABB *arbolPacientes)
 
             case 'L':
             case 'l':
-                listadoPacientes((*arbolPacientes), true);
+                listadoPacientes((*arbolPacientes));
                 break;
 
             case 'E':

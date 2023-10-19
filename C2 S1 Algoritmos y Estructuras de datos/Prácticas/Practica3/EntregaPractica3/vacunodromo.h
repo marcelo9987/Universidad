@@ -34,7 +34,7 @@ void anhadirPaciente(TABB *arbolPacientes);
  * @param arbolPacientes El arbol de pacientes del cual se imprimirán los datos.
  * @pre El arbol de pacientes debe estar inicializado.
  */
-void listadoPacientes(TABB arbolPacientes, bool primeraIteracion);
+void listadoPacientes(TABB arbolPacientes);
 
 /**
  * @brief Elimina un paciente del arbol de pacientes.
