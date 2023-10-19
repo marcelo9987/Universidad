@@ -359,6 +359,11 @@ void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes)
 
     fprintf(stdout, "Nombre del vacunódromo: %s\n", vacunodromo->nombreVacun);
 
+    if(!esColaVacia(vacunodromo->colaPacientes))
+    {
+        destruirCola(&vacunodromo->colaPacientes);
+    }
+
     crearCola(&vacunodromo->colaPacientes);
     _llenarColaVacunacion(&vacunodromo->colaPacientes, arbolPacientes, nombreVacuna);
 
