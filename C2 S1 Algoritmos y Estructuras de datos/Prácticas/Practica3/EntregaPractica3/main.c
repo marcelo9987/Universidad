@@ -131,7 +131,6 @@ void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
                 break;
         }
     } while (salir == false);
-
 }
 
 int main(int argc, char *argv[])
@@ -186,8 +185,14 @@ int main(int argc, char *argv[])
     if (argc > 2)
     {
         guardarArchivo(arbolPacientes, argv[2]);
+        fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
+
         //elimino el arbol
         destruirAbb(&arbolPacientes);
+        // destruyo el vacunodromo (libero su cola)
+        destruirCola(&vacunodromo.colaPacientes);
+
+        fprintf(stdout, "INFO: Programa finalizado con éxito.\n");
         return 0;
     }
 
@@ -198,7 +203,7 @@ int main(int argc, char *argv[])
 
         fscanf(stdin, " %1c", &respuesta);
 
-    } while (esOpcionCorrecta(respuesta, 3));
+    } while (!esOpcionCorrecta(respuesta, 3));
 
     switch (respuesta)
     {
@@ -210,12 +215,15 @@ int main(int argc, char *argv[])
             fprintf(stdout, "Introduzca un nombre para el archivo: ");
             fscanf(stdin, " %[^\n]s", nombreArchivo);
             guardarArchivo(arbolPacientes, nombreArchivo);
+            fprintf(stdout, "Archivo guardado con éxito.\n");
             break;
         default:
             break;
     }
     //elimino el arbol
     destruirAbb(&arbolPacientes);
+    // destruyo el vacunodromo (libero su cola)
+    destruirCola(&vacunodromo.colaPacientes);
+    fprintf(stdout, "INFO: Programa finalizado con éxito.\n");
     return 0;
-
 }
