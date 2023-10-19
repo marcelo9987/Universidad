@@ -70,6 +70,68 @@ void _recorridoPostOrdenGuardar(TABB arbolPacientes, FILE *fichero)
 
 }
 
+void _llenarColaVacunacion(TCOLA *cola, TABB arbolPacientes, char *nombreVacunaSolicitada)
+{
+    if (esAbbVacio(arbolPacientes))
+    {
+        return;
+    }
+
+    TIPOELEMENTOABB elementoActual;
+    leerElementoAbb(arbolPacientes, &elementoActual);
+
+    TPOSICION posActualListaVacunasPaciente = primeroLista(elementoActual.vacunas);
+    while (posActualListaVacunasPaciente != finLista(elementoActual.vacunas))
+    {
+        TIPOELEMENTOLISTA vacunaActual;
+        recuperarElementoLista(elementoActual.vacunas, posActualListaVacunasPaciente, &vacunaActual);
+        if (vacunaActual.i_dosisAdministradas < vacunaActual.i_dosisMaximas && strcmp(vacunaActual.nombreVacuna, nombreVacunaSolicitada) == 0)
+        {
+            anadirElementoCola(cola, elementoActual);
+            break;
+            //todo: ver si se debe permitir que haya varias vacunas con el mismo nombre para un mismo paciente.
+        }
+        posActualListaVacunasPaciente = siguienteLista(elementoActual.vacunas, posActualListaVacunasPaciente);
+    }
+
+    _llenarColaVacunacion(cola, izqAbb(arbolPacientes), nombreVacunaSolicitada);
+    _llenarColaVacunacion(cola, derAbb(arbolPacientes), nombreVacunaSolicitada);
+}
+
+bool _existeVacuna(TABB arbolPacientes, char nombreVacuna[MAXNOMBREVACUNA])
+{
+    if (esAbbVacio(arbolPacientes))
+    {
+        return false;
+    }
+
+    TIPOELEMENTOABB elementoActual;
+    leerElementoAbb(arbolPacientes, &elementoActual);
+
+    TPOSICION posActual = primeroLista(elementoActual.vacunas);
+    while (posActual != finLista(elementoActual.vacunas))
+    {
+        TIPOELEMENTOLISTA vacunaActual;
+        recuperarElementoLista(elementoActual.vacunas, posActual, &vacunaActual);
+        if (strcmp(vacunaActual.nombreVacuna, nombreVacuna) == 0)
+        {
+            return true;
+        }
+        posActual = siguienteLista(elementoActual.vacunas, posActual);
+    }
+
+    if (_existeVacuna(izqAbb(arbolPacientes), nombreVacuna))
+    {
+        return true;
+    }
+    if (_existeVacuna(derAbb(arbolPacientes), nombreVacuna))
+    {
+        return true;
+    }
+
+    return false;
+}
+
 /// Funciones públicas
 
 void anhadirPaciente(TABB *arbolPacientes)
@@ -266,68 +328,6 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
         fprintf(stdout, "ERR: guardarArchivo --> No se ha podido cerrar el fichero.\n");
     }
 
-}
-
-bool _existeVacuna(TABB arbolPacientes, char nombreVacuna[MAXNOMBREVACUNA])
-{
-    if (esAbbVacio(arbolPacientes))
-    {
-        return false;
-    }
-
-    TIPOELEMENTOABB elementoActual;
-    leerElementoAbb(arbolPacientes, &elementoActual);
-
-    TPOSICION posActual = primeroLista(elementoActual.vacunas);
-    while (posActual != finLista(elementoActual.vacunas))
-    {
-        TIPOELEMENTOLISTA vacunaActual;
-        recuperarElementoLista(elementoActual.vacunas, posActual, &vacunaActual);
-        if (strcmp(vacunaActual.nombreVacuna, nombreVacuna) == 0)
-        {
-            return true;
-        }
-        posActual = siguienteLista(elementoActual.vacunas, posActual);
-    }
-
-    if (_existeVacuna(izqAbb(arbolPacientes), nombreVacuna))
-    {
-        return true;
-    }
-    if (_existeVacuna(derAbb(arbolPacientes), nombreVacuna))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-void _llenarColaVacunacion(TCOLA *cola, TABB arbolPacientes, char *nombreVacunaSolicitada)
-{
-    if (esAbbVacio(arbolPacientes))
-    {
-        return;
-    }
-
-    TIPOELEMENTOABB elementoActual;
-    leerElementoAbb(arbolPacientes, &elementoActual);
-
-    TPOSICION posActualListaVacunasPaciente = primeroLista(elementoActual.vacunas);
-    while (posActualListaVacunasPaciente != finLista(elementoActual.vacunas))
-    {
-        TIPOELEMENTOLISTA vacunaActual;
-        recuperarElementoLista(elementoActual.vacunas, posActualListaVacunasPaciente, &vacunaActual);
-        if (vacunaActual.i_dosisAdministradas < vacunaActual.i_dosisMaximas && strcmp(vacunaActual.nombreVacuna, nombreVacunaSolicitada) == 0)
-        {
-            anadirElementoCola(cola, elementoActual);
-            break;
-            //todo: ver si se debe permitir que haya varias vacunas con el mismo nombre para un mismo paciente.
-        }
-        posActualListaVacunasPaciente = siguienteLista(elementoActual.vacunas, posActualListaVacunasPaciente);
-    }
-
-    _llenarColaVacunacion(cola, izqAbb(arbolPacientes), nombreVacunaSolicitada);
-    _llenarColaVacunacion(cola, derAbb(arbolPacientes), nombreVacunaSolicitada);
 }
 
 void inicializarVacundromo(VACUNODROMO *vacunodromo)
