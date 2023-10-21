@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
                 fscanf(stdin, " %[^\n]s", nombreArchivo);
 
                 guardarArchivo(arbolPacientes, argv[2]);
-                fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
+//                fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
                 break;
             default:
                 break;
