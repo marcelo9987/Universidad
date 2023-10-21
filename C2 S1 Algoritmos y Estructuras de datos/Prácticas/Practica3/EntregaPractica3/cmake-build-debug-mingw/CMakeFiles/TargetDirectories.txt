@@ -1,3 +1,0 @@
-C:/Users/imarc/Documents/GitHub/Universidad/C2 S1 Algoritmos y Estructuras de datos/Prácticas/Practica3/EntregaPractica3/cmake-build-debug-mingw/CMakeFiles/EntregaPractica3.dir
-C:/Users/imarc/Documents/GitHub/Universidad/C2 S1 Algoritmos y Estructuras de datos/Prácticas/Practica3/EntregaPractica3/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
-C:/Users/imarc/Documents/GitHub/Universidad/C2 S1 Algoritmos y Estructuras de datos/Prácticas/Practica3/EntregaPractica3/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir

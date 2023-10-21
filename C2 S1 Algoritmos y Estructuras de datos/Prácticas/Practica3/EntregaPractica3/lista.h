@@ -6,12 +6,14 @@
 /** Definicion del tipo de elemento almacenado en la lista **/
 // Definir el struct y si es necesario definir constantes
 
-typedef struct
+struct STINFODOSISADMINSTRADAS
 {
     char nombreVacuna[MAXNOMBREVACUNA];
     int i_dosisMaximas;
     int i_dosisAdministradas;
-} TIPOELEMENTOLISTA;
+};
+
+typedef struct STINFODOSISADMINSTRADAS TIPOELEMENTOLISTA;
 
 ///////////////////////////////////////////////////
 

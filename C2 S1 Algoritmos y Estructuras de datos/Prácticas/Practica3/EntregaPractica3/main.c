@@ -3,17 +3,17 @@
 #include <stdbool.h>
 #include "vacunodromo.h"
 
-
-bool esOpcionCorrecta(char opcion, int menuSeleccion)
+enum opcionesMenu
 {
-    enum opcionesMenu
-    {
-        MENU_PRINCIPAL = 0,
-        MENU_BASEDATOS = 1,
-        MENU_VACUNODROMO = 2,
-        MENU_SALIR = 3
+    MENU_PRINCIPAL,
+    MENU_BASEDATOS,
+    MENU_VACUNODROMO,
+    MENU_SALIR
+};
 
-    };
+bool esOpcionCorrecta(char opcion, enum opcionesMenu menuSeleccion)
+{
+
     switch (menuSeleccion)
     {
         case MENU_PRINCIPAL:
@@ -26,10 +26,7 @@ bool esOpcionCorrecta(char opcion, int menuSeleccion)
             return (opcion == 'S' || opcion == 's' || opcion == 'N' || opcion == 'n');
         default:
             return false;
-
-
     }
-
 }
 
 /**
@@ -53,8 +50,8 @@ void gestorBaseDatos(TABB *arbolPacientes)
             fprintf(stdout, "S. Salir\n");
 
             fprintf(stdout, "Introduzca una opción: ");
-            scanf(" %1c", &opcion);
-        } while (!esOpcionCorrecta(opcion, 1));
+            fscanf(stdin, " %1c", &opcion);
+        } while (!esOpcionCorrecta(opcion, MENU_BASEDATOS));
 
         fprintf(stdout, "\n");
 
@@ -67,7 +64,7 @@ void gestorBaseDatos(TABB *arbolPacientes)
 
             case 'L':
             case 'l':
-                listadoPacientes((*arbolPacientes));
+                listadoPacientes(*arbolPacientes);
                 break;
 
             case 'E':
@@ -87,7 +84,7 @@ void gestorBaseDatos(TABB *arbolPacientes)
     } while (salir == false);
 }
 
-void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
+void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB *arbolPacientes)
 {
     bool salir = false;
     do
@@ -97,20 +94,20 @@ void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
         {
             fprintf(stdout, "\n");
             fprintf(stdout, "Menu de gestión del vacunódromo\n");
-            fprintf(stdout, "C. Crear cola de vacunacion\n");
+            fprintf(stdout, "C. Crear cola de vacunación\n");
             fprintf(stdout, "V. Vacunar\n");
             fprintf(stdout, "S. Salir\n");
 
             fprintf(stdout, "Introduzca una opción: ");
             fscanf(stdin, " %1c", &opcion);
-        } while (!esOpcionCorrecta(opcion, 2));
+        } while (!esOpcionCorrecta(opcion, MENU_VACUNODROMO));
         fprintf(stdout, "\n");
 
         switch (opcion)
         {
             case 'C':
             case 'c':
-                crearColaVacunacion(vacunodromoActual, arbolPacientes);
+                crearColaVacunacion(vacunodromoActual, *arbolPacientes);
                 break;
             case 'V':
             case 'v':
@@ -119,7 +116,7 @@ void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
                     fprintf(stdout, "ERR: No hay ninguna cola de vacunación creada.\n");
                 } else
                 {
-                    vacunarPrimerPaciente(vacunodromoActual, &arbolPacientes);
+                    vacunarPrimerPaciente(vacunodromoActual, arbolPacientes);
                 }
 
                 break;
@@ -151,7 +148,7 @@ int main(int argc, char *argv[])
         do
         {
             fprintf(stdout, "\n");
-            fprintf(stdout, "Bienvenido al menú del sistema de gestión de vacunas y vacunódromos\n");
+            fprintf(stdout, "Bienvenid@ al menú del sistema de gestión de vacunas y vacunódromos\n");
             fprintf(stdout, "====================================\n");
             fprintf(stdout, "A. Gestión de la base de datos\n");
             fprintf(stdout, "B. Gestión del vacunódromo\n");
@@ -159,7 +156,7 @@ int main(int argc, char *argv[])
 
             fprintf(stdout, "Introduzca una opción: ");
             fscanf(stdin, " %1c", &opcion);
-        } while (!esOpcionCorrecta(opcion, 0));
+        } while (!esOpcionCorrecta(opcion, MENU_PRINCIPAL));
 
         fprintf(stdout, "\n");
 
@@ -171,7 +168,7 @@ int main(int argc, char *argv[])
                 break;
             case 'B':
             case 'b':
-                gestorVacunodromo(&vacunodromo, arbolPacientes);
+                gestorVacunodromo(&vacunodromo, &arbolPacientes);
                 break;
             case 'S':
             case 's':
@@ -183,48 +180,53 @@ int main(int argc, char *argv[])
         }
     } while (salir == false);
 
-    if (argc > 2)
+
+    // Guardmos el árbol de pacientes en un archivo.
+    if (argc >= 3)
     {
+        // Si se ha pasado un archivo de pacientes como argumento, se guarda el árbol de pacientes en dicho archivo.
         guardarArchivo(arbolPacientes, argv[2]);
         fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
 
-        //elimino el arbol
-        destruirAbb(&arbolPacientes);
-        // destruyo el vacunodromo (libero su cola)
-        destruirCola(&vacunodromo.colaPacientes);
+    } else {
 
-        fprintf(stdout, "INFO: Programa finalizado con éxito.\n");
-        return 0;
-    }
+        // Si no se ha pasado un archivo de pacientes como argumento, se le pregunta al usuario si desea crear uno nuevo.
 
-    char respuesta = '\0';
-    do
-    {
-        fprintf(stdout, "El programa no ha podido detectar el archivo de pacientes. Desea crear uno nuevo? (S/N): ");
+        char respuesta = '\0';
+        do
+        {
+            fprintf(stdout, "El programa no ha podido detectar el archivo de pacientes. Desea crear uno nuevo? (S/N): ");
 
-        fscanf(stdin, " %1c", &respuesta);
+            fscanf(stdin, " %c", &respuesta);
 
-    } while (!esOpcionCorrecta(respuesta, 3));
+        } while (!esOpcionCorrecta(respuesta, MENU_SALIR));
 
-    switch (respuesta)
-    {
         char nombreArchivo[FILENAME_MAX];
 
-        case 'S':
-        case 's':
+        switch (respuesta)
+        {
+            case 'S':
+            case 's':
 
-            fprintf(stdout, "Introduzca un nombre para el archivo: ");
-            fscanf(stdin, " %[^\n]s", nombreArchivo);
-            guardarArchivo(arbolPacientes, nombreArchivo);
-            fprintf(stdout, "Archivo guardado con éxito.\n");
-            break;
-        default:
-            break;
+                fprintf(stdout, "Introduzca un nombre para el archivo: ");
+                fscanf(stdin, " %[^\n]s", nombreArchivo);
+
+                guardarArchivo(arbolPacientes, argv[2]);
+                fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
+                break;
+            default:
+                break;
+        }
     }
-    //elimino el arbol
+
+    //elimino el árbol
     destruirAbb(&arbolPacientes);
-    // destruyo el vacunodromo (libero su cola)
+
+    // destruyo el vacunódromo (libero su cola)
     destruirCola(&vacunodromo.colaPacientes);
+
     fprintf(stdout, "INFO: Programa finalizado con éxito.\n");
+
     return 0;
+
 }

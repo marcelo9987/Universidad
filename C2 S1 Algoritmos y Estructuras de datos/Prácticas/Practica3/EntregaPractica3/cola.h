@@ -7,7 +7,8 @@
 /** Definicion del tipo de elemento almacenado en la cola **/
 /////////////////////////////////////////////////////////////////////
 // SOLO HAY QUE CAMBIAR EL TIPOELEMENTOCOLA
-#define TIPOELEMENTOCOLA TIPOELEMENTOABB //todo: esto se puede hacer?
+typedef struct STDATOSPACIENTE TIPOELEMENTOCOLA;
+
 ////////////////////////////////////////////////////////////////////
 /** Estructura para la cola **/
 typedef struct cola *TCOLA;

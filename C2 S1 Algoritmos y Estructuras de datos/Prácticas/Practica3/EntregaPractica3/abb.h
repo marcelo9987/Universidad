@@ -14,12 +14,15 @@
 
 typedef char * TIPOCLAVE;
 
-typedef struct
+struct STDATOSPACIENTE
 {
     char apellidosNombre[MAXNOMBRE];
     TLISTA vacunas;
 
-} TIPOELEMENTOABB;
+};
+
+typedef struct STDATOSPACIENTE TIPOELEMENTOABB;
+
 
 //////////////////////////////////////////FIN PARTE MODIFICABLE
 		
