@@ -6,6 +6,7 @@
 /** Definicion del tipo de elemento almacenado en la lista **/
 // Definir el struct y si es necesario definir constantes
 
+// Un struct para almacenar la información de las dosis administradas de una vacuna
 struct STINFODOSISADMINSTRADAS
 {
     char nombreVacuna[MAXNOMBREVACUNA];

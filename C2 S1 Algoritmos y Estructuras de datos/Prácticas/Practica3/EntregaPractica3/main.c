@@ -1,3 +1,11 @@
+/**
+ * @file main.c
+ * @brief Programa principal del sistema de gestión de vacunas y vacunódromos.
+ * @version 1.0
+ * @date 2023
+ * @author Marcelo Fort Muñoz
+ */
+
 #include <stdio.h>
 #include "abb.h"
 #include <stdbool.h>
@@ -10,6 +18,13 @@ enum opcionesMenu
     MENU_VACUNODROMO,
     MENU_SALIR
 };
+
+/**
+ * Comprueba si la opción introducida por el usuario es correcta.
+ * @param opcion La opción introducida por el usuario. El rango de opciones variará en función del menú seleccionado.
+ * @param menuSeleccion Enum que indica el menú seleccionado.
+ * @return true si la opción es correcta, false en caso contrario.
+ */
 
 bool esOpcionCorrecta(char opcion, enum opcionesMenu menuSeleccion)
 {
@@ -30,7 +45,7 @@ bool esOpcionCorrecta(char opcion, enum opcionesMenu menuSeleccion)
 }
 
 /**
- *  Llama a una función para la administración de la base de datos del vacunódromo en función de la opción elegida por el usuario.
+ *  @brief Llama a una función para la administración de la base de datos del vacunódromo en función de la opción elegida por el usuario.
  * @param arbolPacientes El arbol de pacientes que contiene la base de datos.
  * @param salir Un puntero a una variable booleana que indica si el usuario ha elegido salir del programa.
  */
@@ -83,7 +98,11 @@ void gestorBaseDatos(TABB *arbolPacientes)
         }
     } while (salir == false);
 }
-
+/**
+ * @brief Llama a una función para la administración del vacunódromo en función de la opción elegida por el usuario.
+ * @param vacunodromoActual El vacunódromo que se va a administrar.
+ * @param arbolPacientes El arbol de pacientes que contiene la base de datos.
+ */
 void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB *arbolPacientes)
 {
     bool salir = false;
@@ -181,14 +200,15 @@ int main(int argc, char *argv[])
     } while (salir == false);
 
 
-    // Guardmos el árbol de pacientes en un archivo.
+    // Guardamos el árbol de pacientes en un archivo.
     if (argc >= 3)
     {
         // Si se ha pasado un archivo de pacientes como argumento, se guarda el árbol de pacientes en dicho archivo.
         guardarArchivo(arbolPacientes, argv[2]);
         fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
 
-    } else {
+    } else
+    {
 
         // Si no se ha pasado un archivo de pacientes como argumento, se le pregunta al usuario si desea crear uno nuevo.
 
@@ -223,10 +243,12 @@ int main(int argc, char *argv[])
     destruirAbb(&arbolPacientes);
 
     // destruyo el vacunódromo (libero su cola)
-    destruirCola(&vacunodromo.colaPacientes);
+    if (vacunodromo.colaPacientes != NULL)
+    {
+        destruirCola(&vacunodromo.colaPacientes);
+    }
 
     fprintf(stdout, "INFO: Programa finalizado con éxito.\n");
 
     return 0;
-
 }

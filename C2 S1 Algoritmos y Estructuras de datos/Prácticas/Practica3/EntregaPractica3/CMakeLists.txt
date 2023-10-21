@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.00)
 project(EntregaPractica3 C)
-set (compilador GCCa)
+set (compilador GCC)
 
-if(compilador STREQUAL "GCC")
+if(compilador STREQUAL "gcc")
     SET(CMAKE_C_COMPILER /usr/bin/gcc)
 else ()
     SET(CMAKE_C_COMPILER /usr/bin/clang)
