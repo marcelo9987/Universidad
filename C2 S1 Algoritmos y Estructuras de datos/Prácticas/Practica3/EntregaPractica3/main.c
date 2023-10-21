@@ -114,13 +114,14 @@ void gestorVacunodromo(VACUNODROMO *vacunodromoActual, TABB arbolPacientes)
                 break;
             case 'V':
             case 'v':
-                if (vacunodromoActual->nombreVacun[0] == '\0')
+                if (vacunodromoActual->colaPacientes == NULL)
                 {
                     fprintf(stdout, "ERR: No hay ninguna cola de vacunación creada.\n");
                 } else
                 {
-                    vacunarPrimerPaciente(vacunodromoActual);
+                    vacunarPrimerPaciente(vacunodromoActual, &arbolPacientes);
                 }
+
                 break;
             case 'S':
             case 's':

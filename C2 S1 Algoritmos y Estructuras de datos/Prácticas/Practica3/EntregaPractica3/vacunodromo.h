@@ -68,6 +68,6 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo);
  */
 void crearColaVacunacion(VACUNODROMO *vacunodromo, TABB arbolPacientes);
 
-void vacunarPrimerPaciente(VACUNODROMO *vacunodromo);
+void vacunarPrimerPaciente(VACUNODROMO *vacunodromo, TABB *arbolPacientes);
 
 #endif //ENTREGAPRACTICA3_VACUNODROMO_H
