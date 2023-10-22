@@ -14,7 +14,7 @@
 
 typedef char * TIPOCLAVE;
 
-// Estructura que almacena los datos de un paciente
+// Estructura en la que se almacenan los datos de un paciente
 struct STDATOSPACIENTE
 {
     char apellidosNombre[MAXNOMBRE];

@@ -23,8 +23,8 @@ TIPOCLAVE _clave_elem(TIPOELEMENTOABB *E)
     return E->apellidosNombre;
 }
 
-/* Esta funcion puente nos permite modificar el tipo
- * de datos del TAD sin tener que cambiar todas las 
+/* Esta funcion puente nos permite modificar el tipo de
+ * de datos del TAD sin tener que cambiar todas las
  * comparaciones del resto de la biblioteca y en su lugar
  * cambiando solo esta. */
 int _comparar_claves(TIPOCLAVE cl1, TIPOCLAVE cl2)
