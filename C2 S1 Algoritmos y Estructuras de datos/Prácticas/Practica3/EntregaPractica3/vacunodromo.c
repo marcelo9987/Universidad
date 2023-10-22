@@ -291,7 +291,7 @@ void anhadirPaciente(TABB *arbolPacientes)
 
     for (;;)
     {
-        fprintf(stdout, "Introduzca nombre de vacuna:");
+        fprintf(stdout, "\nIntroduzca nombre de vacuna:");
 
         fscanf(stdin, " %[^\n\r]s", elementoListaVacunas.nombreVacuna);
 
@@ -300,9 +300,17 @@ void anhadirPaciente(TABB *arbolPacientes)
             break;
         }
 
-
-        fprintf(stdout, "Introduzca dosis maxima de vacuna:");
-        fscanf(stdin, " %d", &elementoListaVacunas.i_dosisMaximas);
+        do
+        {
+            elementoListaVacunas.i_dosisMaximas = 0;
+            fprintf(stdout, "Introduzca dosis maxima de vacuna:");
+            fscanf(stdin, " %d", &elementoListaVacunas.i_dosisMaximas);
+            while(getchar()!='\n'); // Limpiamos el buffer de entrada
+            if (elementoListaVacunas.i_dosisMaximas < 1)
+            {
+                fprintf(stdout, "ERR: anhadirPaciente --> El número de dosis máximas debe ser un número positivo.\n");
+            }
+        } while (elementoListaVacunas.i_dosisMaximas < 1);
 
 
         elementoListaVacunas.i_dosisAdministradas = 0;
@@ -442,7 +450,7 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
 
     if (fichero == NULL)//Si no se ha podido abrir y crear el fichero:
     {
-        fprintf(stdout, "ERR: guardarArchivo --> No se ha podido crear el fichero.\n");
+        perror("ERR: guardarArchivo --> No se ha podido crear el fichero.");
         return;
     }
 
@@ -451,7 +459,7 @@ void guardarArchivo(TABB arbolPacientes, char *nombreArchivo)
 
     if (fclose(fichero) != 0)
     {
-        fprintf(stdout, "ERR: guardarArchivo --> No se ha podido cerrar el fichero.\n");
+        perror( "ERR: guardarArchivo --> No se ha podido cerrar el fichero.");
     }
 
 }

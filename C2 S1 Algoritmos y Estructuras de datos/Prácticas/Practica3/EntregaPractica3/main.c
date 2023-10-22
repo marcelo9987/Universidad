@@ -231,8 +231,7 @@ int main(int argc, char *argv[])
                 fprintf(stdout, "Introduzca un nombre para el archivo: ");
                 fscanf(stdin, " %[^\n]s", nombreArchivo);
 
-                guardarArchivo(arbolPacientes, argv[2]);
-//                fprintf(stdout, "INFO: Archivo guardado con éxito.\n");
+                guardarArchivo(arbolPacientes, nombreArchivo);
                 break;
             default:
                 break;
