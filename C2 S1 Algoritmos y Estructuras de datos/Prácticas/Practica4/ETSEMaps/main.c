@@ -1,11 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funciones.h"
+#include "ETSEMaps.h"
+#include "grafo.h"
+
+#if defined(DEBUG)
+int main(int argc, char** argv)
+{
+    //voy a leer el archivo
+    FILE *archivoLectura;
+    grafo G;
+
+    //abro el archivo
+    archivoLectura = fopen("../archivoArcos.data", "r");
+    if (archivoLectura == NULL)
+    {
+        printf("Error al abrir el archivo EN EL MAIN\n");
+        return -1;
+    }
+
+    //llamo a la función que lee el archivo
+    leerArchivo(archivoLectura, &G);
+
+    //Al salir, liberamos la memoria del TAD, lo destruimos
+    borrar_grafo(&G);
+
+    return (EXIT_SUCCESS);
+}
 
 /*
  * Programa que muestra el uso del TAD grafo de números enteros
  */
-
+#elif !defined(DEBUG)
 int main(int argc, char** argv) {
     //Grafo de números enteros
     grafo G; //grafo
@@ -53,4 +78,5 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
+#endif
 
