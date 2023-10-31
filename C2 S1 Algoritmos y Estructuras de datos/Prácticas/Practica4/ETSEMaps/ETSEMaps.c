@@ -27,7 +27,7 @@ void eliminar_vertice(grafo *G)
 {
     tipovertice v1;
     printf("Introduce vertice: ");
-    scanf("%d", &v1);
+    scanf(" %s", v1.nombre);
     if (existe_vertice(*G, v1))
     {
         borrar_vertice(G, v1);
@@ -46,7 +46,7 @@ void nuevo_arco(grafo *G)
     printf("Nueva relacion vertice1-->vertice2\n");
     //Vértice origen del arco
     printf("Introduce vertice origen: ");
-    scanf("%d", &v1);
+    scanf("%s", v1.nombre);
     if (!existe_vertice(*G, v1))
     {
         printf("El vertice %d no existe en el grafo\n", v1);
@@ -54,7 +54,7 @@ void nuevo_arco(grafo *G)
     }
     //Vértice destino del arco
     printf("Introduce vertice destino: ");
-    scanf("%d", &v2);
+    scanf("%s", v2.nombre);
     if (!existe_vertice(*G, v2))
     {
         printf("El vertice %d no existe en el grafo\n", v2);
@@ -65,16 +65,16 @@ void nuevo_arco(grafo *G)
     char tipoDeConexion;
     printf("Introduce el tipo de conexion: ");
     scanf(" %c", &tipoDeConexion);
-    if (tipoDeConexion != 'A' && tipoDeConexion != 'a' && tipoDeConexion != 'B' && tipoDeConexion != 'b')
+    if (tipoDeConexion != 'A' && tipoDeConexion != 'a' && tipoDeConexion != 'C' && tipoDeConexion != 'c')
     {
         printf("El tipo de conexion no es valido\n");
         return;
     }
 
     //todo: es aquí?
-    int valorArco;
+    float valorArco;
     printf("Introduce el valor del arco: ");
-    scanf("%d", &valorArco);
+    scanf("%f", &valorArco);
     if (valorArco <= 0)
     {
         printf("El valor del arco no es valido\n");
@@ -82,7 +82,7 @@ void nuevo_arco(grafo *G)
     }
 
     //Creación del arco
-    if (!son_adyacentes(*G, posicion(*G, v1), posicion(*G, v2), tipoDeConexion))
+    if (!distancia(*G, posicion(*G, v1), posicion(*G, v2), tipoDeConexion))
     {
         crear_arco(G, posicion(*G, v1), posicion(*G, v2), valorArco, tipoDeConexion);
     }
@@ -97,18 +97,18 @@ void eliminar_arco(grafo *G)
     printf("Eliminar relacion vertice1-->vertice2\n");
     //Vértice origen del arco
     printf("Introduce vertice origen: ");
-    scanf("%d", &v1);
+    scanf("%s", v1.nombre);
     if (!existe_vertice(*G, v1))
     {
-        printf("El vertice %d no existe en el grafo\n", v1);
+        printf("El vertice %s no existe en el grafo\n", v1.nombre);
         return;
     }
     //Vértice destino del arco
     printf("Introduce vertice destino: ");
-    scanf("%d", &v2);
+    scanf("%s", v2.nombre);
     if (!existe_vertice(*G, v2))
     {
-        printf("El vertice %d no existe en el grafo\n", v2);
+        printf("El vertice %s no existe en el grafo\n", v2.nombre);
         return;
     }
 
@@ -122,14 +122,14 @@ void eliminar_arco(grafo *G)
     {
         case 'A':
         case 'a':
-            if (son_adyacentes(*G, posicion(*G, v1), posicion(*G, v2), 'A'))
+            if (distancia(*G, posicion(*G, v1), posicion(*G, v2), 'A'))
             {
                 borrar_arco(G, posicion(*G, v1), posicion(*G, v2), 'A');
             }
             break;
         case 'C':
         case 'c':
-            if (son_adyacentes(*G, posicion(*G, v1), posicion(*G, v2), 'C'))
+            if (distancia(*G, posicion(*G, v1), posicion(*G, v2), 'C'))
             {
                 borrar_arco(G, posicion(*G, v1), posicion(*G, v2), 'C');
             }
@@ -159,17 +159,17 @@ void imprimir_grafo(grafo G)
     for (i = 0; i < N; i++)
     {
         //Imprimo el vértice
-        printf("Vertice(%d): %d\n", i, VECTOR[i]);
+        printf("Vertice(%i): %s\n", i, VECTOR[i].nombre);
         //Chequeo sus arcos
         for (j = 0; j < N; j++)
         {
-            if (son_adyacentes(G, i, j, 'C'))
+            if (distancia(G, i, j, 'C'))
             {
-                printf("\tHay una carretera de %d a %d con valor %d\n", VECTOR[i], VECTOR[j], calcularAdyacencia(G, i, j, 'C'));
+                printf("\t--> %s con valor %f\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, 'C'));
             }
-            if (son_adyacentes(G, i, j, 'A'))
+            if (distancia(G, i, j, 'A'))
             {
-                printf("\tHay una autopista de %d a %d con valor %d\n", VECTOR[i], VECTOR[j], calcularAdyacencia(G, i, j, 'A'));
+                printf("\t==> %s con valor %f\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, 'A'));
             }
         }
     }

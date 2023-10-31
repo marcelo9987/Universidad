@@ -4,7 +4,17 @@
 #include "grafo.h"
 #include <stdio.h>
 
+#define PRECIOPORKMCARRETERA 0.01
+#define PRECIOPORKMAUTOPISTA 0.07
+
+#define VELOCIDADCARRETERA 70
+#define VELOCIDADAUTOPISTA 120
+
 extern int leerArchivo(FILE *archivoLectura, grafo *G);
+
+extern int prim(grafo G);
+
+extern void floydWarshall(grafo G, int origen, int destino, int modo);
 
 //FUNCIONES DEL PROGRAMA DE PRUEBA DE GRAFOS
 //Opción a del menú, introducir un vertice en el grafo

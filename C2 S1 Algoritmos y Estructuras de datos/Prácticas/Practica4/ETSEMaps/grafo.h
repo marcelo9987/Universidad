@@ -3,7 +3,7 @@
 #define GRAFO_H
 
 #define MAXVERTICES 100 /*maximo numero de nodos*/
-#define MAXNOMBRE 45 /*maximo numero de caracteres en el nombre de una población/
+#define MAXNOMBRE 45 /*maximo numero de caracteres en el nombre de una población*/
 
 /*
  * Implementación estática del TAD grafo con una matriz
@@ -50,19 +50,19 @@ int insertar_vertice(grafo *G, tipovertice Vert);
  * @param tipoDeConexion
  * @return En caso de éxito: la adyacencia entre los vértices pos1 y pos2 del tipo tipoDeConexion. En caso de error: -1
  */
-int calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion);
+float calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion);
 
 //Borra un vértice del grafo
 void borrar_vertice(grafo *G, tipovertice Vert);
 
 //Crea el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void crear_arco(grafo *G, int pos1, int pos2, int valor,  char tipoDeConexion);
+void crear_arco(grafo *G, int pos1, int pos2, float valor,  char tipoDeConexion);
 
 //Borra el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
 void borrar_arco(grafo *G, int pos1, int pos2, char tipoDeConexion);
 
 //Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
-int son_adyacentes(grafo G, int pos1, int pos2, char tipoDeConexion);
+float distancia(grafo G, int pos1, int pos2, char tipoDeConexion);
 
 //Destruye el grafo
 void borrar_grafo(grafo *G);

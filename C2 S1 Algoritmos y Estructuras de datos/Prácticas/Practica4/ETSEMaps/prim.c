@@ -6,11 +6,7 @@
 
 // ---- DEFINICIONES Y MACROS ----
 
-#define PRECIOPORKMCARRETERA 0.01
-#define PRECIOPORKMAUTOPISTA 0.07
 
-#define VELOCIDADCARRETERA 70
-#define VELOCIDADAUTOPISTA 120
 
 // voy a definir una macro que me calcule la duración de un trayecto por carretera, otro por autopista
 // y otro dependiendo del tipo de conexión
@@ -21,7 +17,7 @@
 // ---- PROGRAMA PRINCIPAL ----
 
 
-void prim(grafo G)
+int prim(grafo G)
 {
     int numArcos = 0;
     float minimo = FLT_MAX, duracionTrayecto = 0;
@@ -94,6 +90,8 @@ void prim(grafo G)
 
     printf("Tiempo del arbol de expansión de coste mínimo = %.2f horas\n", duracionTrayecto);
     free(Selected);
+
+    return duracionTrayecto;
 }
 // VERSION 8. En principio, funciona. Falta probarlo con más grafos
 // Esta es la versión que existe en el repositorio de github

@@ -12,8 +12,8 @@ struct tipografo
     tipovertice VERTICES[MAXVERTICES]; //vector de vértices
     // todo: decidir que es mejor: una matriz de structs
     // o una matriz de enteros
-    int ADYACENCIA_CARRETERA[MAXVERTICES][MAXVERTICES]; //matriz de adyacencia para conexiones por carretera
-    int ADYACENCIA_AUTOPISTA[MAXVERTICES][MAXVERTICES]; //matriz de adyacencia para conexiones por autopista
+    float ADYACENCIA_CARRETERA[MAXVERTICES][MAXVERTICES]; //matriz de adyacencia para conexiones por carretera
+    float ADYACENCIA_AUTOPISTA[MAXVERTICES][MAXVERTICES]; //matriz de adyacencia para conexiones por autopista
 };
 
 //////////////////////////////////////////////////////////////// FUNCIONES
@@ -65,6 +65,7 @@ int existe_vertice(grafo G, tipovertice V)
     return (posicion(G, V) >= 0);
 }
 
+//todo: modificado
 //Inserta un vértice en el grafo, devuelve -1 si no ha podido insertarlo por estar el grafo lleno
 int insertar_vertice(grafo *G, tipovertice Vert)
 {
@@ -124,25 +125,23 @@ void borrar_vertice(grafo *G, tipovertice Vert)
 
 //todo: hay que modificar aquí?
 //Crea el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void crear_arco(grafo *G, int pos1, int pos2, int valor, char tipoDeConexion)
+void crear_arco(grafo *G, int pos1, int pos2, float valor, char tipoDeConexion)
 {
     if (tipoDeConexion == 'C' || tipoDeConexion == 'c')
     {
         (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = valor;
+        (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = valor;
         return;
     }
     if (tipoDeConexion == 'A' || tipoDeConexion == 'a')
     {
+        (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = valor;
         (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = valor;
         return;
     }
 
     //Si hemos llegado aquí, es que el tipo de conexión no es válido
 
-    printf("INFO: crearArco --> El tipo de conexion no es valido\n");
-    printf("INFO: crearArco --> El arco no se ha creado\n");
-
-    //nada feito
 }
 
 //todo: hay que modificar aquí?
@@ -153,26 +152,34 @@ void borrar_arco(grafo *G, int pos1, int pos2, char tipoDeConexion)
     if (tipoDeConexion == 'C' || tipoDeConexion == 'c')
     {
         (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = 0;
+        (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = 0;
     }
     if (tipoDeConexion == 'A' || tipoDeConexion == 'a')
     {
         (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = 0;
+        (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = 0;
     }
 
     //Si hemos llegado aquí, es que el tipo de conexión no es válido
 
-    printf("INFO: borrarArco --> El tipo de conexion no es valido\n");
-    printf("INFO: borrarArco --> El arco no se ha borrado, pues no existe el tipo especificado\n");
-
-    //nada feito
-
 }
 //todo: ¿puedo modificar aquí ?
 //Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
-int son_adyacentes(grafo G, int pos1, int pos2, char tipoDeConexion)
+float distancia(grafo G, int pos1, int pos2, char tipoDeConexion)
 {
 //    return (G->A[pos1][pos2]);
-    return (tipoDeConexion == 'C' || tipoDeConexion == 'c') ? G->ADYACENCIA_CARRETERA[pos1][pos2] : (tipoDeConexion == 'A' || tipoDeConexion == 'a') ? G->ADYACENCIA_AUTOPISTA[pos1][pos2] : 0;
+//    return (tipoDeConexion == 'C' || tipoDeConexion == 'c') ? G->ADYACENCIA_CARRETERA[pos1][pos2] : (tipoDeConexion == 'A' || tipoDeConexion == 'a') ? G->ADYACENCIA_AUTOPISTA[pos1][pos2] : 0;
+    switch(tipoDeConexion)
+    {
+        case 'C':
+        case 'c':
+            return G->ADYACENCIA_CARRETERA[pos1][pos2];
+        case 'A':
+        case 'a':
+            return G->ADYACENCIA_AUTOPISTA[pos1][pos2];
+        default:
+            return 0;
+    }
 }
 
 
@@ -196,7 +203,7 @@ tipovertice *array_vertices(grafo G)
 }
 
 
-int calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion)
+float calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion)
 {
     if (tipoDeConexion == 'C' || tipoDeConexion == 'c')
     {

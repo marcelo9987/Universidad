@@ -1,10 +1,12 @@
 ? NECESITO PODER introducir uno vertices con carretera y autopista al programa. Este es un prototipo del archivo de grafos.
 ? Nota: Se pueden escribir comentarios con el carácter ?.
-? //que se usara en el programa final.
+? Importante: Las notas no se deben poner tras un espacio en blanco ni en la misma línea que un vértice o arista.
+
+
 ? Fase 1: Carga de aristas.
 ? Formato:
 
-$Santiago$Lugo$Ourense$Vigo$Pontevedra$Oporto$Salamanca$Zamora$Valladolid$Benavente$Leon$Oviedo
+$Santiago$Lugo$Ourense$Pontevedra$Vigo$Oporto$Salamanca$Zamora$Valladolid$Benavente$Leon$Oviedo
 
 
 ? Fase 2: Carga de enlaces.
