@@ -31,27 +31,36 @@ leerArchivo(FILE *archivoLectura, grafo *G)
     printf("Leyendo archivo...\n");
 
     char *linea = NULL;
-    size_t len = 0;
+    size_t len = 0; // va a ser ignorado por getline, que va a reservar la memoria que necesite
     ssize_t read;
     bool verticesLeidos = false;
 
     while ((read = getline(&linea, &len, archivoLectura)) != -1)
     {
-//        printf("Retrieved line of length %zu:\n", read);
-        if (linea[0] == '?')
+        int posicionLecturaActual = 0;
+        // voy a inspeccionar la linea para buscar espacios en blanco
+        while (posicionLecturaActual< read && linea[posicionLecturaActual]==32)
         {
-//            printf("Comentario\n");
+            printf("Espacio en blanco  ");
+            posicionLecturaActual++;
+        }
+        printf("\n");
+
+//        printf("Retrieved line of length %zu:\n", read);
+        if (linea[posicionLecturaActual] == '?')
+        {
+            printf("Comentario\n");
             continue;
         }
-        if (linea[0] == '\n' || linea[0] == '\r')
+        if (linea[posicionLecturaActual] == '\n' || linea[posicionLecturaActual] == '\r')
         {
-//            printf("Linea en blanco\n");
+            printf("Linea en blanco\n");
             continue;
         }
         printf("%s", linea);
 
         // cuando me encuentre con '$' significa que empiezan las aristas
-        if (linea[0] == '$')
+        if (linea[posicionLecturaActual] == '$')
         {
             printf("Empiezan las aristas\n");
             char *cadena;
@@ -71,9 +80,9 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             verticesLeidos = true;
         }
 
-        if (verticesLeidos && linea[0] != '$')
+        if (verticesLeidos && linea[posicionLecturaActual] != '$')
         {
-            if (linea[0] == '\n' || linea[0] == '\r')
+            if (linea[posicionLecturaActual] == '\n' || linea[posicionLecturaActual] == '\r')
             {
                 printf("Linea en blanco\n");
                 continue;
@@ -88,14 +97,16 @@ leerArchivo(FILE *archivoLectura, grafo *G)
 
             char *ciudad1 = NULL;
             char *ciudad2 = NULL;
-            float distancia_carretera;
-            float distancia_autopista;
-            int desplazamiento = -1;
+            float distancia_carretera = FLT_MAX;
+            float distancia_autopista = FLT_MAX;;
+            int desplazamiento = posicionLecturaActual;
+            int tempDesplazamiento = 0;
             tipovertice vertice1, vertice2;
             bool hayCarretera = false, hayAutopista = false;
 
             // FASE 2.1: leer ciudad1
-            sscanf(linea, "%m[^<]%n", &ciudad1, &desplazamiento);
+            sscanf((linea+posicionLecturaActual), "%m[^<]%n", &ciudad1, &tempDesplazamiento);
+            desplazamiento += tempDesplazamiento;
             printf("Ciudad 1: %s\n", ciudad1);
 
             printf("Desplazamiento: %d\n", desplazamiento);
@@ -137,7 +148,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             } else
             {
                 printf("No hay distancia_carretera\n");
-                distancia_carretera = FLT_MIN;
+                distancia_carretera = 0;
             }
 
 
@@ -161,7 +172,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             } else
             {
                 printf("No hay distancia_autopista\n");
-                distancia_autopista = FLT_MIN;
+                distancia_autopista = 0;
             }
 
 
