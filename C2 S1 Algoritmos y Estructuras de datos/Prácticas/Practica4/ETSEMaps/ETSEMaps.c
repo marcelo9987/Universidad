@@ -50,7 +50,7 @@ void nuevo_arco(grafo *G)
     scanf("%s", v1.nombre);
     if (!existe_vertice(*G, v1))
     {
-        printf("El vértice %d no existe en el grafo\n", v1);
+        printf("El vértice %s no existe en el grafo\n", v1.nombre);
         return;
     }
     //Vértice destino del arco
@@ -58,11 +58,10 @@ void nuevo_arco(grafo *G)
     scanf("%s", v2.nombre);
     if (!existe_vertice(*G, v2))
     {
-        printf("El vértice %d no existe en el grafo\n", v2);
+        printf("El vértice %s no existe en el grafo\n", v2.nombre);
         return;
     }
 
-    //todo: es aquí?
     char tipoDeConexion;
     printf("Introduce el tipo de conexion: ");
     scanf(" %c", &tipoDeConexion);

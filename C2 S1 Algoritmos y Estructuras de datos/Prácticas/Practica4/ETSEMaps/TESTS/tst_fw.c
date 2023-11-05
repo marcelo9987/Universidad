@@ -4,7 +4,6 @@
 
 
 #include <stdio.h>
-#include <sys/unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../grafo.h"
@@ -39,6 +38,7 @@ int main(int argc, char *argv[])
 //    floydWarshall(G, posicion(G,"Santiago"), posicion(G,"Barcelona"));
     getc(stdin);
 
+    borrar_grafo(&G);
     return (0);
 
 }

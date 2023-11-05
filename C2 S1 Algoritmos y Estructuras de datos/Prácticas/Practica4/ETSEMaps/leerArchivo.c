@@ -6,7 +6,12 @@
 #include <math.h>
 #include <ctype.h>
 
+///La expansión me está dando problemas
+//#define liberarYcontinuar(linea) {(free(linea)); (linea=NULL); (continue);}
+
+//segundo intento
 #define liberarYcontinuar(linea) {free(linea); linea=NULL; continue;}
+
 
 void
 _crearArco(grafo *G, tipovertice *vertice1, tipovertice *vertice2, double distancia, char tipoConexion)
@@ -79,15 +84,16 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             if (caracterActual == '#')
             {
                 printf("[DEBUG] Comentario\n");
-                liberarYcontinuar(linea);
+                liberarYcontinuar(linea)
             }
             // Si la línea está vacía, la ignoro
             if (caracterActual == '\n' || caracterActual == '\r')
             {
                 printf("[DEBUG] Linea en blanco\n");
-                liberarYcontinuar(linea);;
+                liberarYcontinuar(linea)
             }
         }
+//        free(linea);
 
 
 
@@ -115,7 +121,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
                     if (linea[finNombreCiudad] == '\0' || linea[finNombreCiudad] == '\n' || linea[finNombreCiudad] == '\r')
                     {
                         printf("[ERROR] Linea mal formada\n");
-                        liberarYcontinuar(linea);
+                        liberarYcontinuar(linea)
                     }
                     finNombreCiudad++;
                 }
@@ -123,7 +129,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
                 if (finNombreCiudad == posicionLecturaActual)
                 {
                     printf("[ERROR] Linea mal formada\n");
-                    liberarYcontinuar(linea);
+                    liberarYcontinuar(linea)
                 }
 
                 linea[finNombreCiudad] = '\0';
@@ -141,7 +147,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             if (linea[posicionLecturaActual] != '\0')
             {
                 printf("[ERROR] Linea mal formada\n");
-                liberarYcontinuar(linea);
+                liberarYcontinuar(linea)
             }
 
             posicionLecturaActual++; //nos saltamos el <
@@ -166,7 +172,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
                 if (linea[posicionLecturaActual] != '|' && linea[posicionLecturaActual] != '>')
                 {
                     printf("[ERROR] Linea mal formada\n");
-                    liberarYcontinuar(linea);
+                    liberarYcontinuar(linea)
                 }
 
                 if(linea[posicionLecturaActual] == '|')
@@ -198,7 +204,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
                 if ( linea[posicionLecturaActual] != '>')
                 {
                     printf("[ERROR] Linea mal formada\n");
-                    liberarYcontinuar(linea);
+                    liberarYcontinuar(linea)
                 }
 
                 posicionLecturaActual++;
@@ -219,7 +225,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
                 if (finNombreCiudad == posicionLecturaActual)
                 {
                     printf("[ERROR] Linea mal formada\n");
-                    liberarYcontinuar(linea);
+                    liberarYcontinuar(linea)
                 }
 
                 linea[finNombreCiudad] = '\0';
@@ -264,6 +270,8 @@ leerArchivo(FILE *archivoLectura, grafo *G)
     imprimir_grafo(*G);
     printf("\n\n");
     printf("\n\n");
+
+    free(linea);
 
     return 0;
 }

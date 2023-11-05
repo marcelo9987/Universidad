@@ -2,7 +2,7 @@
 // Created by imarc on 30/10/2023.
 //
 
-#include "../prim.c"
+#include "../ETSEMaps.h"
 #include <math.h>
 
 #define resultadoEsperado 9.91
@@ -19,7 +19,8 @@ int main(int argc, char** argv) {
     leerArchivo(archivoLectura, &G);
     double resultado = prim(G);
     printf("Resultado: %lf esperado %lf distancia %lf epsilon %.50lf\n", resultado, resultadoEsperado, 1 - resultado / resultadoEsperado, DBL_EPSILON);
-    return (EXIT_SUCCESS);
+    borrar_grafo(&G);
+    return(EXIT_SUCCESS);
 }
 
 

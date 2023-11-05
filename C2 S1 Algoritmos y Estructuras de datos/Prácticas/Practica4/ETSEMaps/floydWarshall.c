@@ -220,6 +220,16 @@ void floydWarshall(grafo G, int modo)
 
     struct tipodatoP P[MAXVERTICES][MAXVERTICES];
 
+    //inicializo la matriz P
+    for (int i = 0; i < V; i++)
+    {
+        for (int j = 0; j < V; ++j)
+        {
+            P[i][j].dato = -1;
+            P[i][j].tipoConexion = -1;
+        }
+    }
+
     //voy a rellenar la matriz
     for (int i = 0; i < V; i++)
     {
