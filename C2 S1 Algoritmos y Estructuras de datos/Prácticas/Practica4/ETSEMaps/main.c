@@ -4,7 +4,7 @@
 #include "grafo.h"
 
 #if defined(DEBUG)
-int main(int argc, char** argv)
+ int main(int argc, char** argv)
 {
     //voy a leer el archivo
     FILE *archivoLectura;
@@ -53,12 +53,15 @@ int main(int argc, char** argv) {
     char opcion;
 
     do {
-        printf("\n\na. Insertar nuevo vertice\n");
-        printf("b. Eliminar vertice\n");
+        printf("\n\na. Insertar nuevo vértice\n");
+        printf("b. Eliminar vértice\n");
         printf("c. Crear arco\n");
         printf("d. Eliminar arco\n");
         printf("i. Imprimir grafo\n");
-        printf("j. Imprimir infraestructura mínima para la conexión de todas las ciudades\n");
+        printf("j. Imprimir la ruta más corta entre dos ciudades\n");
+        printf("k. Imprimir la ruta de menor tiempo entre dos ciudades\n");
+        printf("l. Imprimir la ruta más económica entre dos ciudades\n");
+        printf("m. Imprimir infraestructura mínima para la conexión de todas las ciudades\n");
         printf("s. Salir\n");
 
         printf("Opción: ");
@@ -80,7 +83,16 @@ int main(int argc, char** argv) {
             case 'i': case 'I':
                 imprimir_grafo(G);
                 break;
-            case 'j': case 'J':
+            case 'j':case 'J':
+                floydWarshall(G, DISTANCIA);
+                break;
+            case 'k': case 'K':
+                floydWarshall(G, TIEMPO);
+                break;
+            case 'l': case 'L':
+                floydWarshall(G, DINERO);
+                break;
+            case 'm': case 'M':
                 prim(G);
                 break;
             case 's': case 'S':

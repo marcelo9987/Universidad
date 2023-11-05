@@ -17,10 +17,10 @@
 // ---- PROGRAMA PRINCIPAL ----
 
 
-int prim(grafo G)
+double prim(grafo G)
 {
     int numArcos = 0;
-    float minimo = FLT_MAX, duracionTrayecto = 0;
+    double minimo = DBL_MAX, duracionTrayecto = 0;
 
     register int numeroDeVertices = num_vertices(G);
 
@@ -42,7 +42,7 @@ int prim(grafo G)
 
     while (numArcos < numeroDeVertices - 1)
     {
-        minimo = FLT_MAX;
+        minimo = DBL_MAX;
         int vx = 0;
         int vy = 0;
         for (int i = 0; i < numeroDeVertices; i++)
@@ -79,19 +79,19 @@ int prim(grafo G)
         numArcos++;
         if (tipoDeConexion[vx] == 'C')
         {
-            printf("%10s -- %10s : %10.2f\n", array_vertices(G)[vx].nombre, array_vertices(G)[vy].nombre, duracion((calcularAdyacencia(G, vx, vy, 'C')), 'C'));
+            printf("%10s -- %10s : %10.2lf\n", array_vertices(G)[vx].nombre, array_vertices(G)[vy].nombre, duracion((calcularAdyacencia(G, vx, vy, 'C')), 'C'));
             duracionTrayecto += duracionCarretera(calcularAdyacencia(G, vx, vy, 'C'));
         } else if (tipoDeConexion[vx] == 'A')
         {
-            printf("%10s == %10s : %10.2f\n", array_vertices(G)[vx].nombre, array_vertices(G)[vy].nombre, duracion(calcularAdyacencia(G, vx, vy, 'A'), 'A'));
+            printf("%10s == %10s : %10.2lf\n", array_vertices(G)[vx].nombre, array_vertices(G)[vy].nombre, duracion(calcularAdyacencia(G, vx, vy, 'A'), 'A'));
             duracionTrayecto += duracionAutopista(calcularAdyacencia(G, vx, vy, 'A'));
         }
     }
 
-    printf("Tiempo del arbol de expansión de coste mínimo = %.2f horas\n", duracionTrayecto);
+    printf("Tiempo del arbol de expansión de coste mínimo = %.2lf horas\n", duracionTrayecto);
     free(Selected);
 
     return duracionTrayecto;
 }
-// VERSION 8. En principio, funciona. Falta probarlo con más grafos
-// Esta es la versión que existe en el repositorio de github
+// VERSION 9. En principio, funciona. Falta probarlo con más grafos
+// Esta NO es la versión que existe en el repositorio de github

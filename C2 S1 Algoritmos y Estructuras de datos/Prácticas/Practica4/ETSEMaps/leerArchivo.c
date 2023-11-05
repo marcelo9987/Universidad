@@ -3,10 +3,28 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <float.h>
 #include <math.h>
 #include <ctype.h>
 
+#define liberarYcontinuar(linea) {free(linea); linea=NULL; continue;}
+
+void
+_crearArco(grafo *G, tipovertice *vertice1, tipovertice *vertice2, double distancia, char tipoConexion)
+{
+    if (!existe_vertice(*G, *vertice1))
+    {
+        insertar_vertice(G, *vertice1);
+    }
+
+
+    if (!existe_vertice(*G, *vertice2))
+    {
+        insertar_vertice(G, *vertice2);
+    }
+
+
+    crear_arco(G, posicion(*G, *vertice1), posicion(*G, *vertice2), distancia, tipoConexion);
+}
 
 
 int
@@ -24,78 +42,59 @@ leerArchivo(FILE *archivoLectura, grafo *G)
     //Leo el archivo
     // Según he diseñado el formato (Aun puede ser susceptible a cambios) lo primero que se leen son los vertices (puntos)
     // y luego las aristas (conexiones entre puntos)
-    // Los comentarios (?) se ignoran
+    // Los comentarios (#) se ignoran
     // Las líneas en blanco se ignoran
     // Vamos a ello
 
     printf("Leyendo archivo...\n");
 
     char *linea = NULL;
-    size_t len = 0; // va a ser ignorado por getline, que va a reservar la memoria que necesite
-    ssize_t read;
-    bool verticesLeidos = false;
+    size_t tamLinea=0;
+    ssize_t tamanhoLinea;
 
-    while ((read = getline(&linea, &len, archivoLectura)) != -1)
+    while ((tamanhoLinea = getline(&linea, &tamLinea, archivoLectura)) != -1)
     {
+        if(linea==NULL)
+        {
+            printf("Error al leer el archivo\n");
+            return -1;
+        }
+        printf("Retrieved line of length %zu:\n", tamanhoLinea);
+        printf("%s", linea);
+
         int posicionLecturaActual = 0;
-        // voy a inspeccionar la linea para buscar espacios en blanco
-        while (posicionLecturaActual< read && linea[posicionLecturaActual]==32)
-        {
-            printf("Espacio en blanco  ");
-            posicionLecturaActual++;
-        }
-        printf("\n");
 
-        if(linea[posicionLecturaActual] !='?' && linea[posicionLecturaActual]!='\n' && linea[posicionLecturaActual]!='\r' && linea[posicionLecturaActual]!='$' && verticesLeidos==false)
+        // FASE 1: ignorar espacios en blanco y comentarios
         {
-            printf("[ERROR] En el formato del archivo :: Carácter inesperado:%c\n", linea[posicionLecturaActual]);
-            printf("\t->Linea: %s\n", linea);
-            printf("\t->Posición de lectura actual: %d\n", posicionLecturaActual);
-
-            exit(-1);
-        }
-
-//        printf("Retrieved line of length %zu:\n", read);
-        if (linea[posicionLecturaActual] == '?')
-        {
-            printf("[DEBUG] Comentario\n");
-            continue;
-        }
-        if (linea[posicionLecturaActual] == '\n' || linea[posicionLecturaActual] == '\r')
-        {
-            printf("[DEBUG] Linea en blanco\n");
-            continue;
-        }
-        printf("[DEBUG] Aristas (sin procesar): %s", linea);
-
-        // cuando me encuentre con '$' significa que empiezan las aristas
-        if (linea[posicionLecturaActual] == '$')
-        {
-            printf("[DEBUG] Empiezan las aristas\n");
-            char *cadena;
-            cadena = strdup(linea);
-            char *token;
-            while ((token = strtok(cadena, "$")) != NULL)
+            // voy a inspeccionar la línea para buscar espacios en blanco
+            register char caracterActual = linea[posicionLecturaActual];
+            while (caracterActual == ' ' || caracterActual == '\t')
             {
-                tipovertice vertice;
-                printf("[DEBUG] Ciudad: %s\n", token);
-                strcpy(vertice.nombre, token);
-                vertice.nombre[strcspn(vertice.nombre, "\r\n")] = 0;
-                insertar_vertice(G, vertice);
-
-                cadena = NULL;
+                printf("[DEBUG] Espacio en blanco\n");
+                posicionLecturaActual++;
+                caracterActual = linea[posicionLecturaActual];
             }
 
-            verticesLeidos = true;
-        }
-
-        if (verticesLeidos && linea[posicionLecturaActual] != '$')
-        {
-            if (linea[posicionLecturaActual] == '\n' || linea[posicionLecturaActual] == '\r')
+            // Si la línea empieza por #, la ignoro
+            if (caracterActual == '#')
+            {
+                printf("[DEBUG] Comentario\n");
+                liberarYcontinuar(linea);
+            }
+            // Si la línea está vacía, la ignoro
+            if (caracterActual == '\n' || caracterActual == '\r')
             {
                 printf("[DEBUG] Linea en blanco\n");
-                continue;
+                liberarYcontinuar(linea);;
             }
+        }
+
+
+
+
+        // FASE 2: leer aristas
+        if (true)
+        {
             printf("\n[DEBUG] ARISTA!!\n");
 
             // dada la complejidad de la lectura de aristas, lo voy a hacer a mano, sin usar strtok
@@ -103,108 +102,134 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             // o bien: ciudad<|distancia_autopista(opcional)>ciudad 2 --> esto es una autopista
             // o bien: ciudad<distancia_carretera(opcional)>ciudad 2  --> esto es una carretera
 
+            tipovertice infoCiudad1;
+            tipovertice infoCiudad2;
 
-            char *ciudad2 = NULL;
-
-
-            int desplazamiento = posicionLecturaActual;
-            int tempDesplazamiento = 0;
-            tipovertice vertice1, vertice2;
             bool hayCarretera = false, hayAutopista = false;
 
             // FASE 2.1: leer ciudad1
-            char *ciudad1 = NULL;
-            sscanf((linea+posicionLecturaActual), "%m[^<]%n", &ciudad1, &tempDesplazamiento);
-            desplazamiento += tempDesplazamiento;
-            printf("[DEBUG] Ciudad 1: %s\n", ciudad1);
+            {
+                int finNombreCiudad = posicionLecturaActual;
+                while (linea[finNombreCiudad] != '<')
+                {
+                    if (linea[finNombreCiudad] == '\0' || linea[finNombreCiudad] == '\n' || linea[finNombreCiudad] == '\r')
+                    {
+                        printf("[ERROR] Linea mal formada\n");
+                        liberarYcontinuar(linea);
+                    }
+                    finNombreCiudad++;
+                }
 
-            printf("[DEBUG] Desplazamiento: %d\n", desplazamiento);
+                if (finNombreCiudad == posicionLecturaActual)
+                {
+                    printf("[ERROR] Linea mal formada\n");
+                    liberarYcontinuar(linea);
+                }
 
+                linea[finNombreCiudad] = '\0';
+                strcpy(infoCiudad1.nombre, linea + posicionLecturaActual);
+
+                posicionLecturaActual = finNombreCiudad;
+
+            }
+
+            printf("[DEBUG] Ciudad 1: '%s'\n", infoCiudad1.nombre);
+
+
+            printf("[DEBUG] Desplazamiento: %d\n", posicionLecturaActual);
+
+            if (linea[posicionLecturaActual] != '\0')
+            {
+                printf("[ERROR] Linea mal formada\n");
+                liberarYcontinuar(linea);
+            }
+
+            posicionLecturaActual++; //nos saltamos el <
 
             // FASE 2.2: leer distancia_carretera
-            float distancia_carretera = 0;
+            double distancia_carretera = 0.0;
 
-            // Si sabemos que ya ha terminado de leer el nombre y que hay distancia_carretera (es decir, no hay solo autopista):
-            if (linea[desplazamiento] == '<' && linea[desplazamiento + 1] != '|')
             {
+                char *endptr = NULL;
+                distancia_carretera = strtod(linea + posicionLecturaActual, &endptr);
 
-                printf("[DEBUG] Hay distancia_carretera\n");
-                printf("[DEBUG] cadena en desplazamiento: %c\n", linea[desplazamiento + 1]);
-
-                int parte_entera = 0;
-                int parte_decimal = 0;
-                int tam_entero = 0;
-                int desplazamiento_anhadido = 0;
-                //aquí parece que se complica por el bodrio de los flotantes... voy a coger las dos partes como enteros y luego las divido
-                // menos mal que sscanf permite hacer un poco de magia negra y me dice la distancia que ha leído.
-                sscanf(linea + desplazamiento + 1, "%d%n.%d%n", &parte_entera,&tam_entero, &parte_decimal, &desplazamiento_anhadido);
-
-                printf("[DEBUG] Total leido: %d\n", desplazamiento_anhadido-1);
-                printf("[DEBUG] Total entero: %d\n", tam_entero);
-                printf("[DEBUG] Parte entera: %d\n", parte_entera);
-                printf("[DEBUG] Parte decimal: %d\n", parte_decimal);
-                distancia_carretera = (float)parte_entera + ((parte_decimal!=0) ? (parte_decimal / (pow(10, desplazamiento_anhadido-tam_entero-1))) : 0);
-
-                // En el caso de que en el archivo de entrada haya un número sin decimales, sscanf no me devuelve el número de caracteres leídos
-                // Esto conllevaría que el desplazamiento no se actualiza y se queda en el '<' y no avanza
-                // Por lo que tengo que buscar el '>' a mano
-                if(desplazamiento_anhadido==0)
+                if (endptr == &linea[posicionLecturaActual])
                 {
-                    while(linea[desplazamiento+1+desplazamiento_anhadido]!='|' && linea[desplazamiento+1+desplazamiento_anhadido]!='>')
-                    {
-                        desplazamiento_anhadido++;
-                    }
+                    printf("[DEBUG] No ha habido conversión\n");
+                }else
+                {
+                    hayCarretera = true;
                 }
-                printf("[DEBUG] Desplazamiento anhadido: %d\n", desplazamiento_anhadido);
-                desplazamiento += desplazamiento_anhadido+1;
 
-//                sscanf(linea + desplazamiento + 1, "%3f%n", &distancia_carretera, &desplazamiento_anhadido);
-//                desplazamiento += desplazamiento_anhadido;
-                printf("[DEBUG] Distancia carretera: %f\n", distancia_carretera);
+                posicionLecturaActual = endptr - linea;
 
-                hayCarretera = true;
+                if (linea[posicionLecturaActual] != '|' && linea[posicionLecturaActual] != '>')
+                {
+                    printf("[ERROR] Linea mal formada\n");
+                    liberarYcontinuar(linea);
+                }
 
-            } else
-            {
-                printf("[DEBUG] No hay distancia_carretera\n");
-                distancia_carretera = 0;
+                if(linea[posicionLecturaActual] == '|')
+                {
+                    posicionLecturaActual++;
+                }
+
             }
 
 
             // FASE 2.3: leer distancia_autopista
 
-            float distancia_autopista = 0;
-            printf("[DEBUG] desplazamiento: %d\n", desplazamiento);
-            printf("[DEBUG] linea[desplazamiento]: %c\n", linea[desplazamiento]);
+            double distancia_autopista = 0.0;
 
-            if (linea[desplazamiento] == '|')
             {
-                printf("[DEBUG] Hay distancia_autopista\n");
-                //Aquí al ser la ultima parte, no me veo obligado a hacer magia negra aritmética, pues no tengo que mirar si hay continuaciones
-                sscanf(linea + desplazamiento + 1, "%f", &distancia_autopista);
-                printf("[DEBUG] Distancia autopista: %.1f\n", distancia_autopista);
+                char *endptr = NULL;
+                distancia_autopista = strtod(linea + posicionLecturaActual, &endptr);
 
-                //busco el punto en el que se acaba la distancia_autopista si float ha hecho de las suyas
-                while(linea[desplazamiento]!='>')
+                if (endptr == &linea[posicionLecturaActual])
                 {
-                    desplazamiento++;
+                    printf("[DEBUG] No ha habido conversión\n");
+                }else
+                {
+                    hayAutopista = true;
                 }
-                hayAutopista = true;
-            } else
-            {
-                printf("[DEBUG] No hay distancia_autopista\n");
-                distancia_autopista = 0;
+
+                posicionLecturaActual = endptr - linea;
+
+                if ( linea[posicionLecturaActual] != '>')
+                {
+                    printf("[ERROR] Linea mal formada\n");
+                    liberarYcontinuar(linea);
+                }
+
+                posicionLecturaActual++;
+
             }
 
 
             // FASE 2.4: leer ciudad2
             // Aquí tengo que tener en cuenta que puede haber un salto de línea o un retorno de carro
-            sscanf(linea + desplazamiento + 1, "%m[^>]", &ciudad2);
-            printf("[DEBUG] Ciudad 2: %s\n\n ------------------- \n", ciudad2);
+//            sscanf(linea + posicionLecturaActual + 1, "%m[^>]", &ciudad2);
+            {
+                int finNombreCiudad = posicionLecturaActual;
+                while (linea[finNombreCiudad] != '\0' && linea[finNombreCiudad] != '\n' && linea[finNombreCiudad] != '\r')
+                {
+                    finNombreCiudad++;
+                }
 
-            //cambio los \r y \n por \0s para que no me de problemas al comparar e imprimir
-            ciudad1[strcspn(ciudad1, "\r\n")] = 0;
-            ciudad2[strcspn(ciudad2, "\r\n")] = 0;
+                if (finNombreCiudad == posicionLecturaActual)
+                {
+                    printf("[ERROR] Linea mal formada\n");
+                    liberarYcontinuar(linea);
+                }
+
+                linea[finNombreCiudad] = '\0';
+                strcpy(infoCiudad2.nombre, linea + posicionLecturaActual);
+            }
+            printf("[DEBUG] Ciudad 2: %s\n ------------------- \n", infoCiudad2.nombre);
+
+//            //cambio los \r y \n por \0s para que no me dé problemas al comparar e imprimir
+//            ciudad1[strcspn(ciudad1, "\r\n")] = 0;
+//            ciudad2[strcspn(ciudad2, "\r\n")] = 0;
 
 //            sleep(2);
 //            printf("Ciudad 2: %s\n", ciudad2);
@@ -212,35 +237,28 @@ leerArchivo(FILE *archivoLectura, grafo *G)
 //            printf("Distancia autopista: %d\n", distancia_autopista);
 
 
-
-
-            strcpy(vertice1.nombre, ciudad1);
-
-
-            strcpy(vertice2.nombre, ciudad2);
-
-            if(hayCarretera)
+            if (hayCarretera)
             {
-                printf("[DEBUG] conectando %s con %s a modo de carretera\n", vertice1.nombre, vertice2.nombre);
-                crear_arco(G, posicion(*G, vertice1), posicion(*G, vertice2), distancia_carretera, 'C');
+                printf("[DEBUG] conectando %s con %s a modo de carretera con distancia %lf\n", infoCiudad1.nombre, infoCiudad2.nombre, distancia_carretera);
+                _crearArco(G, &infoCiudad1, &infoCiudad2, distancia_carretera, 'C');
             }
-            if(hayAutopista)
+            if (hayAutopista)
             {
-                printf("[DEBUG] conectando %s con %s a modo de autopista\n", vertice1.nombre, vertice2.nombre);
-                crear_arco(G, posicion(*G, vertice1), posicion(*G, vertice2), distancia_autopista, 'A');
+                printf("[DEBUG] conectando %s con %s a modo de autopista\n", infoCiudad1.nombre, infoCiudad2.nombre);
+                _crearArco(G, &infoCiudad1, &infoCiudad2, distancia_autopista, 'A');
             }
 
-            free(ciudad1);
-            free(ciudad2);
         }
 //        sleep(2);
-
+        free(linea);
+        linea = NULL;
+        printf("\n\n");
 
     }
 
     printf("[DEBUG] Fin de lectura de archivo\n");
 
-    free(linea);
+
     fclose(archivoLectura);
     printf("\n\n");
     imprimir_grafo(*G);

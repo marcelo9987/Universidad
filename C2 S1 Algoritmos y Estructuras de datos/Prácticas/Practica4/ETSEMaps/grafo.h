@@ -13,13 +13,14 @@
 /////////////////////////////////////////////////////////// TIPOS DE DATOS
 
 //Información que se almacena en cada vértice
-typedef struct
+struct stInfoCiudad
 {
     char nombre[MAXNOMBRE]; //nombre de la población
+};
 
-}tipovertice;//todo: ¿APARTADO 7?
+typedef struct stInfoCiudad tipovertice;
 
-typedef struct tipografo * grafo;
+typedef struct tipografo *grafo;
 
 //////////////////////////////////////////////////////////////// FUNCIONES
 
@@ -50,19 +51,19 @@ int insertar_vertice(grafo *G, tipovertice Vert);
  * @param tipoDeConexion
  * @return En caso de éxito: la adyacencia entre los vértices pos1 y pos2 del tipo tipoDeConexion. En caso de error: -1
  */
-float calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion);
+double calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion);
 
 //Borra un vértice del grafo
 void borrar_vertice(grafo *G, tipovertice Vert);
 
 //Crea el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void crear_arco(grafo *G, int pos1, int pos2, float valor,  char tipoDeConexion);
+void crear_arco(grafo *G, int pos1, int pos2, double valor, char tipoDeConexion);
 
 //Borra el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
 void borrar_arco(grafo *G, int pos1, int pos2, char tipoDeConexion);
 
 //Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
-float distancia(grafo G, int pos1, int pos2, char tipoDeConexion);
+double distancia(grafo G, int pos1, int pos2, char tipoDeConexion);
 
 //Destruye el grafo
 void borrar_grafo(grafo *G);
@@ -71,6 +72,6 @@ void borrar_grafo(grafo *G);
 int num_vertices(grafo G);
 
 //Devuelve el vector de vértices VERTICES del grafo G
-tipovertice* array_vertices(grafo G);
+tipovertice *array_vertices(grafo G);
 
-#endif	/* GRAFO_H */
+#endif    /* GRAFO_H */

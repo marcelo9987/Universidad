@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "grafo.h"
 
 
 
 //FUNCIONES DEL PROGRAMA DE PRUEBA DE GRAFOS
 
-//Opción a del menú, introducir un vertice en el grafo
+//Opción a del menú, introducir un vértice en el grafo
 
 void introducir_vertice(grafo *G)
 {
     tipovertice v1;
-    printf("Introduce vertice: ");
+    printf("Introduce vértice: ");
     scanf("%s", v1.nombre);
     if (existe_vertice(*G, v1))
     {
-        printf("Ese vertice ya esta en el grafo\n");
+        printf("Ese vértice ya esta en el grafo\n");
     } else
     {
         insertar_vertice(G, v1);
@@ -26,14 +27,14 @@ void introducir_vertice(grafo *G)
 void eliminar_vertice(grafo *G)
 {
     tipovertice v1;
-    printf("Introduce vertice: ");
+    printf("Introduce vértice: ");
     scanf(" %s", v1.nombre);
     if (existe_vertice(*G, v1))
     {
         borrar_vertice(G, v1);
     } else
     {
-        printf("Ese vertice no existe en el grafo\n");
+        printf("Ese vértice no existe en el grafo\n");
     }
 }
 
@@ -45,19 +46,19 @@ void nuevo_arco(grafo *G)
     //Insertamos una nueva relación pidiendo los datos al usuario controlando que existan los vértices
     printf("Nueva relacion vertice1-->vertice2\n");
     //Vértice origen del arco
-    printf("Introduce vertice origen: ");
+    printf("Introduce vértice origen: ");
     scanf("%s", v1.nombre);
     if (!existe_vertice(*G, v1))
     {
-        printf("El vertice %d no existe en el grafo\n", v1);
+        printf("El vértice %d no existe en el grafo\n", v1);
         return;
     }
     //Vértice destino del arco
-    printf("Introduce vertice destino: ");
+    printf("Introduce vértice destino: ");
     scanf("%s", v2.nombre);
     if (!existe_vertice(*G, v2))
     {
-        printf("El vertice %d no existe en el grafo\n", v2);
+        printf("El vértice %d no existe en el grafo\n", v2);
         return;
     }
 
@@ -65,16 +66,17 @@ void nuevo_arco(grafo *G)
     char tipoDeConexion;
     printf("Introduce el tipo de conexion: ");
     scanf(" %c", &tipoDeConexion);
-    if (tipoDeConexion != 'A' && tipoDeConexion != 'a' && tipoDeConexion != 'C' && tipoDeConexion != 'c')
+    tipoDeConexion = (char) toupper(tipoDeConexion);
+    if (tipoDeConexion != 'A' && tipoDeConexion != 'C')
     {
         printf("El tipo de conexion no es valido\n");
         return;
     }
 
     //todo: es aquí?
-    float valorArco;
+    double valorArco;
     printf("Introduce el valor del arco: ");
-    scanf("%f", &valorArco);
+    scanf("%lf", &valorArco);
     if (valorArco <= 0)
     {
         printf("El valor del arco no es valido\n");
@@ -96,46 +98,42 @@ void eliminar_arco(grafo *G)
     //Eliminamos una relación pidiendo los datos al usuario controlando que existan los vértices
     printf("Eliminar relacion vertice1-->vertice2\n");
     //Vértice origen del arco
-    printf("Introduce vertice origen: ");
+    printf("Introduce vértice origen: ");
     scanf("%s", v1.nombre);
     if (!existe_vertice(*G, v1))
     {
-        printf("El vertice %s no existe en el grafo\n", v1.nombre);
+        printf("El vértice %s no existe en el grafo\n", v1.nombre);
         return;
     }
     //Vértice destino del arco
-    printf("Introduce vertice destino: ");
+    printf("Introduce vértice destino: ");
     scanf("%s", v2.nombre);
     if (!existe_vertice(*G, v2))
     {
-        printf("El vertice %s no existe en el grafo\n", v2.nombre);
+        printf("El vértice %s no existe en el grafo\n", v2.nombre);
         return;
     }
 
     char tipoDeConexion;
-    printf("Introduce el tipo de conexion: ");
+    printf("Introduce el tipo de conexión: ");
     scanf(" %c", &tipoDeConexion);
 
+    tipoDeConexion = (char) toupper(tipoDeConexion);
+
     // Eliminación del arco
+
 
     switch (tipoDeConexion)
     {
         case 'A':
-        case 'a':
-            if (distancia(*G, posicion(*G, v1), posicion(*G, v2), 'A'))
-            {
-                borrar_arco(G, posicion(*G, v1), posicion(*G, v2), 'A');
-            }
-            break;
         case 'C':
-        case 'c':
-            if (distancia(*G, posicion(*G, v1), posicion(*G, v2), 'C'))
+            if (distancia(*G, posicion(*G, v1), posicion(*G, v2), tipoDeConexion))
             {
-                borrar_arco(G, posicion(*G, v1), posicion(*G, v2), 'C');
+                borrar_arco(G, posicion(*G, v1), posicion(*G, v2), tipoDeConexion);
             }
             break;
         default:
-            printf("El tipo de conexion no es valido\n");
+            printf("El tipo de conexión no es valido\n");
             return;
     }
 
@@ -159,17 +157,17 @@ void imprimir_grafo(grafo G)
     for (i = 0; i < N; i++)
     {
         //Imprimo el vértice
-        printf("Vertice(%i): %s\n", i, VECTOR[i].nombre);
+        printf("vértice(%i): %s\n", i, VECTOR[i].nombre);
         //Chequeo sus arcos
         for (j = 0; j < N; j++)
         {
             if (distancia(G, i, j, 'C'))
             {
-                printf("\t--> %s con valor %f\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, 'C'));
+                printf("\t--> %s con valor %lf\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, 'C'));
             }
             if (distancia(G, i, j, 'A'))
             {
-                printf("\t==> %s con valor %f\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, 'A'));
+                printf("\t==> %s con valor %lf\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, 'A'));
             }
         }
     }

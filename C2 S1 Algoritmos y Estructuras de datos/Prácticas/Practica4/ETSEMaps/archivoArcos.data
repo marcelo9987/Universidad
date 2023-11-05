@@ -1,16 +1,16 @@
-? NECESITO PODER introducir uno vertices con carretera y autopista al programa. Este es un prototipo del archivo de grafos.
-? Nota: Se pueden escribir comentarios con el carácter ?.
-? Importante: Las notas no se deben poner tras un espacio en blanco ni en la misma línea que un vértice o arista.
+# NECESITO PODER introducir uno vertices con carretera y autopista al programa. Este es un prototipo del archivo de grafos.
+# Nota: Se pueden escribir comentarios con el carácter #.
+# Importante: Las notas no se deben poner tras un espacio en blanco ni en la misma línea que un vértice o arista.
+#
+
+# Fase 1: Carga de aristas.
+# Formato:
+
+# $Santiago$Lugo$Ourense$Pontevedra$Vigo$Oporto$Salamanca$Zamora$Valladolid$Benavente$Leon$Oviedo
 
 
-? Fase 1: Carga de aristas.
-? Formato:
-
-$Santiago$Lugo$Ourense$Pontevedra$Vigo$Oporto$Salamanca$Zamora$Valladolid$Benavente$Leon$Oviedo
-
-
-? Fase 2: Carga de enlaces.
-? Formato:
+# Fase 2: Carga de enlaces.
+# Formato:
 
 Santiago<106.4>Lugo
 Santiago<102.1|102.3>Ourense
@@ -21,7 +21,7 @@ Vigo<150.1|153.2>Oporto
 Oporto<369.1|349.2>Salamanca
 Salamanca<65.1|64.7>Zamora
 Zamora<104.1|101.2>Valladolid
-Zamora<70.7|72.6>Benavente
+Zamora<72.6|70.70>Benavente
 Benavente<72.4|74.2>Leon
 Benavente<278.2|236.5>Ourense
 Benavente<112.1|114.1>Valladolid
@@ -31,5 +31,3 @@ Oviedo<230.1|294.4>Lugo
 Oviedo<327.8|365.9>Ourense
 Lugo<93.1>Ourense
 Lugo<106.4>Santiago
-
-? LISTO!!!! :D

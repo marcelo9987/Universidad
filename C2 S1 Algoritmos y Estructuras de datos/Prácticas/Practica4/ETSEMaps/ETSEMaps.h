@@ -10,11 +10,15 @@
 #define VELOCIDADCARRETERA 70
 #define VELOCIDADAUTOPISTA 120
 
+enum {
+    DISTANCIA = 0, TIEMPO = 1, DINERO = 2
+};
+
 extern int leerArchivo(FILE *archivoLectura, grafo *G);
 
-extern int prim(grafo G);
+extern double prim(grafo G);
 
-extern void floydWarshall(grafo G, int origen, int destino, int modo);
+extern void floydWarshall(grafo G, int modo);
 
 //FUNCIONES DEL PROGRAMA DE PRUEBA DE GRAFOS
 //Opción a del menú, introducir un vertice en el grafo

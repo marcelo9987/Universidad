@@ -2,9 +2,10 @@
 // Created by imarc on 30/10/2023.
 //
 
-#include "prim.c"
-#include <assert.h>
+#include "../prim.c"
+#include <math.h>
 
+#define resultadoEsperado 9.91
 
 int main(int argc, char** argv) {
     grafo G;
@@ -16,8 +17,8 @@ int main(int argc, char** argv) {
         return -1;
     }
     leerArchivo(archivoLectura, &G);
-    int resultado = prim(G);
-    assert(resultado==0);
+    double resultado = prim(G);
+    printf("Resultado: %lf esperado %lf distancia %lf epsilon %.50lf\n", resultado, resultadoEsperado, 1 - resultado / resultadoEsperado, DBL_EPSILON);
     return (EXIT_SUCCESS);
 }
 
