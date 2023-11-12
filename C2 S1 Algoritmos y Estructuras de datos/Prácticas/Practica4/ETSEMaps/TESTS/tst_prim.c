@@ -9,20 +9,22 @@
 
 #define resultadoEsperado 9.91
 
-int main(int argc, char** argv) {
+int main()
+{
     grafo G;
     crear_grafo(&G);
-    FILE *archivoLectura;
-    archivoLectura = fopen("../archivoArcos.data", "r");
-    if (archivoLectura == NULL) {
-        printf("Error al abrir el archivo EN EL MAIN\n");
+
+    if (leerArchivo(NOMBRE_ARCHIVO_MAPA_NOROESTE, &G) == false)
+    {
+        printf("Error al leer el archivo\n");
+        borrar_grafo(&G);
         return -1;
     }
-    leerArchivo(archivoLectura, &G);
+
     double resultado = prim(G);
     printf("Resultado: %lf esperado %lf distancia %lf epsilon %.50lf\n", resultado, resultadoEsperado, 1 - resultado / resultadoEsperado, DBL_EPSILON);
     borrar_grafo(&G);
-    return(EXIT_SUCCESS);
+    return (EXIT_SUCCESS);
 }
 
 

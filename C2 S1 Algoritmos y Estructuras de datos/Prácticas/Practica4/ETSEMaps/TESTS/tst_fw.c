@@ -5,23 +5,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "../grafo.h"
 #include "../ETSEMaps.h"
 
 
-int main(int argc, char *argv[])
+int main()
 {
     grafo G;
     crear_grafo(&G);
-    FILE *archivoLectura;
-    archivoLectura = fopen("../archivoArcos.data", "r");
-    if (archivoLectura == NULL)
+
+    if(leerArchivo(NOMBRE_ARCHIVO_MAPA_NOROESTE, &G) == false)
     {
-        printf("Error al abrir el archivo EN EL MAIN\n");
+        printf("Error al leer el archivo\n");
         return -1;
     }
-    leerArchivo(archivoLectura, &G);
+
     system("clear");
     imprimir_grafo(G);
 //    getc(stdin);
@@ -37,7 +35,7 @@ int main(int argc, char *argv[])
     floydWarshall(G,DISTANCIA);
 
 //    floydWarshall(G, posicion(G,"Santiago"), posicion(G,"Barcelona"));
-    getc(stdin);
+//    getc(stdin);
 
     borrar_grafo(&G);
     return (0);

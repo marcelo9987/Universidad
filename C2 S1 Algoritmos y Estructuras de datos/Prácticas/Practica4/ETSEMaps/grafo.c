@@ -1,3 +1,15 @@
+/**
+ * @file grafo.c
+ * @Author Marcelo Fort Muñoz y Profesores de la asinatura A.E.D. (ETSE-USC)
+ * @date 2023
+ * @brief Implementación del TAD grafo
+ *
+ * Este TAD representa un grafo no dirigido ponderado
+ * con un máximo de MAXVERTICES vértices.
+ *
+ * @see grafo.h
+ */
+
 #include "grafo.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -127,47 +139,43 @@ void borrar_vertice(grafo *G, tipovertice Vert)
 //Crea el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
 void crear_arco(grafo *G, int pos1, int pos2, double valor, enum TipoVia tipoVia)
 {
-    if (tipoVia == 'C' )
+    switch(tipoVia)
     {
-        (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = valor;
-        (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = valor;
-        return;
+        case CARRETERA:
+            (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = valor;
+            (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = valor;
+            break;
+        case AUTOPISTA:
+            (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = valor;
+            (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = valor;
+            break;
+        default:
+            printf("[ERROR] crear_arco --> TipoVia desconocida: No ha sido posible crear el arco\n");
     }
-    if (tipoVia == 'A')
-    {
-        (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = valor;
-        (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = valor;
-        return;
-    }
-
-    //Si hemos llegado aquí, es que el tipo de conexión no es válido
 }
 
 //todo: hay que modificar aquí?
 //Borra el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
 void borrar_arco(grafo *G, int pos1, int pos2, enum TipoVia tipoVia)
 {
-//    (*G)->A[pos1][pos2] = 0;
-    if (tipoVia == 'C')
+    switch(tipoVia)
     {
-        (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = 0;
-        (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = 0;
+        case CARRETERA:
+            (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = 0;
+            (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = 0;
+            break;
+        case AUTOPISTA:
+            (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = 0;
+            (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = 0;
+            break;
+        default:
+            printf("[ERROR] borrar_arco --> TipoVia desconocida: No ha sido posible borrar el arco\n");
     }
-    if (tipoVia == 'A')
-    {
-        (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = 0;
-        (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = 0;
-    }
-
-    //Si hemos llegado aquí, es que el tipo de conexión no es válido
-
 }
-//todo: ¿puedo modificar aquí ?
-//Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
+
+//Devuelve la distancia entre las poblaciones VERTICES(pos1) y VERTICES(pos2) si son vértices adyacentes. En caso contrario devuelve 0.
 double distancia(grafo G, int pos1, int pos2, enum TipoVia tipoVia)
 {
-//    return (G->A[pos1][pos2]);
-//    return (tipoVia == 'C' || tipoVia == 'c') ? G->ADYACENCIA_CARRETERA[pos1][pos2] : (tipoVia == 'A' || tipoVia == 'a') ? G->ADYACENCIA_AUTOPISTA[pos1][pos2] : 0;
     switch(tipoVia)
     {
         case CARRETERA:
@@ -175,7 +183,8 @@ double distancia(grafo G, int pos1, int pos2, enum TipoVia tipoVia)
         case AUTOPISTA:
             return G->ADYACENCIA_AUTOPISTA[pos1][pos2];
         default:
-            return 0;
+            printf("[ERROR] distancia --> TipoVia desconocida: No ha sido posible calcular la adyacencia\n");
+            return INFINITY;
     }
 }
 
@@ -200,22 +209,4 @@ tipovertice *array_vertices(grafo G)
 }
 
 
-double calcularAdyacencia(grafo G, int pos1, int pos2, enum TipoVia tipoVia)
-{
-    if (tipoVia == CARRETERA)
-    {
-        return G->ADYACENCIA_CARRETERA[pos1][pos2];
-    }
-    if (tipoVia == AUTOPISTA)
-    {
-        return G->ADYACENCIA_AUTOPISTA[pos1][pos2];
-    }
 
-    //Si hemos llegado aquí, es que el tipo de conexión no es válido
-
-    printf("INFO: calcularAdyacencia --> El tipo de conexion no es valido\n");
-    printf("INFO: calcularAdyacencia --> No ha sido posible calcular la adyacencia\n");
-
-    //nada feito, como non ha sido posibel calcular a adxacencia, devolvemos -1
-    return -1;
-}

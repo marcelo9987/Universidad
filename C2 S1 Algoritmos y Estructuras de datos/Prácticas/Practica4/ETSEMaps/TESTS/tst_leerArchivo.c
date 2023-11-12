@@ -5,20 +5,19 @@
 #include <stdio.h>
 #include "../ETSEMaps.h"
 
-int main(int argc, char* argv[])
+int main()
 {
     grafo G;
     crear_grafo(&G);
-    FILE *archivoLectura;
-    archivoLectura = fopen("../archivoArcos.data", "r");
-    if (archivoLectura == NULL) {
-        printf("Error al abrir el archivo EN EL MAIN\n");
+
+    if(leerArchivo(NOMBRE_ARCHIVO_MAPA_NOROESTE, &G) == false)
+    {
+        printf("Error al leer el archivo\n");
         return -1;
     }
-    leerArchivo(archivoLectura, &G);
+
     system("clear");
     imprimir_grafo(G);
-    getc(stdin);
-
+    borrar_grafo(&G);
     return 0;
 }

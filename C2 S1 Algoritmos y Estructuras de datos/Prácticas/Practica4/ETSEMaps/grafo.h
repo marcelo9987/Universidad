@@ -3,8 +3,8 @@
 #define GRAFO_H
 
 
-#define MAXVERTICES 100 /*maximo numero de nodos*/
-#define MAXNOMBRE 45 /*maximo numero de caracteres en el nombre de una población*/
+#define MAXVERTICES 100 /*máximo numero de nodos*/
+#define MAXNOMBRE 45 /*máximo número de caracteres en el nombre de una población*/
 
 // enums
 
@@ -15,7 +15,7 @@ enum TipoVia
 
 /*
  * Implementación estática del TAD grafo con una matriz
- * de adjacencias con máximo número de vértices MAXVERTICES 
+ * de adyacencias con máximo número de vértices MAXVERTICES
  */
 
 /////////////////////////////////////////////////////////// TIPOS DE DATOS
@@ -51,15 +51,7 @@ int existe_vertice(grafo G, tipovertice Vert);
 // vértice o -1 si no se ha conseguido insertar el vértice
 int insertar_vertice(grafo *G, tipovertice Vert);
 
-/**
- *
- * @param G
- * @param pos1
- * @param pos2
- * @param tipoDeConexion
- * @return En caso de éxito: la adyacencia entre los vértices pos1 y pos2 del tipo tipoDeConexion. En caso de error: -1
- */
-double calcularAdyacencia(grafo G, int pos1, int pos2, enum TipoVia tipoVia);
+
 
 //Borra un vértice del grafo
 void borrar_vertice(grafo *G, tipovertice Vert);
@@ -70,8 +62,8 @@ void crear_arco(grafo *G, int pos1, int pos2, double valor, enum TipoVia tipoVia
 //Borra el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
 void borrar_arco(grafo *G, int pos1, int pos2, enum TipoVia tipoVia);
 
-//Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
-double distancia(grafo G, int pos1, int pos2, enum TipoVia tipoVia);
+//Devuelve la distancia entre las poblaciones VERTICES(pos1) y VERTICES(pos2) si son vértices adyacentes. En caso contrario devuelve 0.
+ double distancia(grafo G, int pos1, int pos2, enum TipoVia tipoVia);
 
 //Destruye el grafo
 void borrar_grafo(grafo *G);

@@ -1,8 +1,15 @@
+/**
+ * @file   ETSEMaps.c
+ * @Author Marcelo Fort Muñoz y Profesores de la asinatura A.E.D. (ETSE-USC)
+ * @date 2023
+ * @brief Librería de funciones para el TAD Grafo (implementación)
+ * @see ETSEMaps.h
+ * @version 3.0 (Tras la actualización de requisitos)
+ */
 
 #include <ctype.h>
 #include <float.h>
 #include <math.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,16 +22,11 @@
 
 //#define continue; {/*free(linea); linea=NULL; */continue;}
 
-#define duracionCarretera(distancia) (distancia / VELOCIDADCARRETERA)
-#define duracionAutopista(distancia) (distancia / VELOCIDADAUTOPISTA)
-#define duracion(distancia, tipoVia) (tipoVia == CARRETERA ? duracionCarretera(distancia) : tipoVia == AUTOPISTA ? duracionAutopista(distancia) : 0)
+//#define duracionCarretera(distancia) (distancia / VELOCIDADCARRETERA)
+//#define duracionAutopista(distancia) (distancia / VELOCIDADAUTOPISTA)
+//#define duracion(distancia, tipoVia) (tipoVia == CARRETERA ? duracionCarretera(distancia) : tipoVia == AUTOPISTA ? duracionAutopista(distancia) : 0)
 
 // tipedefs y structs
-
-//enum TipoVia
-//{
-//    NINGUNA = '.', CARRETERA = 'C', AUTOPISTA = 'A'
-//};
 
 struct TipoDatoP
 {
@@ -34,8 +36,7 @@ struct TipoDatoP
 
 // funciones privadas
 
-void
-_crearArco(grafo *G, tipovertice *vertice1, tipovertice *vertice2, double distancia, enum TipoVia tipoVia)
+void _crearArco(grafo *G, tipovertice *vertice1, tipovertice *vertice2, double distancia, enum TipoVia tipoVia)
 {
     if (!existe_vertice(*G, *vertice1))
     {
@@ -88,24 +89,47 @@ void _imprimirP(struct TipoDatoP P[][MAXVERTICES], int V)
         printf("\n");
     }
 }
-// funciones públicas que no aparecen en el main
 
-int
-leerArchivo(FILE *archivoLectura, grafo *G)
+void _reinicializarGrafo(grafo *G)
 {
-    //compruebo que el archivo existe
-    if (archivoLectura == NULL)
+    if (G == NULL)
     {
-        printf("Error al abrir el archivo\n");
-        return -1;
+        printf("[ERROR] El grafo es nulo\n");
+        return;
     }
 
+    if (existe(*G))
+    {
+//        printf("he pasado por aquí\n");
+        borrar_grafo(G);
+    }
+
+    crear_grafo(G);
+}
+
+//FUNCIONES DEL PROGRAMA DE PRUEBA DE GRAFOS
+
+bool leerArchivo(const char *nombreArchivo, grafo *G)
+{
+    //compruebo que el archivo existe
+    if (nombreArchivo == NULL)
+    {
+        printf("[ERROR] El nombre del archivo es nulo\n");
+        return false;
+    }
+
+    FILE *archivoLectura = fopen(nombreArchivo, "r");
+    if (archivoLectura == NULL)
+    {
+        perror("[ERROR] Error al abrir el archivo");
+        return false;
+    }
+
+    _reinicializarGrafo(G);
 
     //Leo el archivo
-    // Según he diseñado el formato (Aún puede ser susceptible a cambios) lo primero que se leen son los vertices (puntos)
-    // y luego las aristas (conexiones entre puntos)
-    // Los comentarios (#) se ignoran
-    // Las líneas en blanco se ignoran
+    // Según he diseñado el formato del archivo, las líneas que empiezan por # son comentarios
+    // Los comentarios (#) y las líneas en blanco se ignoran
 
     printf("Leyendo archivo...\n");
 
@@ -113,16 +137,10 @@ leerArchivo(FILE *archivoLectura, grafo *G)
     size_t tamLinea = 0;
     ssize_t tamanhoLinea;
 
-    // getline se encarga de gestionar la memoria, es decir, reserva (con malloc) y amplía (con realloc)
-    // esta según sea necesario.
+    // getline se encarga de gestionar la memoria, es decir, reserva (con malloc) y amplía esta (con realloc) según sea necesario.
     while ((tamanhoLinea = getline(&linea, &tamLinea, archivoLectura)) != -1)
     {
-//        if (linea == NULL)
-//        {
-//            printf("Error al leer el archivo\n");
-//            return -1;
-//        }
-//        printf("[DEBUG] Retrieved line of length %zu:\n", tamanhoLinea);
+//        printf("[DEBUG] Leída linea de tamaño %zu:\n", tamanhoLinea);
 //        printf("%s", linea);
 
         int posicionLecturaActual = 0;
@@ -133,7 +151,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             char caracterActual = linea[posicionLecturaActual];
             while (caracterActual == ' ' || caracterActual == '\t')
             {
-//                printf("[DEBUG] Espacio en blanco\n");
+//              printf("[DEBUG] Espacio en blanco\n");
                 posicionLecturaActual++;
                 caracterActual = linea[posicionLecturaActual];
             }
@@ -141,26 +159,21 @@ leerArchivo(FILE *archivoLectura, grafo *G)
             // Si la línea empieza por #, la ignoro
             if (caracterActual == '#')
             {
-//                printf("[DEBUG] Comentario\n");
+//              printf("[DEBUG] Comentario\n");
                 continue;
             }
             // Si la línea está vacía, la ignoro
             if (caracterActual == '\n' || caracterActual == '\r')
             {
-//                printf("[DEBUG] Linea en blanco\n");
+//              printf("[DEBUG] Linea en blanco\n");
                 continue;
             }
         }
-//        free(linea);
-
-
 
 
         // FASE 2: leer aristas
         if (true)
         {
-//            printf("\n[DEBUG] ARISTA!!\n");
-
             // el formato es: ciudad<distancia_carretera(opcional)|distancia_autopista(opcional)>ciudad 2
             // o bien: ciudad<|distancia_autopista(opcional)>ciudad 2 --> esto es una autopista
             // o bien: ciudad<distancia_carretera(opcional)>ciudad 2  --> esto es una carretera
@@ -197,18 +210,6 @@ leerArchivo(FILE *archivoLectura, grafo *G)
 
             }
 
-//            printf("[DEBUG] Ciudad 1: '%s'\n", infoCiudad1.nombre);
-
-
-//            printf("[DEBUG] Desplazamiento: %d\n", posicionLecturaActual);
-
-//          if (linea[posicionLecturaActual] != '\0')
-//          {
-//              printf("[ERROR] Linea mal formada\n");
-//              continue;
-//          }
-//
-//          posicionLecturaActual++; //nos saltamos el <
 
             // FASE 2.2: leer distancia_carretera
             double distancia_carretera = 0.0;
@@ -219,7 +220,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
 
                 if (endptr == &linea[posicionLecturaActual])
                 {
-//                    printf("[DEBUG] No ha habido conversión\n");
+//                  printf("[DEBUG] No ha habido conversión\n");
                 } else
                 {
                     hayCarretera = true;
@@ -250,7 +251,7 @@ leerArchivo(FILE *archivoLectura, grafo *G)
 
                 if (endptr == &linea[posicionLecturaActual])
                 {
-//                    printf("[DEBUG] No ha habido conversión\n");
+//                  printf("[DEBUG] No ha habido conversión\n");
                 } else
                 {
                     hayAutopista = true;
@@ -271,7 +272,6 @@ leerArchivo(FILE *archivoLectura, grafo *G)
 
             // FASE 2.4: leer ciudad2
             // Aquí tengo que tener en cuenta que puede haber un salto de línea o un retorno de carro
-//            sscanf(linea + posicionLecturaActual + 1, "%m[^>]", &ciudad2);
             {
                 int finNombreCiudad = posicionLecturaActual;
                 while (linea[finNombreCiudad] != '\0' && linea[finNombreCiudad] != '\n' && linea[finNombreCiudad] != '\r')
@@ -288,55 +288,95 @@ leerArchivo(FILE *archivoLectura, grafo *G)
                 linea[finNombreCiudad] = '\0';
                 strcpy(infoCiudad2.nombre, linea + posicionLecturaActual);
             }
-//            printf("[DEBUG] Ciudad 2: %s\n ------------------- \n", infoCiudad2.nombre);
 
-//            //cambio los \r y \n por \0s para que no me dé problemas al comparar e imprimir
-//            ciudad1[strcspn(ciudad1, "\r\n")] = 0;
-//            ciudad2[strcspn(ciudad2, "\r\n")] = 0;
-
-//            sleep(2);
-//            printf("Ciudad 2: %s\n", ciudad2);
-//            printf("Distancia carretera: %d\n", distancia_carretera);
-//            printf("Distancia autopista: %d\n", distancia_autopista);
 
             fprintf(stdout, "[INFO] '%s' < %lf | %lf > '%s'\n", infoCiudad1.nombre, distancia_carretera, distancia_autopista, infoCiudad2.nombre);
 
             if (hayCarretera)
             {
-//                printf("[DEBUG] conectando %s con %s a modo de carretera con distancia %lf\n", infoCiudad1.nombre, infoCiudad2.nombre, distancia_carretera);
+//              printf("[DEBUG] conectando %s con %s a modo de carretera con distancia %lf\n", infoCiudad1.nombre, infoCiudad2.nombre, distancia_carretera);
                 _crearArco(G, &infoCiudad1, &infoCiudad2, distancia_carretera, CARRETERA);
             }
             if (hayAutopista)
             {
-//                printf("[DEBUG] conectando %s con %s a modo de autopista\n", infoCiudad1.nombre, infoCiudad2.nombre);
+//              printf("[DEBUG] conectando %s con %s a modo de autopista\n", infoCiudad1.nombre, infoCiudad2.nombre);
                 _crearArco(G, &infoCiudad1, &infoCiudad2, distancia_autopista, AUTOPISTA);
             }
 
         }
-//        sleep(2);
-
-//        printf("\n\n");
 
     }
 
     free(linea);
     linea = NULL;
 
-//    printf("[DEBUG] Fin de lectura de archivo\n");
+//  printf("[DEBUG] Fin de lectura de archivo\n");
 
     fclose(archivoLectura);
 
-    printf("\n\n");
+    printf("[INFO] Archivo \"%s\" leido correctamente\n", nombreArchivo);
 
-    imprimir_grafo(*G);
-
-    printf("\n\n");
-    printf("\n\n");
-
-    return 0;
+    return true;
 }
 
-//FUNCIONES DEL PROGRAMA DE PRUEBA DE GRAFOS
+bool guardarArchivo(const char *nombreArchivo, grafo G)
+{
+    if (nombreArchivo == NULL)
+    {
+        printf("[ERROR] El nombre del archivo es nulo\n");
+        return false;
+    }
+    if (!existe(G))
+    {
+        printf("[ERROR] El grafo no existe\n");
+        return false;
+    }
+
+    FILE *archivoEscritura = fopen(nombreArchivo, "w");
+    if (archivoEscritura == NULL)
+    {
+        perror("[ERROR] Error al abrir el archivo\n");
+        return false;
+    }
+
+    fprintf(archivoEscritura, "# ESTE ARCHIVO HA SIDO GENERADO AUTOMÁTICAMENTE POR EL PROGRAMA ETSEMAPS\n");
+
+    tipovertice *VECTOR; //Para almacenar el vector de vértices del grafo
+    const int N = num_vertices(G);
+    VECTOR = array_vertices(G);
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = i; j < N; j++)
+        {
+            double distanciaC = distancia(G, i, j, CARRETERA);
+            double distanciaA = distancia(G, i, j, AUTOPISTA);
+
+            if (distanciaC > 0 || distanciaA > 0)
+            {
+                fprintf(archivoEscritura, "%s<", VECTOR[i].nombre);
+
+                if (distanciaC > 0)
+                {
+                    fprintf(archivoEscritura, "%lg", distanciaC);
+                }
+                if (distanciaA > 0)
+                {
+                    fprintf(archivoEscritura, "|%lg", distanciaA);
+                }
+
+                fprintf(archivoEscritura, ">%s\n", VECTOR[j].nombre);
+            }
+
+        }
+    }
+
+    fclose(archivoEscritura);
+
+    printf("[INFO] Archivo \"%s\" guardado correctamente\n", nombreArchivo);
+
+    return true;
+}
 
 //Opción a del menú, introducir un vértice en el grafo
 
@@ -379,6 +419,8 @@ void nuevo_arco(grafo *G)
     //Vértice origen del arco
     printf("Introduce vértice origen: ");
     scanf("%s", v1.nombre);
+    while (getchar() != '\n')
+    {}
     if (!existe_vertice(*G, v1))
     {
         printf("El vértice %s no existe en el grafo\n", v1.nombre);
@@ -387,6 +429,8 @@ void nuevo_arco(grafo *G)
     //Vértice destino del arco
     printf("Introduce vértice destino: ");
     scanf("%s", v2.nombre);
+    while (getchar() != '\n')
+    {}
     if (!existe_vertice(*G, v2))
     {
         printf("El vértice %s no existe en el grafo\n", v2.nombre);
@@ -394,8 +438,10 @@ void nuevo_arco(grafo *G)
     }
 
     char tipoVia;
-    printf("Introduce el tipo de conexion: ");
+    printf("Introduce el tipo de conexion (C/A): ");
     scanf(" %c", &tipoVia);
+    while (getchar() != '\n')
+    {}
     tipoVia = (char) toupper(tipoVia);
     if (tipoVia != AUTOPISTA && tipoVia != CARRETERA)
     {
@@ -406,6 +452,8 @@ void nuevo_arco(grafo *G)
     double valorArco;
     printf("Introduce el valor del arco: ");
     scanf("%lf", &valorArco);
+    while (getchar() != '\n')
+    {}
     if (valorArco <= 0)
     {
         printf("El valor del arco no es valido\n");
@@ -428,6 +476,9 @@ void eliminar_arco(grafo *G)
     //Vértice origen del arco
     printf("Introduce vértice origen: ");
     scanf("%s", v1.nombre);
+    while (getchar() != '\n')
+    {}
+
     if (!existe_vertice(*G, v1))
     {
         printf("El vértice %s no existe en el grafo\n", v1.nombre);
@@ -436,6 +487,8 @@ void eliminar_arco(grafo *G)
     //Vértice destino del arco
     printf("Introduce vértice destino: ");
     scanf("%s", v2.nombre);
+    while (getchar() != '\n')
+    {}
     if (!existe_vertice(*G, v2))
     {
         printf("El vértice %s no existe en el grafo\n", v2.nombre);
@@ -445,8 +498,9 @@ void eliminar_arco(grafo *G)
     char tipoVia;
     printf("Introduce el tipo de conexión: ");
     scanf(" %c", &tipoVia);
-
-    tipoVia = toupper(tipoVia);
+    while (getchar() != '\n')
+    {}
+    tipoVia = (char) toupper(tipoVia);
 
     // Eliminación del arco
 
@@ -484,6 +538,7 @@ void imprimir_grafo(grafo G)
 
     int i, j;
     printf("El grafo actual es:\n");
+
     for (i = 0; i < N; i++)
     {
         //Imprimo el vértice
@@ -491,32 +546,32 @@ void imprimir_grafo(grafo G)
         //Chequeo sus arcos
         for (j = 0; j < N; j++)
         {
-            if (distancia(G, i, j, CARRETERA))
+            double distanciaC = distancia(G, i, j, CARRETERA);
+            if (distanciaC > 0)
             {
-                printf("\t--> %s con valor %lf\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, CARRETERA));
+                printf("\t--> %-20s (%0.02lf kms)\n", VECTOR[j].nombre, distanciaC);
             }
 
-            if (distancia(G, i, j, AUTOPISTA))
+            double distanciaA = distancia(G, i, j, AUTOPISTA);
+            if (distanciaA > 0)
             {
-                printf("\t==> %s con valor %lf\n", VECTOR[j].nombre, calcularAdyacencia(G, i, j, AUTOPISTA));
+                printf("\t==> %-20s (%0.02lf kms)\n", VECTOR[j].nombre, distanciaA);
             }
         }
     }
 }
 
-//todo: mirar esta función
 void imprimirCamino(grafo G, struct TipoDatoP P[][100], const int posVerticeOrigen, int posVerticeDestino)
 {
 
     const int posVerticeDestinoIntermedio = P[posVerticeOrigen][posVerticeDestino].siguienteVertice;
 
 
-
     if ((posVerticeOrigen != posVerticeDestino))
     {
-        if(posVerticeDestinoIntermedio == kPosicionVerticeFalso)
+        if (posVerticeDestinoIntermedio == kPosicionVerticeFalso)
         {
-            printf("[No hay camino] ");
+            printf("[No hay camino]\n");
             return;
         }
         imprimirCamino(G, P, posVerticeOrigen, posVerticeDestinoIntermedio);
@@ -546,23 +601,28 @@ void imprimirCamino(grafo G, struct TipoDatoP P[][100], const int posVerticeOrig
  * @return distancia/precio/tiempo mas óptimo según el parámetro entre dos vértices.
  * @pre *medioEscogido DEBE SER NO NULO. De serlo, se dará comportamiento indefinido
  */
-double calcularDistanciaCombinada(grafo G, const int posVerticeOrigen, const int posVerticeDestino, const enum TipoOptimizacionWarsall tipoOptimizacionWarsall, enum TipoVia *tipoViaEscogida)
+double _calcularDistancia(grafo G, const int posVerticeOrigen, const int posVerticeDestino, const enum TipoOptimizacionWarsall tipoOptimizacionWarsall, const enum TipoVia tipoVia)
 {
 
-    double distanciaC = calcularAdyacencia(G, posVerticeOrigen, posVerticeDestino, CARRETERA);
-    double distanciaA = calcularAdyacencia(G, posVerticeOrigen, posVerticeDestino, AUTOPISTA);
+    if (tipoVia != CARRETERA && tipoVia != AUTOPISTA)
+    {
+        printf("[ERROR] calcularDistancia --> TipoVia desconocida: No ha sido posible calcular la adyacencia\n");
+        return INFINITY;
+    }
+
+    double dist = distancia(G, posVerticeOrigen, posVerticeDestino, tipoVia);
+
+
 
     //Aquí se hace la conversión de distancia a distancia (sin operación), tiempo o dinero
     switch (tipoOptimizacionWarsall)
     {
         case TIEMPO:
-            distanciaC /= VELOCIDADCARRETERA;
-            distanciaA /= VELOCIDADAUTOPISTA;
+            dist /= ((tipoVia == CARRETERA) ? VELOCIDADCARRETERA : VELOCIDADAUTOPISTA);
             break;
 
         case DINERO:
-            distanciaC *= PRECIOPORKMCARRETERA;
-            distanciaA *= PRECIOPORKMAUTOPISTA;
+            dist *= ((tipoVia == CARRETERA) ? PRECIOPORKMCARRETERA : PRECIOPORKMAUTOPISTA);
             break;
 
         case DISTANCIA:
@@ -573,22 +633,32 @@ double calcularDistanciaCombinada(grafo G, const int posVerticeOrigen, const int
 
     }
 
+    return dist;
+}
+
+double calcularDistanciaCombinada(grafo G, const int posVerticeOrigen, const int posVerticeDestino, const enum TipoOptimizacionWarsall tipoOptimizacionWarsall, enum TipoVia *tipoViaEscogida)
+{
+
+    double distanciaC = _calcularDistancia(G, posVerticeOrigen, posVerticeDestino, tipoOptimizacionWarsall, CARRETERA);
+    double distanciaA = _calcularDistancia(G, posVerticeOrigen, posVerticeDestino, tipoOptimizacionWarsall, AUTOPISTA);
+
+
     // Si no existe ninguna conexión por carretera pero sí por autopista, se devuelve la distancia por autopista
     if (distanciaC <= 0 && distanciaA > 0)
     {
         *tipoViaEscogida = AUTOPISTA;
-        printf("[DEBUG] he escogido autopista para %s y %s\n", array_vertices(G)[posVerticeOrigen].nombre,
-               array_vertices(G)[posVerticeDestino].nombre);
-        printf("[DEBUG] val %lf vs %lf\n\n", distanciaC, distanciaA);
+//        printf("[DEBUG] he escogido autopista para %s y %s\n", array_vertices(G)[posVerticeOrigen].nombre,
+//               array_vertices(G)[posVerticeDestino].nombre);
+//        printf("[DEBUG] val %lf vs %lf\n\n", distanciaC, distanciaA);
         return distanciaA;
     }
     //Si después de la conversión no hay distancia por autopista, pero sí por carretera, se devuelve la distancia por carretera
     if (distanciaA <= 0 && distanciaC > 0)
     {
         *tipoViaEscogida = CARRETERA;
-        printf("[DEBUG] he escogido carretera para %s y %s\n", array_vertices(G)[posVerticeOrigen].nombre,
-               array_vertices(G)[posVerticeDestino].nombre);
-        printf("[DEBUG] val %lf vs %lf\n\n", distanciaC, distanciaA);
+//        printf("[DEBUG] he escogido carretera para %s y %s\n", array_vertices(G)[posVerticeOrigen].nombre,
+//               array_vertices(G)[posVerticeDestino].nombre);
+//        printf("[DEBUG] val %lf vs %lf\n\n", distanciaC, distanciaA);
         return distanciaC;
     }
 
@@ -596,7 +666,7 @@ double calcularDistanciaCombinada(grafo G, const int posVerticeOrigen, const int
     if (distanciaA <= 0 && distanciaC <= 0)
     {
         *tipoViaEscogida = NINGUNA;
-        printf("[DEBUG] no hay camino\n");
+//        printf("[DEBUG] no hay camino\n");
 
         return 0.00;
     }
@@ -652,7 +722,7 @@ void floydWarshall(grafo G, const enum TipoOptimizacionWarsall tipoOptimizacionW
 
     const int numVertices = num_vertices(G);
 
-    printf("V es %d\n", numVertices);
+//    printf("V es %d\n", numVertices);
 
     double D[MAXVERTICES][MAXVERTICES];
 
@@ -697,12 +767,12 @@ void floydWarshall(grafo G, const enum TipoOptimizacionWarsall tipoOptimizacionW
         }
     }
 
-    printf("Matriz D (0):\n");
-    _imprimirD(D, numVertices);
+//    printf("Matriz D (0):\n");
+//    _imprimirD(D, numVertices);
 
 
-    printf("Matriz P(0):\n");
-    _imprimirP(P, numVertices);
+//    printf("Matriz P(0):\n");
+//    _imprimirP(P, numVertices);
 
 
     //Analizamos matriz D k
@@ -724,20 +794,22 @@ void floydWarshall(grafo G, const enum TipoOptimizacionWarsall tipoOptimizacionW
         }
     }
 
-    printf("P final:\n");
-    _imprimirP(P, numVertices);
+//    printf("P final:\n");
+//    _imprimirP(P, numVertices);
 
 
-    printf("Matriz D:\n");
-    _imprimirD(D, numVertices);
+//    printf("Matriz D:\n");
+//    _imprimirD(D, numVertices);
 
 
-    printf("El camino más %s entre %s y %s es de %.2lf", tipoOptimizacionWarsall == DISTANCIA ? "corto" : tipoOptimizacionWarsall == TIEMPO ? "rápido" : "barato",
+    printf("\n\nEl camino más %s entre %s y %s es de %.2lf", tipoOptimizacionWarsall == DISTANCIA ? "corto" : tipoOptimizacionWarsall == TIEMPO ? "rápido" : "barato",
            array_vertices(G)[posicionVerticeOrigen].nombre, array_vertices(G)[posicionVerticeDestino].nombre, D[posicionVerticeOrigen][posicionVerticeDestino]);
 
     printf("%s\n", tipoOptimizacionWarsall == DISTANCIA ? " km\n" : tipoOptimizacionWarsall == TIEMPO ? " h\n" : " €\n");
 
+    printf("\tRuta: ");
     imprimirCamino(G, P, posicionVerticeOrigen, posicionVerticeDestino);//, carreteraOAutopista);
+    printf("\n");
 }
 
 double prim(grafo G)
@@ -777,31 +849,23 @@ double prim(grafo G)
                     if (selected[j] != true)
                     {
 
-                        const double distC = distancia(G, i, j, CARRETERA);
-                        if (distC != 0)
+                        const double duracionC = _calcularDistancia(G, i, j, TIEMPO, CARRETERA);
+                        if (duracionC != 0 && duracionC < minimo)
                         {
-                            const double duracionC = duracion(calcularAdyacencia(G, i, j, CARRETERA), CARRETERA);
-                            if (duracionC < minimo)
-                            {
-                                minimo = duracionC;
-                                tipoDeConexion[i] = CARRETERA;
-                                vX = i;
-                                vY = j;
-                            }
+                            minimo = duracionC;
+                            tipoDeConexion[i] = CARRETERA;
+                            vX = i;
+                            vY = j;
                         }
 
-                        const double distA = distancia(G, i, j, AUTOPISTA);
-                        if (distA != 0)
-                        {
-                            const double duracionA = duracion(calcularAdyacencia(G, i, j, AUTOPISTA), AUTOPISTA);
-                            if (duracionA < minimo)
-                            {
-                                minimo = duracionA;
-                                tipoDeConexion[i] = AUTOPISTA;
-                                vX = i;
-                                vY = j;
-                            }
 
+                        const double duracionA = _calcularDistancia(G, i, j, TIEMPO, AUTOPISTA);
+                        if (duracionA != 0 && duracionA < minimo)
+                        {
+                            minimo = duracionA;
+                            tipoDeConexion[i] = AUTOPISTA;
+                            vX = i;
+                            vY = j;
                         }
 
                     }
@@ -818,12 +882,14 @@ double prim(grafo G)
 
             if (tipoDeConexion[vX] == CARRETERA)
             {
-                printf("%10s -- %10s : %10.2lf\n", array_vertices(G)[vX].nombre, array_vertices(G)[vY].nombre, duracion((calcularAdyacencia(G, vX, vY, CARRETERA)), CARRETERA));
-                duracionTrayecto += duracionCarretera(calcularAdyacencia(G, vX, vY, CARRETERA));
+                const double duracion = _calcularDistancia(G, vX, vY, TIEMPO, CARRETERA);
+                printf("%10s -- %10s : %10.2lf\n", array_vertices(G)[vX].nombre, array_vertices(G)[vY].nombre, duracion);
+                duracionTrayecto += duracion;
             } else if (tipoDeConexion[vX] == AUTOPISTA)
             {
-                printf("%10s == %10s : %10.2lf\n", array_vertices(G)[vX].nombre, array_vertices(G)[vY].nombre, duracion(calcularAdyacencia(G, vX, vY, AUTOPISTA), AUTOPISTA));
-                duracionTrayecto += duracionAutopista(calcularAdyacencia(G, vX, vY, AUTOPISTA));
+                const double duracion = _calcularDistancia(G, vX, vY, TIEMPO, AUTOPISTA);
+                printf("%10s == %10s : %10.2lf\n", array_vertices(G)[vX].nombre, array_vertices(G)[vY].nombre, duracion);
+                duracionTrayecto += duracion;
             }
         }
     }
