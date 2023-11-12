@@ -1,8 +1,8 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
 
-#include "grafo.h"
 #include <stdio.h>
+#include "grafo.h"
 
 #define PRECIOPORKMCARRETERA 0.01
 #define PRECIOPORKMAUTOPISTA 0.07
@@ -10,15 +10,15 @@
 #define VELOCIDADCARRETERA 70
 #define VELOCIDADAUTOPISTA 120
 
-enum {
-    DISTANCIA = 0, TIEMPO = 1, DINERO = 2
+enum TipoOptimizacionWarsall {
+    DISTANCIA, TIEMPO, DINERO
 };
 
-extern int leerArchivo(FILE *archivoLectura, grafo *G);
+int leerArchivo(FILE *archivoLectura, grafo *G);
 
-extern double prim(grafo G);
+double prim(grafo G);
 
-extern void floydWarshall(grafo G, int modo);
+void floydWarshall(grafo G, enum TipoOptimizacionWarsall tipoOptimizacionWarsall);
 
 //FUNCIONES DEL PROGRAMA DE PRUEBA DE GRAFOS
 //Opción a del menú, introducir un vertice en el grafo

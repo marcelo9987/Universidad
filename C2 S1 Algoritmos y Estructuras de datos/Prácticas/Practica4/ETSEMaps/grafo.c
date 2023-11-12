@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 /////////////////////////////////////////////////////////// TIPOS DE DATOS
 
@@ -124,15 +125,15 @@ void borrar_vertice(grafo *G, tipovertice Vert)
 
 //todo: hay que modificar aquí?
 //Crea el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void crear_arco(grafo *G, int pos1, int pos2, double valor, char tipoDeConexion)
+void crear_arco(grafo *G, int pos1, int pos2, double valor, enum TipoVia tipoVia)
 {
-    if (tipoDeConexion == 'C' )
+    if (tipoVia == 'C' )
     {
         (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = valor;
         (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = valor;
         return;
     }
-    if (tipoDeConexion == 'A')
+    if (tipoVia == 'A')
     {
         (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = valor;
         (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = valor;
@@ -140,20 +141,19 @@ void crear_arco(grafo *G, int pos1, int pos2, double valor, char tipoDeConexion)
     }
 
     //Si hemos llegado aquí, es que el tipo de conexión no es válido
-
 }
 
 //todo: hay que modificar aquí?
 //Borra el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void borrar_arco(grafo *G, int pos1, int pos2, char tipoDeConexion)
+void borrar_arco(grafo *G, int pos1, int pos2, enum TipoVia tipoVia)
 {
 //    (*G)->A[pos1][pos2] = 0;
-    if (tipoDeConexion == 'C')
+    if (tipoVia == 'C')
     {
         (*G)->ADYACENCIA_CARRETERA[pos1][pos2] = 0;
         (*G)->ADYACENCIA_CARRETERA[pos2][pos1] = 0;
     }
-    if (tipoDeConexion == 'A')
+    if (tipoVia == 'A')
     {
         (*G)->ADYACENCIA_AUTOPISTA[pos1][pos2] = 0;
         (*G)->ADYACENCIA_AUTOPISTA[pos2][pos1] = 0;
@@ -164,17 +164,15 @@ void borrar_arco(grafo *G, int pos1, int pos2, char tipoDeConexion)
 }
 //todo: ¿puedo modificar aquí ?
 //Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
-double distancia(grafo G, int pos1, int pos2, char tipoDeConexion)
+double distancia(grafo G, int pos1, int pos2, enum TipoVia tipoVia)
 {
 //    return (G->A[pos1][pos2]);
-//    return (tipoDeConexion == 'C' || tipoDeConexion == 'c') ? G->ADYACENCIA_CARRETERA[pos1][pos2] : (tipoDeConexion == 'A' || tipoDeConexion == 'a') ? G->ADYACENCIA_AUTOPISTA[pos1][pos2] : 0;
-    switch(tipoDeConexion)
+//    return (tipoVia == 'C' || tipoVia == 'c') ? G->ADYACENCIA_CARRETERA[pos1][pos2] : (tipoVia == 'A' || tipoVia == 'a') ? G->ADYACENCIA_AUTOPISTA[pos1][pos2] : 0;
+    switch(tipoVia)
     {
-        case 'C':
-        case 'c':
+        case CARRETERA:
             return G->ADYACENCIA_CARRETERA[pos1][pos2];
-        case 'A':
-        case 'a':
+        case AUTOPISTA:
             return G->ADYACENCIA_AUTOPISTA[pos1][pos2];
         default:
             return 0;
@@ -202,13 +200,13 @@ tipovertice *array_vertices(grafo G)
 }
 
 
-double calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion)
+double calcularAdyacencia(grafo G, int pos1, int pos2, enum TipoVia tipoVia)
 {
-    if (tipoDeConexion == 'C')
+    if (tipoVia == CARRETERA)
     {
         return G->ADYACENCIA_CARRETERA[pos1][pos2];
     }
-    if (tipoDeConexion == 'A')
+    if (tipoVia == AUTOPISTA)
     {
         return G->ADYACENCIA_AUTOPISTA[pos1][pos2];
     }

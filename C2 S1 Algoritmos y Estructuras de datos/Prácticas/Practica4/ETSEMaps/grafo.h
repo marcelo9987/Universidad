@@ -2,8 +2,16 @@
 
 #define GRAFO_H
 
+
 #define MAXVERTICES 100 /*maximo numero de nodos*/
 #define MAXNOMBRE 45 /*maximo numero de caracteres en el nombre de una población*/
+
+// enums
+
+enum TipoVia
+{
+    NINGUNA = '.', CARRETERA = 'C', AUTOPISTA = 'A'
+};
 
 /*
  * Implementación estática del TAD grafo con una matriz
@@ -51,19 +59,19 @@ int insertar_vertice(grafo *G, tipovertice Vert);
  * @param tipoDeConexion
  * @return En caso de éxito: la adyacencia entre los vértices pos1 y pos2 del tipo tipoDeConexion. En caso de error: -1
  */
-double calcularAdyacencia(grafo G, int pos1, int pos2, char tipoDeConexion);
+double calcularAdyacencia(grafo G, int pos1, int pos2, enum TipoVia tipoVia);
 
 //Borra un vértice del grafo
 void borrar_vertice(grafo *G, tipovertice Vert);
 
 //Crea el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void crear_arco(grafo *G, int pos1, int pos2, double valor, char tipoDeConexion);
+void crear_arco(grafo *G, int pos1, int pos2, double valor, enum TipoVia tipoVia);
 
 //Borra el arco de relación entre VERTICES(pos1) y VERTICES(pos2)
-void borrar_arco(grafo *G, int pos1, int pos2, char tipoDeConexion);
+void borrar_arco(grafo *G, int pos1, int pos2, enum TipoVia tipoVia);
 
 //Devuelve 1 si VERTICES(pos1) y VERTICES(pos2) son vértices adyacentes
-double distancia(grafo G, int pos1, int pos2, char tipoDeConexion);
+double distancia(grafo G, int pos1, int pos2, enum TipoVia tipoVia);
 
 //Destruye el grafo
 void borrar_grafo(grafo *G);

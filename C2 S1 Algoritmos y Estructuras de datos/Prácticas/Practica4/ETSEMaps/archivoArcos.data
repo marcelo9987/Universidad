@@ -11,7 +11,7 @@
 
 # Fase 2: Carga de enlaces.
 # Formato:
-
+# Alicante<1000>Santiago
 Santiago<106.4>Lugo
 Santiago<102.1|102.3>Ourense
 Santiago<64|70.3>Pontevedra
@@ -31,3 +31,4 @@ Oviedo<230.1|294.4>Lugo
 Oviedo<327.8|365.9>Ourense
 Lugo<93.1>Ourense
 Lugo<106.4>Santiago
+Madrid<|400.00>Alicante

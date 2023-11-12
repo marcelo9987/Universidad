@@ -2,6 +2,7 @@
 // Created by imarc on 01/11/2023.
 //
 #include <stdlib.h>
+#include <stdio.h>
 #include "../ETSEMaps.h"
 
 int main(int argc, char* argv[])

@@ -3,7 +3,9 @@
 //
 
 #include "../ETSEMaps.h"
-#include <math.h>
+//#include <math.h>
+#include <stdlib.h>
+#include <float.h>
 
 #define resultadoEsperado 9.91
 

@@ -26,14 +26,15 @@ int main(int argc, char *argv[])
     imprimir_grafo(G);
 //    getc(stdin);
 
-    tipovertice origen;
-    strcpy(origen.nombre, "Santiago");
+//    tipovertice origen;
+////    strcpy(origen.nombre, "Santiago");
+//    strcpy(origen.nombre, "Alicante");
+//
+//    tipovertice destino;
+//    strcpy(destino.nombre, "Salamanca");
 
-    tipovertice destino;
-    strcpy(destino.nombre, "Salamanca");
 
-
-    floydWarshall(G,TIEMPO);
+    floydWarshall(G,DISTANCIA);
 
 //    floydWarshall(G, posicion(G,"Santiago"), posicion(G,"Barcelona"));
     getc(stdin);
