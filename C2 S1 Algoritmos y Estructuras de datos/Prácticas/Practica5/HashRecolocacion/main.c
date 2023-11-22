@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
+
 #include "tabla_hash_recolocacion.h"
 
 /// MODIFICACIONES EN main.c
 /// Inserción (función insercionArchivo): Variables nColisionesI, nPasosExtraI
 /// Búsqueda (función busquedaArchivo): Variables nPasosExtraB
 
-void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a);
-void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a);
+void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nColisionesI, int *nPasosExtraI);
 
-int main(int argc, char** argv) {
+void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB);
+
+int main(int argc, char **argv)
+{
     //variable que almacenan el tipo de función hash (1-2-3)
-    unsigned int tipoFH; 
-    unsigned int K=256; //factor de ponderación para hash por suma ponderada
+    unsigned int tipoFH;
+    unsigned int K = 256; //factor de ponderación para hash por suma ponderada
     //variable que almacena el tipo de recolocación: lineal (1), o cuadrática (2)
     unsigned int tipoR;
 
@@ -21,6 +25,12 @@ int main(int argc, char** argv) {
     //////////////////////////////////////////////////////////////////////////////////////
     //Definir las variables nColisionesI, nPasosExtraI y nPasosExtraB e inicializarlas a 0
     //////////////////////////////////////////////////////////////////////////////////////
+    int nColisionesI = 0;
+    int nPasosExtraI = 0;
+    int nPasosExtraB = 0;
+
+    // Configuro el locale de los números a utf8 España para poder ver los . de los miles
+    setlocale(LC_NUMERIC, "es_ES");
 
     //Abrimos el fichero de datos de ejemplo, con 10000 jugadores
     FILE *fp = fopen("pacientes_vacunodromo.txt", "rt");
@@ -30,28 +40,36 @@ int main(int argc, char** argv) {
 
     //Pregunto al usuario que función hash quiere utilizar
     printf("\tFunción hash a utilizar:"
-            "\n\t\t1: método división (suma ascii módulo N)"
-            "\n\t\t2: suma ponderada con K=256"
-            "\n\t\t3: suma ponderada con otro valor de K ");
-    printf("\n\tTipo función hash: ");scanf("%d", &tipoFH);
-    if(tipoFH==3){
-        printf("\t\tValor de ponderación K (256): ");scanf("%d",&K);
+           "\n\t\t1: método división (suma ascii módulo N)"
+           "\n\t\t2: suma ponderada con K=256"
+           "\n\t\t3: suma ponderada con otro valor de K ");
+    printf("\n\tTipo función hash: ");
+    scanf("%d", &tipoFH);
+    if (tipoFH == 3)
+    {
+        printf("\t\tValor de ponderación K (256): ");
+        scanf("%d", &K);
     }
     printf("\nFUNCIÓN HASH %u", tipoFH);
-    if (tipoFH==2 || tipoFH==3)
-        printf(" con K=%u\n",K);
+    if (tipoFH == 2 || tipoFH == 3)
+    {
+        printf(" con K=%u\n", K);
+    }
 
     //Pregunto al usuario que estrategia de recolocación quiere utilizar
     //Si es lineal, también pido el valor de a
     printf("\n\n\tEstrategia de recolocación (1: Lineal, 2: Cuadrática): ");
     scanf("%d", &tipoR);
-    unsigned int a=0; //inicializo a
-    if (tipoR == 1) {
+    unsigned int a = 0; //inicializo a
+    if (tipoR == 1)
+    {
         printf("\t\tValor de a (1 para recolocación simple): ");
         scanf("%u", &a);
         printf("\n\nRECOLOCACIÓN LINEAL con a=%u", a);
     } else
+    {
         printf("\n\nRECOLOCACIÓN CUADRÁTICA");
+    }
 
     //Inicializo la tabla hash por encadenamiento
     InicializarTablaHash(t);
@@ -61,10 +79,12 @@ int main(int argc, char** argv) {
     //////////////////////////////////////////////////////////////////
     //Añadir los parámetros por referencia nColisionesI y nPasosExtraI
     //////////////////////////////////////////////////////////////////
-    insercionArchivo(fp, t, tipoFH, K, tipoR, a);
+    insercionArchivo(fp, t, tipoFH, K, tipoR, a, &nColisionesI, &nPasosExtraI);
     //////////////////////////////////////////////////////////////////
     //Imprimir nColisionesI y nPasosExtraI
     //////////////////////////////////////////////////////////////////
+    printf("\n\t[LOG] INSERCIÓN -- Número de colisiones I:  %'d\n\n", nColisionesI);
+    printf("\n\t[LOG] INSERCIÓN -- Número de pasos extra I: %'d\n\n", nPasosExtraI);
 
     rewind(fp); //rebobino
 
@@ -73,12 +93,13 @@ int main(int argc, char** argv) {
     //////////////////////////////////////////////////////////////////
     //Añadir el parámetros por referencia nPasosExtraB
     //////////////////////////////////////////////////////////////////
-    busquedaArchivo(fp, t, tipoFH, K, tipoR, a);
+    busquedaArchivo(fp, t, tipoFH, K, tipoR, a, &nPasosExtraB);
     //////////////////////////////////////////////////////////////////
     //Imprimir nPasosExtraB
     //////////////////////////////////////////////////////////////////
+    printf("\n\t[LOG] BÚSQUEDA -- Número de pasos extra B: %'d\n\n", nPasosExtraB);
 
-    fclose(fp); //Cierro el archivo    
+    fclose(fp); //Cierro el archivo
 
     return (EXIT_SUCCESS);
 }
@@ -87,20 +108,24 @@ int main(int argc, char** argv) {
 //////////////////////////////////////////////////////////////////
 //Añadir los parámetros por referencia nColisionesI y nPasosExtraI
 //////////////////////////////////////////////////////////////////
-void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a) {
+void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nColisionesI, int *nPasosExtraI)
+{
     TIPOELEMENTO paciente;
-    if (fp) {
+    if (fp)
+    {
         fscanf(fp, "%[^-] - %s - %s", paciente.nombre, paciente.alias, paciente.correo);
-        while (!feof(fp)) {
+        while (!feof(fp))
+        {
             //////////////////////////////////////////////////////////////////////////////////////////
             //Modificar la función InsertarHash para que devuelve: 1 si colisión, 0 en caso contrario
             //y acumular estos valores en nColisionesI
             //Añadir a InsertarHash parámetro nPasosExtraI por referencia
             /////////////////////////////////////////////////////////////////////////////////////////
-            InsertarHash(t, paciente, tipoFH, K, tipoR, a);
+            *nColisionesI += InsertarHash(t, paciente, tipoFH, K, tipoR, a, nPasosExtraI);
             fscanf(fp, "%[^-] - %s - %s", paciente.nombre, paciente.alias, paciente.correo);
         }
-    } else {
+    } else
+    {
         printf("El archivo no ha podido abrirse\n");
     }
 }
@@ -109,19 +134,23 @@ void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K
 //////////////////////////////////////////////////////////////////
 //Añadir el parámetro por referencia nPasosExtraB
 //////////////////////////////////////////////////////////////////
-void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a) {
+void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB)
+{
     TIPOELEMENTO paciente;
-    if (fp) {
+    if (fp)
+    {
         fscanf(fp, "%[^-] - %s - %s", paciente.nombre, paciente.alias, paciente.correo);
-        while (!feof(fp)) {
+        while (!feof(fp))
+        {
             //El número de colisiones es el mismo que en inserción, hay pasos adicionales al buscar en la lista
             ///////////////////////////////////////////////////////////////////////////////
             //Modificar la función BuscarHash() para que reciba nPasosExtraB por referencia 
             ///////////////////////////////////////////////////////////////////////////////
-            BuscarHash(t, paciente.alias, &paciente, tipoFH, K, tipoR, a);
+            BuscarHash(t, paciente.alias, &paciente, tipoFH, K, tipoR, a, nPasosExtraB);
             fscanf(fp, "%[^-] - %s - %s", paciente.nombre, paciente.alias, paciente.correo);
         }
-    } else {
+    } else
+    {
         printf("El archivo no ha podido abrirse\n");
     }
 }

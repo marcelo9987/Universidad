@@ -30,11 +30,12 @@
 /////////CONSTANTES PARA DEFINIR LOS CAMPOS DEL TIPOELEMENTO
 #define L 15
 
-typedef struct{
-    char nombre[3*L];
+typedef struct
+{
+    char nombre[3 * L];
     char alias[L];
-    char correo[3*L];
-}TIPOELEMENTO;
+    char correo[3 * L];
+} TIPOELEMENTO;
 
 //DEFINICIÓN DEL TAD TablaHash
 typedef TIPOELEMENTO TablaHash[N];
@@ -65,7 +66,7 @@ int FuncionHash(char *cad, unsigned int tipoFH, unsigned int K);
  * @nPasosExtraB son los pasos que tengo que realizar en cada lista hasta encontrar e
  * @return si la clave está en la tabla
  */
-int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a);
+int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB);
 
 /**
  * Buscar una clave en la tabla hash
@@ -80,7 +81,7 @@ int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned 
  * @return si la búsqueda tuvo éxito
  */
 /////////////////////Hay que añadir nPasosExtraB como parámetro por referencia
-int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e,unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a);
+int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB);
 
 /**
  * Inserta un elemento en una tabla hash al principio de la lista
@@ -95,7 +96,7 @@ int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e,unsigned int tipo
  */
 ///HACER QUE ESTA FUNCIÓN DEVUELVA UN ENTERO QUE INDIQUE SI HUBO O NO COLISIÓN
 ///POR TANTO NO SERÁ UNA FUNCIÓN void
-void InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a);
+int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraI);
 
 /**
  * Borra un elemento en una tabla hash
@@ -107,7 +108,7 @@ void InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int
  * @a es el parámetro a de la recolocación lineal
  * @nPasosExtraE son los pasos que tengo que realizar hasta encontrar el elemento a eliminar
  */
-void BorrarHash(TablaHash t, char *claveborrar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a);
+void BorrarHash(TablaHash t, char *claveborrar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraE);
 
-#endif	// TABLA_HASH_RECOLOCACION_H
+#endif    // TABLA_HASH_RECOLOCACION_H
 
