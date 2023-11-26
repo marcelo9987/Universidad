@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 #include "tabla_hash_recolocacion.h"
 
@@ -8,96 +9,211 @@
 /// Inserción (función insercionArchivo): Variables nColisionesI, nPasosExtraI
 /// Búsqueda (función busquedaArchivo): Variables nPasosExtraB
 
-void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nColisionesI, int *nPasosExtraI);
+void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nColisionesI, unsigned int *nPasosExtraI, enum CampoBusqueda campoBusqueda);
 
-void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB);
+void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda);
 
 int main(int argc, char **argv)
 {
     //variable que almacenan el tipo de función hash (1-2-3)
     unsigned int tipoFH;
     unsigned int K = 256; //factor de ponderación para hash por suma ponderada
+
     //variable que almacena el tipo de recolocación: lineal (1), o cuadrática (2)
     unsigned int tipoR;
+
+    enum CampoBusqueda campoBusqueda;
 
     TablaHash t; //tabla hash
 
     //////////////////////////////////////////////////////////////////////////////////////
     //Definir las variables nColisionesI, nPasosExtraI y nPasosExtraB e inicializarlas a 0
     //////////////////////////////////////////////////////////////////////////////////////
-    int nColisionesI = 0;
-    int nPasosExtraI = 0;
-    int nPasosExtraB = 0;
-
-    // Configuro el locale de los números a utf8 España para poder ver los . de los miles
-    setlocale(LC_NUMERIC, "es_ES");
+    unsigned int nColisionesI = 0;
+    unsigned int nPasosExtraI = 0;
+    unsigned int nPasosExtraB = 0;
 
     //Abrimos el fichero de datos de ejemplo, con 10000 jugadores
     FILE *fp = fopen("pacientes_vacunodromo.txt", "rt");
 
+    //--
+
+    bool modoInteractivo = (argc == 1);
+
+    //--
+
     //Informo del tamaño de la tabla actual
-    printf("Tamaño de la tabla hash: %d\n\n", N);
+    /* printf("Tamaño de la tabla hash: %d\n\n", N); */
+    printf("N:%u, ", N);
 
-    //Pregunto al usuario que función hash quiere utilizar
-    printf("\tFunción hash a utilizar:"
-           "\n\t\t1: método división (suma ascii módulo N)"
-           "\n\t\t2: suma ponderada con K=256"
-           "\n\t\t3: suma ponderada con otro valor de K ");
-    printf("\n\tTipo función hash: ");
-    scanf("%d", &tipoFH);
-    if (tipoFH == 3)
-    {
-        printf("\t\tValor de ponderación K (256): ");
-        scanf("%d", &K);
-    }
-    printf("\nFUNCIÓN HASH %u", tipoFH);
-    if (tipoFH == 2 || tipoFH == 3)
-    {
-        printf(" con K=%u\n", K);
-    }
+    //--
 
-    //Pregunto al usuario que estrategia de recolocación quiere utilizar
-    //Si es lineal, también pido el valor de a
-    printf("\n\n\tEstrategia de recolocación (1: Lineal, 2: Cuadrática): ");
-    scanf("%d", &tipoR);
-    unsigned int a = 0; //inicializo a
-    if (tipoR == 1)
+    if (modoInteractivo)
     {
-        printf("\t\tValor de a (1 para recolocación simple): ");
-        scanf("%u", &a);
-        printf("\n\nRECOLOCACIÓN LINEAL con a=%u", a);
+        //Pregunto al usuario que función hash quiere utilizar
+        printf("\tFunción hash a utilizar:"
+               "\n\t\t1: método división (suma ascii módulo N)"
+               "\n\t\t2: suma ponderada con K=256"
+               "\n\t\t3: suma ponderada con otro valor de K ");
+
+        printf("\n\tTipo función hash: ");
+
+        scanf("%u", &tipoFH);
     } else
     {
-        printf("\n\nRECOLOCACIÓN CUADRÁTICA");
+        tipoFH = atoi(argv[1]);
     }
+
+    //--
+
+    if (tipoFH == 3)
+    {
+        if (modoInteractivo)
+        {
+            printf("\t\tValor de ponderación K (256): ");
+            scanf("%d", &K);
+        } else if (argc < 3)
+        {
+            printf("Error: Faltan argumentos (K)\n");
+            exit(1);
+        } else
+        {
+            K = atoi(argv[2]);
+        }
+    }
+
+    /* printf("\nFUNCIÓN HASH %u", tipoFH); */
+    printf("FH:%u, ", tipoFH);
+
+    //--
+
+    if (tipoFH == 2 || tipoFH == 3)
+    {
+        printf("K:%u, ", K);
+    } else
+    {
+        printf("K:-, ");
+    }
+
+    //--
+
+    if (modoInteractivo)
+    {
+        //Pregunto al usuario que estrategia de recolocación quiere utilizar
+        //Si es lineal, también pido el valor de a
+        printf("\n\n\tEstrategia de recolocación (1: Lineal, 2: Cuadrática): ");
+
+        scanf("%u", &tipoR);
+    } else if (argc < 4)
+    {
+        printf("Error: Faltan argumentos (tipoR)\n");
+        exit(1);
+    } else
+    {
+        tipoR = atoi(argv[3]);
+    }
+
+    //--
+
+    unsigned int a = 0; //inicializo a
+
+    if (tipoR == 1)
+    {
+        if (modoInteractivo)
+        {
+            printf("\t\tValor de a (1 para recolocación simple): ");
+            scanf("%u", &a);
+        } else if (argc < 5)
+        {
+            printf("Error: Faltan argumentos (a)\n");
+            exit(1);
+        } else
+        {
+            tipoR = 1;
+            a = atoi(argv[4]);
+        }
+        /*    printf("\n\nRECOLOCACIÓN LINEAL con a=%u", a);*/
+        printf("Recolocacion:Lineal, a:%u, ", a);
+    } else
+    {
+        /* printf("\n\nRECOLOCACIÓN CUADRÁTICA"); */
+        printf("Recolocacion:Cuadratica, a:-, ");
+
+    }
+    //--
+
+    if (modoInteractivo)
+    {
+        //Pregunto al usuario qué campo desea usar como clave
+        printf("\tCampo a usar como clave:"
+               "\n\t\tN: nombre"
+               "\n\t\tA: alias"
+               "\n\t\tC: correo");
+
+        printf("\n\tCampo: ");
+
+        char seleccion = '\0';
+        scanf(" %c", &seleccion);
+        campoBusqueda=seleccion;
+
+    } else if (argc < 6)
+    {
+        campoBusqueda = ALIAS;
+//        printf("Error: Faltan argumentos (CampoBusqueda)\n");
+//        exit(1);
+    } else
+    {
+        campoBusqueda = argv[5][0];
+
+    }
+
+    campoBusqueda = toupper(campoBusqueda);
+
+    switch (campoBusqueda)
+    {
+        case NOMBRE:
+            printf("Campo: NOMBRE, ");
+            break;
+        case ALIAS:
+            printf("Campo: ALIAS, ");
+            break;
+        case CORREO:
+            printf("Campo: CORREO, ");
+            break;
+        default:
+            printf("Error: CampoBusqueda incorrecto\n");
+            exit(1);
+    }
+//--
 
     //Inicializo la tabla hash por encadenamiento
     InicializarTablaHash(t);
 
-    printf("\n\t----INSERCIÓN RECOLOCACIÓN----");
+    /* printf("\n\t----INSERCIÓN RECOLOCACIÓN----"); */
     //llamo a la función de inserción en t a partir del archivo
     //////////////////////////////////////////////////////////////////
     //Añadir los parámetros por referencia nColisionesI y nPasosExtraI
     //////////////////////////////////////////////////////////////////
-    insercionArchivo(fp, t, tipoFH, K, tipoR, a, &nColisionesI, &nPasosExtraI);
+    insercionArchivo(fp, t, tipoFH, K, tipoR, a, &nColisionesI, &nPasosExtraI, campoBusqueda);
     //////////////////////////////////////////////////////////////////
     //Imprimir nColisionesI y nPasosExtraI
     //////////////////////////////////////////////////////////////////
-    printf("\n\t[LOG] INSERCIÓN -- Número de colisiones I:  %'d\n\n", nColisionesI);
-    printf("\n\t[LOG] INSERCIÓN -- Número de pasos extra I: %'d\n\n", nPasosExtraI);
+    printf("nColisionesI:%d, ", nColisionesI);
+    printf("nPasosExtraI:%d, ", nPasosExtraI);
 
     rewind(fp); //rebobino
 
-    printf("\n\n\t----BÚSQUEDA RECOLOCACIÓN----");
+    /* printf("\n\n\t----BÚSQUEDA RECOLOCACIÓN----"); */
     //Llamo a la función de búsqueda en t a partir del archivo 
     //////////////////////////////////////////////////////////////////
     //Añadir el parámetros por referencia nPasosExtraB
     //////////////////////////////////////////////////////////////////
-    busquedaArchivo(fp, t, tipoFH, K, tipoR, a, &nPasosExtraB);
+    busquedaArchivo(fp, t, tipoFH, K, tipoR, a, &nPasosExtraB, campoBusqueda);
     //////////////////////////////////////////////////////////////////
     //Imprimir nPasosExtraB
     //////////////////////////////////////////////////////////////////
-    printf("\n\t[LOG] BÚSQUEDA -- Número de pasos extra B: %'d\n\n", nPasosExtraB);
+    printf("nPasosExtraB:%d\n", nPasosExtraB);
+
 
     fclose(fp); //Cierro el archivo
 
@@ -108,7 +224,7 @@ int main(int argc, char **argv)
 //////////////////////////////////////////////////////////////////
 //Añadir los parámetros por referencia nColisionesI y nPasosExtraI
 //////////////////////////////////////////////////////////////////
-void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nColisionesI, int *nPasosExtraI)
+void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nColisionesI, unsigned int *nPasosExtraI, enum CampoBusqueda campoBusqueda)
 {
     TIPOELEMENTO paciente;
     if (fp)
@@ -121,7 +237,7 @@ void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K
             //y acumular estos valores en nColisionesI
             //Añadir a InsertarHash parámetro nPasosExtraI por referencia
             /////////////////////////////////////////////////////////////////////////////////////////
-            *nColisionesI += InsertarHash(t, paciente, tipoFH, K, tipoR, a, nPasosExtraI);
+            *nColisionesI += InsertarHash(t, paciente, tipoFH, K, tipoR, a, nPasosExtraI, campoBusqueda);
             fscanf(fp, "%[^-] - %s - %s", paciente.nombre, paciente.alias, paciente.correo);
         }
     } else
@@ -134,7 +250,7 @@ void insercionArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K
 //////////////////////////////////////////////////////////////////
 //Añadir el parámetro por referencia nPasosExtraB
 //////////////////////////////////////////////////////////////////
-void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB)
+void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
     TIPOELEMENTO paciente;
     if (fp)
@@ -146,7 +262,7 @@ void busquedaArchivo(FILE *fp, TablaHash t, unsigned int tipoFH, unsigned int K,
             ///////////////////////////////////////////////////////////////////////////////
             //Modificar la función BuscarHash() para que reciba nPasosExtraB por referencia 
             ///////////////////////////////////////////////////////////////////////////////
-            BuscarHash(t, paciente.alias, &paciente, tipoFH, K, tipoR, a, nPasosExtraB);
+            BuscarHash(t, &paciente, tipoFH, K, tipoR, a, nPasosExtraB, campoBusqueda);
             fscanf(fp, "%[^-] - %s - %s", paciente.nombre, paciente.alias, paciente.correo);
         }
     } else

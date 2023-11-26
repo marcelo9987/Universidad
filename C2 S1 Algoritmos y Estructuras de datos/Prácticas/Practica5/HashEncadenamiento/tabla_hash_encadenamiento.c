@@ -1,6 +1,22 @@
 #include "tabla_hash_encadenamiento.h"
 
 
+char *_SeleccionarClave(TIPOELEMENTO *elemento, enum CampoBusqueda campoBusqueda)
+{
+    switch (campoBusqueda)
+    {
+        case NOMBRE:
+            return elemento->nombre;
+        case ALIAS:
+            return elemento->alias;
+        case CORREO:
+            return elemento->correo;
+        default:
+            printf("Error: CampoBusqueda incorrecto\n");
+            exit(1);
+    }
+}
+
 /* TABLA HASH CON ENCADENAMIENTO */
 
 /******* FUNCIONES HASH *******/
@@ -32,9 +48,11 @@ int FuncionHash(char *cad, unsigned int tipoFH, unsigned int K)
 //Hay que añadir el detector de colisiones, si hay colisión, se devuelve 1, y se devuelve 0 en caso contrario.
 //Convertir la función de void a int (0/1)
 /////////////////////////////////////////////////////////////////////////////////////////////////
-int InsertarHash(TablaHash *t, TIPOELEMENTO elemento, unsigned int tipoFH, unsigned int K)
+int InsertarHash(TablaHash *t, TIPOELEMENTO elemento, unsigned int tipoFH, unsigned int K, enum CampoBusqueda campoBusqueda)
 {
-    int pos = FuncionHash(elemento.alias, tipoFH, K);
+    char* clave = _SeleccionarClave(&elemento, campoBusqueda);
+
+    int pos = FuncionHash(clave, tipoFH, K);
 
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -56,19 +74,21 @@ int InsertarHash(TablaHash *t, TIPOELEMENTO elemento, unsigned int tipoFH, unsig
 ////////////////////////////////////////////////////////////////////
 //Añadir nPasosExtraB como parámetro por referencia
 //////////////////////////////////////////////////////////////////
-int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, int *nPasosExtraB)
+int BuscarHash(TablaHash t, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
     TPOSICION p;
     unsigned int encontrado = 0;
     TIPOELEMENTO ele;
 
-    int pos = FuncionHash(clavebuscar, tipoFH, K);
+    char* claveBuscar = _SeleccionarClave(e, campoBusqueda);
+    int pos = FuncionHash(claveBuscar, tipoFH, K);
 
     p = primeroLista(t[pos]);
     while (p != finLista(t[pos]) && !encontrado)
     {
         recuperarElementoLista(t[pos], p, &ele);
-        if (strcmp(ele.alias, clavebuscar) == 0)
+        char* claveRecuperada = _SeleccionarClave(&ele, campoBusqueda);
+        if (strcmp(claveRecuperada, claveBuscar) == 0)
         {
             encontrado = 1;
             *e = ele;
@@ -90,17 +110,20 @@ int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tip
 //////////////////////////////////////////
 // Añadir parámetro por referencia nPasosExtraB
 ///////////////////////////////////////////////
-int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, int *nPasosExtraB)
+int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
     TPOSICION p;
     int encontrado = 0;
     TIPOELEMENTO elemento;
+
+
     int pos = FuncionHash(clavebuscar, tipoFH, K);
     p = primeroLista(t[pos]);
     while (p != finLista(t[pos]) && !encontrado)
     {
         recuperarElementoLista(t[pos], p, &elemento);
-        if (strcmp(clavebuscar, elemento.alias) == 0)
+        char* claveRecuperada = _SeleccionarClave(&elemento, campoBusqueda);
+        if (strcmp(clavebuscar, claveRecuperada) == 0)
         {
             encontrado = 1;
         } else
@@ -120,18 +143,22 @@ int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned 
 //////////////////////////////////////////
 // Añadir parámetro por referencia nPasosExtraE
 ///////////////////////////////////////////////
-void BorrarHash(TablaHash *t, char *claveborrar, unsigned int tipoFH, unsigned int K, int *nPasosExtraB)
+void BorrarHash(TablaHash *t, char *claveborrar, unsigned int tipoFH, unsigned int K, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
     TPOSICION p;
     TIPOELEMENTO elemento;
+
+
     int pos = FuncionHash(claveborrar, tipoFH, K);
 
     p = primeroLista((*t)[pos]);
     recuperarElementoLista((*t)[pos], p, &elemento);
-    while (p != finLista((*t)[pos]) && strcmp(claveborrar, elemento.alias))
+    char* claveRecuperada = _SeleccionarClave(&elemento, campoBusqueda);
+    while (p != finLista((*t)[pos]) && strcmp(claveborrar, claveRecuperada))
     {
         p = siguienteLista((*t)[pos], p);
         recuperarElementoLista((*t)[pos], p, &elemento);
+        claveRecuperada = _SeleccionarClave(&elemento, campoBusqueda);
         /////////////////////////////////////////////////////////////////////
         //UN PASO ADICIONAL PARA BUSCAR la clave DENTRO DE LA LISTA t[pos]
         //Incrementar nPasosExtraE

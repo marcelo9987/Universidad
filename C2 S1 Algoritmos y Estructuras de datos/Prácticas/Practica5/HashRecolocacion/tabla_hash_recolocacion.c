@@ -1,5 +1,21 @@
 #include "tabla_hash_recolocacion.h"
 
+char *_SeleccionarClave(TIPOELEMENTO *elemento, enum CampoBusqueda campoBusqueda)
+{
+    switch (campoBusqueda)
+    {
+        case NOMBRE:
+            return elemento->nombre;
+        case ALIAS:
+            return elemento->alias;
+        case CORREO:
+            return elemento->correo;
+        default:
+            printf("Error: CampoBusqueda incorrecto\n");
+            exit(1);
+    }
+}
+
 /* TABLA HASH CON RECOLOCACION */
 
 void InicializarTablaHash(TablaHash t)
@@ -42,7 +58,7 @@ int FuncionHash(char *cad, unsigned int tipoFH, unsigned int K)
 ////////////////////////////////////////////////////////////////////////
 //Añadir el parámetro por referencia nPasosExtraB
 ////////////////////////////////////////////////////////////////////////
-int _PosicionBuscar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB)
+int _PosicionBuscar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
     /* Devuelve el sitio donde esta la clave cad, o donde deberia estar. */
     /* No tiene en cuenta los borrados para avanzar.                     */
@@ -62,7 +78,9 @@ int _PosicionBuscar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K,
                 break;
         }
 
-        if (t[posicion].alias[0] == VACIO)
+        char* clave = _SeleccionarClave(&t[posicion], campoBusqueda);
+
+        if (clave[0] == VACIO)
         { //si está vacío, terminé de buscar
             ///////////////////////////////////////////////
             //incremento en i el nPasosExtraB 
@@ -72,7 +90,7 @@ int _PosicionBuscar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K,
             return posicion;
         }
 
-        if (!strcmp(t[posicion].alias, cad))
+        if (!strcmp(clave, cad))
         {//si encontré cad, terminé de buscar
             ///////////////////////////////////////////////
             //incremento en i el nPasosExtraB
@@ -90,7 +108,7 @@ int _PosicionBuscar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K,
 ////////////////////////////////////////////////////////////////////////
 //Añadir como parámetros por referencia hayColisionI (0/1) y nPasosExtraI
 ////////////////////////////////////////////////////////////////////////
-int _PosicionInsertar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *hayColisionI, int *nPasosExtraI)
+int _PosicionInsertar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *hayColisionI, unsigned int *nPasosExtraI, enum CampoBusqueda campoBusqueda)
 {
     // Devuelve el sitio donde podriamos poner el elemento de clave cad
     int posicion;
@@ -119,8 +137,10 @@ int _PosicionInsertar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int 
                 break;
         }
 
+        char* clave = _SeleccionarClave(&t[posicion], campoBusqueda);
+
         //Busco hueco en aux
-        if (t[posicion].alias[0] == VACIO || t[posicion].alias[0] == BORRADO)
+        if (clave[0] == VACIO || clave[0] == BORRADO)
         {
             //Hueco encontrado, se han necesitado i intentos para ubicar el dato
             ////////////////////////////////////////////////////////////////////
@@ -131,7 +151,7 @@ int _PosicionInsertar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int 
             return posicion;
         }
         //Si el elemento a insertar ya estaba en la tabla
-        if (!strcmp(t[posicion].alias, cad))
+        if (!strcmp(clave, cad))
         {
             //Ya está, se han necesitado i intentos para encontrar el dato
             ////////////////////////////////////////////////////////////////////
@@ -151,19 +171,21 @@ int _PosicionInsertar(TablaHash t, char *cad, unsigned int tipoFH, unsigned int 
 ////////////////////////////////////////////////////////////////////////
 //Añadir como parámetro por referencia nPasosExtraB
 ////////////////////////////////////////////////////////////////////////
-int EsMiembroHash(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB)
+int EsMiembroHash(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
     ///////////////////////////////////////////////
     //La función _PosicionBuscar necesita nPasosExtraB
     ///////////////////////////////////////////////////////
-    int posicion = _PosicionBuscar(t, cad, tipoFH, K, tipoR, a, nPasosExtraB);
+    int posicion = _PosicionBuscar(t, cad, tipoFH, K, tipoR, a, nPasosExtraB, campoBusqueda);
 
-    if (t[posicion].alias[0] == VACIO)
+    char* claveRecuperada = _SeleccionarClave(&t[posicion], campoBusqueda);
+
+    if (claveRecuperada[0] == VACIO)
     {
         return 0;
     } else
     {
-        return (!strcmp(t[posicion].alias, cad));
+        return (!strcmp(claveRecuperada, cad));
     }
 }
 
@@ -172,18 +194,24 @@ int EsMiembroHash(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, u
 ////////////////////////////////////////////////////////////////////
 //Añadir el parámetro por referencia nPasosExtraB
 ////////////////////////////////////////////////////////////////////
-int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB)
+int BuscarHash(TablaHash t, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda)
 {
+
+    char* claveBuscar = _SeleccionarClave(e, campoBusqueda);
+
     ///////////////////////////////////////////////
     //La función _PosicionBuscar necesita nPasosExtraB
     ///////////////////////////////////////////////////////
-    int posicion = _PosicionBuscar(t, clavebuscar, tipoFH, K, tipoR, a, nPasosExtraB);
-    if (t[posicion].alias[0] == VACIO)
+    int posicion = _PosicionBuscar(t, claveBuscar, tipoFH, K, tipoR, a, nPasosExtraB, campoBusqueda);
+
+    char* claveRecuperada = _SeleccionarClave(&t[posicion], campoBusqueda);
+
+    if (claveRecuperada[0] == VACIO)
     {
         return 0;
     } else
     {
-        if (strcmp(t[posicion].alias, clavebuscar) == 0)
+        if (strcmp(claveRecuperada, claveBuscar) == 0)
         {
             *e = t[posicion];
             return 1;
@@ -199,18 +227,23 @@ int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tip
 //Añadir el parámetro por referencia nPasosExtraI
 //Convertir la función de void a int, devuelve si hay o no colisión (1/0)
 //////////////////////////////////////////////////////////////////////////////
-int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraI)
+int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraI, enum CampoBusqueda campoBusqueda)
 {
     int nColisiones = 0;
     int posicion;
+
+    char* claveBuscar = _SeleccionarClave(&e, campoBusqueda);
+
     ////////////////////////////////
     //Inicializar hayColisionI a 0, y pasarla como parámetro
     //Enviar a _PosicionInsertar &hayColisionI y nPasosExtraI
     ////////////////////////////////
-    posicion = _PosicionInsertar(t, e.alias, tipoFH, K, tipoR, a, &nColisiones, nPasosExtraI);
+    posicion = _PosicionInsertar(t, claveBuscar, tipoFH, K, tipoR, a, &nColisiones, nPasosExtraI, campoBusqueda);
     /////////////////////////////////////////////////////////////
 
-    if (t[posicion].alias[0] == VACIO || t[posicion].alias[0] == BORRADO)
+    char* claveRecuperada = _SeleccionarClave(&t[posicion], campoBusqueda);
+
+    if (claveRecuperada[0] == VACIO || claveRecuperada[0] == BORRADO)
     {
         t[posicion] = e;
     }
@@ -225,20 +258,22 @@ int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int 
 //////////////////////////////////////////////////////////////////////////////
 //Añadir el parámetro por referencia nPasosExtraE
 //////////////////////////////////////////////////////////////////////////////
-void BorrarHash(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraE)
+void BorrarHash(TablaHash t, char *cad, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraE, enum CampoBusqueda campoBusqueda)
 {
     ///////////////////////////////////////////////
     //La función _PosicionBuscar necesita nPasosExtraE
     ///////////////////////////////////////////////////////
-    int posicion = _PosicionBuscar(t, cad, tipoFH, K, tipoR, a, nPasosExtraE);
 
-    if (t[posicion].alias[0] != VACIO && t[posicion].alias[0] != BORRADO)
+    int posicion = _PosicionBuscar(t, cad, tipoFH, K, tipoR, a, nPasosExtraE, campoBusqueda);
+
+    char* claveRecuperada = _SeleccionarClave(&t[posicion], campoBusqueda);
+
+    if (claveRecuperada[0] != VACIO && claveRecuperada[0] != BORRADO)
     {
-        if (!strcmp(t[posicion].alias, cad))
+        if (!strcmp(claveRecuperada, cad))
         {
-            t[posicion].alias[0] = BORRADO;
-            t[posicion].alias[1] = VACIO;
+            claveRecuperada[0] = BORRADO;
+            claveRecuperada[1] = VACIO;
         }
     }
 }
-

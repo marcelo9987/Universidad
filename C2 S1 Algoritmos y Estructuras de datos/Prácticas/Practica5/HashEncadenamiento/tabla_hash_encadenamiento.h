@@ -16,7 +16,20 @@
 #include <string.h>
 #include "lista.h"
 
+
+#ifndef N
+
 #define N 10000 /*DEFINIR NUMERO de entradas en la tabla.*/
+
+#endif
+
+enum CampoBusqueda
+{
+    NOMBRE = 'N',
+    ALIAS = 'A',
+    CORREO = 'C'
+};
+
 //El factor de carga es L=n/N, donde n=datos (10.000)
 //Se recomienda L<=0,5 para recolocación, es decir, N>=2n
 //Se recomienda L<=0,75 para encadenamiento, es decir, N>=4n/3
@@ -57,7 +70,7 @@ int FuncionHash(char *cad, unsigned int tipoFH, unsigned int K);
  * @return si la búsqueda tuvo éxito
  */
 /////////////////////Hay que añadir nPasosExtraB//////////////////////////
-int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, int *nPasosExtraB);
+int BuscarHash(TablaHash t, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int *nPasosExtraB,  enum CampoBusqueda campoBusqueda);
 
 /**
  * Mira si clavebuscar está en la tabla hash
@@ -68,7 +81,7 @@ int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tip
  * @nPasosExtraB son los pasos que tengo que realizar en cada lista hasta encontrar e
  * @return si la clave está en la tabla
  */
-int EsMiembroHash (TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, int *nPasosExtraB);
+int EsMiembroHash (TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, unsigned int *nPasosExtraB,enum CampoBusqueda campoBusqueda);
 
 /**
  * Inserta un elemento en una tabla hash al principio de la lista
@@ -80,7 +93,7 @@ int EsMiembroHash (TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned
  */
 ///HACER QUE ESTA FUNCIÓN DEVUELVA UN ENTERO QUE INDIQUE SI HUBO O NO COLISIÓN
 ///POR TANTO NO SERÁ UNA FUNCIÓN void
-int InsertarHash(TablaHash *t, TIPOELEMENTO elemento, unsigned int tipoFH, unsigned int K);
+int InsertarHash(TablaHash *t, TIPOELEMENTO elemento, unsigned int tipoFH, unsigned int K, enum CampoBusqueda campoBusqueda);
 
 /**
  * Borra un elemento en una tabla hash
@@ -90,5 +103,5 @@ int InsertarHash(TablaHash *t, TIPOELEMENTO elemento, unsigned int tipoFH, unsig
  * @param K es el factor de ponderación cuando tipoFH=2
  * @param nPasosExtraE son los pasos extra para encontrar el elemento a eliminar
 */
-void BorrarHash (TablaHash *t, char *claveborrar,unsigned int tipoFH, unsigned int K, int *nPasosExtraE);
+void BorrarHash (TablaHash *t, char *claveborrar,unsigned int tipoFH, unsigned int K, unsigned int *nPasosExtraE, enum CampoBusqueda campoBusqueda);
 #endif	// TABLA_HASH_ENCADENAMIENTO_H

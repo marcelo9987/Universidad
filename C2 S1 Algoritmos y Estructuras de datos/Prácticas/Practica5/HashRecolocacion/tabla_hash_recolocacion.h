@@ -17,7 +17,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#ifndef N
+
 #define N 10000 /*DEFINIR NUMERO de entradas en la tabla.*/
+
+#endif
+
+enum CampoBusqueda
+{
+    NOMBRE = 'N',
+    ALIAS = 'A',
+    CORREO = 'C'
+};
+
 //El factor de carga es L=n/N, donde n=datos (10.000)
 //Se recomienda L<=0,5 para recolocación, es decir, N>=2n
 //Se recomienda L<=0,75 para encadenamiento, es decir, N>=4n/3
@@ -66,7 +79,7 @@ int FuncionHash(char *cad, unsigned int tipoFH, unsigned int K);
  * @nPasosExtraB son los pasos que tengo que realizar en cada lista hasta encontrar e
  * @return si la clave está en la tabla
  */
-int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB);
+int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda);
 
 /**
  * Buscar una clave en la tabla hash
@@ -81,7 +94,7 @@ int EsMiembroHash(TablaHash t, char *clavebuscar, unsigned int tipoFH, unsigned 
  * @return si la búsqueda tuvo éxito
  */
 /////////////////////Hay que añadir nPasosExtraB como parámetro por referencia
-int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraB);
+int BuscarHash(TablaHash t, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraB, enum CampoBusqueda campoBusqueda);
 
 /**
  * Inserta un elemento en una tabla hash al principio de la lista
@@ -96,7 +109,7 @@ int BuscarHash(TablaHash t, char *clavebuscar, TIPOELEMENTO *e, unsigned int tip
  */
 ///HACER QUE ESTA FUNCIÓN DEVUELVA UN ENTERO QUE INDIQUE SI HUBO O NO COLISIÓN
 ///POR TANTO NO SERÁ UNA FUNCIÓN void
-int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraI);
+int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraI, enum CampoBusqueda campoBusqueda);
 
 /**
  * Borra un elemento en una tabla hash
@@ -108,7 +121,7 @@ int InsertarHash(TablaHash t, TIPOELEMENTO e, unsigned int tipoFH, unsigned int 
  * @a es el parámetro a de la recolocación lineal
  * @nPasosExtraE son los pasos que tengo que realizar hasta encontrar el elemento a eliminar
  */
-void BorrarHash(TablaHash t, char *claveborrar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, int *nPasosExtraE);
+void BorrarHash(TablaHash t, char *claveborrar, unsigned int tipoFH, unsigned int K, unsigned int tipoR, unsigned int a, unsigned int *nPasosExtraE, enum CampoBusqueda campoBusqueda);
 
 #endif    // TABLA_HASH_RECOLOCACION_H
 
