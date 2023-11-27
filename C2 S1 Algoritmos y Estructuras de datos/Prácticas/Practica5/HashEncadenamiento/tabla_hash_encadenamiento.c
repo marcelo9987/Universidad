@@ -44,6 +44,8 @@ int FuncionHash(char *cad, unsigned int tipoFH, unsigned int K)
     return posicion;
 }
 
+//--
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //Hay que añadir el detector de colisiones, si hay colisión, se devuelve 1, y se devuelve 0 en caso contrario.
 //Convertir la función de void a int (0/1)

@@ -222,6 +222,8 @@ int BuscarHash(TablaHash t, TIPOELEMENTO *e, unsigned int tipoFH, unsigned int K
     }
 }
 
+//--
+
 /* Funcion que inserta un elemento en la tabla */
 //////////////////////////////////////////////////////////////////////////////
 //Añadir el parámetro por referencia nPasosExtraI
