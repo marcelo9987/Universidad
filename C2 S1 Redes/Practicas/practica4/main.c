@@ -11,16 +11,13 @@
 
 #define TAMANHO_LINEA 1000
 
-
 struct EntradaTablaEnrutamiento
 {
-
     char direccion_txt[INET_ADDRSTRLEN];
     struct in_addr direccion_bin;
     int longitud_prefijo;
     int num_interfaz_salida;
 };
-
 
 void imprimir_ayuda(char *nombreArchivo)
 {
@@ -163,7 +160,7 @@ bool getEntradaTablaEnrutamiento(const int num_linea, char *const linea, struct 
 
 bool comprobarSiEsUnaRutaAplicable(struct EntradaTablaEnrutamiento *entrada, struct EntradaTablaEnrutamiento *ipQueEnrutar, bool *const es_ruta_aplicable)
 {
-    printf("[DEBUG] IP: %16s", ipQueEnrutar->direccion_txt);
+    printf("[DEBUG] IP        : %-16s", ipQueEnrutar->direccion_txt);
 
     char netaddr_txt[INET_ADDRSTRLEN];
 
@@ -174,7 +171,7 @@ bool comprobarSiEsUnaRutaAplicable(struct EntradaTablaEnrutamiento *entrada, str
         return false;
     }
 
-    printf(" -> %16s", netaddr_txt);
+    printf(" -> %-16s", netaddr_txt);
 
     // --
 
@@ -188,7 +185,7 @@ bool comprobarSiEsUnaRutaAplicable(struct EntradaTablaEnrutamiento *entrada, str
         return false;
     }
 
-    printf(" -> %16s", ipQueEnrutar->direccion_txt);
+    printf(" -> %-16s", ipQueEnrutar->direccion_txt);
 
     // --
 
@@ -291,7 +288,7 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        printf("[DEBUG] Procesado : %16s / %2d -> %3d\n", entrada.direccion_txt, entrada.longitud_prefijo, entrada.num_interfaz_salida);
+        printf("[DEBUG] Procesado : %-16s / %2d -> %3d\n", entrada.direccion_txt, entrada.longitud_prefijo, entrada.num_interfaz_salida);
 
         // Comprobamos si se se trata de la ruta por defecto.
         if (entrada.longitud_prefijo == 0)
@@ -359,14 +356,13 @@ int main(int argc, char *argv[])
     fclose(fp);
 
     printf("\n[DEBUG] ###########################\n");
-//    printf("[DEBUG] ###########################\n\n");
 
     if (rutaSalida.num_interfaz_salida >= 0)
     {
         printf("Hemos encontrado una ruta adecuada para la IP a enrutar (%s).\n", ipQueEnrutar.direccion_txt);
-        printf("Dirección de la tabla de enrutamiento: %s\n", rutaSalida.direccion_txt);
-        printf("Interfaz de salida: %d\n", rutaSalida.num_interfaz_salida);
-        printf("Nº de bits del prefijo correspondiente a la interfaz: %d\n", rutaSalida.longitud_prefijo);
+        printf("Dirección de la tabla de enrutamiento                  : %s\n", rutaSalida.direccion_txt);
+        printf("Interfaz de salida                                     : %d\n", rutaSalida.num_interfaz_salida);
+        printf("Nº de bits del prefijo correspondiente a la interfaz   : %d\n", rutaSalida.longitud_prefijo);
 
     } else
     {
