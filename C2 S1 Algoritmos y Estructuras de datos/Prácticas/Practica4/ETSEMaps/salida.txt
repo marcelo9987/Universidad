@@ -1,0 +1,375 @@
+"C:\Users\imarc\CLionProjects\Universidad\C2 S1 Algoritmos y Estructuras de datos\Prácticas\Practica4\ETSEMaps\cmake-build-debug-cygwin\testPrim.out.exe"
+Leyendo archivo...
+Retrieved line of length 125:
+
+[DEBUG] Comentario
+Retrieved line of length 60:
+
+[DEBUG] Comentario
+Retrieved line of length 117:
+
+[DEBUG] Comentario
+Retrieved line of length 3:
+
+[DEBUG] Comentario
+Retrieved line of length 2:
+
+[DEBUG] Linea en blanco
+Retrieved line of length 29:
+
+[DEBUG] Comentario
+Retrieved line of length 12:
+
+[DEBUG] Comentario
+Retrieved line of length 2:
+
+[DEBUG] Linea en blanco
+Retrieved line of length 99:
+
+[DEBUG] Comentario
+Retrieved line of length 2:
+
+[DEBUG] Linea en blanco
+Retrieved line of length 2:
+
+[DEBUG] Linea en blanco
+Retrieved line of length 29:
+
+[DEBUG] Comentario
+Retrieved line of length 12:
+
+[DEBUG] Comentario
+Retrieved line of length 2:
+
+[DEBUG] Linea en blanco
+Retrieved line of length 21:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Santiago'
+[DEBUG] Desplazamiento: 8
+[DEBUG] No ha habido conversión
+[DEBUG] Ciudad 2: Lugo
+ -------------------
+[DEBUG] conectando Santiago con Lugo a modo de carretera con distancia 106.400000
+
+
+Retrieved line of length 30:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Santiago'
+[DEBUG] Desplazamiento: 8
+[DEBUG] Ciudad 2: Ourense
+ -------------------
+[DEBUG] conectando Santiago con Ourense a modo de carretera con distancia 102.100000
+[DEBUG] conectando Santiago con Ourense a modo de autopista
+
+
+Retrieved line of length 29:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Santiago'
+[DEBUG] Desplazamiento: 8
+[DEBUG] Ciudad 2: Pontevedra
+ -------------------
+[DEBUG] conectando Santiago con Pontevedra a modo de carretera con distancia 64.000000
+[DEBUG] conectando Santiago con Pontevedra a modo de autopista
+
+
+Retrieved line of length 27:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Pontevedra'
+[DEBUG] Desplazamiento: 10
+[DEBUG] Ciudad 2: Vigo
+ -------------------
+[DEBUG] conectando Pontevedra con Vigo a modo de carretera con distancia 33.500000
+[DEBUG] conectando Pontevedra con Vigo a modo de autopista
+
+
+Retrieved line of length 26:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Vigo'
+[DEBUG] Desplazamiento: 4
+[DEBUG] Ciudad 2: Ourense
+ -------------------
+[DEBUG] conectando Vigo con Ourense a modo de carretera con distancia 107.600000
+[DEBUG] conectando Vigo con Ourense a modo de autopista
+
+
+Retrieved line of length 25:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Vigo'
+[DEBUG] Desplazamiento: 4
+[DEBUG] Ciudad 2: Oporto
+ -------------------
+[DEBUG] conectando Vigo con Oporto a modo de carretera con distancia 150.100000
+[DEBUG] conectando Vigo con Oporto a modo de autopista
+
+
+Retrieved line of length 30:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Oporto'
+[DEBUG] Desplazamiento: 6
+[DEBUG] Ciudad 2: Salamanca
+ -------------------
+[DEBUG] conectando Oporto con Salamanca a modo de carretera con distancia 369.100000
+[DEBUG] conectando Oporto con Salamanca a modo de autopista
+
+
+Retrieved line of length 28:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Salamanca'
+[DEBUG] Desplazamiento: 9
+[DEBUG] Ciudad 2: Zamora
+ -------------------
+[DEBUG] conectando Salamanca con Zamora a modo de carretera con distancia 65.100000
+[DEBUG] conectando Salamanca con Zamora a modo de autopista
+
+
+Retrieved line of length 31:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Zamora'
+[DEBUG] Desplazamiento: 6
+[DEBUG] Ciudad 2: Valladolid
+ -------------------
+[DEBUG] conectando Zamora con Valladolid a modo de carretera con distancia 104.100000
+[DEBUG] conectando Zamora con Valladolid a modo de autopista
+
+
+Retrieved line of length 29:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Zamora'
+[DEBUG] Desplazamiento: 6
+[DEBUG] Ciudad 2: Benavente
+ -------------------
+[DEBUG] conectando Zamora con Benavente a modo de carretera con distancia 72.600000
+[DEBUG] conectando Zamora con Benavente a modo de autopista
+
+
+Retrieved line of length 26:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Benavente'
+[DEBUG] Desplazamiento: 9
+[DEBUG] Ciudad 2: Leon
+ -------------------
+[DEBUG] conectando Benavente con Leon a modo de carretera con distancia 72.400000
+[DEBUG] conectando Benavente con Leon a modo de autopista
+
+
+Retrieved line of length 31:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Benavente'
+[DEBUG] Desplazamiento: 9
+[DEBUG] Ciudad 2: Ourense
+ -------------------
+[DEBUG] conectando Benavente con Ourense a modo de carretera con distancia 278.200000
+[DEBUG] conectando Benavente con Ourense a modo de autopista
+
+
+Retrieved line of length 34:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Benavente'
+[DEBUG] Desplazamiento: 9
+[DEBUG] Ciudad 2: Valladolid
+ -------------------
+[DEBUG] conectando Benavente con Valladolid a modo de carretera con distancia 112.100000
+[DEBUG] conectando Benavente con Valladolid a modo de autopista
+
+
+Retrieved line of length 29:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Valladolid'
+[DEBUG] Desplazamiento: 10
+[DEBUG] Ciudad 2: Leon
+ -------------------
+[DEBUG] conectando Valladolid con Leon a modo de carretera con distancia 158.200000
+[DEBUG] conectando Valladolid con Leon a modo de autopista
+
+
+Retrieved line of length 25:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Leon'
+[DEBUG] Desplazamiento: 4
+[DEBUG] Ciudad 2: Oviedo
+ -------------------
+[DEBUG] conectando Leon con Oviedo a modo de carretera con distancia 119.500000
+[DEBUG] conectando Leon con Oviedo a modo de autopista
+
+
+Retrieved line of length 25:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Oviedo'
+[DEBUG] Desplazamiento: 6
+[DEBUG] Ciudad 2: Lugo
+ -------------------
+[DEBUG] conectando Oviedo con Lugo a modo de carretera con distancia 230.100000
+[DEBUG] conectando Oviedo con Lugo a modo de autopista
+
+
+Retrieved line of length 28:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Oviedo'
+[DEBUG] Desplazamiento: 6
+[DEBUG] Ciudad 2: Ourense
+ -------------------
+[DEBUG] conectando Oviedo con Ourense a modo de carretera con distancia 327.800000
+[DEBUG] conectando Oviedo con Ourense a modo de autopista
+
+
+Retrieved line of length 19:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Lugo'
+[DEBUG] Desplazamiento: 4
+[DEBUG] No ha habido conversión
+[DEBUG] Ciudad 2: Ourense
+ -------------------
+[DEBUG] conectando Lugo con Ourense a modo de carretera con distancia 93.100000
+
+
+Retrieved line of length 21:
+
+
+[DEBUG] ARISTA!!
+[DEBUG] Ciudad 1: 'Lugo'
+[DEBUG] Desplazamiento: 4
+[DEBUG] No ha habido conversión
+[DEBUG] Ciudad 2: Santiago
+ -------------------
+[DEBUG] conectando Lugo con Santiago a modo de carretera con distancia 106.400000
+
+
+[DEBUG] Fin de lectura de archivo
+
+
+El grafo actual es:
+vértice(0): Santiago
+	--> Lugo con valor 106.400000
+	--> Ourense con valor 102.100000
+	==> Ourense con valor 102.300000
+	--> Pontevedra con valor 64.000000
+	==> Pontevedra con valor 70.300000
+vértice(1): Lugo
+	--> Santiago con valor 106.400000
+	--> Ourense con valor 93.100000
+	--> Oviedo con valor 230.100000
+	==> Oviedo con valor 294.400000
+vértice(2): Ourense
+	--> Santiago con valor 102.100000
+	==> Santiago con valor 102.300000
+	--> Lugo con valor 93.100000
+	--> Vigo con valor 107.600000
+	==> Vigo con valor 100.700000
+	--> Benavente con valor 278.200000
+	==> Benavente con valor 236.500000
+	--> Oviedo con valor 327.800000
+	==> Oviedo con valor 365.900000
+vértice(3): Pontevedra
+	--> Santiago con valor 64.000000
+	==> Santiago con valor 70.300000
+	--> Vigo con valor 33.500000
+	==> Vigo con valor 29.400000
+vértice(4): Vigo
+	--> Ourense con valor 107.600000
+	==> Ourense con valor 100.700000
+	--> Pontevedra con valor 33.500000
+	==> Pontevedra con valor 29.400000
+	--> Oporto con valor 150.100000
+	==> Oporto con valor 153.200000
+vértice(5): Oporto
+	--> Vigo con valor 150.100000
+	==> Vigo con valor 153.200000
+	--> Salamanca con valor 369.100000
+	==> Salamanca con valor 349.200000
+vértice(6): Salamanca
+	--> Oporto con valor 369.100000
+	==> Oporto con valor 349.200000
+	--> Zamora con valor 65.100000
+	==> Zamora con valor 64.700000
+vértice(7): Zamora
+	--> Salamanca con valor 65.100000
+	==> Salamanca con valor 64.700000
+	--> Valladolid con valor 104.100000
+	==> Valladolid con valor 101.200000
+	--> Benavente con valor 72.600000
+	==> Benavente con valor 70.700000
+vértice(8): Valladolid
+	--> Zamora con valor 104.100000
+	==> Zamora con valor 101.200000
+	--> Benavente con valor 112.100000
+	==> Benavente con valor 114.100000
+	--> Leon con valor 158.200000
+	==> Leon con valor 139.400000
+vértice(9): Benavente
+	--> Ourense con valor 278.200000
+	==> Ourense con valor 236.500000
+	--> Zamora con valor 72.600000
+	==> Zamora con valor 70.700000
+	--> Valladolid con valor 112.100000
+	==> Valladolid con valor 114.100000
+	--> Leon con valor 72.400000
+	==> Leon con valor 74.200000
+vértice(10): Leon
+	--> Valladolid con valor 158.200000
+	==> Valladolid con valor 139.400000
+	--> Benavente con valor 72.400000
+	==> Benavente con valor 74.200000
+	--> Oviedo con valor 119.500000
+	==> Oviedo con valor 128.500000
+vértice(11): Oviedo
+	--> Lugo con valor 230.100000
+	==> Lugo con valor 294.400000
+	--> Ourense con valor 327.800000
+	==> Ourense con valor 365.900000
+	--> Leon con valor 119.500000
+	==> Leon con valor 128.500000
+
+
+
+
+  Santiago == Pontevedra :       0.59
+Pontevedra ==       Vigo :       0.24
+      Vigo ==    Ourense :       0.84
+      Vigo ==     Oporto :       1.28
+   Ourense --       Lugo :       1.33
+   Ourense ==  Benavente :       1.97
+ Benavente ==     Zamora :       0.59
+    Zamora ==  Salamanca :       0.54
+ Benavente ==       Leon :       0.62
+    Zamora == Valladolid :       0.84
+      Leon ==     Oviedo :       1.07
+Tiempo del árbol de expansión de coste mínimo = 9.91 horas
+Resultado: 9.908333 esperado 9.910000 distancia 0.000168 epsilon 0.00000000000000022204460492503130808472633361816406
+
+Process finished with exit code 0

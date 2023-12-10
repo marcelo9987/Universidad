@@ -8,9 +8,26 @@
 #include "backtracking.h"
 
 
+struct Estadisticas estadisticasBacktracking = {
+        .nodosArbolGenerados = 0,
+        .solucionesComprobadas = 0,
+        .pasosTotales = 0,
+        .pasosFuncionBacktracking = 0,
+        .pasosFuncionGenerar = 0,
+        .pasosFuncionCriterio = 0,
+        .pasosFuncionSolucion = 0,
+        .pasosFuncionMasHermanos = 0,
+        .pasosFuncionRetroceder = 0
+};
+
 void Generar(const int matrizB[n][n], const short nivel, int solucion[], int *const beneficioActual)
 {
-    solucion[nivel] ++;// Solucion[nivel] +1 es el valor de la siguiente tarea a probar.
+    estadisticasBacktracking.pasosFuncionGenerar++;
+    estadisticasBacktracking.pasosTotales++;
+
+    //--
+
+    solucion[nivel]++;// Solucion[nivel] +1 es el valor de la siguiente tarea a probar.
 
 
     *beneficioActual += matrizB[nivel][solucion[nivel]];
@@ -22,30 +39,52 @@ void Generar(const int matrizB[n][n], const short nivel, int solucion[], int *co
     }
 }
 
+
 bool Criterio(const short nivel, const int solucion[])
 {
     for (int i = 0; i < nivel; i++)
     {
+        estadisticasBacktracking.pasosFuncionCriterio++;
+        estadisticasBacktracking.pasosTotales++;
+
+        //--
+
         if (solucion[nivel] == solucion[i])
         {
             return false;
         }
     }
+
     return true;
 }
 
 bool Solucion(const short nivel, const int solucion[])
 {
+    estadisticasBacktracking.pasosFuncionSolucion++;
+    estadisticasBacktracking.pasosTotales++;
+
+    //--
+
     return (nivel == (n - 1) && Criterio(nivel, solucion));
 }
 
 bool MasHermanos(const short nivel, const int solucion[])
 {
+    estadisticasBacktracking.pasosFuncionMasHermanos++;
+    estadisticasBacktracking.pasosTotales++;
+
+    //--
+
     return solucion[nivel] < (n - 1);
 }
 
 void Retroceder(const int matrizB[n][n], short *const nivel, int solucion[], int *const beneficioActual)
 {
+    estadisticasBacktracking.pasosFuncionRetroceder++;
+    estadisticasBacktracking.pasosTotales++;
+
+    //--
+
     *beneficioActual -= matrizB[*nivel][solucion[*nivel]];
 
     solucion[*nivel] = ASIGNACION_NO_VALIDA;
@@ -89,24 +128,39 @@ int BackTracking(const int matrizB[n][n], int *const solucion)
     // Beneficio de la solución actual
     int beneficioActual = 0;
 
-//    int nodosGenerados = 0;
+    estadisticasBacktracking.nodosArbolGenerados++;// Nodo raíz del árbol permutacional
 
     do
     {
-        Generar(matrizB, nivel, solucion, &beneficioActual);
-//        nodosGenerados++;
-        if (Solucion(nivel, solucion) && (beneficioActual > valorOptimoActual))
-        {
-            valorOptimoActual = beneficioActual;
+        estadisticasBacktracking.pasosFuncionBacktracking++;
+        estadisticasBacktracking.pasosTotales++;
+//        estadisticasBacktracking.solucionesComprobadas++;
 
-            for (int i = 0; i < n; i++)
+        //--
+
+        Generar(matrizB, nivel, solucion, &beneficioActual);
+
+        if (Solucion(nivel, solucion))
+        {
+
+            estadisticasBacktracking.nodosArbolGenerados++;//Nodo hoja (válido)
+            estadisticasBacktracking.solucionesComprobadas++; //Nodo hoja (posible solución)
+
+            if (beneficioActual > valorOptimoActual)
             {
-                solucionOptimaActual[i] = solucion[i];
+                valorOptimoActual = beneficioActual;
+
+                for (int i = 0; i < n; i++)
+                {
+                    solucionOptimaActual[i] = solucion[i];
+                }
             }
         }
 
         if (Criterio(nivel, solucion) && (nivel < (n - 1)))
         {
+            estadisticasBacktracking.nodosArbolGenerados++; //Nodo intermedio (válido)
+
             nivel++;
         }
 

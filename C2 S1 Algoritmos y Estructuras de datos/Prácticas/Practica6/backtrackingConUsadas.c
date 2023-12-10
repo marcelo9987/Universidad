@@ -5,9 +5,25 @@
 #include <limits.h>
 #include "backtrackingConUsadas.h"
 
+struct Estadisticas estadisticasBacktrackingConUsadas = {
+        .nodosArbolGenerados = 0,
+        .solucionesComprobadas = 0,
+        .pasosTotales = 0,
+        .pasosFuncionBacktracking = 0,
+        .pasosFuncionGenerar = 0,
+        .pasosFuncionCriterio = 0,
+        .pasosFuncionSolucion = 0,
+        .pasosFuncionMasHermanos = 0,
+        .pasosFuncionRetroceder = 0
+};
 
 void GenerarConUsadas(const int matrizB[n][n], const short nivel, int solucion[], int *const beneficioActual, int usadas[])
 {
+    estadisticasBacktrackingConUsadas.pasosFuncionGenerar++;
+    estadisticasBacktrackingConUsadas.pasosTotales++;
+
+    //--
+
     if (solucion[nivel] != ASIGNACION_NO_VALIDA)
     {
         usadas[solucion[nivel]]--;
@@ -24,28 +40,47 @@ void GenerarConUsadas(const int matrizB[n][n], const short nivel, int solucion[]
         // Resto lo que asigné en la prueba anterior
         *beneficioActual -= matrizB[nivel][solucion[nivel] - 1];
     }
-
 }
 
 
 bool CriterioConUsadas(const short nivel, const int solucion[], const int usadas[])
 {
+    estadisticasBacktrackingConUsadas.pasosFuncionCriterio++;
+    estadisticasBacktrackingConUsadas.pasosTotales++;
+
+    //--
+
     return usadas[solucion[nivel]] == 1;
 }
 
 bool SolucionConUsadas(const short nivel, const int solucion[], const int usadas[])
 {
+    estadisticasBacktrackingConUsadas.pasosFuncionSolucion++;
+    estadisticasBacktrackingConUsadas.pasosTotales++;
+
+    //--
+
     return (nivel == (n - 1) && CriterioConUsadas(nivel, solucion, usadas));
 }
 
 bool MasHermanosConUsadas(const short nivel, const int solucion[])
 {
+    estadisticasBacktrackingConUsadas.pasosFuncionMasHermanos++;
+    estadisticasBacktrackingConUsadas.pasosTotales++;
+
+    //--
+
     return solucion[nivel] < (n - 1);
 }
 
 
 void RetrocederConUsadas(const int matrizB[n][n], short *const nivel, int solucion[], int *const beneficioActual, int usadas[])
 {
+    estadisticasBacktrackingConUsadas.pasosFuncionRetroceder++;
+    estadisticasBacktrackingConUsadas.pasosTotales++;
+
+    //--
+
     *beneficioActual -= matrizB[*nivel][solucion[*nivel]];
 
     usadas[solucion[*nivel]]--;
@@ -71,6 +106,7 @@ void RetrocederConUsadas(const int matrizB[n][n], short *const nivel, int soluci
 
 int BackTrackingConUsadas(const int matrizB[n][n], int *const solucion)
 {
+
     short nivel = 0;
 
     // Cada solucion[i] indica la tarea (valor entre 0 y n-1) asignada a la persona i (valor entre 0 y n-1)
@@ -97,24 +133,39 @@ int BackTrackingConUsadas(const int matrizB[n][n], int *const solucion)
     // Beneficio de la solución actual
     int beneficioActual = 0;
 
-//    int nodosGenerados = 0;
+    estadisticasBacktrackingConUsadas.nodosArbolGenerados++;// Nodo raíz del árbol permutacional
 
     do
     {
-        GenerarConUsadas(matrizB, nivel, solucion, &beneficioActual, usadas);
-//        nodosGenerados++;
-        if (SolucionConUsadas(nivel, solucion, usadas) && (beneficioActual > valorOptimoActual))
-        {
-            valorOptimoActual = beneficioActual;
+        estadisticasBacktrackingConUsadas.pasosFuncionBacktracking++;
+        estadisticasBacktrackingConUsadas.pasosTotales++;
+//        estadisticasBacktrackingConUsadas.solucionesComprobadas++;
 
-            for (int i = 0; i < n; i++)
+        //--
+
+        GenerarConUsadas(matrizB, nivel, solucion, &beneficioActual, usadas);
+
+        if (SolucionConUsadas(nivel, solucion, usadas))
+        {
+
+            estadisticasBacktrackingConUsadas.nodosArbolGenerados++;//Nodo hoja (válido)
+            estadisticasBacktrackingConUsadas.solucionesComprobadas++; //Nodo hoja (posible solución)
+
+            if (beneficioActual > valorOptimoActual)
             {
-                solucionOptimaActual[i] = solucion[i];
+                valorOptimoActual = beneficioActual;
+
+                for (int i = 0; i < n; i++)
+                {
+                    solucionOptimaActual[i] = solucion[i];
+                }
             }
         }
 
         if (CriterioConUsadas(nivel, solucion, usadas) && (nivel < (n - 1)))
         {
+            estadisticasBacktrackingConUsadas.nodosArbolGenerados++; //Nodo intermedio (válido)
+
             nivel++;
         }
 

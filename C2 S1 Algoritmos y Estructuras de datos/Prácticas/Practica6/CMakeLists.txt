@@ -3,10 +3,20 @@ project(Practica6 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Practica6 main.c
+add_executable(backtracking mainBacktracking.c
         backtracking.c
         backtracking.h
         backtrackingConUsadas.c
         backtrackingConUsadas.h
-        constants.h
+        common.h
 )
+
+add_executable(ramificacionYPoda mainRamificacionYPoda.c
+        lista.c
+        lista.h
+        ramificacionYpoda.c
+        ramificacionYpoda.h
+        common.h
+
+    )
+

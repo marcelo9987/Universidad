@@ -5,7 +5,8 @@
 
 #include <stdbool.h>
 
-#include "constants.h"
+#include "common.h"
 
+extern struct Estadisticas estadisticasBacktrackingConUsadas;
 
 int BackTrackingConUsadas(const int matrizB[n][n], int *const solucionActual);
