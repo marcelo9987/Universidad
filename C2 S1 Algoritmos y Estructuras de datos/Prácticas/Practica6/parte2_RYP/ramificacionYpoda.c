@@ -29,7 +29,7 @@ TPOSICION Seleccionar(TLISTA *l)
     {
         TIPOELEMENTO datosNodo;
         recuperarElementoLista(*l, nodo, &datosNodo);
-        // todo: comprobar si esto es correcto
+
         // Los nodos se insertan siempre desde el principio de la lista, por lo que nos quedamos con el primer nodo con máximo beneficio
         if (datosNodo.beneficioEstimado > max_beneficio)
         {
