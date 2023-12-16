@@ -7,6 +7,6 @@
 
 #include "common.h"
 
-extern struct Estadisticas estadisticasBacktrackingConUsadas;
+extern struct Estadisticas_backtracking estadisticasBacktrackingConUsadas;
 
 int BackTrackingConUsadas(const int matrizB[n][n], int *const solucionActual);

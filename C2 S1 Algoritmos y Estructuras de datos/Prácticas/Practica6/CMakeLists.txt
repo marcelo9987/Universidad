@@ -3,20 +3,28 @@ project(Practica6 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(backtracking mainBacktracking.c
-        backtracking.c
-        backtracking.h
-        backtrackingConUsadas.c
-        backtrackingConUsadas.h
-        common.h
+
+add_executable(backtracking
+        parte1_backtracking/main.c
+        parte2_RYP/common.h
+        parte1_backtracking/lista.h
+        parte1_backtracking/lista.c
+        parte1_backtracking/backtracking.h
+        parte1_backtracking/backtracking.c
+        parte1_backtracking/backtrackingConUsadas.h
+        parte1_backtracking/backtrackingConUsadas.c
 )
 
-add_executable(ramificacionYPoda mainRamificacionYPoda.c
-        lista.c
-        lista.h
-        ramificacionYpoda.c
-        ramificacionYpoda.h
-        common.h
-
-    )
+add_executable(ramificacionYPoda
+        parte2_RYP/main.c
+        parte2_RYP/common.h
+        parte2_RYP/lista.h
+        parte2_RYP/lista.c
+        parte2_RYP/ramificacionYpoda.h
+        parte2_RYP/ramificacionYpoda.c
+        parte2_RYP/estimacionesTriviales.h
+        parte2_RYP/estimacionesTriviales.c
+        parte2_RYP/estimacionesPrecisas.h
+        parte2_RYP/estimacionesPrecisas.c
+)
 

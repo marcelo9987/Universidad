@@ -8,7 +8,7 @@
 #include "backtracking.h"
 
 
-struct Estadisticas estadisticasBacktracking = {
+struct Estadisticas_backtracking estadisticasBacktracking = {
         .nodosArbolGenerados = 0,
         .solucionesComprobadas = 0,
         .pasosTotales = 0,

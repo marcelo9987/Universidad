@@ -4,14 +4,14 @@
 #pragma once
 
 
-#define n 3
+#define n 6
 
 #define N n
 
 #define ASIGNACION_NO_VALIDA (-1)
 
 
-struct Estadisticas
+struct Estadisticas_backtracking
 {
     int nodosArbolGenerados;
     int solucionesComprobadas;

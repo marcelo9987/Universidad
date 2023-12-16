@@ -5,7 +5,7 @@
 #include <limits.h>
 #include "backtrackingConUsadas.h"
 
-struct Estadisticas estadisticasBacktrackingConUsadas = {
+struct Estadisticas_backtracking estadisticasBacktrackingConUsadas = {
         .nodosArbolGenerados = 0,
         .solucionesComprobadas = 0,
         .pasosTotales = 0,
