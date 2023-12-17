@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <sys/unistd.h>
+#include <time.h>
+#include <assert.h>
+#include <limits.h>
 
 #include "ramificacionYpoda.h"
 #include "estimacionesTriviales.h"
 #include "estimacionesPrecisas.h"
 
-#define usarAleatorios false
 
 void inicializar_solucion(NODO *const solucion)
 {
@@ -18,7 +19,14 @@ void inicializar_solucion(NODO *const solucion)
     }
 
     solucion->nivel = -1;
-    solucion->beneficioActual = 0;
+    if(NEGAR_MATRIZ)
+    {
+        solucion->beneficioActual = INT_MIN;
+    }else
+    {
+        solucion->beneficioActual = 0;
+    }
+
     solucion->cotaInferior = 0;
     solucion->cotaSuperior = 0;
     solucion->beneficioEstimado = 0;
@@ -34,7 +42,7 @@ int main()
                 {9,  7}
         };
 #elif n == 3
-    int matrizB[n][n] ={
+    int matrizB[n][n] = {
             {11, 17, 8},
             {9,  7,  6},
             {13, 15, 16}
@@ -84,11 +92,14 @@ int main()
             {23, 10,  7, 10, 26,  9 },
             { 8,  7, 26, 23, 10, 18 }
     };
+#else
+    int matrizB[n][n];
 #endif
 
-    if (usarAleatorios)
+    if (USAR_ALEATORIOS)
     {
-        srand(getpid());
+        srand(time(NULL));
+
         for (int persona = 0; persona < n; persona++)
         {
             printf("{");
@@ -102,6 +113,20 @@ int main()
 
     }
 
+    if (NEGAR_MATRIZ)
+    {
+        for (int persona = 0; persona < n; persona++)
+        {
+            printf("{");
+            for (int tarea = 0; tarea < n; tarea++)
+            {
+                matrizB[persona][tarea] = -matrizB[persona][tarea];
+                printf("%2d, ", matrizB[persona][tarea]);
+            }
+            printf("}\n");
+        }
+    }
+
     NODO solucionTrivial;
 
     inicializar_solucion(&solucionTrivial);
@@ -109,27 +134,6 @@ int main()
 
     int nNodosTrivial = AsignacionTrivial(matrizB, &solucionTrivial);
     printf("Asignación trivial: \n");
-
-//    printf("  Número de nodos: %d\n", nNodosTrivial);
-
-    /*
-     *     printf("\n");
-
-    printf("Nodos generados:            %5d (los que cumplen el criterio)\n", estadisticasBacktracking.nodosArbolGenerados);
-    printf("Soluciones comprobadas:     %5d (nodos hoja del árbol)\n\n", estadisticasBacktracking.solucionesComprobadas);
-
-    printf("Pasos función backtracking: %5d\n", estadisticasBacktracking.pasosFuncionBacktracking);
-    printf("Pasos función criterio:     %5d\n", estadisticasBacktracking.pasosFuncionCriterio);
-    printf("Pasos función solución:     %5d\n", estadisticasBacktracking.pasosFuncionSolucion);
-    printf("Pasos función generar:      %5d\n", estadisticasBacktracking.pasosFuncionGenerar);
-    printf("Pasos función más hermanos: %5d\n", estadisticasBacktracking.pasosFuncionMasHermanos);
-    printf("Pasos función retroceder:   %5d\n\n", estadisticasBacktracking.pasosFuncionRetroceder);
-
-    printf("Pasos totales:              %5d\n", estadisticasBacktracking.pasosTotales);
-
-
-    printf("\n\n");
-     */
 
     printf("  Nodos generados: %d\n", estadisticasRyPTriviales.nodosArbolGenerados);
     printf("  Nodos que cumplen criterio: %d\n", estadisticasRyPTriviales.nodosQueCumplenCriterio);
@@ -184,6 +188,9 @@ int main()
     printf("\tBeneficio total: %d\n", sumaBeneficioPrecisa);
     printf("\n");
 
+#if DEBUG
+    assert(sumaBeneficioPrecisa == sumaBeneficioTrivial);
+#endif
 
     return 0;
 }

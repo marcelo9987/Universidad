@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <limits.h>
 #include "ramificacionYpoda.h"
-
 
 //beneficio estimado trivial-precisa
 void BE(NODO *x)
@@ -21,7 +21,7 @@ inline bool Solucion(const NODO *const x)
 TPOSICION Seleccionar(TLISTA *l)
 {
     TPOSICION nodoDeMayorBeneficio;
-    double max_beneficio = -1;
+    double beneficioMaximo = INT_MIN;
 
     TPOSICION nodo = primeroLista(*l);
 
@@ -31,9 +31,9 @@ TPOSICION Seleccionar(TLISTA *l)
         recuperarElementoLista(*l, nodo, &datosNodo);
 
         // Los nodos se insertan siempre desde el principio de la lista, por lo que nos quedamos con el primer nodo con máximo beneficio
-        if (datosNodo.beneficioEstimado > max_beneficio)
+        if (datosNodo.beneficioEstimado > beneficioMaximo)
         {
-            max_beneficio = datosNodo.beneficioEstimado;
+            beneficioMaximo = datosNodo.beneficioEstimado;
             nodoDeMayorBeneficio = nodo;
         }
         nodo = siguienteLista(*l, nodo);
@@ -46,7 +46,7 @@ TPOSICION Seleccionar(TLISTA *l)
 void _imprimeInfoNodo(const char *const textoInicial, const NODO *const nodo)
 {
 #ifdef DEBUG
-    printf("%-20s - Nodo: %4d <- %4d  nivel: %2d  CI: %3d  BE: %5.1f  CS: %3d  BA: %3d\n",textoInicial, nodo->numNodo,nodo->numNodoPadre, nodo->nivel, nodo->cotaInferior, nodo->beneficioEstimado, nodo->cotaSuperior, nodo->beneficioActual);
+    printf("%-24s - Nodo: %4d <- %4d  nivel: %2d  CI: %3d  BE: %5.1f  CS: %3d  BA: %3d\n",textoInicial, nodo->numNodo,nodo->numNodoPadre, nodo->nivel, nodo->cotaInferior, nodo->beneficioEstimado, nodo->cotaSuperior, nodo->beneficioActual);
 #endif
 }
 

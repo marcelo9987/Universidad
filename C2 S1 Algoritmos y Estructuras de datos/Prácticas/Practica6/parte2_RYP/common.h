@@ -3,6 +3,10 @@
 //
 #pragma once
 
+//#define DEBUG true
+
+#define USAR_ALEATORIOS false
+#define NEGAR_MATRIZ false
 
 #define n 6
 

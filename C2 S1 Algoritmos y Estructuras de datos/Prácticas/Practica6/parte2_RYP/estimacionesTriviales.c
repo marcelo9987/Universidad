@@ -38,20 +38,50 @@ int _maximoMatriz(const int B[N][N])
     return beneficioMaximo;
 }
 
+int _minimoMatriz(const int B[N][N])
+{
+    int beneficioMinimo = INT_MAX;
+
+    for (int persona = 0; persona < N; persona++)
+    {
+        for (int tarea = 0; tarea < N; tarea++)
+        {
+            if (B[persona][tarea] < beneficioMinimo)
+            {
+                beneficioMinimo = B[persona][tarea];
+            }
+        }
+    }
+
+    return beneficioMinimo;
+}
+
 //##
 
 
 //cota inferior estimación trivial (D81)
 void CI_trivial(NODO *const nodo, const int B[N][N])
 {
-    nodo->cotaInferior = nodo->beneficioActual;
+    if (NEGAR_MATRIZ)
+    {
+        int minMatriz = _minimoMatriz(B);
+        nodo->cotaInferior = nodo->beneficioActual + (N - (nodo->nivel + 1)) * minMatriz;
+    } else
+    {
+        nodo->cotaInferior = nodo->beneficioActual;
+    }
 }
 
 //cota superior estimación trivial (D81)
 void CS_trivial(NODO *nodo, const int B[N][N], const int maxMatriz)
 {
-//    printf("%s - Nivel: %2d, BA: %3d, factor: %d\n", __FUNCTION__, nodo->nivel, nodo->beneficioActual, N - (nodo->nivel + 1));
-    nodo->cotaSuperior = nodo->beneficioActual + (N - (nodo->nivel + 1)) * maxMatriz;
+    if (NEGAR_MATRIZ)
+    {
+        nodo->cotaSuperior = nodo->beneficioActual;
+    } else
+    {
+        nodo->cotaSuperior = nodo->beneficioActual + (N - (nodo->nivel + 1)) * maxMatriz;
+    }
 }
 
 void _calculaCotasTriviales(NODO *const nodo, const int B[N][N], int maxMatriz)
@@ -91,6 +121,7 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
     _calculaCotasTriviales(&nodoRaiz, B, maxMatriz);
 
     //Inicialización variable de poda (diapositiva 86)
+    // Almacenará el valor de las cotas inferiores hasta ese momento o de alguna solución final
     double Cota = nodoRaiz.cotaInferior; // valor inicial de la variable de poda
 
     TLISTA listaDeNodosVivos; // Lista de nodos vivos
@@ -157,7 +188,10 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
 
                             _imprimeInfoNodo("actualizada solución", solucion);
 
-                            Cota = (Cota > nodoHijoY.beneficioActual) ? Cota : nodoHijoY.beneficioActual;
+                            if (Cota < nodoHijoY.beneficioActual)
+                            {
+                                Cota = nodoHijoY.beneficioActual;
+                            }
                         }
                     } else if (nodoHijoY.cotaSuperior > Cota)
                     {
@@ -165,13 +199,19 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
 
                         estadisticasRyPTriviales.nodosInsertadosEnLaLista++;
 
-                        Cota = (Cota > nodoHijoY.cotaInferior) ? Cota : nodoHijoY.cotaInferior;
-                    }else
+                        if (Cota < nodoHijoY.cotaInferior)
+                        {
+                            Cota = nodoHijoY.cotaInferior;
+                        }
+                    } else
                     {
-                        _imprimeInfoNodo("Nodo descartado", &nodoHijoY);
+                        _imprimeInfoNodo("Nodo Y descartado (poda)", &nodoHijoY);
                     }
                 }
             }
+        } else
+        {
+            _imprimeInfoNodo("Nodo X descartado (poda)", &nodoSeleccionadoX);
         }
 
     }

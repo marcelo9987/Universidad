@@ -168,6 +168,7 @@ int AsignacionPrecisa(const int B[N][N], NODO *const solucion)
     _calculaCotasPrecisas(&nodoRaiz, B);
 
     //Inicialización variable de poda (diapositiva 86)
+    // Almacenará el valor de las cotas inferiores hasta ese momento o de alguna solución final
     int Cota = nodoRaiz.cotaInferior; // valor inicial de la variable de poda
 
     printf("Cota inicial: %3d\n", Cota);
@@ -251,7 +252,7 @@ int AsignacionPrecisa(const int B[N][N], NODO *const solucion)
 
                             _imprimeInfoNodo("actualizada solución", solucion);
 
-                            if (Cota < nodoHijoY.beneficioActual)
+                            if (nodoHijoY.beneficioActual > Cota)
                             {
                                 Cota = nodoHijoY.beneficioActual;
 
@@ -265,7 +266,7 @@ int AsignacionPrecisa(const int B[N][N], NODO *const solucion)
 
                         estadisticasRyPPrecisas.nodosInsertadosEnLaLista++;
 
-                        if (Cota < nodoHijoY.cotaInferior)
+                        if (nodoHijoY.cotaInferior > Cota)
                         {
                             Cota = nodoHijoY.cotaInferior;
 

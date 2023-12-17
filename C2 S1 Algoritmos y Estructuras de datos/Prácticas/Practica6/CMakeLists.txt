@@ -28,3 +28,17 @@ add_executable(ramificacionYPoda
         parte2_RYP/estimacionesPrecisas.c
 )
 
+add_executable(ramificacionYPoda_minimizacion
+        parte2_RYP_minimizacion/main.c
+        parte2_RYP_minimizacion/common.h
+        parte2_RYP_minimizacion/lista.h
+        parte2_RYP_minimizacion/lista.c
+        parte2_RYP_minimizacion/ramificacionYpoda.h
+        parte2_RYP_minimizacion/ramificacionYpoda.c
+        parte2_RYP_minimizacion/estimacionesTriviales.h
+        parte2_RYP_minimizacion/estimacionesTriviales.c
+        parte2_RYP_minimizacion/estimacionesPrecisas.h
+        parte2_RYP_minimizacion/estimacionesPrecisas.c
+        parte2_RYP_minimizacion/estimacionesPrecisas.c
+)
+
