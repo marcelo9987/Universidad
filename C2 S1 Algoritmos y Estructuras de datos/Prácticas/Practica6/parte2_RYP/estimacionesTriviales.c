@@ -122,7 +122,9 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
 
     //Inicialización variable de poda (diapositiva 86)
     // Almacenará el valor de las cotas inferiores hasta ese momento o de alguna solución final
-    double Cota = nodoRaiz.cotaInferior; // valor inicial de la variable de poda
+    int Cota = nodoRaiz.cotaInferior; // valor inicial de la variable de poda
+
+    printf("Cota inicial: %3d\n", Cota);
 
     TLISTA listaDeNodosVivos; // Lista de nodos vivos
     // Inicialización de la lista de nodos vivos (diapositiva 86)
@@ -188,9 +190,11 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
 
                             _imprimeInfoNodo("actualizada solución", solucion);
 
-                            if (Cota < nodoHijoY.beneficioActual)
+                            if (nodoHijoY.beneficioActual > Cota)
                             {
                                 Cota = nodoHijoY.beneficioActual;
+
+                                printf("Cota <- Beneficio Actual: %3d\n", Cota);
                             }
                         }
                     } else if (nodoHijoY.cotaSuperior > Cota)
@@ -199,9 +203,11 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
 
                         estadisticasRyPTriviales.nodosInsertadosEnLaLista++;
 
-                        if (Cota < nodoHijoY.cotaInferior)
+                        if (nodoHijoY.cotaInferior > Cota)
                         {
                             Cota = nodoHijoY.cotaInferior;
+
+                            printf("Cota <- Cota Inferior: %3d\n", Cota);
                         }
                     } else
                     {

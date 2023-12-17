@@ -195,7 +195,7 @@ int AsignacionTrivial(const int B[N][N], NODO *const solucion)
                         {
                             Cota = nodoHijoY.cotaSuperior;
 
-                            printf("Cota <- Cota Inferior: %3d\n", Cota);
+                            printf("Cota <- Cota Superior: %3d\n", Cota);
                         }
                     } else
                     {

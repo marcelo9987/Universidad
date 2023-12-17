@@ -274,7 +274,7 @@ int AsignacionPrecisa(const int B[N][N], NODO *const solucion)
                         }
                     }else
                     {
-                        _imprimeInfoNodo("Nodo descartado", &nodoHijoY);
+                        _imprimeInfoNodo("Nodo Y descartado (poda)", &nodoHijoY);
                     }
                 }
             }
@@ -287,6 +287,9 @@ int AsignacionPrecisa(const int B[N][N], NODO *const solucion)
 
             _imprimeInfoNodo("sol voraz abajo", solucion);
 
+        } else
+        {
+            _imprimeInfoNodo("Nodo X descartado (poda)", &nodoSeleccionadoX);
         }
     }
 
