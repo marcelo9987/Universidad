@@ -7,7 +7,7 @@
 #include "estimacionesTriviales.h"
 #include "estimacionesPrecisas.h"
 
-#define usarAleatorios true
+#define usarAleatorios false
 
 void inicializar_solucion(NODO *const solucion)
 {
@@ -33,7 +33,7 @@ int main()
                 {11, 17},
                 {9,  7}
         };
-#elif n == -3
+#elif n == 3
     int matrizB[n][n] ={
             {11, 17, 8},
             {9,  7,  6},
@@ -45,7 +45,7 @@ int main()
             {7, 2, 3},
             {6, 3, 5}
     };
-#elif n == 3
+#elif n == -3
     int matrizB[n][n] = {
             {24, 27, 3},
             {28, 19, 19},
