@@ -1,0 +1,32 @@
+#En este archivo se especifican los archivos que deben ser ignorados por git
+#Se pueden especificar archivos, directorios o patrones de nombres de archivos
+#Para especificar un directorio se debe agregar una barra al final del nombre
+
+cmake-build-debug/
+cmake-build-debug-cygwin/
+.idea/
+
+*.exe
+*.out
+*.o
+*.a
+
+/P1/Makefile
+
+/P2/Practica2_P2_c
+/P2/Practica2_P2_s
+/P2/Makefile
+/P2/ARCHIVOS/
+
+Makefile
+
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+
+/P2/clientemayus
+/P2/servidormayus
+
+/auxil/
+/P1/Practica2_P1_c
+/P1/Practica2_P1_s
