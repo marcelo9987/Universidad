@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\funciones_ejes.c" />
     <ClCompile Include="main1c.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

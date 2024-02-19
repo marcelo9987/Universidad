@@ -34,7 +34,7 @@ static GLfloat yRot = 0.0f;
 
 
 //Están en el segundo archivo
-extern myCamara();
+// extern myCamara();
 extern void myTeclado(unsigned char tras, int x, int y);
 extern void myTeclasespeciales(int cursor, int x, int y);
 
@@ -107,8 +107,6 @@ int main(int argc, char** argv) {
     // Nombre de la ventana
     glutCreateWindow("Generación de ejes");
 
-
-
     openGlInit();
     
     //Eventos teclado, teclas especiales
@@ -121,5 +119,6 @@ int main(int argc, char** argv) {
 
     // Empieza en bucle principal
     glutMainLoop();
+
     return 0;
 }

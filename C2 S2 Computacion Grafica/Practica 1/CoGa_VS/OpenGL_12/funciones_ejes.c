@@ -60,14 +60,12 @@ void myTeclado(unsigned char tras, int x, int y)
     switch (tras)
     {
     case 'l':
-
         break;
     case 'c':
         break;
     case 'r':
         break;
     case 'p':
-
         break;
 
     default:
@@ -154,7 +152,7 @@ void myTeclasespeciales(int cursor, int x, int y)
     }//hay que repasarlo para evitar el salto
 
 
-// Recalculamos la posición de la cámara
+    // Recalculamos la posición de la cámara
     myCamara();
 
     // Forzamos el redibujado

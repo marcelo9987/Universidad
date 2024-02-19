@@ -18,5 +18,8 @@
     <ClCompile Include="main1c.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\funciones_ejes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

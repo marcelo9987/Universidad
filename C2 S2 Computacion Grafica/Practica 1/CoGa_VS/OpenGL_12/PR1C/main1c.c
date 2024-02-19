@@ -8,7 +8,7 @@ Dibuja únicamente un un triangulo
 
 *************************************************************/
 
-#define EJECUCION_EXITOSA 1
+#define EJECUCION_EXITOSA 0
 
 #include <windows.h>		// Inclusión de variables de Windows
 #include <glut.h>	        // Inclusión de librerías GLUT
@@ -18,8 +18,13 @@ Dibuja únicamente un un triangulo
 const int W_WIDTH = 500;	// Ancho de la ventana
 const int W_HEIGHT = 500;	// Alto de la ventana
 
+//Están en el segundo archivo
+// extern myCamara();
+extern void myTeclado(unsigned char tras, int x, int y);
+extern void myTeclasespeciales(int cursor, int x, int y);
+
 // Función de dibujo
-void Display(void) {
+void myDisplay(void) {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Limpia los buffer de color y profundidad
 
@@ -67,6 +72,7 @@ void Display(void) {
 	glutSwapBuffers(); // Intercambia los dos buffers gráficos disponibles
 	glFlush();// Vacia todos los Buffers
 }
+
 int main(int argc, char **argv) {
 	// Inicializa las GLUT
 	glutInit(&argc, argv);
@@ -79,7 +85,14 @@ int main(int argc, char **argv) {
 	// Permite poner nombre a la ventana en la barra de título.
 	glutCreateWindow("Ventana vacía creada con el Visual C++ y glut");
 
-	glutDisplayFunc(Display);
+//	openGlInit();
+
+	//Eventos teclado, teclas especiales
+	glutKeyboardFunc(myTeclado);
+	glutSpecialFunc(myTeclasespeciales);
+
+    //Evento de dibujo
+	glutDisplayFunc(myDisplay);
 
 //	Init();
 	glutMainLoop();
