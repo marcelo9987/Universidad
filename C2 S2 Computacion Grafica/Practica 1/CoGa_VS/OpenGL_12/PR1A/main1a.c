@@ -1,20 +1,20 @@
 // Programa que abre una ventana vacia de openGl con GLUT
 
 /***************************************NOTA*******************************************/
-//// Recordar que previa a la compilaci髇 de este programa es preciso
-//// linkar las librerias glut32.lib y opengl32.lib
-//// Para su ejecuci髇 debe estar correctamente colocado la glut32.dll
+//// Recordar que previa a la compilaci贸n de este programa es preciso
+//// linkar las librer铆as glut32.lib y opengl32.lib
+//// Para su ejecuci贸n debe estar correctamente colocado la glut32.dll
 /*************************************************************************************/
 
-#include <windows.h>		// Inclusi髇 de variables de Windows
-#include <glut.h>			// Inclusi髇 de librer韆s GLUT
-#include <GL/gl.h>			// Inclusi髇 de librer韆s GL
-#include <GL/glu.h>			// Inclusi髇 de librer韆s auxiliares
+#include <windows.h>		// Inclusi贸n de variables de Windows
+#include <glut.h>			// Inclusi贸n de librer铆as GLUT
+#include <GL/gl.h>			// Inclusi贸n de librer铆as GL
+#include <GL/glu.h>			// Inclusi贸n de librer铆as auxiliares
 
 const int W_WIDTH = 500;	// Ancho de la ventana
 const int W_HEIGHT = 500;	// Alto de la ventana
 
-// Funci髇 de dibujo
+// Funci贸n de dibujo
 void Display(void) {
 
     //	glClearColor(1.0,1.0,1.0,0.0);	// Fija el Blanco como color de borrado
@@ -22,7 +22,7 @@ void Display(void) {
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Intercambia los dos buffers gr醘icos disponibles
+    // Intercambia los dos buffers gr谩ficos disponibles
     glutSwapBuffers(); // buffer de glut
     glFlush();			//buffer de openGL
 }
@@ -32,13 +32,13 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
 
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE); // Inicializa el modo de la pantalla RGB y doble buffer
-    glutInitWindowSize(W_WIDTH, W_HEIGHT); // Fija el tama駉 de la ventana
-    glutInitWindowPosition(100, 100); // Fija la posici髇 de la ventana
-    glutCreateWindow("Ventana vac韆 creada con el Visual C++ y glut"); // Permite poner nombre a la ventana en la barra de t韙ulo.
+    glutInitWindowSize(W_WIDTH, W_HEIGHT); // Fija el tama帽o de la ventana
+    glutInitWindowPosition(100, 100); // Fija la posici贸n de la ventana
+    glutCreateWindow("Ventana vac铆a creada con el Visual C++ y glut"); // Permite poner nombre a la ventana en la barra de t铆tulo.
 
     glutDisplayFunc(Display); // Define las funciones de Callback
 
-    // Inicia el lazo de visualizaci髇.
+    // Inicia el lazo de visualizaci贸n.
     glutMainLoop();
     return 0;
 }

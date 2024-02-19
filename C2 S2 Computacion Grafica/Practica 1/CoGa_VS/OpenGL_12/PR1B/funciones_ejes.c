@@ -10,12 +10,12 @@ Por ahora nos la creemos y la llamamos ya explicaremos que hace.
 *************************************************************/
 
 
-#include <windows.h>    //Inclusi髇 de variables de windows
-#include <glut.h>       //Inclusi髇 de GLUT
-#include <GL/gl.h>      //Inclusi髇 de GL
+#include <windows.h>    //Inclusi贸n de variables de windows
+#include <glut.h>       //Inclusi贸n de GLUT
+#include <GL/gl.h>      //Inclusi贸n de GL
 #include <GL/glu.h>
 #include <stdio.h>
-#include <math.h>       //Inclusi髇 de librer韆s auxiliares
+#include <math.h>       //Inclusi贸n de librer铆as auxiliares
 
 
 #define INCREMENTO .05
@@ -25,7 +25,7 @@ Por ahora nos la creemos y la llamamos ya explicaremos que hace.
 #define radianesAGrados(x) (x * 180.0 / PI)
 #define gradosARadianes(x) (x * PI / 180.0)
 
-// Angulos (en radianes) para la c醡ara
+// Angulos (en radianes) para la c谩mara
 float alpha = 0.0f;  // Izquierda y derecha
 float beta = 0.0f;  // Arriba y abajo
 
@@ -40,9 +40,9 @@ void myCamara()
 
     /**/
 
-    glMatrixMode(GL_PROJECTION);//Configuraci髇 de la matriz de proyecci髇
+    glMatrixMode(GL_PROJECTION);//Configuraci贸n de la matriz de proyecci贸n
     glLoadIdentity();
-    glOrtho(-1.0, 1.0f, -1.0, 1.0f, .1, 10.0f);    //proyecci髇 ortogr醘ica
+    glOrtho(-1.0, 1.0f, -1.0, 1.0f, .1, 10.0f);    //proyecci贸n ortogr谩fica
 
     float eyeX = (float)DISTANCIA * (float)sin(alpha) * fabs(cos(beta));
     float eyeY = (float)DISTANCIA * (float)sin(beta);
@@ -73,12 +73,12 @@ void myTeclado(unsigned char tras, int x, int y)
     default:
         break;
     }
-    // Se se modificou algo redeb鷛ase
+    // Se se modificou algo redeb煤xase
     glutPostRedisplay();
 }
 
 /**************************************
-FUNCI覰 DE CONTROL DE TECLAS ESPECIAIS:
+FUNCI脫N DE CONTROL DE TECLAS ESPECIAIS:
 **************************************
 */
 void myTeclasespeciales(int cursor, int x, int y)
@@ -110,23 +110,23 @@ void myTeclasespeciales(int cursor, int x, int y)
 
         //Giros:
     case GLUT_KEY_UP:
-        // Mover la c醡ara hacia arriba
+        // Mover la c谩mara hacia arriba
         beta += INCREMENTO;
         imprimeDatos("UP   ");
         break;
     case GLUT_KEY_DOWN:
-        // Mover la c醡ara hacia abajo
+        // Mover la c谩mara hacia abajo
         beta -= INCREMENTO;
         imprimeDatos("DOWN ");
         break;
 
     case GLUT_KEY_RIGHT:
-        // Mover la c醡ara a la derecha
+        // Mover la c谩mara a la derecha
         alpha += INCREMENTO;
         imprimeDatos("RIGHT");
         break;
     case GLUT_KEY_LEFT:
-        // Mover la c醡ara a la izquierda
+        // Mover la c谩mara a la izquierda
         alpha -= INCREMENTO;
         imprimeDatos("LEFT ");
         break;
@@ -154,7 +154,7 @@ void myTeclasespeciales(int cursor, int x, int y)
     }//hay que repasarlo para evitar el salto
 
 
-// Recalculamos la posici髇 de la c醡ara
+// Recalculamos la posici贸n de la c谩mara
     myCamara();
 
     // Forzamos el redibujado

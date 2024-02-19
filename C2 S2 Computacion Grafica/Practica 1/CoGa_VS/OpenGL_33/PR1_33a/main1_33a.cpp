@@ -67,7 +67,7 @@ int main()
 		glClearColor(1.0f, .0f, .0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glfwSwapBuffers(window);					//los eventos de glfw, techlado raton....
+		glfwSwapBuffers(window);					//los eventos de glfw, teclado raton....
 		glfwPollEvents();							// los eventos de openGl. 
 	}
 	
