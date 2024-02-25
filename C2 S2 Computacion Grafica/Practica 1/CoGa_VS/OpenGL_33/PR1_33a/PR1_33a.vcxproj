@@ -24,13 +24,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Librerias\glad\include_lib\glad.h" />
-    <ClInclude Include="..\Librerias\glad\include_lib\lecturaShader.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{507cc9e1-1711-4c3e-87de-ff72eeea31b7}</ProjectGuid>
-    <RootNamespace>PR1C</RootNamespace>
+    <RootNamespace>PR133a</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>PR1_33a</ProjectName>
   </PropertyGroup>
