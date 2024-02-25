@@ -6,6 +6,7 @@
 //// Para su ejecución debe estar correctamente colocado la glut32.dll
 /*************************************************************************************/
 
+#include <stdio.h>
 #include <windows.h>		// Inclusión de variables de Windows
 #include <glut.h>			// Inclusión de librerías GLUT
 #include <GL/gl.h>			// Inclusión de librerías GL

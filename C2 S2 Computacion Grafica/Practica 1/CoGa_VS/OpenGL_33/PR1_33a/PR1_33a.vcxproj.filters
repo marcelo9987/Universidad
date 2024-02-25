@@ -23,9 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Librerias\glad\include_lib\lecturaShader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Librerias\glad\include_lib\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
