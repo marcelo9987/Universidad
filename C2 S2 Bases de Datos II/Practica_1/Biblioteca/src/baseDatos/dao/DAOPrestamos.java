@@ -22,7 +22,8 @@ public class DAOPrestamos extends AbstractDAO {
         PreparedStatement stmPrestamo = null;
         ResultSet rsPrestamo;
 
-        String consulta = "select fecha_prestamo, usuario, libro, ejemplar, fecha_devolucion from prestamo where libro = ? and ejemplar = ?";
+        // TODO: Cambiar esta query
+        String consulta = "select fecha_prestamo, usuario, id_libro, num_ejemplar, fecha_devolucion from prestamo where id_libro = ? and num_ejemplar = ?";
 
         java.sql.Connection con;
         con = super.getConexion();
@@ -35,7 +36,7 @@ public class DAOPrestamos extends AbstractDAO {
 
             rsPrestamo = stmPrestamo.executeQuery();
             if (rsPrestamo.next()) {
-                Salida = new Prestamo(rsPrestamo.getInt("libro"), rsPrestamo.getString("ejemplar"), rsPrestamo.getString("usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion"));
+                Salida = new Prestamo(rsPrestamo.getInt("id_libro"), rsPrestamo.getInt("num_ejemplar"), rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion"));
             }
         } catch (Exception e) {
             super.getFachadaAplicacion().muestraExcepcion("Dao prestamos : " + e.getMessage());
@@ -49,7 +50,7 @@ public class DAOPrestamos extends AbstractDAO {
         PreparedStatement stmPrestamo = null;
         ResultSet rsPrestamo;
 
-        String consulta = "select * from prestamo where libro = ? and ejemplar = ? and fecha_devolucion is null";
+        String consulta = "select * from prestamo where id_libro = ? and num_ejemplar = ? and fecha_devolucion is null";
 
         java.sql.Connection con;
         con = super.getConexion();
@@ -106,7 +107,8 @@ public class DAOPrestamos extends AbstractDAO {
         PreparedStatement stmPrestamo = null;
         ResultSet rsPrestamo;
 
-        String consulta = "select fecha_prestamo, usuario, libro, ejemplar, fecha_devolucion from prestamo where libro = ? and ejemplar = ? and fecha_devolucion is null";
+        String consulta = "select fecha_prestamo, usuario, id_libro, num_ejemplar, fecha_devolucion " +
+                "from prestamo where id_libro = ? and num_ejemplar = ? and fecha_devolucion is null";
 
         java.sql.Connection con;
         con = super.getConexion();
@@ -119,7 +121,7 @@ public class DAOPrestamos extends AbstractDAO {
 
             rsPrestamo = stmPrestamo.executeQuery();
             if (rsPrestamo.next()) {
-                Salida = new Prestamo(rsPrestamo.getInt("libro"), rsPrestamo.getString("ejemplar"), rsPrestamo.getString("usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion"));
+                Salida = new Prestamo(rsPrestamo.getInt("id_libro"), rsPrestamo.getInt("num_ejemplar"), rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion"));
             }
         } catch (Exception e) {
             super.getFachadaAplicacion().muestraExcepcion("Dao prestamos : " + e.getMessage());

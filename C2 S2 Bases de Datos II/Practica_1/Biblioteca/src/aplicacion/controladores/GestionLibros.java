@@ -28,12 +28,11 @@ public class GestionLibros {
     }
 
     public void visualizarLibro(Integer idLibro) {
-        java.util.List<String> restoCategorias;
-        java.util.List<Ejemplar> ejemplares;
-        Libro l;
-        l = fbd.consultarLibro(idLibro);
-        restoCategorias = fbd.obtenerRestoCategorias(idLibro);
-        fgui.visualizaLibro(l, restoCategorias);
+        Libro l = fbd.consultarLibro(idLibro);
+//        java.util.List<Ejemplar> ejemplares  = fbd.consultarEjemplaresLibro(idLibro);
+        java.util.List<String> restoCategorias = fbd.obtenerRestoCategorias(idLibro);
+
+        fgui.visualizaLibro(l, restoCategorias, prestamos);
     }
 
     public void nuevoLibro() {

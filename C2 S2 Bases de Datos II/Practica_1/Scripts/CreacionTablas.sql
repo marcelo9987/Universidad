@@ -106,3 +106,18 @@ create table usuario
   tipo_usuario varchar(15) Default 'Normal' CHECK (tipo_usuario IN ('Normal', 'Administrador'))
 );
 
+create table prestamo
+(
+    id_libro         integer default currval('seq_libro_id_libro'::regclass) not null,
+    num_ejemplar     integer                                                 not null,
+    usuario          varchar(10)                                             not null
+        references usuario
+            on update cascade on delete restrict,
+    fecha_prestamo   date    default CURRENT_DATE                            not null,
+    fecha_devolucion date,
+    primary key (usuario, id_libro, num_ejemplar, fecha_prestamo),
+    constraint prestamo_libro_ejemplar_fkey
+        foreign key (id_libro, num_ejemplar) references ejemplar
+            on update cascade on delete restrict
+);
+

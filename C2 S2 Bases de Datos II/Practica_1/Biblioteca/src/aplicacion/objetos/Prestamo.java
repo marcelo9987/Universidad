@@ -2,12 +2,12 @@ package aplicacion.objetos;
 
 public class Prestamo {
     private Integer idLibro;
-    private String idEjemplar;
+    private Integer idEjemplar;
     private String idUsuario;
     private String fechaInicio;
     private String fechaFin;
 
-    public Prestamo(Integer idLibro, String idEjemplar, String idUsuario, String fechaInicio, String fechaFin) {
+    public Prestamo(Integer idLibro, Integer idEjemplar, String idUsuario, String fechaInicio, String fechaFin) {
         this.idLibro = idLibro;
         this.idEjemplar = idEjemplar;
         this.idUsuario = idUsuario;
@@ -15,9 +15,15 @@ public class Prestamo {
         this.fechaFin = fechaFin;
     }
 
-    public String getIdEjemplar() {
+
+    public Integer getIdLibro() {
+        return idLibro;
+    }
+
+    public Integer getIdEjemplar() {
         return idEjemplar;
     }
+
 
     public String getIdUsuario() {
         return idUsuario;
@@ -27,17 +33,15 @@ public class Prestamo {
         this.idUsuario = idUsuario;
     }
 
+
     public String getFechaInicio() {
         return fechaInicio;
-    }
-
-    public Integer getIdLibro() {
-        return idLibro;
     }
 
     public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+
 
     public String getFechaFin() {
         return fechaFin;

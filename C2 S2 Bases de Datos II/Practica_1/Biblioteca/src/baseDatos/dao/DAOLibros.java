@@ -8,6 +8,7 @@ package baseDatos.dao;
 import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Libro;
+import aplicacion.objetos.Prestamo;
 
 import java.sql.*;
 
@@ -92,7 +93,7 @@ public class DAOLibros extends AbstractDAO {
     }
 
     public Libro consultarLibro(Integer idLibro) {
-        Libro resultado = null;
+        Libro libroResultado = null;
         Connection con;
         PreparedStatement stmLibro = null;
         ResultSet rsLibro;
@@ -112,7 +113,7 @@ public class DAOLibros extends AbstractDAO {
             stmLibro.setInt(1, idLibro);
             rsLibro = stmLibro.executeQuery();
             if (rsLibro.next()) {
-                resultado = new Libro(rsLibro.getInt("id_libro"), rsLibro.getString("titulo"),
+                libroResultado = new Libro(rsLibro.getInt("id_libro"), rsLibro.getString("titulo"),
                         rsLibro.getString("isbn"), rsLibro.getString("editorial"),
                         rsLibro.getInt("paginas"), rsLibro.getString("ano"));
 
@@ -121,10 +122,10 @@ public class DAOLibros extends AbstractDAO {
                             "from autor " +
                             "where libro = ? " +
                             "order by orden");
-                    stmAutores.setInt(1, resultado.getIdLibro());
+                    stmAutores.setInt(1, libroResultado.getIdLibro());
                     rsAutores = stmAutores.executeQuery();
                     while (rsAutores.next()) {
-                        resultado.addAutor(rsAutores.getString("autor"));
+                        libroResultado.addAutor(rsAutores.getString("autor"));
                     }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -136,10 +137,10 @@ public class DAOLibros extends AbstractDAO {
                     stmCategorias = con.prepareStatement("select categoria " +
                             "from cat_tiene_libro " +
                             "where libro = ?");
-                    stmCategorias.setInt(1, resultado.getIdLibro());
+                    stmCategorias.setInt(1, libroResultado.getIdLibro());
                     rsCategorias = stmCategorias.executeQuery();
                     while (rsCategorias.next()) {
-                        resultado.addCategoria(new Categoria(rsCategorias.getString("categoria"), null));
+                        libroResultado.addCategoria(new Categoria(rsCategorias.getString("categoria"), null));
                     }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -148,15 +149,25 @@ public class DAOLibros extends AbstractDAO {
                     stmCategorias.close();
                 }
                 try {
-                    stmEjemplares = con.prepareStatement("select libro, num_ejemplar, ano_compra, localizador " +
-                            "from ejemplar " +
-                            "where libro = ?");
-                    stmEjemplares.setInt(1, resultado.getIdLibro());
+//                    stmEjemplares = con.prepareStatement("select libro, num_ejemplar, ano_compra, localizador " +
+//                            "from ejemplar " +
+//                            "where libro = ?");
+                    stmEjemplares = con.prepareStatement("select e.id_libro, e.num_ejemplar, e.ano_compra, e.localizador, p.fecha_prestamo, p.usuario, p.fecha_devolucion " +
+                            "from ejemplar e left join prestamo p on p.id_libro = e.id_libro and p.num_ejemplar = e.num_ejemplar and p.fecha_devolucion is null " +
+                            "where e.id_libro = ?");
+                    stmEjemplares.setInt(1, libroResultado.getIdLibro());
                     rsEjemplares = stmEjemplares.executeQuery();
                     while (rsEjemplares.next()) {
-                        resultado.addEjemplar(new Ejemplar(resultado, rsEjemplares.getInt("num_ejemplar"),
+                        Prestamo prestamoActivo;
+                        if(rsEjemplares.getString("id_usuario") != null) {
+                            prestamoActivo = new Prestamo(rsEjemplares.getInt("id_libro"), rsEjemplares.getInt("num_ejemplar"), rsEjemplares.getString("id_usuario"), rsEjemplares.getString("fecha_prestamo"), rsEjemplares.getString("fecha_devolucion"));
+                        } else {
+                            prestamoActivo = null;
+                        }
+                        libroResultado.addEjemplar(new Ejemplar(libroResultado, rsEjemplares.getInt("num_ejemplar"),
                                 rsEjemplares.getString("localizador"),
-                                rsEjemplares.getString("ano_compra")));
+                                rsEjemplares.getString("ano_compra")
+                                , prestamoActivo));
                     }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -176,7 +187,7 @@ public class DAOLibros extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-        return resultado;
+        return libroResultado;
     }
 
     public java.util.List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
@@ -188,15 +199,16 @@ public class DAOLibros extends AbstractDAO {
         con = super.getConexion();
 
         try {
+            // TODO: Arreglar esta query
             stmEjemplares = con.prepareStatement("select num_ejemplar, ano_compra, localizador " +
                     "from ejemplar " +
-                    "where libro = ?");
+                    "where id_libro = ?");
             stmEjemplares.setInt(1, idLibro);
             rsEjemplares = stmEjemplares.executeQuery();
             while (rsEjemplares.next()) {
                 resultado.add(new Ejemplar(null, rsEjemplares.getInt("num_ejemplar"),
                         rsEjemplares.getString("localizador"),
-                        rsEjemplares.getString("ano_compra")));
+                        rsEjemplares.getString("ano_compra"), null));
             }
 
 
@@ -454,7 +466,7 @@ public class DAOLibros extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEjemplar = con.prepareStatement("insert into ejemplar(libro,ano_compra,localizador) " +
+            stmEjemplar = con.prepareStatement("insert into ejemplar(id_libro,ano_compra,localizador) " +
                     "values (?,?,?)");
             stmEjemplar.setInt(1, idLibro);
             stmEjemplar.setString(2, ejemplar.getAnoCompra());
@@ -480,7 +492,7 @@ public class DAOLibros extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEjemplar = con.prepareStatement("delete from ejemplar where libro=? and num_ejemplar=?");
+            stmEjemplar = con.prepareStatement("delete from ejemplar where id_libro=? and num_ejemplar=?");
             for (Integer i : numsEjemplar) {
                 stmEjemplar.setInt(1, idLibro);
                 stmEjemplar.setInt(2, i);
@@ -508,7 +520,7 @@ public class DAOLibros extends AbstractDAO {
             stmEjemplar = con.prepareStatement("update ejemplar " +
                     "set ano_compra=?, " +
                     "   localizador=? " +
-                    "where libro=? and num_ejemplar=?");
+                    "where id_libro=? and num_ejemplar=?");
             stmEjemplar.setString(1, ejemplar.getAnoCompra());
             stmEjemplar.setString(2, ejemplar.getLocalizador());
             stmEjemplar.setInt(3, idLibro);
@@ -538,10 +550,10 @@ public class DAOLibros extends AbstractDAO {
         try {
             stmTienePrestamos = con.prepareStatement("SELECT COUNT (*) as prestamos " +
                     "from ejemplar e " +
-                    "where e.libro = ? " +
+                    "where e.id_libro = ? " +
                     "  and exists (select * " +
                     "              from prestamo p " +
-                    "              where p.ejemplar = e.num_ejemplar)");
+                    "              where p.num_ejemplar = e.num_ejemplar)");
             stmTienePrestamos.setInt(1, idLibro);
             rsTienePrestamos = stmTienePrestamos.executeQuery();
 
@@ -572,7 +584,7 @@ public class DAOLibros extends AbstractDAO {
         try {
             stmTieneEjemplares = con.prepareStatement("SELECT COUNT (*) as ejemplares " +
                     "from ejemplar e " +
-                    "where e.libro = ?");
+                    "where e.id_libro = ?");
             stmTieneEjemplares.setInt(1, idLibro);
             rsTieneEjemplares = stmTieneEjemplares.executeQuery();
 

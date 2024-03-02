@@ -299,7 +299,7 @@ public class VLibro extends javax.swing.JDialog {
                                 .addContainerGap())
         );
 
-        panelLibro.addTab("Libro", panelGeneralAutores);
+        panelLibro.addTab("id_libro", panelGeneralAutores);
 
         jLabel8.setText("Categorías disponibles");
 
@@ -498,7 +498,7 @@ public class VLibro extends javax.swing.JDialog {
                                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        panelLibro.getAccessibleContext().setAccessibleName("Libro");
+        panelLibro.getAccessibleContext().setAccessibleName("id_libro");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -628,7 +628,7 @@ public class VLibro extends javax.swing.JDialog {
         Ejemplar e;
 
         me = (ModeloTablaEjemplares) tablaEjemplares.getModel();
-        e = new Ejemplar(null, null, null, null);
+        e = new Ejemplar(null, null, null, null, null);
         me.nuevoEjemplar(e);
         tablaEjemplares.setRowSelectionInterval(me.getRowCount() - 1, me.getRowCount() - 1);
         btnBorrarEjemplar.setEnabled(true);
