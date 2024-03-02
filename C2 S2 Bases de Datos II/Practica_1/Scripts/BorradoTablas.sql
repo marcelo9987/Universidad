@@ -10,3 +10,5 @@ drop function controla_secuencias_libro();
 drop table libro;
 drop sequence seq_libro_id_libro;
 drop table categoria;
+delete from prestamo;
+drop table prestamo;

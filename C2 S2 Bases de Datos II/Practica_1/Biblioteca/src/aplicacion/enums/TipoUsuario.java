@@ -1,4 +1,4 @@
-package aplicacion;
+package aplicacion.enums;
 
 /*
  * To change this template, choose Tools | Templates
@@ -6,9 +6,7 @@ package aplicacion;
  */
 
 
-
 /**
- *
  * @author basesdatos
  */
 public enum TipoUsuario {

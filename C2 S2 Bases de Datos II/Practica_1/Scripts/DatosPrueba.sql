@@ -1,5 +1,5 @@
-Insert into categoria values ('Bases de Datos', 'Libros con contenidos relacionados con la tecnolog韆 de Sistemas Gestores de Bases de Datos');
-Insert into categoria values ('Programaci髇', 'Libros relacionados con lenguajes y t閏nicas de programaci髇');
+Insert into categoria values ('Bases de Datos', 'Libros con contenidos relacionados con la tecnolog铆a de Sistemas Gestores de Bases de Datos');
+Insert into categoria values ('Programaci贸n', 'Libros relacionados con lenguajes y t茅cnicas de programaci贸n');
 
 
 Insert into libro (titulo,isbn,editorial,paginas, ano) values ('Fundamentos de bases de datos', '84-481-3654-3', 'McGraw Hill', 787, '2002');
@@ -20,17 +20,17 @@ Insert into ejemplar (ano_compra, localizador)
 Insert into ejemplar (ano_compra, localizador) 
 	values( '2008','dsadt56');
 
-Insert into libro (titulo,isbn,editorial,paginas, ano) values ('Programaci髇 en Java','1-235-25345-6', 'Springer', 300, '2005');
+Insert into libro (titulo,isbn,editorial,paginas, ano) values ('Programaci贸n en Java','1-235-25345-6', 'Springer', 300, '2005');
 Insert into autor (nombre, orden) values ('A.P. Sanchez', 1);
 Insert into autor (nombre, orden) values ('N. Theodoridou', 2);
-Insert into cat_tiene_libro (categoria) values ('Programaci髇');
+Insert into cat_tiene_libro (categoria) values ('Programaci贸n');
 Insert into ejemplar (ano_compra, localizador) 
 	values('2010','fgf5457');
 
 Insert into libro (titulo,isbn,editorial,paginas, ano) values ('Desarrollo de aplicaciones con PHP y PostgreSQL','0-123-12345-6', 'Idea Group Inc.', 120,  '2004');
 Insert into autor (nombre, orden) values ('N. Theodoridou', 1);
 Insert into cat_tiene_libro (categoria) values ('Bases de Datos');
-Insert into cat_tiene_libro (categoria) values ('Programaci髇');
+Insert into cat_tiene_libro (categoria) values ('Programaci贸n');
 Insert into ejemplar (ano_compra, localizador) 
 	values( '2005','dsa3g65');
 Insert into ejemplar( ano_compra, localizador) 

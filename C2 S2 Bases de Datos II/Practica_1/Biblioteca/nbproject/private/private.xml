@@ -3,6 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/FachadaGui.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/formularios/VGesCategorias.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/formularios/VPrincipal.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/formularios/VGesUsuarios.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/aplicacion/controladores/GestionLibros.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/aplicacion/controladores/GestionUsuarios.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/baseDatos/FachadaBaseDatos.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/formularios/VLibro.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/formularios/VPrestamos.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/aplicacion/FachadaAplicacion.java</file>
+            <file>file:/home/alumnogreibd/Universidad/C2%20S2%20Bases%20de%20Datos%20II/Practica_1/Biblioteca/src/gui/formularios/VAutentificacion.java</file>
+        </group>
     </open-files>
 </project-private>
