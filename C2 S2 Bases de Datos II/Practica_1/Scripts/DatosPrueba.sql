@@ -1,5 +1,8 @@
 Insert into categoria values ('Bases de Datos', 'Libros con contenidos relacionados con la tecnología de Sistemas Gestores de Bases de Datos');
 Insert into categoria values ('Programación', 'Libros relacionados con lenguajes y técnicas de programación');
+Insert into categoria values ('Sistemas Operativos', 'Libros relacionados con sistemas operativos');
+Insert into categoria values ('Novela', 'Libros de ficción');
+Insert into categoria values ('Clasicos', 'Libros clásicos de la literatura');
 
 
 Insert into libro (titulo, isbn, editorial, paginas, ano) values ('Fundamentos de bases de datos', '84-481-3654-3', 'McGraw Hill', 787, '2002');
@@ -34,7 +37,24 @@ Insert into cat_tiene_libro (categoria) values ('Programación');
 Insert into ejemplar (ano_compra, localizador) 
 	values ( '2005', 'dsa3g65');
 Insert into ejemplar( ano_compra, localizador) 
-	values ('2011', 'dsa3g89');	
+	values ('2011', 'dsa3g89');
+
+INSERT into libro(titulo, isbn, editorial, paginas, ano) values('Cien años de soledad', '978-84-204-7183-9', 'Real Academia Española', 609, '2007');
+INSERT into autor(nombre, orden) values('Gabriel García Márquez', 1);
+INSERT into cat_tiene_libro(categoria) values('Novela');
+INSERT into cat_tiene_libro(categoria) values('Clasicos');
+INSERT into ejemplar(ano_compra, localizador) values('2009', 'ltr9563');
+
+INSERT into libro(titulo, isbn, editorial, paginas, ano) values('Sistemas operativos modernos', '978-60-744-2046-3', 'Pearson Education', 1076, '2009');
+INSERT into autor(nombre, orden) values('Andrew S. Tanenbaum', 1);
+INSERT into cat_tiene_libro(categoria) values('Sistemas Operativos');
+INSERT into cat_tiene_libro(categoria) values('Programación');
+INSERT into ejemplar(ano_compra, localizador) values('2009', 'ar18223');
+INSERT into ejemplar(ano_compra, localizador) values('2010', 'ar19563');
+INSERT into ejemplar(ano_compra, localizador) values('2011', 'ar19564');
+INSERT into ejemplar(ano_compra, localizador) values('2012', 'ar19565');
+INSERT into ejemplar(ano_compra, localizador) values('2013', 'ar19566');
+
 
 
 insert into usuario values ('JAlvarez', 'pja', 'Juan Alvarez', 'C Blanco Amor', 'JAlvarez@bibdb.es', 'Administrador');

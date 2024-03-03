@@ -8,6 +8,8 @@ package gui.modelos;
 import aplicacion.objetos.Categoria;
 
 import javax.swing.table.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Marcelo Fort Muñoz
@@ -15,11 +17,11 @@ import javax.swing.table.*;
 public class ModeloTablaCategorias extends AbstractTableModel
 {
 
-    private java.util.List<Categoria> categorias;
+    private List<Categoria> categorias;
 
     public ModeloTablaCategorias()
     {
-        this.categorias = new java.util.ArrayList<>();
+        this.categorias = new ArrayList<>();
     }
 
     @Override
@@ -63,7 +65,7 @@ public class ModeloTablaCategorias extends AbstractTableModel
         }
     }
 
-    public void setFilas(java.util.List<Categoria> categorias)
+    public void setFilas(List<Categoria> categorias)
     {
         this.categorias = categorias;
         fireTableDataChanged();

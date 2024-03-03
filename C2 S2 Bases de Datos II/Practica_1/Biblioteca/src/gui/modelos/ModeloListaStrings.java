@@ -5,16 +5,19 @@
 
 package gui.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author basesdatos
  */
 public class ModeloListaStrings extends javax.swing.AbstractListModel
 {
-    java.util.List<String> elementos;
+    List<String> elementos;
 
     public ModeloListaStrings()
     {
-        this.elementos = new java.util.ArrayList<String>();
+        this.elementos = new ArrayList<>();
     }
 
     public int getSize()
@@ -41,13 +44,13 @@ public class ModeloListaStrings extends javax.swing.AbstractListModel
         fireIntervalRemoved(this, i, i);
     }
 
-    public void setElementos(java.util.List<String> elementos)
+    public void setElementos(List<String> elementos)
     {
         this.elementos = elementos;
         fireContentsChanged(this, 0, elementos.size() - 1);
     }
 
-    public java.util.List<String> getElementos()
+    public List<String> getElementos()
     {
         return this.elementos;
     }

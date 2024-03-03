@@ -18,6 +18,7 @@ public class Usuario {
     private String direccion;
     private String email;
     private TipoUsuario tipo;
+//    private Integer numPrestamosVencidos;
 
     public Usuario(String idUsuario, String clave, String nombre, String direccion, String email, TipoUsuario tipo) {
         this.idUsuario = idUsuario;
@@ -26,6 +27,7 @@ public class Usuario {
         this.direccion = direccion;
         this.email = email;
         this.tipo = tipo;
+//        this.numPrestamosVencidos = numPrestamosVencidos;
     }
 
     public String getIdUsuario() {
@@ -58,4 +60,7 @@ public class Usuario {
         return this.tipo;
     }
 
+//    public Object getNumPrestamosVencidos() {
+//        return this.numPrestamosVencidos;
+//    }
 }

@@ -15,8 +15,7 @@ import java.util.List;
 /**
  * @author alumnogreibd
  */
-public class VGesUsuarios extends javax.swing.JDialog
-{
+public class VGesUsuarios extends javax.swing.JDialog {
 
 
     private VPrincipal padre;
@@ -27,8 +26,7 @@ public class VGesUsuarios extends javax.swing.JDialog
     /**
      * Creates new form VGesUsuarios
      */
-    public VGesUsuarios(java.awt.Frame parent, boolean modal, aplicacion.FachadaAplicacion fa)
-    {
+    public VGesUsuarios(java.awt.Frame parent, boolean modal, aplicacion.FachadaAplicacion fa) {
         super(parent, modal);
         this.fa = fa; // Inicializar el objeto fa con la instancia proporcionada
         initComponents();
@@ -183,7 +181,7 @@ public class VGesUsuarios extends javax.swing.JDialog
         });
 
         comboBoxTipoUsuario.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
-        comboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ","Normal", "Administrador" }));
+        comboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{" ", "Normal", "Administrador"}));
         comboBoxTipoUsuario.setSelectedItem("");
         comboBoxTipoUsuario.setMinimumSize(new java.awt.Dimension(100, 23));
         comboBoxTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -195,118 +193,118 @@ public class VGesUsuarios extends javax.swing.JDialog
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(etqId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IdUsuarioBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etqNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombreUsuarioBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnBuscarUsuarios))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(etqEditarNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(etqEditarId1)
-                                        .addGap(26, 26, 26)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIdModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(etqEditarClave)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtClaveModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(etEditarEmail)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEmailModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(47, 47, 47)
-                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(etqEditarTipo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(comboBoxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(etEditarDireccion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDireccionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane1))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(83, 83, 83)
+                                                .addComponent(etqId)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(IdUsuarioBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(etqNombre)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(nombreUsuarioBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(56, 56, 56)
+                                                .addComponent(btnBuscarUsuarios))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(etqEditarNombre)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addComponent(etqEditarId1)
+                                                                                .addGap(26, 26, 26)))
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(txtIdModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addGap(14, 14, 14)
+                                                                                .addComponent(etqEditarClave)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(txtClaveModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addGap(53, 53, 53)
+                                                                                .addComponent(etEditarEmail)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(txtEmailModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addGap(47, 47, 47)
+                                                                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(65, 65, 65)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(etqEditarTipo)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(comboBoxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(etEditarDireccion)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(txtDireccionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(80, 80, 80)
+                                                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarUsuarios, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nombreUsuarioBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etqNombre)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(etqId))
-                            .addComponent(IdUsuarioBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtClaveModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etqEditarClave)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(etqEditarTipo)
-                                .addComponent(comboBoxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etqEditarId1)
-                            .addComponent(txtIdModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDireccionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etEditarDireccion)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtEmailModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etEditarEmail, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(etqEditarNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnBuscarUsuarios, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(nombreUsuarioBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(etqNombre)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(2, 2, 2)
+                                                                .addComponent(etqId))
+                                                        .addComponent(IdUsuarioBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(25, 25, 25)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txtClaveModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(etqEditarClave)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(etqEditarTipo)
+                                                                .addComponent(comboBoxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(30, 30, 30)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(etqEditarId1)
+                                                        .addComponent(txtIdModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtDireccionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(etEditarDireccion)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtEmailModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(etEditarEmail, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addComponent(etqEditarNombre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnBorrarUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
         );
 
         btnSalir.getAccessibleContext().setAccessibleDescription("Salir del menu de gestion de usuarios");
@@ -321,33 +319,27 @@ public class VGesUsuarios extends javax.swing.JDialog
         comboBoxTipoUsuario.getAccessibleContext().setAccessibleDescription("Caja de seleccion que permite escoger tipo de usuario");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IdUsuarioBusquedaActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_IdUsuarioBusquedaActionPerformed
+    private void IdUsuarioBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdUsuarioBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IdUsuarioBusquedaActionPerformed
 
-    private void nombreUsuarioBusquedaActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_nombreUsuarioBusquedaActionPerformed
+    private void nombreUsuarioBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreUsuarioBusquedaActionPerformed
 
-    private void btnBuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_btnBuscarUsuariosActionPerformed
+    private void btnBuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuariosActionPerformed
         // TODO add your handling code here:
         buscarUsuarios();
     }//GEN-LAST:event_btnBuscarUsuariosActionPerformed
 
-    private void nombreUsuarioBusquedaKeyTyped(java.awt.event.KeyEvent evt)
-    {//GEN-FIRST:event_nombreUsuarioBusquedaKeyTyped
-        if (evt.getKeyChar() == '\n')
-        {
+    private void nombreUsuarioBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreUsuarioBusquedaKeyTyped
+        if (evt.getKeyChar() == '\n') {
             buscarUsuarios();
         }
     }//GEN-LAST:event_nombreUsuarioBusquedaKeyTyped
 
     private void IdUsuarioBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdUsuarioBusquedaKeyTyped
-        if (evt.getKeyChar() == '\n')
-        {
+        if (evt.getKeyChar() == '\n') {
             buscarUsuarios();
         }
     }//GEN-LAST:event_IdUsuarioBusquedaKeyTyped
@@ -370,10 +362,10 @@ public class VGesUsuarios extends javax.swing.JDialog
         int filaSeleccionada = tablaUsuarios.getSelectedRow();
 
         Usuario usuarioSeleccionado = ((ModeloTablaUsuarios) tablaUsuarios.getModel()).obtenerUsuario(filaSeleccionada);
-        txtIdModificar.setText((String) tablaUsuarios.getValueAt(filaSeleccionada,0));
+        txtIdModificar.setText((String) tablaUsuarios.getValueAt(filaSeleccionada, 0));
         txtClaveModificar.setText(usuarioSeleccionado.getClave());
-        txtNombreModificar.setText((String) tablaUsuarios.getValueAt(filaSeleccionada,1));
-        txtEmailModificar.setText((String) tablaUsuarios.getValueAt(filaSeleccionada,2));
+        txtNombreModificar.setText((String) tablaUsuarios.getValueAt(filaSeleccionada, 1));
+        txtEmailModificar.setText((String) tablaUsuarios.getValueAt(filaSeleccionada, 2));
         int indiceCajaSeleccion = usuarioSeleccionado.getTipoUsuario().toString().equals("Normal") ? 1 : 2;
         comboBoxTipoUsuario.setSelectedIndex(indiceCajaSeleccion);
         txtDireccionModificar.setText(usuarioSeleccionado.getDireccion());
@@ -399,44 +391,39 @@ public class VGesUsuarios extends javax.swing.JDialog
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         String id = txtIdModificar.getText();
-        if(id.isBlank())
-        {
+        if (id.isBlank()) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: No se pueden dejar la ID vacía");
             return;
         }
 
         String clave = txtClaveModificar.getText();
-        if(clave.isBlank())
-        {
+        if (clave.isBlank()) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: No se pueden dejar la clave vacía");
             return;
         }
 
         String nombre = txtNombreModificar.getText();
-        if(nombre.isBlank())
-        {
+        if (nombre.isBlank()) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: No se pueden dejar el nombre vacío");
             return;
-        }else if (nombre.split(" ").length < 2)
-        {
+        }
+        else if (nombre.split(" ").length < 2) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: El nombre debe tener al menos un apellido");
             return;
         }
 
         String email = txtEmailModificar.getText();
-        if(email.isBlank())
-        {
+        if (email.isBlank()) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: No se pueden dejar el email vacío");
             return;
         }
 
         String tipo = comboBoxTipoUsuario.getSelectedItem().toString();//txtTipoModificar.getText();
-        if(tipo.isBlank())
-        {
+        if (tipo.isBlank()) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: No se pueden dejar el tipo vacío");
             return;
-        }else if(!Arrays.toString(TipoUsuario.values()).contains(tipo))
-        {
+        }
+        else if (!Arrays.toString(TipoUsuario.values()).contains(tipo)) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: El tipo de usuario no es válido");
             return;
         }
@@ -444,12 +431,11 @@ public class VGesUsuarios extends javax.swing.JDialog
         String direccion = txtDireccionModificar.getText();
 
 
-        Usuario usuarioAguardar= new Usuario(id, clave, nombre, direccion, email, TipoUsuario.valueOf(tipo));
-        if(!btnNuevoUsuario.isEnabled())
-        {
+        Usuario usuarioAguardar = new Usuario(id, clave, nombre, direccion, email, TipoUsuario.valueOf(tipo));
+        if (!btnNuevoUsuario.isEnabled()) {
             fa.insertarUsuario(usuarioAguardar);
-        }else
-        {
+        }
+        else {
             fa.actualizarUsuario(usuarioAguardar);
         }
 
@@ -457,19 +443,16 @@ public class VGesUsuarios extends javax.swing.JDialog
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void comboBoxTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_comboBoxTipoUsuarioActionPerformed
+    private void comboBoxTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTipoUsuarioActionPerformed
     }//GEN-LAST:event_comboBoxTipoUsuarioActionPerformed
 
-    private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
+    private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
         // TODO: Si tiene prestamos pendientes, no se puede borrar
         fa.borrarUsuario(txtIdModificar.getText());
         buscarUsuarios();
     }//GEN-LAST:event_btnBorrarUsuarioActionPerformed
 
-    private void vaciarCampos()
-    {
+    private void vaciarCampos() {
         txtIdModificar.setText("");
         txtClaveModificar.setText("");
         txtNombreModificar.setText("");
@@ -505,8 +488,7 @@ public class VGesUsuarios extends javax.swing.JDialog
     private java.awt.TextField txtNombreModificar;
     // End of variables declaration//GEN-END:variables
 
-    public void buscarUsuarios()
-    {
+    public void buscarUsuarios() {
         ModeloTablaUsuarios m;
         //jTable1.setModel(new gui.modelos.ModeloTablaUsuarios());
         m = (ModeloTablaUsuarios) tablaUsuarios.getModel();
@@ -514,8 +496,7 @@ public class VGesUsuarios extends javax.swing.JDialog
         List<Usuario> datos = fa.obtenerUsuarios(IdUsuarioBusqueda.getText(), nombreUsuarioBusqueda.getText());
 
         m.setFilas(fa.obtenerUsuarios(IdUsuarioBusqueda.getText(), nombreUsuarioBusqueda.getText()));
-        if (m.getRowCount() > 0)
-        {
+        if (m.getRowCount() > 0) {
             tablaUsuarios.setRowSelectionInterval(0, 0);
         }
 

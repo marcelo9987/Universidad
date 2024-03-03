@@ -49,43 +49,43 @@ for each row execute procedure controla_secuencias_libro();
 
 Create table autor
 (
- libro integer default currval('seq_libro_id_libro') not null,
- nombre varchar(100) not null,
+ id_libro integer default currval('seq_libro_id_libro') not null,
+ nombre varchar(60) not null, -- Cambio de 100 a 60
  orden integer not null,
 
- primary key (libro, nombre),
- foreign key (libro) references libro (id_libro)
+ primary key (id_libro, nombre),
+ foreign key (id_libro) references libro(id_libro)
    on delete cascade on update cascade
 );
 
 Create table cat_tiene_libro
 (
   categoria varchar(60) not null,
-  libro integer default currval('seq_libro_id_libro') not null,
+  id_libro integer default currval('seq_libro_id_libro') not null,
 
-  primary key (categoria,libro),
+  primary key (categoria,id_libro),
   foreign key (categoria) references categoria(nombre)
     on delete restrict on update cascade,
-  foreign key (libro) references libro(id_libro)
+  foreign key (id_libro) references libro(id_libro)
     on delete cascade on update cascade
 );
 
 create table ejemplar
 (
- libro integer default currval('seq_libro_id_libro') not null,
+ id_libro integer default currval('seq_libro_id_libro') not null,
  num_ejemplar integer not null,
  ano_compra varchar(4) not null,
  localizador varchar(25) not null,
  
- primary key (libro, num_ejemplar),
- foreign key (libro) references libro(id_libro)
+ primary key (id_libro, num_ejemplar),
+ foreign key (id_libro) references libro(id_libro)
    on delete restrict on update cascade
 );
 
 
 create or replace function introduce_num_ejemplar() returns trigger as $csl$
 begin
-  new.num_ejemplar:=nextval('seq_ejemplares_libro_'||cast(new.libro as text));
+  new.num_ejemplar:=nextval('seq_ejemplares_libro_'||cast(new.id_libro as text));
   return new;
 end;
 $csl$ Language plpgsql;
@@ -110,12 +110,12 @@ create table prestamo
 (
     id_libro         integer default currval('seq_libro_id_libro'::regclass) not null,
     num_ejemplar     integer                                                 not null,
-    usuario          varchar(10)                                             not null
+    id_usuario       varchar(10)                                             not null
         references usuario
             on update cascade on delete restrict,
     fecha_prestamo   date    default CURRENT_DATE                            not null,
     fecha_devolucion date,
-    primary key (usuario, id_libro, num_ejemplar, fecha_prestamo),
+    primary key (id_usuario, id_libro, num_ejemplar, fecha_prestamo),
     constraint prestamo_libro_ejemplar_fkey
         foreign key (id_libro, num_ejemplar) references ejemplar
             on update cascade on delete restrict

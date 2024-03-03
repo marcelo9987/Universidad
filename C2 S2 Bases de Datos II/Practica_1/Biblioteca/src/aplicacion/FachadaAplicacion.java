@@ -7,10 +7,7 @@ package aplicacion;
 
 import aplicacion.controladores.GestionLibros;
 import aplicacion.controladores.GestionUsuarios;
-import aplicacion.objetos.Categoria;
-import aplicacion.objetos.Ejemplar;
-import aplicacion.objetos.Libro;
-import aplicacion.objetos.Usuario;
+import aplicacion.objetos.*;
 import baseDatos.FachadaBaseDatos;
 
 import java.util.List;
@@ -48,7 +45,7 @@ public class FachadaAplicacion {
         fgui.muestraExcepcion(e);
     }
 
-    public java.util.List<Libro> obtenerLibros(Integer id, String titulo, String isbn, String autor) {
+    public List<Libro> obtenerLibros(Integer id, String titulo, String isbn, String autor) {
         return cl.obtenerLibros(id, titulo, isbn, autor);
     }
 
@@ -61,6 +58,10 @@ public class FachadaAplicacion {
      */
     public List<Usuario> obtenerUsuarios(String id, String nombre) {
         return cu.consultarUsuarios(id, nombre);
+    }
+
+    public Integer obtenerNumPrestamosVencidosPorUsuario(String idUsuario) {
+        return cu.consultarNumPrestamosVencidosPorUsuario(idUsuario);
     }
 
     public List<Categoria> obtenerCategorias() {
@@ -95,12 +96,12 @@ public class FachadaAplicacion {
         cl.borrarLibro(idLibro);
     }
 
-    public void actualizarCategoriasLibro(Integer idLibro, java.util.List<String> categorias) {
+    public void actualizarCategoriasLibro(Integer idLibro, List<String> categorias) {
         cl.actualizarCategoriasLibro(idLibro, categorias);
     }
 
-    public java.util.List<Ejemplar> actualizarEjemplaresLibro(Integer idLibro, java.util.List<Ejemplar> ejemplares, java.util.List<Integer> borrar) {
-        return cl.actualizarEjemplaresLibro(idLibro, ejemplares, borrar);
+    public void actualizarEjemplaresLibro(Integer idLibro, List<Ejemplar> ejemplares, List<Integer> borrar) {
+         /*return*/cl.actualizarEjemplaresLibro(idLibro, ejemplares, borrar);
     }
 
 
@@ -120,6 +121,7 @@ public class FachadaAplicacion {
         cu.borrarUsuario(text);
     }
 
+
     public void insertarCategoria(Categoria c) {
         fbd.insertarCategoria(c);
     }
@@ -132,9 +134,18 @@ public class FachadaAplicacion {
         return cl.tienePrestamos(idLibro);
     }
 
-    public FachadaBaseDatos getFachadaBaseDeDatos() {
-        return fbd;
+//    public FachadaBaseDatos getFachadaBaseDeDatos() {
+//        return fbd;
+//    }
+
+    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
+        return cl.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
     }
+
+    public Libro consultarLibro(Integer idLibro) {
+        return cl.consultarLibro(idLibro);
+    }
+
 
 /*
 

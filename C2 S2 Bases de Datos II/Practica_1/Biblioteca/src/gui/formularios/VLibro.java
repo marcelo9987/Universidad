@@ -13,8 +13,14 @@ package gui.formularios;
 
 import aplicacion.objetos.Libro;
 import aplicacion.objetos.Ejemplar;
+import aplicacion.objetos.Prestamo;
 import gui.modelos.ModeloListaStrings;
 import gui.modelos.ModeloTablaEjemplares;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author basesdatos
@@ -22,24 +28,34 @@ import gui.modelos.ModeloTablaEjemplares;
 public class VLibro extends javax.swing.JDialog {
 
     private Integer idLibro;
-    private java.util.List<Integer> ejemplaresBorrados;
+    private List<Integer> ejemplaresBorrados;
     private VPrincipal padre;
     private aplicacion.FachadaAplicacion fa;
 
     /**
      * Creates new form VLibro
      */
-    public VLibro(java.awt.Frame parent, boolean modal, aplicacion.FachadaAplicacion fa, java.util.List<String> restoCategorias) {
+
+    // Constructor para libros aún NO existentes en la BD
+    public VLibro(java.awt.Frame parent, boolean modal, aplicacion.FachadaAplicacion fa, List<String> restoCategorias) {
         super(parent, modal);
         this.fa = fa;
         initComponents();
-        padre = (VPrincipal) parent;
+        this.padre = (VPrincipal) parent;
+
+        this.idLibro = null;
+
+        // --
+
+        // --
+
         btnActualizarCategoriasLibro.setEnabled(false);
         btnActualizarEjemplaresLibro.setEnabled(false);
         btnBorrarLibro.setEnabled(false);
-        this.idLibro = null;
-        this.ejemplaresBorrados = new java.util.ArrayList<Integer>();
 
+        // --
+
+        // Categorías no seleccionadas
         ModeloListaStrings mListaRC = new ModeloListaStrings();
         lstRestoCategorias.setModel(mListaRC);
         mListaRC.setElementos(restoCategorias);
@@ -51,22 +67,42 @@ public class VLibro extends javax.swing.JDialog {
             btnDerecha.setEnabled(false);
         }
 
+        // --
+
+        // Categorías seleccionadas
         btnIzquierda.setEnabled(false);
+
+        // --
+
+        // Ejemplares
         btnBorrarEjemplar.setEnabled(false);
+
+        this.ejemplaresBorrados = new ArrayList<>();
+
+        // --
     }
 
-    public VLibro(java.awt.Frame parent, boolean modal, aplicacion.FachadaAplicacion fa, Libro libro, java.util.List<String> categorias, java.util.List<String> restoCategorias) {
+    // Constructor para libros ya existentes en la BD
+    public VLibro(java.awt.Frame parent, boolean modal, aplicacion.FachadaAplicacion fa, Libro libro, Map<Integer, Prestamo> prestamosActivos, List<String> categorias, List<String> restoCategorias) {
         super(parent, modal);
         this.fa = fa;
         initComponents();
-        padre = (VPrincipal) parent;
-        idLibro = libro.getIdLibro();
+        this.padre = (VPrincipal) parent;
+
+        this.idLibro = libro.getIdLibro();
+
+        // --
+        // Datos básios del libro
         textoAno.setText(libro.getAno());
         textoEditorial.setText(libro.getEditorial());
         textoIsbn.setText(libro.getIsbn());
         textoPaginas.setText((libro.getPaginas()).toString());
         textoTitulo.setText(libro.getTitulo());
         textoId.setText(idLibro.toString());
+
+        // --
+
+        // --
 
         ModeloListaStrings mListaAutores = new ModeloListaStrings();
         lstAutores.setModel(mListaAutores);
@@ -79,6 +115,9 @@ public class VLibro extends javax.swing.JDialog {
             btnBorrarAutor.setEnabled(false);
         }
 
+        // --
+
+        // Categorías no seleccionadas
         ModeloListaStrings mListaRC = new ModeloListaStrings();
         lstRestoCategorias.setModel(mListaRC);
         mListaRC.setElementos(restoCategorias);
@@ -90,6 +129,9 @@ public class VLibro extends javax.swing.JDialog {
             btnDerecha.setEnabled(false);
         }
 
+        // --
+
+        // Categorías seleccionadas
         ModeloListaStrings mListaC = new ModeloListaStrings();
         lstCategoriasLibro.setModel(mListaC);
         mListaC.setElementos(categorias);
@@ -101,10 +143,15 @@ public class VLibro extends javax.swing.JDialog {
             btnIzquierda.setEnabled(false);
         }
 
+        // --
+
+        // Ejemplares
         ModeloTablaEjemplares mTEjemplares = new ModeloTablaEjemplares();
 //        ModeloTablaEjemplares mTEjemplares = new ModeloTablaEjemplares(fa.getFachadaBaseDeDatos());
         tablaEjemplares.setModel(mTEjemplares);
-        mTEjemplares.setFilas(libro.getEjemplares());
+
+        mTEjemplares.setFilas(libro.getEjemplares(), prestamosActivos);
+
         if (mTEjemplares.getRowCount() > 0) {
             tablaEjemplares.setRowSelectionInterval(0, 0);
             btnBorrarEjemplar.setEnabled(true);
@@ -113,7 +160,9 @@ public class VLibro extends javax.swing.JDialog {
             btnBorrarEjemplar.setEnabled(false);
         }
 
-        this.ejemplaresBorrados = new java.util.ArrayList<Integer>();
+        this.ejemplaresBorrados = new ArrayList<>();
+
+        // --
     }
 
     /**
@@ -299,7 +348,7 @@ public class VLibro extends javax.swing.JDialog {
                                 .addContainerGap())
         );
 
-        panelLibro.addTab("id_libro", panelGeneralAutores);
+        panelLibro.addTab("Libro", panelGeneralAutores);
 
         jLabel8.setText("Categorías disponibles");
 
@@ -609,11 +658,29 @@ public class VLibro extends javax.swing.JDialog {
 
     private void btnActualizarEjemplaresLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEjemplaresLibroActionPerformed
         // TODO add your handling code here:
-        java.util.List<Ejemplar> ejemplares;
-        ModeloTablaEjemplares me = (ModeloTablaEjemplares) tablaEjemplares.getModel();
-        ejemplares = fa.actualizarEjemplaresLibro(idLibro, me.getFilas(), ejemplaresBorrados);
-        me.setFilas(ejemplares);
-        if (me.getRowCount() > 0) {
+
+        ModeloTablaEjemplares mTEjemplares = (ModeloTablaEjemplares) tablaEjemplares.getModel();
+        /*List<Ejemplar> ejemplares = */fa.actualizarEjemplaresLibro(idLibro, mTEjemplares.getFilas(), ejemplaresBorrados);
+
+
+        Libro libro = fa.consultarLibro(idLibro);
+//        return fbd.consultarEjemplaresLibro(idLibro);
+        List<Ejemplar> ejemplares = libro.getEjemplares();
+
+        // --
+
+        Map<Integer, Prestamo> prestamosActivos = new HashMap<>();
+        for (Ejemplar ejemplarActual : ejemplares) {
+            prestamosActivos.put(ejemplarActual.getNumEjemplar(), fa.consultarPrestamoActivoParaEjemplar(ejemplarActual.getLibro().getIdLibro(), ejemplarActual.getNumEjemplar()));
+        }
+
+        // --
+
+        mTEjemplares.setFilas(ejemplares, prestamosActivos);
+
+        // --
+
+        if (mTEjemplares.getRowCount() > 0) {
             tablaEjemplares.setRowSelectionInterval(0, 0);
             btnBorrarEjemplar.setEnabled(true);
         }
@@ -624,25 +691,26 @@ public class VLibro extends javax.swing.JDialog {
 
     private void btnNuevoEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEjemplarActionPerformed
         // TODO add your handling code here:
-        ModeloTablaEjemplares me;
+        ModeloTablaEjemplares mTEjemplares;
         Ejemplar e;
 
-        me = (ModeloTablaEjemplares) tablaEjemplares.getModel();
-        e = new Ejemplar(null, null, null, null, null);
-        me.nuevoEjemplar(e);
-        tablaEjemplares.setRowSelectionInterval(me.getRowCount() - 1, me.getRowCount() - 1);
+        mTEjemplares = (ModeloTablaEjemplares) tablaEjemplares.getModel();
+        // TODO: Revisar este caso
+        e = new Ejemplar(null, null, null, null);
+        mTEjemplares.nuevoEjemplar(e);
+        tablaEjemplares.setRowSelectionInterval(mTEjemplares.getRowCount() - 1, mTEjemplares.getRowCount() - 1);
         btnBorrarEjemplar.setEnabled(true);
     }//GEN-LAST:event_btnNuevoEjemplarActionPerformed
 
     private void btnBorrarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarEjemplarActionPerformed
         // TODO add your handling code here:
-        ModeloTablaEjemplares me;
-        me = (ModeloTablaEjemplares) tablaEjemplares.getModel();
-        if (me.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar() != null) {
-            ejemplaresBorrados.add(me.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar());
+        ModeloTablaEjemplares mTEjemplares;
+        mTEjemplares = (ModeloTablaEjemplares) tablaEjemplares.getModel();
+        if (mTEjemplares.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar() != null) {
+            ejemplaresBorrados.add(mTEjemplares.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar());
         }
-        me.borrarEjemplar(tablaEjemplares.getSelectedRow());
-        if (me.getRowCount() == 0) {
+        mTEjemplares.borrarEjemplar(tablaEjemplares.getSelectedRow());
+        if (mTEjemplares.getRowCount() == 0) {
             btnBorrarEjemplar.setEnabled(false);
         }
         else {

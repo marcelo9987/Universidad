@@ -10,6 +10,9 @@ import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Libro;
 import aplicacion.objetos.Prestamo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.sql.*;
 
 /**
@@ -22,8 +25,8 @@ public class DAOLibros extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
 
-    public java.util.List<Libro> consultarCatalogo(Integer id, String titulo, String isbn, String autor) {
-        java.util.List<Libro> resultado = new java.util.ArrayList<Libro>();
+    public List<Libro> consultarCatalogo(Integer id, String titulo, String isbn, String autor) {
+        List<Libro> resultado = new ArrayList<>();
         Libro libroActual;
         Connection con;
         PreparedStatement stmCatalogo = null;
@@ -43,8 +46,8 @@ public class DAOLibros extends AbstractDAO {
 
         if (!autor.isEmpty()) {
             consulta = consulta + "  and exists (select * " +
-                    "              from autor " +
-                    "              where libro=l.id_libro" +
+                    "              from autor a" +
+                    "              where a.id_libro=l.id_libro" +
                     "                and nombre like ?)";
         }
 
@@ -63,7 +66,7 @@ public class DAOLibros extends AbstractDAO {
                 try {
                     stmAutores = con.prepareStatement("select nombre as autor " +
                             "from autor " +
-                            "where libro = ? " +
+                            "where id_libro = ? " +
                             "order by orden");
                     stmAutores.setInt(1, libroActual.getIdLibro());
                     rsAutores = stmAutores.executeQuery();
@@ -74,7 +77,9 @@ public class DAOLibros extends AbstractDAO {
                     System.out.println(e.getMessage());
                     this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
                 } finally {
-                    stmAutores.close();
+                    if (stmAutores != null) {
+                        stmAutores.close();
+                    }
                 }
                 resultado.add(libroActual);
             }
@@ -84,7 +89,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmCatalogo.close();
+                if (stmCatalogo != null) {
+                    stmCatalogo.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -120,7 +127,7 @@ public class DAOLibros extends AbstractDAO {
                 try {
                     stmAutores = con.prepareStatement("select nombre as autor " +
                             "from autor " +
-                            "where libro = ? " +
+                            "where id_libro = ? " +
                             "order by orden");
                     stmAutores.setInt(1, libroResultado.getIdLibro());
                     rsAutores = stmAutores.executeQuery();
@@ -131,12 +138,14 @@ public class DAOLibros extends AbstractDAO {
                     System.out.println(e.getMessage());
                     this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
                 } finally {
-                    stmAutores.close();
+                    if (stmAutores != null) {
+                        stmAutores.close();
+                    }
                 }
                 try {
                     stmCategorias = con.prepareStatement("select categoria " +
                             "from cat_tiene_libro " +
-                            "where libro = ?");
+                            "where id_libro = ?");
                     stmCategorias.setInt(1, libroResultado.getIdLibro());
                     rsCategorias = stmCategorias.executeQuery();
                     while (rsCategorias.next()) {
@@ -146,34 +155,39 @@ public class DAOLibros extends AbstractDAO {
                     System.out.println(e.getMessage());
                     this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
                 } finally {
-                    stmCategorias.close();
+                    if (stmCategorias != null) {
+                        stmCategorias.close();
+                    }
                 }
                 try {
 //                    stmEjemplares = con.prepareStatement("select libro, num_ejemplar, ano_compra, localizador " +
 //                            "from ejemplar " +
 //                            "where libro = ?");
-                    stmEjemplares = con.prepareStatement("select e.id_libro, e.num_ejemplar, e.ano_compra, e.localizador, p.fecha_prestamo, p.usuario, p.fecha_devolucion " +
+                    stmEjemplares = con.prepareStatement("select e.id_libro, e.num_ejemplar, e.ano_compra, e.localizador, p.fecha_prestamo, p.id_usuario, p.fecha_devolucion " +
                             "from ejemplar e left join prestamo p on p.id_libro = e.id_libro and p.num_ejemplar = e.num_ejemplar and p.fecha_devolucion is null " +
                             "where e.id_libro = ?");
                     stmEjemplares.setInt(1, libroResultado.getIdLibro());
                     rsEjemplares = stmEjemplares.executeQuery();
                     while (rsEjemplares.next()) {
+                        /*
                         Prestamo prestamoActivo;
                         if(rsEjemplares.getString("id_usuario") != null) {
                             prestamoActivo = new Prestamo(rsEjemplares.getInt("id_libro"), rsEjemplares.getInt("num_ejemplar"), rsEjemplares.getString("id_usuario"), rsEjemplares.getString("fecha_prestamo"), rsEjemplares.getString("fecha_devolucion"));
                         } else {
                             prestamoActivo = null;
                         }
+                        */
                         libroResultado.addEjemplar(new Ejemplar(libroResultado, rsEjemplares.getInt("num_ejemplar"),
                                 rsEjemplares.getString("localizador"),
-                                rsEjemplares.getString("ano_compra")
-                                , prestamoActivo));
+                                rsEjemplares.getString("ano_compra") /*, prestamoActivo*/));
                     }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
                     this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
                 } finally {
-                    stmEjemplares.close();
+                    if (stmEjemplares != null) {
+                        stmEjemplares.close();
+                    }
                 }
             }
 
@@ -182,7 +196,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmLibro.close();
+                if (stmLibro != null) {
+                    stmLibro.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -190,8 +206,8 @@ public class DAOLibros extends AbstractDAO {
         return libroResultado;
     }
 
-    public java.util.List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
-        java.util.List<Ejemplar> resultado = new java.util.ArrayList<Ejemplar>();
+    public List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
+        List<Ejemplar> resultado = new ArrayList<>();
         Connection con;
         PreparedStatement stmEjemplares = null;
         ResultSet rsEjemplares;
@@ -208,7 +224,7 @@ public class DAOLibros extends AbstractDAO {
             while (rsEjemplares.next()) {
                 resultado.add(new Ejemplar(null, rsEjemplares.getInt("num_ejemplar"),
                         rsEjemplares.getString("localizador"),
-                        rsEjemplares.getString("ano_compra"), null));
+                        rsEjemplares.getString("ano_compra") /*, null*/));
             }
 
 
@@ -217,7 +233,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmEjemplares.close();
+                if (stmEjemplares != null) {
+                    stmEjemplares.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -226,8 +244,8 @@ public class DAOLibros extends AbstractDAO {
     }
 
 
-    public java.util.List<String> obtenerRestoCategorias(Integer idLibro) {
-        java.util.List<String> resultado = new java.util.ArrayList<String>();
+    public List<String> obtenerRestoCategorias(Integer idLibro) {
+        List<String> resultado = new ArrayList<>();
         String categoriaActual;
         Connection con;
         PreparedStatement stmCategorias = null;
@@ -241,7 +259,7 @@ public class DAOLibros extends AbstractDAO {
                     "from categoria c " +
                     "where not exists (select *  " +
                     "		  from cat_tiene_libro cl " +
-                    "		  where cl.libro=? and cl.categoria=c.nombre)");
+                    "		  where cl.id_libro=? and cl.categoria=c.nombre)");
             stmCategorias.setInt(1, idLibro);
             rsCategorias = stmCategorias.executeQuery();
             while (rsCategorias.next()) {
@@ -254,7 +272,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmCategorias.close();
+                if (stmCategorias != null) {
+                    stmCategorias.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -292,11 +312,13 @@ public class DAOLibros extends AbstractDAO {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             } finally {
-                stmIdLibro.close();
+                if (stmIdLibro != null) {
+                    stmIdLibro.close();
+                }
             }
 
             try {
-                stmAutores = con.prepareStatement("insert into autor(libro, nombre, orden) " +
+                stmAutores = con.prepareStatement("insert into autor(id_libro, nombre, orden) " +
                         "values (?,?,?)");
                 numAutor = 1;
                 for (String s : libro.getAutores()) {
@@ -310,14 +332,18 @@ public class DAOLibros extends AbstractDAO {
                 System.out.println(e.getMessage());
                 this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
             } finally {
-                stmAutores.close();
+                if (stmAutores != null) {
+                    stmAutores.close();
+                }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmLibro.close();
+                if (stmLibro != null) {
+                    stmLibro.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -376,7 +402,7 @@ public class DAOLibros extends AbstractDAO {
 
 
             try {
-                stmBorrado = con.prepareStatement("delete from autor where libro=?");
+                stmBorrado = con.prepareStatement("delete from autor where id_libro=?");
                 stmBorrado.setInt(1, libro.getIdLibro());
                 stmBorrado.executeUpdate();
             } catch (SQLException e) {
@@ -388,7 +414,7 @@ public class DAOLibros extends AbstractDAO {
 
 
             try {
-                stmAutores = con.prepareStatement("insert into autor (libro, nombre, orden) " +
+                stmAutores = con.prepareStatement("insert into autor (id_libro, nombre, orden) " +
                         "values (?,?,?)");
                 numAutor = 1;
                 for (String s : libro.getAutores()) {
@@ -402,7 +428,9 @@ public class DAOLibros extends AbstractDAO {
                 System.out.println(e.getMessage());
                 this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
             } finally {
-                stmAutores.close();
+                if (stmAutores != null) {
+                    stmAutores.close();
+                }
             }
 
 
@@ -411,14 +439,16 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmLibro.close();
+                if (stmLibro != null) {
+                    stmLibro.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
         }
     }
 
-    public void modificarCategoriasLibro(Integer idLibro, java.util.List<String> categorias) {
+    public void modificarCategoriasLibro(Integer idLibro, List<String> categorias) {
         Connection con;
         PreparedStatement stmBorrado = null;
         PreparedStatement stmInsercion = null;
@@ -426,7 +456,7 @@ public class DAOLibros extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmBorrado = con.prepareStatement("delete from cat_tiene_libro where libro = ?");
+            stmBorrado = con.prepareStatement("delete from cat_tiene_libro where id_libro = ?");
             stmBorrado.setInt(1, idLibro);
             stmBorrado.executeUpdate();
         } catch (SQLException e) {
@@ -434,13 +464,15 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmBorrado.close();
+                if (stmBorrado != null) {
+                    stmBorrado.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
         }
         try {
-            stmInsercion = con.prepareStatement("insert into cat_tiene_libro(libro, categoria) values (?,?)");
+            stmInsercion = con.prepareStatement("insert into cat_tiene_libro(id_libro, categoria) values (?,?)");
             for (String c : categorias) {
                 stmInsercion.setInt(1, idLibro);
                 stmInsercion.setString(2, c);
@@ -451,8 +483,12 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmBorrado.close();
-                stmInsercion.close();
+                if (stmBorrado != null) {
+                    stmBorrado.close();
+                }
+                if (stmInsercion != null) {
+                    stmInsercion.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -478,14 +514,16 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmEjemplar.close();
+                if (stmEjemplar != null) {
+                    stmEjemplar.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
         }
     }
 
-    public void borrarEjemplaresLibro(Integer idLibro, java.util.List<Integer> numsEjemplar) {
+    public void borrarEjemplaresLibro(Integer idLibro, List<Integer> numsEjemplar) {
         Connection con;
         PreparedStatement stmEjemplar = null;
 
@@ -503,7 +541,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmEjemplar.close();
+                if (stmEjemplar != null) {
+                    stmEjemplar.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -532,7 +572,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmEjemplar.close();
+                if (stmEjemplar != null) {
+                    stmEjemplar.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -565,7 +607,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmTienePrestamos.close();
+                if (stmTienePrestamos != null) {
+                    stmTienePrestamos.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -596,7 +640,9 @@ public class DAOLibros extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmTieneEjemplares.close();
+                if (stmTieneEjemplares != null) {
+                    stmTieneEjemplares.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }

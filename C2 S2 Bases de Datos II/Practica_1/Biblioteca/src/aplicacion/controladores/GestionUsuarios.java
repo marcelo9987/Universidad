@@ -47,6 +47,7 @@ public class GestionUsuarios {
         if (usuario.getIdUsuario().isBlank()) {
             String nombreYapellidos = usuario.getNombre();
             String nombreSinApellidos = nombreYapellidos.split(" ")[0];
+            // TODO: Chequer si el id se tiene que permitir crear por el usuario o bien se genera automáticamente
             String idUsuario = nombreSinApellidos.charAt(0) + usuario.getNombre().split(" ")[1];
             Usuario usuarioConId = new Usuario(idUsuario, usuario.getClave(), usuario.getNombre(), usuario.getDireccion(), usuario.getEmail(), usuario.getTipoUsuario());
             fbd.insertarUsuario(usuarioConId);
@@ -63,5 +64,9 @@ public class GestionUsuarios {
 
     public void borrarUsuario(String text) {
         fbd.borrarUsuario(text);
+    }
+
+    public Integer consultarNumPrestamosVencidosPorUsuario(String idUsuario) {
+        return fbd.consultarNumPrestamosVencidosPorUsuario(idUsuario);
     }
 }

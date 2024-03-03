@@ -8,17 +8,19 @@ package gui.modelos;
 import aplicacion.objetos.Libro;
 
 import javax.swing.table.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author basesdatos
  */
 public class ModeloTablaLibros extends AbstractTableModel
 {
-    private java.util.List<Libro> libros;
+    private List<Libro> libros;
 
     public ModeloTablaLibros()
     {
-        this.libros = new java.util.ArrayList<Libro>();
+        this.libros = new ArrayList<>();
     }
 
     public int getColumnCount()
@@ -114,7 +116,7 @@ public class ModeloTablaLibros extends AbstractTableModel
         return resultado;
     }
 
-    public void setFilas(java.util.List<Libro> libros)
+    public void setFilas(List<Libro> libros)
     {
         this.libros = libros;
         fireTableDataChanged();

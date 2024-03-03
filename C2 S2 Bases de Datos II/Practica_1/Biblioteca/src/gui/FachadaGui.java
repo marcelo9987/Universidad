@@ -6,7 +6,12 @@ package gui;
 
 import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Libro;
+import aplicacion.objetos.Prestamo;
 import gui.formularios.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author alumno
@@ -33,21 +38,21 @@ public class FachadaGui
     }
 
 
-    public void visualizaLibro(Libro l, java.util.List<String> restoCategorias)
+    public void visualizaLibro(Libro l, Map<Integer, Prestamo> prestamosActivos, List<String> restoCategorias)
     {
         VLibro vl;
-        java.util.List<String> categorias = new java.util.ArrayList<String>();
+        List<String> categorias = new ArrayList<>();
 
         for (Categoria c : l.getCategorias())
         {
             categorias.add(c.getNombre());
         }
 
-        vl = new VLibro(vp, true, fa, l, categorias, restoCategorias);
+        vl = new VLibro(vp, true, fa, l, prestamosActivos, categorias, restoCategorias);
         vl.setVisible(true);
     }
 
-    public void nuevoLibro(java.util.List<String> restoCategorias)
+    public void nuevoLibro(List<String> restoCategorias)
     {
         VLibro vl;
 

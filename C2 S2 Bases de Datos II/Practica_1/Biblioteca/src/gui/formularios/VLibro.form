@@ -55,7 +55,7 @@
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="panelLibro">
       <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="id_libro"/>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Libro"/>
       </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
@@ -63,8 +63,8 @@
         <Container class="javax.swing.JPanel" name="panelGeneralAutores">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="id_libro">
-                <Property name="tabTitle" type="java.lang.String" value="id_libro"/>
+              <JTabbedPaneConstraints tabName="Libro">
+                <Property name="tabTitle" type="java.lang.String" value="Libro"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

@@ -5,15 +5,17 @@ import aplicacion.enums.TipoUsuario;
 import aplicacion.objetos.Usuario;
 
 import javax.swing.table.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ModeloTablaUsuarios extends AbstractTableModel
 {
-    private java.util.List<Usuario> usuarios;
+    private List<Usuario> usuarios;
 
     public ModeloTablaUsuarios()
     {
-        this.usuarios = new java.util.ArrayList<Usuario>();
+        this.usuarios = new ArrayList<>();
     }
 
     @Override
@@ -96,7 +98,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel
         return resultado;
     }
 
-    public void setFilas(java.util.List<Usuario> usuarios)
+    public void setFilas(List<Usuario> usuarios)
     {
         this.usuarios = usuarios;
         fireTableDataChanged();

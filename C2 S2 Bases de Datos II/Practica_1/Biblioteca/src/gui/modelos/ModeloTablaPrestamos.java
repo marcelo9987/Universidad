@@ -5,49 +5,42 @@
 
 package gui.modelos;
 
-import aplicacion.objetos.Ejemplar;
-import aplicacion.objetos.Prestamo;
 import aplicacion.objetos.Usuario;
 import baseDatos.FachadaBaseDatos;
 
 import javax.swing.table.AbstractTableModel;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author basesdatos
  */
-public class ModeloTablaPrestamos extends AbstractTableModel
-{
+public class ModeloTablaPrestamos extends AbstractTableModel {
     private List<Usuario> usuarios;
-    private HashMap<Usuario,Integer> prestamosPorUsuario;
+    private Map<String, Integer> numPrestamosVencidosPorUsuario;
 
-    private FachadaBaseDatos fbd;
 
-    public ModeloTablaPrestamos(FachadaBaseDatos fbd)
-    {
-        this.fbd = fbd;
-        this.usuarios = new java.util.ArrayList<>();
-        this.prestamosPorUsuario = new HashMap<>();
+    //    public ModeloTablaPrestamos(FachadaBaseDatos fbd)
+    public ModeloTablaPrestamos() {
+        this.usuarios = new ArrayList<>();
+        this.numPrestamosVencidosPorUsuario = new HashMap<>();
     }
 
-    public int getColumnCount()
-    {
+    public int getColumnCount() {
         return 4;
     }
 
-    public int getRowCount()
-    {
+    public int getRowCount() {
         return usuarios.size();
     }
 
     @Override
-    public String getColumnName(int col)
-    {
+    public String getColumnName(int col) {
         String nombre = "";
 
-        switch (col)
-        {
+        switch (col) {
             case 0:
                 nombre = "Id";
                 break;
@@ -65,12 +58,10 @@ public class ModeloTablaPrestamos extends AbstractTableModel
     }
 
     @Override
-    public Class getColumnClass(int col)
-    {
+    public Class getColumnClass(int col) {
         Class clase = null;
 
-        switch (col)
-        {
+        switch (col) {
             case 0:
                 clase = String.class;
                 break;
@@ -88,17 +79,14 @@ public class ModeloTablaPrestamos extends AbstractTableModel
     }
 
     @Override
-    public boolean isCellEditable(int row, int col)
-    {
+    public boolean isCellEditable(int row, int col) {
         return col > 0;
     }
 
-    public Object getValueAt(int row, int col)
-    {
+    public Object getValueAt(int row, int col) {
         Object resultado = null;
 
-        switch (col)
-        {
+        switch (col) {
             case 0:
                 resultado = usuarios.get(row).getIdUsuario();
                 break;
@@ -109,28 +97,20 @@ public class ModeloTablaPrestamos extends AbstractTableModel
                 resultado = usuarios.get(row).getEmail();
                 break;
             case 3:
-                resultado = prestamosPorUsuario.get(usuarios.get(row));
-
+                String idUsuario = usuarios.get(row).getIdUsuario();
+                resultado = numPrestamosVencidosPorUsuario.get(idUsuario);
                 break;
         }
         return resultado;
     }
 
 
-    public void setFilas(List<Usuario> usuarios)
-    {
+    public void setFilas(List<Usuario> usuarios, Map<String, Integer> numPrestamosVencidosPorUsuario) {
         this.usuarios = usuarios;
-        for (Usuario usuarioActual:usuarios)
-        {
-            this.prestamosPorUsuario.put(usuarioActual, this.fbd.consultarPrestamosVencidos(usuarioActual.getIdUsuario()));
-        }
+        this.numPrestamosVencidosPorUsuario = numPrestamosVencidosPorUsuario;
+
         fireTableDataChanged();
     }
-
-
-
-
-
 
 
 }

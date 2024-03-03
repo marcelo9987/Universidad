@@ -8,8 +8,14 @@ package aplicacion.controladores;
 import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Libro;
+import aplicacion.objetos.Prestamo;
 import gui.FachadaGui;
 import baseDatos.FachadaBaseDatos;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * @author basesdatos
@@ -23,20 +29,26 @@ public class GestionLibros {
         this.fbd = fbd;
     }
 
-    public java.util.List<Libro> obtenerLibros(Integer id, String titulo, String isbn, String autor) {
+    public List<Libro> obtenerLibros(Integer id, String titulo, String isbn, String autor) {
         return fbd.consultarCatalogo(id, titulo, isbn, autor);
     }
 
     public void visualizarLibro(Integer idLibro) {
         Libro l = fbd.consultarLibro(idLibro);
-//        java.util.List<Ejemplar> ejemplares  = fbd.consultarEjemplaresLibro(idLibro);
-        java.util.List<String> restoCategorias = fbd.obtenerRestoCategorias(idLibro);
+//        List<Ejemplar> ejemplares  = fbd.consultarEjemplaresLibro(idLibro);
+        List<String> restoCategorias = fbd.obtenerRestoCategorias(idLibro);
+//        List<Prestamo> prestamos  = fbd.consultarTodosLosPrestamosParaLibro(idLibro);
 
-        fgui.visualizaLibro(l, restoCategorias, prestamos);
+        Map<Integer, Prestamo> prestamosActivos = new HashMap<>();
+        for (Ejemplar ejemplarActual : l.getEjemplares()) {
+            prestamosActivos.put(ejemplarActual.getNumEjemplar(), fbd.consultarPrestamoActivoParaEjemplar(ejemplarActual.getLibro().getIdLibro(), ejemplarActual.getNumEjemplar()));
+        }
+
+        fgui.visualizaLibro(l, prestamosActivos, restoCategorias);
     }
 
     public void nuevoLibro() {
-        java.util.List<String> restoCategorias = new java.util.ArrayList<String>();
+        List<String> restoCategorias = new ArrayList<>();
 
         for (Categoria c : fbd.consultarCategorias()) {
             restoCategorias.add(c.getNombre());
@@ -68,11 +80,11 @@ public class GestionLibros {
         fbd.borrarLibro(idLibro);
     }
 
-    public void actualizarCategoriasLibro(Integer idLibro, java.util.List<String> categorias) {
+    public void actualizarCategoriasLibro(Integer idLibro, List<String> categorias) {
         fbd.modificarCategoriasLibro(idLibro, categorias);
     }
 
-    public java.util.List<Ejemplar> actualizarEjemplaresLibro(Integer idLibro, java.util.List<Ejemplar> ejemplares, java.util.List<Integer> borrar) {
+    public void actualizarEjemplaresLibro(Integer idLibro, List<Ejemplar> ejemplares, List<Integer> borrar) {
 
         for (Ejemplar e : ejemplares) {
             if (e.getNumEjemplar() == null) {
@@ -89,10 +101,20 @@ public class GestionLibros {
 
         fbd.borrarEjemplaresLibro(idLibro, borrar);
 
-        return fbd.consultarEjemplaresLibro(idLibro);
+//        Libro libro = fbd.consultarLibro(idLibro);
+////        return fbd.consultarEjemplaresLibro(idLibro);
+//        return libro.getEjemplares();
     }
 
     public boolean tienePrestamos(Integer idLibro) {
         return fbd.tienePrestamos(idLibro);
+    }
+
+    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
+        return fbd.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
+    }
+
+    public Libro consultarLibro(Integer idLibro) {
+        return fbd.consultarLibro(idLibro);
     }
 }

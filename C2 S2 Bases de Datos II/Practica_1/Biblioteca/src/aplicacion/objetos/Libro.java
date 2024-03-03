@@ -6,6 +6,9 @@ package aplicacion.objetos;
  */
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author basesdatos
  */
@@ -17,9 +20,9 @@ public class Libro {
     private String editorial;
     private Integer paginas;
     private String ano;
-    private java.util.List<String> autores;
-    private java.util.List<Categoria> categorias;
-    private java.util.List<Ejemplar> ejemplares;
+    private List<String> autores;
+    private List<Categoria> categorias;
+    private List<Ejemplar> ejemplares;
 
     public Libro(Integer idLibro, String titulo, String isbn, String editorial, Integer paginas, String ano) {
         this.idLibro = idLibro;
@@ -28,9 +31,9 @@ public class Libro {
         this.editorial = editorial;
         this.paginas = paginas;
         this.ano = ano;
-        autores = new java.util.ArrayList<String>();
-        categorias = new java.util.ArrayList<Categoria>();
-        ejemplares = new java.util.ArrayList<Ejemplar>();
+        autores = new ArrayList<>();
+        categorias = new ArrayList<>();
+        ejemplares = new ArrayList<>();
     }
 
     public Integer getIdLibro() {
@@ -57,11 +60,11 @@ public class Libro {
         return this.ano;
     }
 
-    public java.util.List<String> getAutores() {
+    public List<String> getAutores() {
         return this.autores;
     }
 
-    public void setAutores(java.util.List<String> autores) {
+    public void setAutores(List<String> autores) {
         this.autores = autores;
     }
 
@@ -69,7 +72,7 @@ public class Libro {
         this.autores.add(autor);
     }
 
-    public java.util.List<Categoria> getCategorias() {
+    public List<Categoria> getCategorias() {
         return this.categorias;
     }
 
@@ -77,7 +80,7 @@ public class Libro {
         this.categorias.add(categoria);
     }
 
-    public java.util.List<Ejemplar> getEjemplares() {
+    public List<Ejemplar> getEjemplares() {
         return this.ejemplares;
     }
 

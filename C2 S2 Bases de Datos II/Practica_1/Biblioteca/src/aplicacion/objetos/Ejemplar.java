@@ -19,18 +19,18 @@ public class Ejemplar {
     private String anoCompra;
     private Libro libro;
 
-//    private java.util.List<Prestamo> prestamos;
-    private Prestamo prestamoActivo;
+//    private List<Prestamo> prestamos;
+//    private Prestamo prestamoActivo;
 
 
-    public Ejemplar(Libro libro, Integer numEjemplar, String localizador, String anoCompra, Prestamo prestamoActivo) {
+    public Ejemplar(Libro libro, Integer numEjemplar, String localizador, String anoCompra/*, Prestamo prestamoActivo*/) {
         this.numEjemplar = numEjemplar;
         this.anoCompra = anoCompra;
         this.localizador = localizador;
         this.libro = libro;
 
-//        prestamos = new java.util.ArrayList<Prestamo>();
-        this.prestamoActivo = prestamoActivo;
+//        prestamos = new ArrayList<Prestamo>();
+//        this.prestamoActivo = prestamoActivo;
     }
 
     public Integer getNumEjemplar() {
@@ -61,11 +61,12 @@ public class Ejemplar {
         anoCompra = a;
     }
 
-    public Prestamo getPrestamoActivo() {
-        return prestamoActivo;
-    }
+//    public Prestamo getPrestamoActivo() {
+//        return prestamoActivo;
+//    }
 
-    public void setPrestamoActivo(Prestamo prestamoActivo) {
-        this.prestamoActivo = prestamoActivo;
-    }
+//    public void setPrestamoActivo(Prestamo prestamoActivo) {
+//        this.prestamoActivo = prestamoActivo;
+//    }
+
 }

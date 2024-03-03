@@ -79,7 +79,7 @@ public class FachadaBaseDatos {
     }
 
 
-    public java.util.List<Libro> consultarCatalogo(Integer id, String titulo, String isbn, String autor) {
+    public List<Libro> consultarCatalogo(Integer id, String titulo, String isbn, String autor) {
         return daoLibros.consultarCatalogo(id, titulo, isbn, autor);
     }
 
@@ -87,11 +87,11 @@ public class FachadaBaseDatos {
         return daoLibros.consultarLibro(idLibro);
     }
 
-    public java.util.List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
+    public List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
         return daoLibros.consultarEjemplaresLibro(idLibro);
     }
 
-    public java.util.List<String> obtenerRestoCategorias(Integer idLibro) {
+    public List<String> obtenerRestoCategorias(Integer idLibro) {
         return daoLibros.obtenerRestoCategorias(idLibro);
     }
 
@@ -107,7 +107,7 @@ public class FachadaBaseDatos {
         daoLibros.modificarLibro(libro);
     }
 
-    public void modificarCategoriasLibro(Integer idLibro, java.util.List<String> categorias) {
+    public void modificarCategoriasLibro(Integer idLibro, List<String> categorias) {
         daoLibros.modificarCategoriasLibro(idLibro, categorias);
     }
 
@@ -115,7 +115,7 @@ public class FachadaBaseDatos {
         daoLibros.insertarEjemplarLibro(idLibro, ejemplar);
     }
 
-    public void borrarEjemplaresLibro(Integer idLibro, java.util.List<Integer> numsEjemplar) {
+    public void borrarEjemplaresLibro(Integer idLibro, List<Integer> numsEjemplar) {
         daoLibros.borrarEjemplaresLibro(idLibro, numsEjemplar);
     }
 
@@ -132,7 +132,7 @@ public class FachadaBaseDatos {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
 
-    public java.util.List<Categoria> consultarCategorias() {
+    public List<Categoria> consultarCategorias() {
         return daoCategorias.consultarCategorias();
     }
 
@@ -169,8 +169,11 @@ public class FachadaBaseDatos {
         return daoLibros.tienePrestamos(idLibro);
     }
 
-    public Prestamo consultarPrestamoParaEjemplar(Integer idLibro, Integer numEjemplar) {
-        return daoPrestamos.consultarPrestamoParaEjemplar(idLibro, numEjemplar);
+    public List<Prestamo> consultarTodosLosPrestamosParaLibro(Integer idLibro) {
+        return daoPrestamos.consultarTodosLosPrestamosParaLibro(idLibro);
+    }
+    public List<Prestamo> consultarTodosLosPrestamosParaEjemplar(Integer idLibro, Integer numEjemplar) {
+        return daoPrestamos.consultarTodosLosPrestamosParaEjemplar(idLibro, numEjemplar);
     }
 
     public boolean tieneEjemplares(Integer idLibro) {
@@ -181,11 +184,12 @@ public class FachadaBaseDatos {
         return daoPrestamos.tienePrestamoEnActivoEjemplar(idLibro, numEjemplar);
     }
 
-    public Integer consultarPrestamosVencidos(String idUsuario) {
-        return daoPrestamos.consultarPrestamosVencidos(idUsuario);
+    public Integer consultarNumPrestamosVencidosPorUsuario(String idUsuario) {
+        return daoPrestamos.consultarNumPrestamosVencidosPorUsuario(idUsuario);
     }
 
     public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
         return daoPrestamos.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
     }
+
 }

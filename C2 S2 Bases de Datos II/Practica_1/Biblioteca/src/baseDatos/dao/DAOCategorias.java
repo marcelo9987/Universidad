@@ -8,6 +8,8 @@ package baseDatos.dao;
 import aplicacion.objetos.Categoria;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author basesdatos
@@ -20,8 +22,8 @@ public class DAOCategorias extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
 
-    public java.util.List<Categoria> consultarCategorias() {
-        java.util.List<Categoria> resultado = new java.util.ArrayList<Categoria>();
+    public List<Categoria> consultarCategorias() {
+        List<Categoria> resultado = new ArrayList<>();
         Categoria categoriaActual;
         Connection con;
         PreparedStatement stmCategorias = null;

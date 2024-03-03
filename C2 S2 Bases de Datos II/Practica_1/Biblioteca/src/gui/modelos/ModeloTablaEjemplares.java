@@ -10,9 +10,7 @@ import aplicacion.objetos.Prestamo;
 // import baseDatos.FachadaBaseDatos;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author basesdatos
@@ -20,15 +18,15 @@ import java.util.List;
 public class ModeloTablaEjemplares extends AbstractTableModel {
 
     private List<Ejemplar> ejemplares;
-    private HashMap<Integer, Prestamo> prestamos;
+    private Map<Integer, Prestamo> prestamosActivos;
 
 //    private FachadaBaseDatos fbd;
 
     public ModeloTablaEjemplares() {
 //    public ModeloTablaEjemplares(FachadaBaseDatos fbd) {
 //        this.fbd = fbd;
-        this.ejemplares = new java.util.ArrayList<>();
-        this.prestamos = new HashMap<>();
+        this.ejemplares = new ArrayList<>();
+        this.prestamosActivos = new HashMap<>();
     }
 
     public int getColumnCount() {
@@ -112,33 +110,33 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
                 break;
             case 3:
                 Integer id = ejemplares.get(row).getNumEjemplar();
-                if (id == null || prestamos.get(id) == null) {
+                if (id == null || prestamosActivos.get(id) == null) {
                     resultado = null;
                 }
                 else {
-                    resultado = prestamos.get(id).getIdUsuario();
+                    resultado = prestamosActivos.get(id).getIdUsuario();
                 }
 
                 break;
             case 4:
                 Integer id2 = ejemplares.get(row).getNumEjemplar();
-                if (id2 == null || prestamos.get(id2) == null) {
+                if (id2 == null || prestamosActivos.get(id2) == null) {
                     resultado = null;
                 }
                 else {
-                    resultado = prestamos.get(id2).getFechaInicio();
+                    resultado = prestamosActivos.get(id2).getFechaInicio();
                 }
                 //resultado = prestamos.get(ejemplares.get(row).getNumEjemplar()).getFechaInicio();
                 break;
             case 5:
                 Integer id3 = ejemplares.get(row).getNumEjemplar();
-                if (id3 == null || prestamos.get(id3) == null) {
+                if (id3 == null || prestamosActivos.get(id3) == null) {
                     resultado = null;
                 }
                 else {
                     //Tengo que sumarle 30 días a la fecha de inicio
                     Calendar fechaInicio = Calendar.getInstance();
-                    String fechaInicioSinFormato = prestamos.get(id3).getFechaInicio();
+                    String fechaInicioSinFormato = prestamosActivos.get(id3).getFechaInicio();
 
                     fechaInicio.set(Integer.parseInt(fechaInicioSinFormato.substring(0, 4)), Integer.parseInt(fechaInicioSinFormato.substring(5, 7)), Integer.parseInt(fechaInicioSinFormato.substring(8, 10)));
                     fechaInicio.add(Calendar.DAY_OF_MONTH, 30);
@@ -165,18 +163,18 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
                 ejemplar.setAnoCompra((String) v);
                 break;
             case 3:
-                prestamos.get(ejemplar.getNumEjemplar()).setIdUsuario((String) v);
+                prestamosActivos.get(ejemplar.getNumEjemplar()).setIdUsuario((String) v);
                 break;
             case 4:
-                prestamos.get(ejemplar.getNumEjemplar()).setFechaInicio((String) v);
+                prestamosActivos.get(ejemplar.getNumEjemplar()).setFechaInicio((String) v);
                 break;
             case 5:
-                prestamos.get(ejemplar.getNumEjemplar()).setFechaFin((String) v);
+                prestamosActivos.get(ejemplar.getNumEjemplar()).setFechaFin((String) v);
                 break;
         }
     }
 
-    public void setFilas(java.util.List<Ejemplar> ejemplares) {
+    public void setFilas(List<Ejemplar> ejemplares, Map<Integer, Prestamo> prestamosActivos) {
 //        int numeroEjemplar = 0;
 //        for (Ejemplar ejemplarActual:ejemplares)
 //        {
@@ -189,11 +187,9 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
 //            }
 //        }
         this.ejemplares = ejemplares;
-        /* INI 2024-03-01 aa
-        for (Ejemplar ejemplarActual : ejemplares) {
-            this.prestamos.put(ejemplarActual.getNumEjemplar(), this.fbd.consultarPrestamoActivoParaEjemplar(ejemplarActual.getLibro().getIdLibro(), ejemplarActual.getNumEjemplar()));
-        }
-        FIN 2024-03-01 aa */
+
+        this.prestamosActivos = prestamosActivos;
+
         fireTableDataChanged();
     }
 
@@ -207,7 +203,7 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
         fireTableRowsDeleted(indice, indice);
     }
 
-    public java.util.List<Ejemplar> getFilas() {
+    public List<Ejemplar> getFilas() {
         return this.ejemplares;
     }
 
