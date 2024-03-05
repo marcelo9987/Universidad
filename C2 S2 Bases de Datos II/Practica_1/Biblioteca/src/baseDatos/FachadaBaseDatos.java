@@ -192,4 +192,13 @@ public class FachadaBaseDatos {
         return daoPrestamos.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
     }
 
+    public void nuevoPrestamo(String usuarioSolicitante, Integer idLibro, Integer numEjemplar) 
+    {
+        daoPrestamos.nuevoPrestamo(usuarioSolicitante, idLibro, numEjemplar);
+    }
+
+    public void devolverEjemplar(int idLibro, int numEjemplar)
+    {
+        daoPrestamos.devolverEjemplar(idLibro, numEjemplar);
+    }
 }

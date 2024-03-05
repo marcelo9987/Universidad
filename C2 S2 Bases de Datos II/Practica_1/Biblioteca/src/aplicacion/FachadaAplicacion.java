@@ -6,6 +6,7 @@
 package aplicacion;
 
 import aplicacion.controladores.GestionLibros;
+import aplicacion.controladores.GestionPrestamos;
 import aplicacion.controladores.GestionUsuarios;
 import aplicacion.objetos.*;
 import baseDatos.FachadaBaseDatos;
@@ -21,6 +22,7 @@ public class FachadaAplicacion {
     baseDatos.FachadaBaseDatos fbd; // Acceso a la base de datos
     GestionLibros cl; // Controlador de la lógica de negocio de los libros
     GestionUsuarios cu; // Controlador de la lógica de negocio de los usuarios
+    GestionPrestamos cp;
 
 
     public FachadaAplicacion() {
@@ -28,6 +30,7 @@ public class FachadaAplicacion {
         fbd = new baseDatos.FachadaBaseDatos(this);
         cl = new GestionLibros(fgui, fbd);
         cu = new GestionUsuarios(fgui, fbd);
+        cp = new GestionPrestamos(fbd, fgui);
     }
 
     public static void main(String args[]) {
@@ -84,8 +87,8 @@ public class FachadaAplicacion {
         fgui.gestionCategorias();
     }
 
-    public void lanzarGestionPrestamos() {
-        fgui.gestionPrestamos();
+    public void lanzarGestionPrestamos(Ejemplar ejemplarAprestar) {
+        fgui.gestionPrestamos(ejemplarAprestar);
     }
 
     public Integer actualizarLibro(Libro l) {
@@ -155,5 +158,13 @@ public void actualizarUsuario(Usuario u)
 }
 */
 
+    public void realizarPrestamo(String usuarioSolicitante, Integer idLibro, Integer numEjemplar) {
+        cp.realizarPrestamo(usuarioSolicitante, idLibro, numEjemplar);
+        
+    }
 
+
+    public void devolverEjemplar(int idLibro, int numEjemplar) {
+        cp.devolverEjemplar(idLibro,numEjemplar);
+    }
 }

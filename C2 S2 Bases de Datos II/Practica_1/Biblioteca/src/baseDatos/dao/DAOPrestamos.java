@@ -179,4 +179,70 @@ public class DAOPrestamos extends AbstractDAO {
         }
         return salida;
     }
+
+    public void nuevoPrestamo(String usuarioSolicitante, Integer idLibro, Integer numEjemplar) {
+        PreparedStatement stmInsertarPrestamo = null;
+        String consulta = "INSERT INTO prestamo(fecha_prestamo,id_usuario,id_libro,num_ejemplar)"
+                + "values(current_date,?,?,?);";
+        java.sql.Connection con = super.getConexion();
+        
+        try
+        {
+            stmInsertarPrestamo= con.prepareStatement(consulta);
+            stmInsertarPrestamo.setString(1,usuarioSolicitante);
+            stmInsertarPrestamo.setInt(2,idLibro);
+            stmInsertarPrestamo.setInt(3,numEjemplar);
+            
+            stmInsertarPrestamo.executeUpdate();
+
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                if (stmInsertarPrestamo != null) {
+                    stmInsertarPrestamo.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+
+    public void devolverEjemplar(int idLibro, int numEjemplar) {
+
+        PreparedStatement stmDevolucion = null;
+        String setenciaDevolucion = "UPDATE " +
+                                    "   prestamo " +
+                                    "SET " +
+                                    "   fecha_devolucion = current_date " +
+                                    "WHERE" +
+                                    "   id_libro = ?" +
+                                    "   and num_ejemplar = ?";
+
+        java.sql.Connection con = super.getConexion();
+
+        try
+        {
+            stmDevolucion = con.prepareStatement(setenciaDevolucion);
+            stmDevolucion.setInt(1, idLibro);
+            stmDevolucion.setInt(2, numEjemplar);
+
+            stmDevolucion.executeUpdate();
+        }catch (SQLException excp)
+        {
+            System.out.println(excp.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(excp.getMessage());
+        } finally
+        {
+            try
+            {
+                if (stmDevolucion != null) {
+                    stmDevolucion.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
 }

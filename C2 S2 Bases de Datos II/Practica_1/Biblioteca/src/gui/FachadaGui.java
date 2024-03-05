@@ -5,6 +5,7 @@
 package gui;
 
 import aplicacion.objetos.Categoria;
+import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Libro;
 import aplicacion.objetos.Prestamo;
 import gui.formularios.*;
@@ -81,9 +82,9 @@ public class FachadaGui
         vc.setVisible(true);
     }
 
-    public void gestionPrestamos()
+    public void gestionPrestamos(Ejemplar ejemplarAprestar)
     {
-        VGesPrestamos vp = new VGesPrestamos(this.vp, true, fa);
+        VGesPrestamos vp = new VGesPrestamos(this.vp, true, fa, ejemplarAprestar);
         vp.setVisible(true);
     }
 }

@@ -44,6 +44,9 @@ public class VPrincipal extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         buscaTitulo = new javax.swing.JTextField();
         etiquetaTitulo = new javax.swing.JLabel();
         buscaIsbn = new javax.swing.JTextField();
@@ -58,9 +61,14 @@ public class VPrincipal extends javax.swing.JFrame
         btnEditarLibro = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         buscaId = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        btnMenuUsuarios = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuAdministrar = new javax.swing.JMenu();
+        menuItemUsuarios = new javax.swing.JMenuItem();
+        menuItemCategorias = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca de Informática");
@@ -124,75 +132,74 @@ public class VPrincipal extends javax.swing.JFrame
 
         jLabel3.setText("Id:");
 
-        jLabel4.setText("Administrar");
-
-        btnMenuUsuarios.setText("Usuarios");
-        btnMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        menuAdministrar.setText("Administrar");
+        menuAdministrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuUsuariosActionPerformed(evt);
+                menuAdministrarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Categorías");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUsuarios.setText("Usuarios");
+        menuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                menuItemUsuariosActionPerformed(evt);
             }
         });
+        menuAdministrar.add(menuItemUsuarios);
+        menuItemUsuarios.getAccessibleContext().setAccessibleDescription("Menu de gestión de usuarios");
+
+        menuItemCategorias.setText("Categorías");
+        menuItemCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCategoriasActionPerformed(evt);
+            }
+        });
+        menuAdministrar.add(menuItemCategorias);
+        menuItemCategorias.getAccessibleContext().setAccessibleDescription("Accede al menu de gestión de categorías");
+
+        jMenuBar1.add(menuAdministrar);
+        menuAdministrar.getAccessibleContext().setAccessibleDescription("Menu desplegable que permite acceder a los menus de gestión de usuarios y categorías");
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnNuevoLibro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEditarLibro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscaId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBuscarLibros))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buscaIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
-                                .addGap(14, 14, 14)
-                                .addComponent(buscaAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(etiquetaTitulo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))))
+                        .addComponent(btnNuevoLibro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditarLibro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMenuUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscaId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscarLibros))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buscaIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addGap(14, 14, 14)
+                        .addComponent(buscaAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(etiquetaTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMenuUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaTitulo)
                     .addComponent(buscaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,9 +214,9 @@ public class VPrincipal extends javax.swing.JFrame
                     .addComponent(buscaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(btnBuscarLibros))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevoLibro)
                     .addComponent(btnEditarLibro)
@@ -254,15 +261,6 @@ public class VPrincipal extends javax.swing.JFrame
         fa.nuevoLibro();
     }//GEN-LAST:event_btnNuevoLibroActionPerformed
 
-    private void btnMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_btnMenuUsuariosActionPerformed
-        fa.lanzarGestionUsuarios();
-    }//GEN-LAST:event_btnMenuUsuariosActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        fa.lanzarGestionCategorias();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void buscaTituloKeyTyped(java.awt.event.KeyEvent evt)
     {//GEN-FIRST:event_buscaTituloKeyTyped
         if(evt.getKeyChar() == '\n')
@@ -271,6 +269,23 @@ public class VPrincipal extends javax.swing.JFrame
         }
     }//GEN-LAST:event_buscaTituloKeyTyped
 
+    private void menuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuariosActionPerformed
+        // TODO add your handling code here:
+        
+               fa.lanzarGestionUsuarios();
+
+    }//GEN-LAST:event_menuItemUsuariosActionPerformed
+
+    private void menuAdministrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdministrarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_menuAdministrarActionPerformed
+
+    private void menuItemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCategoriasActionPerformed
+        // TODO add your handling code here:
+        fa.lanzarGestionCategorias();
+    }//GEN-LAST:event_menuItemCategoriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,7 +293,6 @@ public class VPrincipal extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarLibros;
     private javax.swing.JButton btnEditarLibro;
-    private javax.swing.JButton btnMenuUsuarios;
     private javax.swing.JButton btnNuevoLibro;
     private javax.swing.JButton btnSalir;
     private javax.swing.JTextField buscaAutor;
@@ -286,12 +300,17 @@ public class VPrincipal extends javax.swing.JFrame
     private javax.swing.JTextField buscaIsbn;
     private javax.swing.JTextField buscaTitulo;
     private javax.swing.JLabel etiquetaTitulo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu menuAdministrar;
+    private javax.swing.JMenuItem menuItemCategorias;
+    private javax.swing.JMenuItem menuItemUsuarios;
     private javax.swing.JTable tablaLibros;
     // End of variables declaration//GEN-END:variables
 
