@@ -12,12 +12,12 @@ import aplicacion.enums.TipoUsuario;
  * @author basesdatos
  */
 public class Usuario {
-    private String idUsuario;
-    private String clave;
-    private String nombre;
-    private String direccion;
-    private String email;
-    private TipoUsuario tipo;
+    private final String idUsuario;
+    private final String clave;
+    private final String nombre;
+    private final String direccion;
+    private final String email;
+    private final TipoUsuario tipo;
 //    private Integer numPrestamosVencidos;
 
     public Usuario(String idUsuario, String clave, String nombre, String direccion, String email, TipoUsuario tipo) {
@@ -60,7 +60,4 @@ public class Usuario {
         return this.tipo;
     }
 
-//    public Object getNumPrestamosVencidos() {
-//        return this.numPrestamosVencidos;
-//    }
 }

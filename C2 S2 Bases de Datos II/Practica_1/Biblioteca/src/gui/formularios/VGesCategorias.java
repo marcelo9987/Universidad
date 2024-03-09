@@ -8,7 +8,7 @@ import aplicacion.FachadaAplicacion;
 import aplicacion.objetos.Categoria;
 import gui.modelos.ModeloTablaCategorias;
 
-import java.awt.Frame;
+import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -56,6 +56,12 @@ public class VGesCategorias extends javax.swing.JDialog
         btnBorrarCategoria = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamañoPantalla.width/2;
+        int yMedio = tamañoPantalla.height/2;
+
+        setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
         tablaCategorias.setModel(new ModeloTablaCategorias());
         tablaCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,9 +212,7 @@ public class VGesCategorias extends javax.swing.JDialog
         buscarCategorias();
     }//GEN-LAST:event_btnBorrarCategoriaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnBorrarCategoria;

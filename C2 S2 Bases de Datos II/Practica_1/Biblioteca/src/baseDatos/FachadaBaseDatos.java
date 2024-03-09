@@ -10,7 +10,6 @@ import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Libro;
 import aplicacion.objetos.Usuario;
-import aplicacion.objetos.Prestamo;
 import baseDatos.dao.DAOCategorias;
 import baseDatos.dao.DAOLibros;
 import baseDatos.dao.DAOPrestamos;
@@ -87,9 +86,10 @@ public class FachadaBaseDatos {
         return daoLibros.consultarLibro(idLibro);
     }
 
-    public List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
-        return daoLibros.consultarEjemplaresLibro(idLibro);
-    }
+//    @Deprecated
+//    public List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
+//        return daoLibrosF.consultarEjemplaresLibro(idLibro);
+//    }
 
     public List<String> obtenerRestoCategorias(Integer idLibro) {
         return daoLibros.obtenerRestoCategorias(idLibro);
@@ -169,12 +169,13 @@ public class FachadaBaseDatos {
         return daoLibros.tienePrestamos(idLibro);
     }
 
-    public List<Prestamo> consultarTodosLosPrestamosParaLibro(Integer idLibro) {
-        return daoPrestamos.consultarTodosLosPrestamosParaLibro(idLibro);
-    }
-    public List<Prestamo> consultarTodosLosPrestamosParaEjemplar(Integer idLibro, Integer numEjemplar) {
-        return daoPrestamos.consultarTodosLosPrestamosParaEjemplar(idLibro, numEjemplar);
-    }
+//    public List<Prestamo> consultarTodosLosPrestamosParaLibro(Integer idLibro) {
+//        return daoPrestamos.consultarTodosLosPrestamosParaLibro(idLibro);
+//    }
+
+//    public List<Prestamo> consultarTodosLosPrestamosParaEjemplar(Integer idLibro, Integer numEjemplar) {
+//        return daoPrestamos.consultarTodosLosPrestamosParaEjemplar(idLibro, numEjemplar);
+//    }
 
     public boolean tieneEjemplares(Integer idLibro) {
         return daoLibros.tieneEjemplares(idLibro);
@@ -188,9 +189,9 @@ public class FachadaBaseDatos {
         return daoPrestamos.consultarNumPrestamosVencidosPorUsuario(idUsuario);
     }
 
-    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
-        return daoPrestamos.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
-    }
+//    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
+//        return daoPrestamos.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
+//    }
 
     public void nuevoPrestamo(String usuarioSolicitante, Integer idLibro, Integer numEjemplar) 
     {

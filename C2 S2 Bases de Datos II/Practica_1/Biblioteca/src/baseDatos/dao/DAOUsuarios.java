@@ -6,7 +6,7 @@
 package baseDatos.dao;
 
 import aplicacion.FachadaAplicacion;
-import aplicacion.objetos.Criptografia;
+import auxiliares.Criptografia;
 import aplicacion.objetos.Usuario;
 import aplicacion.enums.TipoUsuario;
 

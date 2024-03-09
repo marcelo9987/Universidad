@@ -5,32 +5,29 @@
 
 package aplicacion.objetos;
 
-import aplicacion.objetos.Libro;
-
-import java.util.Objects;
 
 /**
  * @author basesdatos
  */
 public class Ejemplar {
 
-    private Integer numEjemplar;
+    private final Integer numEjemplar;
     private String localizador;
     private String anoCompra;
     private Libro libro;
 
-//    private List<Prestamo> prestamos;
-//    private Prestamo prestamoActivo;
+    private Prestamo prestamoActivo;
 
 
-    public Ejemplar(Libro libro, Integer numEjemplar, String localizador, String anoCompra/*, Prestamo prestamoActivo*/) {
+    public Ejemplar(Libro libro, Integer numEjemplar, String localizador, String anoCompra, Prestamo prestamoActivo) {
         this.numEjemplar = numEjemplar;
         this.anoCompra = anoCompra;
         this.localizador = localizador;
         this.libro = libro;
 
-//        prestamos = new ArrayList<Prestamo>();
-//        this.prestamoActivo = prestamoActivo;
+        //      this.prestamoActivo = prestamoActivo;
+        this.prestamoActivo = prestamoActivo == null ? new Prestamo(/*libro, numEjemplar,*/ null, null, null) : prestamoActivo;
+
     }
 
     public Integer getNumEjemplar() {
@@ -49,8 +46,8 @@ public class Ejemplar {
         return this.libro;
     }
 
-    public void setLibro(Libro l) {
-        libro = l;
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 
     public void setLocalizador(String l) {
@@ -61,12 +58,8 @@ public class Ejemplar {
         anoCompra = a;
     }
 
-//    public Prestamo getPrestamoActivo() {
-//        return prestamoActivo;
-//    }
-
-//    public void setPrestamoActivo(Prestamo prestamoActivo) {
-//        this.prestamoActivo = prestamoActivo;
-//    }
+    public Prestamo getPrestamoActivo() {
+        return prestamoActivo;
+    }
 
 }

@@ -7,8 +7,9 @@ package gui.formularios;
 import aplicacion.FachadaAplicacion;
 import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Usuario;
-import gui.modelos.ModeloTablaPrestamos;
+import gui.modelos.ModeloTablaSeleccionUsuarioParaPrestamo;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +55,13 @@ public class VGesPrestamos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tablaPrestamos.setModel(new ModeloTablaPrestamos());
+        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamañoPantalla.width/2;
+        int yMedio = tamañoPantalla.height/2;
+
+        setLocation(new java.awt.Point(xMedio-300, yMedio-250));
+
+        tablaPrestamos.setModel(new ModeloTablaSeleccionUsuarioParaPrestamo());
         jScrollPane1.setViewportView(tablaPrestamos);
 
         btnBuscar.setText("Buscar");
@@ -157,7 +164,7 @@ public class VGesPrestamos extends javax.swing.JDialog {
             numPrestamosVencidosPorUsuario.put(usuario.getIdUsuario(), fa.obtenerNumPrestamosVencidosPorUsuario(usuario.getIdUsuario()));
         }
 
-        ((ModeloTablaPrestamos) tablaPrestamos.getModel()).setFilas(usuarios, numPrestamosVencidosPorUsuario);
+        ((ModeloTablaSeleccionUsuarioParaPrestamo) tablaPrestamos.getModel()).setFilas(usuarios, numPrestamosVencidosPorUsuario);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -173,7 +180,8 @@ public class VGesPrestamos extends javax.swing.JDialog {
         Integer numEjemplar = this.ejemplar.getNumEjemplar();
         
         fa.realizarPrestamo(usuarioSolicitante, idLibro, numEjemplar);
-        
+
+        this.dispose();
     }//GEN-LAST:event_btnPrestarActionPerformed
 
 

@@ -17,7 +17,7 @@ public class DAOPrestamos extends AbstractDAO {
     public boolean tienePrestamoEnActivoEjemplar(Integer idLibro, Integer numEjemplar) {
         boolean salida = false;
 
-        PreparedStatement stmPrestamo = null;
+        PreparedStatement stmPrestamo;
         ResultSet rsPrestamo;
 
         String consulta = "select * from prestamo where id_libro = ? and num_ejemplar = ? and fecha_devolucion is null";
@@ -42,12 +42,12 @@ public class DAOPrestamos extends AbstractDAO {
     }
 
     public Integer consultarNumPrestamosVencidosPorUsuario(String idUsuario) {
-        Integer salida = 0;
+        int salida = 0;
 
-        PreparedStatement stmPrestamo = null;
+        PreparedStatement stmPrestamo;
         ResultSet rsPrestamo;
 
-        String consulta = "select count(*) as numPrestamos from prestamo where id_usuario = ? and fecha_devolucion < current_date";
+        String consulta = "select count(*) as numPrestamos from prestamo where id_usuario = ? and (fecha_prestamo+30)< CURRENT_DATE and fecha_devolucion is null";
 
         java.sql.Connection con;
         con = super.getConexion();
@@ -67,12 +67,13 @@ public class DAOPrestamos extends AbstractDAO {
         return salida;
     }
 
+    @Deprecated
     public List<Prestamo> consultarTodosLosPrestamosParaEjemplar(Integer idLibro, Integer numEjemplar) {
         if (idLibro == null || numEjemplar == null) {
             return null;
         }
 
-        List<Prestamo> listaPrestamos = new ArrayList<>();
+        List<Prestamo> listaprestamoActivos = new ArrayList<>();
 
         PreparedStatement stmPrestamos = null;
         ResultSet rsPrestamo;
@@ -91,7 +92,7 @@ public class DAOPrestamos extends AbstractDAO {
 
             rsPrestamo = stmPrestamos.executeQuery();
             while (rsPrestamo.next()) {
-                listaPrestamos.add(new Prestamo(idLibro, numEjemplar, rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion")));
+                listaprestamoActivos.add(new Prestamo(/*idLibro, numEjemplar, */ rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion")));
             }
         } catch (Exception e) {
             super.getFachadaAplicacion().muestraExcepcion("Dao prestamos : " + e.getMessage());
@@ -105,15 +106,16 @@ public class DAOPrestamos extends AbstractDAO {
             }
         }
 
-        return listaPrestamos;
+        return listaprestamoActivos;
     }
 
+    @Deprecated
     public List<Prestamo> consultarTodosLosPrestamosParaLibro(Integer idLibro) {
         if (idLibro == null) {
             return null;
         }
 
-        List<Prestamo> listaPrestamos = new ArrayList<>();
+        List<Prestamo> listaprestamoActivos = new ArrayList<>();
 
         PreparedStatement stmPrestamos = null;
         ResultSet rsPrestamo;
@@ -131,7 +133,7 @@ public class DAOPrestamos extends AbstractDAO {
 
             rsPrestamo = stmPrestamos.executeQuery();
             while (rsPrestamo.next()) {
-                listaPrestamos.add(new Prestamo(idLibro, rsPrestamo.getInt("num_ejemplar"), rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion")));
+                listaprestamoActivos.add(new Prestamo(/*idLibro, rsPrestamo.getInt("num_ejemplar"),*/ rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion")));
             }
         } catch (Exception e) {
             super.getFachadaAplicacion().muestraExcepcion("Dao prestamos : " + e.getMessage());
@@ -145,9 +147,10 @@ public class DAOPrestamos extends AbstractDAO {
             }
         }
 
-        return listaPrestamos;
+        return listaprestamoActivos;
     }
 
+    @Deprecated
     public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
         if (idLibro == null || numEjemplar == null) {
             return null;
@@ -155,7 +158,7 @@ public class DAOPrestamos extends AbstractDAO {
 
         Prestamo salida = null;
 
-        PreparedStatement stmPrestamo = null;
+        PreparedStatement stmPrestamo;
         ResultSet rsPrestamo;
 
         String consulta = "select fecha_prestamo, id_usuario, id_libro, num_ejemplar, fecha_devolucion " +
@@ -172,7 +175,7 @@ public class DAOPrestamos extends AbstractDAO {
 
             rsPrestamo = stmPrestamo.executeQuery();
             if (rsPrestamo.next()) {
-                salida = new Prestamo(rsPrestamo.getInt("id_libro"), rsPrestamo.getInt("num_ejemplar"), rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion"));
+                salida = new Prestamo(/*rsPrestamo.getInt("id_libro"), rsPrestamo.getInt("num_ejemplar"),*/ rsPrestamo.getString("id_usuario"), rsPrestamo.getString("fecha_prestamo"), rsPrestamo.getString("fecha_devolucion"));
             }
         } catch (Exception e) {
             super.getFachadaAplicacion().muestraExcepcion("Dao prestamos : " + e.getMessage());
@@ -183,7 +186,7 @@ public class DAOPrestamos extends AbstractDAO {
     public void nuevoPrestamo(String usuarioSolicitante, Integer idLibro, Integer numEjemplar) {
         PreparedStatement stmInsertarPrestamo = null;
         String consulta = "INSERT INTO prestamo(fecha_prestamo,id_usuario,id_libro,num_ejemplar)"
-                + "values(current_date,?,?,?);";
+                + "values(CURRENT_DATE,?,?,?);";
         java.sql.Connection con = super.getConexion();
         
         try
@@ -215,7 +218,7 @@ public class DAOPrestamos extends AbstractDAO {
         String setenciaDevolucion = "UPDATE " +
                                     "   prestamo " +
                                     "SET " +
-                                    "   fecha_devolucion = current_date " +
+                                    "   fecha_devolucion = CURRENT_DATE " +
                                     "WHERE" +
                                     "   id_libro = ?" +
                                     "   and num_ejemplar = ?";

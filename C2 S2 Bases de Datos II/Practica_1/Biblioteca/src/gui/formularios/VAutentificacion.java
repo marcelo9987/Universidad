@@ -11,6 +11,8 @@
 
 package gui.formularios;
 
+import java.awt.*;
+
 /**
  * @author basesdatos
  */
@@ -74,6 +76,13 @@ public class VAutentificacion extends javax.swing.JDialog
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Autentificación de usuarios");
         setModal(true);
+
+        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamañoPantalla.width/2;
+        int yMedio = tamañoPantalla.height/2;
+
+        setLocation(new java.awt.Point(xMedio-300, yMedio-250));
+
         setName("VAutentificacion"); // NOI18N
         setResizable(false);
 
@@ -193,7 +202,7 @@ public class VAutentificacion extends javax.swing.JDialog
             System.exit(0);
         }
         etiquetaFallo.setVisible(false);
-        if (fa.comprobarAutentificacion(textoUsuario.getText(), textoClave.getText()))
+        if (fa.comprobarAutentificacion(textoUsuario.getText(), String.valueOf(textoClave.getPassword())))
         {
             this.dispose();
         }
@@ -223,7 +232,10 @@ public class VAutentificacion extends javax.swing.JDialog
         if (evt.getKeyChar() == '\n')
         {
             etiquetaFallo.setVisible(false);
-            if (fa.comprobarAutentificacion(textoUsuario.getText(), textoClave.getText()))
+
+            char[] pass = textoClave.getPassword();
+            String contrasena = String.copyValueOf(pass);
+            if (fa.comprobarAutentificacion(textoUsuario.getText(), contrasena))
             {
                 this.dispose();
             }
@@ -236,9 +248,7 @@ public class VAutentificacion extends javax.swing.JDialog
 
     
 
-    /**
-     * @param args the command line arguments
-     */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

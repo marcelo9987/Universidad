@@ -7,12 +7,10 @@ package gui;
 import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Libro;
-import aplicacion.objetos.Prestamo;
 import gui.formularios.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author alumno
@@ -39,17 +37,19 @@ public class FachadaGui
     }
 
 
-    public void visualizaLibro(Libro l, Map<Integer, Prestamo> prestamosActivos, List<String> restoCategorias)
+//    public void visualizaLibro(Libro libro, Map<Integer, Prestamo> estadoPrestamoEjemplares, List<String> restoCategorias)
+    public void visualizaLibro(Libro libro, List<String> restoCategorias)
     {
         VLibro vl;
         List<String> categorias = new ArrayList<>();
 
-        for (Categoria c : l.getCategorias())
+        for (Categoria c : libro.getCategorias())
         {
             categorias.add(c.getNombre());
         }
 
-        vl = new VLibro(vp, true, fa, l, prestamosActivos, categorias, restoCategorias);
+//        vl = new VLibro(vp, true, fa, libro, estadoPrestamoEjemplares, categorias, restoCategorias);
+        vl = new VLibro(vp, true, fa, libro, categorias, restoCategorias);
         vl.setVisible(true);
     }
 

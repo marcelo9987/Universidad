@@ -16,9 +16,16 @@ public class GestionPrestamos {
     {
         if(fbd.consultarNumPrestamosVencidosPorUsuario(usuarioSolicitante)>0)
         {
-            fgui.muestraExcepcion("No se puede prestar: El usuario"+usuarioSolicitante+"tiene prestamos vencidos");
+            fgui.muestraExcepcion("No se puede prestar: El usuario '"+usuarioSolicitante+"' tiene prestamos vencidos");
             return;
         }
+
+        if(fbd.tienePrestamoEnActivoEjemplar(idLibro,numEjemplar))
+        {
+            fgui.muestraExcepcion("No se puede prestar: El ejemplar "+idLibro+":"+numEjemplar+" ya está prestado");
+            return;
+        }
+
         fbd.nuevoPrestamo(usuarioSolicitante, idLibro, numEjemplar);
     }
 

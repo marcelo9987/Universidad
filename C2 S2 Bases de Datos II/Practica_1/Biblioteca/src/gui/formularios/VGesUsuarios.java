@@ -20,7 +20,7 @@ public class VGesUsuarios extends javax.swing.JDialog {
 
     private VPrincipal padre;
 
-    private aplicacion.FachadaAplicacion fa;
+    private final aplicacion.FachadaAplicacion fa;
 
 
     /**
@@ -68,6 +68,12 @@ public class VGesUsuarios extends javax.swing.JDialog {
         btnBorrarUsuario = new java.awt.Button();
         btnGuardar = new java.awt.Button();
         comboBoxTipoUsuario = new javax.swing.JComboBox<>();
+
+        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamañoPantalla.width/2;
+        int yMedio = tamañoPantalla.height/2;
+
+        setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
         etqId.setText("ID");
 
@@ -182,7 +188,10 @@ public class VGesUsuarios extends javax.swing.JDialog {
 
         comboBoxTipoUsuario.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
         comboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{" ", "Normal", "Administrador"}));
-        comboBoxTipoUsuario.setSelectedItem("");
+
+        // comboBoxTipoUsuario.setSelectedItem("");
+        comboBoxTipoUsuario.setSelectedIndex(0);
+
         comboBoxTipoUsuario.setMinimumSize(new java.awt.Dimension(100, 23));
         comboBoxTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -382,6 +391,12 @@ public class VGesUsuarios extends javax.swing.JDialog {
         txtIdModificar.setEnabled(true);
         btnBorrarUsuario.setEnabled(false);
 
+        tablaUsuarios.clearSelection();
+
+        // comboBoxTipoUsuario.setSelectedItem("");
+        comboBoxTipoUsuario.setSelectedIndex(0);
+
+
         vaciarCampos();
 
 //        Usuario usuarioAenviar = new Usuario()
@@ -493,11 +508,12 @@ public class VGesUsuarios extends javax.swing.JDialog {
         //jTable1.setModel(new gui.modelos.ModeloTablaUsuarios());
         m = (ModeloTablaUsuarios) tablaUsuarios.getModel();
 
+        //todo: mira esto
         List<Usuario> datos = fa.obtenerUsuarios(IdUsuarioBusqueda.getText(), nombreUsuarioBusqueda.getText());
 
         m.setFilas(fa.obtenerUsuarios(IdUsuarioBusqueda.getText(), nombreUsuarioBusqueda.getText()));
         if (m.getRowCount() > 0) {
-            tablaUsuarios.setRowSelectionInterval(0, 0);
+            // tablaUsuarios.setRowSelectionInterval(0, 0);
         }
 
     }

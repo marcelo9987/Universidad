@@ -8,14 +8,11 @@ package aplicacion.controladores;
 import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Libro;
-import aplicacion.objetos.Prestamo;
 import gui.FachadaGui;
 import baseDatos.FachadaBaseDatos;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * @author basesdatos
@@ -34,17 +31,18 @@ public class GestionLibros {
     }
 
     public void visualizarLibro(Integer idLibro) {
-        Libro l = fbd.consultarLibro(idLibro);
+        Libro libro = fbd.consultarLibro(idLibro);
 //        List<Ejemplar> ejemplares  = fbd.consultarEjemplaresLibro(idLibro);
         List<String> restoCategorias = fbd.obtenerRestoCategorias(idLibro);
 //        List<Prestamo> prestamos  = fbd.consultarTodosLosPrestamosParaLibro(idLibro);
 
-        Map<Integer, Prestamo> prestamosActivos = new HashMap<>();
-        for (Ejemplar ejemplarActual : l.getEjemplares()) {
-            prestamosActivos.put(ejemplarActual.getNumEjemplar(), fbd.consultarPrestamoActivoParaEjemplar(ejemplarActual.getLibro().getIdLibro(), ejemplarActual.getNumEjemplar()));
-        }
+//        Map<Integer, Prestamo> estadoPrestamoEjemplares = new HashMap<>();
+//        for (Ejemplar ejemplarActual : libro.getEjemplares()) {
+//            estadoPrestamoEjemplares.put(ejemplarActual.getNumEjemplar(), fbd.consultarPrestamoActivoParaEjemplar(ejemplarActual.getLibro().getIdLibro(), ejemplarActual.getNumEjemplar()));
+//        }
 
-        fgui.visualizaLibro(l, prestamosActivos, restoCategorias);
+//        fgui.visualizaLibro(libro, estadoPrestamoEjemplares, restoCategorias);
+        fgui.visualizaLibro(libro, restoCategorias);
     }
 
     public void nuevoLibro() {
@@ -57,16 +55,16 @@ public class GestionLibros {
         fgui.nuevoLibro(restoCategorias);
     }
 
-    public Integer actualizarLibro(Libro l) {
+    public Integer actualizarLibro(Libro libro) {
 
         Integer idLibro;
 
-        if (l.getIdLibro() == null) {
-            idLibro = fbd.insertarLibro(l);
+        if (libro.getIdLibro() == null) {
+            idLibro = fbd.insertarLibro(libro);
         }
         else {
-            fbd.modificarLibro(l);
-            idLibro = l.getIdLibro();
+            fbd.modificarLibro(libro);
+            idLibro = libro.getIdLibro();
         }
 
         return idLibro;
@@ -99,6 +97,7 @@ public class GestionLibros {
             }
         }
 
+
         fbd.borrarEjemplaresLibro(idLibro, borrar);
 
 //        Libro libro = fbd.consultarLibro(idLibro);
@@ -110,9 +109,9 @@ public class GestionLibros {
         return fbd.tienePrestamos(idLibro);
     }
 
-    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
-        return fbd.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
-    }
+//    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
+//        return fbd.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
+//    }
 
     public Libro consultarLibro(Integer idLibro) {
         return fbd.consultarLibro(idLibro);

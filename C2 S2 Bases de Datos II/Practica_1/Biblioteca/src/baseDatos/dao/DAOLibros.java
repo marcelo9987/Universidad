@@ -9,11 +9,14 @@ import aplicacion.objetos.Ejemplar;
 import aplicacion.objetos.Categoria;
 import aplicacion.objetos.Libro;
 import aplicacion.objetos.Prestamo;
+import auxiliares.Utilidades;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.*;
+import java.util.Locale;
+import java.util.StringJoiner;
 
 /**
  * @author basesdatos
@@ -36,33 +39,47 @@ public class DAOLibros extends AbstractDAO {
 
         con = this.getConexion();
 
-        String consulta = "select id_libro, titulo, isbn, editorial, paginas, ano " +
-                "from libro as l " +
-                "where titulo like ?" +
-                "  and isbn like ?";
+        StringJoiner sjConsulta = new StringJoiner("\n");
+
+        sjConsulta.add("select id_libro, titulo, isbn, editorial, paginas, ano");
+        sjConsulta.add("from libro as l");
+        sjConsulta.add("where lower(titulo) like ?"); // ?: 1
+        sjConsulta.add("  and lower(isbn) like ?");   // ?: 2
         if (id != null) {
-            consulta = consulta + " and id_libro = " + id.toString();
+            sjConsulta.add(" and id_libro = ?"); // ?: 3
         }
 
         if (!autor.isEmpty()) {
-            consulta = consulta + "  and exists (select * " +
-                    "              from autor a" +
-                    "              where a.id_libro=l.id_libro" +
-                    "                and nombre like ?)";
+            sjConsulta.add("  and exists (");
+            sjConsulta.add("        select *");
+            sjConsulta.add("        from autor a");
+            sjConsulta.add("        where a.id_libro=l.id_libro");
+            sjConsulta.add("          and lower(nombre) like ?)"); // ?: 3/4
         }
 
+        sjConsulta.add("order by id_libro");
+
         try {
-            stmCatalogo = con.prepareStatement(consulta);
-            stmCatalogo.setString(1, "%" + titulo + "%");
-            stmCatalogo.setString(2, "%" + isbn + "%");
-            if (!autor.isEmpty()) {
-                stmCatalogo.setString(3, "%" + autor + "%");
+            stmCatalogo = con.prepareStatement(sjConsulta.toString());
+            stmCatalogo.setString(1, "%" + Utilidades.getLowerCase(titulo) + "%");
+            stmCatalogo.setString(2, "%" + Utilidades.getLowerCase(isbn) + "%");
+
+            if (id != null) {
+                stmCatalogo.setInt(3, id);
+
             }
+
+            if (!autor.isEmpty()) {
+                stmCatalogo.setString((id != null) ? 4 : 3, "%" + Utilidades.getLowerCase(autor) + "%");
+            }
+
+            System.out.println(stmCatalogo);
+
             rsCatalogo = stmCatalogo.executeQuery();
             while (rsCatalogo.next()) {
                 libroActual = new Libro(rsCatalogo.getInt("id_libro"), rsCatalogo.getString("titulo"),
                         rsCatalogo.getString("isbn"), rsCatalogo.getString("editorial"),
-                        rsCatalogo.getInt("paginas"), rsCatalogo.getString("ano"));
+                        (Integer) rsCatalogo.getObject("paginas"), rsCatalogo.getString("ano"));
                 try {
                     stmAutores = con.prepareStatement("select nombre as autor " +
                             "from autor " +
@@ -122,7 +139,7 @@ public class DAOLibros extends AbstractDAO {
             if (rsLibro.next()) {
                 libroResultado = new Libro(rsLibro.getInt("id_libro"), rsLibro.getString("titulo"),
                         rsLibro.getString("isbn"), rsLibro.getString("editorial"),
-                        rsLibro.getInt("paginas"), rsLibro.getString("ano"));
+                        (Integer) rsLibro.getObject("paginas"), rsLibro.getString("ano"));
 
                 try {
                     stmAutores = con.prepareStatement("select nombre as autor " +
@@ -160,26 +177,21 @@ public class DAOLibros extends AbstractDAO {
                     }
                 }
                 try {
-//                    stmEjemplares = con.prepareStatement("select libro, num_ejemplar, ano_compra, localizador " +
-//                            "from ejemplar " +
-//                            "where libro = ?");
                     stmEjemplares = con.prepareStatement("select e.id_libro, e.num_ejemplar, e.ano_compra, e.localizador, p.fecha_prestamo, p.id_usuario, p.fecha_devolucion " +
                             "from ejemplar e left join prestamo p on p.id_libro = e.id_libro and p.num_ejemplar = e.num_ejemplar and p.fecha_devolucion is null " +
                             "where e.id_libro = ?");
                     stmEjemplares.setInt(1, libroResultado.getIdLibro());
                     rsEjemplares = stmEjemplares.executeQuery();
                     while (rsEjemplares.next()) {
-                        /*
-                        Prestamo prestamoActivo;
-                        if(rsEjemplares.getString("id_usuario") != null) {
-                            prestamoActivo = new Prestamo(rsEjemplares.getInt("id_libro"), rsEjemplares.getInt("num_ejemplar"), rsEjemplares.getString("id_usuario"), rsEjemplares.getString("fecha_prestamo"), rsEjemplares.getString("fecha_devolucion"));
-                        } else {
-                            prestamoActivo = null;
-                        }
-                        */
-                        libroResultado.addEjemplar(new Ejemplar(libroResultado, rsEjemplares.getInt("num_ejemplar"),
+                        Prestamo prestamoActivo = new Prestamo(rsEjemplares.getString("id_usuario"),
+                                rsEjemplares.getString("fecha_prestamo"),
+                                rsEjemplares.getString("fecha_devolucion"));
+
+                        Ejemplar ejemplar = new Ejemplar(libroResultado,
+                                rsEjemplares.getInt("num_ejemplar"),
                                 rsEjemplares.getString("localizador"),
-                                rsEjemplares.getString("ano_compra") /*, prestamoActivo*/));
+                                rsEjemplares.getString("ano_compra"), prestamoActivo);
+                        libroResultado.addEjemplar(ejemplar);
                     }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -206,6 +218,7 @@ public class DAOLibros extends AbstractDAO {
         return libroResultado;
     }
 
+    @Deprecated
     public List<Ejemplar> consultarEjemplaresLibro(Integer idLibro) {
         List<Ejemplar> resultado = new ArrayList<>();
         Connection con;
@@ -222,9 +235,10 @@ public class DAOLibros extends AbstractDAO {
             stmEjemplares.setInt(1, idLibro);
             rsEjemplares = stmEjemplares.executeQuery();
             while (rsEjemplares.next()) {
+                // TODO: Poner el libro correcto
                 resultado.add(new Ejemplar(null, rsEjemplares.getInt("num_ejemplar"),
                         rsEjemplares.getString("localizador"),
-                        rsEjemplares.getString("ano_compra") /*, null*/));
+                        rsEjemplares.getString("ano_compra"), null));
             }
 
 
@@ -300,8 +314,18 @@ public class DAOLibros extends AbstractDAO {
             stmLibro.setString(1, libro.getTitulo());
             stmLibro.setString(2, libro.getIsbn());
             stmLibro.setString(3, libro.getEditorial());
-            stmLibro.setInt(4, libro.getPaginas());
+
+            /* INI controlar nulos en páginas 2024-03-09 */
+            if (libro.getPaginas() == null) {
+                stmLibro.setNull(4, Types.INTEGER);
+            }
+            else {
+                stmLibro.setInt(4, libro.getPaginas());
+            }
+            /* FIN controlar nulos en páginas 2024-03-09 */
+
             stmLibro.setString(5, libro.getAno());
+
             stmLibro.executeUpdate();
 
             try {
@@ -395,8 +419,18 @@ public class DAOLibros extends AbstractDAO {
             stmLibro.setString(1, libro.getTitulo());
             stmLibro.setString(2, libro.getIsbn());
             stmLibro.setString(3, libro.getEditorial());
-            stmLibro.setInt(4, libro.getPaginas());
+
+            /* INI controlar nulos en páginas 2024-03-09 */
+            if (libro.getPaginas() == null) {
+                stmLibro.setNull(4, Types.INTEGER);
+            }
+            else {
+                stmLibro.setInt(4, libro.getPaginas());
+            }
+            /* FIN controlar nulos en páginas 2024-03-09 */
+
             stmLibro.setString(5, libro.getAno());
+
             stmLibro.setInt(6, libro.getIdLibro());
             stmLibro.executeUpdate();
 
@@ -502,7 +536,7 @@ public class DAOLibros extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEjemplar = con.prepareStatement("insert into ejemplar(id_libro,ano_compra,localizador) " +
+            stmEjemplar = con.prepareStatement("insert into ejemplar(id_libro, ano_compra, localizador) " +
                     "values (?,?,?)");
             stmEjemplar.setInt(1, idLibro);
             stmEjemplar.setString(2, ejemplar.getAnoCompra());

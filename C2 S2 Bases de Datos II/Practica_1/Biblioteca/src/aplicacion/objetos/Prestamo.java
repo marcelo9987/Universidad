@@ -1,28 +1,39 @@
 package aplicacion.objetos;
 
+import auxiliares.Utilidades;
+
+import java.time.LocalDate;
+
 public class Prestamo {
-    private Integer idLibro;
-    private Integer idEjemplar;
+    //    private final Integer idLibro;
+//    private final Integer idEjemplar;
     private String idUsuario;
     private String fechaInicio;
+
     private String fechaFin;
 
-    public Prestamo(Integer idLibro, Integer idEjemplar, String idUsuario, String fechaInicio, String fechaFin) {
-        this.idLibro = idLibro;
-        this.idEjemplar = idEjemplar;
+//    private String fechaVencimiento;
+//    private boolean pendiente;
+
+
+    public Prestamo(/*Integer idLibro, Integer idEjemplar, */ String idUsuario, String fechaInicio, String fechaFin) {
+//        this.idLibro = idLibro;
+//        this.idEjemplar = idEjemplar;
         this.idUsuario = idUsuario;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+
+//        this.fechaVencimiento = Utilidades.calculaFechaVencimiento(fechaInicio);
+//        this.pendiente = Prestamo.esPrestamoPendiente();
     }
 
-
-    public Integer getIdLibro() {
-        return idLibro;
-    }
-
-    public Integer getIdEjemplar() {
-        return idEjemplar;
-    }
+//    public Integer getIdLibro() {
+//        return idLibro;
+//    }
+//
+//    public Integer getIdEjemplar() {
+//        return idEjemplar;
+//    }
 
 
     public String getIdUsuario() {
@@ -47,7 +58,47 @@ public class Prestamo {
         return fechaFin;
     }
 
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
+//    public void setFechaFin(String fechaFin) {
+//        this.fechaFin = fechaFin;
+//    }
+
+
+    public String getFechaVencimiento() {
+        return Prestamo.calculaFechaVencimiento(fechaInicio);
     }
+
+    public boolean esPrestamoActivo() {
+        return Prestamo.esPrestamoActivo(this);
+    }
+
+
+    public static String calculaFechaVencimiento(String cadenaFechaInicioFormatoIso) {
+        if (cadenaFechaInicioFormatoIso == null || cadenaFechaInicioFormatoIso.isEmpty()) {
+            return null;
+        }
+
+        LocalDate fechaInicio = LocalDate.parse(cadenaFechaInicioFormatoIso);
+        LocalDate fechaDevolucion = fechaInicio.plusDays(30);
+
+        return fechaDevolucion.toString();
+
+    }
+
+    private static boolean esPrestamoActivo(Prestamo prestamo) {
+
+        if (prestamo == null) {
+            return false;
+        }
+
+        if (Utilidades.isEmpty(prestamo.fechaInicio)) {
+            return false;
+        }
+
+        if (Utilidades.isEmpty(prestamo.fechaFin)) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

@@ -1,7 +1,6 @@
-package aplicacion.objetos;
+package auxiliares;
 
 public class Criptografia {
-    int despl = 152658;
 
     /**
      * Cifra un texto usando el cifrado de César

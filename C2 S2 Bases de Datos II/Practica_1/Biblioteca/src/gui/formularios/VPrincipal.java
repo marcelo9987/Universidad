@@ -13,8 +13,12 @@ package gui.formularios;
 
 
 import aplicacion.objetos.Libro;
+import auxiliares.IntegerFormatter;
+import auxiliares.Utilidades;
 import gui.modelos.ModeloTablaLibros;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -24,6 +28,8 @@ public class VPrincipal extends javax.swing.JFrame
 {
 
     aplicacion.FachadaAplicacion fa;
+
+    private boolean proletaricherModeAktiviert = false;
 
     /**
      * Creates new form VPrincipal
@@ -72,6 +78,12 @@ public class VPrincipal extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca de Informática");
+
+        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamañoPantalla.width/2;
+        int yMedio = tamañoPantalla.height/2;
+
+        setLocation(new java.awt.Point(xMedio-300, yMedio-250));
         setName("vPrincipal"); // NOI18N
         setResizable(false);
 
@@ -84,6 +96,12 @@ public class VPrincipal extends javax.swing.JFrame
 
         etiquetaTitulo.setText("Título:");
 
+        buscaIsbn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscaIsbnKeyPressed(evt);
+            }
+        });
+
         jLabel1.setText("Isbn:");
 
         jLabel2.setText("Autor:");
@@ -93,11 +111,21 @@ public class VPrincipal extends javax.swing.JFrame
                 buscaAutorActionPerformed(evt);
             }
         });
+        buscaAutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                buscaAutorKeyTyped(evt);
+            }
+        });
 
         tablaLibros.setModel(new ModeloTablaLibros());
         tablaLibros.setColumnSelectionAllowed(true);
         tablaLibros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaLibros.getTableHeader().setReorderingAllowed(false);
+        tablaLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaLibrosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaLibros);
         tablaLibros.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -131,6 +159,12 @@ public class VPrincipal extends javax.swing.JFrame
         });
 
         jLabel3.setText("Id:");
+
+        buscaId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                buscaIdKeyTyped(evt);
+            }
+        });
 
         menuAdministrar.setText("Administrar");
         menuAdministrar.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +270,17 @@ public class VPrincipal extends javax.swing.JFrame
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+        if (this.proletaricherModeAktiviert)
+        {
+
+            String[] frases= {"Que tus lecturas sean tan revolucionarias como la lucha de clases. ¡Hasta la próxima, camarada!",
+                    "Que el conocimiento que encuentres en estas páginas alimente tu conciencia crítica. ¡Hasta pronto, compañero de ideas!",
+                    "Que cada libro que tomes sea una herramienta para entender y transformar el mundo. ¡Hasta la próxima, amigo del saber!",
+                    "Que la luz de la verdad brille en tus lecturas, igual que la llama de la revolución. ¡Adiós, buscador de la verdad!",
+                    "Que las páginas que explores en esta biblioteca sean caminos hacia la emancipación. ¡Hasta luego, compañero de reflexión!"};
+            String fraseSeleccionada = frases[(int) (Math.random() * frases.length)];
+            fa.muestraExcepcion(fraseSeleccionada);
+        }
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -271,14 +315,14 @@ public class VPrincipal extends javax.swing.JFrame
 
     private void menuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuariosActionPerformed
         // TODO add your handling code here:
-        
-               fa.lanzarGestionUsuarios();
+
+        fa.lanzarGestionUsuarios();
 
     }//GEN-LAST:event_menuItemUsuariosActionPerformed
 
     private void menuAdministrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdministrarActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_menuAdministrarActionPerformed
 
     private void menuItemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCategoriasActionPerformed
@@ -286,9 +330,66 @@ public class VPrincipal extends javax.swing.JFrame
         fa.lanzarGestionCategorias();
     }//GEN-LAST:event_menuItemCategoriasActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void buscaIsbnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaIsbnKeyPressed
+        if(evt.getKeyChar()=='\n')
+        {
+            buscarLibros();
+        }
+    }//GEN-LAST:event_buscaIsbnKeyPressed
+
+    private void buscaAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaAutorKeyTyped
+        // TODO add your handling code here:
+        if(evt.getKeyChar()=='\n')
+        {
+            buscarLibros();
+        }
+    }//GEN-LAST:event_buscaAutorKeyTyped
+
+    private void buscaIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaIdKeyTyped
+        if(evt.getKeyChar()=='\n')
+        {
+            buscarLibros();
+        }
+    }//GEN-LAST:event_buscaIdKeyTyped
+
+    private void tablaLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLibrosMouseClicked
+        ModeloTablaLibros mtl = (ModeloTablaLibros) tablaLibros.getModel();
+        if(evt.getClickCount()== 5)
+        {
+            Libro libro = mtl.obtenerLibro(tablaLibros.getSelectedRow());
+            if(libro.getTitulo().equalsIgnoreCase("El capital"))
+            {
+                this.getContentPane().setBackground(Color.red);
+                //cambio el color de la tabla
+                tablaLibros.setBackground(Color.red);
+                tablaLibros.setForeground(Color.white);
+                //cambio el color de la fuente
+                tablaLibros.firePropertyChange("foreground", Color.black.getRGB(), Color.white.getRGB());
+                tablaLibros.firePropertyChange("background", Color.white.getRGB(), Color.red.getRGB());
+
+                etiquetaTitulo.setForeground(Color.white);
+                jLabel1.setForeground(Color.white);
+                jLabel2.setForeground(Color.white);
+                jLabel3.setForeground(Color.white);
+
+                //cambio el ratón a la imagen cursor.png en la carpeta de imagenes
+                Image cursor = Toolkit.getDefaultToolkit().getImage(getClass().getResource("recursos/cursor.png"));
+                Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(cursor, new Point(0, 0), "Cursor");
+                setCursor(c);
+
+                //cambio el icono de la ventana
+                Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("recursos/iconoLibreriaAlt.png"));
+
+                setIconImage(icon);
+
+                this.proletaricherModeAktiviert = true; // Activamos el modo proletaricher (proletario) para que el programa se despida de forma revolucionaria
+
+                // this.repaint();
+            }
+        }
+    }//GEN-LAST:event_tablaLibrosMouseClicked
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarLibros;
@@ -335,11 +436,12 @@ public class VPrincipal extends javax.swing.JFrame
 
     private List<Libro> getLibros()
     {
-        Integer id = null;
-        if (!buscaId.getText().isEmpty())
-        {
-            id = Integer.parseInt(buscaId.getText());
-        }
+        Integer id = Utilidades.getIntOrNull(buscaId.getText());
+
+//        if (!buscaId.getText().isEmpty())
+//        {
+//            id = Integer.parseInt(buscaId.getText());
+//        }
 
         return fa.obtenerLibros(id, buscaTitulo.getText(), buscaIsbn.getText(), buscaAutor.getText());
     }

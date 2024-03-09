@@ -78,9 +78,7 @@ public class VAviso extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;

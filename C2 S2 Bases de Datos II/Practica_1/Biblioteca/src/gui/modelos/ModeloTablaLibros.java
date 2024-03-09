@@ -8,6 +8,7 @@ package gui.modelos;
 import aplicacion.objetos.Libro;
 
 import javax.swing.table.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

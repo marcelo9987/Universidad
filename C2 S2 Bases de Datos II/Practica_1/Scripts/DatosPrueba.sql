@@ -117,8 +117,18 @@ INSERT into cat_tiene_libro(categoria) values ('Filosofía');
 INSERT into ejemplar(ano_compra, localizador) values ('2010', 'ar19577');
 INSERT into ejemplar(ano_compra, localizador) values ('2011', 'ar19578');
 
+INSERT into libro(titulo, isbn, editorial, paginas, ano) values ('Voy a borrarlo2 - La inteligencia fracasada', '8433962175', 'Anagrama',174,'2004');
+INSERT into autor(nombre, orden) values ('Jose Antonio Marina', 1);
+INSERT into autor(nombre, orden) values ('Borrado rapido', 2);
+INSERT into autor(nombre, orden) values ('Borrado rapido3', 3);
+INSERT into cat_tiene_libro(categoria) values ('Psicología');
+INSERT into cat_tiene_libro(categoria) values ('Filosofía');
+INSERT into ejemplar(ano_compra, localizador) values ('2010', 'ar1927577');
+INSERT into ejemplar(ano_compra, localizador) values ('2011', 'ar1975w78');
+
 
 insert into usuario values ('JAlvarez', 'bvm', 'Juan Alvarez', 'C Blanco Amor', 'JAlvarez@bibdb.es', 'Administrador');                      --descifrada: pja
+insert into usuario values ('a', 'm', 'Admin', 'de Pruebas', 'pruebas@bibdb.es', 'Administrador');                                          --descifrada: a
 insert into usuario values ('FEngels', 'xoa', 'Friedrich  Engels','C de la libertad', 'friedrich.engels@hu-berlin.de', 'Administrador');    --descifrada: lco
 insert into usuario values ('ERomero', 'bqd', 'Elisa Romero', 'C Rosalia de Castro', 'ERomero@comp1.com', 'Normal');                        --descifrada: per
 insert into usuario values ('FPerez', 'brb', 'Francisco Perez', 'C del olvido', 'novotom@locamost.org', 'Normal');                          --descifrada: pfp

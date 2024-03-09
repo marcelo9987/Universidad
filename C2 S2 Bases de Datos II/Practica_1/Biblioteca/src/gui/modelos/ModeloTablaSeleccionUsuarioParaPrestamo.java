@@ -6,7 +6,6 @@
 package gui.modelos;
 
 import aplicacion.objetos.Usuario;
-import baseDatos.FachadaBaseDatos;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -17,13 +16,13 @@ import java.util.Map;
 /**
  * @author basesdatos
  */
-public class ModeloTablaPrestamos extends AbstractTableModel {
+public class ModeloTablaSeleccionUsuarioParaPrestamo extends AbstractTableModel {
     private List<Usuario> usuarios;
     private Map<String, Integer> numPrestamosVencidosPorUsuario;
 
 
     //    public ModeloTablaPrestamos(FachadaBaseDatos fbd)
-    public ModeloTablaPrestamos() {
+    public ModeloTablaSeleccionUsuarioParaPrestamo() {
         this.usuarios = new ArrayList<>();
         this.numPrestamosVencidosPorUsuario = new HashMap<>();
     }
@@ -80,7 +79,7 @@ public class ModeloTablaPrestamos extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int row, int col) {
-        return col > 0;
+        return false;
     }
 
     public Object getValueAt(int row, int col) {

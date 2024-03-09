@@ -11,8 +11,8 @@ package aplicacion.objetos;
  */
 public class Categoria {
 
-    private String nombre;
-    private String descripcion;
+    private final String nombre;
+    private final String descripcion;
 
     public Categoria(String nombre, String descripcion) {
         this.nombre = nombre;

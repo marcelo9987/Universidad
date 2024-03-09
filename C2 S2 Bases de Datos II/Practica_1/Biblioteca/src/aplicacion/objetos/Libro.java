@@ -14,15 +14,15 @@ import java.util.List;
  */
 public class Libro {
 
-    private Integer idLibro;
-    private String titulo;
-    private String isbn;
-    private String editorial;
-    private Integer paginas;
-    private String ano;
+    private final Integer idLibro;
+    private final String titulo;
+    private final String isbn;
+    private final String editorial;
+    private final Integer paginas;
+    private final String ano;
     private List<String> autores;
-    private List<Categoria> categorias;
-    private List<Ejemplar> ejemplares;
+    private final List<Categoria> categorias;
+    private final List<Ejemplar> ejemplares;
 
     public Libro(Integer idLibro, String titulo, String isbn, String editorial, Integer paginas, String ano) {
         this.idLibro = idLibro;
