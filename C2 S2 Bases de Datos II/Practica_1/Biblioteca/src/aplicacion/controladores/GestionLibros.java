@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class GestionLibros {
     FachadaGui fgui; // Fachada del GUI
@@ -32,16 +34,8 @@ public class GestionLibros {
 
     public void visualizarLibro(Integer idLibro) {
         Libro libro = fbd.consultarLibro(idLibro);
-//        List<Ejemplar> ejemplares  = fbd.consultarEjemplaresLibro(idLibro);
         List<String> restoCategorias = fbd.obtenerRestoCategorias(idLibro);
-//        List<Prestamo> prestamos  = fbd.consultarTodosLosPrestamosParaLibro(idLibro);
 
-//        Map<Integer, Prestamo> estadoPrestamoEjemplares = new HashMap<>();
-//        for (Ejemplar ejemplarActual : libro.getEjemplares()) {
-//            estadoPrestamoEjemplares.put(ejemplarActual.getNumEjemplar(), fbd.consultarPrestamoActivoParaEjemplar(ejemplarActual.getLibro().getIdLibro(), ejemplarActual.getNumEjemplar()));
-//        }
-
-//        fgui.visualizaLibro(libro, estadoPrestamoEjemplares, restoCategorias);
         fgui.visualizaLibro(libro, restoCategorias);
     }
 
@@ -100,18 +94,12 @@ public class GestionLibros {
 
         fbd.borrarEjemplaresLibro(idLibro, borrar);
 
-//        Libro libro = fbd.consultarLibro(idLibro);
-////        return fbd.consultarEjemplaresLibro(idLibro);
-//        return libro.getEjemplares();
     }
 
     public boolean tienePrestamos(Integer idLibro) {
         return fbd.tienePrestamos(idLibro);
     }
 
-//    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
-//        return fbd.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
-//    }
 
     public Libro consultarLibro(Integer idLibro) {
         return fbd.consultarLibro(idLibro);

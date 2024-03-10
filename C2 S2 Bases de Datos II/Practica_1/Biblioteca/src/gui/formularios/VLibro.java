@@ -11,6 +11,7 @@
 
 package gui.formularios;
 
+import aplicacion.FachadaAplicacion;
 import aplicacion.objetos.Libro;
 import aplicacion.objetos.Ejemplar;
 import auxiliares.IntegerFormatter;
@@ -25,13 +26,15 @@ import java.util.List;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class VLibro extends javax.swing.JDialog {
 
     private Integer idLibro;
-    private List<Integer> ejemplaresBorrados;
-    private VPrincipal padre;
-    private aplicacion.FachadaAplicacion fa;
+    private final List<Integer> ejemplaresBorrados;
+    private final VPrincipal padre;
+    private final FachadaAplicacion fa;
 
     /**
      * Creates new form VLibro
@@ -53,6 +56,11 @@ public class VLibro extends javax.swing.JDialog {
         btnActualizarCategoriasLibro.setEnabled(false);
         btnActualizarEjemplaresLibro.setEnabled(false);
         btnBorrarLibro.setEnabled(false);
+        btnSiAsignarCategoria.setEnabled(false);
+        btnNoAsignarCategoria.setEnabled(false);
+        btnNuevoEjemplar.setEnabled(false);
+        btnPrestarLibro.setEnabled(false);
+        btnDevolverLibro.setEnabled(false);
 
         // --
 
@@ -60,13 +68,13 @@ public class VLibro extends javax.swing.JDialog {
         ModeloListaStrings mListaRC = new ModeloListaStrings();
         lstRestoCategorias.setModel(mListaRC);
         mListaRC.setElementos(restoCategorias);
-        if (mListaRC.getSize() > 0) {
-            lstRestoCategorias.setSelectedIndex(0);
-            btnSiAsignarCategoria.setEnabled(true);
-        }
-        else {
-            btnSiAsignarCategoria.setEnabled(false);
-        }
+//        if (mListaRC.getSize() > 0) {
+//            lstRestoCategorias.setSelectedIndex(0);
+//            btnSiAsignarCategoria.setEnabled(true);
+//        }
+//        else {
+//            btnSiAsignarCategoria.setEnabled(false);
+//        }
 
         // --
 
@@ -197,9 +205,9 @@ public class VLibro extends javax.swing.JDialog {
         textoEditorial = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int xMedio = tamañoPantalla.width/2;
-        int yMedio = tamañoPantalla.height/2;
+        Dimension tamanhoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamanhoPantalla.width/2;
+        int yMedio = tamanhoPantalla.height/2;
 
         setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
@@ -268,7 +276,7 @@ public class VLibro extends javax.swing.JDialog {
 
         jLabel5.setText("Páginas:");
 
-        jLabel6.setText("Año:");
+        jLabel6.setText("año:");
 
         lstAutores.setModel(new ModeloListaStrings());
         lstAutores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -638,13 +646,11 @@ public class VLibro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
         padre.buscarLibros();
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnNuevoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoAutorActionPerformed
-        // TODO add your handling code here:
         ModeloListaStrings ma = (ModeloListaStrings) lstAutores.getModel();
 
         if ((textoNuevoAutor.getText() == null) || (textoNuevoAutor.getText().isEmpty())) // Caso en el que el campo de texto esté vacío
@@ -660,11 +666,10 @@ public class VLibro extends javax.swing.JDialog {
         ma.nuevoElemento(textoNuevoAutor.getText());
         lstAutores.setSelectedIndex(ma.getSize() - 1);
         btnBorrarAutor.setEnabled(true);
-        return;// Todo bien, no hay nada más que hacer
+        return; // Tod0 bien, no hay nada más que hacer
     }//GEN-LAST:event_btnNuevoAutorActionPerformed
 
     private void btnBorrarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarAutorActionPerformed
-        // TODO add your handling code here:
         ModeloListaStrings ma;
         ma = (ModeloListaStrings) lstAutores.getModel();
 
@@ -678,7 +683,6 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBorrarAutorActionPerformed
 
     private void btnSiAsignarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiAsignarCategoriaActionPerformed
-        // TODO add your handling code here:
         ModeloListaStrings mRC;
         ModeloListaStrings mC;
 
@@ -697,7 +701,6 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSiAsignarCategoriaActionPerformed
 
     private void btnNoAsignarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoAsignarCategoriaActionPerformed
-        // TODO add your handling code here:
         ModeloListaStrings mRC;
         ModeloListaStrings mC;
 
@@ -716,11 +719,13 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNoAsignarCategoriaActionPerformed
 
     private void btnBorrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarLibroActionPerformed
+/*
 
-//        if (fa.tieneEjemplares(idLibro)) {
-//            fa.muestraExcepcion("No se puede borrar el libro porque tiene ejemplares");
-//            return;
-//        }
+        if (fa.tieneEjemplares(idLibro)) {
+            fa.muestraExcepcion("No se puede borrar el libro porque tiene ejemplares");
+            return;
+        }
+*/
 
         fa.borrarLibro(idLibro);
         padre.buscarLibros();
@@ -737,26 +742,16 @@ public class VLibro extends javax.swing.JDialog {
         btnActualizarCategoriasLibro.setEnabled(true);
         btnActualizarEjemplaresLibro.setEnabled(true);
         btnBorrarLibro.setEnabled(true);
+        btnSiAsignarCategoria.setEnabled(true);
+        btnNuevoEjemplar.setEnabled(true);
     }//GEN-LAST:event_btnActualizarLibroActionPerformed
 
     private void btnActualizarCategoriasLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCategoriasLibroActionPerformed
-        // TODO add your handling code here:
         ModeloListaStrings ma = (ModeloListaStrings) lstCategoriasLibro.getModel();
         fa.actualizarCategoriasLibro(idLibro, ma.getElementos());
     }//GEN-LAST:event_btnActualizarCategoriasLibroActionPerformed
 
     private void btnPrestarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestarLibroActionPerformed
-        // TODO add your handling code here:
-        /*
-        Libro libro = new Libro(idLibro, textoTitulo.getText(), textoIsbn.getText(), textoEditorial.getText(),
-                Integer.parseInt(textoPaginas.getText()), textoAno.getText());
-        
-        int filaSeleccionada = tablaEjemplares.getSelectedRow();
-        
-        Ejemplar ejemplarAprestar = new Ejemplar(libro,(Integer) tablaEjemplares.getValueAt(filaSeleccionada, 0), (String) tablaEjemplares.getValueAt(filaSeleccionada, 1), (String)tablaEjemplares.getValueAt(filaSeleccionada, 2));
-        */
-
-
         ModeloTablaEjemplares mTEjemplares = (ModeloTablaEjemplares) tablaEjemplares.getModel();
         Ejemplar ejemplarAprestar = mTEjemplares.obtenerEjemplar(tablaEjemplares.getSelectedRow());
 
@@ -804,9 +799,7 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnActualizarEjemplaresLibroActionPerformed
 
     private void btnNuevoEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEjemplarActionPerformed
-        // TODO add your handling code here:
         ModeloTablaEjemplares mTEjemplares = (ModeloTablaEjemplares) tablaEjemplares.getModel();
-        // TODO: Revisar este caso
         Ejemplar ejemplar = new Ejemplar(null, null, null, null, null);
         mTEjemplares.nuevoEjemplar(ejemplar);
 
@@ -818,10 +811,16 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNuevoEjemplarActionPerformed
 
     private void btnBorrarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarEjemplarActionPerformed
-        // TODO add your handling code here:
         ModeloTablaEjemplares mTEjemplares = (ModeloTablaEjemplares) tablaEjemplares.getModel();
         if (mTEjemplares.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar() != null) {
-            ejemplaresBorrados.add(mTEjemplares.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar());
+            int numEjemplar = mTEjemplares.obtenerEjemplar(tablaEjemplares.getSelectedRow()).getNumEjemplar();
+            int idLibro = this.idLibro;
+            if(fa.tienePrestamosEjemplar(idLibro, numEjemplar))
+            {
+                fa.muestraExcepcion("No se puede borrar el ejemplar porque tiene prestamos");
+                return;
+            }
+            ejemplaresBorrados.add(numEjemplar);
         }
 
         mTEjemplares.borrarEjemplar(tablaEjemplares.getSelectedRow());
@@ -838,7 +837,6 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBorrarEjemplarActionPerformed
 
     private void btnDevolverLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverLibroActionPerformed
-        // TODO add your handling code here:
         ModeloTablaEjemplares mtPrestamos = (ModeloTablaEjemplares) tablaEjemplares.getModel();
         int id_libro = this.idLibro;
         int num_ejemplar = (Integer) mtPrestamos.getValueAt(tablaEjemplares.getSelectedRow(), 0);
@@ -926,14 +924,12 @@ public class VLibro extends javax.swing.JDialog {
     }
 
     private void btnRefrescarEjemplaresMousePressed(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
         btnRefrescarEjemplares.setBackground(Color.DARK_GRAY);
         btnRefrescarEjemplares.setForeground(Color.DARK_GRAY);
     }
 
 
     private void btnRefrescarEjemplaresMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefrescarEjemplaresMousePressed
-        // TODO add your handling code here:
         btnRefrescarEjemplares.setBackground(Color.lightGray);
         btnRefrescarEjemplares.setForeground(Color.lightGray);
     }//GEN-LAST:event_btnRefrescarEjemplaresMousePressed
@@ -948,9 +944,7 @@ public class VLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_tablaEjemplaresMouseClicked
 
 
-    /**
-     * @param args the command line arguments
-     */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarCategoriasLibro;

@@ -1,5 +1,11 @@
 package auxiliares;
 
+/**
+ * Clase que contiene métodos para cifrar y descifrar texto
+ * @author Marcelo F.M.
+ * @version 1.0 (global: 2.0)
+ * @since 2.0 global
+ */
 public class Criptografia {
 
     /**

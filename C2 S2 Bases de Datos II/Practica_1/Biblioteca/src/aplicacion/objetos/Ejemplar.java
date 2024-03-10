@@ -8,6 +8,8 @@ package aplicacion.objetos;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class Ejemplar {
 
@@ -24,8 +26,6 @@ public class Ejemplar {
         this.anoCompra = anoCompra;
         this.localizador = localizador;
         this.libro = libro;
-
-        //      this.prestamoActivo = prestamoActivo;
         this.prestamoActivo = prestamoActivo == null ? new Prestamo(/*libro, numEjemplar,*/ null, null, null) : prestamoActivo;
 
     }

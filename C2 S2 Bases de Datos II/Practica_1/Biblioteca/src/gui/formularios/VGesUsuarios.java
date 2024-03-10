@@ -13,7 +13,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author alumnogreibd
+ * @author Marcelo F.M.
+ * @version 1.0
+ * @since global: 2.0
  */
 public class VGesUsuarios extends javax.swing.JDialog {
 
@@ -69,9 +71,9 @@ public class VGesUsuarios extends javax.swing.JDialog {
         btnGuardar = new java.awt.Button();
         comboBoxTipoUsuario = new javax.swing.JComboBox<>();
 
-        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int xMedio = tamañoPantalla.width/2;
-        int yMedio = tamañoPantalla.height/2;
+        Dimension tamanhoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamanhoPantalla.width/2;
+        int yMedio = tamanhoPantalla.height/2;
 
         setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
@@ -329,15 +331,12 @@ public class VGesUsuarios extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void IdUsuarioBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdUsuarioBusquedaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_IdUsuarioBusquedaActionPerformed
 
     private void nombreUsuarioBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioBusquedaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_nombreUsuarioBusquedaActionPerformed
 
     private void btnBuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuariosActionPerformed
-        // TODO add your handling code here:
         buscarUsuarios();
     }//GEN-LAST:event_btnBuscarUsuariosActionPerformed
 
@@ -354,18 +353,20 @@ public class VGesUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_IdUsuarioBusquedaKeyTyped
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
-        // TODO add your handling code here:
-
         btnNuevoUsuario.setEnabled(true);
         btnGuardar.setEnabled(true);
         btnBorrarUsuario.setEnabled(true);
 
 
+        llenarCamposEdicionUsuario();
+
+    }//GEN-LAST:event_tablaUsuariosMouseClicked
+
+    private void llenarCamposEdicionUsuario() {
         txtIdModificar.setEnabled(false);
 
         int filaSeleccionada = tablaUsuarios.getSelectedRow();
@@ -378,15 +379,14 @@ public class VGesUsuarios extends javax.swing.JDialog {
         int indiceCajaSeleccion = usuarioSeleccionado.getTipoUsuario().toString().equals("Normal") ? 1 : 2;
         comboBoxTipoUsuario.setSelectedIndex(indiceCajaSeleccion);
         txtDireccionModificar.setText(usuarioSeleccionado.getDireccion());
-
-    }//GEN-LAST:event_tablaUsuariosMouseClicked
+        btnNuevoUsuario.setEnabled(true);
+        btnBorrarUsuario.setEnabled(true);
+    }
 
     private void txtNombreModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreModificarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreModificarActionPerformed
 
     private void btnNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioActionPerformed
-        // TODO add your handling code here:
 
         txtIdModificar.setEnabled(true);
         btnBorrarUsuario.setEnabled(false);
@@ -404,7 +404,6 @@ public class VGesUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNuevoUsuarioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
         String id = txtIdModificar.getText();
         if (id.isBlank()) {
             fa.muestraExcepcion("[ERROR] Guardar Usuario: No se pueden dejar la ID vacía");
@@ -462,7 +461,10 @@ public class VGesUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_comboBoxTipoUsuarioActionPerformed
 
     private void btnBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarUsuarioActionPerformed
-        // TODO: Si tiene prestamos pendientes, no se puede borrar
+        if(fa.tienePrestamosUsuario(txtIdModificar.getText())){
+            fa.muestraExcepcion("No se puede borrar el usuario: Tiene prestamos");
+            return;
+        }
         fa.borrarUsuario(txtIdModificar.getText());
         buscarUsuarios();
     }//GEN-LAST:event_btnBorrarUsuarioActionPerformed
@@ -508,12 +510,14 @@ public class VGesUsuarios extends javax.swing.JDialog {
         //jTable1.setModel(new gui.modelos.ModeloTablaUsuarios());
         m = (ModeloTablaUsuarios) tablaUsuarios.getModel();
 
-        //todo: mira esto
         List<Usuario> datos = fa.obtenerUsuarios(IdUsuarioBusqueda.getText(), nombreUsuarioBusqueda.getText());
 
         m.setFilas(fa.obtenerUsuarios(IdUsuarioBusqueda.getText(), nombreUsuarioBusqueda.getText()));
         if (m.getRowCount() > 0) {
-            // tablaUsuarios.setRowSelectionInterval(0, 0);
+               tablaUsuarios.setRowSelectionInterval(0, 0);
+               llenarCamposEdicionUsuario();
+
+
         }
 
     }

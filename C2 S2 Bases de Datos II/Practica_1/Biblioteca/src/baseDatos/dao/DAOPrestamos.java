@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Marcelo F.M.
+ * @version 1.0
+ * @since global: 2.0
+ */
 public class DAOPrestamos extends AbstractDAO {
     public DAOPrestamos(java.sql.Connection conexion, aplicacion.FachadaAplicacion fa) {
         super.setConexion(conexion);
@@ -247,5 +252,57 @@ public class DAOPrestamos extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+    }
+
+    public boolean tienePrestamosEjemplar(int id_libro, int numEjemplar) {
+        boolean salida = false;
+
+        PreparedStatement stmPrestamo;
+        ResultSet rsPrestamo;
+
+        String consulta = "select count(*) from prestamo where num_ejemplar = ? and id_libro = ?";
+        java.sql.Connection con = super.getConexion();
+
+        try
+        {
+            stmPrestamo = con.prepareStatement(consulta);
+            stmPrestamo.setInt(1, numEjemplar);
+            stmPrestamo.setInt(2, id_libro);
+            rsPrestamo = stmPrestamo.executeQuery();
+            if (rsPrestamo.next()) {
+                salida = rsPrestamo.getInt(1) > 0;
+            }
+        }catch (SQLException excp)
+        {
+            System.out.println(excp.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(excp.getMessage());
+        }
+        return salida;
+    }
+
+    public boolean tienePrestamosActivosUsuario(String text)
+    {
+        boolean salida = false;
+
+        PreparedStatement stmPrestamo;
+        ResultSet rsPrestamo;
+
+        String consulta = "select count(*) from prestamo where id_usuario = ? and fecha_devolucion is null";
+        java.sql.Connection con = super.getConexion();
+
+        try
+        {
+            stmPrestamo = con.prepareStatement(consulta);
+            stmPrestamo.setString(1, text);
+            rsPrestamo = stmPrestamo.executeQuery();
+            if (rsPrestamo.next()) {
+                salida = rsPrestamo.getInt(1) > 0;
+            }
+        }catch (SQLException excp)
+        {
+            System.out.println(excp.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(excp.getMessage());
+        }
+        return salida;
     }
 }

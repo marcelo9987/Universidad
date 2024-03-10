@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * @author Marcelo Fort Muñoz
+ * @version 1.0
+ * @since global: 2.0
  */
 public class ModeloTablaCategorias extends AbstractTableModel
 {

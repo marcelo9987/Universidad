@@ -8,7 +8,6 @@ package gui.modelos;
 import aplicacion.objetos.Libro;
 
 import javax.swing.table.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +53,7 @@ public class ModeloTablaLibros extends AbstractTableModel
                 nombre = "Editorial";
                 break;
             case 4:
-                nombre = "Año";
+                nombre = "año";
                 break;
         }
         return nombre;

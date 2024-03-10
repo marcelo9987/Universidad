@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class Libro {
 

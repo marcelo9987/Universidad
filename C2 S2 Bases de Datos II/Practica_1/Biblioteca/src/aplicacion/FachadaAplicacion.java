@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package aplicacion;
 
 import aplicacion.controladores.GestionLibros;
@@ -15,6 +10,8 @@ import java.util.List;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class FachadaAplicacion {
     gui.FachadaGui fgui; // Interfaz gráfica de usuario
@@ -224,15 +221,7 @@ public class FachadaAplicacion {
         return cl.tienePrestamos(idLibro);
     }
 
-    /**
-     * Busca (de haberlo) un préstamo activo para un ejemplar de un libro
-     * @param idLibro Identificador del libro
-     * @param numEjemplar Número del ejemplar
-     * @return Préstamo activo para el ejemplar en el libro
-     */
-//    public Prestamo consultarPrestamoActivoParaEjemplar(Integer idLibro, Integer numEjemplar) {
-//        return cl.consultarPrestamoActivoParaEjemplar(idLibro, numEjemplar);
-//    }
+
 
     /**
      * Busca un libro
@@ -261,5 +250,34 @@ public class FachadaAplicacion {
      */
     public void devolverEjemplar(int idLibro, int numEjemplar) {
         cp.devolverEjemplar(idLibro,numEjemplar);
+    }
+
+    /**
+     * Comprueba si un ejemplar tiene préstamos
+     * @param id_libro Identificador del libro
+     * @param numEjemplar Número del ejemplar
+     * @return true si el ejemplar tiene préstamos, false en caso contrario
+     */
+    public boolean tienePrestamosEjemplar(int id_libro, int numEjemplar) {
+        return cp.tienePrestamosEjemplar(id_libro, numEjemplar);
+    }
+
+    /**
+     * Comprueba si un usuario tiene préstamos
+     * @param text Identificador del usuario
+     * @return true si el usuario tiene préstamos, false en caso contrario
+     */
+    public boolean tienePrestamosUsuario(String text) {
+        return cu.tienePrestamosUsuario(text);
+    }
+
+    /**
+     * Comprueba si un usuario tiene préstamos vencidos
+     * @param c Identificador del usuario
+     * @return true si el usuario tiene préstamos vencidos, false en caso contrario
+     */
+
+    public boolean tieneLibrosCategoria(Categoria c) {
+        return fbd.tieneLibrosCategoria(c);
     }
 }

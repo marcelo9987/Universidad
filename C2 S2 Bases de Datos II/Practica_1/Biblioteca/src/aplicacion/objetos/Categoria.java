@@ -8,6 +8,8 @@ package aplicacion.objetos;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class Categoria {
 

@@ -3,6 +3,13 @@ package aplicacion.controladores;
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
 
+/**
+ * Controlador de la lógica de los préstamos
+ * @author Marcelo F.M.
+ * @version 1.0 (global: 2.0)
+ * @since global: 2.0
+ */
+
 public class GestionPrestamos {
     private final FachadaBaseDatos fbd;
     private final FachadaGui fgui;
@@ -37,5 +44,9 @@ public class GestionPrestamos {
             return;
         }
         fbd.devolverEjemplar(idLibro, numEjemplar);
+    }
+
+    public boolean tienePrestamosEjemplar(int id_libro, int numEjemplar) {
+        return fbd.tienePrestamosEjemplar(id_libro, numEjemplar);
     }
 }

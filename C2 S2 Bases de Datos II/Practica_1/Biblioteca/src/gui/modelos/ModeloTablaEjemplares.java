@@ -13,19 +13,16 @@ import java.util.*;
 
 /**
  * @author basesdatos
+ * @version 2.0
  */
 public class ModeloTablaEjemplares extends AbstractTableModel {
 
     private List<Ejemplar> ejemplares;
-//    private Map<Integer, Prestamo> estadoPrestamoEjemplares;
 
-//    private FachadaBaseDatos fbd;
 
     public ModeloTablaEjemplares() {
-//    public ModeloTablaEjemplares(FachadaBaseDatos fbd) {
-//        this.fbd = fbd;
+
         this.ejemplares = new ArrayList<>();
-//        this.estadoPrestamoEjemplares = new HashMap<>();
     }
 
     public int getColumnCount() {
@@ -110,10 +107,7 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 
-        //        Integer numEjemplarSeleccionado;
-
         Ejemplar ejemplarSeleccionado = ejemplares.get(row);
-//        Prestamo prestamoActivo = ejemplarSeleccionado.getPrestamoActivo();
 
         switch (col) {
             case 0:
@@ -126,43 +120,14 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
                 resultado = ejemplarSeleccionado.getAnoCompra();
                 break;
             case 3: // "Prestado a"
-//                numEjemplarSeleccionado = ejemplares.get(row).getNumEjemplar();
-//                if (numEjemplarSeleccionado == null || estadoPrestamoEjemplares.get(numEjemplarSeleccionado) == null) {
-//                    resultado = null;
-//                }
-//                else {
-//                    resultado = estadoPrestamoEjemplares.get(numEjemplarSeleccionado).getIdUsuario();
-//                }
-
-//                resultado = prestamoActivo == null ? null : prestamoActivo.getIdUsuario();
                 resultado = ejemplarSeleccionado.getPrestamoActivo().getIdUsuario();
                 break;
 
             case 4: // Fecha de inicio del préstamo
-//                numEjemplarSeleccionado = ejemplarSeleccionado.getNumEjemplar();
-//                if (numEjemplarSeleccionado == null || estadoPrestamoEjemplares.get(numEjemplarSeleccionado) == null) {
-//                    resultado = null;
-//                }
-//                else {
-//                    resultado = estadoPrestamoEjemplares.get(numEjemplarSeleccionado).getFechaInicio();
-//                }
-
-//                resultado = prestamoActivo == null ? null : prestamoActivo.getFechaInicio();
                 resultado = ejemplarSeleccionado.getPrestamoActivo().getFechaInicio();
                 break;
 
             case 5: // Fecha (máxima) de vencimiento
-//                numEjemplarSeleccionado = ejemplarSeleccionado.getNumEjemplar();
-//                if (numEjemplarSeleccionado == null || estadoPrestamoEjemplares.get(numEjemplarSeleccionado) == null) {
-//                    resultado = null;
-//                }
-//                else {
-//                    String cadenaFechaInicioFormatoIso = estadoPrestamoEjemplares.get(numEjemplarSeleccionado).getFechaInicio();
-//
-//                    resultado = Utilidades.calculaFechaVencimiento(cadenaFechaInicioFormatoIso);
-//                }
-
-//                resultado = prestamoActivo == null ? null : prestamoActivo.getFechaVencimiento();
                 resultado = ejemplarSeleccionado.getPrestamoActivo().getFechaVencimiento();
                 break;
 
@@ -174,7 +139,6 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
     @Override
     public void setValueAt(Object v, int row, int col) {
         Ejemplar ejemplarSeleccionado = ejemplares.get(row);
-//        Prestamo prestamoActivo = ejemplarSeleccionado.getPrestamoActivo();
 
         switch (col) {
             case 0:
@@ -195,29 +159,13 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
                 ejemplarSeleccionado.getPrestamoActivo().setFechaInicio((String) v);
                 break;
             case 5: // Fecha (máxima) de vencimiento
-                // estadoPrestamoEjemplares.get(ejemplarSeleccionado.getNumEjemplar()).setFechaFin((String) v);
-//                ejemplarSeleccionado.getPrestamoActivo().setFechaVencimiento((String) v);
                 break;
         }
     }
 
-//    public void setFilas(List<Ejemplar> ejemplares, Map<Integer, Prestamo> estadoPrestamoEjemplares) {
     public void setFilas(List<Ejemplar> ejemplares) {
-//        int numeroEjemplar = 0;
-//        for (Ejemplar ejemplarActual:ejemplares)
-//        {
-//            // Si el ejemplar no tiene libro asociado es porque acaba de llegar de la base de datos
-//            if(ejemplarActual.getLibro()== null && ejemplarActual.getNumEjemplar() != null)
-//
-//            {
-//                Ejemplar old = this.ejemplares.get(this.ejemplares.indexOf(ejemplarActual));
-//                ejemplarActual.setLibro(old.getLibro());
-//            }
-//        }
+
         this.ejemplares = ejemplares;
-
-//        this.estadoPrestamoEjemplares = estadoPrestamoEjemplares;
-
         fireTableDataChanged();
     }
 
@@ -241,12 +189,5 @@ public class ModeloTablaEjemplares extends AbstractTableModel {
 
     public boolean tienePrestamosActivos(int indice) {
         return this.ejemplares.get(indice).getPrestamoActivo ().esPrestamoActivo();
-        /*
-        if (!this.estadoPrestamoEjemplares.containsKey(idEjemplar)) {
-            return false;
-        }
-
-        return this.estadoPrestamoEjemplares.get(idEjemplar) != null;
-         */
     }
 }

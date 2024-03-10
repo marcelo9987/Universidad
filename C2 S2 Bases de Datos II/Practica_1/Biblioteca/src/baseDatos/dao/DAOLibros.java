@@ -15,11 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.*;
-import java.util.Locale;
 import java.util.StringJoiner;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class DAOLibros extends AbstractDAO {
 
@@ -228,14 +229,12 @@ public class DAOLibros extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            // TODO: Arreglar esta query
             stmEjemplares = con.prepareStatement("select num_ejemplar, ano_compra, localizador " +
                     "from ejemplar " +
                     "where id_libro = ?");
             stmEjemplares.setInt(1, idLibro);
             rsEjemplares = stmEjemplares.executeQuery();
             while (rsEjemplares.next()) {
-                // TODO: Poner el libro correcto
                 resultado.add(new Ejemplar(null, rsEjemplares.getInt("num_ejemplar"),
                         rsEjemplares.getString("localizador"),
                         rsEjemplares.getString("ano_compra"), null));

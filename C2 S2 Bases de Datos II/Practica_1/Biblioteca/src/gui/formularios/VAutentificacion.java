@@ -15,6 +15,8 @@ import java.awt.*;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class VAutentificacion extends javax.swing.JDialog
 {
@@ -77,9 +79,9 @@ public class VAutentificacion extends javax.swing.JDialog
         setTitle("Autentificación de usuarios");
         setModal(true);
 
-        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int xMedio = tamañoPantalla.width/2;
-        int yMedio = tamañoPantalla.height/2;
+        Dimension tamanhoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamanhoPantalla.width/2;
+        int yMedio = tamanhoPantalla.height/2;
 
         setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
@@ -185,7 +187,6 @@ public class VAutentificacion extends javax.swing.JDialog
 
     private void textoUsuarioActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_textoUsuarioActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_textoUsuarioActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)
@@ -220,7 +221,6 @@ public class VAutentificacion extends javax.swing.JDialog
 
     private void textoUsuarioKeyTyped(java.awt.event.KeyEvent evt)
     {//GEN-FIRST:event_textoUsuarioKeyTyped
-        // TODO add your handling code here:
         if (evt.getKeyChar() == '\n')
         {
             comprobarInicioDeSesion();
@@ -228,7 +228,6 @@ public class VAutentificacion extends javax.swing.JDialog
     }//GEN-LAST:event_textoUsuarioKeyTyped
 
     private void textoClaveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoClaveKeyTyped
-        // TODO add your handling code here:
         if (evt.getKeyChar() == '\n')
         {
             etiquetaFallo.setVisible(false);

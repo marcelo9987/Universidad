@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import aplicacion.objetos.Categoria;
@@ -13,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author alumno
+ * @author Profesorado asignatura bases de datos II
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class FachadaGui
 {
@@ -27,6 +25,9 @@ public class FachadaGui
     }
 
 
+    /**
+     * Inicia la aplicación y lanza el formulario de autentificación
+     */
     public void iniciaVista()
     {
         VAutentificacion va;
@@ -37,7 +38,11 @@ public class FachadaGui
     }
 
 
-//    public void visualizaLibro(Libro libro, Map<Integer, Prestamo> estadoPrestamoEjemplares, List<String> restoCategorias)
+    /**
+     * Muestra la pantalla de edición de un libro
+     * @param libro Libro a editar
+     * @param restoCategorias Categorías
+     */
     public void visualizaLibro(Libro libro, List<String> restoCategorias)
     {
         VLibro vl;
@@ -48,11 +53,14 @@ public class FachadaGui
             categorias.add(c.getNombre());
         }
 
-//        vl = new VLibro(vp, true, fa, libro, estadoPrestamoEjemplares, categorias, restoCategorias);
         vl = new VLibro(vp, true, fa, libro, categorias, restoCategorias);
         vl.setVisible(true);
     }
 
+    /**
+     * Muestra la pantalla de edición de libro pero para un libro nuevo
+     * @param restoCategorias Categorías
+     */
     public void nuevoLibro(List<String> restoCategorias)
     {
         VLibro vl;
@@ -61,12 +69,20 @@ public class FachadaGui
         vl.setVisible(true);
     }
 
+    /**
+     * Muestra la pantalla de gestión de usuarios
+     */
     public void gestionUsuarios()
     {
         VGesUsuarios vu = new VGesUsuarios(vp, true, fa);
         vu.setVisible(true);
     }
 
+
+    /**
+     * Muestra por pantalla una ventana de aviso
+     * @param txtExcepcion Texto del aviso
+     */
     public void muestraExcepcion(String txtExcepcion)
     {
         VAviso va;
@@ -76,12 +92,20 @@ public class FachadaGui
     }
 
 
+    /**
+     * Muestra la pantalla de gestión de categorías
+     */
     public void gestionCategorias()
     {
         VGesCategorias vc = new VGesCategorias(vp, true, fa);
         vc.setVisible(true);
     }
 
+
+    /**
+     * Muestra la pantalla de gestión de préstamos
+     * @param ejemplarAprestar Ejemplar a prestar
+     */
     public void gestionPrestamos(Ejemplar ejemplarAprestar)
     {
         VGesPrestamos vp = new VGesPrestamos(this.vp, true, fa, ejemplarAprestar);

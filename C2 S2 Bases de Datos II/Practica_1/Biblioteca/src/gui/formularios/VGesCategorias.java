@@ -14,7 +14,8 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 
 /**
- * @author alumnogreibd
+ * @author Marcelo F.M.
+ * @version 1.0
  */
 public class VGesCategorias extends javax.swing.JDialog
 {
@@ -57,9 +58,9 @@ public class VGesCategorias extends javax.swing.JDialog
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int xMedio = tamañoPantalla.width/2;
-        int yMedio = tamañoPantalla.height/2;
+        Dimension tamanhoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamanhoPantalla.width/2;
+        int yMedio = tamanhoPantalla.height/2;
 
         setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
@@ -87,7 +88,7 @@ public class VGesCategorias extends javax.swing.JDialog
             }
         });
 
-        btnInsertarCategoria.setActionCommand("anhadir");
+        btnInsertarCategoria.setActionCommand("añadir");
         btnInsertarCategoria.setLabel("Añadir");
         btnInsertarCategoria.setName("Añadir"); // NOI18N
         btnInsertarCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -184,18 +185,20 @@ public class VGesCategorias extends javax.swing.JDialog
 
     private void btnSalirCategoriasActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnSalirCategoriasActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnSalirCategoriasActionPerformed
     
     private void tablaCategoriasMouseClicked(java.awt.event.MouseEvent evt)
     {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+        extraerDatosYponerBotones();
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void extraerDatosYponerBotones() {
         ModeloTablaCategorias m = (ModeloTablaCategorias) tablaCategorias.getModel();
         Categoria c = m.obtenerCategoria(tablaCategorias.getSelectedRow());
         txtNombreCategoria.setText(c.getNombre());
         txtDescripcion.setText(c.getDescripcion());
-    }//GEN-LAST:event_jTable1MouseClicked
+    }
 
     private void btnInsertarCategoriaActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnInsertarCategoriaActionPerformed
@@ -208,6 +211,12 @@ public class VGesCategorias extends javax.swing.JDialog
     private void btnBorrarCategoriaActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnBorrarCategoriaActionPerformed
         Categoria c = new Categoria(txtNombreCategoria.getText(), txtDescripcion.getText());
+        if (fa.tieneLibrosCategoria(c))
+        {
+            fa.muestraExcepcion("No se puede borrar la categoría: " + c.getNombre() + " porque tiene libros asociados");
+            return;
+        }
+
         fa.borrarCategoria(c);
         buscarCategorias();
     }//GEN-LAST:event_btnBorrarCategoriaActionPerformed
@@ -238,6 +247,7 @@ public class VGesCategorias extends javax.swing.JDialog
         if (m.getRowCount() > 0)
         {
             tablaCategorias.setRowSelectionInterval(0, 0);
+            extraerDatosYponerBotones();
         }
     }
 }

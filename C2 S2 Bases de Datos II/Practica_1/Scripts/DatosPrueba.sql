@@ -9,6 +9,7 @@ Insert into categoria values ('Sociología', 'Libros de sociología');
 Insert into categoria values ('Recursos Humanos', 'Libros de recursos humanos');
 Insert into categoria values ('Economía', 'Libros de economía');
 Insert into categoria values ('Filosofía', 'Libros de filosofía');
+INSERT into categoria values ('Horror Cósmico', 'Libros de horror cósmico');
 
 Insert into libro (titulo, isbn, editorial, paginas, ano) values ('Fundamentos de bases de datos', '8448136543', 'McGraw Hill', 787, '2002');
 Insert into autor (nombre, orden) values ('A. Silberschatz', 1);
@@ -44,7 +45,7 @@ Insert into ejemplar (ano_compra, localizador)
 Insert into ejemplar( ano_compra, localizador) 
 	values ('2011', 'dsa3g89');
 
-INSERT into libro(titulo, isbn, editorial, paginas, ano) values('Cien años de soledad', '9788420471839', 'Real Academia Española', 609, '2007');
+INSERT into libro(titulo, isbn, editorial, paginas, ano) values('Cien años de soledad', '9788420471839', 'Real Academia Espanhola', 609, '2007');
 INSERT into autor(nombre, orden) values('Gabriel García Márquez', 1);
 INSERT into cat_tiene_libro(categoria) values('Novela');
 INSERT into cat_tiene_libro(categoria) values('Clasicos');
@@ -117,14 +118,12 @@ INSERT into cat_tiene_libro(categoria) values ('Filosofía');
 INSERT into ejemplar(ano_compra, localizador) values ('2010', 'ar19577');
 INSERT into ejemplar(ano_compra, localizador) values ('2011', 'ar19578');
 
-INSERT into libro(titulo, isbn, editorial, paginas, ano) values ('Voy a borrarlo2 - La inteligencia fracasada', '8433962175', 'Anagrama',174,'2004');
-INSERT into autor(nombre, orden) values ('Jose Antonio Marina', 1);
-INSERT into autor(nombre, orden) values ('Borrado rapido', 2);
-INSERT into autor(nombre, orden) values ('Borrado rapido3', 3);
-INSERT into cat_tiene_libro(categoria) values ('Psicología');
-INSERT into cat_tiene_libro(categoria) values ('Filosofía');
-INSERT into ejemplar(ano_compra, localizador) values ('2010', 'ar1927577');
-INSERT into ejemplar(ano_compra, localizador) values ('2011', 'ar1975w78');
+INSERT into libro(titulo, isbn, editorial, paginas, ano) values ('En las montañas de la locura', '9788477026181', 'Valdemar', 176, '2004');
+INSERT into autor(nombre, orden) values ('H.P. Lovecraft', 1);
+INSERT into cat_tiene_libro(categoria) values ('Horror Cósmico');
+INSERT into cat_tiene_libro(categoria) values ('Novela');
+
+
 
 
 insert into usuario values ('JAlvarez', 'bvm', 'Juan Alvarez', 'C Blanco Amor', 'JAlvarez@bibdb.es', 'Administrador');                      --descifrada: pja
@@ -133,6 +132,7 @@ insert into usuario values ('FEngels', 'xoa', 'Friedrich  Engels','C de la liber
 insert into usuario values ('ERomero', 'bqd', 'Elisa Romero', 'C Rosalia de Castro', 'ERomero@comp1.com', 'Normal');                        --descifrada: per
 insert into usuario values ('FPerez', 'brb', 'Francisco Perez', 'C del olvido', 'novotom@locamost.org', 'Normal');                          --descifrada: pfp
 insert into usuario values ('SSuarez', 'bee', 'Sara Suarez', 'C de la rosa', 'ss34@alo.com', 'Normal');                                     --descifrada: pss
+insert into usuario values ('Slek', 'req', 'Slavoj Žižek', 'C de la libertad', 'sz@egs.eu', 'Normal');                                     --descifrada: fsr
 
 insert into prestamo(fecha_prestamo,id_usuario,id_libro,num_ejemplar) values('2010-01-01','JAlvarez','1','1');
 insert into prestamo(fecha_prestamo,id_usuario,id_libro,num_ejemplar) values('2010-01-01','FEngels','2','1');

@@ -8,7 +8,11 @@ import javax.swing.table.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @author Marcelo F.M.
+ * @version 1.0 (global: 2.0)
+ * @since global: 2.0
+ */
 public class ModeloTablaUsuarios extends AbstractTableModel
 {
     private List<Usuario> usuarios;

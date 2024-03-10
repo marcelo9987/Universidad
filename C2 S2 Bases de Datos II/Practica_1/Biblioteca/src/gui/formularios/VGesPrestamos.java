@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author alumnogreibd
+ * @author Marcelo F.M.
+ * @version 1.0 (global: 2.0)
+ * @since 2.0 global
  */
 public class VGesPrestamos extends javax.swing.JDialog {
 
@@ -55,9 +57,9 @@ public class VGesPrestamos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int xMedio = tamañoPantalla.width/2;
-        int yMedio = tamañoPantalla.height/2;
+        Dimension tamanhoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int xMedio = tamanhoPantalla.width/2;
+        int yMedio = tamanhoPantalla.height/2;
 
         setLocation(new java.awt.Point(xMedio-300, yMedio-250));
 
@@ -174,7 +176,12 @@ public class VGesPrestamos extends javax.swing.JDialog {
     private void btnPrestarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnPrestarActionPerformed
         int filaSeleccionada = tablaPrestamos.getSelectedRow();
+if (filaSeleccionada < 0) {
+            fa.muestraExcepcion("Selecciona un usuario");
+            return;
+        }
         String usuarioSolicitante = (String)tablaPrestamos.getValueAt(filaSeleccionada,0);
+
         
         Integer idLibro = this.ejemplar.getLibro().getIdLibro();
         Integer numEjemplar = this.ejemplar.getNumEjemplar();

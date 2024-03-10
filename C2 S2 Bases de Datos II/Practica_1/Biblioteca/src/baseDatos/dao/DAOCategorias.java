@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class DAOCategorias extends AbstractDAO {
 
@@ -94,5 +96,32 @@ public class DAOCategorias extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+    }
+
+    public boolean tieneLibrosCategoria(Categoria c) {
+        Connection con;
+        PreparedStatement stmCategorias = null;
+        ResultSet rsCategorias;
+        boolean resultado = false;
+
+        con = this.getConexion();
+
+        try {
+            stmCategorias = con.prepareStatement("select id_libro from cat_tiene_libro where categoria = ?");
+            stmCategorias.setString(1, c.getNombre());
+            rsCategorias = stmCategorias.executeQuery();
+            if (rsCategorias.next()) {
+                resultado = true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmCategorias.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
     }
 }

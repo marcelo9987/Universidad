@@ -13,16 +13,16 @@ package gui.formularios;
 
 
 import aplicacion.objetos.Libro;
-import auxiliares.IntegerFormatter;
 import auxiliares.Utilidades;
 import gui.modelos.ModeloTablaLibros;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class VPrincipal extends javax.swing.JFrame
 {
@@ -78,12 +78,7 @@ public class VPrincipal extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca de Informática");
-
-        Dimension tamañoPantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int xMedio = tamañoPantalla.width/2;
-        int yMedio = tamañoPantalla.height/2;
-
-        setLocation(new java.awt.Point(xMedio-300, yMedio-250));
+        setLocation(new java.awt.Point(100, 100));
         setName("vPrincipal"); // NOI18N
         setResizable(false);
 
@@ -265,7 +260,6 @@ public class VPrincipal extends javax.swing.JFrame
 
     private void buscaAutorActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_buscaAutorActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_buscaAutorActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt)
@@ -286,13 +280,11 @@ public class VPrincipal extends javax.swing.JFrame
 
     private void btnBuscarLibrosActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
         buscarLibros();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarLibroActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnEditarLibroActionPerformed
-        // TODO add your handling code here:
         ModeloTablaLibros mtl = (ModeloTablaLibros) tablaLibros.getModel();
         int idLibro;
         idLibro = mtl.obtenerLibro(tablaLibros.getSelectedRow()).getIdLibro();
@@ -301,7 +293,6 @@ public class VPrincipal extends javax.swing.JFrame
 
     private void btnNuevoLibroActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_btnNuevoLibroActionPerformed
-        // TODO add your handling code here:
         fa.nuevoLibro();
     }//GEN-LAST:event_btnNuevoLibroActionPerformed
 
@@ -314,19 +305,14 @@ public class VPrincipal extends javax.swing.JFrame
     }//GEN-LAST:event_buscaTituloKeyTyped
 
     private void menuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuariosActionPerformed
-        // TODO add your handling code here:
-
         fa.lanzarGestionUsuarios();
 
     }//GEN-LAST:event_menuItemUsuariosActionPerformed
 
     private void menuAdministrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdministrarActionPerformed
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_menuAdministrarActionPerformed
 
     private void menuItemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCategoriasActionPerformed
-        // TODO add your handling code here:
         fa.lanzarGestionCategorias();
     }//GEN-LAST:event_menuItemCategoriasActionPerformed
 
@@ -338,7 +324,6 @@ public class VPrincipal extends javax.swing.JFrame
     }//GEN-LAST:event_buscaIsbnKeyPressed
 
     private void buscaAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaAutorKeyTyped
-        // TODO add your handling code here:
         if(evt.getKeyChar()=='\n')
         {
             buscarLibros();
@@ -437,11 +422,6 @@ public class VPrincipal extends javax.swing.JFrame
     private List<Libro> getLibros()
     {
         Integer id = Utilidades.getIntOrNull(buscaId.getText());
-
-//        if (!buscaId.getText().isEmpty())
-//        {
-//            id = Integer.parseInt(buscaId.getText());
-//        }
 
         return fa.obtenerLibros(id, buscaTitulo.getText(), buscaIsbn.getText(), buscaAutor.getText());
     }

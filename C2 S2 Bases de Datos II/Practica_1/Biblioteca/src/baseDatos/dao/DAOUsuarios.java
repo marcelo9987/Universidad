@@ -17,6 +17,8 @@ import java.util.Objects;
 
 /**
  * @author basesdatos
+ * @author Marcelo F.M.
+ * @version 2.0
  */
 public class DAOUsuarios extends AbstractDAO {
 
@@ -153,6 +155,8 @@ public class DAOUsuarios extends AbstractDAO {
         Usuario usuarioActual;
         PreparedStatement stmUsuarios;
         ResultSet rsUsuarios;
+        String idNormalizada = id == null ? null : id.toLowerCase();
+        String nombreNormalizado = nombre == null ? null : nombre.toLowerCase();
 
         Connection con = this.getConexion();
 
@@ -161,13 +165,13 @@ public class DAOUsuarios extends AbstractDAO {
 
 
         if (id != null) {
-            consulta += "WHERE id_usuario like ?";
+            consulta += "WHERE lower(id_usuario) like ?";
             if (nombre != null) {
-                consulta += "and nombre like ?";
+                consulta += "and lower(nombre) like ?";
             }
         }
         else if (nombre != null) {
-            consulta += "WHERE nombre like ?";
+            consulta += "WHERE lower(nombre) like ?";
         }
 
 
@@ -176,13 +180,13 @@ public class DAOUsuarios extends AbstractDAO {
             stmUsuarios = con.prepareCall(consulta);
 
             if (id != null) {
-                stmUsuarios.setString(1, "%" + id + "%");
+                stmUsuarios.setString(1, "%" + idNormalizada + "%");
                 if (nombre != null) {
-                    stmUsuarios.setString(2, "%" + nombre + "%");
+                    stmUsuarios.setString(2, "%" + nombreNormalizado + "%");
                 }
             }
             else if (nombre != null) {
-                stmUsuarios.setString(1, "%" + nombre + "%");
+                stmUsuarios.setString(1, "%" + nombreNormalizado + "%");
             }
 
             rsUsuarios = stmUsuarios.executeQuery();

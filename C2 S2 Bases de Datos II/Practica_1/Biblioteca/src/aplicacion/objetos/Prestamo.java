@@ -4,37 +4,23 @@ import auxiliares.Utilidades;
 
 import java.time.LocalDate;
 
+/**
+ * @version 1.0 (global: 2.0)
+ * @since 2.0 global
+ */
 public class Prestamo {
-    //    private final Integer idLibro;
-//    private final Integer idEjemplar;
+
     private String idUsuario;
     private String fechaInicio;
 
     private String fechaFin;
 
-//    private String fechaVencimiento;
-//    private boolean pendiente;
-
 
     public Prestamo(/*Integer idLibro, Integer idEjemplar, */ String idUsuario, String fechaInicio, String fechaFin) {
-//        this.idLibro = idLibro;
-//        this.idEjemplar = idEjemplar;
         this.idUsuario = idUsuario;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-
-//        this.fechaVencimiento = Utilidades.calculaFechaVencimiento(fechaInicio);
-//        this.pendiente = Prestamo.esPrestamoPendiente();
     }
-
-//    public Integer getIdLibro() {
-//        return idLibro;
-//    }
-//
-//    public Integer getIdEjemplar() {
-//        return idEjemplar;
-//    }
-
 
     public String getIdUsuario() {
         return idUsuario;
@@ -57,10 +43,6 @@ public class Prestamo {
     public String getFechaFin() {
         return fechaFin;
     }
-
-//    public void setFechaFin(String fechaFin) {
-//        this.fechaFin = fechaFin;
-//    }
 
 
     public String getFechaVencimiento() {
