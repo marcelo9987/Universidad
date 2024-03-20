@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADF52DF-289C-48DF-91F7-AD2DC4C81FDF}|1.2\\2_a\\2_a.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\2_a\\codigo2a.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4ADF52DF-289C-48DF-91F7-AD2DC4C81FDF}|1.2\\2_a\\2_a.vcxproj|solutionrelative:1.2\\2_a\\codigo2a.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C18D0619-8775-47F5-BA52-9122886935B3}|1.2\\2_c\\2_c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\funciones_ejes.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C18D0619-8775-47F5-BA52-9122886935B3}|1.2\\2_c\\2_c.vcxproj|solutionrelative:1.2\\funciones_ejes.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C18D0619-8775-47F5-BA52-9122886935B3}|1.2\\2_c\\2_c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\2_c\\codigo2c.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C18D0619-8775-47F5-BA52-9122886935B3}|1.2\\2_c\\2_c.vcxproj|solutionrelative:1.2\\2_c\\codigo2c.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "codigo2c.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\2_c\\codigo2c.c",
+              "RelativeDocumentMoniker": "1.2\\2_c\\codigo2c.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\2_c\\codigo2c.c",
+              "RelativeToolTip": "1.2\\2_c\\codigo2c.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-17T09:49:50.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "funciones_ejes.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\funciones_ejes.c",
+              "RelativeDocumentMoniker": "1.2\\funciones_ejes.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\funciones_ejes.c",
+              "RelativeToolTip": "1.2\\funciones_ejes.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-17T09:48:47.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "codigo2a.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\2_a\\codigo2a.c",
+              "RelativeDocumentMoniker": "1.2\\2_a\\codigo2a.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 2\\VS\\1.2\\2_a\\codigo2a.c",
+              "RelativeToolTip": "1.2\\2_a\\codigo2a.c",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAqwBoAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-16T12:39:02.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
