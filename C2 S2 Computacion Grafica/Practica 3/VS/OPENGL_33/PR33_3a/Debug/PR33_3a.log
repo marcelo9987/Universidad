@@ -1,7 +1,7 @@
 ﻿  glad.c
   mainCuadradoAlum.c
 D:\Soft\Microsoft VS 2022\VC\Tools\MSVC\14.40.33617\include\yvals_core.h(28,1): error C1189: #error:  Error in C++ Standard Library usage
-  (compiling source file 'mainCuadradoAlum.c')
+  (compiling source file '../../OPENGL_33/PR33_3a/mainCuadradoAlum.c')
   
   D:\Soft\Microsoft VS 2022\VC\Tools\MSVC\14.40.33617\include\yvals_core.h(27): STL1003: Unexpected compiler, expected C++ compiler.
   Generating Code...

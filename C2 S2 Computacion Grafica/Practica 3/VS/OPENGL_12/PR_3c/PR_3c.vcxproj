@@ -130,12 +130,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\funciones_ejes.c" />
+    <ClCompile Include="controles.c" />
     <ClCompile Include="esfera.c" />
     <ClCompile Include="sistemaSolar.c" />
     <ClCompile Include="PR_3c.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="controles.h" />
     <ClInclude Include="sistemaSolar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

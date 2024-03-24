@@ -21,15 +21,18 @@
     <ClCompile Include="esfera.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\funciones_ejes.c">
+    <ClCompile Include="sistemaSolar.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sistemaSolar.c">
+    <ClCompile Include="controles.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sistemaSolar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
