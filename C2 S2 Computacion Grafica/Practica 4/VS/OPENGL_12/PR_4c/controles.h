@@ -12,14 +12,19 @@ typedef struct
 
 #define K_VELOCIDAD_SPD_ARRAY_SIZE 5
 
+extern const float K_VELOCIDAD_SPD_ARRAY[K_VELOCIDAD_SPD_ARRAY_SIZE];
+
 
 typedef struct
 {
     int window_width;
     int window_height;
-    int velocidad_segundosPorDia_posicionSeleccionada;
     bool mostrarOrbitas;
-    float velocidad_framesPorSegundo;
+
+    float chronos_diaActualmenteSimulado;
+    int chronos_segundosRealesPorDiaSimulado_posicionSeleccionada;
+    float chronos_framesPorSegundo;
+    
     float factorEscaladoCuerposCelestes;
     float factorEscaladoDistancias;
     ConfiguracionCamara camaraPrincipal;

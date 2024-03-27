@@ -60,19 +60,15 @@ void myDisplay(void)
 
 void myStep(void)
 {
-    /*fAngulo += 0.3f;
-    if (fAngulo > 360.0f)
+    if (cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada != 0)
     {
-        fAngulo -= 360.0f;
-    }*/
+        float chronos_segundosRealesPorDiaSimulado = K_VELOCIDAD_SPD_ARRAY[cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada];
 
-    //actualizaDatosSol(&sol);
+        float deltaTiempoEnSegundosSimulados = 1.0 / (chronos_segundosRealesPorDiaSimulado * cs.chronos_framesPorSegundo);
+        cs.chronos_diaActualmenteSimulado += deltaTiempoEnSegundosSimulados;
+    }
+
     actualizaDatosCuerpoCeleste(&sol);
-
-    //for (int pos = 0; pos < K_NUM_PLANETAS; pos++)
-    //{
-    //    actualizaDatosCuerpoCeleste(&planetas[pos]);
-    //}
 
     myCamara("Actualizacion MyStep");
     glutPostRedisplay();
@@ -89,7 +85,7 @@ void myMovimiento(int value)
 
     myStep(); //Se hace el movimiento
 
-    glutTimerFunc(1000.0 / cs.velocidad_framesPorSegundo, myMovimiento, 0);// hace que se vuelva a ejecutar cada MYTIEMPO milisegundos
+    glutTimerFunc(1000.0 / cs.chronos_framesPorSegundo, myMovimiento, 0);// hace que se vuelva a ejecutar cada MYTIEMPO milisegundos
 
 }
 

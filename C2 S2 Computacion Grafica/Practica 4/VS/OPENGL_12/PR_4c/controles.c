@@ -21,6 +21,16 @@
 
 // --
 
+const float K_VELOCIDAD_SPD_ARRAY[K_VELOCIDAD_SPD_ARRAY_SIZE] = {
+    INFINITY,       // detenido
+    24.0f,          // 1 hora por segundo
+    1.0f,           // 1 día por segundo
+    1.0f / 7.0f,    // 1 semana por segundo
+    12.0f / 365.26f // 1 mes por segundo
+};
+
+// --
+
 
 int planetaEnfocado = -1;
 
@@ -77,9 +87,9 @@ void myCamara(char* detalleAccion)
 
     case SOL:
         //printf("calculando...\n");
-        eyeX = cosf(planetas[TIERRA].posicion->anguloTraslacion / 360 * 2 * 3.14159f) * planetas[TIERRA].posicion->distanciaAlPadre;// *20;
+        eyeX = cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;// *20;
         eyeY = 0.0f;
-        eyeZ = -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360 * 2 * 3.14159) * planetas[TIERRA].posicion->distanciaAlPadre;// *20; // look at the origin
+        eyeZ = -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;// *20; // look at the origin
         break;
 
     case MERCURIO:
@@ -90,13 +100,13 @@ void myCamara(char* detalleAccion)
     case URANO:
     case NEPTUNO:
     case PLUTON:
-        eyeX = cosf(planetas[TIERRA].posicion->anguloTraslacion / 360 * 2 * 3.14159f) * planetas[2].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
+        eyeX = cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[2].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
         eyeY = 0.0f;
-        eyeZ = -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360 * 2 * 3.14159f) * planetas[2].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
+        eyeZ = -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[2].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
 
-        nearX = cosf(planetas[planetaEnfocado].posicion->anguloTraslacion / 360 * 2 * 3.14159f) * planetas[planetaEnfocado].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
+        nearX = cosf(planetas[planetaEnfocado].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[planetaEnfocado].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
         nearY = 0.0f;
-        nearZ = -sinf(planetas[planetaEnfocado].posicion->anguloTraslacion / 360 * 2 * 3.14159f) * planetas[planetaEnfocado].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
+        nearZ = -sinf(planetas[planetaEnfocado].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[planetaEnfocado].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
         break;
 
     }
@@ -148,7 +158,7 @@ void myTeclado(unsigned char tras, int x, int y)
         break;
 
     case 'p':
-        cs.velocidad_segundosPorDia_posicionSeleccionada = 0;
+        cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = 0;
         detalleAccion = "PAUSA";
         break;
 
@@ -160,10 +170,10 @@ void myTeclado(unsigned char tras, int x, int y)
         break;
 
     case '+': // Speed            
-        cs.velocidad_segundosPorDia_posicionSeleccionada += 1;
-        if (cs.velocidad_segundosPorDia_posicionSeleccionada >= K_VELOCIDAD_SPD_ARRAY_SIZE)
+        cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada += 1;
+        if (cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada >= K_VELOCIDAD_SPD_ARRAY_SIZE)
         {
-            cs.velocidad_segundosPorDia_posicionSeleccionada = K_VELOCIDAD_SPD_ARRAY_SIZE - 1;
+            cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = K_VELOCIDAD_SPD_ARRAY_SIZE - 1;
         }
 
         detalleAccion = "RAPIDO";
@@ -171,10 +181,10 @@ void myTeclado(unsigned char tras, int x, int y)
         break;
 
     case '-': // Speed
-        cs.velocidad_segundosPorDia_posicionSeleccionada -= 1;
-        if (cs.velocidad_segundosPorDia_posicionSeleccionada <= 0)
+        cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada -= 1;
+        if (cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada <= 0)
         {
-            cs.velocidad_segundosPorDia_posicionSeleccionada = 0;
+            cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = 0;
         }
 
         detalleAccion = "LENTO";

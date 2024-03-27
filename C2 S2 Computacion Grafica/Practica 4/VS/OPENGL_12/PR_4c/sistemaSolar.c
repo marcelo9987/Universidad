@@ -36,22 +36,16 @@ int cargarTextura(char* nombre)
 }
 
 
-const float K_VELOCIDAD_SPD_ARRAY[K_VELOCIDAD_SPD_ARRAY_SIZE] = {
-    INFINITY,       // detenido
-    24.0f,          // 1 hora por segundo
-    1.0f,           // 1 día por segundo
-    1.0f / 7.0f,    // 1 semana por segundo
-    12.0f / 365.26f // 1 mes por segundo
-};
-
-
 void inicializaConfiguracionSistema()
 {
     cs.window_width = 1200;
     cs.window_height = 800;
-    cs.velocidad_segundosPorDia_posicionSeleccionada = 1;
     cs.mostrarOrbitas = true;
-    cs.velocidad_framesPorSegundo = 24.0f;
+
+    cs.chronos_diaActualmenteSimulado = 0.0f;
+    cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = 1;
+    cs.chronos_framesPorSegundo = 24.0f;
+
     cs.factorEscaladoCuerposCelestes = 10.0f;
     cs.factorEscaladoDistancias = 20.0f;
 }
@@ -170,12 +164,13 @@ void myEllipse(float cx, float cy, float rx, float ry, int num_segments)
 
 void actualizaDatosCuerpoCeleste( CuerpoCeleste* cuerpoCeleste)
 {
-    float velocidad_segundosPorDia = K_VELOCIDAD_SPD_ARRAY[cs.velocidad_segundosPorDia_posicionSeleccionada];
+    float chronos_segundosRealesPorDiaSimulado = K_VELOCIDAD_SPD_ARRAY[cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada];
 
-    if (cuerpoCeleste->periodoTraslacion > 0.0f && cs.velocidad_segundosPorDia_posicionSeleccionada != 0)
+    if (cuerpoCeleste->periodoTraslacion > 0.0f && cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada != 0)
     {
 
-        float deltaTraslacion = 360.0f / (cuerpoCeleste->periodoTraslacion * velocidad_segundosPorDia * cs.velocidad_framesPorSegundo);
+        /*
+        float deltaTraslacion = 360.0f / (cuerpoCeleste->periodoTraslacion * chronos_segundosRealesPorDiaSimulado * cs.chronos_framesPorSegundo);
 
         cuerpoCeleste->posicion->anguloTraslacion += deltaTraslacion;
 
@@ -183,15 +178,20 @@ void actualizaDatosCuerpoCeleste( CuerpoCeleste* cuerpoCeleste)
         {
             cuerpoCeleste->posicion->anguloTraslacion -= 360.0f;
         }
+        */
+
+        cuerpoCeleste->posicion->anguloTraslacion = cs.chronos_diaActualmenteSimulado * (360.0 / cuerpoCeleste->periodoTraslacion);
+
+        cuerpoCeleste->posicion->anguloTraslacion = fmod(cuerpoCeleste->posicion->anguloTraslacion, 360);
 
     }
 
     // --
 
-    if (cuerpoCeleste->periodoRotacion > 0.0f && cs.velocidad_segundosPorDia_posicionSeleccionada != 0)
+    if (cuerpoCeleste->periodoRotacion > 0.0f && cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada != 0)
     {
-
-        float deltaRotacion = 360.0f / (cuerpoCeleste->periodoRotacion * velocidad_segundosPorDia * cs.velocidad_framesPorSegundo);
+        /*
+        float deltaRotacion = 360.0f / (cuerpoCeleste->periodoRotacion * chronos_segundosRealesPorDiaSimulado * cs.chronos_framesPorSegundo);
 
         cuerpoCeleste->posicion->anguloRotacion += deltaRotacion;
 
@@ -199,6 +199,11 @@ void actualizaDatosCuerpoCeleste( CuerpoCeleste* cuerpoCeleste)
         {
             cuerpoCeleste->posicion->anguloRotacion -= 360.0f;
         }
+        */
+
+        cuerpoCeleste->posicion->anguloRotacion = cs.chronos_diaActualmenteSimulado * (360.0 / cuerpoCeleste->periodoRotacion);
+
+        cuerpoCeleste->posicion->anguloRotacion = fmod(cuerpoCeleste->posicion->anguloRotacion, 360);
 
     }
 
