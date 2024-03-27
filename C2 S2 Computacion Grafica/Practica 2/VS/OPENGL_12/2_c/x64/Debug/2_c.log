@@ -1,7 +1,0 @@
-﻿  funciones_ejes.c
-  codigo2c.c
-F:\GitHub\Universidad\C2 S2 Computacion Grafica\Practica 2\VS\1.2\funciones_ejes.c(3,10): error C1083: Cannot open include file: 'glut.h': No such file or directory
-F:\GitHub\Universidad\C2 S2 Computacion Grafica\Practica 2\VS\1.2\2_c\codigo2c.c(27,10): error C1083: Cannot open include file: 'glut.h': No such file or directory
-  esfera_12.c
-F:\GitHub\Universidad\C2 S2 Computacion Grafica\Practica 2\VS\1.2\2_c\esfera_12.c(3,10): error C1083: Cannot open include file: 'glut.h': No such file or directory
-  Generating Code...

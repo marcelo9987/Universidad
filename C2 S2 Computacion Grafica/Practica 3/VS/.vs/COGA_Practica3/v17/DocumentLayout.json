@@ -3,27 +3,32 @@
   "WorkspaceRootPath": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\sistemaSolar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\controles.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\controles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\PR_3c.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\PR_3c.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\sistemaSolar.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\sistemaSolar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GITHUB\\UNIVERSIDAD\\C2 S2 COMPUTACION GRAFICA\\PRACTICA 3\\LIBRERIAS\\GLUT.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\controles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7138B868-79BC-469C-934B-33FDDB6DBF7C}|OPENGL_12\\PR_3a\\PR_3a.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\funciones_ejes.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7138B868-79BC-469C-934B-33FDDB6DBF7C}|OPENGL_12\\PR_3a\\PR_3a.vcxproj|solutionrelative:OPENGL_12\\funciones_ejes.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\esfera.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|OPENGL_12\\PR_3c\\PR_3c.vcxproj|solutionrelative:OPENGL_12\\PR_3c\\esfera.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,90 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 252,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "glut.h",
-              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\Librerias\\glut.h",
-              "RelativeDocumentMoniker": "..\\Librerias\\glut.h",
-              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\Librerias\\glut.h",
-              "RelativeToolTip": "..\\Librerias\\glut.h",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAvwDEAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-25T21:37:14.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PR_3c.c",
-              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\PR_3c.c",
-              "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\PR_3c.c",
-              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\PR_3c.c",
-              "RelativeToolTip": "OPENGL_12\\PR_3c\\PR_3c.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Title": "funciones_ejes.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\funciones_ejes.c",
+              "RelativeDocumentMoniker": "OPENGL_12\\funciones_ejes.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\funciones_ejes.c",
+              "RelativeToolTip": "OPENGL_12\\funciones_ejes.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-24T09:40:36.574Z",
+              "WhenOpened": "2024-03-27T16:29:33.067Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "sistemaSolar.c",
               "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.c",
               "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\sistemaSolar.c",
               "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.c",
               "RelativeToolTip": "OPENGL_12\\PR_3c\\sistemaSolar.c",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAACEAAAAAAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAcwEsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-03-24T09:26:58.927Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "controles.c",
-              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.c",
-              "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\controles.c",
-              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.c",
-              "RelativeToolTip": "OPENGL_12\\PR_3c\\controles.c",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAcwBQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-24T09:43:52.786Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 66,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "sistemaSolar.h",
               "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.h",
               "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\sistemaSolar.h",
               "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\sistemaSolar.h",
               "RelativeToolTip": "OPENGL_12\\PR_3c\\sistemaSolar.h",
-              "ViewState": "AQIAACAAAADAAAAAAIAZwDAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-24T09:44:18.633Z",
+              "WhenOpened": "2024-03-26T13:03:55.687Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "controles.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.c",
+              "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\controles.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.c*",
+              "RelativeToolTip": "OPENGL_12\\PR_3c\\controles.c*",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAAAE8AAACJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-24T09:43:52.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PR_3c.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\PR_3c.c",
+              "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\PR_3c.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\PR_3c.c",
+              "RelativeToolTip": "OPENGL_12\\PR_3c\\PR_3c.c",
+              "ViewState": "AQIAAIIAAAAAAAAAAAAAAHsAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-24T09:40:36.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "esfera.c",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\esfera.c",
+              "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\esfera.c",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\esfera.c",
+              "RelativeToolTip": "OPENGL_12\\PR_3c\\esfera.c",
+              "ViewState": "AQIAAA0OAAAAAAAAAIBJwB8OAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-26T13:09:45.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "controles.h",
               "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.h",
               "RelativeDocumentMoniker": "OPENGL_12\\PR_3c\\controles.h",
               "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Practica 3\\VS\\OPENGL_12\\PR_3c\\controles.h",
               "RelativeToolTip": "OPENGL_12\\PR_3c\\controles.h",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAcwAoAAAAdAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-24T09:43:43.525Z",
+              "WhenOpened": "2024-03-26T19:52:40.688Z",
               "EditorCaption": ""
             }
           ]

@@ -1,4 +1,0 @@
-﻿  glad.c
-  main233b.cpp
-MSVCRTD.lib(initializers.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-  2_33b.vcxproj -> F:\GitHub\Universidad\C2 S2 Computacion Grafica\Practica 2\VS\Debug\2_33b.exe
