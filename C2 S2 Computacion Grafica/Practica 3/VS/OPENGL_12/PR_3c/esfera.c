@@ -7,6 +7,8 @@
 
 int myEsfera()
 {
+	GLuint indice = glGenLists(1);
+	glNewList(indice, GL_COMPILE);
 
 	glBegin(GL_TRIANGLES);
 	glNormal3f(-0.0247692f, 0.987385f, -0.156387f);
@@ -3610,8 +3612,9 @@ int myEsfera()
 	glVertex3f(0.0964914f, -0.950057f, -0.294893f);
 	glEnd();
 
+	glEndList();
 
 
-	return 0;
+	return indice;
 
 }

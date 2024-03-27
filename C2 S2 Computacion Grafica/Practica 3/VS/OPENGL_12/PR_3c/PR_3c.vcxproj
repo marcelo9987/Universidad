@@ -138,6 +138,10 @@
   <ItemGroup>
     <ClInclude Include="controles.h" />
     <ClInclude Include="sistemaSolar.h" />
+    <ClInclude Include="stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="texturas\sol.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

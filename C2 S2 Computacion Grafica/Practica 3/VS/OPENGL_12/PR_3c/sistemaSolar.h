@@ -8,6 +8,30 @@
 
 // --
 
+enum enumPlanetas
+{
+    MERCURIO = 0,
+    VENUS,
+    TIERRA,
+    MARTE,
+    JUPITER,
+    SATURNO,
+    URANO,
+    NEPTUNO,
+    PLUTON,
+    SOL,
+    LUNA,
+    ISS
+};
+
+typedef struct PosicionCuerpoCeleste
+{
+    float radio;              // En unidades "normales"
+    float distanciaAlPadre;   // En unidades "normales"
+    float anguloRotacion;     // En grados sexagesimales
+    float anguloTraslacion;   // En grados sexagesimales
+} PosicionCuerpoCeleste;
+
 typedef struct CuerpoCeleste
 {
     char nombre[50];
@@ -16,11 +40,12 @@ typedef struct CuerpoCeleste
     float periodoRotacion;          // Días terrestres
     float periodoTraslacion;        // Días terrestres
     float color[3];                 // RGB [0.0f, 1.0f]
-    float anguloRotacionActual;     // En grados sexagesimales
-    float anguloTraslacionActual;   // En grados sexagesimales
+    bool tieneAnillos;
+    PosicionCuerpoCeleste *posicion;
     int numHijos;
     struct CuerpoCeleste *hijos;
 } CuerpoCeleste;
+
 
 #define K_NUM_PLANETAS 9
 #define K_NUM_SATELITES_TERRESTRES 2
@@ -43,6 +68,10 @@ void actualizaDatosCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 
 //void representaSol(CuerpoCeleste* sol, bool imprimirDatos);
 
+void inicializaPosicionCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
+
 void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, bool imprimirDatos);
 
 //void representaSateliteTerrestre(CuerpoCeleste* unSateliteTerrestre, bool imprimirDatos);
+
+int cargarTextura();

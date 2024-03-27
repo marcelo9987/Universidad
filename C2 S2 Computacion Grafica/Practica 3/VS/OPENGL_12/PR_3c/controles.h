@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdbool.h>
+
 typedef struct
 {
     float alpha;            // Izquierda y derecha (Ángulos en radianes)
@@ -16,6 +18,7 @@ typedef struct
     int window_width;
     int window_height;
     int velocidad_segundosPorDia_posicionSeleccionada;
+    bool mostrarOrbitas;
     float velocidad_framesPorSegundo;
     float factorEscaladoCuerposCelestes;
     float factorEscaladoDistancias;

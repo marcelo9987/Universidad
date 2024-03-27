@@ -36,6 +36,7 @@ void myDisplay(void)
 //    myEjes();
 
     // representaSol(&sol, primeraVez);
+    
     representaCuerpoCeleste(&sol, primeraVez);
 
     //// Sol
@@ -73,6 +74,7 @@ void myStep(void)
     //    actualizaDatosCuerpoCeleste(&planetas[pos]);
     //}
 
+    myCamara("Actualizacion MyStep");
     glutPostRedisplay();
 }
 
@@ -107,6 +109,7 @@ void myOpenGlInit()
 }
 
 
+
 int main(int argc, char** argv)
 {
 
@@ -124,6 +127,8 @@ int main(int argc, char** argv)
     // Crear la ventana
     glutCreateWindow("Ventana con el Visual C++ y glut");
 
+    inicializaPosicionCuerpoCeleste(&sol);
+
     // Función que mira el teclado
     glutKeyboardFunc(myTeclado);
 
@@ -133,11 +138,12 @@ int main(int argc, char** argv)
     glutDisplayFunc(myDisplay);
 
     // --
-
     // Función de actualización
     glutIdleFunc(myIdle);
 
     myOpenGlInit();
+
+    iniciaMenu();
 
     myMovimiento(1);
 
