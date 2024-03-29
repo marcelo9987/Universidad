@@ -1,23 +1,11 @@
-#include <windows.h>    //Inclusión de variables de windows
 
-#include <glut.h>       //Inclusión de GLUT
-#include <GL/gl.h>      //Inclusión de GL
-#include <GL/glu.h>
-
-#include <stdio.h>
-
-#define _USE_MATH_DEFINES
-#include <math.h>       //Inclusión de librerías auxiliares
 
 #include "controles.h"
 #include "sistemaSolar.h"
-
+#include "cargasIniciales.h"
 
 #define INCREMENTO .05
 
-
-#define radianesAGrados(x) (x * 180.0 / M_PI)
-#define gradosARadianes(x) (x * M_PI / 180.0)
 
 // --
 
@@ -51,7 +39,7 @@ void imprimeDatos(char* detalleAccion)
 void myCamara(char* detalleAccion)
 {
 
-    bool vieneDeActualizacion = (strcmp(detalleAccion, "Actualizacion MyStep") == 0);
+    bool vieneDeActualizacion = (strcmp(detalleAccion, " MyStep") == 0);
 
     if (vieneDeActualizacion && (planetaEnfocado == -1))
     {
@@ -74,8 +62,11 @@ void myCamara(char* detalleAccion)
 
     switch (planetaEnfocado)
     {
-    default:
     case -1:
+        
+
+    default:
+    
         eyeX = cs.camaraPrincipal.distanciaCamara * sin(cs.camaraPrincipal.alpha) * fabs(cos(cs.camaraPrincipal.beta));
         eyeY = cs.camaraPrincipal.distanciaCamara * sin(cs.camaraPrincipal.beta);
         eyeZ = cs.camaraPrincipal.distanciaCamara * cos(cs.camaraPrincipal.alpha) * fabs(cos(cs.camaraPrincipal.beta));
@@ -83,13 +74,14 @@ void myCamara(char* detalleAccion)
         nearX = 0.0f;
         nearY = 0.0f;
         nearZ = 0.0f;
+
         break;
 
     case SOL:
         //printf("calculando...\n");
-        eyeX = cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;// *20;
+        eyeX = cs.camaraPrincipal.distanciaCamara *  cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;// *20;
         eyeY = 0.0f;
-        eyeZ = -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;// *20; // look at the origin
+        eyeZ = cs.camaraPrincipal.distanciaCamara * -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;// *20; // look at the origin
         break;
 
     case MERCURIO:
@@ -100,14 +92,41 @@ void myCamara(char* detalleAccion)
     case URANO:
     case NEPTUNO:
     case PLUTON:
-        eyeX = cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[2].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
-        eyeY = 0.0f;
-        eyeZ = -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[2].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
+        eyeX =  cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
+        eyeY =  0.0f;
+        eyeZ =  -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[TIERRA].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
 
         nearX = cosf(planetas[planetaEnfocado].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[planetaEnfocado].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20;
         nearY = 0.0f;
         nearZ = -sinf(planetas[planetaEnfocado].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) * planetas[planetaEnfocado].posicion->distanciaAlPadre;//distanciaMaximaAlSol) * 20; // look at the origin
+        cs.mostrarOrbitas = false;
         break;
+
+        float distanciaLunaTierra;
+        float anguloTraslacionLuna;
+        float posicionX_LunaDesdeTierra;
+        float posicionZ_LunaDesdeTierra;
+
+    case LUNA:// ver la tierra desde la luna (ahora es con satelitesTerrestres)
+         distanciaLunaTierra = satelitesTerrestres[0].posicion->distanciaAlPadre;
+         anguloTraslacionLuna = satelitesTerrestres[0].posicion->anguloTraslacion;
+         posicionX_LunaDesdeTierra = distanciaLunaTierra * cosf(anguloTraslacionLuna / 360.0 * 2.0 * M_PI);
+         posicionZ_LunaDesdeTierra = distanciaLunaTierra * -sinf(anguloTraslacionLuna / 360.0 * 2.0 * M_PI);
+
+        // Establecer la cámara para enfocar la Luna desde la Tierra
+        eyeX = planetas[TIERRA].posicion->distanciaAlPadre * cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) + posicionX_LunaDesdeTierra;
+        eyeY = 0.0f;
+        eyeZ = planetas[TIERRA].posicion->distanciaAlPadre * -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI) - posicionZ_LunaDesdeTierra;
+
+        // Apuntar hacia la posición de la Tierra
+        nearX = planetas[TIERRA].posicion->distanciaAlPadre * cosf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI);
+        nearY = 0.0f;
+        nearZ = planetas[TIERRA].posicion->distanciaAlPadre * -sinf(planetas[TIERRA].posicion->anguloTraslacion / 360.0 * 2.0 * M_PI);
+
+        cs.mostrarOrbitas = false;
+        break;
+
+
 
     }
 
@@ -292,21 +311,25 @@ void myTeclasEspeciales(int cursor, int x, int y)
 
 }
 
-void menuVistaPlaneta(int selec)
+void seleccionarVistaCamara(int selec)
 {
     printf("Seleccionado: %d\n", selec);
     planetaEnfocado = selec;
-    myCamara("Cambio de perspectiva");
+    if (planetaEnfocado == -1)
+    {
+        cs.mostrarOrbitas = true;
+    }
+    myCamara("CambPersp.");
 
 };
 
 void iniciaMenu()
 {
-    int satelitesTerrestresMenu = glutCreateMenu(menuVistaPlaneta);
+    int satelitesTerrestresMenu = glutCreateMenu(seleccionarVistaCamara);
     glutAddMenuEntry("Luna", LUNA);
     glutAddMenuEntry("ISS", ISS);
 
-    int desdeTierra = glutCreateMenu(menuVistaPlaneta);
+    int desdeTierra = glutCreateMenu(seleccionarVistaCamara);
     glutAddMenuEntry("Sol", SOL);
     glutAddMenuEntry("Mercurio", MERCURIO);
     glutAddMenuEntry("Venus", VENUS);
@@ -318,7 +341,7 @@ void iniciaMenu()
     glutAddMenuEntry("Pluton", PLUTON);
 
 
-    int menuPrincipal = glutCreateMenu(menuVistaPlaneta);
+    int menuPrincipal = glutCreateMenu(seleccionarVistaCamara);
     glutAddMenuEntry("Telescopio", -1);
     glutAddSubMenu("Enfocar desde la Tierra", desdeTierra);
     glutAddSubMenu("Enfocar la Tierra desde", satelitesTerrestresMenu);

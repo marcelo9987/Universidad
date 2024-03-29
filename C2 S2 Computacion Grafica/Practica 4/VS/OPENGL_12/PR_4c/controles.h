@@ -30,7 +30,6 @@ typedef struct
     ConfiguracionCamara camaraPrincipal;
 } ConfiguracionSistema;
 
-extern ConfiguracionSistema cs;
 
 
 void inicializaConfiguracionCamara();

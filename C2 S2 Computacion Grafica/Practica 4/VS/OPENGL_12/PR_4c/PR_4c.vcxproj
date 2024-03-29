@@ -75,7 +75,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL_12\Librerias\glut;$(SolutionDir)\OpenGL_12\Librerias\glut\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -91,7 +91,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL_12\Librerias\glut;$(SolutionDir)\OpenGL_12\Librerias\glut\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -131,18 +131,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cargasIniciales.c" />
     <ClCompile Include="controles.c" />
-    <ClCompile Include="esfera.c" />
+    <ClCompile Include="figurasGeometricas.c" />
     <ClCompile Include="sistemaSolar.c" />
     <ClCompile Include="PR_4c.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cargasIniciales.h" />
+    <ClInclude Include="comun.h" />
     <ClInclude Include="controles.h" />
+    <ClInclude Include="figurasGeometricas.h" />
     <ClInclude Include="sistemaSolar.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="texturas\sol.bmp" />
+    <Image Include="texturas\Luna.bmp" />
+    <Image Include="texturas\Sol.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

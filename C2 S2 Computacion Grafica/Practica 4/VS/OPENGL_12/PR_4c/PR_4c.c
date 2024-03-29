@@ -1,15 +1,7 @@
 
 #include "controles.h"
 #include "sistemaSolar.h"
-
-#include <math.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <windows.h>
-
-// --
-
-//extern int myEsfera();
+#include "cargasIniciales.h"
 
 // --
 
@@ -70,7 +62,8 @@ void myStep(void)
 
     actualizaDatosCuerpoCeleste(&sol);
 
-    myCamara("Actualizacion MyStep");
+    myCamara("MyStep");
+
     glutPostRedisplay();
 }
 

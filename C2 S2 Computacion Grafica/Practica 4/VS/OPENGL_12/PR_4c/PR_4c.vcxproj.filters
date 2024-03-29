@@ -18,13 +18,16 @@
     <ClCompile Include="PR_4c.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="esfera.c">
+    <ClCompile Include="figurasGeometricas.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sistemaSolar.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="controles.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cargasIniciales.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,9 +41,21 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cargasIniciales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="comun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="figurasGeometricas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="texturas\sol.bmp">
+    <Image Include="texturas\Luna.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Sol.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
