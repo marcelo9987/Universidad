@@ -133,14 +133,14 @@ void myCamaraHaciaLaTierra(char* detalleAccion, enum EnumCuerpoCeleste desdeQueC
     float posYtierra = planetas[TIERRA].posicion->posY;
     float posZtierra = planetas[TIERRA].posicion->posZ;
 
-    float anguloSatelite = planetas[TIERRA].posicion->anguloTraslacion + planetas[TIERRA].posicion->anguloRotacion + satelitesTerrestres[desdeQueCuerpoCeleste-LUNA].posicion->anguloTraslacion;
+    float anguloSatelite = planetas[TIERRA].posicion->anguloTraslacion + planetas[TIERRA].posicion->anguloRotacion + satelitesTerrestres[desdeQueCuerpoCeleste - LUNA].posicion->anguloTraslacion;
 
     float posRelXsatelite = cosf360(anguloSatelite) * satelitesTerrestres[desdeQueCuerpoCeleste - LUNA].posicion->distanciaAlPadre;
     float posRelYsatelite = +0.0f;
     float posRelZsatelite = -sinf360(anguloSatelite) * satelitesTerrestres[desdeQueCuerpoCeleste - LUNA].posicion->distanciaAlPadre;
 
 
-    //cs.camaraPrincipal.mostrarOrbitas = false;
+
 
     doMyCamara(posXtierra - posRelXsatelite, posYtierra - posRelYsatelite, posZtierra - posRelZsatelite,
         posXtierra, posYtierra, posZtierra);
@@ -195,14 +195,22 @@ void myTeclado(unsigned char tras, int x, int y)
         break;
 
     case 'r':
+    case 'R':
+        inicializaConfiguracionSistema();
+        inicializaConfiguracionCamara();
+        detalleAccion = "RESET";
+        //cs.visualizacionPrincipal = VISTA_GENERAL;
+        break;
         break;
 
     case 'p':
+        case 'P':
         cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = 0;
         detalleAccion = "PAUSA";
         break;
 
     case 'o':
+        case 'O':
         cs.camaraPrincipal.mostrarOrbitas = !cs.camaraPrincipal.mostrarOrbitas;
 
         detalleAccion = "ORBITAS";
@@ -335,6 +343,14 @@ void myTeclasEspeciales(int cursor, int x, int y)
 void seleccionarVistaCamara(int vistaSeleccionada)
 {
     printf("Seleccionado: %d\n", vistaSeleccionada);
+    if (vistaSeleccionada != VISTA_GENERAL)
+    {
+        cs.camaraPrincipal.mostrarOrbitas = false;
+    }
+    else 
+    {
+        cs.camaraPrincipal.mostrarOrbitas = true;
+    }
     cs.visualizacionPrincipal = vistaSeleccionada;
 
     /*

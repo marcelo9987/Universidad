@@ -50,9 +50,10 @@ void actualizaDatosCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 
 }
 
+int ft = true;
+
 void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 {
-
 
     // --
 
@@ -76,6 +77,10 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
     // --
 
     glPushMatrix();
+    if(/*cuerpoCeleste->quienSoy!=ISS && */cuerpoCeleste->quienSoy!=TIERRA && cuerpoCeleste->quienSoy!=LUNA )
+    {
+        glPushMatrix();
+    }
 
     {
 
@@ -101,14 +106,15 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
             glRotatef(cuerpoCeleste->posicion->anguloRotacion, 0.0f, 5.0f, 0.0);
         }
 
+        
+        
+        
+
         glPushMatrix();
-
-        glScalef(cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio);
-
 
         if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN)
         {
-
+            //glPushMatrix();
             glEnable(GL_TEXTURE_2D);
             glBindTexture(GL_TEXTURE_2D, cuerpoCeleste->posicion->numTexturaObjeto);
         }
@@ -117,14 +123,20 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
             glColor3f(cuerpoCeleste->color[0], cuerpoCeleste->color[1], cuerpoCeleste->color[2]);
         }
 
-        glCallList(cuerpoCeleste->posicion->numListaObjeto);
+        //glPushMatrix();
 
+        glScalef(cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio);
+
+        glCallList(cuerpoCeleste->posicion->numListaObjeto);
+        
         if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN)
         {
             glDisable(GL_TEXTURE_2D);
         }
 
         glPopMatrix();
+
+        
 
         // myEjes();
         // glutSolidSphere(cuerpoCeleste->posicion->radio, 20, 20);
@@ -135,18 +147,25 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 
             for (int pos = 0; pos < cuerpoCeleste->numHijos; pos++)
             {
+
                 representaCuerpoCeleste(&cuerpoCeleste->hijos[pos]);
             }
+           
         }
 
     }
 
-    glPopMatrix();
+    if (cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA)
+    {
+        glPopMatrix();
+    }
 
-    /*
-    if (imprimirDatos)
+    
+    if (ft < 9)
     {
         printf("%20s - tamaño: %2.5f - distancia al centro: %2.5f\n", cuerpoCeleste->nombre, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->distanciaAlPadre);
     }
-    */
+
+    ft++;
+   
 }

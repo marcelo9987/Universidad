@@ -14,9 +14,12 @@ PosicionCuerpoCeleste posicionSol; // = { 0.0f, 0.0f };
 
 
 CuerpoCeleste satelitesTerrestres[K_NUM_SATELITES_TERRESTRES] = {
-//  { LUNA,     /**/ "Luna",        /**/  0.30, /**/   0.00757, /**/  27.32, /**/   27.32,      /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0], /**/                            0, /**/ NULL                  /**/ },
-    { LUNA,     /**/ "Luna",        /**/  0.30, /**/   0.00757, /**/   0.0, /**/    27.32,      /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0], /**/                            0, /**/ NULL                  /**/ },
-    { ISS,      /**/ "ISS",         /**/  0.13, /**/   0.00237, /**/   0.0,  /**/ 1.0 / 24.0,   /**/ "texturas/ISS.jpg",       /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1], /**/                            0, /**/ NULL                  /**/ }
+    //  { LUNA,     /**/ "Luna",        /**/  0.30, /**/   0.00757, /**/  27.32, /**/   27.32,      /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0], /**/                            0, /**/ NULL                  /**/ },
+      //  { LUNA,     ///**/ "Luna",        /**/  0.30, /**/   0.00757, /**/   0.0, /**/    27.32,      /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[1], /**/                            0, /**/ NULL                  /**/ },
+       // { LUNA,     ///**/ "Luna",        /**/  0.30, /**/   0.00557, /**/   0.0, /**/    27.32,      /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0], /**/                            0, /**/ NULL                  /**/ },
+            { LUNA,      /**/ "Luna",         /**/  0.30, /**/   0.00757, /**/   0.0,  /**/ 27.32,   /**/ "texturas/Luna.bmp",       /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0], /**/                            0, /**/ NULL                  /**/ },
+            { ISS,      /**/ "ISS",         /**/  0.13, /**/   0.00257, /**/   0.0,  /**/ 1.0 / 24.0,   /**/ "texturas/ISS.jpg",       /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1], /**/                            0, /**/ NULL                  /**/ },
+        //{ ISS,      /**/ "ISS",         /**/  0.13, /**/   0.00757, /**/   0.0,  /**/ 1.0 / 24.0,   /**/ "texturas/ISS.jpg",       /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1] , /**/                            0, /**/ NULL                  /**/ },
 };
 
 CuerpoCeleste planetas[K_NUM_PLANETAS] = {

@@ -40,7 +40,7 @@ void myDisplay(void)
             break;
         case LUNA:
         case ISS:
-            myCamaraHaciaLaTierra("Display", LUNA);
+            myCamaraHaciaLaTierra("Display", cs.visualizacionPrincipal);
             break;
         case LUNA_DESDE_LA_TIERRA:
             myCamaraHaciaUnSateliteTerrestre("Display", LUNA);
