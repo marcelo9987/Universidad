@@ -52,10 +52,67 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="texturas\Jupiter8k.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="texturas\Luna.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="texturas\Sol.bmp">
+    <Image Include="texturas\Luna.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Marte2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Marte8k.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Mercurio2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Mercurio8K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Neptuno2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Pluton2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Saturno2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Saturno8K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Sol2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Sol8K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\SuperLuna.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Tierra2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Tierra8K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Urano2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Venus2K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Venus8K.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\ISS.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Jupiter2k.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

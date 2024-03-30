@@ -146,8 +146,27 @@
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="texturas\ISS.jpg" />
+    <Image Include="texturas\Jupiter2k.jpg" />
+    <Image Include="texturas\Jupiter8k.jpg" />
     <Image Include="texturas\Luna.bmp" />
-    <Image Include="texturas\Sol.bmp" />
+    <Image Include="texturas\Luna.jpg" />
+    <Image Include="texturas\Marte2K.jpg" />
+    <Image Include="texturas\Marte8k.jpg" />
+    <Image Include="texturas\Mercurio2K.jpg" />
+    <Image Include="texturas\Mercurio8K.jpg" />
+    <Image Include="texturas\Neptuno2K.jpg" />
+    <Image Include="texturas\Pluton2K.jpg" />
+    <Image Include="texturas\Saturno2K.jpg" />
+    <Image Include="texturas\Saturno8K.jpg" />
+    <Image Include="texturas\Sol2K.jpg" />
+    <Image Include="texturas\Sol8K.jpg" />
+    <Image Include="texturas\SuperLuna.bmp" />
+    <Image Include="texturas\Tierra2K.jpg" />
+    <Image Include="texturas\Tierra8K.jpg" />
+    <Image Include="texturas\Urano2K.jpg" />
+    <Image Include="texturas\Venus2K.jpg" />
+    <Image Include="texturas\Venus8K.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

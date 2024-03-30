@@ -20,5 +20,5 @@
 #define radianesAGrados(x) (x * 180.0 / M_PI)
 #define gradosARadianes(x) (x * M_PI / 180.0)
 
-
-extern ConfiguracionSistema cs;
+#define cosf360(x) cosf(gradosARadianes(x))
+#define sinf360(x) sinf(gradosARadianes(x))

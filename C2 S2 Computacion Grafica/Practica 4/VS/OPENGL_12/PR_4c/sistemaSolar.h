@@ -2,8 +2,9 @@
 
 #include "comun.h"
 
-enum enumPlanetas
+enum EnumCuerpoCeleste
 {
+    VISTA_GENERAL = -1,
     MERCURIO = 0,
     VENUS,
     TIERRA,
@@ -15,7 +16,8 @@ enum enumPlanetas
     PLUTON,
     SOL,
     LUNA,
-    ISS
+    ISS,
+    LUNA_DESDE_LA_TIERRA
 };
 
 typedef struct PosicionCuerpoCeleste
@@ -25,12 +27,17 @@ typedef struct PosicionCuerpoCeleste
     float anguloRotacion;       // En grados sexagesimales
     float anguloTraslacion;     // En grados sexagesimales
 
+    float posX;
+    float posY;
+    float posZ;
+
     GLuint numTexturaObjeto;    // Dato generado por glGenTextures(), a utilizar para cargar una textura con glBindTexture()
     GLuint numListaObjeto;      // Dato generado por glGenLists(), a utilizar para dibujar el objeto con glCallList()
 } PosicionCuerpoCeleste;
 
 typedef struct CuerpoCeleste
 {
+    enum EnumCuerpoCeleste quienSoy;
     char nombre[50];
     float radio;                // Comparado con el de la Tierra
     float distanciaMaximaAlSol; // En Unidades Astronómicas
@@ -67,6 +74,6 @@ void actualizaDatosCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 //void representaSol(CuerpoCeleste* sol, bool imprimirDatos);
 
 
-void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, bool imprimirDatos);
+void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 
 //void representaSateliteTerrestre(CuerpoCeleste* unSateliteTerrestre, bool imprimirDatos);
