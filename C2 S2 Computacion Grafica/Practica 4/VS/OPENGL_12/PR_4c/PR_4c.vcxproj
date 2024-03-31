@@ -83,6 +83,9 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL_12\Librerias\glut;$(SolutionDir)\OpenGL_12\Librerias\glut\GL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EmbedManagedResourceFile>
+      </EmbedManagedResourceFile>
+      <Version>1.0</Version>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,6 +103,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL_12\Librerias\glut;$(SolutionDir)\OpenGL_12\Librerias\glut\GL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EmbedManagedResourceFile>
+      </EmbedManagedResourceFile>
+      <Version>1.0</Version>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -150,7 +157,6 @@
     <Image Include="texturas\Jupiter2k.jpg" />
     <Image Include="texturas\Jupiter8k.jpg" />
     <Image Include="texturas\Luna.bmp" />
-    <Image Include="texturas\Luna.jpg" />
     <Image Include="texturas\Marte2K.jpg" />
     <Image Include="texturas\Marte8k.jpg" />
     <Image Include="texturas\Mercurio2K.jpg" />
@@ -161,12 +167,16 @@
     <Image Include="texturas\Saturno8K.jpg" />
     <Image Include="texturas\Sol2K.jpg" />
     <Image Include="texturas\Sol8K.jpg" />
-    <Image Include="texturas\SuperLuna.bmp" />
+    <Image Include="texturas\Tierra.jpg" />
+    <Image Include="texturas\Tierra2.jpg" />
     <Image Include="texturas\Tierra2K.jpg" />
     <Image Include="texturas\Tierra8K.jpg" />
     <Image Include="texturas\Urano2K.jpg" />
     <Image Include="texturas\Venus2K.jpg" />
     <Image Include="texturas\Venus8K.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sobre.vbs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

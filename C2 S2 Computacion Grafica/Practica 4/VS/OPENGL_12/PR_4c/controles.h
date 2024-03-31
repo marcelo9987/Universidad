@@ -37,15 +37,31 @@ typedef struct
 extern ConfiguracionSistema cs;
 
 
-
+/**
+* @brief Inicializa la configuración de la cámara 
+*/
 void inicializaConfiguracionCamara();
 
+/**
+* @brief aplica cambios para el reescalado de la ventana
+* @param[in] newWidth nuevo ancho
+* @param[in] newHeight nuevo alto
+*/
 void myChangeSize(GLint newWidth, GLint newHeight);
 
+
+//Cámaras varias para el sistema solar
+
 void myCamaraVistaGeneral(char* detalleAccion);
+
+void myCamaraVistaGeneralCenital(char* detalleAccion);
+
 void myCamaraDesdeLaTierraHaciaElSol(char* detalleAccion);
+
 void myCamaraDesdeLaTierraHaciaOtroPlaneta(char* detalleAccion, enum EnumCuerpoCeleste haciaQueCuerpoCeleste);
+
 void myCamaraHaciaLaTierra(char* detalleAccion, enum EnumCuerpoCeleste desdeQueCuerpoCeleste);
+
 void myCamaraHaciaUnSateliteTerrestre(char* detalleAccion, enum EnumCuerpoCeleste haciaQueCuerpoCeleste);
 
 //void myCamaras(char* detalleAccion);

@@ -52,13 +52,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="texturas\ISS.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Jupiter2k.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="texturas\Jupiter8k.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="texturas\Luna.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="texturas\Luna.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="texturas\Marte2K.jpg">
@@ -91,7 +94,10 @@
     <Image Include="texturas\Sol8K.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="texturas\SuperLuna.bmp">
+    <Image Include="texturas\Tierra.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="texturas\Tierra2.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="texturas\Tierra2K.jpg">
@@ -109,11 +115,10 @@
     <Image Include="texturas\Venus8K.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="texturas\ISS.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="texturas\Jupiter2k.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sobre.vbs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

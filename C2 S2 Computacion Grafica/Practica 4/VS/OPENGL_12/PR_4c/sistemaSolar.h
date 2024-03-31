@@ -4,6 +4,7 @@
 
 enum EnumCuerpoCeleste
 {
+    VISTA_GENERAL_CENITAL = -2,
     VISTA_GENERAL = -1,
     MERCURIO = 0,
     VENUS,
@@ -69,11 +70,18 @@ extern CuerpoCeleste satelitesTerrestres[K_NUM_SATELITES_TERRESTRES];
 
 // void actualizaDatosSol(CuerpoCeleste* sol);
 
+/**
+* @brief Actualiza los datos de un cuerpo celeste
+* @param[in/out] cuerpoCeleste Cuerpo celeste a actualizar
+*/
 void actualizaDatosCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 
 //void representaSol(CuerpoCeleste* sol, bool imprimirDatos);
 
-
+/**
+* @brief Representa un cuerpo celeste
+* @param[in] cuerpoCeleste Cuerpo celeste a representar
+*/
 void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 
 //void representaSateliteTerrestre(CuerpoCeleste* unSateliteTerrestre, bool imprimirDatos);

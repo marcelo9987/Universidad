@@ -1,5 +1,4 @@
 
-
 #include "controles.h"
 #include "sistemaSolar.h"
 #include "cargasIniciales.h"
@@ -28,13 +27,21 @@ void imprimeDatos(char* detalleAccion)
     printf("\n[DEBUG] %10s: alpha (LEFT-RIGHT): %f, beta(UP-DOWN): %f\n", detalleAccion, radianesAGrados(cs.camaraPrincipal.alpha), radianesAGrados(cs.camaraPrincipal.beta));
 }
 
+void configuraCamaraCenital()
+{
+    cs.camaraPrincipal.alpha = 0.0f;
+    cs.camaraPrincipal.beta = gradosARadianes(90.0f);
+    //cs.camaraPrincipal.distanciaCamara = 300.0f;
+    cs.camaraPrincipal.mostrarOrbitas = true;
+}
+
 void myChangeSize(GLint newWidth, GLint newHeight)
 {
     cs.window_width = newWidth;
     cs.window_height = newHeight;
 
-    // Prevent a divide by zero, when window is too short
-    // (you cant make a window of zero width).
+    // Para no hacer divisiones por cero
+    // No tiene sentido tener una ventana de tamaño 0, así que la ponemos a 1
     if (cs.window_height == 0)
     {
         cs.window_height = 1;
@@ -42,17 +49,16 @@ void myChangeSize(GLint newWidth, GLint newHeight)
 
 
     // Recalculamos la posición de la cámara
-    //myCamara("ChangeSize");
-    /*
-
+/*
+        myCamara("ChangeSize");
     // Set the viewport to be the entire window
-    glViewport(100, 100, cs.window_width/10.0, cs.window_height/10.0);
+        glViewport(100, 100, cs.window_width/10.0, cs.window_height/10.0);
 
     // Recalculamos la posición de la cámara
-    myCamara("ChangeSize");
-    */
+        myCamara("ChangeSize");
+*/
 
-    // Forzamos el redibujado
+// Forzamos el redibujado
     glutPostRedisplay();
 }
 
@@ -80,6 +86,23 @@ void doMyCamara(float eyeX, float eyeY, float eyeZ, float nearX, float nearY, fl
 }
 
 void myCamaraVistaGeneral(char* detalleAccion)
+{
+
+
+    float eyeX = cs.camaraPrincipal.distanciaCamara * sin(cs.camaraPrincipal.alpha) * fabs(cos(cs.camaraPrincipal.beta));
+    float eyeY = cs.camaraPrincipal.distanciaCamara * sin(cs.camaraPrincipal.beta);
+    float eyeZ = cs.camaraPrincipal.distanciaCamara * cos(cs.camaraPrincipal.alpha) * fabs(cos(cs.camaraPrincipal.beta));
+
+    float nearX = 0.0f;
+    float nearY = 0.0f;
+    float nearZ = 0.0f;
+
+    //cs.camaraPrincipal.mostrarOrbitas = true;
+
+    doMyCamara(eyeX, eyeY, eyeZ, nearX, nearY, nearZ);
+}
+
+void myCamaraVistaGeneralCenital(char* detalleAccion)
 {
 
     float eyeX = cs.camaraPrincipal.distanciaCamara * sin(cs.camaraPrincipal.alpha) * fabs(cos(cs.camaraPrincipal.beta));
@@ -179,6 +202,7 @@ void myTeclado(unsigned char tras, int x, int y)
         break;
 
     case 'l':
+    case 'L':
         cs.camaraPrincipal.distanciaCamara *= 1.1f;
         detalleAccion = "LEJOS";
         break;
@@ -204,13 +228,13 @@ void myTeclado(unsigned char tras, int x, int y)
         break;
 
     case 'p':
-        case 'P':
+    case 'P':
         cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = 0;
         detalleAccion = "PAUSA";
         break;
 
     case 'o':
-        case 'O':
+    case 'O':
         cs.camaraPrincipal.mostrarOrbitas = !cs.camaraPrincipal.mostrarOrbitas;
 
         detalleAccion = "ORBITAS";
@@ -261,7 +285,6 @@ void myTeclasEspeciales(int cursor, int x, int y)
 
     switch (cursor)
     {
-        //Traslaciones:
     case GLUT_KEY_F1:
         break;
     case GLUT_KEY_F2:
@@ -343,13 +366,24 @@ void myTeclasEspeciales(int cursor, int x, int y)
 void seleccionarVistaCamara(int vistaSeleccionada)
 {
     printf("Seleccionado: %d\n", vistaSeleccionada);
-    if (vistaSeleccionada != VISTA_GENERAL)
+    if (vistaSeleccionada != VISTA_GENERAL && vistaSeleccionada!= VISTA_GENERAL_CENITAL)
     {
         cs.camaraPrincipal.mostrarOrbitas = false;
     }
-    else 
+    else
     {
         cs.camaraPrincipal.mostrarOrbitas = true;
+        switch (vistaSeleccionada)
+        {
+        case VISTA_GENERAL:
+            inicializaConfiguracionCamara();
+            break;
+        case VISTA_GENERAL_CENITAL:
+            configuraCamaraCenital();
+            break;
+        default:
+            break;
+        }
     }
     cs.visualizacionPrincipal = vistaSeleccionada;
 
@@ -389,7 +423,8 @@ void iniciaMenu()
     glutAddMenuEntry("-- La Luna --", LUNA_DESDE_LA_TIERRA);
 
     int menuPrincipal = glutCreateMenu(seleccionarVistaCamara);
-    glutAddMenuEntry("Vista general", VISTA_GENERAL);
+    glutAddMenuEntry("Vista general normal", VISTA_GENERAL);
+    glutAddMenuEntry("Vista general cenital", VISTA_GENERAL_CENITAL);
     glutAddSubMenu("Enfocar desde la Tierra", desdeTierra);
     glutAddSubMenu("Enfocar la Tierra desde", satelitesTerrestresMenu);
 

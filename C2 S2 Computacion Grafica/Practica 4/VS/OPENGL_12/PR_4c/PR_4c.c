@@ -35,6 +35,9 @@ void myDisplay(void)
         case VISTA_GENERAL:
             myCamaraVistaGeneral("Display");
             break;
+        case VISTA_GENERAL_CENITAL:
+            myCamaraVistaGeneralCenital("Display");
+        break;
         case SOL:
             myCamaraDesdeLaTierraHaciaElSol("Display");
             break;
