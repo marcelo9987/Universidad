@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{51FB804E-25F0-4725-9D71-F323677FF6F0}|Grua\\Project1.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\Grua\\sobre.vbs||{A52A054C-5228-4819-B568-E5B8040801B5}",
+      "RelativeMoniker": "D:0:0:{51FB804E-25F0-4725-9D71-F323677FF6F0}|Grua\\Project1.vcxproj|solutionrelative:Grua\\sobre.vbs||{A52A054C-5228-4819-B568-E5B8040801B5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|Sistema Solar\\PR_4c.vcxproj|F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\Sistema Solar\\sobre.vbs||{A52A054C-5228-4819-B568-E5B8040801B5}",
+      "RelativeMoniker": "D:0:0:{EE128C6E-BDF5-4204-A28A-C8269317A3A6}|Sistema Solar\\PR_4c.vcxproj|solutionrelative:Sistema Solar\\sobre.vbs||{A52A054C-5228-4819-B568-E5B8040801B5}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "sobre.vbs",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\Grua\\sobre.vbs",
+              "RelativeDocumentMoniker": "Grua\\sobre.vbs",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\Grua\\sobre.vbs",
+              "RelativeToolTip": "Grua\\sobre.vbs",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADgSURBVDhPpVMJDoQwCKQbH\u002BbPxJ/Vl3UZjkqtJntMYgoUZqZVCzM3\u002BhG8bbRowFy0knBHnPtqrY2KpA\u002BNjVqzuq86IBliIPKXpScwrEr7jqRhRfO6rthDSydRZAc5vipjL7t4dKBwZaxQthKTx8N9zQRQxhHkhrGKkm/o4HTZA4GoFIYySMKBEDiJWp8wnNuhtX/egq5wgIHzLuI4nUSRHUQc7J7bvjjJLnrcFYPILNtwOkYeBiLvR5AB/S/qcWDTivKpohG1u1eo6MonQun6DAgHqhofy7fAHCxN7J\u002BD6A0/UNZOxBkRNwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2024-03-31T17:47:49.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "sobre.vbs",
+              "DocumentMoniker": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\Sistema Solar\\sobre.vbs",
+              "RelativeDocumentMoniker": "Sistema Solar\\sobre.vbs",
+              "ToolTip": "F:\\GitHub\\Universidad\\C2 S2 Computacion Grafica\\Entrega 1\\Sistema Solar\\sobre.vbs",
+              "RelativeToolTip": "Sistema Solar\\sobre.vbs",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADgSURBVDhPpVMJDoQwCKQbH\u002BbPxJ/Vl3UZjkqtJntMYgoUZqZVCzM3\u002BhG8bbRowFy0knBHnPtqrY2KpA\u002BNjVqzuq86IBliIPKXpScwrEr7jqRhRfO6rthDSydRZAc5vipjL7t4dKBwZaxQthKTx8N9zQRQxhHkhrGKkm/o4HTZA4GoFIYySMKBEDiJWp8wnNuhtX/egq5wgIHzLuI4nUSRHUQc7J7bvjjJLnrcFYPILNtwOkYeBiLvR5AB/S/qcWDTivKpohG1u1eo6MonQun6DAgHqhofy7fAHCxN7J\u002BD6A0/UNZOxBkRNwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2024-03-31T17:46:59.853Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

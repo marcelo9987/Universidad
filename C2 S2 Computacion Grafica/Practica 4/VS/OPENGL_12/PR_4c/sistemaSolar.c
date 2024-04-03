@@ -155,7 +155,7 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 
     }
 
-    if (cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA)
+    //if (cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA)
     {
         glPopMatrix();
     }
