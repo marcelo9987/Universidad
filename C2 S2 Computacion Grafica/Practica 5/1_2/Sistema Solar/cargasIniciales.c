@@ -16,7 +16,7 @@ PosicionCuerpoCeleste posicionSol; // = { 0.0f, 0.0f };
 CuerpoCeleste satelitesTerrestres[K_NUM_SATELITES_TERRESTRES] =
 {
             { LUNA,      /**/ "Luna",         /**/  0.30, /**/   0.00757, /**/   0.0,  /**/ 27.32,        /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0], /**/                            0, /**/ NULL                  /**/ },
-            { ISS,       /**/ "ISS",          /**/  0.13, /**/   0.00257, /**/   0.0,  /**/ 1.0 / 24.0,   /**/ "texturas/ISS.jpg",       /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1], /**/                            0, /**/ NULL                  /**/ }
+            { ISS,       /**/ "ISS",          /**/  0.13, /**/   0.00257, /**/   0.0,  /**/ 1.0 / 24.0,   /**/ "texturas/iss.jpg",       /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1], /**/                            0, /**/ NULL                  /**/}
 };
 
 CuerpoCeleste planetas[K_NUM_PLANETAS] =
@@ -66,7 +66,7 @@ bool cargaTextura(GLuint numTextura, char* rutaTextura)
     // Basado en https://learnopengl.com/Getting-started/Textures
     // Basado en https://stackoverflow.com/questions/5681948/multiple-textures-opengl-glut-c
 
-    glBindTexture(GL_TEXTURE_2D, numTextura);
+    
 
     int width, height, nrChannels;
     unsigned char* data = stbi_load(rutaTextura, &width, &height, &nrChannels, 0);
@@ -75,6 +75,8 @@ bool cargaTextura(GLuint numTextura, char* rutaTextura)
         printf("Error al cargar la textura %s\n", rutaTextura);
         return false;
     }
+
+    glBindTexture(GL_TEXTURE_2D, numTextura);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
@@ -136,14 +138,20 @@ void inicializaPosicionCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 
     // --
 
-
     cuerpoCeleste->posicion->numListaObjeto = glGenLists(1);
 
-
     glNewList(cuerpoCeleste->posicion->numListaObjeto, GL_COMPILE);
+
+    if(cuerpoCeleste->quienSoy == ISS)
+    {
+        myISS();
+    }
+    else 
     {
         myEsfera();
-
+    }
+    
+    {
         if (cuerpoCeleste->tieneAnillos)
         {
             for (float distancia = cuerpoCeleste->posicion->radio * 1.2f; distancia <= cuerpoCeleste->posicion->radio * 2.0f; distancia += 0.2f)

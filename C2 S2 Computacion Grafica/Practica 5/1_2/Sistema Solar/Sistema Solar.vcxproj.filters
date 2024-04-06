@@ -30,6 +30,9 @@
     <ClCompile Include="sistemaSolar.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="iss.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controles.h">
@@ -55,6 +58,7 @@
     <None Include="sobre.vbs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="texturas\Pluton2K.jpg">

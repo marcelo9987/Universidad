@@ -421,6 +421,7 @@ void iniciaMenu()
     glutAddMenuEntry("Neptuno", NEPTUNO);
     glutAddMenuEntry("Pluton", PLUTON);
     glutAddMenuEntry("-- La Luna --", LUNA_DESDE_LA_TIERRA);
+    glutAddMenuEntry("-- La Estación Espacial Internacional --", ISS_DESDE_LA_TIERRA);
 
     int menuPrincipal = glutCreateMenu(seleccionarVistaCamara);
     glutAddMenuEntry("Vista general normal", VISTA_GENERAL);

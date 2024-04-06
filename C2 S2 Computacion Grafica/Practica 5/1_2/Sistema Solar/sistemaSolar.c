@@ -3,6 +3,7 @@
 #include "sistemaSolar.h"
 #include "figurasGeometricas.h"
 
+
 // --
 
 extern float fAngulo;
@@ -83,7 +84,6 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
     }
 
     {
-
         if (cs.camaraPrincipal.mostrarOrbitas && cuerpoCeleste->posicion->distanciaAlPadre > 0.0f)
         {
             //  myEllipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre / 2.0, 100);
@@ -112,6 +112,7 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 
         glPushMatrix();
 
+
         if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN)
         {
             //glPushMatrix();
@@ -120,20 +121,24 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
         }
         else
         {
-            glColor3f(cuerpoCeleste->color[0], cuerpoCeleste->color[1], cuerpoCeleste->color[2]);
+            //Color3f(cuerpoCeleste->color[0], cuerpoCeleste->color[1], cuerpoCeleste->color[2]);
+
         }
 
         //glPushMatrix();
+       
+            glScalef(cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio);
+          
+            glCallList(cuerpoCeleste->posicion->numListaObjeto);
+       
 
-        glScalef(cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio);
 
-        glCallList(cuerpoCeleste->posicion->numListaObjeto);
-        
-        if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN)
-        {
-            glDisable(GL_TEXTURE_2D);
-        }
-
+            if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN)
+            {
+                glDisable(GL_TEXTURE_2D);
+            }
+           
+           
         glPopMatrix();
 
         
@@ -160,7 +165,7 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
         glPopMatrix();
     }
 
-    
+
     if (ft < 9)
     {
         printf("%20s - tamaño: %2.5f - distancia al centro: %2.5f\n", cuerpoCeleste->nombre, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->distanciaAlPadre);

@@ -3,6 +3,7 @@
 #include "controles.h"
 #include "sistemaSolar.h"
 #include "cargasIniciales.h"
+#include <locale.h>
 
 // --
 
@@ -31,26 +32,34 @@ void myDisplay(void)
         // Inicializamos la matriz del modelo a la identidad
         glLoadIdentity();
 
-        switch (cs.visualizacionPrincipal) {
-        case VISTA_GENERAL:
-            myCamaraVistaGeneral("Display");
-            break;
-        case VISTA_GENERAL_CENITAL:
-            myCamaraVistaGeneralCenital("Display");
-        break;
-        case SOL:
-            myCamaraDesdeLaTierraHaciaElSol("Display");
-            break;
-        case LUNA:
-        case ISS:
-            myCamaraHaciaLaTierra("Display", cs.visualizacionPrincipal);
-            break;
-        case LUNA_DESDE_LA_TIERRA:
-            myCamaraHaciaUnSateliteTerrestre("Display", LUNA);
-            break;
-        default:
-            myCamaraDesdeLaTierraHaciaOtroPlaneta("Display", cs.visualizacionPrincipal);
-            break;
+        switch (cs.visualizacionPrincipal)
+        {
+
+            case VISTA_GENERAL:
+                myCamaraVistaGeneral("Display");
+                break;
+
+            case VISTA_GENERAL_CENITAL:
+                myCamaraVistaGeneralCenital("Display");
+                break;
+
+            case SOL:
+                myCamaraDesdeLaTierraHaciaElSol("Display");
+                break;
+
+            case LUNA:
+            case ISS:
+                myCamaraHaciaLaTierra("Display", cs.visualizacionPrincipal);
+                break;
+
+            case LUNA_DESDE_LA_TIERRA:
+            case ISS_DESDE_LA_TIERRA:
+                myCamaraHaciaUnSateliteTerrestre("Display", (cs.visualizacionPrincipal == LUNA_DESDE_LA_TIERRA)?LUNA:ISS);
+                break;
+
+            default:
+                myCamaraDesdeLaTierraHaciaOtroPlaneta("Display", cs.visualizacionPrincipal);
+                break;
         }
         // myEjes();
 
@@ -58,7 +67,7 @@ void myDisplay(void)
     }
 
     // --
-    
+
     // Monitor Visualización general
 
     // Set the viewport to be the entire window
@@ -77,7 +86,7 @@ void myDisplay(void)
 
         representaCuerpoCeleste(&sol);
     }
-    
+
     // --
 
     // Monitor Visualización desde la Tierra a Saturno
@@ -119,7 +128,7 @@ void myDisplay(void)
 
         representaCuerpoCeleste(&sol);
     }
-    
+
     // --
 
     // Monitor Visualización desde la Tierra a la Luna
@@ -204,6 +213,8 @@ void myOpenGlInit()
 
 int main(int argc, char** argv)
 {
+    //pongo el locale para que los decimales sean con punto y los acentos se vean bien
+    setlocale(LC_ALL, "spanish");
 
     inicializaConfiguracionSistema();
     inicializaConfiguracionCamara();

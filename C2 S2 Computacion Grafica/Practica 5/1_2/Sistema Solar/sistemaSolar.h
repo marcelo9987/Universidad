@@ -18,7 +18,9 @@ enum EnumCuerpoCeleste
     SOL,
     LUNA,
     ISS,
-    LUNA_DESDE_LA_TIERRA
+    LUNA_DESDE_LA_TIERRA,
+    ISS_DESDE_LA_TIERRA,
+   
 };
 
 typedef struct PosicionCuerpoCeleste

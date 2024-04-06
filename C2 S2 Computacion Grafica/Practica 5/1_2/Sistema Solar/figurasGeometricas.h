@@ -18,3 +18,5 @@ void myEllipse(float x, float y, float a, float b, int segments);
 * @brief Dibuja una esfera
 */
 void myEsfera();
+
+extern void myISS();
