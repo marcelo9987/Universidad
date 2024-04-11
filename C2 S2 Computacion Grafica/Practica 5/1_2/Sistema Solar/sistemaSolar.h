@@ -84,6 +84,7 @@ void actualizaDatosCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 * @brief Representa un cuerpo celeste
 * @param[in] cuerpoCeleste Cuerpo celeste a representar
 */
+void iluminaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
 
 //void representaSateliteTerrestre(CuerpoCeleste* unSateliteTerrestre, bool imprimirDatos);

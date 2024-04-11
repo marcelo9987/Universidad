@@ -60,8 +60,10 @@ void myEllipse(float cx, float cy, float rx, float ry, int num_segments)
     glBegin(GL_LINE_LOOP);
     for (int ii = 0; ii < num_segments; ii++)
     {
+        //glEnable(GL_NORMALIZE);rrr
         //apply radius and offset
         glVertex3f(x * rx + cx + focus1 / 2.0, 0.0, y * ry + cy);//output vertex 
+        glNormal3f(ii >= (num_segments / 2) ? -1.0 : 1.0, 0.0, 0.0);
 
         //apply the rotation matrix
         t = x;
@@ -73,6 +75,7 @@ void myEllipse(float cx, float cy, float rx, float ry, int num_segments)
 
 void myEsfera()
 {
+
     glBegin(GL_TRIANGLES);
     glNormal3f(-0.0247692f, 0.987385f, -0.156387f);
     glTexCoord2f(0.0250000f, 1.00000f);

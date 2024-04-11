@@ -68,6 +68,9 @@ void doMyCamara(float eyeX, float eyeY, float eyeZ, float nearX, float nearY, fl
     glMatrixMode(GL_PROJECTION); //Configuración de la matriz de proyección
 
     glLoadIdentity(); //La ponemos a uno
+    //glLoadIdentity();
+
+
 
     float fovy = 60.0f;
     float aspect = ((float)cs.window_width) / (float)cs.window_height;
@@ -136,6 +139,7 @@ void myCamaraDesdeLaTierraHaciaElSol(char* detalleAccion)
 
 void myCamaraDesdeLaTierraHaciaOtroPlaneta(char* detalleAccion, enum EnumCuerpoCeleste haciaQueCuerpoCeleste)
 {
+
     float posXtierra = planetas[TIERRA].posicion->posX;
     float posYtierra = planetas[TIERRA].posicion->posY;
     float posZtierra = planetas[TIERRA].posicion->posZ;
@@ -172,11 +176,15 @@ void myCamaraHaciaLaTierra(char* detalleAccion, enum EnumCuerpoCeleste desdeQueC
 
 void myCamaraHaciaUnSateliteTerrestre(char* detalleAccion, enum EnumCuerpoCeleste haciaQueCuerpoCeleste)
 {
+    glMatrixMode(GL_PROJECTION); //Configuración de la matriz de proyección
+    //glLoadIdentity();
+
     float posXtierra = planetas[TIERRA].posicion->posX;
     float posYtierra = planetas[TIERRA].posicion->posY;
     float posZtierra = planetas[TIERRA].posicion->posZ;
 
-    float anguloSatelite = planetas[TIERRA].posicion->anguloTraslacion + planetas[TIERRA].posicion->anguloRotacion + satelitesTerrestres[haciaQueCuerpoCeleste - LUNA].posicion->anguloTraslacion;
+//  float anguloSatelite = planetas[TIERRA].posicion->anguloTraslacion + planetas[TIERRA].posicion->anguloRotacion + satelitesTerrestres[haciaQueCuerpoCeleste - LUNA].posicion->anguloTraslacion;
+    float anguloSatelite = planetas[TIERRA].posicion->anguloTraslacion + satelitesTerrestres[haciaQueCuerpoCeleste - LUNA].posicion->anguloTraslacion;
 
     float posRelXsatelite = cosf360(anguloSatelite) * satelitesTerrestres[haciaQueCuerpoCeleste - LUNA].posicion->distanciaAlPadre;
     float posRelYsatelite = +0.0f;
