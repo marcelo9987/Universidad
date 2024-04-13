@@ -125,6 +125,8 @@
   <ItemGroup>
     <ClCompile Include="cargasIniciales.c" />
     <ClCompile Include="controles.c" />
+    <ClCompile Include="cubos.c" />
+    <ClCompile Include="esferas.c" />
     <ClCompile Include="figurasGeometricas.c" />
     <ClCompile Include="iss.c" />
     <ClCompile Include="MainSistemaSolar.c" />
@@ -143,6 +145,7 @@
     <None Include="sobre.vbs" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="texturas\boveda.jpg" />
     <Image Include="texturas\ISS.jpg" />
     <Image Include="texturas\Jupiter2k.jpg" />
     <Image Include="texturas\Jupiter8k.jpg" />

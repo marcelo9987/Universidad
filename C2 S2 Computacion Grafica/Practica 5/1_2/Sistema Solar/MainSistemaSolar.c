@@ -10,7 +10,7 @@
 
 // --
 
-// Funci�n de display
+// Función de display
 void myDisplay(void)
 {
     // static bool primeraVez = true;
@@ -25,7 +25,7 @@ void myDisplay(void)
     // Set the viewport to be the entire window
     glViewport(0, 0, cs.window_width, cs.window_height);
     {
-        // Recalculamos la posici�n de la c�mara
+        // Recalculamos la posición de la cámara
         // myCamara("ChangeSize");
 
 
@@ -34,57 +34,76 @@ void myDisplay(void)
 
         // Inicializamos la matriz del modelo a la identidad
         glLoadIdentity();
-        
+
 
 
         //glLightfv(GL_LIGHT0, GL_POSITION, pos);
-        
+
 
         switch (cs.visualizacionPrincipal)
         {
 
-            case VISTA_GENERAL:
-                myCamaraVistaGeneral("Display");
-                break;
+        case VISTA_GENERAL:
+            myCamaraVistaGeneral("Display");
+            break;
 
-            case VISTA_GENERAL_CENITAL:
-                myCamaraVistaGeneralCenital("Display");
-                break;
+        case VISTA_GENERAL_CENITAL:
+            myCamaraVistaGeneralCenital("Display");
+            break;
 
-            case SOL:
-                myCamaraDesdeLaTierraHaciaElSol("Display");
-                break;
+        case SOL:
+            myCamaraDesdeLaTierraHaciaElSol("Display");
+            break;
 
-            case LUNA:
-            case ISS:
-                myCamaraHaciaLaTierra("Display", cs.visualizacionPrincipal);
-                break;
+        case LUNA:
+        case ISS:
+            myCamaraHaciaLaTierra("Display", cs.visualizacionPrincipal);
+            break;
 
-            case LUNA_DESDE_LA_TIERRA:
-            case ISS_DESDE_LA_TIERRA:
-                myCamaraHaciaUnSateliteTerrestre("Display", (cs.visualizacionPrincipal == LUNA_DESDE_LA_TIERRA)?LUNA:ISS);
-                break;
+        case LUNA_DESDE_LA_TIERRA:
+        case ISS_DESDE_LA_TIERRA:
+            myCamaraHaciaUnSateliteTerrestre("Display", (cs.visualizacionPrincipal == LUNA_DESDE_LA_TIERRA) ? LUNA : ISS);
+            break;
 
-            default:
-                myCamaraDesdeLaTierraHaciaOtroPlaneta("Display", cs.visualizacionPrincipal);
-                break;
+        default:
+            myCamaraDesdeLaTierraHaciaOtroPlaneta("Display", cs.visualizacionPrincipal);
+            break;
         }
         // myEjes();
 
-        
-    }
-    //glPushMatrix();
-    representaCuerpoCeleste(&sol);
-    //glPopMatrix();
 
+
+
+        // --
+
+        //glPushMatrix();
+        //representaCuerpoCeleste(&sol[0], tccSol);
+        representaCuerpoCeleste(&bovedaCelestial[0], tccBovedaCelestial);
+        //glPopMatrix();
+
+        // --
+        /*
+        glDisable(GL_LIGHTING);
+
+        for (GLfloat x = 0; x <= 100; x += 1.0) {
+            for (GLfloat y = 0; y <= 100; y += 1.0) {
+                for (GLfloat z = 0; z <= 100; z += 1.0) {
+                    myEstrella(x, y, z);
+                }
+            }
+        }
+
+        glEnable(GL_LIGHTING);
+        */
+    }
 
     // --
 
-//#define __XX__ 1
+#define __MOSTRAR_MONITORES__ 1
 
-#ifdef __XX__
+#ifdef __MOSTRAR_MONITORES__
 
-    // Monitor Visualizaci�n general
+    // Monitor Visualización general
 
     // Set the viewport to be the entire window
     glViewport(1.0 * cs.window_width / 10.0, 1.0 * cs.window_height / 10.0, cs.window_width / 5.0, cs.window_height / 5.0);
@@ -98,16 +117,16 @@ void myDisplay(void)
 
         myCamaraVistaGeneral("Display");
 
-        representaCuerpoCeleste(&sol);
+        representaCuerpoCeleste(&sol[0], tccSol);
 
         // myEjes();
 
-        
+
     }
 
     // --
 
-    // Monitor Visualizaci�n desde la Tierra a Saturno
+    // Monitor Visualización desde la Tierra a Saturno
     // 
     // Set the viewport to be the entire window
     glViewport(3.0 * cs.window_width / 10.0, 1.0 * cs.window_height / 10.0, cs.window_width / 5.0, cs.window_height / 5.0);
@@ -119,25 +138,25 @@ void myDisplay(void)
         // Inicializamos la matriz del modelo a la identidad
         glLoadIdentity();
 
-       
+
         // myEjes();
-               
+
         myCamaraDesdeLaTierraHaciaOtroPlaneta("Display", SATURNO);
 
-        representaCuerpoCeleste(&sol);
+        representaCuerpoCeleste(&sol[0], tccSol);
 
         //glLoadIdentity();
     }
 
     // --
 
-    // Monitor Visualizaci�n desde la Luna a la Tierra
+    // Monitor Visualización desde la Luna a la Tierra
     // 
     // Set the viewport to be the entire window
     //glPushMatrix();
     glViewport(5.0 * cs.window_width / 10.0, 1.0 * cs.window_height / 10.0, cs.window_width / 5.0, cs.window_height / 5.0);
     {
-        
+
         // Se activa la matriz del modelador
         //glClear(GL_VIEWPORT_BIT);
         // Inicializamos la matriz del modelo a la identidad
@@ -148,23 +167,23 @@ void myDisplay(void)
         glLoadIdentity();
 
         /*glPushMatrix();*/
-        //representaCuerpoCeleste(&sol);
+        //representaCuerpoCeleste(&sol[0]);
         /*glPopMatrix();*/
-        
+
         //myCamaraVistaGeneralCenital("Display");
         myCamaraHaciaLaTierra("Display", LUNA);
 
-        representaCuerpoCeleste(&sol);
-        
-        
+        representaCuerpoCeleste(&sol[0], tccSol);
+
+
         // myEjes();
 
-       
+
     }
-    
+
     // --
 
-    // Monitor Visualizaci�n desde la Tierra a la Luna
+    // Monitor Visualización desde la Tierra a la Luna
     // 
     // Set the viewport to be the entire window
     glViewport(7.0 * cs.window_width / 10.0, 1.0 * cs.window_height / 10.0, cs.window_width / 5.0, cs.window_height / 5.0);
@@ -175,18 +194,18 @@ void myDisplay(void)
 
         // Inicializamos la matriz del modelo a la identidad
         glLoadIdentity();
-        
+
         myCamaraHaciaUnSateliteTerrestre("Display", LUNA);
 
-        representaCuerpoCeleste(&sol);
+        representaCuerpoCeleste(&sol[0], tccSol);
 
         // myEjes();
 
-        
+
     }
 
     // --
-#endif // __XX__
+#endif // __MOSTRAR_MONITORES__
 
     // Se limpian los buffers
     glutSwapBuffers();
@@ -208,7 +227,7 @@ void myStep(void)
         cs.chronos_diaActualmenteSimulado += deltaTiempoEnSegundosSimulados;
     }
 
-    actualizaDatosCuerpoCeleste(&sol);
+    actualizaCuerpoCeleste(&bovedaCelestial[0]);
 
     // myCamara("MyStep");
 
@@ -240,7 +259,7 @@ void myOpenGlInit()
     glClearDepth(1.0f);         //Valor z-buffer
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);  // Valor limpieza buffer color
     glEnable(GL_DEPTH_TEST);    // z-buffer
-    glEnable(GL_CULL_FACE);     // Ocultaci�n caras back
+    glEnable(GL_CULL_FACE);     // Ocultación caras back
     glCullFace(GL_BACK);
 
 
@@ -262,29 +281,31 @@ int main(int argc, char** argv)
 
     glutInit(&argc, argv);
 
-    // Posici�n de la ventana
+    // Posición de la ventana
     glutInitWindowPosition(100, 100);
-    // Tama�o de la ventana
+    // Tamaño de la ventana
     glutInitWindowSize(cs.window_width, cs.window_height);
     // Tipo de color y buffer
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
     // Crear la ventana
     glutCreateWindow("Ventana con el Visual C++ y glut");
 
-    inicializaPosicionCuerpoCeleste(&sol);
+    // --
 
-    // Funci�n que mira el teclado
+    inicializaCuerpoCeleste(&bovedaCelestial[0]);
+
+    // Función que mira el teclado
     glutKeyboardFunc(myTeclado);
 
     glutSpecialFunc(myTeclasEspeciales);
 
-    // Funci�n de dibujo
+    // Función de dibujo
     glutDisplayFunc(myDisplay);
 
     glutReshapeFunc(myChangeSize);
 
     // --
-    // Funci�n de actualizaci�n
+    // Función de actualización
     glutIdleFunc(myIdle);
 
     myOpenGlInit();
@@ -293,7 +314,7 @@ int main(int argc, char** argv)
 
     myMovimiento(1);
 
-    // Recalculamos la posici�n de la c�mara
+    // Recalculamos la posición de la cámara
     //myCamaras("START");
 
     glutPostRedisplay();

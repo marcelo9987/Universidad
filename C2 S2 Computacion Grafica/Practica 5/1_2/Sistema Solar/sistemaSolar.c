@@ -15,13 +15,13 @@ void loDelSol() {
     glDisable(GL_LIGHTING);
     glDisable(GL_LIGHT0);
     glDisable(GL_LIGHT1);
-    glDisable(GL_LIGHT2);
-    glDisable(GL_LIGHT3);
+    //glDisable(GL_LIGHT2);
+    //glDisable(GL_LIGHT3);
 
 
-    GLfloat sun_mat_ambient[] = {0.5f, 0.5f, 0.5f, 0.5f};
-    GLfloat sun_mat_diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    GLfloat sun_mat_specular[] = {0.5f, 0.5f, 0.5f, 0.5f};
+    GLfloat sun_mat_ambient[] = { 0.5f, 0.5f, 0.5f, 0.5f };
+    GLfloat sun_mat_diffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    GLfloat sun_mat_specular[] = { 0.5f, 0.5f, 0.5f, 0.5f };
     //GLfloat sun_mat_emission[] = { 0.8f, 0.8f, 0.8f, 1.0f };
     //GLfloat sun_mat_shininess = 0.0f;
 
@@ -42,8 +42,8 @@ void loDelResto() {
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_LIGHT1);
-    glEnable(GL_LIGHT2);
-    glEnable(GL_LIGHT3);
+    //glEnable(GL_LIGHT2);
+    //glEnable(GL_LIGHT3);
 
     glMatrixMode(GL_MODELVIEW);
     //glLoadIdentity();
@@ -51,55 +51,55 @@ void loDelResto() {
 
 
 
-    GLfloat posSol[] = {0, 0, 0, 1.0};
+    GLfloat posSol[] = { 0, 0, 0, 1.0 };
 
-    GLfloat direccionFocoSol0[] = {1.0f, 0.0f, 0.0f, 1.0f};
-    GLfloat direccionFocoSol1[] = {-1.0f, 0.0f, 0.0f, 1.0f};
-    GLfloat direccionFocoSol2[] = {0.0f, 0.0f, 1.0f, 1.0f};
-    GLfloat direccionFocoSol3[] = {0.0f, 0.0f, -1.0f, 1.0f};
+    GLfloat direccionFocoSol0[] = { 1.00f , 0.00f ,  0.00f , 1.00f };
+    GLfloat direccionFocoSol1[] = { -1.00f , 0.00f ,  0.00f , 1.00f };
+    //GLfloat direccionFocoSol2[] = {  0.00f , 0.00f ,  1.00f , 1.00f };
+    //GLfloat direccionFocoSol3[] = {  0.00f , 0.00f , -1.00f , 1.00f };
 
 
-    GLfloat lightAmb[] = {0.25f, 0.25f, 0.25f, 0.5f};
-    GLfloat lightDif[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    GLfloat lightSpc[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat lightAmb[] = { 0.25f , 0.25f , 0.25f , 0.5f };
+    GLfloat lightDif[] = { 1.00f , 1.00f , 1.00f , 1.0f };
+    GLfloat lightSpc[] = { 1.00f , 1.00f , 1.00f , 1.0f };
 
     glLightfv(GL_LIGHT0, GL_POSITION, posSol);
     glLightfv(GL_LIGHT1, GL_POSITION, posSol);
-    glLightfv(GL_LIGHT2, GL_POSITION, posSol);
-    glLightfv(GL_LIGHT3, GL_POSITION, posSol);
+    //glLightfv(GL_LIGHT2, GL_POSITION, posSol);
+    //glLightfv(GL_LIGHT3, GL_POSITION, posSol);
 
     glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direccionFocoSol0);
     glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, direccionFocoSol1);
-    glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, direccionFocoSol2);
-    glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, direccionFocoSol3);
+    //glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, direccionFocoSol2);
+    //glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, direccionFocoSol3);
 
     // glLighti(GL_LIGHT0, GL_SPOT_CUTOFF, 180);
     glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmb);
     glLightfv(GL_LIGHT1, GL_AMBIENT, lightAmb);
-    glLightfv(GL_LIGHT2, GL_AMBIENT, lightAmb);
-    glLightfv(GL_LIGHT3, GL_AMBIENT, lightAmb);
+    //glLightfv(GL_LIGHT2, GL_AMBIENT, lightAmb);
+    //glLightfv(GL_LIGHT3, GL_AMBIENT, lightAmb);
 
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDif);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDif);
-    glLightfv(GL_LIGHT2, GL_DIFFUSE, lightDif);
-    glLightfv(GL_LIGHT3, GL_DIFFUSE, lightDif);
+    //glLightfv(GL_LIGHT2, GL_DIFFUSE, lightDif);
+    //glLightfv(GL_LIGHT3, GL_DIFFUSE, lightDif);
 
     glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpc);
     glLightfv(GL_LIGHT1, GL_SPECULAR, lightSpc);
-    glLightfv(GL_LIGHT2, GL_SPECULAR, lightSpc);
-    glLightfv(GL_LIGHT3, GL_SPECULAR, lightSpc);
+    //glLightfv(GL_LIGHT2, GL_SPECULAR, lightSpc);
+    //glLightfv(GL_LIGHT3, GL_SPECULAR, lightSpc);
 
     glLighti(GL_LIGHT0, GL_SPOT_CUTOFF, 90);
     glLighti(GL_LIGHT1, GL_SPOT_CUTOFF, 90);
-    glLighti(GL_LIGHT2, GL_SPOT_CUTOFF, 90);
-    glLighti(GL_LIGHT3, GL_SPOT_CUTOFF, 90);
+    //glLighti(GL_LIGHT2, GL_SPOT_CUTOFF, 90);
+    //glLighti(GL_LIGHT3, GL_SPOT_CUTOFF, 0);
 
 
     /*glEnable(GL_LIGHT0);
     glEnable(GL_LIGHTING);*/
 
-    GLfloat mat_ambient[] = {0.5f, 0.5f, 0.5f, 1.0f};
-    GLfloat mat_diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat mat_ambient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    GLfloat mat_diffuse[] = { 0.9f, 0.9f, 0.9f, 1.0f };
     //GLfloat mat_specular[] = { 0.0f, 0.0f, 1.0f, 1.0f };
     //GLfloat mat_emission[] = { 0.0f, 0.0f, 0.0f, 1.0f };
     GLfloat mat_shininess = 0.0f;
@@ -113,10 +113,10 @@ void loDelResto() {
 }
 
 
-void actualizaDatosCuerpoCeleste(CuerpoCeleste *cuerpoCeleste) {
+void actualizaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
     float chronos_segundosRealesPorDiaSimulado = K_VELOCIDAD_SPD_ARRAY[cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada];
 
-    if ( fpclassify(cuerpoCeleste->periodoTraslacion) != FP_ZERO && cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada != 0) {
+    if (fpclassify(cuerpoCeleste->periodoTraslacion) != FP_ZERO && cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada != 0) {
 
         cuerpoCeleste->posicion->anguloTraslacion = cs.chronos_diaActualmenteSimulado * (360.0 / cuerpoCeleste->periodoTraslacion);
 
@@ -145,7 +145,7 @@ void actualizaDatosCuerpoCeleste(CuerpoCeleste *cuerpoCeleste) {
     if (cuerpoCeleste->numHijos > 0) {
 
         for (int pos = 0; pos < cuerpoCeleste->numHijos; pos++) {
-            actualizaDatosCuerpoCeleste(&cuerpoCeleste->hijos[pos]);
+            actualizaCuerpoCeleste(&cuerpoCeleste->hijos[pos]);
         }
     }
 
@@ -157,7 +157,7 @@ void actualizaDatosCuerpoCeleste(CuerpoCeleste *cuerpoCeleste) {
 //int ft = 0;
 
 
-void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
+void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCeleste tipoCuerpoCeleste) {
 
     // --
 
@@ -192,16 +192,16 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
 
     glPushMatrix(); // 3
 
-    if (false) {
-        if (/*cuerpoCeleste->quienSoy!=ISS && */cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA) {
-            glPushMatrix(); // 2
-        }
-    }
+    //if (false) {
+    //    if (/*cuerpoCeleste->quienSoy!=ISS && */cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA) {
+    //        glPushMatrix(); // 2
+    //    }
+    //}
 
     {
         if (cs.camaraPrincipal.mostrarOrbitas && cuerpoCeleste->posicion->distanciaAlPadre > 0.0f) {
-            myEllipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre / 2.0, 10);
-            myEllipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre, 360);
+            //myElipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre / 2.0, 10);
+            myElipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre, 360, tipoCuerpoCeleste/*cuerpoCeleste->quienSoy < LUNA ? O_ORBITASOLAR : O_ORBITAPLANETARIA*/);
 
         }
 
@@ -209,11 +209,12 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
         {
             if (cuerpoCeleste->quienSoy == ISS) {
                 glRotatef(cuerpoCeleste->posicion->anguloTraslacion, 0.5f, 1.0f, -0.2f);
-            } else {
+            }
+            else {
                 glRotatef(cuerpoCeleste->posicion->anguloTraslacion, 0.0f, 1.0f, 0.0);
             }
-            
-            
+
+
         }
 
         if (cuerpoCeleste->posicion->distanciaAlPadre > 0.0f) {
@@ -270,7 +271,7 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
 
             for (int pos = 0; pos < cuerpoCeleste->numHijos; pos++) {
 
-                representaCuerpoCeleste(&cuerpoCeleste->hijos[pos]);
+                representaCuerpoCeleste(&cuerpoCeleste->hijos[pos], tipoCuerpoCeleste + 1);
 
             }
 
@@ -278,36 +279,36 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
 
     }
 
-    if (false) {
-        if (cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA) {
-            glPopMatrix(); // 2
-        }
-    }
- 
+    //if (false) {
+    //    if (cuerpoCeleste->quienSoy != TIERRA && cuerpoCeleste->quienSoy != LUNA) {
+    //        glPopMatrix(); // 2
+    //    }
+    //}
+
     glPopMatrix(); // 3
 
 
-//    iluminaCuerpoCeleste(cuerpoCeleste);
+    //    iluminaCuerpoCeleste(cuerpoCeleste);
+        /*
+        if (cuerpoCeleste->quienSoy == SOL) {
+            loDelSol();
+        } else {
+            loDelResto();
+        }
+        */
+
+        //if(cuerpoCeleste->quienSoy==ISS)
+        //{
+
+        //}
+
+
     /*
-    if (cuerpoCeleste->quienSoy == SOL) {
-        loDelSol();
-    } else {
-        loDelResto();
-    }
+        if (ft < 9) {
+            printf("%20s - tamaño: %2.5f - distancia al centro: %2.5f\n", cuerpoCeleste->nombre, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->distanciaAlPadre);
+        }
+
+        ft++;
     */
-
-    //if(cuerpoCeleste->quienSoy==ISS)
-    //{
-
-    //}
-
-
-/*
-    if (ft < 9) {
-        printf("%20s - tama�o: %2.5f - distancia al centro: %2.5f\n", cuerpoCeleste->nombre, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->distanciaAlPadre);
-    }
-
-    ft++;
-*/
 
 }
