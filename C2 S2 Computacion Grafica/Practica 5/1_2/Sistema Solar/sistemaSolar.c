@@ -44,11 +44,11 @@ void loDelSol() {
     // glMaterialf(GL_FRONT, GL_SHININESS, sun_mat_shininess);
 }
 
-void loDelResto() {
+void loDelResto(int potenciaIluminacion ) {
 
     glClearColor(0.0, 0.0, 0.0, 0.0);
 
-    if (true || cs.solEncendido) {
+    if (true) {
         //glEnable(GL_DEPTH_TEST);
         //glEnable(GL_SMOOTH);
         //glShadeModel(GL_SMOOTH);
@@ -60,14 +60,6 @@ void loDelResto() {
         //glEnable(GL_LIGHT2);
         //glEnable(GL_LIGHT3);
 
-    }else{
-        glDisable(GL_LIGHTING);
-
-        glDisable(GL_LIGHT0);
-        glDisable(GL_LIGHT1);
-
-        //glDisable(GL_LIGHT2);
-        //glDisable(GL_LIGHT3);
     }
 
     glMatrixMode(GL_MODELVIEW);
@@ -86,7 +78,7 @@ void loDelResto() {
     GLfloat lightDif[] = { 1.00f , 1.00f , 1.00f , 1.0f };
     GLfloat lightSpc[] = { 1.00f , 1.00f , 1.00f , 1.0f };
 
-    if (true || cs.solEncendido) {
+    if (true) {
         glLightfv(GL_LIGHT0, GL_POSITION, posSol);
         glLightfv(GL_LIGHT1, GL_POSITION, posSol);
         //glLightfv(GL_LIGHT2, GL_POSITION, posSol);
@@ -114,8 +106,8 @@ void loDelResto() {
         //glLightfv(GL_LIGHT3, GL_SPECULAR, lightSpc);
 
 
-        glLighti(GL_LIGHT0, GL_SPOT_CUTOFF, cs.potenciaIluminacion);
-        glLighti(GL_LIGHT1, GL_SPOT_CUTOFF, cs.potenciaIluminacion);
+        glLighti(GL_LIGHT0, GL_SPOT_CUTOFF, potenciaIluminacion);
+        glLighti(GL_LIGHT1, GL_SPOT_CUTOFF, potenciaIluminacion);
         // glLighti(GL_LIGHT2, GL_SPOT_CUTOFF, potenciaIluminacion);
         // glLighti(GL_LIGHT3, GL_SPOT_CUTOFF, potenciaIluminacion);
 
@@ -185,8 +177,17 @@ void actualizaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste) {
 void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCeleste tipoCuerpoCeleste, struct ConfiguracionCamara* configuracionCamara) {
 
     //    iluminaCuerpoCeleste(cuerpoCeleste);
-    if (cuerpoCeleste->quienSoy == SOL) {
-        loDelSol();
+    switch (cuerpoCeleste->quienSoy){
+        case BOVEDA_CELESTIAL:
+            loDelResto(90);
+            break;
+
+        case SOL:
+            loDelSol();
+            break;
+
+        default:
+            break;
     }
 
     glPushMatrix(); // 2
@@ -223,10 +224,10 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCelest
 
 
 
-        if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN) {
+        if (cuerpoCeleste->numTexturaObjeto != INT_MIN) {
             //glPushMatrix();
             glEnable(GL_TEXTURE_2D);
-            glBindTexture(GL_TEXTURE_2D, cuerpoCeleste->posicion->numTexturaObjeto);
+            glBindTexture(GL_TEXTURE_2D, cuerpoCeleste->numTexturaObjeto);
         }
         else {
             glColor3f(cuerpoCeleste->color[0], cuerpoCeleste->color[1], cuerpoCeleste->color[2]);
@@ -235,10 +236,10 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCelest
 
         glScalef(cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio, cuerpoCeleste->posicion->radio);
 
-        glCallList(cuerpoCeleste->posicion->numListaObjeto);
+        glCallList(cuerpoCeleste->numListaObjeto);
 
 
-        if (cuerpoCeleste->posicion->numTexturaObjeto != INT_MIN) {
+        if (cuerpoCeleste->numTexturaObjeto != INT_MIN) {
             glDisable(GL_TEXTURE_2D);
         }
 
@@ -250,8 +251,14 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCelest
         // glutSolidSphere(cuerpoCeleste->posicion->radio, 20, 20);
         // glutWireSphere(cuerpoCeleste->posicion->radio, 20, 20);
 
-        if (cuerpoCeleste->quienSoy == SOL) {
-            loDelResto();
+        switch (cuerpoCeleste->quienSoy) {
+            case BOVEDA_CELESTIAL:
+            case SOL:
+                loDelResto(cs.potenciaIluminacion);
+                break;
+
+            default:
+                break;
         }
 
         if (cuerpoCeleste->numHijos > 0) {

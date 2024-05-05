@@ -74,11 +74,8 @@ void myElipse(GLfloat cx, GLfloat cy, GLfloat rx, GLfloat ry, int num_segments, 
     // https://www.mathwarehouse.com/ellipse/focus-of-ellipse.php
     float focus1 = sqrt(rx * rx - ry * ry);
 
-    if (tipoCuerpoCeleste == tccAnillos)
+    if (tipoCuerpoCeleste != tccAnillos)
     {
-        glDisable(GL_LIGHTING);
-    }
-    else {
         glDisable(GL_LIGHTING);
     }
 
@@ -90,7 +87,7 @@ void myElipse(GLfloat cx, GLfloat cy, GLfloat rx, GLfloat ry, int num_segments, 
 
     for (int ii = 0; ii < num_segments; ii++)
     {
-        //glEnable(GL_NORMALIZE);rrr
+        //glEnable(GL_NORMALIZE);
         //apply radius and offset
         float posicionEnX = x * rx + cx + focus1 / 2.0;
         float posicionEnZ = y * ry + cy;
@@ -105,8 +102,10 @@ void myElipse(GLfloat cx, GLfloat cy, GLfloat rx, GLfloat ry, int num_segments, 
             break;
 
         case tccSatelite: // Orbita alrededor de la Tierra
+            break;
+
         case tccAnillos: // Anillos de Saturno
-            //glNormal3f(-1.0, 0.0, 1.0f);
+            glNormal3f(0.0, 1.0, 0.0);
             break;
         }
 
@@ -124,11 +123,9 @@ void myElipse(GLfloat cx, GLfloat cy, GLfloat rx, GLfloat ry, int num_segments, 
 
     // --
 
-    if (tipoCuerpoCeleste == tccAnillos)
+
+    if (tipoCuerpoCeleste != tccAnillos)
     {
-        glEnable(GL_LIGHTING);
-    }
-    else {
         glEnable(GL_LIGHTING);
     }
 

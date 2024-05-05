@@ -361,7 +361,7 @@ void myStep(void) {
 	if (cs.solEncendido && cs.potenciaIluminacion < 90) {
 		cs.potenciaIluminacion += 1;
 	}
-	else if (!cs.solEncendido && cs.potenciaIluminacion > 10) {
+	else if (!cs.solEncendido && cs.potenciaIluminacion > 0) {
 		cs.potenciaIluminacion -= 1;
 	}
 

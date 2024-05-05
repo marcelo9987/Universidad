@@ -55,9 +55,6 @@ typedef struct PosicionCuerpoCeleste
     double posY;
     double posZ;
 
-    // @TODO: mover a o bien a CuerpoCeleste o a una estructura propia
-    GLuint numTexturaObjeto;    // Dato generado por glGenTextures(), a utilizar para cargar una textura con glBindTexture()
-    GLuint numListaObjeto;      // Dato generado por glGenLists(), a utilizar para dibujar el objeto con glCallList()
 } PosicionCuerpoCeleste;
 
 typedef struct CuerpoCeleste
@@ -74,6 +71,11 @@ typedef struct CuerpoCeleste
     PosicionCuerpoCeleste* posicion;
     int numHijos;
     struct CuerpoCeleste* hijos;
+
+    // @TODO: mover a o bien a CuerpoCeleste o a una estructura propia
+    GLuint numTexturaObjeto;    // Dato generado por glGenTextures(), a utilizar para cargar una textura con glBindTexture()
+    GLuint numListaObjeto;      // Dato generado por glGenLists(), a utilizar para dibujar el objeto con glCallList()
+
 } CuerpoCeleste;
 
 
