@@ -12,10 +12,19 @@ Title = "Sistema Solar (© 2024)"
 Msg = "Sistema Solar (© 2024)" & vbNewLine & _
       "Este programa es un simulador del Sistema Solar." & vbNewLine & _
       "Puede ver los planetas y sus órbitas." & vbNewLine & _
-      "Para moverse por el espacio, use las teclas de flecha." & vbNewLine & _
-      "Para acercar o alejar la vista, use las teclas c y l." & vbNewLine & _
-      "Para acelerar o ralentizar el tiempo, use las teclas + y -." & vbNewLine & _
-      "Para acceder al menu de cámaras, haga clic en el botón derecho del ratón."
+      "- Teclas de flechas: para moverse por el espacio" & vbNewLine & _
+      "- Teclas c y l: a(c)ercar o a(l)ejar la vista" & vbNewLine & _
+      "- Teclas + y -: acelerar o ralentizar el tiempo" & vbNewLine & _
+      "- Tecla r y F10: resetear simulación" & vbNewLine & _
+      "- Tecla o: encender / apagar las órbitas" & vbNewLine & _
+      "- Tecla s: encender / apagar el sol" & vbNewLine & _
+      "- Tecla m: encender / apagar monitores" & vbNewLine & _
+      "- Tecla e: algún Easter Egg" & vbNewLine & _
+      "- Tecla h: mostrar esta ayuda" & vbNewLine & _
+      "- Tecla Escape: salir el programa" & vbNewLine & _
+      "- Clic en el botón derecho del ratón: acceder al menu de cámaras"
+
+'_Msg = "Sistema Solar (© 2024)" & vbNewLine & _
 
 Response = CustomMsgBox(Msg, vbOKOnly, Title)
 

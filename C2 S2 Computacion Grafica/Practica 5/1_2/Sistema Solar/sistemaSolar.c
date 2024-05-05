@@ -194,8 +194,12 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCelest
 
     {
         if (configuracionCamara->mostrarOrbitas && cuerpoCeleste->posicion->distanciaAlPadre > 0.0f) {
-            //myElipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre / 2.0, 10);
-            myElipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre, 360, tipoCuerpoCeleste/*cuerpoCeleste->quienSoy < LUNA ? O_ORBITASOLAR : O_ORBITAPLANETARIA*/);
+            if (false && cs.mostrarEasterEggs && tipoCuerpoCeleste == tccPlaneta) {
+                myElipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre / 2.0, 360, tipoCuerpoCeleste);
+            }
+            else {
+                myElipse(0.0f, 0.0f, cuerpoCeleste->posicion->distanciaAlPadre, cuerpoCeleste->posicion->distanciaAlPadre, 360, tipoCuerpoCeleste);
+            }
 
         }
 
@@ -213,7 +217,12 @@ void representaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste, enum TipoCuerpoCelest
         }
 
         if (cuerpoCeleste->posicion->distanciaAlPadre > 0.0) {
-            glTranslated(cuerpoCeleste->posicion->distanciaAlPadre, 0.0, 0.0);
+            if (false && cs.mostrarEasterEggs && tipoCuerpoCeleste == tccPlaneta) {
+                glTranslated(cuerpoCeleste->posicion->distanciaAlPadre / (1.5 - 0.5 * cos360(cuerpoCeleste->posicion->anguloTraslacion)), 0.0, 0.0);
+            }
+            else {
+                glTranslated(cuerpoCeleste->posicion->distanciaAlPadre, 0.0, 0.0);
+            }
         }
 
         glPushMatrix(); // 1
