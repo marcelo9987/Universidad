@@ -6,7 +6,7 @@
 #include "stb_image.h"
 
 // Texturas
-unsigned int texturaPiscina[16] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+unsigned int texturaPiscina[kNumTexturasPiscina] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 unsigned int texturaSuelo = 0;
 unsigned int texturaEstadio = 0;
 
@@ -85,7 +85,7 @@ void cargaUnaTextura(const char* nombreTextura, unsigned int* textura, int forma
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else {
-        std::cout << "Error al cargar la textura" << std::endl;
+        std::cout << "Error al cargar la textura '"<< nombreTextura << "'" << std::endl;
     }
     stbi_image_free(data);
 
@@ -129,5 +129,4 @@ void cargaTexturasPiscina() {
     cargaUnaTextura("Texturas/caust12.png", &texturaPiscina[12], GL_RGBA);
     cargaUnaTextura("Texturas/caust13.png", &texturaPiscina[13], GL_RGBA);
     cargaUnaTextura("Texturas/caust14.png", &texturaPiscina[14], GL_RGBA);
-    cargaUnaTextura("Texturas/caust15.png", &texturaPiscina[15], GL_RGBA);
 }

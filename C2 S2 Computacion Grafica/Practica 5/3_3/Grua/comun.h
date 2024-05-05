@@ -67,7 +67,8 @@ typedef struct {
 // --
 
 // Texturas
-extern unsigned int texturaPiscina[16];
+#define kNumTexturasPiscina 15
+extern unsigned int texturaPiscina[kNumTexturasPiscina];
 extern unsigned int texturaSuelo;
 extern unsigned int texturaEstadio;
 

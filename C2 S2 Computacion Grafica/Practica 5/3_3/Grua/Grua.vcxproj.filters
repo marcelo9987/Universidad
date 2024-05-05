@@ -126,7 +126,7 @@
     <Image Include="Texturas\caust10.png">
       <Filter>Texturas</Filter>
     </Image>
-    <Image Include="Texturas\caust011.png">
+    <Image Include="Texturas\caust11.png">
       <Filter>Texturas</Filter>
     </Image>
     <Image Include="Texturas\caust12.png">
@@ -136,9 +136,6 @@
       <Filter>Texturas</Filter>
     </Image>
     <Image Include="Texturas\caust14.png">
-      <Filter>Texturas</Filter>
-    </Image>
-    <Image Include="Texturas\caust15.png">
       <Filter>Texturas</Filter>
     </Image>
     <Image Include="Texturas\obra.jpg">

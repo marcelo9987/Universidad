@@ -163,7 +163,6 @@
     <Image Include="Texturas\brazos_2.jpg" />
     <Image Include="Texturas\caust00.png" />
     <Image Include="Texturas\caust01.png" />
-    <Image Include="Texturas\caust011.png" />
     <Image Include="Texturas\caust02.png" />
     <Image Include="Texturas\caust03.png" />
     <Image Include="Texturas\caust04.png" />
@@ -173,10 +172,10 @@
     <Image Include="Texturas\caust08.png" />
     <Image Include="Texturas\caust09.png" />
     <Image Include="Texturas\caust10.png" />
+    <Image Include="Texturas\caust11.png" />
     <Image Include="Texturas\caust12.png" />
     <Image Include="Texturas\caust13.png" />
     <Image Include="Texturas\caust14.png" />
-    <Image Include="Texturas\caust15.png" />
     <Image Include="Texturas\hierba.jpg" />
     <Image Include="Texturas\lugo.jpg" />
     <Image Include="Texturas\metal.jpg" />

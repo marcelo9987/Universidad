@@ -377,6 +377,18 @@ void dibujaFoco(int transformLoc) {
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 }
 
+void pisaPiscina() {
+    float rango = 0.6f; // Definimos un rango de tolerancia para la comparación
+
+    // Verificamos si la base de la grúa está cerca de la posición de la piscina
+    if (fabs(base.px - (-1.0f)) < rango && fabs(base.py - 0.0f) < rango) {
+        // Si está cerca, movemos la base de la grúa a una nueva posición
+        base.px = 0.0f;
+        base.py = 0.0f;
+        velocidadGrua = 0.0f;
+    }
+}
+
 int main() {
     // glfw: initialize and configure
     // ------------------------------
@@ -388,7 +400,7 @@ int main() {
     //'Z,X,C'->Cambiar vista, 'L,K'-> mover la camaraSeleccionada, 'T,F,G,H'-> mover brazo arriba, 'A,D,S,W'-> mover brazo abajo
     //
     //Creo la ventana
-    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Grúa Riazor", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Grúa Estadio", NULL, NULL);
     if (window == NULL) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -475,6 +487,9 @@ int main() {
         //Movimiento de la base con aceleración
         base.px += velocidadGrua * (float) cos360(base.angulo_trans);
         base.py += velocidadGrua * (float) sin360(base.angulo_trans);
+
+        //Comprobamos si pisa la piscina
+        pisaPiscina();
 
         //Color para la base
         unsigned int colorLoGrua = glGetUniformLocation(myShaderProgram, "objectColor");

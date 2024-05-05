@@ -9,7 +9,7 @@ void myProcessInput(GLFWwindow *window) {
 
 
 void myKeyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
-    std::cout << key << std::endl;
+    // std::cout << key << std::endl;
 
     //Primera arti
     if (key == 'A' && baseA1.angulo_trans >= -85) { //A

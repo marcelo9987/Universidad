@@ -2,14 +2,10 @@
 #include "comun.h"
 
 
-//void ajustarAnimacionPiscina();
 void ajustarAnimacionPiscina() {
     piscina_contador++;
     if (piscina_contador == 60) {
-        if (piscina_instante == 10) {
-            piscina_instante = 12;
-        }
-        else if (piscina_instante < 15) {
+        if (piscina_instante < kNumTexturasPiscina - 1) {
             piscina_instante++;
         }
         else {
@@ -66,10 +62,6 @@ void activarTexturasPiscina() {
     case 14:
         glActiveTexture(GL_TEXTURE15);
         break;
-    case 15:
-        glActiveTexture(GL_TEXTURE16);
-        break;
-
     }
 }
 
