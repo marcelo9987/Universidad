@@ -133,12 +133,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Librerias\3_3\glad\glad.c" />
+    <ClCompile Include="$(SOLUTIONDIR)librerias\3_3\glad\glad.c" />
+    <ClCompile Include="camaras.cpp" />
+    <ClCompile Include="cargasIniciales.cpp" />
+    <ClCompile Include="controles.cpp" />
+    <ClCompile Include="controles.h" />
     <ClCompile Include="FigurasBasicas.cpp" />
     <ClCompile Include="MainGrua.cpp" />
+    <ClCompile Include="piscina.cpp" />
+    <ClCompile Include="piscina.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Librerias\3_3\include_lib\glm\glm.hpp" />
+    <ClInclude Include="$(SOLUTIONDIR)librerias\3_3\glm\glm.hpp" />
+    <ClInclude Include="camaras.h" />
+    <ClInclude Include="cargasIniciales.h" />
+    <ClInclude Include="comun.h" />
     <ClInclude Include="esfera.h" />
     <ClInclude Include="FigurasBasicas.h" />
     <ClInclude Include="lecturaShader_0_9.h" />
