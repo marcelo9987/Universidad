@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Textures">
-      <UniqueIdentifier>{ab966ad4-4e7d-472c-9505-b90420ea2815}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -16,12 +13,21 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Texturas">
+      <UniqueIdentifier>{ab966ad4-4e7d-472c-9505-b90420ea2815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{1e0f2168-b70d-4528-be87-f989dada61e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main1_33c.cpp">
+    <ClCompile Include="MainGrua.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FigurasBasicas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Librerias\3_3\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +44,87 @@
     <ClInclude Include="FigurasBasicas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Librerias\3_3\include_lib\glm\glm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader.frag">
-      <Filter>Resource Files</Filter>
+    <None Include="Shaders\shader.vert">
+      <Filter>Shaders</Filter>
     </None>
-    <None Include="shader.vert">
-      <Filter>Resource Files</Filter>
+    <None Include="Shaders\shader.frag">
+      <Filter>Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Texturas\bernabeu.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\brazos.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\brazos_2.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust00.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust01.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust02.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust03.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust04.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust05.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust06.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust07.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust08.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust09.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust10.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust011.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust12.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust13.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust14.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\caust15.png">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\obra.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\hierba.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\lugo.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
+    <Image Include="Texturas\metal.jpg">
+      <Filter>Texturas</Filter>
+    </Image>
   </ItemGroup>
 </Project>
