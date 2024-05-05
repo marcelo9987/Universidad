@@ -5,24 +5,43 @@ VisualStudioVersion = 17.10.34707.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_2", "1_2", "{8376814E-99C7-490E-9700-BFD78CEBAFC6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sistema Solar", "1_2\Sistema Solar\Sistema Solar.vcxproj", "{9CDD9B60-E337-4F4A-838D-855002096609}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SistemaSolar", "1_2\Sistema Solar\Sistema Solar.vcxproj", "{9CDD9B60-E337-4F4A-838D-855002096609}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_3", "3_3", "{54995D25-0956-4BCA-A347-AA6E30F7BC0C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Grua", "3_3\Grua\Grua.vcxproj", "{51FB804E-25F0-4725-9D71-F323677FF6F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CDD9B60-E337-4F4A-838D-855002096609}.Debug|x64.ActiveCfg = Debug|Win32
+		{9CDD9B60-E337-4F4A-838D-855002096609}.Debug|x64.Build.0 = Debug|Win32
 		{9CDD9B60-E337-4F4A-838D-855002096609}.Debug|x86.ActiveCfg = Debug|Win32
 		{9CDD9B60-E337-4F4A-838D-855002096609}.Debug|x86.Build.0 = Debug|Win32
+		{9CDD9B60-E337-4F4A-838D-855002096609}.Release|x64.ActiveCfg = Release|Win32
+		{9CDD9B60-E337-4F4A-838D-855002096609}.Release|x64.Build.0 = Release|Win32
 		{9CDD9B60-E337-4F4A-838D-855002096609}.Release|x86.ActiveCfg = Release|Win32
 		{9CDD9B60-E337-4F4A-838D-855002096609}.Release|x86.Build.0 = Release|Win32
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Debug|x64.ActiveCfg = Debug|x64
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Debug|x64.Build.0 = Debug|x64
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Debug|x86.ActiveCfg = Debug|Win32
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Debug|x86.Build.0 = Debug|Win32
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Release|x64.ActiveCfg = Release|x64
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Release|x64.Build.0 = Release|x64
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Release|x86.ActiveCfg = Release|Win32
+		{51FB804E-25F0-4725-9D71-F323677FF6F0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9CDD9B60-E337-4F4A-838D-855002096609} = {8376814E-99C7-490E-9700-BFD78CEBAFC6}
+		{51FB804E-25F0-4725-9D71-F323677FF6F0} = {54995D25-0956-4BCA-A347-AA6E30F7BC0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C78145A0-D817-4A4A-AAE7-FC1895FD238B}
