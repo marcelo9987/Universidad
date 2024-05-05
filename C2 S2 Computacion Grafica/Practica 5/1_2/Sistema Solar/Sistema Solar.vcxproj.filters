@@ -145,7 +145,10 @@
     <Image Include="texturas\boveda.jpg">
       <Filter>Textures</Filter>
     </Image>
-    <Image Include="texturas\ISS.jpg">
+    <Image Include="texturas\ISS_1.jpg">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="texturas\ISS_2.jpg">
       <Filter>Textures</Filter>
     </Image>
     <Image Include="texturas\Luna.bmp">

@@ -149,7 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="texturas\boveda.jpg" />
-    <Image Include="texturas\ISS.jpg" />
+    <Image Include="texturas\ISS_1.jpg" />
+    <Image Include="texturas\ISS_2.jpg" />
     <Image Include="texturas\Jupiter2k.jpg" />
     <Image Include="texturas\Jupiter8k.jpg" />
     <Image Include="texturas\Luna.bmp" />
