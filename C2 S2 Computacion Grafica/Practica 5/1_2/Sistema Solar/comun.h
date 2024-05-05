@@ -6,8 +6,8 @@
 #include <stdlib.h>
 
 #include <glut.h>       //Inclusión de GLUT
-#include <GL/gl.h>      //Inclusión de GL
-#include <GL/glu.h>
+#include <gl.h>      //Inclusión de GL
+#include <glu.h>
 
 #include <windows.h>    //Inclusión de variables de windows
 
