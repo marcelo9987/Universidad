@@ -19,7 +19,10 @@
     <Filter Include="Header Files\Figuras">
       <UniqueIdentifier>{cc2148b5-b118-4a03-b08f-b66cdba11c4a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Planetas">
+    <Filter Include="Textures">
+      <UniqueIdentifier>{f1c8bac4-071d-437f-8278-f8796879c606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures\Planetas">
       <UniqueIdentifier>{7ec17039-34fe-4b77-bf52-53a9920defb3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -48,6 +51,9 @@
     <ClCompile Include="esferas.c">
       <Filter>Source Files\figuras</Filter>
     </ClCompile>
+    <ClCompile Include="camaras.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controles.h">
@@ -68,6 +74,9 @@
     <ClInclude Include="figurasGeometricas.h">
       <Filter>Header Files\Figuras</Filter>
     </ClInclude>
+    <ClInclude Include="camaras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sobre.vbs">
@@ -76,71 +85,71 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="texturas\ISS.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="texturas\Luna.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="texturas\Jupiter2k.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Jupiter8k.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Marte2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Marte8k.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Mercurio2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Mercurio8K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Neptuno2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Pluton2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Saturno2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Saturno8K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Sol2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Sol8K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Tierra.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Tierra2.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Tierra2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Tierra8K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Urano2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Venus2K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\Venus8K.jpg">
-      <Filter>Resource Files\Planetas</Filter>
+      <Filter>Textures\Planetas</Filter>
     </Image>
     <Image Include="texturas\boveda.jpg">
-      <Filter>Resource Files</Filter>
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="texturas\ISS.jpg">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="texturas\Luna.bmp">
+      <Filter>Textures</Filter>
     </Image>
   </ItemGroup>
 </Project>

@@ -3,9 +3,9 @@
 
 // https://stackoverflow.com/questions/327043/how-to-apply-texture-to-glutsolidcube
 
-void myDrawBox(GLfloat size, GLenum type)
+void myDrawBox(GLdouble size, GLenum type)
 {
-    static GLfloat n[6][3] =
+    static GLdouble n[6][3] =
     {
       {-1.0, 0.0, 0.0},
       {0.0, 1.0, 0.0},
@@ -23,7 +23,7 @@ void myDrawBox(GLfloat size, GLenum type)
       {5, 6, 2, 1},
       {7, 4, 0, 3}
     };
-    GLfloat v[8][3];
+    GLdouble v[8][3];
     GLint i;
 
     v[0][0] = v[1][0] = v[2][0] = v[3][0] = -size / 2;
@@ -35,11 +35,11 @@ void myDrawBox(GLfloat size, GLenum type)
 
     for (i = 5; i >= 0; i--) {
         glBegin(type);
-        glNormal3fv(&n[i][0]);
-        glVertex3fv(&v[faces[i][0]][0]);
-        glVertex3fv(&v[faces[i][1]][0]);
-        glVertex3fv(&v[faces[i][2]][0]);
-        glVertex3fv(&v[faces[i][3]][0]);
+        glNormal3dv(&n[i][0]);
+        glVertex3dv(&v[faces[i][0]][0]);
+        glVertex3dv(&v[faces[i][1]][0]);
+        glVertex3dv(&v[faces[i][2]][0]);
+        glVertex3dv(&v[faces[i][3]][0]);
         glEnd();
     }
 }
@@ -50,9 +50,9 @@ void mySolidCube(GLdouble size)
 }
 
 
-void myReverseDrawBox(GLfloat size, GLenum type)
+void myReverseDrawBox(GLdouble size, GLenum type)
 {
-    static GLfloat n[6][3] =
+    static GLdouble n[6][3] =
     {
       {-1.0, 0.0, 0.0},
       {0.0, 1.0, 0.0},
@@ -70,7 +70,7 @@ void myReverseDrawBox(GLfloat size, GLenum type)
       {5, 6, 2, 1},
       {7, 4, 0, 3}
     };
-    GLfloat v[8][3];
+    GLdouble v[8][3];
     GLint i;
 
     v[0][0] = v[1][0] = v[2][0] = v[3][0] = -size / 2;
@@ -82,11 +82,11 @@ void myReverseDrawBox(GLfloat size, GLenum type)
 
     for (i = 5; i >= 0; i--) {
         glBegin(type);
-        glNormal3fv(&n[i][0]);
-        glVertex3fv(&v[faces[i][3]][0]);
-        glVertex3fv(&v[faces[i][2]][0]);
-        glVertex3fv(&v[faces[i][1]][0]);
-        glVertex3fv(&v[faces[i][0]][0]);
+        glNormal3dv(&n[i][0]);
+        glVertex3dv(&v[faces[i][3]][0]);
+        glVertex3dv(&v[faces[i][2]][0]);
+        glVertex3dv(&v[faces[i][1]][0]);
+        glVertex3dv(&v[faces[i][0]][0]);
         glEnd();
     }
 }

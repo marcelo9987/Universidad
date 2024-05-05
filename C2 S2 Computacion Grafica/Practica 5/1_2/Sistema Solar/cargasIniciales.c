@@ -7,6 +7,7 @@
 
 
 ConfiguracionSistema cs;
+//HANDLE mutexVelocidad;
 
 PosicionCuerpoCeleste posicionSatTerr[K_NUM_SATELITES_TERRESTRES];
 PosicionCuerpoCeleste posicionPlanetas[K_NUM_PLANETAS];
@@ -16,56 +17,72 @@ PosicionCuerpoCeleste posicionBovedaCelestial;
 
 CuerpoCeleste satelitesTerrestres[K_NUM_SATELITES_TERRESTRES] =
 {
-      { LUNA,               /**/ "Luna",             /**/  0.30,    /**/  0.00757, /**/   0.0,  /**/   27.32,      /**/ "texturas/Luna.bmp",      /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0],           /**/ 0,                         /**/ NULL                  /**/ },
-      { ISS,                /**/ "ISS",              /**/  0.13,    /**/  0.00257, /**/   0.0,  /**/ -1.0 / 24.0,  /**/ "texturas/iss.jpg",       /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1],           /**/ 0,                         /**/ NULL                  /**/ }
+      // La luna tarda entre 27 y 28 días en dar una vuelta a la Tierra
+      { LUNA,               /**/ "Luna",             /**/  0.30,    /**/  0.00757, /**/   0.0,  /**/   27.32,       /**/ "Texturas/Luna.bmp",       /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionSatTerr[0],           /**/ 0,                         /**/ NULL                  /**/ },
+      // La ISS tarda 90 minutos en dar una vuelta a la Tierra (16 puestas de sol al día) - la hemos puesto "marcha atrás" con respecto a los demás giros de los otros cuerpos celestes
+//    { ISS,                /**/ "ISS",              /**/  0.13,    /**/  0.00257, /**/   0.0,  /**/ 1.0 / 16.0,    /**/ "Texturas/iss_1.jpg",      /**/ {0.0, 0.1, 0.0}, /**/ false, /**/ &posicionSatTerr[1],           /**/ 0,                         /**/ NULL                  /**/ }
+      { ISS,                /**/ "ISS",              /**/  0.13,    /**/  0.00257, /**/   0.0,  /**/ 1.0 / 16.0,    /**/ NULL,                      /**/ {1.0, 1.0, 1.0}, /**/ false, /**/& posicionSatTerr[1],           /**/ 0,                         /**/ NULL                  /**/ }
 };
 
 CuerpoCeleste planetas[K_NUM_PLANETAS] =
 {
     //                      /**/                                       distancia       periodo         periodo                                                                                                         
     //   quienSoy           /**/ nombre                    radio      MaximaAlSol      Rotacion      Translacion         rutaTextura                     color           tieneAnillos      posicion                          numHijos                        hijos
-       { MERCURIO,          /**/ "Mercurio",         /**/   0.38,   /**/  0.39,    /**/  58.65, /**/    87.97,      /**/ "texturas/Mercurio8K.jpg", /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionPlanetas[0],        /**/ 0,                         /**/ NULL                  /**/ },
-       { VENUS,             /**/ "Venus",            /**/   0.95,   /**/  0.72,    /**/ 243.02, /**/   224.70,      /**/ "texturas/Venus8K.jpg",    /**/ {0.7, 0.7, 1.0}, /**/ false, /**/ &posicionPlanetas[1],        /**/ 0,                         /**/ NULL                  /**/ },
-       { TIERRA,            /**/ "Tierra",           /**/   1.00,   /**/  1.00,    /**/   1.00, /**/   365.26,      /**/ "texturas/Tierra8K.jpg",   /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[2],        /**/ K_NUM_SATELITES_TERRESTRES,/**/ satelitesTerrestres   /**/ },
-       { MARTE,             /**/ "Marte",            /**/   0.53,   /**/  1.52,    /**/   1.03, /**/   686.98,      /**/ "texturas/Marte8k.jpg",    /**/ {1.0, 0.0, 0.0}, /**/ false, /**/ &posicionPlanetas[3],        /**/ 0,                         /**/ NULL                  /**/ },
-       { JUPITER,           /**/ "Jupiter",          /**/  11.21,   /**/  5.20,    /**/   0.41, /**/  4332.59,      /**/ "texturas/Jupiter8k.jpg",  /**/ {0.7, 0.7, 0.0}, /**/ false, /**/ &posicionPlanetas[4],        /**/ 0,                         /**/ NULL                  /**/ },
-       { SATURNO,           /**/ "Saturno",          /**/   9.45,   /**/  9.58,    /**/   0.45, /**/ 10759.22,      /**/ "texturas/Saturno8K.jpg",  /**/ {0.0, 0.0, 1.0}, /**/  true, /**/ &posicionPlanetas[5],        /**/ 0,                         /**/ NULL                  /**/ },
-       { URANO,             /**/ "Urano",            /**/   4.01,   /**/ 19.22,    /**/   0.72, /**/ 30685.40,      /**/ "texturas/Urano2K.jpg",    /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[6],        /**/ 0,                         /**/ NULL                  /**/ },
-       { NEPTUNO,           /**/ "Neptuno",          /**/   3.88,   /**/ 30.05,    /**/   0.67, /**/ 60189.00,      /**/ "texturas/Neptuno2K.jpg",  /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[7],        /**/ 0,                         /**/ NULL                  /**/ },
-       { PLUTON,            /**/ "Pluton",           /**/   0.18,   /**/ 39.48,    /**/   6.39, /**/ 90560.00,      /**/ "texturas/Pluton2K.jpg",   /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[8],        /**/ 0,                         /**/ NULL                  /**/ }
+       { MERCURIO,          /**/ "Mercurio",         /**/   0.38,   /**/  0.39,    /**/  58.65, /**/    87.97,      /**/ "Texturas/Mercurio8K.jpg", /**/ {0.7, 0.7, 0.7}, /**/ false, /**/ &posicionPlanetas[0],        /**/ 0,                         /**/ NULL                  /**/ },
+       { VENUS,             /**/ "Venus",            /**/   0.95,   /**/  0.72,    /**/ 243.02, /**/   224.70,      /**/ "Texturas/Venus8K.jpg",    /**/ {0.7, 0.7, 1.0}, /**/ false, /**/ &posicionPlanetas[1],        /**/ 0,                         /**/ NULL                  /**/ },
+       { TIERRA,            /**/ "Tierra",           /**/   1.00,   /**/  1.00,    /**/   1.00, /**/   365.26,      /**/ "Texturas/Tierra8K.jpg",   /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[2],        /**/ K_NUM_SATELITES_TERRESTRES,/**/ satelitesTerrestres   /**/ },
+       { MARTE,             /**/ "Marte",            /**/   0.53,   /**/  1.52,    /**/   1.03, /**/   686.98,      /**/ "Texturas/Marte8k.jpg",    /**/ {1.0, 0.0, 0.0}, /**/ false, /**/ &posicionPlanetas[3],        /**/ 0,                         /**/ NULL                  /**/ },
+       { JUPITER,           /**/ "Jupiter",          /**/  11.21,   /**/  5.20,    /**/   0.41, /**/  4332.59,      /**/ "Texturas/Jupiter8k.jpg",  /**/ {0.7, 0.7, 0.0}, /**/ false, /**/ &posicionPlanetas[4],        /**/ 0,                         /**/ NULL                  /**/ },
+       { SATURNO,           /**/ "Saturno",          /**/   9.45,   /**/  9.58,    /**/   0.45, /**/ 10759.22,      /**/ "Texturas/Saturno8K.jpg",  /**/ {0.0, 0.0, 1.0}, /**/  true, /**/ &posicionPlanetas[5],        /**/ 0,                         /**/ NULL                  /**/ },
+       { URANO,             /**/ "Urano",            /**/   4.01,   /**/ 19.22,    /**/   0.72, /**/ 30685.40,      /**/ "Texturas/Urano2K.jpg",    /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[6],        /**/ 0,                         /**/ NULL                  /**/ },
+       { NEPTUNO,           /**/ "Neptuno",          /**/   3.88,   /**/ 30.05,    /**/   0.67, /**/ 60189.00,      /**/ "Texturas/Neptuno2K.jpg",  /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[7],        /**/ 0,                         /**/ NULL                  /**/ },
+       { PLUTON,            /**/ "Pluton",           /**/   0.18,   /**/ 39.48,    /**/   6.39, /**/ 90560.00,      /**/ "Texturas/Pluton2K.jpg",   /**/ {0.0, 0.0, 1.0}, /**/ false, /**/ &posicionPlanetas[8],        /**/ 0,                         /**/ NULL                  /**/ }
 };
 
 CuerpoCeleste sol[1] =
 {
-        { SOL,              /**/ "Sol",              /**/ 109.00,   /**/  0.0,     /**/   0.0,  /**/     0.0,       /**/ "texturas/Sol8K.jpg",      /**/ {1.0, 1.0, 0.0}, /**/ false, /**/ &posicionSol,                /**/ K_NUM_PLANETAS,            /**/ planetas             /**/ }
+        { SOL,              /**/ "Sol",              /**/ 109.00,   /**/  0.0,     /**/   0.0,  /**/     0.0,       /**/ "Texturas/Sol8K.jpg",      /**/ {1.0, 1.0, 0.0}, /**/ false, /**/ &posicionSol,                /**/ K_NUM_PLANETAS,            /**/ planetas             /**/ }
 };
 
 CuerpoCeleste bovedaCelestial[1] =
 {
-        { BOVEDA_CELESTIAL, /**/ "B�veda Celestial", /**/ 30.00,   /**/  0.0,     /**/   0.0,  /**/     0.0,       /**/ "texturas/boveda.jpg",     /**/ {1.0, 1.0, 0.0}, /**/ false, /**/ &posicionBovedaCelestial,    /**/ 1,                         /**/ sol                  /**/ }
+        { BOVEDA_CELESTIAL, /**/ "Bóveda Celestial", /**/ 30.00,   /**/  0.0,     /**/   0.0,  /**/     0.0,       /**/ "Texturas/boveda.jpg",     /**/ {1.0, 1.0, 0.0}, /**/ false, /**/ &posicionBovedaCelestial,    /**/ 1,                         /**/ sol                  /**/ }
 };
 
-void inicializaConfiguracionSistema()
+void inicializaConfiguracionSistema(bool primeraVez)
 {
-    cs.window_width = 1200;
-    cs.window_height = 800;
+    if (primeraVez) {
+        cs.window_width = 1200;
+        cs.window_height = 800;
+    }
 
-    cs.chronos_diaActualmenteSimulado = ((float)rand() / (float)(RAND_MAX)) * 10000.0; // 0.0f;
+    cs.chronos_diaActualmenteSimulado = ((double)rand() / (double)(RAND_MAX)) * 10000.0;
     cs.chronos_segundosRealesPorDiaSimulado_posicionSeleccionada = 1;
     cs.chronos_framesPorSegundo = 24.0f;
 
     cs.factorEscaladoCuerposCelestes = 10.0f;
     cs.factorEscaladoDistancias = 30.0f;
 
-    cs.visualizacionPrincipal = VISTA_GENERAL;
+    cs.mostrarEasterEggs = false;
+    cs.mostrarEjes = false;
+    cs.mostrarMonitores = true;
+    cs.mostrarTextos = true;
+    cs.seMuestraAyuda = false;
+    
+    cs.solEncendido = true;
+    cs.potenciaIluminacion = 90; // [0..100]
+
+//    mutexVelocidad = CreateMutex(NULL, FALSE, NULL);
+    
 }
 
-void inicializaConfiguracionCamara()
+void inicializaConfiguracionCamaras()
 {
-    cs.camaraPrincipal.alpha = 0.0f;
-    cs.camaraPrincipal.beta = gradosARadianes(15.0f);
-    cs.camaraPrincipal.distanciaCamara = 100.0f;
-    cs.camaraPrincipal.mostrarOrbitas = true;
+    enum EnumCuerpoCeleste visualizacionSeleccionada = VISTA_GENERAL;
+
+    cs.visualizacionPrincipal = visualizacionSeleccionada;
+    seleccionarVistaCamara(&cs.camaraPrincipal, visualizacionSeleccionada);
+
 }
 
 bool cargaTextura(GLuint numTextura, char* rutaTextura)
@@ -110,28 +127,28 @@ void inicializaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
         cuerpoCeleste->posicion->radio = log10(cs.factorEscaladoCuerposCelestes * cuerpoCeleste->radio);
     }
 
-    if (cuerpoCeleste->posicion->radio < 0.2f)
+    if (cuerpoCeleste->posicion->radio < 0.2)
     {
-        cuerpoCeleste->posicion->radio = 0.2f;
+        cuerpoCeleste->posicion->radio = 0.2;
     }
 
-    cuerpoCeleste->posicion->distanciaAlPadre = 0.0f;
+    cuerpoCeleste->posicion->distanciaAlPadre = 0.0;
 
-    if (cuerpoCeleste->distanciaMaximaAlSol > 0.0f)
+    if (cuerpoCeleste->distanciaMaximaAlSol > 0.0)
     {
         cuerpoCeleste->posicion->distanciaAlPadre = cs.factorEscaladoDistancias * sqrt(cuerpoCeleste->distanciaMaximaAlSol);
 
-        if (cuerpoCeleste->posicion->distanciaAlPadre < 0.2f)
+        if (cuerpoCeleste->posicion->distanciaAlPadre < 0.2)
         {
-            cuerpoCeleste->posicion->distanciaAlPadre = 0.2f;
+            cuerpoCeleste->posicion->distanciaAlPadre = 0.2;
         }
 
     }
 
     // --
 
-    cuerpoCeleste->posicion->anguloRotacion = 0.0f;
-    cuerpoCeleste->posicion->anguloTraslacion = 0.0f;
+    cuerpoCeleste->posicion->anguloRotacion = 0.0;
+    cuerpoCeleste->posicion->anguloTraslacion = 0.0;
 
     // --
 
@@ -157,8 +174,21 @@ void inicializaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
     switch (cuerpoCeleste->quienSoy)
     {
     case ISS:
-        myISS();
-        //glutSolidTeapot(2);
+        glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
+        glEnable(GL_TEXTURE_GEN_T);
+#if defined tetera
+        {
+            myEsfera(2);
+        }
+#else
+        {
+            myISS(); 
+        }
+#endif
+
+        glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
+        glDisable(GL_TEXTURE_GEN_T);
+
         break;
 
     case JUPITER:
@@ -170,8 +200,11 @@ void inicializaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
 
         //glutWireDodecahedron();
         //glutSolidCube(2);
+#if defined tetera
         glutSolidTeapot(2);
-
+#else
+        myEsfera();
+#endif
 
         glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
         glDisable(GL_TEXTURE_GEN_T);
@@ -197,9 +230,9 @@ void inicializaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste)
     {
         if (cuerpoCeleste->tieneAnillos)
         {
-            for (float distancia = cuerpoCeleste->posicion->radio * 1.2f; distancia <= cuerpoCeleste->posicion->radio * 2.0f; distancia += 0.2f)
+            for (float distancia = cuerpoCeleste->posicion->radio * 1.2; distancia <= cuerpoCeleste->posicion->radio * 2.0; distancia += 0.2)
             {
-                myElipse(0.0f, 0.0f, distancia, distancia, 360, tccAnillos /* O_ANILLOS*/);
+                myElipse(0.0, 0.0, distancia, distancia, 360, tccAnillos /* O_ANILLOS*/);
             }
         }
     }

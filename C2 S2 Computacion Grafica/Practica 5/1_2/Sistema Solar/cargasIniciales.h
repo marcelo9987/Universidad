@@ -4,14 +4,21 @@
 #include "sistemaSolar.h"
 
 
-/**
-* @brief Inicializa la configuración del sistema solar
-*/
-void inicializaConfiguracionSistema();
 
 /**
-* @brief Inicializa la configuración de la cámara
+* @brief Inicializa la configuraciï¿½n de un cuerpo celeste
 * @param[in] cuerpoCeleste Cuerpo celeste a inicializar
 */
 void inicializaCuerpoCeleste(CuerpoCeleste* cuerpoCeleste);
+
+/**
+* @brief Inicializa la configuraciï¿½n del sistema solar
+*/
+void inicializaConfiguracionSistema(bool primeraVez);
+
+/**
+* @brief Inicializa la configuraciï¿½n de la cï¿½mara
+* @param[in] cuerpoCeleste Cuerpo celeste a inicializar
+*/
+void inicializaConfiguracionCamaras();
 

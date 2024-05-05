@@ -68,7 +68,7 @@ void myElipse(GLfloat cx, GLfloat cy, GLfloat rx, GLfloat ry, int num_segments, 
     float s = sinf(theta);
     float t;
 
-    float x = 1.0;//we start at angle = 0 
+    float x = 1.0;//we start at angle = 0
     float y = 0.0;
 
     // https://www.mathwarehouse.com/ellipse/focus-of-ellipse.php
