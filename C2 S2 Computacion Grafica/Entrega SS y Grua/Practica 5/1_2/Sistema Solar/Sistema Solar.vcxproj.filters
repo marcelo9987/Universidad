@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\figuras">
+      <UniqueIdentifier>{e1b6df7f-e57c-4f91-8ca3-748a7edbf16a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Figuras">
+      <UniqueIdentifier>{cc2148b5-b118-4a03-b08f-b66cdba11c4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{f1c8bac4-071d-437f-8278-f8796879c606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures\Planetas">
+      <UniqueIdentifier>{7ec17039-34fe-4b77-bf52-53a9920defb3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cargasIniciales.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controles.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainSistemaSolar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sistemaSolar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iss.c">
+      <Filter>Source Files\figuras</Filter>
+    </ClCompile>
+    <ClCompile Include="figurasGeometricas.c">
+      <Filter>Source Files\figuras</Filter>
+    </ClCompile>
+    <ClCompile Include="cubos.c">
+      <Filter>Source Files\figuras</Filter>
+    </ClCompile>
+    <ClCompile Include="esferas.c">
+      <Filter>Source Files\figuras</Filter>
+    </ClCompile>
+    <ClCompile Include="camaras.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sistemaSolar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cargasIniciales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="comun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="figurasGeometricas.h">
+      <Filter>Header Files\Figuras</Filter>
+    </ClInclude>
+    <ClInclude Include="camaras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sobre.vbs">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Texturas\Jupiter2k.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Jupiter8k.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Marte2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Marte8k.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Mercurio2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Mercurio8K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Neptuno2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Pluton2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Saturno2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Saturno8K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Sol2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Sol8K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Tierra.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Tierra2.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Tierra2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Tierra8K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Urano2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Venus2K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\Venus8K.jpg">
+      <Filter>Textures\Planetas</Filter>
+    </Image>
+    <Image Include="Texturas\boveda.jpg">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Texturas\ISS_1.jpg">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Texturas\ISS_2.jpg">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Texturas\Luna.bmp">
+      <Filter>Textures</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
