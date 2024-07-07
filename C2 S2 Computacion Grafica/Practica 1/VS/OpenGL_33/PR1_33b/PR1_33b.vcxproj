@@ -26,6 +26,16 @@
     <ClInclude Include="..\Librerias\glad\include_lib\glad.h" />
     <ClInclude Include="..\Librerias\glad\include_lib\lecturaShader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ejes.frag">
+      <FileType>Document</FileType>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ejes.vert">
+      <FileType>Document</FileType>
+    </ClCompile>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

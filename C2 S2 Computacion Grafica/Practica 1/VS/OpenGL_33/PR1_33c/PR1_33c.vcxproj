@@ -26,6 +26,10 @@
     <ClInclude Include="..\Librerias\glad\include_lib\glad.h" />
     <ClInclude Include="lecturaShader_0_9.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shader.frag" />
+    <None Include="shader.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

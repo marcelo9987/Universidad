@@ -21,6 +21,12 @@
     <ClCompile Include="..\Librerias\glad\include_lib\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ejes.frag">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ejes.vert">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Librerias\glad\include_lib\lecturaShader.h">
